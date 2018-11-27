@@ -1,4 +1,4 @@
-Package: BaseSets
+Package: BaseSet
 Title: Provides classes for working with sets
 Version: 0.0.0.9000
 Authors@R: 
@@ -8,9 +8,16 @@ Authors@R:
            email = "lluis.revilla@gmail.com")
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
+URL: https://github.com/llrs/BaseSet
+BugReports: https://github.com/llrs/BaseSet/issues
 Depends: 
-    R (>= 3.5.1)
+    R (>= 3.5.0)
+Imports: 
+    methods
+Suggests: 
+    testthat,
+    covr
 Encoding: UTF-8
 LazyData: true
-Suggests: 
-    testthat
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1

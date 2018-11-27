@@ -24,20 +24,21 @@ check_set <- function(object) {
 
 }
 
+
 setClass("Sets",
          representation(elements = "character",
                         name = "character"),
          validity  = check_set,
          prototype = prototype(name = NA_character_, elements = NA_character_)
 )
-
+#' @importFrom methods new
 sets <- function(elements, ...) {
-  new("Sets", name = ..., elements = elements)
+  methods::new("Sets", name = ..., elements = elements)
 }
-
+#' @importFrom methods is
 check_SetCollection <- function(object){
   errors <- character()
-  classes <- vapply(object@sets, is, class2 = "Sets")
+  classes <- vapply(object@sets, methods::is, class2 = "Sets")
   if (!any(classes)) {
     errors <- "Sets should be of class Sets"
   }
@@ -52,6 +53,7 @@ check_SetCollection <- function(object){
     errors
   }
 }
+
 setClass("SetCollection",
          representation(sets = "list")
          )

@@ -1,4 +1,4 @@
 library(testthat)
-library(BaseSets)
+library(BaseSet)
 
-test_check("BaseSets")
+test_check("BaseSet")
