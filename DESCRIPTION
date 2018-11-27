@@ -1,0 +1,16 @@
+Package: BaseSets
+Title: Provides classes for working with sets
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Lluís ",
+           family = "Revilla Sancho",
+           role = c("aut", "cre"),
+           email = "lluis.revilla@gmail.com")
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+Depends: 
+    R (>= 3.5.1)
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    testthat
