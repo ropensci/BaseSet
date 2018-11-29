@@ -21,3 +21,8 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
+Collate: 
+    'utilities.R'
+    'AllClasses.R'
+    'AllGenerics.R'
+    'set.R'
