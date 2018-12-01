@@ -1,9 +1,14 @@
+#' @include utilities.R
+NULL
+
 #' An S4 class to represent a set account.
 #'
 #' @slot elements A group of unique elements
-#' @include utilities.R
+#' @exportClass Set
+#' @name Set
+#' @rdname Set-class
 setClass("Set",
-         representation(elements = "character"),
+         representation(elements = "ANY"),
          validity  = validate_set,
          prototype = prototype(elements = NA_character_)
 )
@@ -12,3 +17,6 @@ setClass("Set",
 setClass("SetCollection",
          representation(sets = "list")
 )
+
+# initialize
+# https://github.com/variani/pckdev/wiki/Documenting-with-roxygen2#s4-classes??

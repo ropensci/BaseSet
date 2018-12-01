@@ -1,19 +1,21 @@
 validate_set <- function(object) {
   errors <- character()
-  if (!is(object@elements, "character") && !is(object@elements, "vector")) {
-    errors <- "Element should be a character vector"
+  if (!is.vector(object@elements) && !is.character(object@elements) && !is.numeric(object@elements)) {
+    errors <- "Element should be a character or a numeric vector"
   }
-  if (any(duplicated(object@elements))) {
+
+  if (is.numeric(object@elements) && is.null(names(object@elements))) {
+    errors <- c(errors, "Numeric sets should be named")
+  }
+
+  # Check uniqueness
+  if (any(duplicated(names(object@elements)))) {
     errors <- c(errors, "All elements should be unique")
   }
+
   if (is.null(object@elements) && length(object@elements) < 1) {
     errors <- c(errors, "Elements should not be empty or null")
   }
-
-  # if (length(object@name) > 1) {
-  #   errors <- c(errors, "Name should be short and descriptive")
-  # }
-
 
   if (length(errors) == 0){
     TRUE

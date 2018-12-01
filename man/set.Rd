@@ -15,3 +15,6 @@ An object of class Set
 \description{
 Create a set
 }
+\examples{
+set(c("a", "b"))
+}
