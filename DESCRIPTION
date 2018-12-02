@@ -26,3 +26,4 @@ Collate:
     'AllClasses.R'
     'AllGenerics.R'
     'set.R'
+    'setcollection.R'

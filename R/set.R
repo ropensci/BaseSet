@@ -1,5 +1,5 @@
 #' @importFrom methods new
-#' @include AllClasses.R
+#' @include AllClasses.R AllGenerics.R
 NULL
 
 #' Create a set
@@ -10,15 +10,16 @@ NULL
 #' @export
 #' @examples
 #' set(c("a", "b"))
+#' set(c("a" = 0.1, "b" = 0.5))
 set <- function(elements) {
   methods::new("Set", elements = elements)
 }
 
-
+#' @importFrom methods callNextMethod validObject
 setMethod("initialize",
           signature = signature(.Object = "Set"),
           function(.Object, elements) {
-            .Object <- callNextMethod()
+            .Object <- methods::callNextMethod()
             .Object@elements <- elements
 
             # Give names
@@ -27,19 +28,17 @@ setMethod("initialize",
             }
 
 
-            validObject(.Object)
+            methods::validObject(.Object)
             .Object
           })
 
-#' Create a SetCollection
-#'
-#' @param sets The list of sets
-#' @return An object of class SetCollection
+
+#' @describeIn elements For \code{Set} objects
 #' @export
-#' @examples
-#' a <- set(c("a", "b"))
-#' b <- set(c("a", "b"))
-#' setCollection(c(a, b))
-setCollection <- function(sets) {
-  methods::new("SetCollection", sets = sets)
-}
+setMethod("elements",
+          signature=signature(
+            object="Set"),
+          function(object) {
+            names(object@elements)
+          })
+

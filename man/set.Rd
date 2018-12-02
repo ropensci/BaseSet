@@ -17,4 +17,5 @@ Create a set
 }
 \examples{
 set(c("a", "b"))
+set(c("a" = 0.1, "b" = 0.5))
 }
