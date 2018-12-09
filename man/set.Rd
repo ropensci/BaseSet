@@ -16,6 +16,6 @@ An object of class Set
 Create a set
 }
 \examples{
-set(c("a", "b"))
-set(c("a" = 0.1, "b" = 0.5))
+a <- set(c("a", "b"))
+e <- set(c("a" = 0.1, "b" = 0.5))
 }

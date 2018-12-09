@@ -18,5 +18,5 @@ Create a SetCollection
 \examples{
 a <- set(c("a", "b"))
 b <- set(c("a", "b"))
-setCollection(c(a, b))
+d <- setCollection(c(a, b))
 }

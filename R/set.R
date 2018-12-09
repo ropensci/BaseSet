@@ -9,8 +9,8 @@ NULL
 #' @include AllClasses.R
 #' @export
 #' @examples
-#' set(c("a", "b"))
-#' set(c("a" = 0.1, "b" = 0.5))
+#' a <- set(c("a", "b"))
+#' e <- set(c("a" = 0.1, "b" = 0.5))
 set <- function(elements) {
   methods::new("Set", elements = elements)
 }
@@ -36,9 +36,35 @@ setMethod("initialize",
 #' @describeIn elements For \code{Set} objects
 #' @export
 setMethod("elements",
-          signature=signature(
-            object="Set"),
+          signature = signature(object = "Set"),
           function(object) {
             names(object@elements)
           })
 
+#' @export
+setMethod("length",
+          signature = signature(x = "Set"),
+          function(x) {
+            length(x@elements)
+          })
+
+#' @describeIn is.fuzzy For \code{Set} objects
+#' @export
+setMethod("is.fuzzy",
+          signature = signature(object = "Set"),
+          function(object) {
+            is.numeric(object@elements)
+          })
+
+#' @importFrom methods show
+setMethod("show",
+          signature = signature(object = "Set"),
+          function(object) {
+            e <- elements(object)
+            l <- length(e)
+            if (is.fuzzy(object)) {
+              cat("Fuzzy set with", l, "elements.")
+            } else {
+              cat("Set with", l, "elements.")
+            }
+          })

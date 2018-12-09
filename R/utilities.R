@@ -7,7 +7,14 @@ validate_set <- function(object) {
   if (is.numeric(object@elements) && is.null(names(object@elements))) {
     errors <- c(errors, "Numeric sets should be named")
   }
+  if (is.numeric(object@elements) ) {
 
+    if (any(object@elements > 1) || any(object@elements < 0)) {
+      msg <- paste0("Fuzzy sets should be between numberic between 0 and 1.",
+                    "\nTry scaling them.")
+      errors <- c(errors, msg)
+    }
+  }
   # Check uniqueness
   if (any(duplicated(names(object@elements)))) {
     errors <- c(errors, "All elements should be unique")
@@ -29,7 +36,7 @@ validate_set <- function(object) {
 #' @importFrom methods is
 validate_SetCollection <- function(object){
   errors <- character()
-  classes <- vapply(object@sets, methods::is, class2 = "Sets")
+  classes <- vapply(object@sets, methods::is, class2 = "Set", logical(1L))
   if (!any(classes)) {
     errors <- "Sets should be of class Sets"
   }
