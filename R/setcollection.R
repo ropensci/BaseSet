@@ -78,11 +78,11 @@ setMethod("show",
 setMethod("incidence",
           signature = signature(object = "SetCollection"),
           function(object) {
-            elements <- elements(object)
-            u_element <- unique(elements)
-            set <- sets(objects)
+            elements_o <- elements(object)
+            u_element <- unique(unlist(elements_o, use.names = FALSE))
+            set <- sets(object)
             i <- matrix(0, ncol = length(set), nrow = length(u_element),
-                        dimnames = list(set, u_element))
+                        dimnames = list(u_element, set))
 
             is.fuzzy(object)
             for (s in set) {
@@ -91,6 +91,7 @@ setMethod("incidence",
               }
             }
           })
+
 #' Extract or Replace Parts of a SetCollection
 #'
 #' Equivalent of the base [], and [[]]
@@ -100,7 +101,7 @@ setMethod("incidence",
 #' numeric or character vectors or empty (missing) or \code{NULL}
 #' @export
 setMethod("[",
-          signature = signature(x = "SetCollection", i = "logical"),
+          signature = signature(x = "SetCollection"),
           function(x, i, j, ..., drop = TRUE){
             if (n_sets(x) > length(i)) {
               stop("Logical vector is longer than the number of sets")
@@ -108,6 +109,14 @@ setMethod("[",
             setCollection(x@sets[i])
           })
 
+#' @export
+setMethod("$",
+          signature = signature(x = "SetCollection"),
+          function(x, name){
+            x@sets[[name]]
+          })
+
+#' @export
 setMethod("names<-",
           signature = signature(x = "SetCollection", value = "character"),
           function(x, value) {
@@ -116,11 +125,13 @@ setMethod("names<-",
            x
           })
 
+#' @export
 setMethod("names",
           signature = signature(x = "SetCollection"),
           function(x) {
            names(x@sets)
           })
+
 setMethod("relation",
           signature = signature(object = "SetCollection"),
           function(object) {

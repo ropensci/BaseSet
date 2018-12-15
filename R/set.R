@@ -15,6 +15,14 @@ set <- function(elements) {
   methods::new("Set", elements = elements)
 }
 
+#' @export
+setMethod("$",
+          signature = signature(x = "Set"),
+          function(x, name){
+            x@elements[[name]]
+          })
+
+
 #' @importFrom methods callNextMethod validObject
 setMethod("initialize",
           signature = signature(.Object = "Set"),
