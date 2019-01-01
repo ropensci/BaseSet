@@ -1,3 +1,5 @@
+#' @include AllClasses.R AllGenerics.R
+
 length_helper <- function(p, i) {
   a <- prod(p[-i])
   b <- prod((1-p)[i])
@@ -17,7 +19,18 @@ length_helper2 <- function(p, n) {
   sum(vapply(i, length_helper, p = p, numeric(1L)))
 }
 
-length <- function(set) {
+#' Set size
+#'
+#' Calculates the size of a set either fuzzy or not
+#' @param set A set of class \code{Set}
+#' @return A vector with the length of the set and its probability
+#' @export
+set_size <- function(set) {
+  if (is(set, "Set")) {
+    set <- set@elements
+  } else if (!is(set, "numeric")) {
+    stop("Input should be a set or a numeric vector")
+  }
   p1 <- set == 1
   if (all(p1)) {
     return(base::length(set)) # Non fuzzy sets
