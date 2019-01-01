@@ -28,6 +28,11 @@ setMethod("initialize",
           signature = signature(.Object = "Set"),
           function(.Object, elements) {
             .Object <- methods::callNextMethod()
+            if (is(elements, "character")) {
+              x <- rep(1, length(elements))
+              names(x) <- elements
+              elements <- x
+            }
             .Object@elements <- elements
 
             # Give names
@@ -35,8 +40,6 @@ setMethod("initialize",
               names(.Object@elements) <- .Object@elements
             }
 
-
-            methods::validObject(.Object)
             .Object
           })
 
@@ -61,7 +64,7 @@ setMethod("length",
 setMethod("is.fuzzy",
           signature = signature(object = "Set"),
           function(object) {
-            is.numeric(object@elements)
+            !all(object@elements == 1)
           })
 
 #' @importFrom methods show

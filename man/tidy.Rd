@@ -2,7 +2,7 @@
 % Please edit documentation in R/AllGenerics.R
 \name{tidy}
 \alias{tidy}
-\title{tidy}
+\title{Tidy the SetCollection}
 \usage{
 tidy(object)
 }

@@ -43,7 +43,7 @@ setGeneric("incidence", function(object)
   standardGeneric("incidence")
 )
 
-#' tidy
+#' Tidy the SetCollection
 #'
 #' Transform the object to a tidy/long \code{data.frame}
 #' @param object Object to be coerced or tested.

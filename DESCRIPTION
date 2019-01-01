@@ -25,5 +25,6 @@ Collate:
     'utilities.R'
     'AllClasses.R'
     'AllGenerics.R'
+    'length.R'
     'set.R'
     'setcollection.R'

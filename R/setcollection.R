@@ -84,21 +84,26 @@ setMethod("incidence",
             i <- matrix(0, ncol = length(set), nrow = length(u_element),
                         dimnames = list(u_element, set))
 
-            is.fuzzy(object)
-            for (s in set) {
-              if (is.numeric(elements[[s]])) {
 
+            for (s in set) {
+              if (is.numeric(elements_o[[s]])) {
+                  i[names(elements_o[s]), s] <- elements_o[s]
+              } else {
+                i[elements_o[[s]], s] <- 1
               }
             }
+            i
           })
 
 #' Extract or Replace Parts of a SetCollection
 #'
 #' Equivalent of the base [], and [[]]
-#' @param x,object SetCollection from which to extract element(s) or in which to
+#' @param x SetCollection from which to extract element(s) or in which to
 #' replace element(s)
 #' @param i,j indices specifying elements to extract or replace. Indices are
 #' numeric or character vectors or empty (missing) or \code{NULL}
+#' @param ... Other arguments ignored
+#' @param drop Argument ignored
 #' @export
 setMethod("[",
           signature = signature(x = "SetCollection"),
@@ -107,6 +112,19 @@ setMethod("[",
               stop("Logical vector is longer than the number of sets")
             }
             setCollection(x@sets[i])
+          })
+#' @export
+setMethod("[[",
+          signature = signature(x = "SetCollection"),
+          function(x, i, j, ...){
+            if (is(i, "list") ) {
+              stop("It should be a named character a logical value, or a numeric position")
+            }
+            if (length(i) > 1) {
+              stop("Vector is longer than the number of sets")
+            }
+
+            x@sets[[i]]
           })
 
 #' @export
