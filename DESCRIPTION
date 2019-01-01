@@ -16,7 +16,8 @@ Imports:
     methods
 Suggests: 
     testthat,
-    covr
+    covr,
+    spelling
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
@@ -28,3 +29,4 @@ Collate:
     'length.R'
     'set.R'
     'setcollection.R'
+Language: en-US
