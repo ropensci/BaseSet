@@ -5,6 +5,20 @@ test_that("set works", {
   y <- set(c("a" = 0.2, "b" = 0.5))
   expect_s4_class(x, "Set")
   expect_s4_class(y, "Set")
+
+  z <- set(c("a" = "m", "b" = "n"))
+  expect_s4_class(z, "Set")
+})
+
+test_that("elements", {
+  x <- set("a")
+  y <- set(c("a" = 0.2, "b" = 0.5))
+
+  expect_equal(elements(x), "a")
+  expect_equal(elements(y), c("a", "b"))
+
+  z <- set(c("a" = "m", "b" = "n"))
+  expect_equal(elements(z), c("a", "b"))
 })
 
 test_that("is.fuzzy", {
