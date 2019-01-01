@@ -24,10 +24,25 @@ This is a basic example which shows you how to solve a common problem:
 ``` r
 library("BaseSet")
 set(c("a", "b", "c"))
-#> An object of class "Set"
-#> Slot "elements":
-#>   a   b   c 
-#> "a" "b" "c"
+#> Fuzzy set with 3 elements.
 set(c("a", "b", "a"))
-#> Error in validObject(.Object): invalid class "Set" object: All elements should be unique
+#> Fuzzy set with 3 elements.
+```
+
+``` r
+a <- set(c("a" = 0.5, "b" = 0.2, "c" = 0.3, "d" = 0.5))
+b <- set(letters[1:4])
+a
+#> Fuzzy set with 4 elements.
+b
+#> Fuzzy set with 4 elements.
+length(a)
+#> [1] 4
+length(b)
+#> [1] 4
+set_size(a)
+#>     1     2     3     4 
+#> 0.125 0.345 0.375 0.140
+set_size(b)
+#> [1] 4
 ```

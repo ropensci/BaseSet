@@ -37,3 +37,15 @@ library("BaseSet")
 set(c("a", "b", "c"))
 set(c("a", "b", "a"))
 ```
+
+```{r}
+a <- set(c("a" = 0.5, "b" = 0.2, "c" = 0.3, "d" = 0.5))
+b <- set(letters[1:4])
+a
+b
+length(a)
+length(b)
+set_size(a)
+set_size(b)
+```
+
