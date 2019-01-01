@@ -12,7 +12,21 @@ NULL
 #' a <- set(c("a", "b"))
 #' e <- set(c("a" = 0.1, "b" = 0.5))
 set <- function(elements) {
-  methods::new("Set", elements = elements)
+
+  # If character convert to equivalent fuzzy nomenclature
+  if (is.character(elements)) {
+    x <- rep(1, length(elements))
+    # Give names
+    if (is.null(names(elements))) {
+      names(x) <- elements
+    } else {
+      names(x) <- names(elements)
+    }
+  } else {
+    x <- elements
+  }
+
+  methods::new("Set", elements = x)
 }
 
 #' @export
@@ -21,28 +35,6 @@ setMethod("$",
           function(x, name){
             x@elements[[name]]
           })
-
-
-#' @importFrom methods callNextMethod validObject
-setMethod("initialize",
-          signature = signature(.Object = "Set"),
-          function(.Object, elements) {
-            .Object <- methods::callNextMethod()
-            if (is(elements, "character")) {
-              x <- rep(1, length(elements))
-              names(x) <- elements
-              elements <- x
-            }
-            .Object@elements <- elements
-
-            # Give names
-            if (is.null(names(.Object@elements))) {
-              names(.Object@elements) <- .Object@elements
-            }
-
-            .Object
-          })
-
 
 #' @describeIn elements For \code{Set} objects
 #' @export

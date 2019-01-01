@@ -134,6 +134,7 @@ setMethod("$",
             x@sets[[name]]
           })
 
+#' @importFrom methods validObject
 #' @export
 setMethod("names<-",
           signature = signature(x = "SetCollection", value = "character"),

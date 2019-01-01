@@ -1,3 +1,5 @@
+#' @include AllClasses.R
+NULL
 
 #' Retrieve the elements
 #'
