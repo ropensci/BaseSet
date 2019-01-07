@@ -78,7 +78,9 @@ setValidity("SetCollection", function(object) {
 #'
 #' A set is a group of unique elements it can be either a fuzzy set, where the
 #' relationship is between 0 or 1 or nominal
-#' @slot elements A group of unique elements
+#' @slot relations A data.frame with elements and the sets were they belong.
+#' @slot elements A data.frame of unique elements and related information.
+#' @slot sets A data.frame of unique sets and related information.
 #' @export
 setClass("TidySet",
          representation(elements = "data.frame",
@@ -109,14 +111,14 @@ setValidity("TidySet", function(object) {
 })
 
 check_empty <- function(object, slot){
-  df <- slot(a, slot)
+  df <- slot(object, slot)
   if (nrow(df) < 0) {
-    paste0(x, " should not be empty")
+    paste0(slot, " should not be empty")
   }
 }
 
 check_colnames <- function(object, slot, colname) {
-  if (length(colnames(slot(object, slot))) == 0) {
+  if (base::length(colnames(slot(object, slot))) == 0) {
     paste0("Provide at least the required colnames for ", slot,
           ". See documentation.")
   } else if (!colname %in% colnames(slot(object, slot))) {

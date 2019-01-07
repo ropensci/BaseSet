@@ -11,6 +11,10 @@ relationship is between 0 or 1 or nominal
 \section{Slots}{
 
 \describe{
-\item{\code{elements}}{A group of unique elements}
+\item{\code{relations}}{A data.frame with elements and the sets were they belong.}
+
+\item{\code{elements}}{A data.frame of unique elements and related information.}
+
+\item{\code{sets}}{A data.frame of unique sets and related information.}
 }}
 

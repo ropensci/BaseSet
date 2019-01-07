@@ -10,10 +10,10 @@
 #' @examples
 #' relations <- data.frame(sets = c(rep("a", 5), "b"),
 #' elements = letters[seq_len(6)])
-#' TidySet(relations = relations)
+#' tidySet(relations = relations)
 #' @export
 #' @title tidySet
-TidySet <- function (relations, sets = NULL, elements = NULL) {
+tidySet <- function (relations, sets = NULL, elements = NULL) {
 
   if (ncol(relations) == 2 && all(c("sets", "elements") %in% colnames(relations))) {
     if (is.null(sets)) {

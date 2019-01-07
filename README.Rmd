@@ -24,7 +24,7 @@ The goal of BaseSet is to facilitate working with sets
 
 You can install the released version of BaseSet from [Github](https://github.com/llrs/BaseSet) with:
 
-``` r
+```{r eval=FALSE}
 remotes::install_github("llrs/BaseSet")
 ```
 
@@ -36,7 +36,6 @@ This is a basic example which shows you how to solve a common problem:
 library("BaseSet")
 set(c("a", "b", "c"))
 set(c("a", "b", "a"))
-set(z)
 ```
 We can calculate the size of the sets, the length is reported when printing the object:
 ```{r}
@@ -59,6 +58,6 @@ A new way mixing S4 but following tidyverse style:
 ```{r TidySet}
 relations <- data.frame(sets = c(rep("a", 5), "b"), 
                         elements = letters[seq_len(6)])
-TidySet(relations = relations)
+tidySet(relations = relations)
 ```
 
