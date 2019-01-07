@@ -71,3 +71,55 @@ setValidity("SetCollection", function(object) {
 # initialize
 # https://github.com/variani/pckdev/wiki/Documenting-with-roxygen2#s4-classes??
 
+
+
+# S4 classes ###
+#' A tidy class to represent a set
+#'
+#' A set is a group of unique elements it can be either a fuzzy set, where the
+#' relationship is between 0 or 1 or nominal
+#' @slot elements A group of unique elements
+#' @export
+setClass("TidySet",
+         representation(elements = "data.frame",
+                        sets = "data.frame",
+                        relations = "data.frame")
+)
+
+
+#' @importFrom methods is
+setValidity("TidySet", function(object) {
+  errors <- c()
+
+
+  for (slot in slotNames(object)) {
+    errors <- c(errors, check_empty(object, slot))
+  }
+
+  errors <- c(errors, check_colnames(object, "elements", "elements"))
+  errors <- c(errors, check_colnames(object, "sets", "set"))
+  errors <- c(errors, check_colnames(object, "relations", "elements"))
+  errors <- c(errors, check_colnames(object, "relations", "sets"))
+
+  if (length(errors) == 0){
+    TRUE
+  } else {
+    errors
+  }
+})
+
+check_empty <- function(object, slot){
+  df <- slot(a, slot)
+  if (nrow(df) < 0) {
+    paste0(x, " should not be empty")
+  }
+}
+
+check_colnames <- function(object, slot, colname) {
+  if (length(colnames(slot(object, slot))) == 0) {
+    paste0("Provide at least the required colnames for ", slot,
+          ". See documentation.")
+  } else if (!colname %in% colnames(slot(object, slot))) {
+    paste0(colname, " column is not present on slot ", slot, ".")
+  }
+}

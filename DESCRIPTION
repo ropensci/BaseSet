@@ -28,4 +28,5 @@ Collate:
     'length.R'
     'set.R'
     'setcollection.R'
+    'tidy-set.R'
 Language: en-US

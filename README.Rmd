@@ -36,16 +36,29 @@ This is a basic example which shows you how to solve a common problem:
 library("BaseSet")
 set(c("a", "b", "c"))
 set(c("a", "b", "a"))
+set(z)
 ```
-
+We can calculate the size of the sets, the length is reported when printing the object:
 ```{r}
 a <- set(c("a" = 0.5, "b" = 0.2, "c" = 0.3, "d" = 0.5))
 b <- set(letters[1:4])
 a
 b
-length(a)
-length(b)
+length(a) # this is automatically reported
+length(b) # this is automatically reported
 set_size(a)
 set_size(b)
+```
+
+```{r}
+SC <- setCollection(c(a, b))
+incidence(SC)
+```
+
+A new way mixing S4 but following tidyverse style:
+```{r TidySet}
+relations <- data.frame(sets = c(rep("a", 5), "b"), 
+                        elements = letters[seq_len(6)])
+TidySet(relations = relations)
 ```
 

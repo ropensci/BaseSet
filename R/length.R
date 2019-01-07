@@ -29,7 +29,7 @@ set_size <- function(set) {
   if (is(set, "Set")) {
     set <- set@elements
   } else if (!is(set, "numeric")) {
-    stop("Input should be a set or a numeric vector")
+    stop("Input should be a Set or a numeric vector")
   }
   p1 <- set == 1
   if (all(p1)) {
