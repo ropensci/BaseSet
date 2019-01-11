@@ -42,7 +42,7 @@ setValidity("TidySet", function(object) {
     }
   }
 
-  if (any(duplicated(object@relations[, c("elements", "sets")]))) {
+  if (anyDuplicated(object@relations[, c("elements", "sets")])) {
     errors <- c(errors,
                 "A relationship between an element and a set should be unique."
                 )
