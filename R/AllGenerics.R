@@ -1,4 +1,5 @@
 #' @include AllClasses.R
+#' @import methods
 NULL
 
 #' Retrieve the elements
@@ -6,61 +7,85 @@ NULL
 #' Given a Set or a SetCollection retrieve the elements
 #' @param object Either a \code{Set} or a \code{SetCollection} object
 #' @export
-setGeneric("elements", function(object)
-  standardGeneric("elements")
-)
+#' @name elements
+setGeneric("elements", function(object) standardGeneric("elements"))
 #' Retrieve the names of the sets
 #'
 #' Given a SetCollection retrieve the names of the sets
 #' @param object A \code{SetCollection} object
 #' @export
-setGeneric("sets", function(object)
-  standardGeneric("sets")
-)
+#' @name sets
+setGeneric("sets", function(object) standardGeneric("sets"))
 
 #' Fuzzy Sets
 #'
 #' Check if there are fuzzy sets.
 #' @param object Object to be coerced or tested.
 #' @export
-setGeneric("is.fuzzy", function(object)
-  standardGeneric("is.fuzzy")
-)
+setGeneric("is.fuzzy", function(object) standardGeneric("is.fuzzy"))
 
-#' Number of Sets
+#' Number of sets
 #'
-#' Check if the number of sets of the SetCollection
+#' Check the number of sets of the TidySet
 #' @param object Object to be coerced or tested.
 #' @export
-setGeneric("n_sets", function(object)
-  standardGeneric("n_sets")
-)
+#' @name nSets
+setGeneric("nSets", function(object) standardGeneric("nSets"))
+
+#' Number of elements
+#'
+#' Check the number of elements of the TidySet
+#' @param object Object to be coerced or tested.
+#' @export
+#' @name nElements
+setGeneric("nElements", function(object) standardGeneric("nElements"))
+
+#' Number of relations
+#'
+#' Check the number of relations of the TidySet
+#' @param object Object to be coerced or tested.
+#' @export
+#' @name nRelations
+setGeneric("nRelations", function(object) standardGeneric("nRelations"))
 
 #' Incidence
 #'
 #' Check which elements are in which sets
 #' @param object Object to be coerced or tested.
 #' @export
-setGeneric("incidence", function(object)
-  standardGeneric("incidence")
-)
+#' @name incidence
+setGeneric("incidence", function(object) standardGeneric("incidence"))
 
-#' Tidy the SetCollection
+#' Find the relationship
 #'
-#' Transform the object to a tidy/long \code{data.frame}
 #' @param object Object to be coerced or tested.
-#' @return A data.frame
+#' @return The existing relationships
 #' @export
-setGeneric("tidy", function(object)
-  standardGeneric("tidy")
-)
-#' Find strength of the relationship
+setGeneric("relations", function(object) standardGeneric("relations"))
+
+#' Modify the relationships
 #'
-#' Transform the object to a tidy/long \code{data.frame}
 #' @param object Object to be coerced or tested.
-#' @return A list of weight with the relationship. If it is not a fuzzy set
-#' it is converted to 1.
+#' @param value Modification of the relationsihps
+#' @return The object with the new relationships
 #' @export
-setGeneric("relation", function(object)
-  standardGeneric("relation")
-)
+#' @name relations<-
+setGeneric("relations<-", function(object, value)
+  standardGeneric("relations<-"))
+
+#' Modify the elements
+#'
+#' @param object Object to be coerced or tested.
+#' @param value Modification of the elements
+#' @return The object with the new elements
+#' @export
+setGeneric("elements<-", function(object, value) standardGeneric("elements<-"))
+
+#' Modify the sets
+#'
+#' @param object Object to be coerced or tested.
+#' @param value Modification of the sets
+#' @return The object with the new sets
+#' @export
+#' @name sets<-
+setGeneric("sets<-", function(object, value) standardGeneric("sets<-"))

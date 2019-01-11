@@ -1,23 +1,28 @@
-#' @include AllClasses.R AllGenerics.R
-NULL
-
 #' @export
-setMethod("sets",
+setMethod("relations",
           signature = signature(object = "TidySet"),
           function(object) {
-            object@sets$set
+            slot(object, "relations")
           })
 
 #' @export
-setMethod("sets<-",
+setMethod("relations<-",
           signature = signature(object = "TidySet"),
           function(object, value) {
             slot(object, "relations") <- value
           })
 
+
 #' @export
-setMethod("nSets",
+setMethod("nRelations",
           signature = signature(object = "TidySet"),
           function(object) {
-            nrow(slot(object, "sets"))
+            nrow(slot(object, "relations"))
+          })
+
+#' @export
+setMethod("is.fuzzy",
+          signature = signature(object = "TidySet"),
+          function(object) {
+            "fuzzy" %in% colnames(slot(object, "relations"))
           })

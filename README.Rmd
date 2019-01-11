@@ -28,36 +28,14 @@ You can install the released version of BaseSet from [Github](https://github.com
 remotes::install_github("llrs/BaseSet")
 ```
 
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-```{r example, error=TRUE}
-library("BaseSet")
-set(c("a", "b", "c"))
-set(c("a", "b", "a"))
-```
-We can calculate the size of the sets, the length is reported when printing the object:
-```{r}
-a <- set(c("a" = 0.5, "b" = 0.2, "c" = 0.3, "d" = 0.5))
-b <- set(letters[1:4])
-a
-b
-length(a) # this is automatically reported
-length(b) # this is automatically reported
-set_size(a)
-set_size(b)
-```
-
-```{r}
-SC <- setCollection(c(a, b))
-incidence(SC)
-```
+## Examples
 
 A new way mixing S4 but following tidyverse style:
 ```{r TidySet}
 relations <- data.frame(sets = c(rep("a", 5), "b"), 
-                        elements = letters[seq_len(6)])
-tidySet(relations = relations)
+                        elements = letters[seq_len(6)],
+                        fuzzy = runif(6))
+a <- tidySet(relations = relations)
+a
 ```
 

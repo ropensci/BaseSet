@@ -1,23 +1,24 @@
-#' @include AllClasses.R AllGenerics.R
-NULL
-
+#' @describeIn elements Retrive the elements
 #' @export
-setMethod("sets",
+setMethod("elements",
           signature = signature(object = "TidySet"),
           function(object) {
-            object@sets$set
+            object@elements$elements
           })
 
+
+#' @describeIn elements<- Modify the elements
 #' @export
-setMethod("sets<-",
+setMethod("elements<-",
           signature = signature(object = "TidySet"),
           function(object, value) {
-            slot(object, "relations") <- value
+            slot(object, "elements") <- value
           })
 
+
 #' @export
-setMethod("nSets",
+setMethod("nElements",
           signature = signature(object = "TidySet"),
           function(object) {
-            nrow(slot(object, "sets"))
+            nrow(slot(object, "elements"))
           })
