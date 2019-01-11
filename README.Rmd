@@ -27,8 +27,12 @@ You can install the released version of BaseSet from [Github](https://github.com
 ```{r eval=FALSE}
 remotes::install_github("llrs/BaseSet")
 ```
-
+ 
 ## Examples
+
+```{r include=FALSE}
+library("BaseSet")
+```
 
 A new way mixing S4 but following tidyverse style:
 ```{r TidySet}

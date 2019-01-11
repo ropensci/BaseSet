@@ -16,76 +16,22 @@ You can install the released version of BaseSet from [Github](https://github.com
 remotes::install_github("llrs/BaseSet")
 ```
 
-Example
--------
-
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-library("BaseSet")
-set(c("a", "b", "c"))
-#> Set with 3 elements.
-set(c("a", "b", "a"))
-#> Error in validObject(.Object): invalid class "Set" object: All elements names should be unique
-```
-
-We can calculate the size of the sets, the length is reported when printing the object:
-
-``` r
-a <- set(c("a" = 0.5, "b" = 0.2, "c" = 0.3, "d" = 0.5))
-b <- set(letters[1:4])
-a
-#> Fuzzy set with 4 elements.
-b
-#> Set with 4 elements.
-length(a) # this is automatically reported
-#> [1] 4
-length(b) # this is automatically reported
-#> [1] 4
-set_size(a)
-#>     1     2     3     4 
-#> 0.125 0.345 0.375 0.140
-set_size(b)
-#> [1] 4
-```
-
-``` r
-SC <- setCollection(c(a, b))
-incidence(SC)
-#>  
-#> a
-#> b
-#> c
-#> d
-```
+Examples
+--------
 
 A new way mixing S4 but following tidyverse style:
 
 ``` r
 relations <- data.frame(sets = c(rep("a", 5), "b"), 
-                        elements = letters[seq_len(6)])
-tidySet(relations = relations)
-#> An object of class "TidySet"
-#> Slot "elements":
-#>   elements
-#> 1        a
-#> 2        b
-#> 3        c
-#> 4        d
-#> 5        e
-#> 6        f
-#> 
-#> Slot "sets":
-#>   set
-#> 1   a
-#> 2   b
-#> 
-#> Slot "relations":
-#>   sets elements
-#> 1    a        a
-#> 2    a        b
-#> 3    a        c
-#> 4    a        d
-#> 5    a        e
-#> 6    b        f
+                        elements = letters[seq_len(6)],
+                        fuzzy = runif(6))
+a <- tidySet(relations = relations)
+a
+#>   elements sets     fuzzy
+#> 1        a    a 0.1114163
+#> 2        b    a 0.9514007
+#> 3        c    a 0.7440293
+#> 4        d    a 0.7995760
+#> 5        e    a 0.5791431
+#> 6        f    b 0.3420518
 ```
