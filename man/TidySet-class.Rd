@@ -3,6 +3,7 @@
 \docType{class}
 \name{TidySet-class}
 \alias{TidySet-class}
+\alias{TidySet}
 \title{A tidy class to represent a set}
 \description{
 A set is a group of unique elements it can be either a fuzzy set, where the

@@ -3,15 +3,24 @@
 \docType{methods}
 \name{elements}
 \alias{elements}
+\alias{elements<-}
 \alias{elements,TidySet-method}
+\alias{elements<-,TidySet-method}
 \title{Retrieve the elements}
 \usage{
 elements(object)
 
 \S4method{elements}{TidySet}(object)
+
+\S4method{elements}{TidySet}(object) <- value
 }
 \arguments{
-\item{object}{Either a \code{Set} or a \code{SetCollection} object}
+\item{object}{A TidySet object}
+
+\item{value}{Modification of the elements}
+}
+\value{
+Either the information about the elements
 }
 \description{
 Given a Set or a SetCollection retrieve the elements
@@ -19,5 +28,13 @@ Given a Set or a SetCollection retrieve the elements
 \section{Methods (by class)}{
 \itemize{
 \item \code{TidySet}: Retrive the elements
+
+\item \code{TidySet}: Modify the elements
 }}
 
+\seealso{
+\code{\link{nElements}}
+
+Other slots: \code{\link{relations}}, \code{\link{sets}}
+}
+\concept{slots}

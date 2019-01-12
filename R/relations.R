@@ -1,3 +1,7 @@
+#' @include AllClasses.R AllGenerics.R
+NULL
+
+#' @describeIn relations Retrieve the relations
 #' @export
 setMethod("relations",
           signature = signature(object = "TidySet"),
@@ -5,6 +9,7 @@ setMethod("relations",
             slot(object, "relations")
           })
 
+#' @describeIn relations Modify the relations
 #' @export
 setMethod("relations<-",
           signature = signature(object = "TidySet"),
@@ -13,6 +18,7 @@ setMethod("relations<-",
           })
 
 
+#' @describeIn nRelations Return the number of relations
 #' @export
 setMethod("nRelations",
           signature = signature(object = "TidySet"),
@@ -20,6 +26,7 @@ setMethod("nRelations",
             nrow(slot(object, "relations"))
           })
 
+#' @describeIn is.fuzzy Check if it is fuzzy
 #' @export
 setMethod("is.fuzzy",
           signature = signature(object = "TidySet"),

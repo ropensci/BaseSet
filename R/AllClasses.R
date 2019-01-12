@@ -6,6 +6,7 @@
 #' @slot relations A data.frame with elements and the sets were they belong.
 #' @slot elements A data.frame of unique elements and related information.
 #' @slot sets A data.frame of unique sets and related information.
+#' @aliases TidySet
 #' @export
 setClass("TidySet",
          representation(elements = "data.frame",

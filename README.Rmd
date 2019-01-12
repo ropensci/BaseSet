@@ -34,7 +34,8 @@ remotes::install_github("llrs/BaseSet")
 library("BaseSet")
 ```
 
-A new way mixing S4 but following tidyverse style:
+To work with sets we need to have the relations between the elements and the sets:
+
 ```{r TidySet}
 relations <- data.frame(sets = c(rep("a", 5), "b"), 
                         elements = letters[seq_len(6)],
