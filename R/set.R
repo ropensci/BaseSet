@@ -15,7 +15,7 @@ setMethod("sets",
 setMethod("sets<-",
           signature = signature(object = "TidySet"),
           function(object, value) {
-            slot(object, "relations") <- value
+            slot(object, "sets") <- value
             object
           })
 
