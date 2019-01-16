@@ -43,6 +43,13 @@ setValidity("TidySet", function(object) {
     }
   }
 
+  colnames_elements <- colnames(object@elements)
+  colnames_sets <- colnames(object@sets)
+  if (length(intersect(colnames_elements, colnames_sets)) != 0) {
+    errors <- c(errors,
+                "Sets and elements shouldn't share a column name: Use relations")
+  }
+
   if (anyDuplicated(object@relations[, c("elements", "sets")])) {
     errors <- c(errors,
                 "A relationship between an element and a set should be unique."
