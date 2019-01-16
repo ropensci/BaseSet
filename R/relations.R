@@ -15,6 +15,7 @@ setMethod("relations<-",
           signature = signature(object = "TidySet"),
           function(object, value) {
             slot(object, "relations") <- value
+            object
           })
 
 

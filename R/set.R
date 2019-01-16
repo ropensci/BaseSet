@@ -7,7 +7,7 @@ NULL
 setMethod("sets",
           signature = signature(object = "TidySet"),
           function(object) {
-            object@sets$set
+            slot(object, "sets")
           })
 
 #' @describeIn sets Modify the sets information
@@ -16,6 +16,7 @@ setMethod("sets<-",
           signature = signature(object = "TidySet"),
           function(object, value) {
             slot(object, "relations") <- value
+            object
           })
 
 #' @describeIn sets Return the number of sets

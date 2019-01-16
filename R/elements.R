@@ -6,7 +6,7 @@ NULL
 setMethod("elements",
           signature = signature(object = "TidySet"),
           function(object) {
-            object@elements$elements
+            slot(object, "elements")
           })
 
 
@@ -16,6 +16,7 @@ setMethod("elements<-",
           signature = signature(object = "TidySet"),
           function(object, value) {
             slot(object, "elements") <- value
+            object
           })
 
 
