@@ -26,8 +26,10 @@ Collate:
     'AllClasses.R'
     'AllGenerics.R'
     'elements.R'
+    'tidy-set.R'
+    'import.R'
+    'incidence.R'
     'length.R'
     'relations.R'
     'set.R'
-    'tidy-set.R'
 Language: en-US
