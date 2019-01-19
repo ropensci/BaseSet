@@ -8,6 +8,10 @@
 #' @slot sets A data.frame of unique sets and related information.
 #' @aliases TidySet
 #' @export
+#' @seealso \link{tidySet}
+#' @examples
+#' x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
+#' a <- tidySet(x)
 setClass("TidySet",
          representation(elements = "data.frame",
                         sets = "data.frame",

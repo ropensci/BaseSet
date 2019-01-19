@@ -25,11 +25,12 @@ RoxygenNote: 6.1.1
 Collate: 
     'AllClasses.R'
     'AllGenerics.R'
+    'basesets-package.R'
     'elements.R'
-    'tidy-set.R'
-    'import.R'
     'incidence.R'
     'length.R'
+    'print.R'
     'relations.R'
     'set.R'
+    'tidy-set.R'
 Language: en-US

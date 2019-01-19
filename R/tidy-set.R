@@ -1,9 +1,8 @@
 #' @include AllClasses.R
 
 
-#' @title Creates a TidySet
+#' Create a TidySet object
 #'
-#' Creates a new TidySet object to handle sets.
 #' @param relations (required) Depending on the method, it should be a
 #' \code{data.frame} with at least one column for the elements and one for the
 #' sets, a \code{list} with the elements that belong to each set, a
@@ -16,6 +15,7 @@
 #' tidySet(relations = relations)
 #' @export
 #' @rdname tidySet
+#' @aliases tidySet
 tidySet <- function(relations) {
   UseMethod("tidySet")
 }
@@ -27,12 +27,11 @@ tidySet <- function(relations) {
 tidySet.data.frame <- function(relations) {
 
   if (ncol(relations) >= 2 && all(c("sets", "elements") %in% colnames(relations))) {
-    if (is.null(sets)) {
-      sets <- data.frame(set = unique(relations$sets))
-    }
-    if (is.null(elements)) {
-      elements <- data.frame(elements = unique(relations$elements))
-    }
+    sets <- data.frame(set = unique(relations$sets))
+    elements <- data.frame(elements = unique(relations$elements))
+  } else {
+    stop("Unable to create a TidySet object.",
+         "The data.frame is not in the right format")
   }
 
   if (!"fuzzy" %in% colnames(relations)) {
@@ -71,13 +70,16 @@ tidySet.list <- function(relations) {
   }
 
   relations <- data.frame(elements, sets, fuzzy)
-  tidySet(relations = relations)
+  tidySet.data.frame(relations = relations)
 }
 
 #' @describeIn tidySet Convert an incidence matrix into a TidySet
 #' @export
 #' @examples
 #' x <- list("a" = letters[1:5], "b" = LETTERS[3:7], "c" = runif(5))
+#' a <- tidySet(x) # An error for mixing letters and numbers
+#' # Numeric input should be named
+#' x <- list("a" = c("A" = 0.1, "B" = 0.5), "b" = c("A" = 0.2, "B" = 1))
 #' a <- tidySet(x)
 #' tidySet.matrix(incidence(a))
 tidySet.matrix <- function(relations) {

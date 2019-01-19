@@ -19,3 +19,10 @@ relationship is between 0 or 1 or nominal
 \item{\code{sets}}{A data.frame of unique sets and related information.}
 }}
 
+\examples{
+x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
+a <- tidySet(x)
+}
+\seealso{
+\link{tidySet}
+}
