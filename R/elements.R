@@ -16,6 +16,7 @@ setMethod("elements<-",
           signature = signature(object = "TidySet"),
           function(object, value) {
             slot(object, "elements") <- value
+            validObject(object)
             object
           })
 
