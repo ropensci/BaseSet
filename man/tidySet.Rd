@@ -9,27 +9,20 @@
 
 Creates a new TidySet object to handle sets.}
 \usage{
-tidySet(relations, ...)
+tidySet(relations)
 
-\method{tidySet}{data.frame}(relations, sets = NULL, elements = NULL)
+\method{tidySet}{data.frame}(relations)
 
 \method{tidySet}{list}(relations)
 
 \method{tidySet}{matrix}(relations)
 }
 \arguments{
-\item{relations}{(required) Depending on the method, it should be a:
-\itemize{
-\item{\code{data.frame}}{ with at least one column for the elements
-and one for the sets}
-\item{\code{list}}{ with the elements that belong to each set}
-\item{\code{matrix}}{ with the elements as the rownames and the sets as
-the column names}
-}}
-
-\item{sets}{A data.frame with at least one column: "sets"}
-
-\item{elements}{A data.frame with at least one column: "elements"}
+\item{relations}{(required) Depending on the method, it should be a
+\code{data.frame} with at least one column for the elements and one for the
+sets, a \code{list} with the elements that belong to each set, a
+\code{matrix} with the elements as the rownames and the sets as the column
+names.}
 }
 \value{
 A TidySet object
@@ -53,6 +46,8 @@ relations <- data.frame(sets = c(rep("a", 5), "b"),
                         elements = letters[seq_len(6)])
 tidySet(relations = relations)
 x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
+a <- tidySet(x)
+x <- list("a" = letters[1:5], "b" = LETTERS[3:7], "c" = runif(5))
 a <- tidySet(x)
 tidySet.matrix(incidence(a))
 }
