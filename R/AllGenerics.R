@@ -85,3 +85,6 @@ setGeneric("elements<-", function(object, value) standardGeneric("elements<-"))
 #' @describeIn sets Modify the sets
 #' @export
 setGeneric("sets<-", function(object, value) standardGeneric("sets<-"))
+
+
+setGeneric("set_size", function(object, set) standardGeneric("set_size"))

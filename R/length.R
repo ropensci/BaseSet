@@ -7,7 +7,7 @@ NULL
 #' @param p Probabilities
 #' @param i Index of the complemetary probability
 #' @keywords internal
-length_helper <- function(p, i) {
+multiply_probabilities <- function(p, i) {
   a <- prod(p[-i])
   b <- prod((1-p)[i])
   if (is.null(a) && is.null(b)) {
@@ -72,10 +72,41 @@ combn_indices <- function (x, m) {
   out
 }
 
-
-length_helper2 <- function(p, n) {
+#' Calculates the probability of a single length
+#'
+#' Creates all the possibilities and then add them up.
+#' @param p Probabilities
+#' @param n Size
+#' @return A numeric value of the probability of the given size
+#' @export
+#' @keywords internal
+length_probability <- function(p, n) {
   i <- combn_indices(x = length(p), m = n)
-  sum(vapply(i, length_helper, p = p, numeric(1L)))
+  sum(vapply(i, multiply_probabilities, p = p, numeric(1L)))
+}
+
+
+#' Calculates the probability
+#'
+#' Given several probabilities it looks for how probable is to have a vector of
+#' each length
+#' @param fuzziness The probabilities
+#' @return A vector with the probability of each set
+#' @export
+#' @examples
+#' length_set(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23))
+length_set <- function(fuzziness) {
+  p1 <- fuzziness == 1
+  if (all(p1)) {
+    return(length(fuzziness)) # Non fuzzy sets
+  }
+
+  p <- fuzziness[!p1 && fuzziness != 0]
+  l <- seq(from = 1, to = length(p))
+  v <- vapply(l, length_probability, p = p, numeric(1L))
+
+  names(v) <- as.character(l + sum(p1))
+  v
 }
 
 #' Set size
@@ -84,21 +115,17 @@ length_helper2 <- function(p, n) {
 #' @param set A set of class \code{Set}
 #' @return A vector with the length of the set and its probability
 #' @export
-set_size <- function(set) {
-  if (is(set, "Set")) {
-    set <- set@elements
-  } else if (!is(set, "numeric")) {
-    stop("Input should be a Set or a numeric vector")
-  }
-  p1 <- set == 1
-  if (all(p1)) {
-    return(length(set)) # Non fuzzy sets
-  }
+setMethod("set_size",
+          signature = signature(object = "TidySet"),
+          function(object, set) {
 
-  p <- set[!p1 && set != 0]
-  l <- seq(from = 1, to = base::length(p))
-  v <- vapply(l, length_helper2, p = p, numeric(1L))
-
-  names(v) <- as.character(l+sum(p1))
-  v
-}
+            rel <- relations(object)
+            out <- lapply(set, function(x){
+              length_set(rel[rel$sets == x, "fuzzy"])
+            })
+            names(out) <- set
+            # TODO return a matrix or a consistent data format
+            # Probably a matrix
+            out
+          }
+)
