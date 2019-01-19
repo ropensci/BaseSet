@@ -1,8 +1,9 @@
 #' @include AllClasses.R
-
+NULL
 
 #' Create a TidySet object
 #'
+#' This functions help to create a \code{TidySet} object.
 #' @param relations (required) Depending on the method, it should be a
 #' \code{data.frame} with at least one column for the elements and one for the
 #' sets, a \code{list} with the elements that belong to each set, a
@@ -12,10 +13,9 @@
 #' @examples
 #' relations <- data.frame(sets = c(rep("a", 5), "b"),
 #'                         elements = letters[seq_len(6)])
-#' tidySet(relations = relations)
+#' tidySet(relations)
 #' @export
-#' @rdname tidySet
-#' @aliases tidySet
+#' @seealso \code{\link{TidySet-class}}
 tidySet <- function(relations) {
   UseMethod("tidySet")
 }
