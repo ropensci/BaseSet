@@ -62,23 +62,24 @@ setGeneric("incidence", function(object) standardGeneric("incidence"))
 
 #' Find the relationship
 #'
+#' Method to find the relationships between the elements and the sets of a given
+#' \code{\link{TidySet}} object
 #' @param object Object to be coerced or tested.
 #' @param value Modification of the relationsihps
 #' @return The existing relationships
 #' @family slots
 #' @seealso \code{\link{nRelations}}
-#' @export relations
-#' @aliases relations<-
+#' @export
 setGeneric("relations", function(object) standardGeneric("relations"))
 
 #' @describeIn relations Modify the relationships
-#' @export relations<-
+#' @export
 setGeneric("relations<-", function(object, value)
   standardGeneric("relations<-"))
 
 
 #' @describeIn elements Modify the elements
-#' @export elements<-
+#' @export
 setGeneric("elements<-", function(object, value) standardGeneric("elements<-"))
 
 #' @describeIn sets Modify the sets

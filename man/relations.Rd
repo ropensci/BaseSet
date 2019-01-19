@@ -3,7 +3,6 @@
 \docType{methods}
 \name{relations}
 \alias{relations}
-\alias{relations<-}
 \alias{relations,TidySet-method}
 \alias{relations<-,TidySet-method}
 \title{Find the relationship}
@@ -23,7 +22,8 @@ relations(object)
 The existing relationships
 }
 \description{
-Find the relationship
+Method to find the relationships between the elements and the sets of a given
+\code{\link{TidySet}} object
 }
 \section{Methods (by class)}{
 \itemize{
