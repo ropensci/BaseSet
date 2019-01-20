@@ -109,11 +109,7 @@ length_set <- function(fuzziness) {
   v
 }
 
-#' Set size
-#'
-#' Calculates the size of a set either fuzzy or not
-#' @param set A set of class \code{Set}
-#' @return A vector with the length of the set and its probability
+#' @describeIn set_size Calculates the size of a set either fuzzy or not
 #' @export
 setMethod("set_size",
           signature = signature(object = "TidySet"),
