@@ -2,7 +2,7 @@
 % Please edit documentation in R/length.R
 \name{length_set}
 \alias{length_set}
-\title{Calculates the probabil}
+\title{Calculates the probability}
 \usage{
 length_set(fuzziness)
 }
@@ -13,7 +13,8 @@ length_set(fuzziness)
 A vector with the probability of each set
 }
 \description{
-Calculates the probabil
+Given several probabilities it looks for how probable is to have a vector of
+each length
 }
 \examples{
 length_set(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23))
