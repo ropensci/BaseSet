@@ -97,7 +97,7 @@ setGeneric("sets<-", function(object, value) standardGeneric("sets<-"))
 #' @export set_size
 setGeneric("set_size", function(object, set) standardGeneric("set_size"))
 
-#' Rename
+#' Rename sets
 #'
 #' Change the default names of sets and elements
 #' @param object A TidySet object
@@ -108,7 +108,7 @@ setGeneric("set_size", function(object, set) standardGeneric("set_size"))
 #' @export
 setGeneric("rename_set", function(object, old, new) standardGeneric("rename_set"))
 
-#' Rename
+#' Rename elements
 #'
 #' Change the default names of sets and elements
 #' @param object A TidySet object
@@ -119,3 +119,14 @@ setGeneric("rename_set", function(object, old, new) standardGeneric("rename_set"
 #' @export
 setGeneric("rename_elements", function(object, old, new)
   standardGeneric("rename_elements"))
+
+
+#' Name sets
+#'
+#' Retrieve the name of the sets
+#' @param object A TidySet object
+#' @return A \code{TidySet} object
+#' @family name
+#' @export
+setGeneric("name_sets", function(object)
+  standardGeneric("name_sets"))
