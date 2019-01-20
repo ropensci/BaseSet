@@ -4,14 +4,19 @@
 \name{name_elements}
 \alias{name_elements}
 \alias{name_elements,TidySet-method}
+\alias{name_elements<-,TidySet,character-method}
 \title{Name elements}
 \usage{
 name_elements(object)
 
 \S4method{name_elements}{TidySet}(object)
+
+\S4method{name_elements}{TidySet,character}(object) <- value
 }
 \arguments{
 \item{object}{A TidySet object}
+
+\item{value}{A character with the new names for the elements}
 }
 \value{
 A \code{TidySet} object
@@ -22,8 +27,17 @@ Retrieve the name of the elements
 \section{Methods (by class)}{
 \itemize{
 \item \code{TidySet}: Name elements
+
+\item \code{object = TidySet,value = character}: Rename elements
 }}
 
+\examples{
+relations <- data.frame(sets = c(rep("a", 5), "b"),
+                        elements = letters[seq_len(6)],
+                        fuzzy = runif(6))
+a <- tidySet(relations)
+name_elements(a)
+}
 \seealso{
 Other name: \code{\link{name_sets}}
 }

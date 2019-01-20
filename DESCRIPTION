@@ -29,6 +29,7 @@ Collate:
     'elements.R'
     'incidence.R'
     'length.R'
+    'names.R'
     'print.R'
     'relations.R'
     'rename.R'

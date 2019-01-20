@@ -10,6 +10,16 @@ test_that("name_sets works", {
   expect_equal(out, c("a", "b"))
 })
 
+test_that("name_sets<- works", {
+  relations <- data.frame(sets = c(rep("a", 5), "b"),
+                         elements = letters[seq_len(6)],
+                         fuzzy = runif(6))
+  a <- tidySet(relations = relations)
+  name_sets(a) <- LETTERS[1:2]
+  out <- name_sets(a)
+  expect_equal(out, LETTERS[1:2])
+})
+
 test_that("name_elements works", {
   relations <- data.frame(sets = c(rep("a", 5), "b"),
                          elements = letters[seq_len(6)],
@@ -18,4 +28,14 @@ test_that("name_elements works", {
   out <- name_elements(a)
   expect_length(out, 6L)
   expect_equal(out, letters[1:6])
+})
+test_that("name_elements<- works", {
+  relations <- data.frame(sets = c(rep("a", 5), "b"),
+                         elements = letters[seq_len(6)],
+                         fuzzy = runif(6))
+  a <- tidySet(relations = relations)
+  name_elements(a) <- LETTERS[1:6]
+  out <- name_elements(a)
+  expect_length(out, 6L)
+  expect_equal(out, LETTERS[1:6])
 })

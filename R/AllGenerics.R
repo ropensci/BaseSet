@@ -105,6 +105,7 @@ setGeneric("set_size", function(object, set) standardGeneric("set_size"))
 #' @param new A character vector of with new names
 #' @return A \code{TidySet} object
 #' @family rename
+#' @seealso \code{\link{name_sets}}
 #' @export
 setGeneric("rename_set", function(object, old, new) standardGeneric("rename_set"))
 
@@ -116,6 +117,7 @@ setGeneric("rename_set", function(object, old, new) standardGeneric("rename_set"
 #' @param new A character vector of with new names
 #' @return A \code{TidySet} object
 #' @family rename
+#' @seealso \code{\link{name_elements}}
 #' @export
 setGeneric("rename_elements", function(object, old, new)
   standardGeneric("rename_elements"))
@@ -125,9 +127,16 @@ setGeneric("rename_elements", function(object, old, new)
 #'
 #' Retrieve the name of the sets
 #' @param object A TidySet object
+#' @param value A character with the new names for the sets
 #' @return A \code{TidySet} object
 #' @family name
 #' @export
+#' @examples
+#' relations <- data.frame(sets = c(rep("a", 5), "b"),
+#'                         elements = letters[seq_len(6)],
+#'                         fuzzy = runif(6))
+#' a <- tidySet(relations)
+#' name_sets(a)
 setGeneric("name_sets", function(object)
   standardGeneric("name_sets"))
 
@@ -135,8 +144,55 @@ setGeneric("name_sets", function(object)
 #'
 #' Retrieve the name of the elements
 #' @param object A TidySet object
+#' @param value A character with the new names for the elements
 #' @return A \code{TidySet} object
 #' @family name
 #' @export
+#' @examples
+#' relations <- data.frame(sets = c(rep("a", 5), "b"),
+#'                         elements = letters[seq_len(6)],
+#'                         fuzzy = runif(6))
+#' a <- tidySet(relations)
+#' name_elements(a)
 setGeneric("name_elements", function(object)
   standardGeneric("name_elements"))
+
+#' Rename elements
+#'
+#' Rename elements
+#' @param object A TidySet object
+#' @param value A character with the new names for the elements
+#' @return A \code{TidySet} object
+#' @family names
+#' @seealso \code{\link{rename_elements}}
+#' @export
+#' @aliases name_elements<-
+#' @examples
+#' relations <- data.frame(sets = c(rep("a", 5), "b"),
+#'                         elements = letters[seq_len(6)],
+#'                         fuzzy = runif(6))
+#' a <- tidySet(relations)
+#' a
+#' name_elements(a) <- letters[1:6]
+setGeneric("name_elements<-", function(object, value)
+  standardGeneric("name_elements<-"))
+
+#' Rename sets
+#'
+#' Rename sets
+#' @param object A TidySet object
+#' @param value A character with the new names for the sets
+#' @return A \code{TidySet} object
+#' @family names
+#' @seealso \code{\link{rename_set}}
+#' @export
+#' @aliases name_sets<-
+#' @examples
+#' relations <- data.frame(sets = c(rep("a", 5), "b"),
+#'                         elements = letters[seq_len(6)],
+#'                         fuzzy = runif(6))
+#' a <- tidySet(relations)
+#' a
+#' name_sets(a) <- LETTERS[1:2]
+setGeneric("name_sets<-", function(object, value)
+  standardGeneric("name_sets<-"))

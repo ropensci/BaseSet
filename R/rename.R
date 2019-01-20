@@ -9,18 +9,11 @@ setMethod("rename_set",
           function(object, old, new) {
             sets <- sets(object)
             # browser()
-            membership <- old %in% sets$set
+            membership <- old %in% levels(sets$set)
             if (!all(membership)) {
               stop("All sets should be found on the TidySet")
             }
-            levels(sets$set)[levels(sets$set) %in% old] <- new
-            object@sets <- sets
-
-            relations <- relations(object)
-            levels(relations$sets)[levels(relations$sets) %in% old] <- new
-            object@relations <- relations
-
-            validObject(object)
+            name_sets(object)[membership] <- new
             object
           }
 )
@@ -32,18 +25,11 @@ setMethod("rename_elements",
           function(object, old, new) {
             element <- elements(object)
 
-            membership <- old %in% elements$elements
+            membership <- old %in% levels(elements$elements)
             if (!all(membership)) {
               stop("All elements should be found on the TidySet")
             }
-            levels(element$elements)[levels(element$elements) %in% old] <- new
-            object@elements <- element
-
-            relations <- relations(object)
-            levels(relations$elements)[levels(relations$elements) %in% old] <- new
-            object@relations <- relations
-
-            validObject(object)
+            name_elements(object)[membership] <- new
             object
           }
 )

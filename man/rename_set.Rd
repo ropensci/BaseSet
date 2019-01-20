@@ -4,7 +4,7 @@
 \name{rename_set}
 \alias{rename_set}
 \alias{rename_set,TidySet-method}
-\title{Rename}
+\title{Rename sets}
 \usage{
 rename_set(object, old, new)
 
@@ -29,6 +29,8 @@ Change the default names of sets and elements
 }}
 
 \seealso{
+\code{\link{name_sets}}
+
 Other rename: \code{\link{rename_elements}}
 }
 \concept{rename}
