@@ -196,3 +196,46 @@ setGeneric("name_elements<-", function(object, value)
 #' name_sets(a) <- LETTERS[1:2]
 setGeneric("name_sets<-", function(object, value)
   standardGeneric("name_sets<-"))
+
+#' Add column
+#'
+#' Add column to a slot of the TidySet object
+#' @param object A TidySet object
+#' @param slot A TidySet slot
+#' @param columns The columns to add
+#' @return A \code{TidySet} object
+#' @family column
+#' @seealso \code{\link{rename_set}}
+#' @export
+#' @examples
+#' relations <- data.frame(sets = c(rep("a", 5), "b"),
+#'                         elements = letters[seq_len(6)],
+#'                         fuzzy = runif(6))
+#' a <- tidySet(relations)
+#' add_column(a, "relations", data.frame(well = c("GOOD", "BAD", "WORSE", "UGLY",
+#' "FOE", "HEY")))
+setGeneric("add_column", function(object, slot, columns)
+  standardGeneric("add_column"))
+
+#' Remove column
+#'
+#' Removes column from a slot of the TidySet object
+#' @param object A TidySet object
+#' @param slot A TidySet slot
+#' @param column_names The name of the columns
+#' @return A \code{TidySet} object
+#' @family column
+#' @seealso \code{\link{rename_set}}
+#' @export
+setGeneric("remove_column", function(object, slot, column_names)
+  standardGeneric("remove_column"))
+
+#' Merge two sets
+#'
+#' Given two TidySets creates a new one merging both of them
+#' @param object1 A TidySet object
+#' @param object2 A TidySet object
+#' @return A \code{TidySet} object
+#' @export
+setGeneric("union", function(object1, object2)
+  standardGeneric("union"))
