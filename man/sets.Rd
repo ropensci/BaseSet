@@ -23,7 +23,7 @@ sets(object)
 \item{value}{Modification of the sets}
 }
 \description{
-Given a SetCollection retrieve the names of the sets
+Given a TidySet retrieve the names of the sets
 }
 \section{Methods (by class)}{
 \itemize{

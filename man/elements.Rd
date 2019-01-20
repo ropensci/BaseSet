@@ -23,7 +23,7 @@ elements(object)
 Either the information about the elements
 }
 \description{
-Given a Set or a SetCollection retrieve the elements
+Given TidySet retrieve the elements
 }
 \section{Methods (by class)}{
 \itemize{

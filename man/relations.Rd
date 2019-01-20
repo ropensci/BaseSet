@@ -3,6 +3,7 @@
 \docType{methods}
 \name{relations}
 \alias{relations}
+\alias{relations<-}
 \alias{relations,TidySet-method}
 \alias{relations<-,TidySet-method}
 \title{Find the relationship}
