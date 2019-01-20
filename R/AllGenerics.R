@@ -130,3 +130,13 @@ setGeneric("rename_elements", function(object, old, new)
 #' @export
 setGeneric("name_sets", function(object)
   standardGeneric("name_sets"))
+
+#' Name elements
+#'
+#' Retrieve the name of the elements
+#' @param object A TidySet object
+#' @return A \code{TidySet} object
+#' @family name
+#' @export
+setGeneric("name_elements", function(object)
+  standardGeneric("name_elements"))

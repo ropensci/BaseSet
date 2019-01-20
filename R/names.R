@@ -9,7 +9,11 @@ setMethod("name_sets",
             levels(sets(object)$set)
           }
 )
-
-names_elements <- function(object){
-  levels(elements(object)$elements)
-}
+#' @describeIn name_elements Name elements
+#' @export name_elements
+setMethod("name_elements",
+          signature = signature(object = "TidySet"),
+          function(object){
+            levels(elements(object)$elements)
+          }
+)
