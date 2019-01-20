@@ -47,6 +47,10 @@ tidySet.data.frame <- function(relations) {
 #' @examples
 #' x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
 #' a <- tidySet(x)
+#' \dontrun{
+#' x <- list("a" = letters[1:5], "b" = LETTERS[3:7], "c" = runif(5))
+#' a <- tidySet(x) # An error for mixing letters and numbers
+#' }
 tidySet.list <- function(relations) {
   nSets <- length(relations)
   sets <- rep(names(relations), lengths(relations))
@@ -76,12 +80,10 @@ tidySet.list <- function(relations) {
 #' @describeIn tidySet Convert an incidence matrix into a TidySet
 #' @export
 #' @examples
-#' x <- list("a" = letters[1:5], "b" = LETTERS[3:7], "c" = runif(5))
-#' a <- tidySet(x) # An error for mixing letters and numbers
 #' # Numeric input should be named
 #' x <- list("a" = c("A" = 0.1, "B" = 0.5), "b" = c("A" = 0.2, "B" = 1))
 #' a <- tidySet(x)
-#' tidySet.matrix(incidence(a))
+#' tidySet(incidence(a))
 tidySet.matrix <- function(relations) {
 
   if (anyDuplicated(colnames(relations))) {

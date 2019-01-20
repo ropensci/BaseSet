@@ -43,12 +43,14 @@ relations <- data.frame(sets = c(rep("a", 5), "b"),
 tidySet(relations)
 x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
 a <- tidySet(x)
+\dontrun{
 x <- list("a" = letters[1:5], "b" = LETTERS[3:7], "c" = runif(5))
 a <- tidySet(x) # An error for mixing letters and numbers
+}
 # Numeric input should be named
 x <- list("a" = c("A" = 0.1, "B" = 0.5), "b" = c("A" = 0.2, "B" = 1))
 a <- tidySet(x)
-tidySet.matrix(incidence(a))
+tidySet(incidence(a))
 }
 \seealso{
 \code{\link{TidySet-class}}
