@@ -91,11 +91,21 @@ setGeneric("sets<-", function(object, value) standardGeneric("sets<-"))
 #'
 #' Calculate the probability of being of different sizes for a given set
 #' @param object A TidySet object
-#' @param set The sets from which the
+#' @param set The sets from which the length is calculated
 #' @return A list with the size of the set or the probability of having that
 #' size.
 #' @export set_size
 setGeneric("set_size", function(object, set) standardGeneric("set_size"))
+
+#' Calculates the size of the elements
+#'
+#' Calculate the probability of being of different sizes for a given set
+#' @param object A TidySet object
+#' @param element The element from which the length is calculated.
+#' @return A list with the size of the elements or the probability of having that
+#' size.
+#' @export element_size
+setGeneric("element_size", function(object, element) standardGeneric("element_size"))
 
 #' Rename sets
 #'

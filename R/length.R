@@ -125,3 +125,15 @@ setMethod("set_size",
             out
           }
 )
+
+#' @describeIn element_size Calculates the number of sets one element appears
+#' @export
+setMethod("element_size",
+          signature = signature(object = "TidySet"),
+          function(object, element) {
+            out <- rowsum(rep(1, nRelations(object)),
+                   relations(object)$elements)
+            out[, 1][element]
+          }
+)
+

@@ -33,6 +33,7 @@ Collate:
     'genesetcollection.R'
     'incidence.R'
     'length.R'
+    'list.R'
     'names.R'
     'print.R'
     'relations.R'
