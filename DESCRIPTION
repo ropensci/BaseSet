@@ -17,7 +17,9 @@ Imports:
 Suggests: 
     testthat,
     covr,
-    spelling
+    spelling,
+    knitr,
+    rmarkdown
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
@@ -39,3 +41,4 @@ Collate:
     'set.R'
     'tidy-set.R'
 Language: en-US
+VignetteBuilder: knitr

@@ -15,5 +15,6 @@ setMethod("add_column",
             }
             out <- cbind(original, columns)
             slot(object, slot) <- out
+            validObject(object)
             object
           })
