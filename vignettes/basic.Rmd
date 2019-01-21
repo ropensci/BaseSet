@@ -1,0 +1,144 @@
+---
+title: "About BaseSets"
+abstract: >
+  Describes the background of the package, important functions defined in the
+  package and some of the applications and usages.
+date: "`r BiocStyle::doc_date()`"
+package: "`r BiocStyle::pkg_ver('BaseSets')`"
+output:
+  BiocStyle::html_document:
+    fig_caption: true
+    code_folding: show
+    self_contained: yes
+    toc_float:
+      collapsed: true
+      toc_depth: 3
+      
+author:
+- name: Lluís Revilla
+  affiliation: 
+    - August Pi i Sunyer Biomedical Research Institute (IDIBAPS); Liver Unit, Hospital Clinic
+  email: lluis.revilla@gmail.com
+vignette: >
+  %\VignetteIndexEntry{About BaseSets}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}  
+---
+```{r knitsetup, message=FALSE, warning=FALSE, include=FALSE}
+knitr::opts_knit$set(root.dir = ".")
+knitr::opts_chunk$set(collapse = TRUE, warning = TRUE)
+BiocStyle::markdown()
+library("BiocStyle")
+```
+
+# Getting started
+
+## The BaseSets class
+
+This is a basic example which shows you how to create a `TidySet` object, to store associations between genes and sets:
+
+```{r, message=FALSE}
+library("BaseSet")
+gene_lists <- list(
+    geneset1 = c("A", "B"),
+    geneset2 = c("B", "C", "D")
+)
+tidy_set <- tidySet(gene_lists)
+tidy_set
+```
+
+Metadata for each element and set can be added:
+
+```{r, message=FALSE}
+gene_data <- data.frame(
+    stat1     = c( 1,   2,   3,   4 ),
+    info1     = c("a", "b", "c", "d")
+)
+
+tidy_set <- add_column(tidy_set, "elements", gene_data)
+set_data <- data.frame(
+    Group     = c(      100,        200 ),
+    Colum     = c(     "abc",      "def")
+)
+tidy_set <- add_column(tidy_set, "sets", set_data)
+tidy_set
+```
+
+The `relations`, `elements`, and `sets` slots can directly accessed using their getter methods.
+
+```{r}
+relations(tidy_set)
+elements(tidy_set)
+sets(tidy_set)
+```
+
+
+# Converting to other formats
+
+It is possible to extract the gene sets as a `list`, for use with functions such as `lapply`.
+
+```{r}
+(list_set <- as(tidy_set, "list"))
+```
+
+It is also possible to visualize membership between gene and gene sets as a matrix.
+
+Notably, `incidence` return a `numeric` matrix of membership:
+
+```{r}
+(incidence_matrix <- incidence(tidy_set))
+```
+
+
+# Converting from other formats
+
+Conversely, it is also possible to make objects from incidence matrices.
+
+Notably, `BaseSets` are suitable for `logical` matrices indicating binary membership:
+
+```{r}
+tidySet(incidence_matrix)
+```
+
+
+```{r}
+tidySet(list_set)
+```
+
+# Additional information
+
+The number of unique elements and sets can be obtained using the `nElements` and `nSets` methods.
+
+```{r}
+nElements(tidy_set)
+nSets(tidy_set)
+nRelations(tidy_set)
+```
+
+The size of each gene set can be obtained using the `setLengths` method.
+
+```{r}
+set_size(tidy_set, "geneset1")
+```
+
+Conversely, the number of sets associated with each gene is returned by the `elementLengths` function.
+
+```{r}
+element_length(tidy_set)
+```
+
+The identifiers of elements and sets can be inspected and renamed using `name_elements` and 
+
+```{r}
+name_elements(tidy_set)
+name_elements(tidy_set) <- paste0("Gene", seq_len(nElements(tidy_set)))
+name_sets(tidy_set)
+name_sets(tidy_set) <- paste0("Geneset", seq_len(nSets(tidy_set)))
+name_sets(tidy_set)
+```
+
+# Session info {.unnumbered}
+
+```{r sessionInfo, echo=FALSE}
+sessionInfo()
+```
