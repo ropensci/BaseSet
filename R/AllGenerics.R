@@ -95,7 +95,7 @@ setGeneric("sets<-", function(object, value) standardGeneric("sets<-"))
 #' @return A list with the size of the set or the probability of having that
 #' size.
 #' @export set_size
-setGeneric("set_size", function(object, set) standardGeneric("set_size"))
+setGeneric("set_size", function(object, set = NULL) standardGeneric("set_size"))
 
 #' Calculates the size of the elements
 #'
@@ -105,7 +105,7 @@ setGeneric("set_size", function(object, set) standardGeneric("set_size"))
 #' @return A list with the size of the elements or the probability of having that
 #' size.
 #' @export element_size
-setGeneric("element_size", function(object, element) standardGeneric("element_size"))
+setGeneric("element_size", function(object, element = NULL) standardGeneric("element_size"))
 
 #' Rename sets
 #'
