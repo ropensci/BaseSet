@@ -12,8 +12,14 @@ test_that("set_size works with fuzzy sets", {
             "b" = c("A" = 0.2, "B" = 1))
   a <- tidySet(x)
   out <- set_size(a, "a")
-  expect_equal(nrow(out), 2L)
+  expect_equal(nrow(out), 3L)
   out <- set_size(a)
-  expect_true(max(out$size), length(name_elements(a)))
+  expect_equal(max(out$size), length(name_elements(a)))
+  expect_equal(out$probability,
+               c(0.9*0.5,
+                 0.5*0.1 + 0.5*0.9,
+                 0.5*0.1,
+                 1,
+                 1*0.2))
 })
 

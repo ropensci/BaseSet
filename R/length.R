@@ -11,18 +11,17 @@ NULL
 #' @examples
 #' multiply_probabilities(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), c(1, 3))
 multiply_probabilities <- function(p, i) {
-  a <- sum(log10(p[-i]))
-  b <- sum(log10((1 - p)[i]))
-  if (is.null(a) && is.null(b)) {
-    0
-  } else if (is.null(a)) {
-    b
-  } else if (is.null(b)) {
-    a
-  } else {
-    a + b
+
+  if (length(i) == length(p)) {
+    return(prod(p))
+  } else if (length(i) == 0) {
+    i <- seq_along(p)
   }
+  a <- p[-i]
+  b <- (1 - p)[i]
+  prod(a[a != 0]) * prod(b[b != 0])
 }
+
 
 # From the soucre code of combn
 # (with some modifications because a function cannot be passed along)
@@ -89,7 +88,7 @@ combn_indices <- function(x, m) {
 length_probability <- function(p, n) {
   i <- combn_indices(x = length(p), m = n)
   out <- vapply(i, multiply_probabilities, p = p, numeric(1L))
-  sum(10^out)
+  sum(out)
 }
 
 
@@ -111,12 +110,15 @@ length_set <- function(fuzziness) {
     return(out) # Non fuzzy sets
   }
 
-  p <- fuzziness[!p1 && fuzziness != 0]
-  l <- seq(from = 1, to = length(p))
-  v <- vapply(l, length_probability, p = p, numeric(1L))
+  # TODO remove those with probability 1
+  # fuzziness <- fuzziness[fuzziness != 1]
+  l <- seq(from = 0, to = length(fuzziness))
+  v <- vapply(l, length_probability, p = fuzziness, numeric(1L))
+  least_n <- sum(fuzziness == 1)
+  v[l < least_n] <- 0
 
-  names(v) <- as.character(l + sum(p1))
-  v
+  names(v) <- as.character(l)
+  v[v != 0]
 }
 
 #' @describeIn set_size Calculates the size of a set either fuzzy or not
@@ -128,16 +130,19 @@ setMethod("set_size",
             if (!set %in% name_sets(object) && !is.null(set)) {
               stop("Please introduce valid element names. See name_sets")
             }
-
             rel <- relations(object)
-            names_sets <- name_sets(object)
-            out <- lapply(names_sets, function(x){
+            if (is.null(set)) {
+              names_sets <- name_sets(object)
+            } else {
+              names_sets <- set
+            }
+            sizes <- lapply(names_sets, function(x){
               length_set(rel[rel$sets == x, "fuzzy"])
             })
 
-            sets <- rep(names_sets, lengths(out))
-            lengths_set <- unlist(lapply(out, names), use.names = FALSE)
-            probability_length <- unlist(out, use.names = FALSE)
+            sets <- rep(names_sets, lengths(sizes))
+            lengths_set <- unlist(lapply(sizes, names), use.names = FALSE)
+            probability_length <- unlist(sizes, use.names = FALSE)
             out <- data.frame(set = sets,
                        size = as.numeric(lengths_set),
                        probability = probability_length)
