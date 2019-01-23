@@ -6,10 +6,13 @@ NULL
 #' Calculates the probability that all happened simultaneously
 #' @param p Probabilities
 #' @param i Index of the complemetary probability
-#' @keywords internal
+#' @return  The log10 of the probability
+#' @keywords interna
+#' @examples
+#' multiply_probabilities(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), c(1, 3))
 multiply_probabilities <- function(p, i) {
-  a <- prod(p[-i])
-  b <- prod((1-p)[i])
+  a <- sum(log10(p[-i]))
+  b <- sum(log10((1 - p)[i]))
   if (is.null(a) && is.null(b)) {
     0
   } else if (is.null(a)) {
@@ -17,7 +20,7 @@ multiply_probabilities <- function(p, i) {
   } else if (is.null(b)) {
     a
   } else {
-    a*b
+    a + b
   }
 }
 
@@ -30,12 +33,13 @@ multiply_probabilities <- function(p, i) {
 #'
 #' @return A list of indices
 #' @keywords internal
-combn_indices <- function (x, m) {
+#' @examples
+#' combn_indices(5, 2)
+combn_indices <- function(x, m) {
   stopifnot(length(m) == 1L, is.numeric(m))
   if (m < 0)
     stop("m < 0", domain = NA)
-  if (is.numeric(x) && length(x) == 1L && x > 0 && trunc(x) ==
-      x)
+  if (is.numeric(x) && length(x) == 1L && x > 0 && trunc(x) == x)
     x <- seq_len(x)
   n <- base::length(x)
   if (n < m)
@@ -80,9 +84,12 @@ combn_indices <- function (x, m) {
 #' @return A numeric value of the probability of the given size
 #' @export
 #' @keywords internal
+#' @examples
+#' length_probability(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), 2)
 length_probability <- function(p, n) {
   i <- combn_indices(x = length(p), m = n)
-  sum(vapply(i, multiply_probabilities, p = p, numeric(1L)))
+  out <- vapply(i, multiply_probabilities, p = p, numeric(1L))
+  sum(10^out)
 }
 
 
@@ -97,8 +104,11 @@ length_probability <- function(p, n) {
 #' length_set(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23))
 length_set <- function(fuzziness) {
   p1 <- fuzziness == 1
+
   if (all(p1)) {
-    return(length(fuzziness)) # Non fuzzy sets
+    out <- c(1)
+    names(out) <- as.character(sum(fuzziness))
+    return(out) # Non fuzzy sets
   }
 
   p <- fuzziness[!p1 && fuzziness != 0]
@@ -113,16 +123,29 @@ length_set <- function(fuzziness) {
 #' @export
 setMethod("set_size",
           signature = signature(object = "TidySet"),
-          function(object, set) {
+          function(object, set = NULL) {
+
+            if (!set %in% name_sets(object) && !is.null(set)) {
+              stop("Please introduce valid element names. See name_sets")
+            }
 
             rel <- relations(object)
-            out <- lapply(set, function(x){
+            names_sets <- name_sets(object)
+            out <- lapply(names_sets, function(x){
               length_set(rel[rel$sets == x, "fuzzy"])
             })
-            names(out) <- set
-            # TODO return a matrix or a consistent data format
-            # Probably a matrix
-            out
+
+            sets <- rep(names_sets, lengths(out))
+            lengths_set <- unlist(lapply(out, names), use.names = FALSE)
+            probability_length <- unlist(out, use.names = FALSE)
+            out <- data.frame(set = sets,
+                       size = as.numeric(lengths_set),
+                       probability = probability_length)
+            if (is.null(set)) {
+              out
+            } else {
+              out[sets %in% set, ]
+            }
           }
 )
 
@@ -130,10 +153,21 @@ setMethod("set_size",
 #' @export
 setMethod("element_size",
           signature = signature(object = "TidySet"),
-          function(object, element) {
+          function(object, element = NULL) {
+
+            if (!element %in% name_elements(object) && !is.null(element)) {
+              stop("Please introduce valid element names. See element_names")
+            }
             out <- rowsum(rep(1, nRelations(object)),
                    relations(object)$elements)
-            out[, 1][element]
+            if (is.null(element)) {
+              out[, 1]
+              data.frame(element = rownames(out), size = out[, 1],
+                         probability = 1)
+            } else {
+              data.frame(element = element, size = out[, 1][element],
+                         probability = 1)
+            }
           }
 )
 
