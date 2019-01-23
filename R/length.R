@@ -110,15 +110,11 @@ length_set <- function(fuzziness) {
     return(out) # Non fuzzy sets
   }
 
-  # TODO remove those with probability 1
-  # fuzziness <- fuzziness[fuzziness != 1]
-  l <- seq(from = 0, to = length(fuzziness))
+  l <- seq(from = sum(fuzziness == 1), to = length(fuzziness))
   v <- vapply(l, length_probability, p = fuzziness, numeric(1L))
-  least_n <- sum(fuzziness == 1)
-  v[l < least_n] <- 0
 
   names(v) <- as.character(l)
-  v[v != 0]
+  v
 }
 
 #' @describeIn set_size Calculates the size of a set either fuzzy or not
