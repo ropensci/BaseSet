@@ -1,10 +1,10 @@
 ---
-title: "About BaseSets"
+title: "About BaseSet"
 abstract: >
   Describes the background of the package, important functions defined in the
   package and some of the applications and usages.
 date: "`r BiocStyle::doc_date()`"
-package: "`r BiocStyle::pkg_ver('BaseSets')`"
+package: "`r BiocStyle::pkg_ver('BaseSet')`"
 output:
   BiocStyle::html_document:
     fig_caption: true
@@ -20,7 +20,7 @@ author:
     - August Pi i Sunyer Biomedical Research Institute (IDIBAPS); Liver Unit, Hospital Clinic
   email: lluis.revilla@gmail.com
 vignette: >
-  %\VignetteIndexEntry{About BaseSets}
+  %\VignetteIndexEntry{About BaseSet}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}  
 ---
@@ -124,7 +124,7 @@ set_size(tidy_set, "geneset1")
 Conversely, the number of sets associated with each gene is returned by the `elementLengths` function.
 
 ```{r}
-element_length(tidy_set)
+element_size(tidy_set)
 ```
 
 The identifiers of elements and sets can be inspected and renamed using `name_elements` and 
