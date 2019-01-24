@@ -7,9 +7,8 @@ NULL
 #' @param p Probabilities
 #' @param i Index of the complemetary probability
 #' @return  The log10 of the probability
-#' @keywords interna
-#' @examples
-#' multiply_probabilities(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), c(1, 3))
+#' @keywords internal
+# multiply_probabilities(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), c(1, 3))
 multiply_probabilities <- function(p, i) {
 
   if (length(i) == length(p)) {
@@ -17,9 +16,9 @@ multiply_probabilities <- function(p, i) {
   } else if (length(i) == 0) {
     i <- seq_along(p)
   }
-  a <- p[-i]
-  b <- (1 - p)[i]
-  prod(a[a != 0]) * prod(b[b != 0])
+  a <- prod(p[-i])
+  b <- prod((1 - p)[i])
+  a*b
 }
 
 
@@ -32,8 +31,7 @@ multiply_probabilities <- function(p, i) {
 #'
 #' @return A list of indices
 #' @keywords internal
-#' @examples
-#' combn_indices(5, 2)
+# combn_indices(5, 2)
 combn_indices <- function(x, m) {
   stopifnot(length(m) == 1L, is.numeric(m))
   if (m < 0)
@@ -83,8 +81,7 @@ combn_indices <- function(x, m) {
 #' @return A numeric value of the probability of the given size
 #' @export
 #' @keywords internal
-#' @examples
-#' length_probability(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), 2)
+# length_probability(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), 2)
 length_probability <- function(p, n) {
   i <- combn_indices(x = length(p), m = n)
   out <- vapply(i, multiply_probabilities, p = p, numeric(1L))
