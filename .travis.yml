@@ -4,6 +4,8 @@ language: R
 sudo: false
 cache: packages
 
+before_install:
+    - Rscript -e 'BiocManger::install("BiocCheck")'
 after_success:
     - Rscript -e 'covr::codecov()'
     - R CMD BiocCheck .
