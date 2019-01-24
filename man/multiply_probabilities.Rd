@@ -11,6 +11,9 @@ multiply_probabilities(p, i)
 
 \item{i}{Index of the complemetary probability}
 }
+\value{
+The log10 of the probability
+}
 \description{
 Calculates the probability that all happened simultaneously
 }

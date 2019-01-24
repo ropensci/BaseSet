@@ -6,9 +6,9 @@
 \alias{element_size,TidySet-method}
 \title{Calculates the size of the elements}
 \usage{
-element_size(object, element)
+element_size(object, element = NULL)
 
-\S4method{element_size}{TidySet}(object, element)
+\S4method{element_size}{TidySet}(object, element = NULL)
 }
 \arguments{
 \item{object}{A TidySet object}

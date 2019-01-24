@@ -6,9 +6,9 @@
 \alias{set_size,TidySet-method}
 \title{Calculates the size of the set}
 \usage{
-set_size(object, set)
+set_size(object, set = NULL)
 
-\S4method{set_size}{TidySet}(object, set)
+\S4method{set_size}{TidySet}(object, set = NULL)
 }
 \arguments{
 \item{object}{A TidySet object}
