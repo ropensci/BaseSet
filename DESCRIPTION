@@ -15,12 +15,16 @@ Depends:
 Imports: 
     methods
 Suggests: 
-    testthat,
+    BiocStyle,
     covr,
-    spelling,
     knitr,
-    rmarkdown
+    rmarkdown,
+    spelling,
+    testthat
+VignetteBuilder: 
+    knitr
 Encoding: UTF-8
+Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
@@ -30,7 +34,6 @@ Collate:
     'add_column.R'
     'basesets-package.R'
     'elements.R'
-    'genesetcollection.R'
     'incidence.R'
     'length.R'
     'list.R'
@@ -41,5 +44,3 @@ Collate:
     'rename.R'
     'set.R'
     'tidy-set.R'
-Language: en-US
-VignetteBuilder: knitr
