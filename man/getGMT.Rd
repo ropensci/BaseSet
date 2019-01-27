@@ -7,7 +7,7 @@
 getGMT(con, sep = "\\t", ...)
 }
 \arguments{
-\item{con}{File name of the GMT file}
+\item{con}{File name of the GMT filee}
 
 \item{sep}{Separation of the file}
 

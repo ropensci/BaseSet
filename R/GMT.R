@@ -1,7 +1,9 @@
+#' @include AllClasses.R
+NULL
+
 #' Import GMT files
 #'
-#' @param con File name of the GMT file
-#'
+#' @param con File name of the GMT filee
 #' @param sep Separation of the file
 #' @param ... Other arguments passed to strsplit
 #' @return A TidySet object
@@ -20,7 +22,7 @@ getGMT <- function (con, sep = "\t", ...)  {
     elt
   }, dups)
   if (length(dups)) {
-    stop("%d record(s) contain duplicate ids: %s")
+    stop("The file contain duplicate ids for the same set")
   }
 
   names(lines) <- vapply(lines, '[', i = 1, character(1L))
