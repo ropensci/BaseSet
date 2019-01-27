@@ -31,9 +31,11 @@ RoxygenNote: 6.1.1
 Collate: 
     'AllClasses.R'
     'AllGenerics.R'
+    'GMT.R'
     'add_column.R'
     'basesets-package.R'
     'elements.R'
+    'genesetcollection.R'
     'incidence.R'
     'length.R'
     'list.R'

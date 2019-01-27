@@ -27,8 +27,10 @@ tidySet <- function(relations) {
 tidySet.data.frame <- function(relations) {
 
   if (ncol(relations) >= 2 && all(c("sets", "elements") %in% colnames(relations))) {
-    sets <- data.frame(set = unique(relations$sets))
-    elements <- data.frame(elements = unique(relations$elements))
+    sets <- data.frame(set = unique(relations$sets),
+                       stringsAsFactors = TRUE)
+    elements <- data.frame(elements = unique(relations$elements),
+                           stringsAsFactors = TRUE)
   } else {
     stop("Unable to create a TidySet object.",
          "The data.frame is not in the right format")
@@ -73,7 +75,8 @@ tidySet.list <- function(relations) {
     fuzzy <- unlist(relations, use.names = FALSE)
   }
 
-  relations <- data.frame(elements, sets, fuzzy)
+  relations <- data.frame(elements, sets, fuzzy,
+                          stringsAsFactors = TRUE)
   tidySet.data.frame(relations = relations)
 }
 
@@ -99,7 +102,8 @@ tidySet.matrix <- function(relations) {
   incid <- relations
   elements <- rownames(incid)
   sets <- colnames(incid)
-  relations <- as.data.frame(which(incid != 0, arr.ind = TRUE))
+  relations <- as.data.frame(which(incid != 0, arr.ind = TRUE),
+                             stringsAsFactors = TRUE)
   colnames(relations) <- c("elements", "sets")
 
   # Replace by names
