@@ -24,4 +24,8 @@ test_that("union works", {
   a <- tidySet(relations)
   b <- union(a, "c", "b", "d") # Simple case without merging fuzzy (just renaming)
   expect_s4_class(b, "TidySet")
+  expect_equal(relations(b)$fuzzy[6], max(relations(a)[6:7, "fuzzy"]))
+
+  d <- union(a, "a", "c", "d")
+  expect_s4_class(d, "TidySet")
 })
