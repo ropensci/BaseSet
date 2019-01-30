@@ -28,6 +28,6 @@ Given two TidySets creates a new one merging both of them
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{object = TidySet,set1 = character,set2 = character,setName = character}: Merge two sets
+\item \code{object = TidySet,set1 = character,set2 = character,setName = character}: Applies the standard union
 }}
 
