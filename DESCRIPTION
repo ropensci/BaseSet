@@ -44,3 +44,4 @@ Collate:
     'rename.R'
     'set.R'
     'tidy-set.R'
+    'union.R'
