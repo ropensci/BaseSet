@@ -2,13 +2,16 @@
 NULL
 
 #' @describeIn union Applies the standard union
+#' @param FUN A function to be applied when performing the union.
+#' The standard union is the "max" function, but you can provide any other
+#' function that given a numeric vector returns a single number.
 #' @export
 setMethod("union",
           signature = signature(object = "TidySet",
                                 set1 = "character",
                                 set2 = "character",
                                 setName = "character"),
-          function(object, set1, set2, setName, ...) {
+          function(object, set1, set2, setName, FUN = "max") {
 
             sets <- name_sets(object)
             levels(object@sets$set)[sets %in% set1] <- setName
@@ -28,8 +31,9 @@ setMethod("union",
             }
             # It could be possible to apply some other function to the relations
             # that are the same
+            FUN <- match.fun(FUN)
             fuzzy <- vapply(indices, iterate, fuzzy = object@relations$fuzzy,
-                            fun = max, numeric(1L))
+                            fun = FUN, numeric(1L))
             relations2 <- unique(object@relations[, c("sets", "elements")])
             relations2 <- cbind.data.frame(relations2, fuzzy = fuzzy)
             object@relations <- relations2

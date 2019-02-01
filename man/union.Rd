@@ -9,7 +9,7 @@
 union(object, set1, set2, setName, ...)
 
 \S4method{union}{TidySet,character,character,character}(object, set1, set2,
-  setName, ...)
+  setName, FUN = "max")
 }
 \arguments{
 \item{object}{A TidySet object}
@@ -19,6 +19,10 @@ union(object, set1, set2, setName, ...)
 \item{setName}{The name of the new set}
 
 \item{...}{Other arguments}
+
+\item{FUN}{A function to be applied when performing the union.
+The standard union is the "max" function, but you can provide any other
+function that given a numeric vector returns a single number.}
 }
 \value{
 A \code{TidySet} object
