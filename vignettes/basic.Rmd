@@ -72,6 +72,15 @@ elements(tidy_set)
 sets(tidy_set)
 ```
 
+All the relations are inherently fuzzy
+
+```{r}
+relations <- data.frame(sets = c(rep("A", 5), "B", "C"),
+                          elements = c(letters[seq_len(6)], letters[6]),
+                          fuzzy = runif(7))
+fuzzy_set <- tidySet(relations)
+```
+
 
 # Converting to other formats
 
@@ -79,6 +88,7 @@ It is possible to extract the gene sets as a `list`, for use with functions such
 
 ```{r}
 (list_set <- as(tidy_set, "list"))
+(list_set <- as(fuzzy_set, "list"))
 ```
 
 It is also possible to visualize membership between gene and gene sets as a matrix.
@@ -87,6 +97,7 @@ Notably, `incidence` return a `numeric` matrix of membership:
 
 ```{r}
 (incidence_matrix <- incidence(tidy_set))
+(incidence_matrix <- incidence(fuzzy_set))
 ```
 
 
@@ -115,10 +126,11 @@ nSets(tidy_set)
 nRelations(tidy_set)
 ```
 
-The size of each gene set can be obtained using the `setLengths` method.
+The size of each gene set can be obtained using the `set_size` method.
 
 ```{r}
 set_size(tidy_set, "geneset1")
+set_size(fuzzy_set, "A")
 ```
 
 Conversely, the number of sets associated with each gene is returned by the `elementLengths` function.
@@ -136,6 +148,22 @@ name_sets(tidy_set)
 name_sets(tidy_set) <- paste0("Geneset", seq_len(nSets(tidy_set)))
 name_sets(tidy_set)
 ```
+
+# Operations with sets
+
+To work with sets several methods are provided. All methods work with fuzzy and non-fuzzy sets
+
+## Union
+
+By default it provides the standard union, but you can provide a function.
+```{r}
+(fuzzy_set2 <- union(fuzzy_set, "C", "B", "D"))
+(fuzzy_set3 <- union(fuzzy_set, "C", "B", "D", FUN = "mean"))
+```
+
+## Intersection
+
+## Complement
 
 # Session info {.unnumbered}
 
