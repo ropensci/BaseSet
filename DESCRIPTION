@@ -1,12 +1,15 @@
 Package: BaseSet
 Title: Provides classes for working with sets
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: 
     person(given = "Lluís ",
            family = "Revilla Sancho",
            role = c("aut", "cre"),
            email = "lluis.revilla@gmail.com")
-Description: What the package does (one paragraph).
+Description: A set collection, while not "tidy" in itself, can
+    be thought of as three tidy data frames describing sets, elements and
+    relations respectively. 'BaseSet' provides an approach to manipulate,
+    load and use these virtual data frames.
 License: MIT + file LICENSE
 URL: https://github.com/llrs/BaseSet
 BugReports: https://github.com/llrs/BaseSet/issues
@@ -35,7 +38,6 @@ Collate:
     'add_column.R'
     'basesets-package.R'
     'elements.R'
-    'genesetcollection.R'
     'incidence.R'
     'length.R'
     'list.R'
