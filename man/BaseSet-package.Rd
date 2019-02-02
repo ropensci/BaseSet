@@ -6,7 +6,10 @@
 \alias{BaseSet-package}
 \title{BaseSet: Provides classes for working with sets}
 \description{
-What the package does (one paragraph).
+A set collection, while not "tidy" in itself, can
+    be thought of as three tidy data frames describing sets, elements and
+    relations respectively. 'BaseSet' provides an approach to manipulate,
+    load and use these virtual data frames.
 }
 \details{
 It provides a class TidySet with lots of methods to do operations with sets

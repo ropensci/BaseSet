@@ -9,12 +9,12 @@
 union(object, set1, set2, setName, ...)
 
 \S4method{union}{TidySet,character,character,character}(object, set1, set2,
-  setName, FUN = "max")
+  setName, FUN = "max", keep = FALSE)
 }
 \arguments{
 \item{object}{A TidySet object}
 
-\item{set1, set2}{The name of the sets to be joined}
+\item{set1, set2}{The name of the sets to be used}
 
 \item{setName}{The name of the new set}
 
@@ -23,12 +23,14 @@ union(object, set1, set2, setName, ...)
 \item{FUN}{A function to be applied when performing the union.
 The standard union is the "max" function, but you can provide any other
 function that given a numeric vector returns a single number.}
+
+\item{keep}{A logical value if you want to keep originals sets.}
 }
 \value{
 A \code{TidySet} object
 }
 \description{
-Given two TidySets creates a new one merging both of them
+Given a TidySets merges two sets into the new one.
 }
 \section{Methods (by class)}{
 \itemize{

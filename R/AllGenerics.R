@@ -242,12 +242,22 @@ setGeneric("remove_column", function(object, slot, column_names)
 
 #' Merge two sets
 #'
-#' Given two TidySets creates a new one merging both of them
+#' Given a TidySets merges two sets into the new one.
 #' @param object A TidySet object
-#' @param set1,set2 The name of the sets to be joined
+#' @param set1,set2 The name of the sets to be used
 #' @param setName The name of the new set
 #' @param ... Other arguments
 #' @return A \code{TidySet} object
 #' @export
 setGeneric("union", function(object, set1, set2, setName, ...)
   standardGeneric("union"))
+
+#' Intersection of two sets
+#'
+#' Given a TidySets creates a new set with the elements on the both of them.
+#' @inheritParams union
+#' @param ... Other arguments
+#' @return A \code{TidySet} object
+#' @export
+setGeneric("intersection", function(object, set1, set2, setName, ...)
+  standardGeneric("intersection"))

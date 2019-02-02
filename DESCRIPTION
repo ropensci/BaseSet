@@ -39,6 +39,8 @@ Collate:
     'basesets-package.R'
     'elements.R'
     'incidence.R'
+    'operations.R'
+    'intersection.R'
     'length.R'
     'list.R'
     'names.R'
