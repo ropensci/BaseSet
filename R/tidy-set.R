@@ -32,7 +32,7 @@ tidySet.data.frame <- function(relations) {
     elements <- data.frame(elements = unique(relations$elements),
                            stringsAsFactors = TRUE)
   } else {
-    stop("Unable to create a TidySet object.",
+    stop("Unable to create a TidySet object.\n",
          "The data.frame is not in the right format")
   }
 

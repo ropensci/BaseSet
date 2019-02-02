@@ -62,9 +62,12 @@ setValidity("TidySet", function(object) {
   }
 
   fuzz <- object@relations$fuzzy
-  if (!is.numeric(fuzz) || min(fuzz) < 0 || max(fuzz) > 1 ) {
-    errors <- c(errors,
-                "fuzzy column is restricted to a number between 0 and 1.")
+  if (!is.numeric(fuzz)) {
+    errors <- c(errors, "fuzzy column is restricted to a number")
+    if (min(fuzz) < 0 || max(fuzz) > 1 ){
+      errors <- c(errors,
+                  "fuzzy column is restricted to a number between 0 and 1.")
+    }
   }
 
   # Check that the slots don't have duplicated information
@@ -90,7 +93,7 @@ setValidity("TidySet", function(object) {
 
 check_empty <- function(object, slot){
   df <- slot(object, slot)
-  if (nrow(df) < 0) {
+  if (nrow(df) == 0) {
     paste0(slot, " should not be empty.")
   }
 }
