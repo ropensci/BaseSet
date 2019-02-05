@@ -11,6 +11,7 @@ NULL
 setMethod("show",
           signature = signature(object = "TidySet"),
           function(object) {
+            validObject(object)
             s <- merge(object@relations, object@sets,
                        by.x = "sets", by.y = "set", sort = FALSE,
                        all.x = TRUE)
