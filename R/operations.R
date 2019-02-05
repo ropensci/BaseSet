@@ -28,11 +28,7 @@ operation_helper <- function(object, set1, set2, setName, FUN, keep = FALSE) {
   } else {
 
     # Append the new set
-    df_set <- data.frame(set = setName)
-    column_names <- setdiff(colnames(object@sets), "set")
-    df_set[, column_names] <- NA
-    object@sets <- rbind(object@sets, df_set)
-    # browser()
+    object <- add_sets(object, setName)
 
     # Append the new relationships
     s <- unique(c(set1, set2))
@@ -61,5 +57,34 @@ operation_helper <- function(object, set1, set2, setName, FUN, keep = FALSE) {
   relations2 <- cbind.data.frame(relations2, fuzzy = fuzzy)
   object@relations <- relations2
   validObject(object)
+  object
+}
+
+
+add_elements <- function(object, elements){
+  df_elements <- data.frame(elements = elements)
+
+  if (!"elements" %in% names(df_elements)) {
+    stop("Should have a elements name")
+  }
+
+  column_names <- setdiff(colnames(object@elements), "elements")
+  object@elements <- rbind(object@elements, df_elements)
+  df_elements[, column_names] <- NA
+  object@elements <- unique(object@elements)
+  object
+}
+
+add_sets <- function(object, set) {
+  df_set <- data.frame(set = set)
+
+  if (!"set" %in% names(df_set)) {
+    stop("Should have a set name")
+  }
+
+  column_names <- setdiff(colnames(object@sets), "set")
+  df_set[, column_names] <- NA
+  object@sets <- rbind(object@sets, df_set)
+  object@sets <- unique(object@sets)
   object
 }

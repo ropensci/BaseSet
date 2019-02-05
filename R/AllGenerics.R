@@ -261,3 +261,15 @@ setGeneric("union", function(object, set1, set2, setName, ...)
 #' @export
 setGeneric("intersection", function(object, set1, set2, setName, ...)
   standardGeneric("intersection"))
+
+#' Add a new set
+#'
+#' Given a TidySets merges two sets into the new one.
+#' @param object A TidySet object
+#' @param elements The elements of the sets
+#' @param setName The name of the new set
+#' @param ... Other arguments
+#' @return A \code{TidySet} object
+#' @export
+setGeneric("add_set", function(object, elements, setName, ...)
+  standardGeneric("add_set"))

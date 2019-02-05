@@ -36,6 +36,7 @@ Collate:
     'AllGenerics.R'
     'GMT.R'
     'add_column.R'
+    'add_set.R'
     'basesets-package.R'
     'elements.R'
     'incidence.R'
