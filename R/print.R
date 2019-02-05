@@ -17,5 +17,6 @@ setMethod("show",
             o <- merge(s, object@elements,
                        by.x = "elements", by.y = "elements", sort = FALSE,
                        all.x = TRUE)
+
             print(o)
           })

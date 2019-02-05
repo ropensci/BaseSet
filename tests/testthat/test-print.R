@@ -4,6 +4,5 @@ relations <- data.frame(sets = c(rep("a", 5), "b"),
                         fuzzy = runif(6))
 a <- tidySet(relations = relations)
 test_that("print works", {
-  out <- show(a)
-  expect_identical(colnames(out), c("elements", "sets", "fuzzy"))
+  expect_output(show(a), "elements\\s+sets\\s+fuzzy")
 })
