@@ -19,19 +19,28 @@ remotes::install_github("llrs/BaseSet")
 Examples
 --------
 
-A new way mixing S4 but following tidyverse style:
+To work with sets we need to have the relations between the elements and the sets:
 
 ``` r
-relations <- data.frame(sets = c(rep("a", 5), "b"), 
-                        elements = letters[seq_len(6)],
-                        fuzzy = runif(6))
+relations <- data.frame(sets = c(rep("A", 5), "B", "B"), 
+                        elements = c("a", "b", "c", "d", "e", "a", "f"),
+                        fuzzy = runif(7))
 a <- tidySet(relations = relations)
+nSets(a)
+#> [1] 2
 a
 #>   elements sets     fuzzy
-#> 1        a    a 0.1114163
-#> 2        b    a 0.9514007
-#> 3        c    a 0.7440293
-#> 4        d    a 0.7995760
-#> 5        e    a 0.5791431
-#> 6        f    b 0.3420518
+#> 1        a    A 0.9795321
+#> 2        a    B 0.9226033
+#> 3        b    A 0.6597881
+#> 4        c    A 0.1205940
+#> 5        d    A 0.9194211
+#> 6        e    A 0.9135108
+#> 7        f    B 0.2401249
+```
+
+``` r
+b <- union(a, "A", "B", "C")
+nSets(b)
+#> [1] 1
 ```
