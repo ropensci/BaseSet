@@ -61,14 +61,19 @@ setValidity("TidySet", function(object) {
     errors <- c(errors, "Elements must be characters or factors")
   }
 
-  fuzz <- object@relations$fuzzy
-  if (!is.numeric(fuzz)) {
-    errors <- c(errors, "fuzzy column is restricted to a number")
-    if (min(fuzz) < 0 || max(fuzz) > 1 ){
-      errors <- c(errors,
-                  "fuzzy column is restricted to a number between 0 and 1.")
+  if (!"fuzzy" %in% colnames(object@relations)) {
+    errors <- c(errors, "A fuzzy column should be present")
+  } else {
+    fuzz <- object@relations$fuzzy
+    if (!is.numeric(fuzz)) {
+      errors <- c(errors, "fuzzy column is restricted to a number")
+      if (min(fuzz) < 0 || max(fuzz) > 1 ) {
+        errors <- c(errors,
+                    "fuzzy column is restricted to a number between 0 and 1.")
+      }
     }
   }
+
 
   # Check that the slots don't have duplicated information
   colnames_elements <- colnames(object@elements)
@@ -78,13 +83,16 @@ setValidity("TidySet", function(object) {
                 "Sets and elements shouldn't share a column name: Use relations")
   }
 
-  # Check that the relations is unique
-  if (anyDuplicated(object@relations[, c("elements", "sets")])) {
-    errors <- c(errors,
-                "A relationship between an element and a set should be unique."
-                )
+  # Check that relations are unique
+  colnames_relations <- colnames(object@relations)
+  if (all(c("elements", "relations") %in%  colnames_relations)) {
+    if (anyDuplicated(slot(object, "relations")[, c("elements", "sets")])) {
+      errors <- c(errors,
+                  "A relationship between an element and a set should be unique."
+      )
+    }
   }
-  if (length(errors) == 0){
+  if (length(errors) == 0) {
     TRUE
   } else {
     errors
