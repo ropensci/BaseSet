@@ -27,18 +27,21 @@ operation_helper <- function(object, set1, set2, setName, FUN, keep = FALSE) {
     levels(object@relations$sets)[sets2 %in% set2] <- setName
   } else {
 
-    # Create new set
-    levels(object@sets$set) <- c(sets, setName)
-    rowSet <- rep(NA, ncol(object@sets))
-    names(rowSet) <- colnames(object@sets)
-    rowSet[["set"]] <- setName
-    object@sets <- rbind(object@sets, rowSet)
+    # Append the new set
+    df_set <- data.frame(set = setName)
+    column_names <- setdiff(colnames(object@sets), "set")
+    df_set[, column_names] <- NA
+    object@sets <- rbind(object@sets, df_set)
+    # browser()
 
     # Append the new relationships
-    levels(object@relations$sets) <- c(sets2, setName)
     s <- unique(c(set1, set2))
     df <- object@relations[object@relations$sets %in% s, ]
-    df$sets <- setName
+    column_names <- setdiff(colnames(df), c("sets", "elements", "fuzzy"))
+    df[, column_names] <- NA
+    for (set in seq_along(set1)) {
+      levels(df$sets)[levels(df$sets) %in% c(set1[set], set2[set])] <- setName[set]
+    }
     object@relations <- rbind(object@relations, df)
   }
 
