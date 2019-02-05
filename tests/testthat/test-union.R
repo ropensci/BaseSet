@@ -29,3 +29,29 @@ test_that("union works", {
   d <- union(a, "a", "c", "d")
   expect_s4_class(d, "TidySet")
 })
+
+test_that("union several sets", {
+  relations2 <- data.frame(sets = c(rep("A", 4), "B", "C", "D"),
+                          elements = letters[seq_len(7)])
+  a <- tidySet(relations2)
+  b <- union(a, c("A", "B"), c("C", "D"), c("E", "F"))
+  expect_s4_class(b, "TidySet")
+  expect_equal(names(as(b, "list")$E), c("a", "b", "c", "d", "f"))
+  expect_equal(names(as(b, "list")$F), c("e", "g"))
+
+  expect_error(union(a, c("A", "B"), c("C", "D"), "E"), "same length ")
+
+})
+
+test_that("union keep", {
+  relations2 <- data.frame(sets = c(rep("A", 4), "B", "C", "D"),
+                          elements = letters[seq_len(7)])
+  a <- tidySet(relations2)
+  b <- union(a, "A", "C", "E", keep = TRUE)
+  expect_s4_class(b, "TidySet")
+  expect_equal(names(as(b, "list")$E), c("a", "b", "c", "d", "f"))
+  expect_equal(names(as(b, "list")$F), c("e", "g"))
+
+  expect_error(union(a, c("A", "B"), c("C", "D"), "E"), "same length ")
+
+})
