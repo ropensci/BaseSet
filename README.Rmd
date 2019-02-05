@@ -48,5 +48,9 @@ a
 ```{r}
 b <- union(a, "A", "B", "C")
 nSets(b)
+b
+d <- union(a, "A", "B", "C", keep = TRUE)
+nSets(d)
+d
 ```
 
