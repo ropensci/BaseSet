@@ -31,27 +31,27 @@ test_that("union works", {
 })
 
 test_that("union several sets", {
-  relations2 <- data.frame(sets = c(rep("A", 4), "B", "C", "D"),
+  relations <- data.frame(sets = c(rep("A", 4), "B", "C", "D"),
                           elements = letters[seq_len(7)])
-  a <- tidySet(relations2)
+  a <- tidySet(relations)
   b <- union(a, c("A", "B"), c("C", "D"), c("E", "F"))
   expect_s4_class(b, "TidySet")
-  expect_equal(names(as(b, "list")$E), c("a", "b", "c", "d", "f"))
-  expect_equal(names(as(b, "list")$F), c("e", "g"))
+  expect_length(name_sets(b), 2L)
+  as_list <- as(b, "list")
+  expect_named(as_list, c("E", "F"))
+  expect_named(as_list$E, c("a", "b", "c", "d", "f"))
+  expect_named(as_list$F, c("e", "g"))
 
   expect_error(union(a, c("A", "B"), c("C", "D"), "E"), "same length ")
 
 })
 
 test_that("union keep", {
-  relations2 <- data.frame(sets = c(rep("A", 4), "B", "C", "D"),
+  relations <- data.frame(sets = c(rep("A", 4), "B", "C", "D"),
                           elements = letters[seq_len(7)])
-  a <- tidySet(relations2)
+  a <- tidySet(relations)
   b <- union(a, "A", "C", "E", keep = TRUE)
   expect_s4_class(b, "TidySet")
-  expect_equal(names(as(b, "list")$E), c("a", "b", "c", "d", "f"))
-  expect_equal(names(as(b, "list")$F), c("e", "g"))
-
-  expect_error(union(a, c("A", "B"), c("C", "D"), "E"), "same length ")
-
+  expect_length(name_sets(b), 5L)
+  expect_equal(nSets(b), nSets(a) + 1)
 })

@@ -13,16 +13,35 @@ operation_helper <- function(object, set1, set2, setName, FUN, keep = FALSE) {
     stop("Recycling set1 and set2 should be of the same length")
   }
 
+  if (length(set1) != length(setName)) {
+    stop("setName must be of the same length as set1")
+  }
+  sets <- name_sets(object)
+  sets2 <- levels(object@relations$sets)
   if (!keep) {
-    sets <- name_sets(object)
     levels(object@sets$set)[sets %in% set1] <- setName
     levels(object@sets$set)[sets %in% set2] <- setName
     object@sets <- unique(object@sets)
 
-    sets2 <- levels(object@relations$sets)
     levels(object@relations$sets)[sets2 %in% set1] <- setName
     levels(object@relations$sets)[sets2 %in% set2] <- setName
+  } else {
+
+    # Create new set
+    levels(object@sets$set) <- c(sets, setName)
+    rowSet <- rep(NA, ncol(object@sets))
+    names(rowSet) <- colnames(object@sets)
+    rowSet[["set"]] <- setName
+    object@sets <- rbind(object@sets, rowSet)
+
+    # Append the new relationships
+    levels(object@relations$sets) <- c(sets2, setName)
+    s <- unique(c(set1, set2))
+    df <- object@relations[object@relations$sets %in% s, ]
+    df$sets <- setName
+    object@relations <- rbind(object@relations, df)
   }
+
   # Handle the duplicate cases
   basic <- paste(object@relations$sets, object@relations$elements)
   indices <- split(seq_along(basic), basic)
