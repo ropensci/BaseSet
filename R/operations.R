@@ -62,29 +62,72 @@ operation_helper <- function(object, set1, set2, setName, FUN, keep = FALSE) {
 
 
 add_elements <- function(object, elements){
-  df_elements <- data.frame(elements = elements)
 
-  if (!"elements" %in% names(df_elements)) {
-    stop("Should have a elements name")
+  original_elements <- name_elements(object)
+  final_elements <- unique(c(original_elements, elements))
+
+  if (length(final_elements) != length(original_elements)) {
+    levels(object@elements$elements) <- final_elements
+
+    new_elements <- setdiff(elements, original_elements)
+    df_elements <- data.frame(elements = new_elements)
+    column_names <- setdiff(colnames(object@elements), "elements")
+    df_elements[, column_names] <- NA
+    object@elements <- rbind(object@elements, df_elements)
   }
-
-  column_names <- setdiff(colnames(object@elements), "elements")
-  object@elements <- rbind(object@elements, df_elements)
-  df_elements[, column_names] <- NA
-  object@elements <- unique(object@elements)
   object
 }
 
 add_sets <- function(object, set) {
-  df_set <- data.frame(set = set)
 
-  if (!"set" %in% names(df_set)) {
-    stop("Should have a set name")
+  original_sets <- name_sets(object)
+  final_sets <- unique(c(original_sets, set))
+
+  if (length(final_sets) != length(original_sets)) {
+    levels(object@sets$set) <- final_sets
+
+    new_sets <- setdiff(set, original_sets)
+    df_sets <- data.frame(set = new_sets)
+    column_names <- setdiff(colnames(object@sets), "set")
+    df_sets[, column_names] <- NA
+    object@sets <- rbind(object@sets, df_sets)
+  }
+  object
+}
+
+add_relations <- function(object, elements, sets, fuzzy) {
+  nElements <- length(elements)
+
+  if (length(sets) != nElements && length(sets) == 1) {
+    sets <- rep(sets, nElements)
+  } else if (length(sets) != nElements && length(sets) > 1) {
+    stop("Recycling sets is not allowed")
   }
 
-  column_names <- setdiff(colnames(object@sets), "set")
-  df_set[, column_names] <- NA
-  object@sets <- rbind(object@sets, df_set)
-  object@sets <- unique(object@sets)
+  original_relations <- paste(object@relations$sets, object@relations$elements)
+  relations <- paste(sets, elements)
+  final_relations <- unique(c(original_relations, relations))
+  new_relations <- setdiff(original_relations, relations)
+
+  if (length(fuzzy) > length(new_relations)) {
+    stop("Redefining the same relations with a different fuzzy number")
+  } else if (length(fuzzy) < length(new_relations) && length(fuzzy) == 1) {
+    fuzzy <- rep(fuzzy, length(new_relations))
+  } else {
+    stop("Recyling fuzzy is not allowed")
+  }
+
+  if (length(final_relations) != length(original_relations)) {
+
+    # Split the remaining elements and sets
+    sets_elements <- strsplit(new_relations, split = " ")
+    sets <- vapply(sets_elements, "[", i = 1, character(1L))
+    elements <- vapply(sets_elements, "[", i = 2, character(1L))
+
+    df_relations <- data.frame(elements = elements, sets = sets, fuzzy = fuzzy)
+    column_names <- setdiff(colnames(object@relations), c("sets", "elements", "fuzzy"))
+    df_relations[, column_names] <- NA
+    object@relations <- rbind(object@relations, df_relations)
+  }
   object
 }

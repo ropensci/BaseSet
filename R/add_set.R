@@ -13,10 +13,10 @@ setMethod("add_set",
             }
             object <- add_sets(object, setName)
             object <- add_elements(object, elements)
-            df <- data.frame(elements = elements, sets = setName, fuzzy = 1)
-            object@relations <- rbind(object@relations, df)
-            browser()
-            object
+            object <- add_relations(object,
+                                    elements = elements,
+                                    sets = setName,
+                                    fuzzy = 1)
             validObject(object)
             object
           }
