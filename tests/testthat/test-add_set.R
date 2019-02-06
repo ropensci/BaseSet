@@ -8,7 +8,11 @@ test_that("add_set works", {
   expect_s4_class(b, "TidySet")
   expect_equal(nSets(b), nSets(a) + 1)
 
-  elements(a) <- cbind(elements(a), Ha = c("bla", "ble", "bli", "blo", "blu", NA))
+  expect_error(add_set(a, elements = letters[7:15], setName = c("ha", "he")))
+  expect_error(add_set(a, elements = letters[7:15], setName = c("ha", "he"), fuzzy = -1))
 
+  elements(a) <- cbind(elements(a), Ha = c("bla", "ble", "bli", "blo", "blu", NA))
   d <- add_set(a, elements = letters[1:2], setName = "DF2")
+  expect_equal(nSets(d), nSets(a) + 1)
+  expect_error(add_set(a, elements = letters[1:2], setName = c("DF2", "df2")))
 })

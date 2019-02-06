@@ -3,20 +3,26 @@
 \docType{methods}
 \name{add_set}
 \alias{add_set}
-\alias{add_set,TidySet,character,character-method}
+\alias{add_set,TidySet,character,character,numeric-method}
+\alias{add_set,TidySet,character,character,missing-method}
 \title{Add a new set}
 \usage{
-add_set(object, elements, setName, ...)
+add_set(object, elements, setName, fuzzy, ...)
 
-\S4method{add_set}{TidySet,character,character}(object, elements, setName,
-  fuzzy = 1)
+\S4method{add_set}{TidySet,character,character,numeric}(object, elements,
+  setName, fuzzy = 1)
+
+\S4method{add_set}{TidySet,character,character,missing}(object, elements,
+  setName)
 }
 \arguments{
 \item{object}{A TidySet object}
 
-\item{elements}{The elements of the sets}
+\item{elements}{The elements of the sets.}
 
-\item{setName}{The name of the new set}
+\item{setName}{The name of the new set.}
+
+\item{fuzzy}{The membership of each element with the set.}
 
 \item{...}{Other arguments}
 }
@@ -28,6 +34,8 @@ Given a TidySets merges two sets into the new one.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{object = TidySet,elements = character,setName = character}: Adds a set
+\item \code{object = TidySet,elements = character,setName = character,fuzzy = numeric}: Adds a set
+
+\item \code{object = TidySet,elements = character,setName = character,fuzzy = missing}: Adds a set
 }}
 
