@@ -7,8 +7,7 @@ NULL
 setMethod("rename_set",
           signature = signature(object = "TidySet"),
           function(object, old, new) {
-            sets <- sets(object)
-            membership <- levels(sets$set) %in% old
+            membership <- name_sets(object) %in% old
             if (!any(membership)) {
               stop("All sets should be found on the TidySet")
             }
@@ -23,8 +22,7 @@ setMethod("rename_set",
 setMethod("rename_elements",
           signature = signature(object = "TidySet"),
           function(object, old, new) {
-            elements <- elements(object)
-            membership <- levels(elements$elements) %in% old
+            membership <- name_elements(object) %in% old
             if (!any(membership)) {
               stop("All elements should be found on the TidySet")
             }
