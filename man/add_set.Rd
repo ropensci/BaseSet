@@ -8,7 +8,8 @@
 \usage{
 add_set(object, elements, setName, ...)
 
-\S4method{add_set}{TidySet,character,character}(object, elements, setName)
+\S4method{add_set}{TidySet,character,character}(object, elements, setName,
+  fuzzy = 1)
 }
 \arguments{
 \item{object}{A TidySet object}
