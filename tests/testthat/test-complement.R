@@ -8,4 +8,5 @@ test_that("complement works", {
   b <- complement_set(a, "b")
   expect_equal(nSets(b), 1L)
   expect_equal(nElements(b), 5L)
+  expect_equal(complement_set(a, "b"), remove_set(a, "b"))
 })

@@ -131,36 +131,63 @@ remove_elements <- function(object, elements) {
     return(object)
   }
   old_elements <- name_elements(object)
-  remove <- old_elements[old_elements %in% elements]
+  remove_elements <- old_elements[old_elements %in% elements]
 
-  new_elements <- object@elements[!object@elements$elements %in% remove, ,
-                                  drop = FALSE]
+  keep_at_elements <- !object@elements$elements %in% remove_elements
+  new_elements <- object@elements[keep_at_elements, ,drop = FALSE]
   object@elements <- droplevels(new_elements)
+
+  keep_at_relations <- !object@relations$elements %in% remove_elements
+  new_relations <- object@relations[keep_at_relations, , drop = FALSE]
+
+  object@relations <- droplevels(new_relations)
   object
 }
 
 remove_sets <- function(object, sets) {
+
   if (length(sets) == 0) {
     return(object)
   }
   old_sets <- name_sets(object)
-  remove <- old_sets[old_sets %in% sets]
-  object@sets <- object@sets[!object@sets$set %in% remove, , drop = FALSE]
-  object@sets <- droplevels(object@sets)
+  remove_sets <- old_sets[old_sets %in% sets]
+
+  keep_at_set <- !object@sets$set %in% remove_sets
+  new_set <- object@sets[keep_at_set, , drop = FALSE]
+  object@sets <- droplevels(new_set)
+
+  keep_at_relations <- !object@relations$set %in% remove_sets
+  new_relations <- object@relations[keep_at_relations, , drop = FALSE]
+  object@relations <- droplevels(new_relations)
+
+  keep_at_elements <- !object@elements$elements %in% object@relations$elements
+  new_elements <- object@elements[keep_at_elements, , drop = FALSE]
+  object@elements <- droplevels(new_elements)
+
   object
 }
 
-remove_relations <- function(object, elements, sets) {
+remove_relations <- function(object, elements, sets,
+                             relations = paste(elements, sets)) {
   if (length(sets) != length(elements)) {
     stop("sets and elements should be of the same length")
   }
   if (length(sets) == 0) {
     return(object)
   }
-  relations <- paste(elements, sets)
+  old_object <- object
   old_relations <- elements_sets(object)
-  remove <- !old_relations %in% relations
-  object@relations <- object@relations[remove, , drop = FALSE]
+  remove_relation <- !old_relations %in% relations
+  object@relations <- object@relations[remove_relation, , drop = FALSE]
+
+
+  old_sets <- name_sets(old_object)
+  remove_sets <- old_sets[!old_sets %in% object@relations$sets]
+  object <- remove_sets(object, remove_sets)
+
+  old_elements <- name_elements(object)
+  remove_elements <- old_elements[!old_elements %in% object@relations$elements]
+  object <- remove_elements(object, remove_elements)
   object
 }
 
@@ -170,14 +197,13 @@ elements_sets <- function(object){
 
 
 complement_sets <- function(object, sets) {
-  original_set <- name_sets(object)
-  remaining_sets <- original_set[!original_set %in% sets]
-  new_sets <- object@sets[object@sets$set %in% remaining_sets, , drop = FALSE]
-  object@sets <- droplevels(new_sets)
-  object
+
+  remove_sets(object, sets)
 }
 
 complement_elements <- function(object, elements) {
+  elements <- match.arg(elements)
+
   original_elements <- name_elements(object)
   remaining_elements <- original_elements[!original_elements %in% elements]
   old_elements <- elements(object)
@@ -188,10 +214,11 @@ complement_elements <- function(object, elements) {
 
 }
 
-complement_relations <- function(object, elements, sets) {
-  relations_c <- paste(elements, sets)
+complement_relations <- function(object, elements, sets,
+                                 relations = paste(elements, sets)) {
+
   original_relations <- elements_sets(object)
-  remaining_relations <- original_relations[!original_relations %in% relations_c]
+  remaining_relations <- original_relations[!original_relations %in% relations]
   relations <- relations(object)
   new_relations <- relations[original_relations %in% remaining_relations, ,
                              drop = FALSE]
