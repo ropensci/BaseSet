@@ -11,7 +11,7 @@ element_size(object, element = NULL)
 \S4method{element_size}{TidySet}(object, element = NULL)
 }
 \arguments{
-\item{object}{A TidySet object}
+\item{object}{A TidySet object.}
 
 \item{element}{The element from which the length is calculated.}
 }
@@ -20,7 +20,7 @@ A list with the size of the elements or the probability of having that
 size.
 }
 \description{
-Calculate the probability of being of different sizes for a given set
+Calculate the probability of being of different sizes for a given set.
 }
 \section{Methods (by class)}{
 \itemize{

@@ -13,8 +13,11 @@ nElements(object)
 \arguments{
 \item{object}{Object to be coerced or tested.}
 }
+\value{
+A numeric value with the number of elements.
+}
 \description{
-Check the number of elements of the TidySet
+Check the number of elements of the TidySet.
 }
 \section{Methods (by class)}{
 \itemize{

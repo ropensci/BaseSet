@@ -14,13 +14,13 @@ intersection(object, set1, set2, setName, ...)
 \arguments{
 \item{object}{A TidySet object}
 
-\item{set1}{The name of the sets to be used}
+\item{set1}{The name of the sets to be used.}
 
-\item{set2}{The name of the sets to be used}
+\item{set2}{The name of the sets to be used.}
 
-\item{setName}{The name of the new set}
+\item{setName}{The name of the new set.}
 
-\item{...}{Other arguments}
+\item{...}{Other arguments.}
 
 \item{FUN}{A function to be applied when performing the union.
 The standard intersection is the "min" function, but you can provide any other
@@ -29,7 +29,7 @@ function that given a numeric vector returns a single number.}
 \item{keep}{A logical value if you want to keep originals sets.}
 }
 \value{
-A \code{TidySet} object
+A \code{TidySet} object.
 }
 \description{
 Given a TidySets creates a new set with the elements on the both of them.

@@ -14,7 +14,7 @@ incidence(object)
 \item{object}{Object to be coerced or tested.}
 }
 \description{
-Check which elements are in which sets
+Check which elements are in which sets.
 }
 \section{Methods (by class)}{
 \itemize{

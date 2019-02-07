@@ -14,15 +14,15 @@ name_sets(object)
 \S4method{name_sets}{TidySet,character}(object) <- value
 }
 \arguments{
-\item{object}{A TidySet object}
+\item{object}{A TidySet object.}
 
-\item{value}{A character with the new names for the sets}
+\item{value}{A character with the new names for the sets.}
 }
 \value{
-A \code{TidySet} object
+A \code{TidySet} object.
 }
 \description{
-Retrieve the name of the sets
+Retrieve the name of the sets.
 }
 \section{Methods (by class)}{
 \itemize{

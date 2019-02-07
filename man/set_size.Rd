@@ -11,16 +11,16 @@ set_size(object, set = NULL)
 \S4method{set_size}{TidySet}(object, set = NULL)
 }
 \arguments{
-\item{object}{A TidySet object}
+\item{object}{A TidySet object.}
 
-\item{set}{The sets from which the length is calculated}
+\item{set}{The sets from which the length is calculated.}
 }
 \value{
 A list with the size of the set or the probability of having that
 size.
 }
 \description{
-Calculate the probability of being of different sizes for a given set
+Calculate the probability of being of different sizes for a given set.
 }
 \section{Methods (by class)}{
 \itemize{

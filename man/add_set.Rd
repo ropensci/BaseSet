@@ -24,10 +24,10 @@ add_set(object, elements, setName, fuzzy, ...)
 
 \item{fuzzy}{The membership of each element with the set.}
 
-\item{...}{Other arguments}
+\item{...}{Other arguments.}
 }
 \value{
-A \code{TidySet} object
+A \code{TidySet} object.
 }
 \description{
 Given a TidySets adds a new sets

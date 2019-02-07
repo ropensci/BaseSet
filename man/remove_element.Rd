@@ -11,18 +11,18 @@ remove_element(object, elements, ...)
 \S4method{remove_element}{TidySet,character}(object, elements)
 }
 \arguments{
-\item{object}{A TidySet object}
+\item{object}{A TidySet object.}
 
-\item{elements}{The elements to be removed}
+\item{elements}{The elements to be removed.}
 
-\item{...}{Other arguments}
+\item{...}{Other arguments.}
 }
 \value{
-A \code{TidySet} object
+A \code{TidySet} object.
 }
 \description{
 Given a TidySets remove elements and the related relations and if
-required also the sets
+required also the sets.
 }
 \section{Methods (by class)}{
 \itemize{

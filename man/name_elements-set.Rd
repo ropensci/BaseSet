@@ -7,15 +7,15 @@
 name_elements(object) <- value
 }
 \arguments{
-\item{object}{A TidySet object}
+\item{object}{A TidySet object.}
 
-\item{value}{A character with the new names for the elements}
+\item{value}{A character with the new names for the elements.}
 }
 \value{
-A \code{TidySet} object
+A \code{TidySet} object.
 }
 \description{
-Rename elements
+Rename elements.
 }
 \examples{
 relations <- data.frame(sets = c(rep("a", 5), "b"),

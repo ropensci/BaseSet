@@ -13,8 +13,11 @@ nRelations(object)
 \arguments{
 \item{object}{Object to be coerced or tested.}
 }
+\value{
+A numeric value with the number of the relations.
+}
 \description{
-Check the number of relations of the TidySet
+Check the number of relations of the TidySet.
 }
 \section{Methods (by class)}{
 \itemize{

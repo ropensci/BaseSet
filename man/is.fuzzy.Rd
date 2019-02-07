@@ -13,6 +13,9 @@ is.fuzzy(object)
 \arguments{
 \item{object}{Object to be coerced or tested.}
 }
+\value{
+A logical value.
+}
 \description{
 Check if there are fuzzy sets.
 }

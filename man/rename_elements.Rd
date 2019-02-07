@@ -11,17 +11,17 @@ rename_elements(object, old, new)
 \S4method{rename_elements}{TidySet}(object, old, new)
 }
 \arguments{
-\item{object}{A TidySet object}
+\item{object}{A TidySet object.}
 
-\item{old}{A character vector of to be renamed}
+\item{old}{A character vector of to be renamed.}
 
-\item{new}{A character vector of with new names}
+\item{new}{A character vector of with new names.}
 }
 \value{
-A \code{TidySet} object
+A \code{TidySet} object.
 }
 \description{
-Change the default names of sets and elements
+Change the default names of sets and elements.
 }
 \section{Methods (by class)}{
 \itemize{

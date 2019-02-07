@@ -12,17 +12,17 @@ remove_column(object, slot, column_names)
   column_names)
 }
 \arguments{
-\item{object}{A TidySet object}
+\item{object}{A TidySet object.}
 
-\item{slot}{A TidySet slot}
+\item{slot}{A TidySet slot.}
 
-\item{column_names}{The name of the columns}
+\item{column_names}{The name of the columns.}
 }
 \value{
-A \code{TidySet} object
+A \code{TidySet} object.
 }
 \description{
-Removes column from a slot of the TidySet object
+Removes column from a slot of the TidySet object.
 }
 \section{Methods (by class)}{
 \itemize{

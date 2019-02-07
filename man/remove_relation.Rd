@@ -18,10 +18,10 @@ remove_relation(object, elements, sets, ...)
 
 \item{sets}{The name of the new set.}
 
-\item{...}{Other arguments}
+\item{...}{Other arguments.}
 }
 \value{
-A \code{TidySet} object
+A \code{TidySet} object.
 }
 \description{
 Given a TidySets removes relations between elements and sets

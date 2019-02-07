@@ -18,12 +18,15 @@ sets(object)
 \S4method{nSets}{TidySet}(object)
 }
 \arguments{
-\item{object}{A \code{SetCollection} object}
+\item{object}{A \code{SetCollection} object.}
 
-\item{value}{Modification of the sets}
+\item{value}{Modification of the sets.}
+}
+\value{
+A \code{data.frame} with information from the sets.
 }
 \description{
-Given a TidySet retrieve the names of the sets
+Given a TidySet retrieve the names of the sets.
 }
 \section{Methods (by class)}{
 \itemize{

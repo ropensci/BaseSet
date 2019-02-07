@@ -11,14 +11,14 @@ remove_set(object, sets, ...)
 \S4method{remove_set}{TidySet,character}(object, sets)
 }
 \arguments{
-\item{object}{A TidySet object}
+\item{object}{A TidySet object.}
 
-\item{sets}{The sets to be removed}
+\item{sets}{The sets to be removed.}
 
-\item{...}{Other arguments}
+\item{...}{Other arguments.}
 }
 \value{
-A \code{TidySet} object
+A \code{TidySet} object.
 }
 \description{
 Given a TidySets remove sets and the related relations and if

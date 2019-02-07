@@ -20,7 +20,8 @@ relations(object)
 \item{value}{Modification of the relationsihps}
 }
 \value{
-The existing relationships
+A \code{data.frame} with information about the relations between
+elements and sets.
 }
 \description{
 Method to find the relationships between the elements and the sets of a given

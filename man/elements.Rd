@@ -15,15 +15,15 @@ elements(object)
 \S4method{elements}{TidySet}(object) <- value
 }
 \arguments{
-\item{object}{A TidySet object}
+\item{object}{A TidySet object.}
 
-\item{value}{Modification of the elements}
+\item{value}{Modification of the elements.}
 }
 \value{
-Either the information about the elements
+A \code{data.frame} with information about the elements
 }
 \description{
-Given TidySet retrieve the elements
+Given TidySet retrieve the elements.
 }
 \section{Methods (by class)}{
 \itemize{

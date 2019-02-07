@@ -11,17 +11,17 @@ add_column(object, slot, columns)
 \S4method{add_column}{TidySet,character}(object, slot, columns)
 }
 \arguments{
-\item{object}{A TidySet object}
+\item{object}{A TidySet object.}
 
-\item{slot}{A TidySet slot}
+\item{slot}{A TidySet slot.}
 
-\item{columns}{The columns to add}
+\item{columns}{The columns to add.}
 }
 \value{
-A \code{TidySet} object
+A \code{TidySet} object.
 }
 \description{
-Add column to a slot of the TidySet object
+Add column to a slot of the TidySet object.
 }
 \section{Methods (by class)}{
 \itemize{
