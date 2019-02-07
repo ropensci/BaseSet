@@ -264,7 +264,7 @@ setGeneric("intersection", function(object, set1, set2, setName, ...)
 
 #' Add a new set
 #'
-#' Given a TidySets merges two sets into the new one.
+#' Given a TidySets adds a new sets
 #' @param object A TidySet object
 #' @param elements The elements of the sets.
 #' @param setName The name of the new set.
@@ -274,3 +274,16 @@ setGeneric("intersection", function(object, set1, set2, setName, ...)
 #' @export
 setGeneric("add_set", function(object, elements, setName, fuzzy, ...)
   standardGeneric("add_set"))
+
+#' Remove a set
+#'
+#' Given a TidySets remove a set
+#' @param object A TidySet object
+#' @param elements The elements of the sets.
+#' @param setName The name of the new set.
+#' @param fuzzy The membership of each element with the set.
+#' @param ... Other arguments
+#' @return A \code{TidySet} object
+#' @export
+setGeneric("remove_set", function(object, elements, sets, ...)
+  standardGeneric("remove_set"))

@@ -30,7 +30,7 @@ add_set(object, elements, setName, fuzzy, ...)
 A \code{TidySet} object
 }
 \description{
-Given a TidySets merges two sets into the new one.
+Given a TidySets adds a new sets
 }
 \section{Methods (by class)}{
 \itemize{

@@ -1,8 +1,6 @@
 #' @include AllClasses.R AllGenerics.R
 NULL
 
-# TODO Allow a vector for set1 and set2
-# TODO Allow to keep old sets
 operation_helper <- function(object, set1, set2, setName, FUN, keep = FALSE) {
 
   if (!is.logical(keep) || length(keep) > 1) {
@@ -42,7 +40,7 @@ operation_helper <- function(object, set1, set2, setName, FUN, keep = FALSE) {
   }
 
   # Handle the duplicate cases
-  basic <- paste(object@relations$sets, object@relations$elements)
+  basic <- elements_sets(object)
   indices <- split(seq_along(basic), basic)
   # Helper function probably useful for intersection too
   iterate <- function(i, fuzzy, fun) {
@@ -104,10 +102,10 @@ add_relations <- function(object, elements, sets, fuzzy) {
     stop("Recycling sets is not allowed")
   }
 
-  original_relations <- paste(object@relations$sets, object@relations$elements)
-  relations <- paste(sets, elements)
+  original_relations <- elements_sets(object)
+  relations <- paste(elements, sets)
   final_relations <- unique(c(original_relations, relations))
-  new_relations <- setdiff(original_relations, relations)
+  new_relations <- setdiff(relations, original_relations)
 
   if (length(fuzzy) > length(new_relations)) {
     stop("Redefining the same relations with a different fuzzy number")
@@ -120,9 +118,9 @@ add_relations <- function(object, elements, sets, fuzzy) {
   if (length(final_relations) != length(original_relations)) {
 
     # Split the remaining elements and sets
-    sets_elements <- strsplit(new_relations, split = " ")
-    sets <- vapply(sets_elements, "[", i = 1, character(1L))
-    elements <- vapply(sets_elements, "[", i = 2, character(1L))
+    elements_sets <- strsplit(new_relations, split = " ")
+    elements <- vapply(elements_sets, "[", i = 1, character(1L))
+    sets <- vapply(elements_sets, "[", i = 2, character(1L))
 
     df_relations <- data.frame(elements = elements, sets = sets, fuzzy = fuzzy)
     column_names <- setdiff(colnames(object@relations), c("sets", "elements", "fuzzy"))
@@ -130,4 +128,43 @@ add_relations <- function(object, elements, sets, fuzzy) {
     object@relations <- rbind(object@relations, df_relations)
   }
   object
+}
+
+
+remove_elements <- function(object, elements) {
+  if (length(elements) == 0 ) {
+    return(object)
+  }
+  old_elements <- name_elements(object)
+  remove <- old_elements[old_elements %in% elements]
+  object@elements <- object@elements[object@elements$elements %in% remove, ]
+  object
+}
+
+remove_sets <- function(object, sets) {
+  if (length(sets) == 0) {
+    return(object)
+  }
+  old_sets <- name_sets(object)
+  remove <- old_sets[old_sets %in% sets]
+  object@sets <- object@sets[object@sets$set %in% remove, ]
+  object
+}
+
+remove_relations <- function(object, elements, sets) {
+  if (length(sets) != length(elements)) {
+    stop("sets and elements should be of the same length")
+  }
+  if (length(sets) == 0) {
+    return(object)
+  }
+  relations <- paste(elements, sets)
+  old_relations <- elements_sets(object)
+  remove <- !old_relations %in% relations
+  object@relations <- object@relations[remove, ]
+  object
+}
+
+elements_sets <- function(object){
+  paste(object@relations$elements, object@relations$sets)
 }

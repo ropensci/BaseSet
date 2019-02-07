@@ -47,6 +47,7 @@ Collate:
     'names.R'
     'print.R'
     'relations.R'
+    'remove.R'
     'remove_column.R'
     'rename.R'
     'set.R'
