@@ -15,14 +15,9 @@ operation_helper <- function(object, set1, set2, setName, FUN, keep = FALSE) {
     stop("setName must be of the same length as set1")
   }
   sets <- name_sets(object)
-  sets2 <- levels(object@relations$sets)
-  if (!keep) {
-    levels(object@sets$set)[sets %in% set1] <- setName
-    levels(object@sets$set)[sets %in% set2] <- setName
-    object@sets <- unique(object@sets)
 
-    levels(object@relations$sets)[sets2 %in% set1] <- setName
-    levels(object@relations$sets)[sets2 %in% set2] <- setName
+  if (!keep) {
+    name_sets(object)[sets %in% c(set1, set2)] <- setName
   } else {
 
     # Append the new set

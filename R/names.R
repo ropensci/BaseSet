@@ -24,10 +24,10 @@ setMethod("name_elements",
 setMethod("name_elements<-",
           signature = signature(object = "TidySet", value = "character"),
           function(object, value){
-
             old <- levels(object@elements$elements)
 
             levels(object@elements$elements) <- value
+            object@elements <- unique(object@elements)
             old_relations <- levels(object@relations$elements)
             replace <- match(old_relations, old)
             levels(object@relations$elements)[replace] <- value
@@ -40,10 +40,10 @@ setMethod("name_elements<-",
 setMethod("name_sets<-",
           signature = signature(object = "TidySet", value = "character"),
           function(object, value){
-
             old <- levels(object@sets$set)
 
             levels(object@sets$set) <- value
+            object@sets <- unique(object@sets)
             old_relations <- levels(object@relations$sets)
             replace <- match(old_relations, old)
             levels(object@relations$sets)[replace] <- value
