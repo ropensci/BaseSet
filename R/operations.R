@@ -167,3 +167,34 @@ remove_relations <- function(object, elements, sets) {
 elements_sets <- function(object){
   paste(object@relations$elements, object@relations$sets)
 }
+
+
+complement_sets <- function(object, sets) {
+  original_set <- name_sets(object)
+  remaining_sets <- original_set[!original_set %in% sets]
+  new_sets <- object@sets[object@sets$set %in% remaining_sets, , drop = FALSE]
+  object@sets <- droplevels(new_sets)
+  object
+}
+
+complement_elements <- function(object, elements) {
+  original_elements <- name_elements(object)
+  remaining_elements <- original_elements[!original_elements %in% elements]
+  old_elements <- elements(object)
+  new_elements <- old_elements[old_elements$elements %in% remaining_elements, ,
+                               drop = FALSE]
+  object@elements <- droplevels(new_elements)
+  object
+
+}
+
+complement_relations <- function(object, elements, sets) {
+  relations_c <- paste(elements, sets)
+  original_relations <- elements_sets(object)
+  remaining_relations <- original_relations[!original_relations %in% relations_c]
+  relations <- relations(object)
+  new_relations <- relations[original_relations %in% remaining_relations, ,
+                             drop = FALSE]
+  object@relations <- droplevels(new_relations)
+  object
+}

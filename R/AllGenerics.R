@@ -4,10 +4,10 @@ NULL
 
 #' Retrieve the elements
 #'
-#' Given TidySet retrieve the elements
-#' @param object A TidySet object
-#' @param value Modification of the elements
-#' @return Either the information about the elements
+#' Given TidySet retrieve the elements.
+#' @param object A TidySet object.
+#' @param value Modification of the elements.
+#' @return A \code{data.frame} with information about the elements
 #' @export elements
 #' @seealso \code{\link{nElements}}
 #' @family slots
@@ -16,9 +16,10 @@ setGeneric("elements", function(object) standardGeneric("elements"))
 
 #' Retrieve the names of the sets
 #'
-#' Given a TidySet retrieve the names of the sets
-#' @param object A \code{SetCollection} object
-#' @param value Modification of the sets
+#' Given a TidySet retrieve the names of the sets.
+#' @param object A \code{SetCollection} object.
+#' @param value Modification of the sets.
+#' @return A \code{data.frame} with information from the sets.
 #' @export sets
 #' @aliases sets<-
 #' @seealso \code{\link{nSets}}
@@ -29,6 +30,7 @@ setGeneric("sets", function(object) standardGeneric("sets"))
 #'
 #' Check if there are fuzzy sets.
 #' @param object Object to be coerced or tested.
+#' @return A logical value.
 #' @export is.fuzzy
 setGeneric("is.fuzzy", function(object) standardGeneric("is.fuzzy"))
 
@@ -41,21 +43,23 @@ setGeneric("nSets", function(object) standardGeneric("nSets"))
 
 #' Number of elements
 #'
-#' Check the number of elements of the TidySet
+#' Check the number of elements of the TidySet.
 #' @param object Object to be coerced or tested.
+#' @return A numeric value with the number of elements.
 #' @export nElements
 setGeneric("nElements", function(object) standardGeneric("nElements"))
 
 #' Number of relations
 #'
-#' Check the number of relations of the TidySet
+#' Check the number of relations of the TidySet.
 #' @param object Object to be coerced or tested.
+#' @return A numeric value with the number of the relations.
 #' @export nRelations
 setGeneric("nRelations", function(object) standardGeneric("nRelations"))
 
 #' Incidence
 #'
-#' Check which elements are in which sets
+#' Check which elements are in which sets.
 #' @param object Object to be coerced or tested.
 #' @export incidence
 setGeneric("incidence", function(object) standardGeneric("incidence"))
@@ -66,32 +70,33 @@ setGeneric("incidence", function(object) standardGeneric("incidence"))
 #' \code{\link{TidySet}} object
 #' @param object Object to be coerced or tested.
 #' @param value Modification of the relationsihps
-#' @return The existing relationships
+#' @return A \code{data.frame} with information about the relations between
+#' elements and sets.
 #' @family slots
 #' @seealso \code{\link{nRelations}}
 #' @aliases relations<-
 #' @export
 setGeneric("relations", function(object) standardGeneric("relations"))
 
-#' @describeIn relations Modify the relationships
+#' @describeIn relations Modify the relation.
 #' @export
 setGeneric("relations<-", function(object, value)
   standardGeneric("relations<-"))
 
 
-#' @describeIn elements Modify the elements
+#' @describeIn elements Modify the elements.
 #' @export
 setGeneric("elements<-", function(object, value) standardGeneric("elements<-"))
 
-#' @describeIn sets Modify the sets
+#' @describeIn sets Modify the sets.
 #' @export
 setGeneric("sets<-", function(object, value) standardGeneric("sets<-"))
 
 #' Calculates the size of the set
 #'
-#' Calculate the probability of being of different sizes for a given set
-#' @param object A TidySet object
-#' @param set The sets from which the length is calculated
+#' Calculate the probability of being of different sizes for a given set.
+#' @param object A TidySet object.
+#' @param set The sets from which the length is calculated.
 #' @return A list with the size of the set or the probability of having that
 #' size.
 #' @export set_size
@@ -99,8 +104,8 @@ setGeneric("set_size", function(object, set = NULL) standardGeneric("set_size"))
 
 #' Calculates the size of the elements
 #'
-#' Calculate the probability of being of different sizes for a given set
-#' @param object A TidySet object
+#' Calculate the probability of being of different sizes for a given set.
+#' @param object A TidySet object.
 #' @param element The element from which the length is calculated.
 #' @return A list with the size of the elements or the probability of having that
 #' size.
@@ -109,11 +114,11 @@ setGeneric("element_size", function(object, element = NULL) standardGeneric("ele
 
 #' Rename sets
 #'
-#' Change the default names of sets and elements
-#' @param object A TidySet object
-#' @param old A character vector of to be renamed
-#' @param new A character vector of with new names
-#' @return A \code{TidySet} object
+#' Change the default names of sets and elements.
+#' @param object A TidySet object.
+#' @param old A character vector of to be renamed.
+#' @param new A character vector of with new names.
+#' @return A \code{TidySet} object.
 #' @family rename
 #' @seealso \code{\link{name_sets}}
 #' @export
@@ -121,11 +126,11 @@ setGeneric("rename_set", function(object, old, new) standardGeneric("rename_set"
 
 #' Rename elements
 #'
-#' Change the default names of sets and elements
-#' @param object A TidySet object
-#' @param old A character vector of to be renamed
-#' @param new A character vector of with new names
-#' @return A \code{TidySet} object
+#' Change the default names of sets and elements.
+#' @param object A TidySet object.
+#' @param old A character vector of to be renamed.
+#' @param new A character vector of with new names.
+#' @return A \code{TidySet} object.
 #' @family rename
 #' @seealso \code{\link{name_elements}}
 #' @export
@@ -135,10 +140,10 @@ setGeneric("rename_elements", function(object, old, new)
 
 #' Name sets
 #'
-#' Retrieve the name of the sets
-#' @param object A TidySet object
-#' @param value A character with the new names for the sets
-#' @return A \code{TidySet} object
+#' Retrieve the name of the sets.
+#' @param object A TidySet object.
+#' @param value A character with the new names for the sets.
+#' @return A \code{TidySet} object.
 #' @family name
 #' @export
 #' @examples
@@ -152,10 +157,10 @@ setGeneric("name_sets", function(object)
 
 #' Name elements
 #'
-#' Retrieve the name of the elements
-#' @param object A TidySet object
-#' @param value A character with the new names for the elements
-#' @return A \code{TidySet} object
+#' Retrieve the name of the elements.
+#' @param object A TidySet object.
+#' @param value A character with the new names for the elements.
+#' @return A \code{TidySet} object.
 #' @family name
 #' @export
 #' @examples
@@ -169,10 +174,10 @@ setGeneric("name_elements", function(object)
 
 #' Rename elements
 #'
-#' Rename elements
-#' @param object A TidySet object
-#' @param value A character with the new names for the elements
-#' @return A \code{TidySet} object
+#' Rename elements.
+#' @param object A TidySet object.
+#' @param value A character with the new names for the elements.
+#' @return A \code{TidySet} object.
 #' @family names
 #' @seealso \code{\link{rename_elements}}
 #' @export
@@ -189,10 +194,10 @@ setGeneric("name_elements<-", function(object, value)
 
 #' Rename sets
 #'
-#' Rename sets
-#' @param object A TidySet object
-#' @param value A character with the new names for the sets
-#' @return A \code{TidySet} object
+#' Rename sets.
+#' @param object A TidySet object.
+#' @param value A character with the new names for the sets.
+#' @return A \code{TidySet} object.
 #' @family names
 #' @seealso \code{\link{rename_set}}
 #' @export
@@ -209,11 +214,11 @@ setGeneric("name_sets<-", function(object, value)
 
 #' Add column
 #'
-#' Add column to a slot of the TidySet object
-#' @param object A TidySet object
-#' @param slot A TidySet slot
-#' @param columns The columns to add
-#' @return A \code{TidySet} object
+#' Add column to a slot of the TidySet object.
+#' @param object A TidySet object.
+#' @param slot A TidySet slot.
+#' @param columns The columns to add.
+#' @return A \code{TidySet} object.
 #' @family column
 #' @seealso \code{\link{rename_set}}
 #' @export
@@ -229,11 +234,11 @@ setGeneric("add_column", function(object, slot, columns)
 
 #' Remove column
 #'
-#' Removes column from a slot of the TidySet object
-#' @param object A TidySet object
-#' @param slot A TidySet slot
-#' @param column_names The name of the columns
-#' @return A \code{TidySet} object
+#' Removes column from a slot of the TidySet object.
+#' @param object A TidySet object.
+#' @param slot A TidySet slot.
+#' @param column_names The name of the columns.
+#' @return A \code{TidySet} object.
 #' @family column
 #' @seealso \code{\link{rename_set}}
 #' @export
@@ -244,14 +249,14 @@ setGeneric("remove_column", function(object, slot, column_names)
 #'
 #' Given a TidySets merges two sets into the new one.
 #' @param object A TidySet object
-#' @param set1,set2 The name of the sets to be used
-#' @param setName The name of the new set
+#' @param set1,set2 The name of the sets to be used.
+#' @param setName The name of the new set.
 #' @param FUN A function to be applied when performing the union.
 #' The standard union is the "max" function, but you can provide any other
 #' function that given a numeric vector returns a single number.
 #' @param keep A logical value if you want to keep originals sets.
-#' @param ... Other arguments
-#' @return A \code{TidySet} object
+#' @param ... Other arguments.
+#' @return A \code{TidySet} object.
 #' @export
 setGeneric("union", function(object, set1, set2, setName, ...)
   standardGeneric("union"))
@@ -264,7 +269,7 @@ setGeneric("union", function(object, set1, set2, setName, ...)
 #' The standard intersection is the "min" function, but you can provide any other
 #' function that given a numeric vector returns a single number.
 #' @param keep A logical value if you want to keep originals sets.
-#' @return A \code{TidySet} object
+#' @return A \code{TidySet} object.
 #' @export
 setGeneric("intersection", function(object, set1, set2, setName, ...)
   standardGeneric("intersection"))
@@ -276,8 +281,8 @@ setGeneric("intersection", function(object, set1, set2, setName, ...)
 #' @param elements The elements of the sets.
 #' @param setName The name of the new set.
 #' @param fuzzy The membership of each element with the set.
-#' @param ... Other arguments
-#' @return A \code{TidySet} object
+#' @param ... Other arguments.
+#' @return A \code{TidySet} object.
 #' @export
 setGeneric("add_set", function(object, elements, setName, fuzzy, ...)
   standardGeneric("add_set"))
@@ -288,8 +293,8 @@ setGeneric("add_set", function(object, elements, setName, fuzzy, ...)
 #' @param object A TidySet object
 #' @param elements The elements of the sets.
 #' @param sets The name of the new set.
-#' @param ... Other arguments
-#' @return A \code{TidySet} object
+#' @param ... Other arguments.
+#' @return A \code{TidySet} object.
 #' @export
 setGeneric("remove_relation", function(object, elements, sets, ...)
   standardGeneric("remove_relation"))
@@ -297,11 +302,11 @@ setGeneric("remove_relation", function(object, elements, sets, ...)
 #' Remove elements
 #'
 #' Given a TidySets remove elements and the related relations and if
-#' required also the sets
-#' @param object A TidySet object
-#' @param elements The elements to be removed
-#' @param ... Other arguments
-#' @return A \code{TidySet} object
+#' required also the sets.
+#' @param object A TidySet object.
+#' @param elements The elements to be removed.
+#' @param ... Other arguments.
+#' @return A \code{TidySet} object.
 #' @export
 setGeneric("remove_element", function(object, elements, ...)
   standardGeneric("remove_element"))
@@ -310,10 +315,21 @@ setGeneric("remove_element", function(object, elements, ...)
 #'
 #' Given a TidySets remove sets and the related relations and if
 #' required also the elements
-#' @param object A TidySet object
-#' @param sets The sets to be removed
-#' @param ... Other arguments
-#' @return A \code{TidySet} object
+#' @param object A TidySet object.
+#' @param sets The sets to be removed.
+#' @param ... Other arguments.
+#' @return A \code{TidySet} object.
 #' @export
 setGeneric("remove_set", function(object, sets, ...)
   standardGeneric("remove_set"))
+
+#' Complement of a set
+#'
+#' Return the complement for a set
+#' @param object A TidySet object.
+#' @param sets The set to look for the compplement.
+#' @param ... Other arguments.
+#' @return A \code{TidySet} object.
+#' @export
+setGeneric("complement_set", function(object, sets, ...)
+  standardGeneric("complement_set"))

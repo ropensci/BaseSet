@@ -38,6 +38,7 @@ Collate:
     'add_column.R'
     'add_set.R'
     'basesets-package.R'
+    'complement.R'
     'elements.R'
     'incidence.R'
     'operations.R'
