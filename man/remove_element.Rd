@@ -13,7 +13,7 @@ remove_element(object, elements, ...)
 \arguments{
 \item{object}{A TidySet object}
 
-\item{elements}{The elements of the sets.}
+\item{elements}{The elements to be removed}
 
 \item{...}{Other arguments}
 }

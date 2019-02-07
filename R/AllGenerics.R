@@ -280,8 +280,7 @@ setGeneric("add_set", function(object, elements, setName, fuzzy, ...)
 #' Given a TidySets removes relations between elements and sets
 #' @param object A TidySet object
 #' @param elements The elements of the sets.
-#' @param setName The name of the new set.
-#' @param fuzzy The membership of each element with the set.
+#' @param sets The name of the new set.
 #' @param ... Other arguments
 #' @return A \code{TidySet} object
 #' @export
@@ -293,9 +292,21 @@ setGeneric("remove_relation", function(object, elements, sets, ...)
 #' Given a TidySets remove elements and the related relations and if
 #' required also the sets
 #' @param object A TidySet object
-#' @param elements The elements of the sets.
+#' @param elements The elements to be removed
 #' @param ... Other arguments
 #' @return A \code{TidySet} object
 #' @export
 setGeneric("remove_element", function(object, elements, ...)
   standardGeneric("remove_element"))
+
+#' Remove sets
+#'
+#' Given a TidySets remove sets and the related relations and if
+#' required also the elements
+#' @param object A TidySet object
+#' @param sets The sets to be removed
+#' @param ... Other arguments
+#' @return A \code{TidySet} object
+#' @export
+setGeneric("remove_set", function(object, sets, ...)
+  standardGeneric("remove_set"))

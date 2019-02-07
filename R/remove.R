@@ -37,3 +37,19 @@ setMethod("remove_element",
             object
           }
 )
+
+
+#' @describeIn remove_set Removes everything related to a set
+#' @export
+setMethod("remove_set",
+          signature = signature(object = "TidySet",
+                                sets = "character"),
+          function(object, sets) {
+            object <- remove_sets(object, sets)
+            old_relation <- relations(object)
+            keep <- old_relation$sets %in% name_sets(object)
+            object@relations <- droplevels(old_relation[keep, , drop = FALSE])
+            validObject(object)
+            object
+          }
+)

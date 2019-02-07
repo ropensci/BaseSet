@@ -16,11 +16,9 @@ remove_relation(object, elements, sets, ...)
 
 \item{elements}{The elements of the sets.}
 
+\item{sets}{The name of the new set.}
+
 \item{...}{Other arguments}
-
-\item{setName}{The name of the new set.}
-
-\item{fuzzy}{The membership of each element with the set.}
 }
 \value{
 A \code{TidySet} object
