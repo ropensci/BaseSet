@@ -246,6 +246,10 @@ setGeneric("remove_column", function(object, slot, column_names)
 #' @param object A TidySet object
 #' @param set1,set2 The name of the sets to be used
 #' @param setName The name of the new set
+#' @param FUN A function to be applied when performing the union.
+#' The standard union is the "max" function, but you can provide any other
+#' function that given a numeric vector returns a single number.
+#' @param keep A logical value if you want to keep originals sets.
 #' @param ... Other arguments
 #' @return A \code{TidySet} object
 #' @export
@@ -256,7 +260,10 @@ setGeneric("union", function(object, set1, set2, setName, ...)
 #'
 #' Given a TidySets creates a new set with the elements on the both of them.
 #' @inheritParams union
-#' @param ... Other arguments
+#' @param FUN A function to be applied when performing the union.
+#' The standard intersection is the "min" function, but you can provide any other
+#' function that given a numeric vector returns a single number.
+#' @param keep A logical value if you want to keep originals sets.
 #' @return A \code{TidySet} object
 #' @export
 setGeneric("intersection", function(object, set1, set2, setName, ...)

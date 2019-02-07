@@ -6,7 +6,8 @@ test_that("intersection works", {
   a <- tidySet(relations)
   b <- intersection(a, "c", "b", "d") # Simple case without merging fuzzy (just renaming)
   expect_s4_class(b, "TidySet")
-  expect_equal(name_sets(b), c("a", "d"))
+  expect_equal(name_sets(b), "d")
+  expect_equal(nSets(b), 1L)
 
   # Simple case with duplicate relations
   relations <- data.frame(sets = c(rep("a", 5), "b", "c"),
@@ -14,9 +15,11 @@ test_that("intersection works", {
   a <- tidySet(relations)
   b <- intersection(a, "c", "b", "d")
   expect_s4_class(b, "TidySet")
+  expect_equal(nRelations(b), 1L)
+  expect_equal(nSets(b), 1L)
 })
 
-test_that("intersection works2", {
+test_that("intersection works with fuzzy", {
 
   relations <- data.frame(sets = c(rep("a", 5), "b", "c"),
                           elements = c(letters[seq_len(6)], letters[6]),
@@ -24,10 +27,15 @@ test_that("intersection works2", {
   a <- tidySet(relations)
   b <- intersection(a, "c", "b", "d") # Simple case without merging fuzzy (just renaming)
   expect_s4_class(b, "TidySet")
-  expect_equal(relations(b)$fuzzy[6], min(relations(a)[6:7, "fuzzy"]))
+  expect_equal(nRelations(b), 1L)
+  expect_equal(nSets(b), 1L)
+  expect_equal(relations(b)$fuzzy, min(relations(a)[6:7, "fuzzy"]))
+
 
   d <- intersection(a, "a", "c", "d")
   expect_s4_class(d, "TidySet")
+  expect_equal(nRelations(d), 6L)
+  expect_equal(nSets(d), 1L)
 })
 
 test_that("intersection keep", {

@@ -2,10 +2,6 @@
 NULL
 
 #' @describeIn union Applies the standard union
-#' @param FUN A function to be applied when performing the union.
-#' The standard union is the "max" function, but you can provide any other
-#' function that given a numeric vector returns a single number.
-#' @param keep A logical value if you want to keep originals sets.
 #' @export
 setMethod("union",
           signature = signature(object = "TidySet",
