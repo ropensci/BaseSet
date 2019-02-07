@@ -1,9 +1,9 @@
 #' @include AllGenerics.R
 NULL
 
-#' @describeIn remove_set Removes a set
+#' @describeIn remove_relation Removes a relation between elements and sets.
 #' @export
-setMethod("remove_set",
+setMethod("remove_relation",
           signature = signature(object = "TidySet",
                                 elements = "character",
                                 sets = "character"),
@@ -17,6 +17,22 @@ setMethod("remove_set",
 
             object <- remove_elements(object, removing_elements)
             object <- remove_sets(object, removing_sets)
+            validObject(object)
+            object
+          }
+)
+
+
+#' @describeIn remove_element Removes everything related to an element
+#' @export
+setMethod("remove_element",
+          signature = signature(object = "TidySet",
+                                elements = "character"),
+          function(object, elements) {
+            object <- remove_elements(object, elements)
+            old_relation <- relations(object)
+            keep <- old_relation$elements %in% name_elements(object)
+            object@relations <- droplevels(old_relation[keep, , drop = FALSE])
             validObject(object)
             object
           }

@@ -275,9 +275,9 @@ setGeneric("intersection", function(object, set1, set2, setName, ...)
 setGeneric("add_set", function(object, elements, setName, fuzzy, ...)
   standardGeneric("add_set"))
 
-#' Remove a set
+#' Remove a relation
 #'
-#' Given a TidySets remove a set
+#' Given a TidySets removes relations between elements and sets
 #' @param object A TidySet object
 #' @param elements The elements of the sets.
 #' @param setName The name of the new set.
@@ -285,5 +285,17 @@ setGeneric("add_set", function(object, elements, setName, fuzzy, ...)
 #' @param ... Other arguments
 #' @return A \code{TidySet} object
 #' @export
-setGeneric("remove_set", function(object, elements, sets, ...)
-  standardGeneric("remove_set"))
+setGeneric("remove_relation", function(object, elements, sets, ...)
+  standardGeneric("remove_relation"))
+
+#' Remove elements
+#'
+#' Given a TidySets remove elements and the related relations and if
+#' required also the sets
+#' @param object A TidySet object
+#' @param elements The elements of the sets.
+#' @param ... Other arguments
+#' @return A \code{TidySet} object
+#' @export
+setGeneric("remove_element", function(object, elements, ...)
+  standardGeneric("remove_element"))
