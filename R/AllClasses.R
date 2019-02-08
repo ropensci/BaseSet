@@ -18,11 +18,10 @@ setClass("TidySet",
                         relations = "data.frame")
 )
 
-
-setValidity("TidySet", function(object) {
+is.valid <- function(object) {
   errors <- c()
 
- # Check that slots are not empty
+  # Check that slots are not empty
   for (slot in slotNames(object)) {
     errors <- c(errors, check_empty(object, slot))
   }
@@ -97,7 +96,16 @@ setValidity("TidySet", function(object) {
   } else {
     errors
   }
-})
+}
+
+is_valid <- function(x) {
+  if (is.logical(is.valid(x))) {
+    TRUE
+  } else {
+    FALSE
+  }
+}
+setValidity("TidySet", is.valid)
 
 check_empty <- function(object, slot){
   df <- slot(object, slot)

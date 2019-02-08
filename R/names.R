@@ -6,7 +6,7 @@ NULL
 setMethod("name_sets",
           signature = signature(object = "TidySet"),
           function(object){
-            if (validObject(object)) {
+            if (is_valid(object)) {
               levels(sets(object)$sets)
             } else {
               as.character(relations(object)$sets)
@@ -19,7 +19,7 @@ setMethod("name_sets",
 setMethod("name_elements",
           signature = signature(object = "TidySet"),
           function(object){
-            if (validObject(object)) {
+            if (is_valid(object)) {
               levels(elements(object)$elements)
             } else {
               as.character(relations(object)$elements)
@@ -52,7 +52,7 @@ setMethod("name_elements<-",
 #' @export name_sets<-
 setMethod("name_sets<-",
           signature = signature(object = "TidySet", value = "character"),
-          function(object, value){
+          function(object, value) {
             old <- levels(object@sets$sets)
             value2 <- rep(value, length.out = length(name_sets(object)))
             levels(object@sets$sets) <- value2

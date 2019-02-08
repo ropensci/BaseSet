@@ -44,13 +44,17 @@ a <- tidySet(relations = relations)
 nSets(a)
 a
 ```
-
-```{r}
-b <- union(a, "A", "B", "C")
+Perform typical operations like union, intersection:
+```{r union-intersection}
+b <- union(a, "A", "B", "AuB")
 nSets(b)
 b
-d <- union(a, "A", "B", "C", keep = TRUE)
+d <- intersection(a, "A", "B", "D")
 nSets(d)
 d
+```
+And compute size of sets among other things:
+```{r set_size}
+set_size(a)
 ```
 

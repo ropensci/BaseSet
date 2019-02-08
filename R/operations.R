@@ -68,6 +68,7 @@ add_elements <- function(object, elements){
     df_elements[, column_names] <- NA
     object@elements <- rbind(object@elements, df_elements)
   }
+  rownames(object@elements) <- NULL
   object
 }
 
@@ -85,6 +86,7 @@ add_sets <- function(object, set) {
     df_sets[, column_names] <- NA
     object@sets <- rbind(object@sets, df_sets)
   }
+  rownames(object@sets) <- NULL
   object
 }
 
@@ -122,6 +124,7 @@ add_relations <- function(object, elements, sets, fuzzy) {
     df_relations[, column_names] <- NA
     object@relations <- rbind(object@relations, df_relations)
   }
+  rownames(object@relations) <- NULL
   object
 }
 
@@ -133,6 +136,7 @@ remove_elements <- function(object, elements) {
 
   keep_at_elements <- !object@elements$elements %in% elements
   new_elements <- object@elements[keep_at_elements, ,drop = FALSE]
+  rownames(new_elements) <- NULL
   object@elements <- droplevels(new_elements)
   object
 }
@@ -160,7 +164,7 @@ remove_relations <- function(object, elements, sets,
   old_relations <- elements_sets(object)
   remove_relation <- !old_relations %in% relations
   object@relations <- object@relations[remove_relation, , drop = FALSE]
-
+  rownames(object@relations) <- NULL
   object
 }
 
@@ -171,6 +175,7 @@ rm_relations_with_sets <- function(object, sets) {
   keep_at_relations <- !object@relations$set %in% sets
   new_relations <- object@relations[keep_at_relations, , drop = FALSE]
   object@relations <- droplevels(new_relations)
+  rownames(object@relations) <- NULL
   object
 }
 
@@ -181,6 +186,7 @@ rm_relations_with_elements <- function(object, elements) {
   keep_at_relations <- !object@relations$elements %in% elements
   new_relations <- object@relations[keep_at_relations, , drop = FALSE]
   object@relations <- droplevels(new_relations)
+  rownames(object@relations) <- NULL
   object
 }
 
@@ -211,4 +217,84 @@ add_elements_in_relations <- function(object) {
 add_sets_in_relations <- function(object) {
   sets <- setdiff(object@relations$sets, object@sets$sets)
   add_sets(object, sets)
+}
+
+#' Apply to fuzzy
+#'
+#' Simplify and returns unique results of the object
+#' @param object A TidySet object
+#' @param FUN A function to perform on the fuzzy numbers
+#' @return A modified TidySet object
+#' @noRd
+fapply <- function(object, FUN) {
+  # Handle the duplicate cases
+  basic <- elements_sets(object)
+  indices <- split(seq_along(basic), basic)
+  # Helper function probably useful for intersection too
+  iterate <- function(i, fuzzy, fun) {
+    fun(fuzzy[i])
+  }
+  # It could be possible to apply some other function to the relations
+  # that are the same
+  FUN <- match.fun(FUN)
+  fuzzy <- vapply(indices, iterate, fuzzy = object@relations$fuzzy,
+                  fun = FUN, numeric(1L))
+  relations2 <- unique(object@relations[, c("sets", "elements")])
+  relations2 <- cbind.data.frame(relations2, fuzzy = fuzzy)
+  object@relations <- relations2
+  object
+}
+
+rename_sets <- function(object, new){
+  if (length(new) != nrow(object@relations)) {
+    stop("New names must of same length as the number of sets",
+         call. = FALSE)
+  }
+  levels(object@sets$sets) <- new
+  object@sets <- unique(object@sets)
+  object
+}
+rename_element <- function(object, new){
+  if (length(new) != nrow(object@relations)) {
+    stop("New names must of same length as the number of sets",
+         call. = FALSE)
+  }
+  levels(object@elements$elements) <- new
+  object@elements <- unique(object@elements)
+  object
+}
+
+rename_set_in_relations <- function(object, new) {
+  if (length(new) != nrow(object@relations)) {
+    stop("New names must of same length as the number of relations",
+         call. = FALSE)
+  }
+  levels(object@relations$sets) <- new
+  object
+}
+
+rename_elements_in_relations <- function(object, new) {
+  if (length(new) != nrow(object@relations)) {
+    stop("New names must of same length as the number of relations",
+         call. = FALSE)
+  }
+  levels(object@relations$elements) <- new
+  object
+}
+
+
+merge_tidySets <- function(object1, object2) {
+  new_relations <- rbind(object1@relations, object2@relations)
+  new_sets <- rbind(object1@sets, object2@sets)
+  new_elements <- rbind(object1@elements, object2@elements)
+
+  object2@relations <- unique(new_relations)
+  object2@sets <- unique(new_sets)
+  object2@elements <- unique(new_elements)
+
+  rownames(object2@relations) <- NULL
+  rownames(object2@sets) <- NULL
+  rownames(object2@elements) <- NULL
+
+  object2
 }

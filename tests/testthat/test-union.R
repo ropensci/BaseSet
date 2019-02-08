@@ -6,7 +6,8 @@ test_that("union works", {
   a <- tidySet(relations)
   b <- union(a, "c", "b", "d") # Simple case without merging fuzzy (just renaming)
   expect_s4_class(b, "TidySet")
-  expect_equal(name_sets(b), c("a", "d"))
+  expect_equal(name_sets(b), "d")
+  expect_equal(name_elements(b), c("f", "g"))
 
   # Simple case with duplicate relations
   relations <- data.frame(sets = c(rep("a", 5), "b", "c"),
@@ -14,20 +15,25 @@ test_that("union works", {
   a <- tidySet(relations)
   b <- union(a, "c", "b", "d")
   expect_s4_class(b, "TidySet")
+  expect_equal(name_sets(b), "d")
+  expect_equal(name_elements(b), "f")
 })
 
-test_that("union works", {
-
+test_that("union works fuzzy", {
   relations <- data.frame(sets = c(rep("a", 5), "b", "c"),
                           elements = c(letters[seq_len(6)], letters[6]),
                           fuzzy = runif(7))
   a <- tidySet(relations)
   b <- union(a, "c", "b", "d") # Simple case without merging fuzzy (just renaming)
   expect_s4_class(b, "TidySet")
-  expect_equal(relations(b)$fuzzy[6], max(relations(a)[6:7, "fuzzy"]))
+  expect_equal(name_sets(b), "d")
+  expect_equal(name_elements(b), "f")
+  expect_equal(b@relations$fuzzy, max(a@relations$fuzzy[6:7]))
 
   d <- union(a, "a", "c", "d")
   expect_s4_class(d, "TidySet")
+  expect_equal(name_sets(d), "d")
+  expect_equal(name_elements(d), letters[1:6])
 })
 
 test_that("union several sets", {
@@ -54,4 +60,22 @@ test_that("union keep", {
   expect_s4_class(b, "TidySet")
   expect_length(name_sets(b), 5L)
   expect_equal(nSets(b), nSets(a) + 1)
+})
+
+
+test_that("union works fuzzy keep", {
+  relations <- data.frame(sets = c(rep("a", 5), "b", "c"),
+                          elements = c(letters[seq_len(6)], letters[6]),
+                          fuzzy = runif(7))
+  a <- tidySet(relations)
+  b <- union(a, "c", "b", "d", keep = TRUE) # Simple case without merging fuzzy (just renaming)
+  expect_s4_class(b, "TidySet")
+  expect_equal(nSets(b), nSets(a) + 1)
+  expect_equal(b@relations$fuzzy[8], max(a@relations$fuzzy[6:7]))
+
+  d <- union(a, "a", "c", "d", keep = TRUE)
+  expect_s4_class(d, "TidySet")
+  expect_equal(nSets(d), nSets(a) + 1 )
+  expect_equal(name_sets(d), name_sets(b))
+  expect_equal(name_elements(d), letters[1:6])
 })
