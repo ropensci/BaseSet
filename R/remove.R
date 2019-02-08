@@ -8,9 +8,11 @@ setMethod("remove_relation",
                                 elements = "character",
                                 sets = "character"),
           function(object, elements, sets) {
-            object <- remove_relations(object, elements, sets)
-            validObject(object)
-            object
+            new_object <- remove_relations(object, elements, sets)
+            new_object <- remove_sets(new_object, object %s-s% new_object)
+            new_object <- remove_elements(new_object, object %e-e% new_object)
+            validObject(new_object)
+            new_object
           }
 )
 
@@ -21,9 +23,11 @@ setMethod("remove_element",
           signature = signature(object = "TidySet",
                                 elements = "character"),
           function(object, elements) {
-            object <- remove_elements(object, elements)
-            validObject(object)
-            object
+            new_object <- remove_elements(object, elements)
+            new_object <- rm_relations_with_elements(new_object, elements)
+            new_object <- remove_sets(new_object, object %s-s% new_object)
+            validObject(new_object)
+            new_object
           }
 )
 
@@ -34,8 +38,10 @@ setMethod("remove_set",
           signature = signature(object = "TidySet",
                                 sets = "character"),
           function(object, sets) {
-            object <- remove_sets(object, sets)
-            validObject(object)
-            object
+            new_object <- rm_relations_with_sets(object, sets)
+            new_object <- remove_elements(new_object, object %e-e% new_object)
+            new_object <- remove_sets(new_object, sets)
+            validObject(new_object)
+            new_object
           }
 )
