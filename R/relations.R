@@ -33,5 +33,10 @@ setMethod("nRelations",
 setMethod("is.fuzzy",
           signature = signature(object = "TidySet"),
           function(object) {
-            "fuzzy" %in% colnames(slot(object, "relations"))
+            one <- sum(relations(object)$fuzzy == 1)
+            if (sum(one) == nRelations(object)) {
+              FALSE
+            } else {
+              TRUE
+            }
           })
