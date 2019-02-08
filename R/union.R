@@ -14,11 +14,10 @@ setMethod("union",
               stop("New names must be of the same length as the pairs of ",
                    "set to unite", call. = FALSE)
             }
-            # browser()
             new_object <- rename_set(object, sets, setName)
             if (!keep) {
               old_sets <- name_sets(object)
-              remove_sets <- old_sets[!old_sets %in% c(sets, setName)]
+              remove_sets <- old_sets[!old_sets %in% setName]
               new_object <- remove_sets(new_object, remove_sets)
               new_object <- rm_relations_with_sets(new_object, remove_sets)
               new_object <- remove_elements(new_object, object %e-e% new_object)

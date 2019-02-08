@@ -79,3 +79,12 @@ test_that("union works fuzzy keep", {
   expect_equal(name_sets(d), name_sets(b))
   expect_equal(name_elements(d), letters[1:6])
 })
+
+test_that("check coherence", {
+  relations <- data.frame(sets = c("A", "A","A","A","B", "C", "D"),
+             elements = c("a", "b", "c", "d", "e", "f", "g"))
+  a <- tidySet(relations = relations)
+  b <- union(a, "A", "B", "AuB")
+  d <- union(a, "A", "B", "AuB", keep = TRUE)
+  expect_equal(nSets(b) + 4, nSets(d))
+})
