@@ -1,44 +1,6 @@
 #' @include AllClasses.R AllGenerics.R
 NULL
 
-operation_helper <- function(object, set1, set2, setName, FUN, keep = FALSE) {
-
-  if (!is.logical(keep) || length(keep) > 1) {
-    stop("keep should be a logical value", call. = FALSE)
-  }
-
-  if (length(set1) != length(set2)) {
-    stop("Recycling set1 and set2 should be of the same length", call. = FALSE)
-  }
-
-  if (length(set1) != length(setName)) {
-    stop("setName must be of the same length as set1", call. = FALSE)
-  }
-  sets <- name_sets(object)
-
-  if (!keep) {
-    name_sets(object)[sets %in% c(set1, set2)] <- setName
-  } else {
-
-    # Append the new set
-    object <- add_sets(object, setName)
-
-    # Append the new relationships
-    s <- unique(c(set1, set2))
-    df <- object@relations[object@relations$sets %in% s, ]
-    column_names <- setdiff(colnames(df), c("sets", "elements", "fuzzy"))
-    df[, column_names] <- NA
-    for (set in seq_along(set1)) {
-      levels(df$sets)[levels(df$sets) %in% c(set1[set], set2[set])] <- setName[set]
-    }
-    object@relations <- rbind(object@relations, df)
-  }
-  object <- fapply(object, FUN)
-  validObject(object)
-  object
-}
-
-
 add_elements <- function(object, elements){
 
   original_elements <- name_elements(object)
@@ -240,7 +202,7 @@ rename_sets <- function(object, new){
   object@sets <- unique(object@sets)
   object
 }
-rename_element <- function(object, new){
+rename_element <- function(object, new) {
   if (length(new) != nrow(object@relations)) {
     stop("New names must of same length as the number of sets",
          call. = FALSE)
