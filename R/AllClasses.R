@@ -29,13 +29,13 @@ setValidity("TidySet", function(object) {
 
   # Check that the slots have the right columns
   errors <- c(errors, check_colnames(object, "elements", "elements"))
-  errors <- c(errors, check_colnames(object, "sets", "set"))
+  errors <- c(errors, check_colnames(object, "sets", "sets"))
   errors <- c(errors, check_colnames(object, "relations", "elements"))
   errors <- c(errors, check_colnames(object, "relations", "sets"))
   errors <- c(errors, check_colnames(object, "relations", "fuzzy"))
 
   # Check that the tables are related
-  if (!all(unique(object@relations$sets) %in% object@sets$set)) {
+  if (!all(unique(object@relations$sets) %in% object@sets$sets)) {
     errors <- c(errors, "All sets must be described on their table.")
   }
   if (!all(unique(object@relations$elements) %in% object@elements$elements)) {
@@ -48,7 +48,7 @@ setValidity("TidySet", function(object) {
   if (length(unique(elements)) != length(elements)) {
     errors <- c(errors, "Elements on the element slot must be unique")
   }
-  sets <- object@sets$set
+  sets <- object@sets$sets
   if (length(unique(sets)) != length(sets)) {
     errors <- c(errors, "Set on the sets slot must be unique")
   }

@@ -35,12 +35,12 @@ multiply_probabilities <- function(p, i) {
 combn_indices <- function(x, m) {
   stopifnot(length(m) == 1L, is.numeric(m))
   if (m < 0)
-    stop("m < 0", domain = NA)
+    stop("m < 0", domain = NA, call. = FALSE)
   if (is.numeric(x) && length(x) == 1L && x > 0 && trunc(x) == x)
     x <- seq_len(x)
   n <- base::length(x)
   if (n < m)
-    stop("n < m", domain = NA)
+    stop("n < m", domain = NA, call. = FALSE)
 
   m <- as.integer(m)
   e <- 0
@@ -121,7 +121,8 @@ setMethod("set_size",
           function(object, set = NULL) {
 
             if (!set %in% name_sets(object) && !is.null(set)) {
-              stop("Please introduce valid element names. See name_sets")
+              stop("Please introduce valid element names. See name_sets",
+                   call. = FALSE)
             }
             rel <- relations(object)
             if (is.null(set)) {
@@ -154,7 +155,8 @@ setMethod("element_size",
           function(object, element = NULL) {
 
             if (!element %in% name_elements(object) && !is.null(element)) {
-              stop("Please introduce valid element names. See element_names")
+              stop("Please introduce valid element names. See element_names",
+                   call. = FALSE)
             }
             out <- rowsum(rep(1, nRelations(object)),
                    relations(object)$elements)

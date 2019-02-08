@@ -11,7 +11,7 @@ NULL
 getGMT <- function (con, sep = "\t", ...)  {
   lines <- strsplit(readLines(con, ...), sep)
   if (any(sapply(lines, length) < 2)) {
-    stop("all records in the GMT file must have >= 2 fields")
+    stop("all records in the GMT file must have >= 2 fields", call. = FALSE)
   }
   dups <- new.env(parent = emptyenv())
   lines <- lapply(lines, function(elt, dups) {
@@ -22,7 +22,7 @@ getGMT <- function (con, sep = "\t", ...)  {
     elt
   }, dups)
   if (length(dups)) {
-    stop("The file contain duplicate ids for the same set")
+    stop("The file contain duplicate ids for the same set", call. = FALSE)
   }
 
   names(lines) <- vapply(lines, '[', i = 1, character(1L))

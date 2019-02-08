@@ -13,7 +13,7 @@ setMethod("show",
           function(object) {
             validObject(object)
             s <- merge(object@relations, object@sets,
-                       by.x = "sets", by.y = "set", sort = FALSE,
+                       by.x = "sets", by.y = "sets", sort = FALSE,
                        all.x = TRUE)
             o <- merge(s, object@elements,
                        by.x = "elements", by.y = "elements", sort = FALSE,

@@ -27,13 +27,13 @@ tidySet <- function(relations) {
 tidySet.data.frame <- function(relations) {
 
   if (ncol(relations) >= 2 && all(c("sets", "elements") %in% colnames(relations))) {
-    sets <- data.frame(set = unique(relations$sets),
+    sets <- data.frame(sets = unique(relations$sets),
                        stringsAsFactors = TRUE)
     elements <- data.frame(elements = unique(relations$elements),
                            stringsAsFactors = TRUE)
   } else {
     stop("Unable to create a TidySet object.\n",
-         "The data.frame is not in the right format")
+         "The data.frame is not in the right format", call. = FALSE)
   }
 
   if (!"fuzzy" %in% colnames(relations)) {
@@ -54,14 +54,14 @@ tidySet.data.frame <- function(relations) {
 #' a <- tidySet(x) # An error for mixing letters and numbers
 #' }
 tidySet.list <- function(relations) {
-  nSets <- length(relations)
   sets <- rep(names(relations), lengths(relations))
 
   char <- vapply(relations, is.character, logical(1L))
   num <- vapply(relations, is.numeric, logical(1L))
 
   if (!all(char) && !all(num)) {
-    stop("The list should have either characters or named numeric vectors")
+    stop("The list should have either characters or named numeric vectors",
+         call. = FALSE)
   }
   if (all(char)) {
     elements <- unlist(relations, use.names = FALSE)
@@ -70,7 +70,7 @@ tidySet.list <- function(relations) {
     elements <- unlist(lapply(relations, names), use.names = FALSE)
 
     if (is.null(elements)) {
-      stop("The numeric vectors should be named")
+      stop("The numeric vectors should be named", call. = FALSE)
     }
     fuzzy <- unlist(relations, use.names = FALSE)
   }
@@ -90,13 +90,13 @@ tidySet.list <- function(relations) {
 tidySet.matrix <- function(relations) {
 
   if (anyDuplicated(colnames(relations))) {
-    stop("There are duplicated colnames.")
+    stop("There are duplicated colnames.", call. = FALSE)
   }
   if (anyDuplicated(rownames(relations))) {
-    stop("There are duplicated rownames.")
+    stop("There are duplicated rownames.", call. = FALSE)
   }
   if (!is.numeric(relations)) {
-    stop("The incidence should be a numeric matrix.")
+    stop("The incidence should be a numeric matrix.", call. = FALSE)
   }
   # Preparation
   incid <- relations

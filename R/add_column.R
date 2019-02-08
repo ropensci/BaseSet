@@ -11,7 +11,8 @@ setMethod("add_column",
             original <- slot(object, slot)
 
             if (nrow(columns) != nrow(original)) {
-              stop("Please columns should be of the same size as the slot")
+              stop("Please columns should be of the same size as the slot",
+                   call. = FALSE)
             }
             out <- cbind(original, columns)
             slot(object, slot) <- out

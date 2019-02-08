@@ -7,7 +7,7 @@ setMethod("name_sets",
           signature = signature(object = "TidySet"),
           function(object){
             if (validObject(object)) {
-              levels(sets(object)$set)
+              levels(sets(object)$sets)
             } else {
               as.character(relations(object)$sets)
             }
@@ -37,7 +37,8 @@ setMethod("name_elements<-",
             levels(object@elements$elements) <- value2
             object@elements <- unique(object@elements)
             if (anyDuplicated(object@elements$element)) {
-              stop("Duplicated elements but with different information")
+              stop("Duplicated elements but with different information",
+                   call. = FALSE)
             }
 
             old_relations <- levels(object@relations$elements)
@@ -52,12 +53,13 @@ setMethod("name_elements<-",
 setMethod("name_sets<-",
           signature = signature(object = "TidySet", value = "character"),
           function(object, value){
-            old <- levels(object@sets$set)
+            old <- levels(object@sets$sets)
             value2 <- rep(value, length.out = length(name_sets(object)))
-            levels(object@sets$set) <- value2
+            levels(object@sets$sets) <- value2
             object@sets <- unique(object@sets)
-            if (anyDuplicated(object@sets$set)) {
-              stop("Duplicated sets but with different information")
+            if (anyDuplicated(object@sets$sets)) {
+              stop("Duplicated sets but with different information",
+                   call. = FALSE)
             }
             old_relations <- levels(object@relations$sets)
             replace <- match(old_relations, old)

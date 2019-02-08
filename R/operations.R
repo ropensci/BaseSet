@@ -4,15 +4,15 @@ NULL
 operation_helper <- function(object, set1, set2, setName, FUN, keep = FALSE) {
 
   if (!is.logical(keep) || length(keep) > 1) {
-    stop("keep should be a logical value")
+    stop("keep should be a logical value", call. = FALSE)
   }
 
   if (length(set1) != length(set2)) {
-    stop("Recycling set1 and set2 should be of the same length")
+    stop("Recycling set1 and set2 should be of the same length", call. = FALSE)
   }
 
   if (length(set1) != length(setName)) {
-    stop("setName must be of the same length as set1")
+    stop("setName must be of the same length as set1", call. = FALSE)
   }
   sets <- name_sets(object)
 
@@ -77,11 +77,11 @@ add_sets <- function(object, set) {
   final_sets <- unique(c(original_sets, set))
 
   if (length(final_sets) != length(original_sets)) {
-    levels(object@sets$set) <- final_sets
+    levels(object@sets$sets) <- final_sets
 
     new_sets <- setdiff(set, original_sets)
-    df_sets <- data.frame(set = new_sets)
-    column_names <- setdiff(colnames(object@sets), "set")
+    df_sets <- data.frame(sets = new_sets)
+    column_names <- setdiff(colnames(object@sets), "sets")
     df_sets[, column_names] <- NA
     object@sets <- rbind(object@sets, df_sets)
   }
@@ -94,7 +94,7 @@ add_relations <- function(object, elements, sets, fuzzy) {
   if (length(sets) != nElements && length(sets) == 1) {
     sets <- rep(sets, nElements)
   } else if (length(sets) != nElements && length(sets) > 1) {
-    stop("Recycling sets is not allowed")
+    stop("Recycling sets is not allowed", call. = FALSE)
   }
 
   original_relations <- elements_sets(object)
@@ -103,11 +103,11 @@ add_relations <- function(object, elements, sets, fuzzy) {
   new_relations <- setdiff(relations, original_relations)
 
   if (length(fuzzy) > length(new_relations)) {
-    stop("Redefining the same relations with a different fuzzy number")
+    stop("Redefining the same relations with a different fuzzy number", call. = FALSE)
   } else if (length(fuzzy) < length(new_relations) && length(fuzzy) == 1) {
     fuzzy <- rep(fuzzy, length(new_relations))
   } else {
-    stop("Recyling fuzzy is not allowed")
+    stop("Recyling fuzzy is not allowed", call. = FALSE)
   }
 
   if (length(final_relations) != length(original_relations)) {
@@ -143,7 +143,7 @@ remove_sets <- function(object, sets) {
     return(object)
   }
 
-  keep_at_set <- !object@sets$set %in% sets
+  keep_at_set <- !object@sets$sets %in% sets
   new_set <- object@sets[keep_at_set, , drop = FALSE]
   object@sets <- droplevels(new_set)
   object
@@ -152,7 +152,7 @@ remove_sets <- function(object, sets) {
 remove_relations <- function(object, elements, sets,
                              relations = paste(elements, sets)) {
   if (length(sets) != length(elements)) {
-    stop("sets and elements should be of the same length")
+    stop("sets and elements should be of the same length", call. = FALSE)
   }
   if (length(sets) == 0) {
     return(object)
@@ -209,6 +209,6 @@ add_elements_in_relations <- function(object) {
 }
 
 add_sets_in_relations <- function(object) {
-  sets <- setdiff(object@relations$sets, object@sets$set)
+  sets <- setdiff(object@relations$sets, object@sets$sets)
   add_sets(object, sets)
 }

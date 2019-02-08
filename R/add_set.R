@@ -10,10 +10,10 @@ setMethod("add_set",
                                 fuzzy = "numeric"),
           function(object, elements, setName, fuzzy = 1) {
             if (length(setName) != 1) {
-              stop("The new set should have one name")
+              stop("The new set should have one name", call. = FALSE)
             }
             if (any(fuzzy < 0) || any(fuzzy > 1)) {
-              stop("fuzzy should be numeric between 0 and 1")
+              stop("fuzzy should be numeric between 0 and 1", call. = FALSE)
             }
             object <- add_sets(object, setName)
             object <- add_elements(object, elements)
@@ -34,7 +34,7 @@ setMethod("add_set",
                                 fuzzy = "missing"),
           function(object, elements, setName) {
             if (length(setName) != 1) {
-              stop("The new set should have one name")
+              stop("The new set should have one name", call. = FALSE)
             }
 
             object <- add_sets(object, setName)
