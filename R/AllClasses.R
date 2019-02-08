@@ -22,8 +22,13 @@ is.valid <- function(object) {
   errors <- c()
 
   # Check that slots are not empty
-  for (slot in slotNames(object)) {
-    errors <- c(errors, check_empty(object, slot))
+  empty <- vapply(slotNames(object), function(x){
+    nrow(slot(object, x)) == 0
+  }, logical(1L))
+
+  if (all(empty)) {
+    errors <- c(errors,
+                "A TidySet object must have at an element, a set or a relation")
   }
 
   # Check that the slots have the right columns
@@ -79,7 +84,8 @@ is.valid <- function(object) {
   colnames_sets <- colnames(object@sets)
   if (length(intersect(colnames_elements, colnames_sets)) != 0) {
     errors <- c(errors,
-                "Sets and elements shouldn't share a column name: Use relations")
+                "Sets and elements can't share a column name.",
+                "You might want to add a column to the relations instead")
   }
 
   # Check that relations are unique

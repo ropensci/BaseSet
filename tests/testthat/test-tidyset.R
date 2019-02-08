@@ -7,7 +7,7 @@ test_that("tidySet works", {
   a <- tidySet(relations = relations)
   expect_s4_class(a, "TidySet")
 
-  expect_error(tidySet(relations[0, ]), "should not be empty")
+  expect_error(tidySet(relations[0, ]), "must have")
 
   colnames(relations) <- c("a", "b")
   expect_error(tidySet(relations), "Unable to create a TidySet")
