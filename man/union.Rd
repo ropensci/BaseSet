@@ -37,3 +37,10 @@ Given a TidySets merges two sets into the new one.
 \item \code{object = TidySet,set1 = character,set2 = character,setName = character}: Applies the standard union
 }}
 
+\examples{
+relations <- data.frame(sets = c(rep("a", 5), "b"),
+                        elements = letters[seq_len(6)],
+                        fuzzy = runif(6))
+a <- tidySet(relations)
+union(a, "a", "b", "C")
+}

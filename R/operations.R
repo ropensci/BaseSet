@@ -53,7 +53,7 @@ add_relations <- function(object, elements, sets, fuzzy) {
 
   if (length(fuzzy) > length(new_relations)) {
     stop("Redefining the same relations with a different fuzzy number", call. = FALSE)
-  } else if (length(fuzzy) < length(new_relations) && length(fuzzy) == 1) {
+  } else if (length(fuzzy) <= length(new_relations) && length(fuzzy) == 1) {
     fuzzy <- rep(fuzzy, length(new_relations))
   } else {
     stop("Recyling fuzzy is not allowed", call. = FALSE)

@@ -39,3 +39,10 @@ Given a TidySets creates a new set with the elements on the both of them.
 \item \code{object = TidySet,set1 = character,set2 = character,setName = character}: Applies the standard intersection
 }}
 
+\examples{
+relations <- data.frame(sets = c(rep("a", 5), "b"),
+                        elements = c("a", "b", "c", "d", "f", "f"),
+                        fuzzy = runif(6))
+a <- tidySet(relations)
+intersection(a, "a", "b", "C")
+}

@@ -28,3 +28,10 @@ Return the complement for a set
 \item \code{object = TidySet,sets = character}: Complement of the sets.
 }}
 
+\examples{
+relations <- data.frame(sets = c("a", "a", "b", "b", "c", "c"),
+                        elements = letters[seq_len(6)],
+                        fuzzy = runif(6))
+a <- tidySet(relations)
+complement_set(a, "a")
+}

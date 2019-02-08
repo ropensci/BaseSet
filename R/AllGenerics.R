@@ -258,6 +258,12 @@ setGeneric("remove_column", function(object, slot, column_names)
 #' @param ... Other arguments.
 #' @return A \code{TidySet} object.
 #' @export
+#' @examples
+#' relations <- data.frame(sets = c(rep("a", 5), "b"),
+#'                         elements = letters[seq_len(6)],
+#'                         fuzzy = runif(6))
+#' a <- tidySet(relations)
+#' union(a, "a", "b", "C")
 setGeneric("union", function(object, set1, set2, setName, ...)
   standardGeneric("union"))
 
@@ -271,6 +277,12 @@ setGeneric("union", function(object, set1, set2, setName, ...)
 #' @param keep A logical value if you want to keep originals sets.
 #' @return A \code{TidySet} object.
 #' @export
+#' @examples
+#' relations <- data.frame(sets = c(rep("a", 5), "b"),
+#'                         elements = c("a", "b", "c", "d", "f", "f"),
+#'                         fuzzy = runif(6))
+#' a <- tidySet(relations)
+#' intersection(a, "a", "b", "C")
 setGeneric("intersection", function(object, set1, set2, setName, ...)
   standardGeneric("intersection"))
 
@@ -284,6 +296,12 @@ setGeneric("intersection", function(object, set1, set2, setName, ...)
 #' @param ... Other arguments.
 #' @return A \code{TidySet} object.
 #' @export
+#' @examples
+#' relations <- data.frame(sets = c(rep("a", 5), "b"),
+#'                         elements = letters[seq_len(6)],
+#'                         fuzzy = runif(6))
+#' a <- tidySet(relations)
+#' add_set(a, "a", "C")
 setGeneric("add_set", function(object, elements, setName, fuzzy, ...)
   standardGeneric("add_set"))
 
@@ -296,6 +314,12 @@ setGeneric("add_set", function(object, elements, setName, fuzzy, ...)
 #' @param ... Other arguments.
 #' @return A \code{TidySet} object.
 #' @export
+#' @examples
+#' relations <- data.frame(sets = c(rep("a", 5), "b"),
+#'                         elements = letters[seq_len(6)],
+#'                         fuzzy = runif(6))
+#' a <- tidySet(relations)
+#' remove_relation(a, "a", "a")
 setGeneric("remove_relation", function(object, elements, sets, ...)
   standardGeneric("remove_relation"))
 
@@ -308,6 +332,12 @@ setGeneric("remove_relation", function(object, elements, sets, ...)
 #' @param ... Other arguments.
 #' @return A \code{TidySet} object.
 #' @export
+#' @examples
+#' relations <- data.frame(sets = c(rep("a", 5), "b"),
+#'                         elements = letters[seq_len(6)],
+#'                         fuzzy = runif(6))
+#' a <- tidySet(relations)
+#' remove_element(a, "c")
 setGeneric("remove_element", function(object, elements, ...)
   standardGeneric("remove_element"))
 
@@ -320,6 +350,12 @@ setGeneric("remove_element", function(object, elements, ...)
 #' @param ... Other arguments.
 #' @return A \code{TidySet} object.
 #' @export
+#' @examples
+#' relations <- data.frame(sets = c("a", "a", "b", "b", "c", "c"),
+#'                         elements = letters[seq_len(6)],
+#'                         fuzzy = runif(6))
+#' a <- tidySet(relations)
+#' remove_set(a, "b")
 setGeneric("remove_set", function(object, sets, ...)
   standardGeneric("remove_set"))
 
@@ -331,5 +367,11 @@ setGeneric("remove_set", function(object, sets, ...)
 #' @param ... Other arguments.
 #' @return A \code{TidySet} object.
 #' @export
+#' @examples
+#' relations <- data.frame(sets = c("a", "a", "b", "b", "c", "c"),
+#'                         elements = letters[seq_len(6)],
+#'                         fuzzy = runif(6))
+#' a <- tidySet(relations)
+#' complement_set(a, "a")
 setGeneric("complement_set", function(object, sets, ...)
   standardGeneric("complement_set"))

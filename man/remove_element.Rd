@@ -29,3 +29,10 @@ required also the sets.
 \item \code{object = TidySet,elements = character}: Removes everything related to an element
 }}
 
+\examples{
+relations <- data.frame(sets = c(rep("a", 5), "b"),
+                        elements = letters[seq_len(6)],
+                        fuzzy = runif(6))
+a <- tidySet(relations)
+remove_element(a, "c")
+}

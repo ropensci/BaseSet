@@ -39,3 +39,10 @@ Given a TidySets adds a new sets
 \item \code{object = TidySet,elements = character,setName = character,fuzzy = missing}: Adds a set
 }}
 
+\examples{
+relations <- data.frame(sets = c(rep("a", 5), "b"),
+                        elements = letters[seq_len(6)],
+                        fuzzy = runif(6))
+a <- tidySet(relations)
+add_set(a, "a", "C")
+}
