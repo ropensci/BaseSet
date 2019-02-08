@@ -9,4 +9,5 @@ test_that("add_column works", {
   df <- data.frame(well = c("GOOD", "BAD", "WORSE", "UGLY", "FOE", "HEY"))
   b <- add_column(a, "relations", df)
   expect_true(ncol(relations(a)) < ncol(relations(b)))
+  expect_error(add_column(a, "relations", df[1:5, , drop = FALSE]))
 })
