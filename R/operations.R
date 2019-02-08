@@ -33,22 +33,7 @@ operation_helper <- function(object, set1, set2, setName, FUN, keep = FALSE) {
     }
     object@relations <- rbind(object@relations, df)
   }
-
-  # Handle the duplicate cases
-  basic <- elements_sets(object)
-  indices <- split(seq_along(basic), basic)
-  # Helper function probably useful for intersection too
-  iterate <- function(i, fuzzy, fun) {
-    fun(fuzzy[i])
-  }
-  # It could be possible to apply some other function to the relations
-  # that are the same
-  FUN <- match.fun(FUN)
-  fuzzy <- vapply(indices, iterate, fuzzy = object@relations$fuzzy,
-                  fun = FUN, numeric(1L))
-  relations2 <- unique(object@relations[, c("sets", "elements")])
-  relations2 <- cbind.data.frame(relations2, fuzzy = fuzzy)
-  object@relations <- relations2
+  object <- fapply(object, FUN)
   validObject(object)
   object
 }
@@ -228,6 +213,7 @@ add_sets_in_relations <- function(object) {
 #' @noRd
 fapply <- function(object, FUN) {
   # Handle the duplicate cases
+  relations_original <- object@relations
   basic <- elements_sets(object)
   indices <- split(seq_along(basic), basic)
   # Helper function probably useful for intersection too
@@ -237,9 +223,9 @@ fapply <- function(object, FUN) {
   # It could be possible to apply some other function to the relations
   # that are the same
   FUN <- match.fun(FUN)
-  fuzzy <- vapply(indices, iterate, fuzzy = object@relations$fuzzy,
+  fuzzy <- vapply(indices, iterate, fuzzy = relations_original$fuzzy,
                   fun = FUN, numeric(1L))
-  relations2 <- unique(object@relations[, c("sets", "elements")])
+  relations2 <- unique(relations_original[, c("sets", "elements")])
   relations2 <- cbind.data.frame(relations2, fuzzy = fuzzy)
   object@relations <- relations2
   object
