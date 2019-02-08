@@ -11,6 +11,7 @@ setMethod("rename_set",
             if (!any(membership)) {
               stop("All sets should be found on the TidySet", call. = FALSE)
             }
+            new <- rep(new, length.out = sum(membership))
             name_sets(object)[membership] <- new
             validObject(object)
             object
@@ -26,6 +27,7 @@ setMethod("rename_elements",
             if (!any(membership)) {
               stop("All elements should be found on the TidySet", call. = FALSE)
             }
+            new <- rep(new, length.out = sum(membership))
             name_elements(object)[membership] <- new
             validObject(object)
             object
