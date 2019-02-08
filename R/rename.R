@@ -9,7 +9,7 @@ setMethod("rename_set",
           function(object, old, new) {
             membership <- name_sets(object) %in% old
             if (!any(membership)) {
-              stop("All sets should be found on the TidySet", call. = FALSE)
+              stop("All sets must be found on the TidySet", call. = FALSE)
             }
             new <- rep(new, length.out = sum(membership))
             name_sets(object)[membership] <- new
@@ -25,7 +25,7 @@ setMethod("rename_elements",
           function(object, old, new) {
             membership <- name_elements(object) %in% old
             if (!any(membership)) {
-              stop("All elements should be found on the TidySet", call. = FALSE)
+              stop("All elements must be found on the TidySet", call. = FALSE)
             }
             new <- rep(new, length.out = sum(membership))
             name_elements(object)[membership] <- new

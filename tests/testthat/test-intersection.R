@@ -55,6 +55,8 @@ test_that("intersection keep", {
   expect_equal(nElements(b), 6L)
   expect_equal(nRelations(b), 8L)
 
+  expect_error(intersection(a, c("a", "c"), c("c", "b"), c("e"), keep = TRUE))
+
   d <- intersection(a, c("a", "c"), c("c", "b"), c("d", "e"), keep = TRUE)
   expect_s4_class(d, "TidySet")
   expect_equal(nSets(d), 5L)

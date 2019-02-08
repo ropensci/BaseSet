@@ -193,44 +193,6 @@ fapply <- function(object, FUN) {
   object
 }
 
-rename_sets <- function(object, new){
-  if (length(new) != nrow(object@relations)) {
-    stop("New names must of same length as the number of sets",
-         call. = FALSE)
-  }
-  levels(object@sets$sets) <- new
-  object@sets <- unique(object@sets)
-  object
-}
-rename_element <- function(object, new) {
-  if (length(new) != nrow(object@relations)) {
-    stop("New names must of same length as the number of sets",
-         call. = FALSE)
-  }
-  levels(object@elements$elements) <- new
-  object@elements <- unique(object@elements)
-  object
-}
-
-rename_set_in_relations <- function(object, new) {
-  if (length(new) != nrow(object@relations)) {
-    stop("New names must of same length as the number of relations",
-         call. = FALSE)
-  }
-  levels(object@relations$sets) <- new
-  object
-}
-
-rename_elements_in_relations <- function(object, new) {
-  if (length(new) != nrow(object@relations)) {
-    stop("New names must of same length as the number of relations",
-         call. = FALSE)
-  }
-  levels(object@relations$elements) <- new
-  object
-}
-
-
 merge_tidySets <- function(object1, object2) {
   new_relations <- rbind(object1@relations, object2@relations)
   new_sets <- rbind(object1@sets, object2@sets)

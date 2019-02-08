@@ -5,6 +5,7 @@ test_that("rename_elements works", {
   a <- tidySet(x)
   expect_warning(b <- rename_elements(a, "a", "gh"), NA)
   expect_true(any(grepl("gh", name_elements(b))))
+  expect_error(rename_elements(a, "z"), "must be found")
 })
 
 test_that("rename_set works", {
@@ -12,4 +13,5 @@ test_that("rename_set works", {
   a <- tidySet(x)
   b <- rename_set(a, "a", "gh")
   expect_true(any(grepl("gh", name_sets(b))))
+  expect_error(rename_set(a, "z"), "must be found")
 })

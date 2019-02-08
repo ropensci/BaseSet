@@ -24,7 +24,7 @@ test_that("tidySet works", {
   expect_error(tidySet(m), "duplicate")
 })
 
-test_that("tidySet works", {
+test_that("tidySet fails", {
   a <- new("TidySet")
   expect_s4_class(a, "TidySet")
   expect_error(validObject(a))

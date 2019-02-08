@@ -104,6 +104,8 @@ is.valid <- function(object) {
   }
 }
 
+setValidity("TidySet", is.valid)
+
 is_valid <- function(x) {
   if (is.logical(is.valid(x))) {
     TRUE
@@ -111,14 +113,7 @@ is_valid <- function(x) {
     FALSE
   }
 }
-setValidity("TidySet", is.valid)
 
-check_empty <- function(object, slot){
-  df <- slot(object, slot)
-  if (nrow(df) == 0) {
-    paste0(slot, " should not be empty.")
-  }
-}
 
 check_colnames <- function(object, slot, colname) {
   if (length(colnames(slot(object, slot))) == 0) {
