@@ -87,8 +87,8 @@ fuzzy_set <- tidySet(relations)
 It is possible to extract the gene sets as a `list`, for use with functions such as `lapply`.
 
 ```{r}
-(list_set <- as(tidy_set, "list"))
-(list_set <- as(fuzzy_set, "list"))
+(list_set <- as.list(tidy_set))
+(list_set <- as.list(fuzzy_set))
 ```
 
 It is also possible to visualize membership between gene and gene sets as a matrix.
@@ -105,15 +105,15 @@ Notably, `incidence` return a `numeric` matrix of membership:
 
 Conversely, it is also possible to make objects from incidence matrices.
 
-Notably, `BaseSets` are suitable for `logical` matrices indicating binary membership:
+Notably, `BaseSets` are suitable for `numeric` matrices indicating membership:
 
 ```{r}
 tidySet(incidence_matrix)
 ```
 
-
+Or can also be created from lists:
 ```{r}
-tidySet(list_set)
+tidySet(list("A" = letters[1:4], "B" = letters[7:10]))
 ```
 
 # Additional information
@@ -157,13 +157,23 @@ To work with sets several methods are provided. All methods work with fuzzy and 
 
 By default it provides the standard union, but you can provide a function.
 ```{r}
-(fuzzy_set2 <- union(fuzzy_set, "C", "B", "D"))
-(fuzzy_set3 <- union(fuzzy_set, "C", "B", "D", FUN = "mean"))
+union(fuzzy_set, "C", "B", "D")
+union(fuzzy_set, "C", "B", "D", FUN = "mean")
 ```
 
 ## Intersection
 
+
+```{r}
+intersection(fuzzy_set, "A", "B", "D", keep = TRUE)
+```
+
 ## Complement
+
+We can look for the complement of one or several sets:
+```{r}
+complement_set(fuzzy_set, c("A", "B"))
+```
 
 # Session info {.unnumbered}
 
