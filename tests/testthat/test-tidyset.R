@@ -1,6 +1,6 @@
 context("test-tidyset")
 
-test_that("tidySet works", {
+test_that("tidySet data.frame", {
   relations <- data.frame(sets = c(rep("a", 5), "b"),
                           elements = letters[seq_len(6)],
                           fuzzy = runif(6))
@@ -12,6 +12,9 @@ test_that("tidySet works", {
   colnames(relations) <- c("a", "b")
   expect_error(tidySet(relations), "Unable to create a TidySet")
 
+})
+
+test_that("tidySet matrix", {
 
   m <- matrix(runif(6), ncol = 2, nrow = 3)
   colnames(m) <- LETTERS[1:2]
@@ -22,6 +25,17 @@ test_that("tidySet works", {
   expect_error(tidySet(m2), "duplicate")
   rownames(m) <- c("a", "a", "b")
   expect_error(tidySet(m), "duplicate")
+})
+
+test_that("tidySet list", {
+
+  relations <- list("A" = letters[1:5],
+                    "B" = letters[1:7])
+  expect_s4_class(tidySet(relations), "TidySet")
+
+  relations <- list("A" = letters[1:5],
+                    "B" = c(letters[1:7], "a"))
+  expect_s4_class(tidySet(relations), "TidySet")
 })
 
 test_that("tidySet fails", {

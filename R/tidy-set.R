@@ -54,7 +54,6 @@ tidySet.data.frame <- function(relations) {
 #' a <- tidySet(x) # An error for mixing letters and numbers
 #' }
 tidySet.list <- function(relations) {
-  sets <- rep(names(relations), lengths(relations))
 
   char <- vapply(relations, is.character, logical(1L))
   num <- vapply(relations, is.numeric, logical(1L))
@@ -64,6 +63,7 @@ tidySet.list <- function(relations) {
          call. = FALSE)
   }
   if (all(char)) {
+    relations <- lapply(relations, unique)
     elements <- unlist(relations, use.names = FALSE)
     fuzzy <- rep(1, length(elements))
   } else if (all(num)) {
@@ -74,7 +74,7 @@ tidySet.list <- function(relations) {
     }
     fuzzy <- unlist(relations, use.names = FALSE)
   }
-
+  sets <- rep(names(relations), lengths(relations))
   relations <- data.frame(elements, sets, fuzzy,
                           stringsAsFactors = TRUE)
   tidySet.data.frame(relations = relations)
