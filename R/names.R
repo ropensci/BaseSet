@@ -6,7 +6,11 @@ NULL
 setMethod("name_sets",
           signature = signature(object = "TidySet"),
           function(object){
-            levels(sets(object)$set)
+            if (validObject(object)) {
+              levels(sets(object)$set)
+            } else {
+              as.character(relations(object)$sets)
+            }
           }
 )
 
@@ -15,7 +19,11 @@ setMethod("name_sets",
 setMethod("name_elements",
           signature = signature(object = "TidySet"),
           function(object){
-            levels(elements(object)$elements)
+            if (validObject(object)) {
+              levels(elements(object)$elements)
+            } else {
+              as.character(relations(object)$elements)
+            }
           }
 )
 
