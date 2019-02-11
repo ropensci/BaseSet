@@ -16,7 +16,9 @@ BugReports: https://github.com/llrs/BaseSet/issues
 Depends: 
     R (>= 3.5.0)
 Imports: 
-    methods
+    methods,
+    dplyr (>= 0.7.8),
+    magrittr
 Suggests: 
     BiocStyle,
     covr,
@@ -40,6 +42,7 @@ Collate:
     'basesets-package.R'
     'complement.R'
     'elements.R'
+    'filter.R'
     'incidence.R'
     'operations.R'
     'intersection.R'
@@ -54,3 +57,4 @@ Collate:
     'set.R'
     'tidy-set.R'
     'union.R'
+    'utils-pipe.R'

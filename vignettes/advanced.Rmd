@@ -1,0 +1,48 @@
+---
+title: "Advanced examples"
+abstract: >
+  This vignette assumes you are familiar with set operations from the basic vignette.
+date: "`r BiocStyle::doc_date()`"
+package: "`r BiocStyle::pkg_ver('BaseSet')`"
+output:
+  BiocStyle::html_document:
+    fig_caption: true
+    code_folding: show
+    self_contained: yes
+    toc_float:
+      collapsed: true
+      toc_depth: 3
+      
+author:
+- name: Lluís Revilla
+  affiliation: 
+    - August Pi i Sunyer Biomedical Research Institute (IDIBAPS); Liver Unit, Hospital Clinic
+  email: lluis.revilla@gmail.com
+vignette: >
+  %\VignetteIndexEntry{Advanced examples}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+To show compatibility with tidy workflows we will use magrittr pipe operator
+```{r setup}
+library("BaseSet")
+```
+
+```{r}
+relations <- data.frame(sets = c(rep("A", 5), "B"),
+                        elements = letters[seq_len(6)],
+                        fuzzy = runif(6))
+a <- tidySet(relations)
+a %>% 
+  union("A", "B", "C", keep = TRUE) %>% 
+  intersection("B", "C", "D", keep = TRUE) %>%
+  set_size()
+```
+
