@@ -33,7 +33,7 @@ relations <- data.frame(sets = c("a", "a", "b", "b", "c", "c"),
                         elements = letters[seq_len(6)],
                         fuzzy = runif(6))
 a <- tidySet(relations)
-complement_set(a, "a")
+complement_element(a, "a")
 }
 \seealso{
 Other complements: \code{\link{complement_set}}
