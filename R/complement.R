@@ -13,3 +13,15 @@ setMethod("complement_set",
             remove_set(object, remove_sets)
           }
 )
+
+#' @describeIn complement_element Complement of the sets.
+#' @export
+setMethod("complement_element",
+          signature = signature(object = "TidySet",
+                                elements = "character"),
+          function(object, elements) {
+            all_elements <- name_elements(object)
+            remove_elements <- all_elements[all_elements %in% elements]
+            remove_element(object, remove_elements)
+          }
+)

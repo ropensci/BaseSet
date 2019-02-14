@@ -366,6 +366,7 @@ setGeneric("remove_set", function(object, sets, ...)
 #' @param sets The set to look for the compplement.
 #' @param ... Other arguments.
 #' @return A \code{TidySet} object.
+#' @family complements
 #' @export
 #' @examples
 #' relations <- data.frame(sets = c("a", "a", "b", "b", "c", "c"),
@@ -375,3 +376,21 @@ setGeneric("remove_set", function(object, sets, ...)
 #' complement_set(a, "a")
 setGeneric("complement_set", function(object, sets, ...)
   standardGeneric("complement_set"))
+
+#' Complement of elements
+#'
+#' Return the objects without the elements listed
+#' @param object A TidySet object.
+#' @param elements The set to look for the compplement.
+#' @param ... Other arguments.
+#' @return A \code{TidySet} object.
+#' @family complements
+#' @export
+#' @examples
+#' relations <- data.frame(sets = c("a", "a", "b", "b", "c", "c"),
+#'                         elements = letters[seq_len(6)],
+#'                         fuzzy = runif(6))
+#' a <- tidySet(relations)
+#' complement_element(a, "a")
+setGeneric("complement_element", function(object, elements, ...)
+  standardGeneric("complement_element"))
