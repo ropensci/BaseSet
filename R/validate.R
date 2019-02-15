@@ -21,7 +21,7 @@ validate_elements <- function(object, relations_df = NULL) {
   rel_elements <- levels(relations_df$elements)
   ele_elements <- name_sets(object)
 
-  if (all.equal(sort(ele_elements), sort(unique(rel_elements)))) {
+  if (identical(sort(ele_elements), sort(unique(rel_elements)))) {
 
     remove_elements <- setdiff(ele_elements, rel_elements)
     object <- remove_elements(object, remove_elements)
@@ -41,7 +41,7 @@ validate_sets <- function(object, relations_df = NULL) {
   rel_sets <- levels(relations_df$sets)
   ele_sets <- name_sets(object)
 
-  if (all.equal(sort(ele_sets), sort(unique(rel_sets)))) {
+  if (identical(sort(ele_sets), sort(unique(rel_sets)))) {
 
     remove_sets <- setdiff(ele_sets, rel_sets)
     object <- remove_sets(object, remove_sets)

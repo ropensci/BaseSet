@@ -59,3 +59,4 @@ Collate:
     'tidy-set.R'
     'union.R'
     'utils-pipe.R'
+    'validate.R'
