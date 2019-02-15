@@ -14,13 +14,15 @@ filter_set <- function(.data, ...) {
 #' @export
 filter_set.TidySet <- function(.data, ...) {
   sets <- sets(.data)
-  original_sets <- name_sets(.data)
   out <- filter(sets, !!!enquos(...))
+  original_sets <- name_sets(.data)
+
+  if (nrow(out) == 0) {
+    sets(.data) <- out[0, , drop = FALSE]
+  }
 
   remove_sets <- setdiff(original_sets, out$sets)
-  object <- remove_set(.data, remove_sets)
-  validObject(object)
-  object
+  remove_set(.data, remove_sets)
 }
 
 #' Filter by element
@@ -34,14 +36,13 @@ filter_element <- function(.data, ...) {
 filter_element.TidySet <- function(.data, ...) {
   elements <- elements(.data)
   out <- filter(elements, !!!enquos(...))
-
   original_elements <- name_elements(.data)
 
+  if (nrow(out) == 0) {
+    elements(.data) <- out[0, , drop = FALSE]
+  }
   remove_elements <- setdiff(original_elements, out$elements)
-
-  object <- remove_element(.data, remove_elements)
-  validObject(object)
-  object
+  remove_element(.data, remove_elements)
 }
 
 #' Filter by relation
@@ -57,14 +58,17 @@ filter_relation.TidySet <- function(.data, ...) {
   relations <- relations(.data)
   out <- filter(relations, !!!enquos(...))
 
+  if (nrow(out) == 0) {
+    relations(.data) <- out[0, , drop = FALSE]
+  }
+
   original_elements <- as.character(relations$elements)
   original_sets <- as.character(relations$sets)
 
   remove_elements <- original_elements[!original_elements %in% out$elements]
   remove_sets <- original_sets[!original_sets %in% out$sets]
 
-  object <- remove_relation(.data, remove_elements, remove_sets)
-  validObject(object)
-  object
+  .data <- remove_relation(.data, remove_elements, remove_sets)
+  validate(.data)
 }
 
