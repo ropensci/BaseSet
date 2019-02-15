@@ -26,6 +26,7 @@ filter_set.TidySet <- function(.data, ...) {
 }
 
 #' Filter by element
+#' @para
 #' @export
 filter_element <- function(.data, ...) {
   UseMethod("filter_element")
@@ -66,9 +67,8 @@ filter_relation.TidySet <- function(.data, ...) {
   original_sets <- as.character(relations$sets)
 
   remove_elements <- original_elements[!original_elements %in% out$elements]
+  .data <- remove_element(.data, remove_elements)
   remove_sets <- original_sets[!original_sets %in% out$sets]
-
-  .data <- remove_relation(.data, remove_elements, remove_sets)
-  validate(.data)
+  remove_set(.data, remove_sets)
 }
 
