@@ -156,16 +156,6 @@ elements_sets <- function(object){
 }
 
 
-add_elements_in_relations <- function(object) {
-  elements <- setdiff(object@relations$elements, object@elements$elements)
-  add_elements(object, elements)
-}
-
-add_sets_in_relations <- function(object) {
-  sets <- setdiff(object@relations$sets, object@sets$sets)
-  add_sets(object, sets)
-}
-
 #' Apply to fuzzy
 #'
 #' Simplify and returns unique results of the object
