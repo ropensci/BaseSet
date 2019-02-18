@@ -5,6 +5,16 @@
 NULL
 
 
+#' @export
+filter.TidySet <- function(.data, ...) {
+  switch(
+    active(.data),
+    elements = filter_element(.data, ...),
+    sets = filter_set(.data, ...),
+    relations = filter_relation(.data, ...)
+  )
+}
+
 #' Filter by set
 #' @export
 filter_set <- function(.data, ...) {
@@ -26,7 +36,6 @@ filter_set.TidySet <- function(.data, ...) {
 }
 
 #' Filter by element
-#' @para
 #' @export
 filter_element <- function(.data, ...) {
   UseMethod("filter_element")
