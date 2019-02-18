@@ -102,8 +102,7 @@ tidySet.matrix <- function(relations) {
   incid <- relations
   elements <- rownames(incid)
   sets <- colnames(incid)
-  relations <- as.data.frame(which(incid != 0, arr.ind = TRUE),
-                             stringsAsFactors = TRUE)
+  relations <- as.data.frame(which(incid != 0, arr.ind = TRUE))
   colnames(relations) <- c("elements", "sets")
 
   # Replace by names
