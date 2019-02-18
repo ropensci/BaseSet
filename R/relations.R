@@ -19,6 +19,9 @@ setMethod("relations<-",
             object
           })
 
+`.relations<-` <- function(object, value) {
+  slot(object, "relations") <- value
+}
 
 #' @describeIn nRelations Return the number of relations
 #' @export
