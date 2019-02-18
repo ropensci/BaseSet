@@ -7,12 +7,16 @@ NULL
 
 #' @export
 filter.TidySet <- function(.data, ...) {
-  switch(
-    active(.data),
-    elements = filter_element(.data, ...),
-    sets = filter_set(.data, ...),
-    relations = filter_relation(.data, ...)
-  )
+  if (is.null(active(.data))) {
+    filter(as.data.frame(.data), ...)
+  } else {
+    switch(
+      active(.data),
+      elements = filter_element(.data, ...),
+      sets = filter_set(.data, ...),
+      relations = filter_relation(.data, ...)
+    )
+  }
 }
 
 #' Filter by set

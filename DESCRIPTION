@@ -43,6 +43,8 @@ Collate:
     'add_set.R'
     'basesets-package.R'
     'complement.R'
+    'data_frame.R'
+    'deactivate.R'
     'elements.R'
     'filter.R'
     'incidence.R'

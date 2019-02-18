@@ -3,7 +3,6 @@ NULL
 
 #' Determine the context of subsequent manipulations
 #' @export
-#'
 activate <- function(.data, what) {
   UseMethod('activate')
 }
