@@ -40,6 +40,7 @@ Collate:
     'GMT.R'
     'activate.R'
     'add_column.R'
+    'add_relation.R'
     'add_set.R'
     'basesets-package.R'
     'complement.R'

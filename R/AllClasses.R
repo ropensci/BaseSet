@@ -18,6 +18,9 @@ setClass("TidySet",
                         relations = "data.frame")
 )
 
+#' @importFrom methods setClassUnion
+setClassUnion("characterORfactor", c("character", "factor"))
+
 is.valid <- function(object) {
   errors <- c()
 
@@ -32,11 +35,11 @@ is.valid <- function(object) {
   }
 
   # Check that the slots have the right columns
-  errors <- c(errors, check_colnames(object, "elements", "elements"))
-  errors <- c(errors, check_colnames(object, "sets", "sets"))
-  errors <- c(errors, check_colnames(object, "relations", "elements"))
-  errors <- c(errors, check_colnames(object, "relations", "sets"))
-  errors <- c(errors, check_colnames(object, "relations", "fuzzy"))
+  errors <- c(errors, check_colnames_slot(object, "elements", "elements"))
+  errors <- c(errors, check_colnames_slot(object, "sets", "sets"))
+  errors <- c(errors, check_colnames_slot(object, "relations", "elements"))
+  errors <- c(errors, check_colnames_slot(object, "relations", "sets"))
+  errors <- c(errors, check_colnames_slot(object, "relations", "fuzzy"))
 
   # Check that the tables are related
   if (!all(unique(object@relations$sets) %in% object@sets$sets)) {
@@ -115,11 +118,17 @@ is_valid <- function(x) {
 }
 
 
-check_colnames <- function(object, slot, colname) {
-  if (length(colnames(slot(object, slot))) == 0) {
+check_colnames_slot <- function(object, slot, colname) {
+  array_names <- colnames(slot(object, slot))
+
+  if (length(array_names) == 0) {
     paste0("Provide at least the required colnames for ", slot,
-          ". See documentation.")
-  } else if (!colname %in% colnames(slot(object, slot))) {
+           ". See documentation.")
+  } else if (check_colnames(array_names, colname)) {
     paste0(colname, " column is not present on slot ", slot, ".")
   }
+}
+
+check_colnames <- function(array_names, colname) {
+  all(!colname %in% array_names)
 }

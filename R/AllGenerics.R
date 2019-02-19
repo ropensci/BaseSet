@@ -305,6 +305,27 @@ setGeneric("intersection", function(object, set1, set2, setName, ...)
 setGeneric("add_set", function(object, elements, setName, fuzzy, ...)
   standardGeneric("add_set"))
 
+#' Add relations
+#'
+#' Given a TidySets adds relations
+#' @param object A TidySet object
+#' @param relations A data.frame object
+#' @param ... Other arguments.
+#' @return A \code{TidySet} object.
+#' @export
+#' @examples
+#' relations <- data.frame(sets = c(rep("a", 5), "b"),
+#'                         elements = letters[seq_len(6)],
+#'                         fuzzy = runif(6))
+#' a <- tidySet(relations)
+#' relations <- data.frame(sets = c(rep("a2", 5), "b2"),
+#'                         elements = letters[seq_len(6)],
+#'                         fuzzy = runif(6),
+#'                         new = runif(6))
+#' add_relation(a, relations)
+setGeneric("add_relation", function(object, relations, ...)
+  standardGeneric("add_relation"))
+
 #' Remove a relation
 #'
 #' Given a TidySets removes relations between elements and sets
