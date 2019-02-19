@@ -5,10 +5,10 @@ NULL
 setAs("TidySet", "data.frame", function(from) {
   s <- merge(from@relations, from@sets,
              by.x = "sets", by.y = "sets", sort = FALSE,
-             all.x = TRUE)
+             all.x = TRUE, suffix = c(".relations", ".sets"))
   o <- merge(s, from@elements,
              by.x = "elements", by.y = "elements", sort = FALSE,
-             all.x = TRUE)
+             all.x = TRUE, suffix = c("", ".elements"))
 
   # Don't show the fuzzy column if they are all fuzzy
   # Could confuse users when they see this column appear in relations
