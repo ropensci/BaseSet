@@ -3,12 +3,12 @@
 \docType{methods}
 \name{remove_set}
 \alias{remove_set}
-\alias{remove_set,TidySet,character-method}
+\alias{remove_set,TidySet,characterORfactor-method}
 \title{Remove sets}
 \usage{
 remove_set(object, sets, ...)
 
-\S4method{remove_set}{TidySet,character}(object, sets)
+\S4method{remove_set}{TidySet,characterORfactor}(object, sets)
 }
 \arguments{
 \item{object}{A TidySet object.}
@@ -26,7 +26,7 @@ required also the elements
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{object = TidySet,sets = character}: Removes everything related to a set
+\item \code{object = TidySet,sets = characterORfactor}: Removes everything related to a set
 }}
 
 \examples{

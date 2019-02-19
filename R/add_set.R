@@ -5,8 +5,8 @@ NULL
 #' @export
 setMethod("add_set",
           signature = signature(object = "TidySet",
-                                elements = "character",
-                                setName = "character",
+                                elements = "characterORfactor",
+                                setName = "characterORfactor",
                                 fuzzy = "numeric"),
           function(object, elements, setName, fuzzy = 1) {
             if (length(setName) != 1) {
@@ -25,12 +25,13 @@ setMethod("add_set",
             object
           }
 )
+
 #' @describeIn add_set Adds a set
 #' @export
 setMethod("add_set",
           signature = signature(object = "TidySet",
-                                elements = "character",
-                                setName = "character",
+                                elements = "characterORfactor",
+                                setName = "characterORfactor",
                                 fuzzy = "missing"),
           function(object, elements, setName) {
             if (length(setName) != 1) {

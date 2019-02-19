@@ -6,7 +6,7 @@ NULL
 #' @export
 setMethod("complement_set",
           signature = signature(object = "TidySet",
-                                sets = "character"),
+                                sets = "characterORfactor"),
           function(object, sets) {
             all_sets <- name_sets(object)
             remove_sets <- all_sets[all_sets %in% sets]
@@ -18,7 +18,7 @@ setMethod("complement_set",
 #' @export
 setMethod("complement_element",
           signature = signature(object = "TidySet",
-                                elements = "character"),
+                                elements = "characterORfactor"),
           function(object, elements) {
             all_elements <- name_elements(object)
             remove_elements <- all_elements[all_elements %in% elements]

@@ -5,8 +5,8 @@ NULL
 #' @export
 setMethod("remove_relation",
           signature = signature(object = "TidySet",
-                                elements = "character",
-                                sets = "character"),
+                                elements = "characterORfactor",
+                                sets = "characterORfactor"),
           function(object, elements, sets) {
             new_object <- remove_relations(object, elements, sets)
             new_object <- remove_sets(new_object, object %s-s% new_object)
@@ -21,7 +21,7 @@ setMethod("remove_relation",
 #' @export
 setMethod("remove_element",
           signature = signature(object = "TidySet",
-                                elements = "character"),
+                                elements = "characterORfactor"),
           function(object, elements) {
             new_object <- remove_elements(object, elements)
             new_object <- rm_relations_with_elements(new_object, elements)
@@ -36,7 +36,7 @@ setMethod("remove_element",
 #' @export
 setMethod("remove_set",
           signature = signature(object = "TidySet",
-                                sets = "character"),
+                                sets = "characterORfactor"),
           function(object, sets) {
             new_object <- rm_relations_with_sets(object, sets)
             new_object <- remove_elements(new_object, object %e-e% new_object)

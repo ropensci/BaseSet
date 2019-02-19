@@ -3,12 +3,12 @@
 \docType{methods}
 \name{complement_element}
 \alias{complement_element}
-\alias{complement_element,TidySet,character-method}
+\alias{complement_element,TidySet,characterORfactor-method}
 \title{Complement of elements}
 \usage{
 complement_element(object, elements, ...)
 
-\S4method{complement_element}{TidySet,character}(object, elements)
+\S4method{complement_element}{TidySet,characterORfactor}(object, elements)
 }
 \arguments{
 \item{object}{A TidySet object.}
@@ -25,7 +25,7 @@ Return the objects without the elements listed
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{object = TidySet,elements = character}: Complement of the sets.
+\item \code{object = TidySet,elements = characterORfactor}: Complement of the sets.
 }}
 
 \examples{

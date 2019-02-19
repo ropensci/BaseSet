@@ -20,6 +20,7 @@ test_that("name_sets<- works", {
   expect_equal(out, LETTERS[1:2])
   b <- add_column(a, "sets", data.frame(Ha = c("a", "b")))
   expect_error(name_sets(b) <- "A2", "Duplicated sets")
+  expect_error(name_sets(a) <- as.factor(letters[1:2]), NA)
 })
 
 test_that("name_elements works", {

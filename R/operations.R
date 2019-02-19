@@ -4,6 +4,9 @@ NULL
 add_elements <- function(object, elements){
 
   original_elements <- name_elements(object)
+  if (is.factor(elements)) {
+    elements <- as.character(elements)
+  }
   final_elements <- unique(c(original_elements, elements))
 
   if (length(final_elements) != length(original_elements)) {
@@ -16,12 +19,16 @@ add_elements <- function(object, elements){
     object@elements <- rbind(object@elements, df_elements)
   }
   rownames(object@elements) <- NULL
+  object@elements <- droplevels(object@elements)
   object
 }
 
 add_sets <- function(object, set) {
 
   original_sets <- name_sets(object)
+  if (is.factor(set)) {
+    set <- as.character(set)
+  }
   final_sets <- unique(c(original_sets, set))
 
   if (length(final_sets) != length(original_sets)) {
@@ -34,6 +41,7 @@ add_sets <- function(object, set) {
     object@sets <- rbind(object@sets, df_sets)
   }
   rownames(object@sets) <- NULL
+  object@sets <- droplevels(object@sets)
   object
 }
 
@@ -55,7 +63,7 @@ add_relations <- function(object, elements, sets, fuzzy) {
     stop("Redefining the same relations with a different fuzzy number", call. = FALSE)
   } else if (length(fuzzy) <= length(new_relations) && length(fuzzy) == 1) {
     fuzzy <- rep(fuzzy, length(new_relations))
-  } else {
+  } else if (length(fuzzy) != length(elements)) {
     stop("Recyling fuzzy is not allowed", call. = FALSE)
   }
 
@@ -67,11 +75,15 @@ add_relations <- function(object, elements, sets, fuzzy) {
     sets <- vapply(elements_sets, "[", i = 2, character(1L))
 
     df_relations <- data.frame(elements = elements, sets = sets, fuzzy = fuzzy)
-    column_names <- setdiff(colnames(object@relations), c("sets", "elements", "fuzzy"))
-    df_relations[, column_names] <- NA
-    object@relations <- rbind(object@relations, df_relations)
+    column_names <- setdiff(colnames(object@relations),
+                            c("sets", "elements", "fuzzy"))
+    if (length(column_names) > 0) {
+      df_relations[, column_names] <- NA
+      object@relations <- rbind.data.frame(object@relations, df_relations)
+    }
   }
   rownames(object@relations) <- NULL
+  object@relations <- droplevels(object@relations)
   object
 }
 
@@ -112,6 +124,7 @@ remove_relations <- function(object, elements, sets,
   remove_relation <- !old_relations %in% relations
   object@relations <- object@relations[remove_relation, , drop = FALSE]
   rownames(object@relations) <- NULL
+  object@relations <- droplevels(object@relations)
   object
 }
 
@@ -123,6 +136,7 @@ rm_relations_with_sets <- function(object, sets) {
   new_relations <- object@relations[keep_at_relations, , drop = FALSE]
   object@relations <- droplevels(new_relations)
   rownames(object@relations) <- NULL
+  object@relations <- droplevels(object@relations)
   object
 }
 
@@ -134,6 +148,7 @@ rm_relations_with_elements <- function(object, elements) {
   new_relations <- object@relations[keep_at_relations, , drop = FALSE]
   object@relations <- droplevels(new_relations)
   rownames(object@relations) <- NULL
+  object@relations <- droplevels(object@relations)
   object
 }
 

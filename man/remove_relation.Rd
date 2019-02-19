@@ -3,13 +3,14 @@
 \docType{methods}
 \name{remove_relation}
 \alias{remove_relation}
-\alias{remove_relation,TidySet,character,character-method}
+\alias{remove_relation,TidySet,characterORfactor,characterORfactor-method}
 \title{Remove a relation}
 \usage{
 remove_relation(object, elements, sets, ...)
 
-\S4method{remove_relation}{TidySet,character,character}(object, elements,
-  sets)
+
+  \S4method{remove_relation}{TidySet,characterORfactor,characterORfactor}(object,
+  elements, sets)
 }
 \arguments{
 \item{object}{A TidySet object}
@@ -28,7 +29,7 @@ Given a TidySets removes relations between elements and sets
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{object = TidySet,elements = character,sets = character}: Removes a relation between elements and sets.
+\item \code{object = TidySet,elements = characterORfactor,sets = characterORfactor}: Removes a relation between elements and sets.
 }}
 
 \examples{

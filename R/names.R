@@ -30,9 +30,13 @@ setMethod("name_elements",
 #' @describeIn name_elements Rename elements
 #' @export name_elements<-
 setMethod("name_elements<-",
-          signature = signature(object = "TidySet", value = "character"),
+          signature = signature(object = "TidySet", value = "characterORfactor"),
           function(object, value){
             old <- levels(object@elements$elements)
+
+            if (is.factor(value)) {
+              value <- as.character(value)
+            }
             value2 <- rep(value, length.out = length(name_elements(object)))
             levels(object@elements$elements) <- value2
             object@elements <- unique(object@elements)
@@ -51,9 +55,12 @@ setMethod("name_elements<-",
 #' @describeIn name_sets Rename sets
 #' @export name_sets<-
 setMethod("name_sets<-",
-          signature = signature(object = "TidySet", value = "character"),
+          signature = signature(object = "TidySet", value = "characterORfactor"),
           function(object, value) {
             old <- levels(object@sets$sets)
+            if (is.factor(value)) {
+              value <- as.character(value)
+            }
             value2 <- rep(value, length.out = length(name_sets(object)))
             levels(object@sets$sets) <- value2
             object@sets <- unique(object@sets)

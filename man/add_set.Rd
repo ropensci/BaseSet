@@ -3,17 +3,19 @@
 \docType{methods}
 \name{add_set}
 \alias{add_set}
-\alias{add_set,TidySet,character,character,numeric-method}
-\alias{add_set,TidySet,character,character,missing-method}
+\alias{add_set,TidySet,characterORfactor,characterORfactor,numeric-method}
+\alias{add_set,TidySet,characterORfactor,characterORfactor,missing-method}
 \title{Add a new set}
 \usage{
 add_set(object, elements, setName, fuzzy, ...)
 
-\S4method{add_set}{TidySet,character,character,numeric}(object, elements,
-  setName, fuzzy = 1)
 
-\S4method{add_set}{TidySet,character,character,missing}(object, elements,
-  setName)
+  \S4method{add_set}{TidySet,characterORfactor,characterORfactor,numeric}(object,
+  elements, setName, fuzzy = 1)
+
+
+  \S4method{add_set}{TidySet,characterORfactor,characterORfactor,missing}(object,
+  elements, setName)
 }
 \arguments{
 \item{object}{A TidySet object}
@@ -34,9 +36,9 @@ Given a TidySets adds a new sets
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{object = TidySet,elements = character,setName = character,fuzzy = numeric}: Adds a set
+\item \code{object = TidySet,elements = characterORfactor,setName = characterORfactor,fuzzy = numeric}: Adds a set
 
-\item \code{object = TidySet,elements = character,setName = character,fuzzy = missing}: Adds a set
+\item \code{object = TidySet,elements = characterORfactor,setName = characterORfactor,fuzzy = missing}: Adds a set
 }}
 
 \examples{
