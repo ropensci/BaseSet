@@ -25,8 +25,8 @@ setAs("TidySet", "data.frame", function(from) {
 #' @param x The \code{TidySet} object.
 #' @param ... Other arguments currently ignored.
 #' @return A \code{data.frame} table.
-#' @export
 #' @method as.data.frame TidySet
+#' @export
 as.data.frame.TidySet <- function(x, ...) {
   as(x, "data.frame")
 }

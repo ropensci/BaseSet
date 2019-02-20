@@ -10,9 +10,9 @@ output:
     code_folding: show
     self_contained: yes
     toc_float:
+      
       collapsed: true
       toc_depth: 3
-      
 author:
 - name: Lluís Revilla
   affiliation: 
@@ -20,8 +20,10 @@ author:
   email: lluis.revilla@gmail.com
 vignette: >
   %\VignetteIndexEntry{Advanced examples}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r, include = FALSE}
@@ -32,17 +34,33 @@ knitr::opts_chunk$set(
 ```
 To show compatibility with tidy workflows we will use magrittr pipe operator
 ```{r setup}
+library("dplyr")
 library("BaseSet")
 ```
-
+We can create a tidySet with some sets being the intersection and the union of others:
 ```{r}
 relations <- data.frame(sets = c(rep("A", 5), "B"),
                         elements = letters[seq_len(6)],
                         fuzzy = runif(6))
-a <- tidySet(relations)
-a %>% 
+sample_set <- tidySet(relations) %>% 
   union("A", "B", "C", keep = TRUE) %>% 
-  intersection("B", "C", "D", keep = TRUE) %>%
+  intersection("B", "C", "D", keep = TRUE)
+
+# Number of elements per set
+sample_set %>% 
+  relations() %>% 
+  group_by(sets) %>% 
+  count()
+
+# size of the sets and probability
+sample_set %>% 
   set_size()
 ```
 
+
+
+# Session info {.unnumbered}
+
+```{r sessionInfo, echo=FALSE}
+sessionInfo()
+```

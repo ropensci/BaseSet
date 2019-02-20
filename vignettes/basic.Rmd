@@ -11,9 +11,9 @@ output:
     code_folding: show
     self_contained: yes
     toc_float:
+      
       collapsed: true
       toc_depth: 3
-      
 author:
 - name: Lluís Revilla
   affiliation: 
@@ -21,8 +21,10 @@ author:
   email: lluis.revilla@gmail.com
 vignette: >
   %\VignetteIndexEntry{About BaseSet}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}  
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 ```{r knitsetup, message=FALSE, warning=FALSE, include=FALSE}
 knitr::opts_knit$set(root.dir = ".")
@@ -37,7 +39,7 @@ library("BiocStyle")
 
 This is a basic example which shows you how to create a `TidySet` object, to store associations between genes and sets:
 
-```{r, message=FALSE}
+```{r from_list, message=FALSE}
 library("BaseSet")
 gene_lists <- list(
     geneset1 = c("A", "B"),
@@ -49,7 +51,7 @@ tidy_set
 
 Metadata for each element and set can be added:
 
-```{r, message=FALSE}
+```{r metadata, message=FALSE}
 gene_data <- data.frame(
     stat1     = c( 1,   2,   3,   4 ),
     info1     = c("a", "b", "c", "d")
@@ -66,7 +68,7 @@ tidy_set
 
 The `relations`, `elements`, and `sets` slots can directly accessed using their getter methods.
 
-```{r}
+```{r getters}
 relations(tidy_set)
 elements(tidy_set)
 sets(tidy_set)
@@ -74,7 +76,7 @@ sets(tidy_set)
 
 All the relations are inherently fuzzy
 
-```{r}
+```{r fuzzy}
 relations <- data.frame(sets = c(rep("A", 5), "B", "C"),
                           elements = c(letters[seq_len(6)], letters[6]),
                           fuzzy = runif(7))
@@ -86,7 +88,7 @@ fuzzy_set <- tidySet(relations)
 
 It is possible to extract the gene sets as a `list`, for use with functions such as `lapply`.
 
-```{r}
+```{r as.list}
 (list_set <- as.list(tidy_set))
 (list_set <- as.list(fuzzy_set))
 ```
@@ -95,7 +97,7 @@ It is also possible to visualize membership between gene and gene sets as a matr
 
 Notably, `incidence` return a `numeric` matrix of membership:
 
-```{r}
+```{r incidence}
 (incidence_matrix <- incidence(tidy_set))
 (incidence_matrix <- incidence(fuzzy_set))
 ```
@@ -107,12 +109,12 @@ Conversely, it is also possible to make objects from incidence matrices.
 
 Notably, `BaseSets` are suitable for `numeric` matrices indicating membership:
 
-```{r}
+```{r tidySet_matrix}
 tidySet(incidence_matrix)
 ```
 
 Or can also be created from lists:
-```{r}
+```{r tidySet_list}
 tidySet(list("A" = letters[1:4], "B" = letters[7:10]))
 ```
 
@@ -120,7 +122,7 @@ tidySet(list("A" = letters[1:4], "B" = letters[7:10]))
 
 The number of unique elements and sets can be obtained using the `nElements` and `nSets` methods.
 
-```{r}
+```{r n}
 nElements(tidy_set)
 nSets(tidy_set)
 nRelations(tidy_set)
@@ -128,22 +130,23 @@ nRelations(tidy_set)
 
 The size of each gene set can be obtained using the `set_size` method.
 
-```{r}
+```{r set_size}
 set_size(tidy_set, "geneset1")
 set_size(fuzzy_set, "A")
 ```
 
 Conversely, the number of sets associated with each gene is returned by the `elementLengths` function.
 
-```{r}
+```{r element_size}
 element_size(tidy_set)
 ```
 
 The identifiers of elements and sets can be inspected and renamed using `name_elements` and 
 
-```{r}
+```{r name}
 name_elements(tidy_set)
 name_elements(tidy_set) <- paste0("Gene", seq_len(nElements(tidy_set)))
+name_elements(tidy_set)
 name_sets(tidy_set)
 name_sets(tidy_set) <- paste0("Geneset", seq_len(nSets(tidy_set)))
 name_sets(tidy_set)
@@ -156,7 +159,7 @@ To work with sets several methods are provided. All methods work with fuzzy and 
 ## Union
 
 By default it provides the standard union, but you can provide a function.
-```{r}
+```{r union}
 union(fuzzy_set, "C", "B", "D")
 union(fuzzy_set, "C", "B", "D", FUN = "mean")
 ```
@@ -164,16 +167,44 @@ union(fuzzy_set, "C", "B", "D", FUN = "mean")
 ## Intersection
 
 
-```{r}
+```{r intersection}
 intersection(fuzzy_set, "A", "B", "D", keep = TRUE)
 ```
 
 ## Complement
 
 We can look for the complement of one or several sets:
-```{r}
+```{r complement}
 complement_set(fuzzy_set, c("A", "B"))
 ```
+
+# tidyverse
+
+You can also use `mutate`, `filter` and other `dplyr` verbs with TidySets:
+
+```{r tidyverse}
+library("dplyr")
+fuzzy_set %>% 
+  activate("relations") %>% 
+  mutate(Important = as.numeric(fuzzy > 0.5))
+```
+
+You can use activate to select what are the verbs modifying:
+
+```{r deactivate}
+set_modified <- fuzzy_set %>% 
+  activate("relations") %>% 
+  mutate(Important = as.numeric(fuzzy > 0.5)) %>% 
+  activate("elements") %>% 
+  mutate(Pathway = if_else(elements %in% c("b", "f", "g"), 
+                           "pathway1", 
+                           "pathway2"))
+set_modified
+set_modified %>% 
+  deactivate() %>% # To apply a filter independently to where it is
+  filter(Pathway == "pathway1", Important == 1)
+```
+
 
 # Session info {.unnumbered}
 

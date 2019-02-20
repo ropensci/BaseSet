@@ -3,13 +3,14 @@
 \docType{methods}
 \name{union}
 \alias{union}
-\alias{union,TidySet,character,character,character-method}
+\alias{union,TidySet,characterORfactor,characterORfactor,characterORfactor-method}
 \title{Merge two sets}
 \usage{
 union(object, set1, set2, setName, ...)
 
-\S4method{union}{TidySet,character,character,character}(object, set1, set2,
-  setName, FUN = "max", keep = FALSE)
+
+  \S4method{union}{TidySet,characterORfactor,characterORfactor,characterORfactor}(object,
+  set1, set2, setName, FUN = "max", keep = FALSE)
 }
 \arguments{
 \item{object}{A TidySet object}
@@ -34,7 +35,7 @@ Given a TidySets merges two sets into the new one.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{object = TidySet,set1 = character,set2 = character,setName = character}: Applies the standard union
+\item \code{object = TidySet,set1 = characterORfactor,set2 = characterORfactor,setName = characterORfactor}: Applies the standard union
 }}
 
 \examples{

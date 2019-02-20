@@ -1,13 +1,25 @@
 #' @include AllClasses.R AllGenerics.R operations.R
 NULL
 
+# To avoid conflicts with the dplyr package
+#' @export
+#' @method union TidySet
+union.TidySet <- function(...) {
+  # Check if first argument is a TidySet
+  if (is(..1, "TidySet")) {
+    union(...)
+  } else {
+    NextMethod()
+  }
+}
+
 #' @describeIn union Applies the standard union
 #' @export
 setMethod("union",
           signature = signature(object = "TidySet",
-                                set1 = "character",
-                                set2 = "character",
-                                setName = "character"),
+                                set1 = "characterORfactor",
+                                set2 = "characterORfactor",
+                                setName = "characterORfactor"),
           function(object, set1, set2, setName, FUN = "max", keep = FALSE) {
             sets <- c(set1, set2)
             if (length(set1) != length(setName)) {
