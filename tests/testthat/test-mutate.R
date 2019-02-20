@@ -25,3 +25,12 @@ test_that("mutate_relation works", {
   b <- mutate_relation(a, fuzzy = fuzzy*2)
 
 })
+
+test_that("mutate works", {
+  a <- activate(a, "relations")
+  b <- mutate(a, Type = ifelse(elements == "b", "B", "D"))
+  expect_equal(ncol(relations(b)), ncol(relations(a)) + 1)
+  expect_equal(nRelations(b), 6L)
+  b <- deactivate(b)
+  expect_error(mutate(b, Type2 = ifelse(elements == "b", "B2", "D2")))
+})

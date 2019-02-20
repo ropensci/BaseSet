@@ -26,3 +26,11 @@ test_that("filter_relation works", {
 
   expect_error(filter_relation(a, sets == "c"), "must have")
 })
+
+
+test_that("filter works", {
+  b <- filter(a, sets == "b")
+  expect_equal(nSets(b), 1L)
+
+  expect_error(filter(a, sets == "c"), "must have")
+})
