@@ -213,3 +213,11 @@ merge_tidySets <- function(object1, object2) {
 
   object2
 }
+
+elements_in_set <- function(object, sets) {
+  as.character(object@relations$elements[object@relations$sets %in% sets])
+}
+
+sets_for_elements <- function(object, elements) {
+  as.character(object@relations$sets[object@relations$elements %in% elements])
+}

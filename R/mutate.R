@@ -75,7 +75,6 @@ mutate_set.TidySet <- function(.data, ...) {
 #' @export
 #' @method mutate_relation TidySet
 mutate_relation.TidySet <- function(.data, ...) {
-
   relations <- relations(.data)
   out <- dplyr::mutate(relations, !!!enquos(...))
   relations(.data) <- out

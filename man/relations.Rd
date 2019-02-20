@@ -10,6 +10,8 @@
 \usage{
 relations(object)
 
+relations(object) <- value
+
 \S4method{relations}{TidySet}(object)
 
 \S4method{relations}{TidySet}(object) <- value
@@ -17,7 +19,7 @@ relations(object)
 \arguments{
 \item{object}{Object to be coerced or tested.}
 
-\item{value}{Modification of the relationsihps}
+\item{value}{Modification of the relations.}
 }
 \value{
 A \code{data.frame} with information about the relations between

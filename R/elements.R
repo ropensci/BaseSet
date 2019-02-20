@@ -1,7 +1,7 @@
 #' @include AllClasses.R AllGenerics.R
 NULL
 
-#' @describeIn elements Retrive the elements
+#' @describeIn elements Retrieve the elements
 #' @export
 setMethod("elements",
           signature = signature(object = "TidySet"),

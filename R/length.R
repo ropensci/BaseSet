@@ -5,7 +5,7 @@ NULL
 #'
 #' Calculates the probability that all happened simultaneously
 #' @param p Probabilities
-#' @param i Index of the complemetary probability
+#' @param i Index of the complementary probability
 #' @return  The log10 of the probability
 #' @keywords internal
 # multiply_probabilities(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), c(1, 3))

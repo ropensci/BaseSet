@@ -10,6 +10,8 @@
 \usage{
 elements(object)
 
+elements(object) <- value
+
 \S4method{elements}{TidySet}(object)
 
 \S4method{elements}{TidySet}(object) <- value
@@ -27,7 +29,7 @@ Given TidySet retrieve the elements.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{TidySet}: Retrive the elements
+\item \code{TidySet}: Retrieve the elements
 
 \item \code{TidySet}: Modify the elements
 }}

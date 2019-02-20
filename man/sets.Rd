@@ -11,6 +11,8 @@
 \usage{
 sets(object)
 
+sets(object) <- value
+
 \S4method{sets}{TidySet}(object)
 
 \S4method{sets}{TidySet}(object) <- value

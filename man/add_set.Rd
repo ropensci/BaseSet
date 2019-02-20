@@ -48,3 +48,7 @@ relations <- data.frame(sets = c(rep("a", 5), "b"),
 a <- tidySet(relations)
 add_set(a, "a", "C")
 }
+\seealso{
+Other add functions: \code{\link{add_relation}}
+}
+\concept{add functions}

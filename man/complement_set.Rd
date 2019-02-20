@@ -13,7 +13,7 @@ complement_set(object, sets, ...)
 \arguments{
 \item{object}{A TidySet object.}
 
-\item{sets}{The set to look for the compplement.}
+\item{sets}{The set to look for the complement.}
 
 \item{...}{Other arguments.}
 }
@@ -36,6 +36,8 @@ a <- tidySet(relations)
 complement_set(a, "a")
 }
 \seealso{
+\code{\link{filter}}
+
 Other complements: \code{\link{complement_element}}
 }
 \concept{complements}

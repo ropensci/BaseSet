@@ -41,5 +41,11 @@ test_that("tidySet list", {
 test_that("tidySet fails", {
   a <- new("TidySet")
   expect_s4_class(a, "TidySet")
-  expect_error(validObject(a))
+  expect_true(any(grepl("must have", is.valid(a))))
+  expect_true(any(grepl("colnames for elements", is.valid(a))))
+  expect_true(any(grepl("colnames for sets", is.valid(a))))
+  expect_true(any(grepl("colnames for relations", is.valid(a))))
+  expect_true(any(grepl("Sets must be characters or factors", is.valid(a))))
+  expect_true(any(grepl("Elements must be characters or factors", is.valid(a))))
+  expect_true(any(grepl("A fuzzy column must be present", is.valid(a))))
 })

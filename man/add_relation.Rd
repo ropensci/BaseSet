@@ -39,3 +39,7 @@ relations <- data.frame(sets = c(rep("a2", 5), "b2"),
                         new = runif(6))
 add_relation(a, relations)
 }
+\seealso{
+Other add functions: \code{\link{add_set}}
+}
+\concept{add functions}

@@ -31,6 +31,10 @@ Change the default names of sets and elements.
 \seealso{
 \code{\link{name_sets}}
 
-Other rename: \code{\link{rename_elements}}
+Other renames: \code{\link{rename_elements}}
+
+Other names: \code{\link{name_elements}},
+  \code{\link{name_sets}}, \code{\link{rename_elements}}
 }
-\concept{rename}
+\concept{names}
+\concept{renames}

@@ -13,7 +13,7 @@ complement_element(object, elements, ...)
 \arguments{
 \item{object}{A TidySet object.}
 
-\item{elements}{The set to look for the compplement.}
+\item{elements}{The set to look for the complement.}
 
 \item{...}{Other arguments.}
 }
@@ -25,7 +25,7 @@ Return the objects without the elements listed
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{object = TidySet,elements = characterORfactor}: Complement of the sets.
+\item \code{object = TidySet,elements = characterORfactor}: Complement of the elements.
 }}
 
 \examples{

@@ -27,3 +27,7 @@ Calculate the probability of being of different sizes for a given set.
 \item \code{TidySet}: Calculates the number of sets one element appears
 }}
 
+\seealso{
+Other sizes: \code{\link{set_size}}
+}
+\concept{sizes}

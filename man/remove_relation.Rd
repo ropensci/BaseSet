@@ -39,3 +39,8 @@ relations <- data.frame(sets = c(rep("a", 5), "b"),
 a <- tidySet(relations)
 remove_relation(a, "a", "a")
 }
+\seealso{
+Other remove functions: \code{\link{remove_element}},
+  \code{\link{remove_set}}
+}
+\concept{remove functions}

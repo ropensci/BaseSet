@@ -39,6 +39,7 @@ setGeneric("is.fuzzy", function(object) standardGeneric("is.fuzzy"))
 #' Check the number of sets of the TidySet
 #' @param object Object to be coerced or tested.
 #' @export nSets
+#' @family count functions
 setGeneric("nSets", function(object) standardGeneric("nSets"))
 
 #' Number of elements
@@ -47,6 +48,7 @@ setGeneric("nSets", function(object) standardGeneric("nSets"))
 #' @param object Object to be coerced or tested.
 #' @return A numeric value with the number of elements.
 #' @export nElements
+#' @family count functions
 setGeneric("nElements", function(object) standardGeneric("nElements"))
 
 #' Number of relations
@@ -55,6 +57,7 @@ setGeneric("nElements", function(object) standardGeneric("nElements"))
 #' @param object Object to be coerced or tested.
 #' @return A numeric value with the number of the relations.
 #' @export nRelations
+#' @family count functions
 setGeneric("nRelations", function(object) standardGeneric("nRelations"))
 
 #' Incidence
@@ -69,30 +72,29 @@ setGeneric("incidence", function(object) standardGeneric("incidence"))
 #' Method to find the relationships between the elements and the sets of a given
 #' \code{\link{TidySet}} object
 #' @param object Object to be coerced or tested.
-#' @param value Modification of the relationsihps
+#' @param value Modification of the relations.
 #' @return A \code{data.frame} with information about the relations between
 #' elements and sets.
 #' @family slots
 #' @seealso \code{\link{nRelations}}
-#' @aliases relations<-
 #' @export
 setGeneric("relations", function(object) standardGeneric("relations"))
 
-#' @describeIn relations Modify the relation.
+#' @rdname relations
 #' @export
 setGeneric("relations<-", function(object, value)
   standardGeneric("relations<-"))
 
 
-#' @describeIn elements Modify the elements.
+#' @rdname elements
 #' @export
 setGeneric("elements<-", function(object, value) standardGeneric("elements<-"))
 
-#' @describeIn sets Modify the sets.
+#' @rdname sets
 #' @export
 setGeneric("sets<-", function(object, value) standardGeneric("sets<-"))
 
-#' Calculates the size of the set
+#' Calculates the cardinality of a set
 #'
 #' Calculate the probability of being of different sizes for a given set.
 #' @param object A TidySet object.
@@ -100,6 +102,8 @@ setGeneric("sets<-", function(object, value) standardGeneric("sets<-"))
 #' @return A list with the size of the set or the probability of having that
 #' size.
 #' @export set_size
+#' @aliases cardinality
+#' @family sizes
 setGeneric("set_size", function(object, set = NULL) standardGeneric("set_size"))
 
 #' Calculates the size of the elements
@@ -109,6 +113,7 @@ setGeneric("set_size", function(object, set = NULL) standardGeneric("set_size"))
 #' @param element The element from which the length is calculated.
 #' @return A list with the size of the elements or the probability of having that
 #' size.
+#' @family sizes
 #' @export element_size
 setGeneric("element_size", function(object, element = NULL) standardGeneric("element_size"))
 
@@ -119,7 +124,8 @@ setGeneric("element_size", function(object, element = NULL) standardGeneric("ele
 #' @param old A character vector of to be renamed.
 #' @param new A character vector of with new names.
 #' @return A \code{TidySet} object.
-#' @family rename
+#' @family renames
+#' @family names
 #' @seealso \code{\link{name_sets}}
 #' @export
 setGeneric("rename_set", function(object, old, new) standardGeneric("rename_set"))
@@ -131,7 +137,8 @@ setGeneric("rename_set", function(object, old, new) standardGeneric("rename_set"
 #' @param old A character vector of to be renamed.
 #' @param new A character vector of with new names.
 #' @return A \code{TidySet} object.
-#' @family rename
+#' @family renames
+#' @family names
 #' @seealso \code{\link{name_elements}}
 #' @export
 setGeneric("rename_elements", function(object, old, new)
@@ -144,7 +151,7 @@ setGeneric("rename_elements", function(object, old, new)
 #' @param object A TidySet object.
 #' @param value A character with the new names for the sets.
 #' @return A \code{TidySet} object.
-#' @family name
+#' @family names
 #' @export
 #' @examples
 #' relations <- data.frame(sets = c(rep("a", 5), "b"),
@@ -161,7 +168,7 @@ setGeneric("name_sets", function(object)
 #' @param object A TidySet object.
 #' @param value A character with the new names for the elements.
 #' @return A \code{TidySet} object.
-#' @family name
+#' @family names
 #' @export
 #' @examples
 #' relations <- data.frame(sets = c(rep("a", 5), "b"),
@@ -178,7 +185,7 @@ setGeneric("name_elements", function(object)
 #' @param object A TidySet object.
 #' @param value A character with the new names for the elements.
 #' @return A \code{TidySet} object.
-#' @family names
+#' @family namess
 #' @seealso \code{\link{rename_elements}}
 #' @export
 #' @aliases name_elements<-
@@ -198,7 +205,7 @@ setGeneric("name_elements<-", function(object, value)
 #' @param object A TidySet object.
 #' @param value A character with the new names for the sets.
 #' @return A \code{TidySet} object.
-#' @family names
+#' @family namess
 #' @seealso \code{\link{rename_set}}
 #' @export
 #' @aliases name_sets<-
@@ -295,6 +302,7 @@ setGeneric("intersection", function(object, set1, set2, setName, ...)
 #' @param fuzzy The membership of each element with the set.
 #' @param ... Other arguments.
 #' @return A \code{TidySet} object.
+#' @family add functions
 #' @export
 #' @examples
 #' relations <- data.frame(sets = c(rep("a", 5), "b"),
@@ -312,6 +320,7 @@ setGeneric("add_set", function(object, elements, setName, fuzzy, ...)
 #' @param relations A data.frame object
 #' @param ... Other arguments.
 #' @return A \code{TidySet} object.
+#' @family add functions
 #' @export
 #' @examples
 #' relations <- data.frame(sets = c(rep("a", 5), "b"),
@@ -334,6 +343,7 @@ setGeneric("add_relation", function(object, relations, ...)
 #' @param sets The name of the new set.
 #' @param ... Other arguments.
 #' @return A \code{TidySet} object.
+#' @family remove functions
 #' @export
 #' @examples
 #' relations <- data.frame(sets = c(rep("a", 5), "b"),
@@ -353,6 +363,7 @@ setGeneric("remove_relation", function(object, elements, sets, ...)
 #' @param ... Other arguments.
 #' @return A \code{TidySet} object.
 #' @export
+#' @family remove functions
 #' @examples
 #' relations <- data.frame(sets = c(rep("a", 5), "b"),
 #'                         elements = letters[seq_len(6)],
@@ -371,6 +382,7 @@ setGeneric("remove_element", function(object, elements, ...)
 #' @param ... Other arguments.
 #' @return A \code{TidySet} object.
 #' @export
+#' @family remove functions
 #' @examples
 #' relations <- data.frame(sets = c("a", "a", "b", "b", "c", "c"),
 #'                         elements = letters[seq_len(6)],
@@ -384,10 +396,11 @@ setGeneric("remove_set", function(object, sets, ...)
 #'
 #' Return the complement for a set
 #' @param object A TidySet object.
-#' @param sets The set to look for the compplement.
+#' @param sets The set to look for the complement.
 #' @param ... Other arguments.
 #' @return A \code{TidySet} object.
 #' @family complements
+#' @seealso \code{\link{filter}}
 #' @export
 #' @examples
 #' relations <- data.frame(sets = c("a", "a", "b", "b", "c", "c"),
@@ -402,7 +415,7 @@ setGeneric("complement_set", function(object, sets, ...)
 #'
 #' Return the objects without the elements listed
 #' @param object A TidySet object.
-#' @param elements The set to look for the compplement.
+#' @param elements The set to look for the complement.
 #' @param ... Other arguments.
 #' @return A \code{TidySet} object.
 #' @family complements

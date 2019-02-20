@@ -24,3 +24,8 @@ Check the number of relations of the TidySet.
 \item \code{TidySet}: Return the number of relations
 }}
 
+\seealso{
+Other count functions: \code{\link{nElements}},
+  \code{\link{nSets}}
+}
+\concept{count functions}

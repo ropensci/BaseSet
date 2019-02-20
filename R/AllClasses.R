@@ -31,7 +31,7 @@ is.valid <- function(object) {
 
   if (all(empty)) {
     errors <- c(errors,
-                "A TidySet object must have at an element, a set or a relation")
+                "A TidySet object must have an element, a set or a relation")
   }
 
   # Check that the slots have the right columns
@@ -69,7 +69,7 @@ is.valid <- function(object) {
   }
 
   if (!"fuzzy" %in% colnames(object@relations)) {
-    errors <- c(errors, "A fuzzy column should be present")
+    errors <- c(errors, "A fuzzy column must be present")
   } else {
     fuzz <- object@relations$fuzzy
     if (!is.numeric(fuzz)) {

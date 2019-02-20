@@ -12,3 +12,8 @@ nSets(object)
 \description{
 Check the number of sets of the TidySet
 }
+\seealso{
+Other count functions: \code{\link{nElements}},
+  \code{\link{nRelations}}
+}
+\concept{count functions}

@@ -3,8 +3,9 @@
 \docType{methods}
 \name{set_size}
 \alias{set_size}
+\alias{cardinality}
 \alias{set_size,TidySet-method}
-\title{Calculates the size of the set}
+\title{Calculates the cardinality of a set}
 \usage{
 set_size(object, set = NULL)
 
@@ -27,3 +28,7 @@ Calculate the probability of being of different sizes for a given set.
 \item \code{TidySet}: Calculates the size of a set either fuzzy or not
 }}
 
+\seealso{
+Other sizes: \code{\link{element_size}}
+}
+\concept{sizes}

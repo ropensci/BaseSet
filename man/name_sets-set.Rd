@@ -28,6 +28,6 @@ name_sets(a) <- LETTERS[1:2]
 \seealso{
 \code{\link{rename_set}}
 
-Other names: \code{\link{name_elements<-}}
+Other namess: \code{\link{name_elements<-}}
 }
-\concept{names}
+\concept{namess}

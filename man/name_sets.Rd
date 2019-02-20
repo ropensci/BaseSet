@@ -39,6 +39,7 @@ a <- tidySet(relations)
 name_sets(a)
 }
 \seealso{
-Other name: \code{\link{name_elements}}
+Other names: \code{\link{name_elements}},
+  \code{\link{rename_elements}}, \code{\link{rename_set}}
 }
-\concept{name}
+\concept{names}

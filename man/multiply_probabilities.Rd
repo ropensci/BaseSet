@@ -9,7 +9,7 @@ multiply_probabilities(p, i)
 \arguments{
 \item{p}{Probabilities}
 
-\item{i}{Index of the complemetary probability}
+\item{i}{Index of the complementary probability}
 }
 \value{
 The log10 of the probability

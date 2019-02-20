@@ -7,7 +7,7 @@
 getGMT(con, sep = "\\t", ...)
 }
 \arguments{
-\item{con}{File name of the GMT filee}
+\item{con}{File name of the GMT file.}
 
 \item{sep}{Separation of the file}
 
@@ -18,4 +18,11 @@ A TidySet object
 }
 \description{
 Import GMT files
+}
+\examples{
+gmtText <- c(
+"KEGG_GLYCOLYSIS_GLUCONEOGENESIS\\thttp://www.broadinstitute.org/gsea/msigdb/cards/KEGG_GLYCOLYSIS_GLUCONEOGENESIS\\tACSS2\\tGCK\\tPGK2\\tPGK1",
+"KEGG_CITRATE_CYCLE_TCA_CYCLE\\thttp://www.broadinstitute.org/gsea/msigdb/cards/KEGG_CITRATE_CYCLE_TCA_CYCLE\\tIDH3B\\tDLST\\tPCK2" )
+gs <- getGMT(textConnection(gmtText))
+gs
 }

@@ -3,12 +3,18 @@ NULL
 
 #' Import GMT files
 #'
-#' @param con File name of the GMT filee
+#' @param con File name of the GMT file.
 #' @param sep Separation of the file
 #' @param ... Other arguments passed to strsplit
 #' @return A TidySet object
 #' @export
-getGMT <- function (con, sep = "\t", ...)  {
+#' @examples
+#' gmtText <- c(
+#' "KEGG_GLYCOLYSIS_GLUCONEOGENESIS\thttp://www.broadinstitute.org/gsea/msigdb/cards/KEGG_GLYCOLYSIS_GLUCONEOGENESIS\tACSS2\tGCK\tPGK2\tPGK1",
+#' "KEGG_CITRATE_CYCLE_TCA_CYCLE\thttp://www.broadinstitute.org/gsea/msigdb/cards/KEGG_CITRATE_CYCLE_TCA_CYCLE\tIDH3B\tDLST\tPCK2" )
+#' gs <- getGMT(textConnection(gmtText))
+#' gs
+getGMT <- function(con, sep = "\t", ...)  {
   lines <- strsplit(readLines(con, ...), sep)
   if (any(sapply(lines, length) < 2)) {
     stop("all records in the GMT file must have >= 2 fields", call. = FALSE)
