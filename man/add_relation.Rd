@@ -35,6 +35,7 @@ relations <- data.frame(sets = c(rep("a", 5), "b"),
 a <- tidySet(relations)
 relations <- data.frame(sets = c(rep("a2", 5), "b2"),
                         elements = letters[seq_len(6)],
-                        fuzzy = runif(6))
+                        fuzzy = runif(6),
+                        new = runif(6))
 add_relation(a, relations)
 }

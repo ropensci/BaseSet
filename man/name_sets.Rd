@@ -4,14 +4,14 @@
 \name{name_sets}
 \alias{name_sets}
 \alias{name_sets,TidySet-method}
-\alias{name_sets<-,TidySet,character-method}
+\alias{name_sets<-,TidySet,characterORfactor-method}
 \title{Name sets}
 \usage{
 name_sets(object)
 
 \S4method{name_sets}{TidySet}(object)
 
-\S4method{name_sets}{TidySet,character}(object) <- value
+\S4method{name_sets}{TidySet,characterORfactor}(object) <- value
 }
 \arguments{
 \item{object}{A TidySet object.}
@@ -28,7 +28,7 @@ Retrieve the name of the sets.
 \itemize{
 \item \code{TidySet}: Name sets
 
-\item \code{object = TidySet,value = character}: Rename sets
+\item \code{object = TidySet,value = characterORfactor}: Rename sets
 }}
 
 \examples{

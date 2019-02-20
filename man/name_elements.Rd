@@ -4,14 +4,14 @@
 \name{name_elements}
 \alias{name_elements}
 \alias{name_elements,TidySet-method}
-\alias{name_elements<-,TidySet,character-method}
+\alias{name_elements<-,TidySet,characterORfactor-method}
 \title{Name elements}
 \usage{
 name_elements(object)
 
 \S4method{name_elements}{TidySet}(object)
 
-\S4method{name_elements}{TidySet,character}(object) <- value
+\S4method{name_elements}{TidySet,characterORfactor}(object) <- value
 }
 \arguments{
 \item{object}{A TidySet object.}
@@ -28,7 +28,7 @@ Retrieve the name of the elements.
 \itemize{
 \item \code{TidySet}: Name elements
 
-\item \code{object = TidySet,value = character}: Rename elements
+\item \code{object = TidySet,value = characterORfactor}: Rename elements
 }}
 
 \examples{
