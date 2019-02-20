@@ -5,10 +5,42 @@
 NULL
 
 
+#' Filter
+#'
+#' Use filter to subset the TidySet object. You can use activate with filter or
+#' use the specific function. The S3 method filters using all the information
+#' on the TidySet.
+#' @param .data The TidySet object
+#' @param ... The logical predicates in terms of the variables of the sets
+#' @return A TidySet object
+#' @export
+#' @seealso dplyr \code{\link[dplyr]{filter}} and \code{\link{activate}}
+#' @examples
+#' relations <- data.frame(sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
+#'                         elements = rep(letters[seq_len(6)], 2),
+#'                         fuzzy = runif(12))
+#' a <- tidySet(relations)
+#' elements(a) <- cbind(elements(a),
+#'                  type = c(rep("Gene", 4), rep("lncRNA", 2)))
+#' filter(a, elements == "a")
+#' # Equivalent to filter_relation
+#' filter(a, elements == "a", sets == "a")
+#' filter_relation(a, elements == "a", sets == "a")
+#' # Filter element
+#' filter_element(a, type == "Gene")
+#' # Filter sets and by property of elements simultaneously
+#' filter(a, sets == "b", type == "lncRNA")
+#' # Filter sets
+#' filter_set(a, sets == "b")
+filter <- function(.data, ...) {
+  UseMethod("filter")
+}
+
 #' @export
 filter.TidySet <- function(.data, ...) {
   if (is.null(active(.data))) {
-    filter(as.data.frame(.data), ...)
+    df <- dplyr::filter(as.data.frame(.data), ...)
+    df2TS(.data, df)
   } else {
     switch(
       active(.data),
@@ -19,16 +51,17 @@ filter.TidySet <- function(.data, ...) {
   }
 }
 
-#' Filter by set
+#' @rdname filter
 #' @export
 filter_set <- function(.data, ...) {
   UseMethod("filter_set")
 }
 
 #' @export
+#' @method filter_set TidySet
 filter_set.TidySet <- function(.data, ...) {
   sets <- sets(.data)
-  out <- filter(sets, !!!enquos(...))
+  out <- dplyr::filter(sets, !!!enquos(...))
   original_sets <- name_sets(.data)
 
   if (nrow(out) == 0) {
@@ -39,7 +72,7 @@ filter_set.TidySet <- function(.data, ...) {
   remove_set(.data, remove_sets)
 }
 
-#' Filter by element
+#' @rdname filter
 #' @export
 filter_element <- function(.data, ...) {
   UseMethod("filter_element")
@@ -49,7 +82,7 @@ filter_element <- function(.data, ...) {
 #' @method filter_element TidySet
 filter_element.TidySet <- function(.data, ...) {
   elements <- elements(.data)
-  out <- filter(elements, !!!enquos(...))
+  out <- dplyr::filter(elements, !!!enquos(...))
   original_elements <- name_elements(.data)
 
   if (nrow(out) == 0) {
@@ -59,7 +92,7 @@ filter_element.TidySet <- function(.data, ...) {
   remove_element(.data, remove_elements)
 }
 
-#' Filter by relation
+#' @rdname filter
 #' @export
 filter_relation <- function(.data, ...) {
   UseMethod("filter_relation")
@@ -70,7 +103,7 @@ filter_relation <- function(.data, ...) {
 filter_relation.TidySet <- function(.data, ...) {
 
   relations <- relations(.data)
-  out <- filter(relations, !!!enquos(...))
+  out <- dplyr::filter(relations, !!!enquos(...))
 
   if (nrow(out) == 0) {
     relations(.data) <- out[0, , drop = FALSE]

@@ -1,7 +1,7 @@
 #' @include AllClasses.R AllGenerics.R
 NULL
 
-#' Determine the context of subsequent manipulations
+#' @rdname activate
 #' @export
 deactivate <- function(.data) {
   UseMethod('deactivate')
