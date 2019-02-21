@@ -36,7 +36,27 @@ filter <- function(.data, ...) {
   UseMethod("filter")
 }
 
+#' @rdname filter
 #' @export
+filter_set <- function(.data, ...) {
+  UseMethod("filter_set")
+}
+
+#' @rdname filter
+#' @export
+filter_element <- function(.data, ...) {
+  UseMethod("filter_element")
+}
+
+#' @rdname filter
+#' @export
+filter_relation <- function(.data, ...) {
+  UseMethod("filter_relation")
+}
+
+#' @rdname filter
+#' @export
+#' @method filter TidySet
 filter.TidySet <- function(.data, ...) {
   if (is.null(active(.data))) {
     df <- dplyr::filter(as.data.frame(.data), ...)
@@ -49,12 +69,6 @@ filter.TidySet <- function(.data, ...) {
       relations = filter_relation(.data, ...)
     )
   }
-}
-
-#' @rdname filter
-#' @export
-filter_set <- function(.data, ...) {
-  UseMethod("filter_set")
 }
 
 #' @export
@@ -72,12 +86,6 @@ filter_set.TidySet <- function(.data, ...) {
   remove_set(.data, remove_sets)
 }
 
-#' @rdname filter
-#' @export
-filter_element <- function(.data, ...) {
-  UseMethod("filter_element")
-}
-
 #' @export
 #' @method filter_element TidySet
 filter_element.TidySet <- function(.data, ...) {
@@ -90,12 +98,6 @@ filter_element.TidySet <- function(.data, ...) {
   }
   remove_elements <- setdiff(original_elements, out$elements)
   remove_element(.data, remove_elements)
-}
-
-#' @rdname filter
-#' @export
-filter_relation <- function(.data, ...) {
-  UseMethod("filter_relation")
 }
 
 #' @export

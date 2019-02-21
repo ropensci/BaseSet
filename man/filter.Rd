@@ -5,6 +5,7 @@
 \alias{filter_set}
 \alias{filter_element}
 \alias{filter_relation}
+\alias{filter.TidySet}
 \title{Filter}
 \usage{
 filter(.data, ...)
@@ -14,6 +15,8 @@ filter_set(.data, ...)
 filter_element(.data, ...)
 
 filter_relation(.data, ...)
+
+\method{filter}{TidySet}(.data, ...)
 }
 \arguments{
 \item{.data}{The TidySet object}

@@ -5,6 +5,7 @@
 \alias{mutate_set}
 \alias{mutate_element}
 \alias{mutate_relation}
+\alias{mutate.TidySet}
 \title{Mutate}
 \usage{
 mutate(.data, ...)
@@ -14,6 +15,8 @@ mutate_set(.data, ...)
 mutate_element(.data, ...)
 
 mutate_relation(.data, ...)
+
+\method{mutate}{TidySet}(.data, ...)
 }
 \arguments{
 \item{.data}{The TidySet object}

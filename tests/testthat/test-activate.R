@@ -9,7 +9,7 @@ test_that("multiplication works", {
                    type = c(rep("Gene", 4), rep("lncRNA", 2)))
   expect_error(a <- activate(a, "elements"), NA)
   expect_equal(active(a), "elements")
-  filter(a, type == "Gene")
+  expect_error(filter(a, type == "Gene"), NA)
   a <- deactivate(a)
   expect_true(is.null(active(a)))
 })

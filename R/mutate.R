@@ -21,21 +21,6 @@ mutate <- function(.data, ...) {
   UseMethod("mutate")
 }
 
-#' @export
-mutate.TidySet <- function(.data, ...) {
-  if (is.null(active(.data))) {
-  stop("Must indicate what do you want to modify.\n",
-         "Perhaps you missed activate?")
-  } else {
-    switch(
-      active(.data),
-      elements = mutate_element(.data, ...),
-      sets = mutate_set(.data, ...),
-      relations = mutate_relation(.data, ...)
-    )
-  }
-}
-
 #' @rdname mutate
 #' @export
 mutate_set <- function(.data, ...) {
@@ -52,6 +37,23 @@ mutate_element <- function(.data, ...) {
 #' @export
 mutate_relation <- function(.data, ...) {
   UseMethod("mutate_relation")
+}
+
+#' @rdname mutate
+#' @export
+#' @method mutate TidySet
+mutate.TidySet <- function(.data, ...) {
+  if (is.null(active(.data))) {
+  stop("Must indicate what do you want to modify.\n",
+         "Perhaps you missed activate?")
+  } else {
+    switch(
+      active(.data),
+      elements = mutate_element(.data, ...),
+      sets = mutate_set(.data, ...),
+      relations = mutate_relation(.data, ...)
+    )
+  }
 }
 
 #' @export
