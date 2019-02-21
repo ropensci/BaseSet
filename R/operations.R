@@ -221,3 +221,18 @@ elements_in_set <- function(object, sets) {
 sets_for_elements <- function(object, elements) {
   as.character(object@relations$sets[object@relations$elements %in% elements])
 }
+
+replace_interactions <- function(object, new_relations, keep) {
+  old_relations <- object@relations
+  if (keep) {
+    new_relations <- rbind(old_relations, new_relations)
+  } else {
+    old_elements <- name_elements(object)
+    remove_elements <- old_elements[!old_elements %in%
+                                      new_relations$elements]
+    object <- remove_elements(object, remove_elements)
+    object <- remove_sets(object, name_sets(object))
+  }
+  object@relations <- new_relations
+  object
+}
