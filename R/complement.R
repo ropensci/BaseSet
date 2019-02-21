@@ -7,7 +7,10 @@ NULL
 setMethod("complement_set",
           signature = signature(object = "TidySet",
                                 sets = "characterORfactor"),
-          function(object, sets, name = NULL, keep = TRUE) {
+          function(object, sets, name = NULL, keep = TRUE,
+                   keep_relations = keep,
+                   keep_elements = keep,
+                   keep_sets = keep) {
 
             if (!is.character(name) & !is.null(name)) {
               stop("name must be a character for the new set", call. = FALSE)
@@ -33,17 +36,15 @@ setMethod("complement_set",
             complement$sets <- name_set
             complement <- complement[complement$fuzzy != 0, , drop = FALSE]
 
-            if (keep) {
-              complement <- rbind(old_relations, complement)
-            } else {
-              old_elements <- name_elements(object)
-              remove_elements <- old_elements[!old_elements %in%
-                                                complement$elements]
-              object <- remove_elements(object, remove_elements)
-              object <- remove_sets(object, name_sets(object))
-            }
-            object@relations <- complement
+            object <- replace_interactions(object, complement, keep_relations)
             object <- add_sets(object, name_set)
+
+            if (!keep_sets) {
+              object <- drop_sets(object)
+            }
+            if (!keep_elements) {
+              object <- drop_elements(object)
+            }
             validObject(object)
             object
           }
@@ -57,12 +58,14 @@ setMethod("complement_element",
           signature = signature(object = "TidySet",
                                 elements = "characterORfactor",
                                 name = "character"),
-          function(object, elements, name, keep = TRUE) {
+          function(object, elements, name, keep = TRUE,
+                   keep_relations = keep,
+                   keep_elements = keep,
+                   keep_sets = keep) {
 
             if (!is.logical(keep)) {
               stop("keep must be a logical value.", call. = FALSE)
             }
-
             old_relations <- relations(object)
             complement <- old_relations[old_relations$elements %in% elements, ,
                                         drop = FALSE]
@@ -71,17 +74,7 @@ setMethod("complement_element",
             complement$sets <- name
             complement <- complement[complement$fuzzy != 0, , drop = FALSE]
 
-            if (keep) {
-              complement <- rbind(old_relations, complement)
-            } else {
-              old_elements <- name_elements(object)
-              remove_elements <- old_elements[!old_elements %in% elements]
-              object <- remove_elements(object, remove_elements)
-              object <- remove_sets(object, name_sets(object))
-
-            }
-
-            object@relations <- complement
+            object <- replace_interactions(object, complement, keep)
             object <- add_sets(object, name)
             validObject(object)
             object

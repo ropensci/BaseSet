@@ -96,7 +96,7 @@ is.valid <- function(object) {
   if (all(c("elements", "relations") %in%  colnames_relations)) {
     if (anyDuplicated(slot(object, "relations")[, c("elements", "sets")])) {
       errors <- c(errors,
-                  "A relationship between an element and a set should be unique."
+                  "A relationship between an element and a set must be unique."
       )
     }
   }

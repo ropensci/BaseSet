@@ -256,12 +256,15 @@ setGeneric("remove_column", function(object, slot, column_names)
 #'
 #' Given a TidySets merges two sets into the new one.
 #' @param object A TidySet object
-#' @param set1,set2 The name of the sets to be used.
-#' @param setName The name of the new set.
+#' @param sets The name of the sets to be used.
+#' @param name The name of the new set.
 #' @param FUN A function to be applied when performing the union.
 #' The standard union is the "max" function, but you can provide any other
 #' function that given a numeric vector returns a single number.
-#' @param keep A logical value if you want to keep originals sets.
+#' @param keep A logical value if you want to keep
+#' @param keep_relations A logical value if you wan to keep old relations
+#' @param keep_elements A logical value if you wan to keep old elements
+#' @param keep_sets A logical value if you wan to keep old sets
 #' @param ... Other arguments.
 #' @return A \code{TidySet} object.
 #' @export
@@ -270,13 +273,14 @@ setGeneric("remove_column", function(object, slot, column_names)
 #'                         elements = letters[seq_len(6)],
 #'                         fuzzy = runif(6))
 #' a <- tidySet(relations)
-#' union(a, "a", "b", "C")
-setGeneric("union", function(object, set1, set2, setName, ...)
+#' union(a, c("a", "b"), "C")
+setGeneric("union", function(object, sets, name, ...)
   standardGeneric("union"))
 
 #' Intersection of two sets
 #'
 #' Given a TidySets creates a new set with the elements on the both of them.
+#' @param sets The character of sets to be intersect.
 #' @inheritParams union
 #' @param FUN A function to be applied when performing the union.
 #' The standard intersection is the "min" function, but you can provide any other
@@ -289,8 +293,8 @@ setGeneric("union", function(object, set1, set2, setName, ...)
 #'                         elements = c("a", "b", "c", "d", "f", "f"),
 #'                         fuzzy = runif(6))
 #' a <- tidySet(relations)
-#' intersection(a, "a", "b", "C")
-setGeneric("intersection", function(object, set1, set2, setName, ...)
+#' intersection(a, c("a", "b"), "C")
+setGeneric("intersection", function(object, sets, name, ...)
   standardGeneric("intersection"))
 
 #' Add a new set
@@ -398,8 +402,9 @@ setGeneric("remove_set", function(object, sets, ...)
 #' @param object A TidySet object.
 #' @param sets The name of the set to look for the complement.
 #' @param keep Logical value to keep all the other sets.
-#' @param name Name of the new set. By default it adds a "C_"
+#' @param name Name of the new set. By default it adds a "C_".
 #' @param ... Other arguments.
+#' @inheritParams union
 #' @return A \code{TidySet} object.
 #' @family complements
 #' @seealso \code{\link{filter}}

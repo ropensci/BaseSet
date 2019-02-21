@@ -9,7 +9,8 @@
 complement_set(object, sets, ...)
 
 \S4method{complement_set}{TidySet,characterORfactor}(object, sets,
-  name = NULL, keep = TRUE)
+  name = NULL, keep = TRUE, keep_relations = keep,
+  keep_elements = keep, keep_sets = keep)
 }
 \arguments{
 \item{object}{A TidySet object.}
@@ -18,9 +19,15 @@ complement_set(object, sets, ...)
 
 \item{...}{Other arguments.}
 
-\item{name}{Name of the new set. By default it adds a "C_"}
+\item{name}{Name of the new set. By default it adds a "C_".}
 
 \item{keep}{Logical value to keep all the other sets.}
+
+\item{keep_relations}{A logical value if you wan to keep old relations}
+
+\item{keep_elements}{A logical value if you wan to keep old elements}
+
+\item{keep_sets}{A logical value if you wan to keep old sets}
 }
 \value{
 A \code{TidySet} object.

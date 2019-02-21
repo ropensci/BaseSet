@@ -5,37 +5,42 @@ NULL
 #' @export
 setMethod("intersection",
           signature = signature(object = "TidySet",
-                                set1 = "character",
-                                set2 = "character",
-                                setName = "character"),
-          function(object, set1, set2, setName, FUN = "min", keep = FALSE) {
-
-            sets <- c(set1, set2)
-            if (length(set1) != length(setName)) {
-              stop("New names must be of the same length as the pairs of ",
-                   "set to unite", call. = FALSE)
-            }
-            new_object <- rename_set(object, sets, setName)
-            if (!keep) {
-              old_sets <- name_sets(object)
-              remove_sets <- old_sets[!old_sets %in% setName]
-              new_object <- remove_sets(new_object, remove_sets)
-              new_object <- rm_relations_with_sets(new_object, remove_sets)
-
-              remove_elements <- object %e-e% new_object
-              new_elements <- as.character(new_object@relations$elements)
-              duplicated <- new_elements[duplicated(new_elements)]
-              remove_too <- setdiff(new_elements, duplicated)
-              remove_elements <- c(remove_elements, remove_too)
-
-              new_object <- remove_elements(new_object, remove_elements)
-              new_object <- rm_relations_with_elements(new_object,
-                                                       remove_elements)
-            } else {
-              new_object <- merge_tidySets(object, new_object)
+                                sets = "character",
+                                name = "character"),
+          function(object, sets, name, FUN = "min", keep = FALSE,
+                   keep_relations = keep,
+                   keep_elements = keep,
+                   keep_sets = keep) {
+            if (length(name) > 1) {
+              stop("The name of the new set must be of length 1", call. = FALSE)
             }
 
-            new_object <- fapply(new_object, FUN)
-            new_object
+            old_relations <- relations(object)
+            relevant_relations <- old_relations$sets %in% sets
+            intersection <- old_relations[relevant_relations, , drop = FALSE]
+            intersection <- droplevels(intersection)
+            intersection$sets <- as.character(intersection$sets)
+            logical <- intersection$sets %in% sets
+            intersection$sets <- ifelse(logical, name, intersection$sets)
+
+            relations <- paste(intersection$elements, intersection$sets)
+
+            dup_relations <- relations[duplicated(relations)]
+
+            intersection <- intersection[dup_relations %in% relations, ,
+                                         drop = FALSE]
+
+            object <- replace_interactions(object, intersection, keep)
+            object <- fapply(object, FUN)
+            object <- add_sets(object, name)
+
+            if (!keep_elements) {
+              drop_elements(object)
+            }
+            if (!keep_sets) {
+              drop_sets(object)
+            }
+            validObject(object)
+            object
           }
 )

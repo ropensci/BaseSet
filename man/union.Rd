@@ -3,21 +3,21 @@
 \docType{methods}
 \name{union}
 \alias{union}
-\alias{union,TidySet,characterORfactor,characterORfactor,characterORfactor-method}
+\alias{union,TidySet,characterORfactor,characterORfactor-method}
 \title{Merge two sets}
 \usage{
-union(object, set1, set2, setName, ...)
+union(object, sets, name, ...)
 
-
-  \S4method{union}{TidySet,characterORfactor,characterORfactor,characterORfactor}(object,
-  set1, set2, setName, FUN = "max", keep = FALSE)
+\S4method{union}{TidySet,characterORfactor,characterORfactor}(object, sets,
+  name, FUN = "max", keep = FALSE, keep_relations = keep,
+  keep_elements = keep, keep_sets = keep)
 }
 \arguments{
 \item{object}{A TidySet object}
 
-\item{set1, set2}{The name of the sets to be used.}
+\item{sets}{The name of the sets to be used.}
 
-\item{setName}{The name of the new set.}
+\item{name}{The name of the new set.}
 
 \item{...}{Other arguments.}
 
@@ -25,7 +25,13 @@ union(object, set1, set2, setName, ...)
 The standard union is the "max" function, but you can provide any other
 function that given a numeric vector returns a single number.}
 
-\item{keep}{A logical value if you want to keep originals sets.}
+\item{keep}{A logical value if you want to keep}
+
+\item{keep_relations}{A logical value if you wan to keep old relations}
+
+\item{keep_elements}{A logical value if you wan to keep old elements}
+
+\item{keep_sets}{A logical value if you wan to keep old sets}
 }
 \value{
 A \code{TidySet} object.
@@ -35,7 +41,7 @@ Given a TidySets merges two sets into the new one.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{object = TidySet,set1 = characterORfactor,set2 = characterORfactor,setName = characterORfactor}: Applies the standard union
+\item \code{object = TidySet,sets = characterORfactor,name = characterORfactor}: Applies the standard union
 }}
 
 \examples{
@@ -43,5 +49,5 @@ relations <- data.frame(sets = c(rep("a", 5), "b"),
                         elements = letters[seq_len(6)],
                         fuzzy = runif(6))
 a <- tidySet(relations)
-union(a, "a", "b", "C")
+union(a, c("a", "b"), "C")
 }

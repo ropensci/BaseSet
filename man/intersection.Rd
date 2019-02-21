@@ -3,22 +3,21 @@
 \docType{methods}
 \name{intersection}
 \alias{intersection}
-\alias{intersection,TidySet,character,character,character-method}
+\alias{intersection,TidySet,character,character-method}
 \title{Intersection of two sets}
 \usage{
-intersection(object, set1, set2, setName, ...)
+intersection(object, sets, name, ...)
 
-\S4method{intersection}{TidySet,character,character,character}(object,
-  set1, set2, setName, FUN = "min", keep = FALSE)
+\S4method{intersection}{TidySet,character,character}(object, sets, name,
+  FUN = "min", keep = FALSE, keep_relations = keep,
+  keep_elements = keep, keep_sets = keep)
 }
 \arguments{
 \item{object}{A TidySet object}
 
-\item{set1}{The name of the sets to be used.}
+\item{sets}{The character of sets to be intersect.}
 
-\item{set2}{The name of the sets to be used.}
-
-\item{setName}{The name of the new set.}
+\item{name}{The name of the new set.}
 
 \item{...}{Other arguments.}
 
@@ -27,6 +26,12 @@ The standard intersection is the "min" function, but you can provide any other
 function that given a numeric vector returns a single number.}
 
 \item{keep}{A logical value if you want to keep originals sets.}
+
+\item{keep_relations}{A logical value if you wan to keep old relations}
+
+\item{keep_elements}{A logical value if you wan to keep old elements}
+
+\item{keep_sets}{A logical value if you wan to keep old sets}
 }
 \value{
 A \code{TidySet} object.
@@ -36,7 +41,7 @@ Given a TidySets creates a new set with the elements on the both of them.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{object = TidySet,set1 = character,set2 = character,setName = character}: Applies the standard intersection
+\item \code{object = TidySet,sets = character,name = character}: Applies the standard intersection
 }}
 
 \examples{
@@ -44,5 +49,5 @@ relations <- data.frame(sets = c(rep("a", 5), "b"),
                         elements = c("a", "b", "c", "d", "f", "f"),
                         fuzzy = runif(6))
 a <- tidySet(relations)
-intersection(a, "a", "b", "C")
+intersection(a, c("a", "b"), "C")
 }
