@@ -236,3 +236,15 @@ replace_interactions <- function(object, new_relations, keep) {
   object@relations <- new_relations
   object
 }
+
+drop_elements <- function(object) {
+  remaining <- unique(relations(object)$elements)
+  elements <- name_elements(object)
+  remove_elements(object, elements[!elements %in% remaining])
+}
+
+drop_sets <- function(object) {
+  remaining <- unique(relations(object)$sets)
+  sets <- name_sets(object)
+  remove_elements(object, sets[!sets %in% remaining])
+}
