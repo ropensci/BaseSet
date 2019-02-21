@@ -3,19 +3,24 @@
 \docType{methods}
 \name{complement_element}
 \alias{complement_element}
-\alias{complement_element,TidySet,characterORfactor-method}
+\alias{complement_element,TidySet,characterORfactor,character-method}
 \title{Complement of elements}
 \usage{
-complement_element(object, elements, ...)
+complement_element(object, elements, name, ...)
 
-\S4method{complement_element}{TidySet,characterORfactor}(object, elements)
+\S4method{complement_element}{TidySet,characterORfactor,character}(object,
+  elements, name, keep = TRUE)
 }
 \arguments{
 \item{object}{A TidySet object.}
 
 \item{elements}{The set to look for the complement.}
 
+\item{name}{Name of the new set. By default it adds a "C_"}
+
 \item{...}{Other arguments.}
+
+\item{keep}{Logical value to keep all the other sets.}
 }
 \value{
 A \code{TidySet} object.
@@ -25,7 +30,7 @@ Return the objects without the elements listed
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{object = TidySet,elements = characterORfactor}: Complement of the elements.
+\item \code{object = TidySet,elements = characterORfactor,name = character}: Complement of the elements.
 }}
 
 \examples{
@@ -33,7 +38,8 @@ relations <- data.frame(sets = c("a", "a", "b", "b", "c", "c"),
                         elements = letters[seq_len(6)],
                         fuzzy = runif(6))
 a <- tidySet(relations)
-complement_element(a, "a")
+complement_element(a, "a", "C_a")
+complement_element(a, "a", "C_a", keep = FALSE)
 }
 \seealso{
 Other complements: \code{\link{complement_set}}

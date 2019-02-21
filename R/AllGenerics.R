@@ -396,7 +396,9 @@ setGeneric("remove_set", function(object, sets, ...)
 #'
 #' Return the complement for a set
 #' @param object A TidySet object.
-#' @param sets The set to look for the complement.
+#' @param sets The name of the set to look for the complement.
+#' @param keep Logical value to keep all the other sets.
+#' @param name Name of the new set. By default it adds a "C_"
 #' @param ... Other arguments.
 #' @return A \code{TidySet} object.
 #' @family complements
@@ -416,7 +418,7 @@ setGeneric("complement_set", function(object, sets, ...)
 #' Return the objects without the elements listed
 #' @param object A TidySet object.
 #' @param elements The set to look for the complement.
-#' @param ... Other arguments.
+#' @inheritParams complement_set
 #' @return A \code{TidySet} object.
 #' @family complements
 #' @export
@@ -425,6 +427,7 @@ setGeneric("complement_set", function(object, sets, ...)
 #'                         elements = letters[seq_len(6)],
 #'                         fuzzy = runif(6))
 #' a <- tidySet(relations)
-#' complement_element(a, "a")
-setGeneric("complement_element", function(object, elements, ...)
+#' complement_element(a, "a", "C_a")
+#' complement_element(a, "a", "C_a", keep = FALSE)
+setGeneric("complement_element", function(object, elements, name, ...)
   standardGeneric("complement_element"))

@@ -8,14 +8,19 @@
 \usage{
 complement_set(object, sets, ...)
 
-\S4method{complement_set}{TidySet,characterORfactor}(object, sets)
+\S4method{complement_set}{TidySet,characterORfactor}(object, sets,
+  name = NULL, keep = TRUE)
 }
 \arguments{
 \item{object}{A TidySet object.}
 
-\item{sets}{The set to look for the complement.}
+\item{sets}{The name of the set to look for the complement.}
 
 \item{...}{Other arguments.}
+
+\item{name}{Name of the new set. By default it adds a "C_"}
+
+\item{keep}{Logical value to keep all the other sets.}
 }
 \value{
 A \code{TidySet} object.

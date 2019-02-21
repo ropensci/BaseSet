@@ -5,10 +5,9 @@ test_that("complement set works", {
                           elements = letters[seq_len(6)],
                           fuzzy = runif(6))
   a <- tidySet(relations = relations)
-  b <- complement_set(a, "b")
-  expect_equal(nSets(b), 1L)
-  expect_equal(nElements(b), 5L)
-  expect_equal(complement_set(a, "b"), remove_set(a, "b"))
+  b <- complement_set(a, "b", "b_set")
+  expect_equal(nSets(b), 3L)
+  expect_equal(nElements(b), 6L)
 })
 
 
@@ -18,8 +17,10 @@ test_that("complement set works for several sets", {
                           fuzzy = runif(7))
   fuzzy_set <- tidySet(relations)
   b <- complement_set(fuzzy_set, c("A", "C"))
-  expect_equal(nSets(b), 1L)
-  expect_equal(nElements(b), 0)
+
+  expect_equal(nSets(b), 4L)
+  expect_equal(nElements(b), 6L)
+  expect_equal(nRelations(b), 13L)
 })
 
 test_that("complement element works", {
@@ -27,8 +28,21 @@ test_that("complement element works", {
                           elements = letters[seq_len(6)],
                           fuzzy = runif(6))
   a <- tidySet(relations = relations)
-  b <- complement_element(a, "b")
+  b <- complement_element(a, "b", "b_set", keep = FALSE)
   expect_equal(nSets(b), 1L)
-  expect_equal(nElements(b), 5L)
+  expect_equal(nElements(b), 1L)
   expect_equal(nRelations(b), 1L)
+  expect_equal(relations(b)$fuzzy, 1 - relations[2, "fuzzy"])
+})
+
+# Not sure about this behaviour
+test_that("complement elements works for several elements", {
+  relations <- data.frame(sets = c(rep("A", 5), "B", "C"),
+                          elements = c(letters[seq_len(6)], letters[6]),
+                          fuzzy = runif(7))
+  fuzzy_set <- tidySet(relations)
+  b <- complement_element(fuzzy_set, c("a", "b"), "aUb")
+  expect_equal(nSets(b), 4L)
+  expect_equal(nElements(b), 6L)
+  expect_equal(nRelations(b), 9L)
 })
