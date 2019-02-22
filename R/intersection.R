@@ -1,46 +1,62 @@
 #' @include AllClasses.R AllGenerics.R operations.R
 NULL
 
+.intersection <- function(object, sets, name, FUN, keep_relations,
+                          keep_elements, keep_sets) {
+
+  if (length(name) > 1) {
+    stop("The name of the new set must be of length 1", call. = FALSE)
+  }
+
+  if (is.null(name)) {
+    name <- collapse_sets(sets, "intersection")
+  }
+  inclusion <- check_sets(object, sets)
+  if (!all(inclusion)) {
+    stop("Sets must be present on the relations", call. = FALSE)
+  }
+
+  if (any(!inclusion)) {
+    warning("Sets", sets[inclusion], "could not be found", call. = FALSE)
+  }
+
+  old_relations <- relations(object)
+
+
+  relevant_relations <- old_relations$sets %in% sets
+  intersection <- old_relations[relevant_relations, , drop = FALSE]
+  intersection <- droplevels(intersection)
+  intersection$sets <- as.character(intersection$sets)
+  intersection$sets <- name
+
+  relations <- paste(intersection$elements, intersection$sets)
+  t_relations <- table(relations)
+  k_relations <- t_relations >= sum(length(sets))
+  dup_relations <- names(t_relations)[k_relations]
+  intersection <- intersection[relations %in% dup_relations, ,
+                               drop = FALSE]
+  # Look that the resulting size cannot be bigger than the bigger initial set!!!
+  intersection <- fapply(intersection, FUN)
+
+  object <- replace_interactions(object, intersection, keep_relations)
+  object <- add_sets(object, name)
+
+  object <- droplevels(object, !keep_elements, !keep_sets)
+  validObject(object)
+  object
+}
+
 #' @describeIn intersection Applies the standard intersection
 #' @export
 setMethod("intersection",
           signature = signature(object = "TidySet",
-                                sets = "character",
-                                name = "character"),
-          function(object, sets, name, FUN = "min", keep = FALSE,
+                                sets = "character"),
+          function(object, sets, name = NULL, FUN = "min", keep = FALSE,
                    keep_relations = keep,
                    keep_elements = keep,
                    keep_sets = keep) {
-            if (length(name) > 1) {
-              stop("The name of the new set must be of length 1", call. = FALSE)
-            }
-
-            old_relations <- relations(object)
-            relevant_relations <- old_relations$sets %in% sets
-            intersection <- old_relations[relevant_relations, , drop = FALSE]
-            intersection <- droplevels(intersection)
-            intersection$sets <- as.character(intersection$sets)
-            logical <- intersection$sets %in% sets
-            intersection$sets <- ifelse(logical, name, intersection$sets)
-
-            relations <- paste(intersection$elements, intersection$sets)
-
-            dup_relations <- relations[duplicated(relations)]
-
-            intersection <- intersection[dup_relations %in% relations, ,
-                                         drop = FALSE]
-
-            object <- replace_interactions(object, intersection, keep)
-            object <- fapply(object, FUN)
-            object <- add_sets(object, name)
-
-            if (!keep_elements) {
-              drop_elements(object)
-            }
-            if (!keep_sets) {
-              drop_sets(object)
-            }
-            validObject(object)
-            object
+            .intersection(object, sets, name, match.fun(FUN), keep_relations,
+                          keep_elements, keep_sets)
           }
 )
+
