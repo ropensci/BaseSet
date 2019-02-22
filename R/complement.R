@@ -12,39 +12,32 @@ setMethod("complement_set",
                    keep_elements = keep,
                    keep_sets = keep) {
 
-            if (!is.character(name) & !is.null(name)) {
-              stop("name must be a character for the new set", call. = FALSE)
-            }
-
             if (!is.logical(keep)) {
               stop("keep must be a logical value.", call. = FALSE)
             }
 
             old_relations <- relations(object)
+            # Elements present on sets
             complement <- old_relations[old_relations$sets %in% sets, ,
                                         drop = FALSE]
             complement$fuzzy <- 1 - complement$fuzzy
+            # Elements not present on sets
+            complement2 <- old_relations[!old_relations$sets %in% sets, ,
+                                        drop = FALSE]
+            complement <- rbind(complement, complement2)
+            rownames(complement) <- NULL
 
             if (is.null(name)) {
-              name_set <- paste0(set_symbols["complement"],
-                                 "_",
-                                 paste(sets, collapse = set_symbols["union"]))
-            } else {
-              name_set <- name
+              name <- naming("complement", sets)
             }
 
-            complement$sets <- name_set
+            complement$sets <- name
             complement <- complement[complement$fuzzy != 0, , drop = FALSE]
 
             object <- replace_interactions(object, complement, keep_relations)
-            object <- add_sets(object, name_set)
+            object <- add_sets(object, name)
 
-            if (!keep_sets) {
-              object <- drop_sets(object)
-            }
-            if (!keep_elements) {
-              object <- drop_elements(object)
-            }
+            object <- droplevels(object, !keep_elements, !keep_sets)
             validObject(object)
             object
           }
@@ -56,8 +49,7 @@ setMethod("complement_set",
 #' @export
 setMethod("complement_element",
           signature = signature(object = "TidySet",
-                                elements = "characterORfactor",
-                                name = "character"),
+                                elements = "characterORfactor"),
           function(object, elements, name, keep = TRUE,
                    keep_relations = keep,
                    keep_elements = keep,
@@ -71,11 +63,13 @@ setMethod("complement_element",
                                         drop = FALSE]
             complement$fuzzy <- 1 - complement$fuzzy
 
+
             complement$sets <- name
             complement <- complement[complement$fuzzy != 0, , drop = FALSE]
 
-            object <- replace_interactions(object, complement, keep)
+            object <- replace_interactions(object, complement, keep_relations)
             object <- add_sets(object, name)
+            object <- droplevels(object, !keep_elements, !keep_sets)
             validObject(object)
             object
           }
