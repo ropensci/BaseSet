@@ -174,28 +174,26 @@ elements_sets <- function(object){
 #' Apply to fuzzy
 #'
 #' Simplify and returns unique results of the object
-#' @param object A TidySet object
+#' @param relations A data.frame or similar with fuzzy, sets and elements
+#' columns
 #' @param FUN A function to perform on the fuzzy numbers
 #' @return A modified TidySet object
 #' @noRd
-fapply <- function(object, FUN) {
+fapply <- function(relations, FUN) {
   # Handle the duplicate cases
-  relations_original <- object@relations
-  basic <- elements_sets(object)
+  basic <- paste(relations$elements, relations$sets)
   indices <- split(seq_along(basic), basic)
   # Helper function probably useful for intersection too
   iterate <- function(i, fuzzy, fun) {
     fun(fuzzy[i])
   }
-  # It could be possible to apply some other function to the relations
-  # that are the same
+
+
   FUN <- match.fun(FUN)
-  fuzzy <- vapply(indices, iterate, fuzzy = relations_original$fuzzy,
+  fuzzy <- vapply(indices, iterate, fuzzy = relations$fuzzy,
                   fun = FUN, numeric(1L))
-  relations2 <- unique(relations_original[, c("sets", "elements")])
-  relations2 <- cbind.data.frame(relations2, fuzzy = fuzzy)
-  object@relations <- relations2
-  object
+  relations2 <- unique(relations[, c("sets", "elements")])
+  cbind(relations2, fuzzy = fuzzy)
 }
 
 merge_tidySets <- function(object1, object2) {
@@ -225,13 +223,10 @@ sets_for_elements <- function(object, elements) {
 replace_interactions <- function(object, new_relations, keep) {
   old_relations <- object@relations
   if (keep) {
+    # To ensure that the number of columns match
+    new_columns <- setdiff(colnames(old_relations), colnames(new_relations))
+    new_relations[, new_columns] <- NA
     new_relations <- rbind(old_relations, new_relations)
-  } else {
-    old_elements <- name_elements(object)
-    remove_elements <- old_elements[!old_elements %in%
-                                      new_relations$elements]
-    object <- remove_elements(object, remove_elements)
-    object <- remove_sets(object, name_sets(object))
   }
   object@relations <- new_relations
   object
@@ -246,5 +241,36 @@ drop_elements <- function(object) {
 drop_sets <- function(object) {
   remaining <- unique(relations(object)$sets)
   sets <- name_sets(object)
-  remove_elements(object, sets[!sets %in% remaining])
+  remove_sets(object, sets[!sets %in% remaining])
+}
+
+
+collapse_sets <- function(sets, symbol) {
+  paste0(sets, collapse = set_symbols[symbol])
+
+}
+
+naming <- function(start = NULL, sets1, middle = NULL, sets2 = NULL,
+                         collapse_symbol = "union") {
+
+  if (!is.null(sets2) & is.null(middle)) {
+    stop("sets1 and sets2 should be separated by a symbol")
+  }
+
+  if (!is.null(sets2)) {
+    sets2 <- paste0("(", paste0(sets2, collapse = set_symbols[collapse_symbol]), ")")
+  }
+  if (!is.null(start) || !is.null(middle)) {
+    sets1 <- paste0("(", paste0(sets1, collapse = set_symbols[collapse_symbol]), ")")
+  } else {
+    sets1 <- paste0(sets1, collapse = set_symbols[collapse_symbol])
+  }
+
+  paste0(set_symbols[start],
+         sets1, set_symbols[middle],
+         sets2)
+}
+
+check_sets <- function(object, sets) {
+  sets %in% object@relations$sets
 }
