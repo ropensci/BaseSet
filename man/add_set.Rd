@@ -7,22 +7,22 @@
 \alias{add_set,TidySet,characterORfactor,characterORfactor,missing-method}
 \title{Add a new set}
 \usage{
-add_set(object, elements, setName, fuzzy, ...)
+add_set(object, elements, name, fuzzy, ...)
 
 
   \S4method{add_set}{TidySet,characterORfactor,characterORfactor,numeric}(object,
-  elements, setName, fuzzy = 1)
+  elements, name, fuzzy = 1)
 
 
   \S4method{add_set}{TidySet,characterORfactor,characterORfactor,missing}(object,
-  elements, setName)
+  elements, name)
 }
 \arguments{
 \item{object}{A TidySet object}
 
 \item{elements}{The elements of the sets.}
 
-\item{setName}{The name of the new set.}
+\item{name}{The name of the new set.}
 
 \item{fuzzy}{The membership of each element with the set.}
 
@@ -36,9 +36,9 @@ Given a TidySets adds a new sets
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{object = TidySet,elements = characterORfactor,setName = characterORfactor,fuzzy = numeric}: Adds a set
+\item \code{object = TidySet,elements = characterORfactor,name = characterORfactor,fuzzy = numeric}: Adds a set
 
-\item \code{object = TidySet,elements = characterORfactor,setName = characterORfactor,fuzzy = missing}: Adds a set
+\item \code{object = TidySet,elements = characterORfactor,name = characterORfactor,fuzzy = missing}: Adds a set
 }}
 
 \examples{

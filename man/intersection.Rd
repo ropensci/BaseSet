@@ -3,12 +3,12 @@
 \docType{methods}
 \name{intersection}
 \alias{intersection}
-\alias{intersection,TidySet,character,character-method}
+\alias{intersection,TidySet,character-method}
 \title{Intersection of two sets}
 \usage{
-intersection(object, sets, name, ...)
+intersection(object, sets, ...)
 
-\S4method{intersection}{TidySet,character,character}(object, sets, name,
+\S4method{intersection}{TidySet,character}(object, sets, name = NULL,
   FUN = "min", keep = FALSE, keep_relations = keep,
   keep_elements = keep, keep_sets = keep)
 }
@@ -17,9 +17,9 @@ intersection(object, sets, name, ...)
 
 \item{sets}{The character of sets to be intersect.}
 
-\item{name}{The name of the new set.}
-
 \item{...}{Other arguments.}
+
+\item{name}{The name of the new set.}
 
 \item{FUN}{A function to be applied when performing the union.
 The standard intersection is the "min" function, but you can provide any other
@@ -41,7 +41,7 @@ Given a TidySets creates a new set with the elements on the both of them.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{object = TidySet,sets = character,name = character}: Applies the standard intersection
+\item \code{object = TidySet,sets = character}: Applies the standard intersection
 }}
 
 \examples{

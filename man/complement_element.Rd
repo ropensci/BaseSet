@@ -3,23 +3,23 @@
 \docType{methods}
 \name{complement_element}
 \alias{complement_element}
-\alias{complement_element,TidySet,characterORfactor,character-method}
+\alias{complement_element,TidySet,characterORfactor-method}
 \title{Complement of elements}
 \usage{
-complement_element(object, elements, name, ...)
+complement_element(object, elements, ...)
 
-\S4method{complement_element}{TidySet,characterORfactor,character}(object,
-  elements, name, keep = TRUE, keep_relations = keep,
-  keep_elements = keep, keep_sets = keep)
+\S4method{complement_element}{TidySet,characterORfactor}(object, elements,
+  name, keep = TRUE, keep_relations = keep, keep_elements = keep,
+  keep_sets = keep)
 }
 \arguments{
 \item{object}{A TidySet object.}
 
 \item{elements}{The set to look for the complement.}
 
-\item{name}{Name of the new set. By default it adds a "C_".}
-
 \item{...}{Other arguments.}
+
+\item{name}{Name of the new set. By default it adds a "C_".}
 
 \item{keep}{Logical value to keep all the other sets.}
 
@@ -37,7 +37,7 @@ Return the objects without the elements listed
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{object = TidySet,elements = characterORfactor,name = character}: Complement of the elements.
+\item \code{object = TidySet,elements = characterORfactor}: Complement of the elements.
 }}
 
 \examples{
@@ -49,6 +49,7 @@ complement_element(a, "a", "C_a")
 complement_element(a, "a", "C_a", keep = FALSE)
 }
 \seealso{
-Other complements: \code{\link{complement_set}}
+Other complements: \code{\link{complement_set}},
+  \code{\link{subtract}}
 }
 \concept{complements}

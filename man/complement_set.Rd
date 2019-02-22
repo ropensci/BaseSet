@@ -50,6 +50,7 @@ complement_set(a, "a")
 \seealso{
 \code{\link{filter}}
 
-Other complements: \code{\link{complement_element}}
+Other complements: \code{\link{complement_element}},
+  \code{\link{subtract}}
 }
 \concept{complements}
