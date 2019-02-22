@@ -37,14 +37,10 @@ setMethod("union",
             } else {
               new_object <- merge_tidySets(object, new_object)
             }
-            new_object <- fapply(new_object, FUN)
+            relations <- fapply(new_object@relations, FUN)
+            new_object@relations <- relations
 
-            if (!keep_sets) {
-              new_object <- drop_sets(new_object)
-            }
-            if (!keep_elements) {
-              new_object <- drop_elements(new_object)
-            }
+            new_object <- droplevels(new_object, !keep_elements, !keep_sets)
             validObject(new_object)
             new_object
           }
