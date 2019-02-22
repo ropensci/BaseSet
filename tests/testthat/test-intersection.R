@@ -64,3 +64,15 @@ test_that("intersection keep", {
   expect_equal(nRelations(d2), 8L)
   expect_equal(nElements(d2), 6L)
 })
+
+test_that("intersection with three sets", {
+  # Simple case with duplicate relations
+  relations <- data.frame(sets = c(rep("a", 4), "b", "b", "c"),
+                          elements = c("a", "b", "c", "d", "a", "d", "d"))
+  a <- tidySet(relations)
+  b <- intersection(a, c("a", "c", "b"), "d")
+  expect_s4_class(b, "TidySet")
+  expect_equal(nRelations(b), 1L)
+  expect_equal(nSets(b), 1L)
+  expect_equal(nElements(b), 1L)
+})
