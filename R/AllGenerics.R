@@ -294,7 +294,7 @@ setGeneric("union", function(object, sets, name, ...)
 #'                         fuzzy = runif(6))
 #' a <- tidySet(relations)
 #' intersection(a, c("a", "b"), "C")
-setGeneric("intersection", function(object, sets, name, ...)
+setGeneric("intersection", function(object, sets, ...)
   standardGeneric("intersection"))
 
 #' Add a new set
@@ -302,7 +302,7 @@ setGeneric("intersection", function(object, sets, name, ...)
 #' Given a TidySets adds a new sets
 #' @param object A TidySet object
 #' @param elements The elements of the sets.
-#' @param setName The name of the new set.
+#' @param name The name of the new set.
 #' @param fuzzy The membership of each element with the set.
 #' @param ... Other arguments.
 #' @return A \code{TidySet} object.
@@ -314,7 +314,7 @@ setGeneric("intersection", function(object, sets, name, ...)
 #'                         fuzzy = runif(6))
 #' a <- tidySet(relations)
 #' add_set(a, "a", "C")
-setGeneric("add_set", function(object, elements, setName, fuzzy, ...)
+setGeneric("add_set", function(object, elements, name, fuzzy, ...)
   standardGeneric("add_set"))
 
 #' Add relations
@@ -434,5 +434,25 @@ setGeneric("complement_set", function(object, sets, ...)
 #' a <- tidySet(relations)
 #' complement_element(a, "a", "C_a")
 #' complement_element(a, "a", "C_a", keep = FALSE)
-setGeneric("complement_element", function(object, elements, name, ...)
+setGeneric("complement_element", function(object, elements, ...)
   standardGeneric("complement_element"))
+
+#' Subtract
+#'
+#' Elements in a set not present in the other set.
+#' @param object A TidySet object.
+#' @param set_in Name of the sets where the elements should be present.
+#' @param not_in Name of the sets where the elements should not be present.
+#' @inheritParams complement_set
+#' @return A \code{TidySet} object.
+#' @family complements
+#' @export
+#' @examples
+#' relations <- data.frame(sets = c("a", "a", "b", "b", "c", "c"),
+#'                         elements = letters[seq_len(6)],
+#'                         fuzzy = runif(6))
+#' a <- tidySet(relations)
+#' subtract(a, "a", "b")
+#' subtract(a, "a", "b", keep = FALSE)
+setGeneric("subtract", function(object, set_in, not_in, ...)
+  standardGeneric("subtract"))

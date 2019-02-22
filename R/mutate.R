@@ -62,7 +62,7 @@ mutate_element.TidySet <- function(.data, ...) {
   elements <- elements(.data)
   out <- dplyr::mutate(elements, !!!enquos(...))
   elements(.data) <- out
-  .data
+  droplevels(.data)
 }
 #' @export
 #' @method mutate_set TidySet
@@ -70,7 +70,7 @@ mutate_set.TidySet <- function(.data, ...) {
   sets <- sets(.data)
   out <- dplyr::mutate(sets, !!!enquos(...))
   sets(.data) <- out
-  .data
+  droplevels(.data)
 }
 
 
@@ -80,5 +80,5 @@ mutate_relation.TidySet <- function(.data, ...) {
   relations <- relations(.data)
   out <- dplyr::mutate(relations, !!!enquos(...))
   relations(.data) <- out
-  .data
+  droplevels(.data)
 }

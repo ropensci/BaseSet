@@ -46,6 +46,7 @@ Collate:
     'complement.R'
     'data_frame.R'
     'deactivate.R'
+    'droplevels.R'
     'elements.R'
     'filter.R'
     'fuzzification.R'
