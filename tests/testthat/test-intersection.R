@@ -4,12 +4,12 @@ test_that("intersection works", {
   relations <- data.frame(sets = c(rep("a", 5), "b", "c"),
                           elements = letters[seq_len(7)])
   a <- tidySet(relations)
-  b <- intersection(a, c("c", "b"), "d")
+  b <- intersection(a, c("c", "b"), "d", keep = TRUE)
   expect_s4_class(b, "TidySet")
-  expect_equal(name_sets(b), "d")
-  expect_equal(nSets(b), 1L)
-  expect_equal(nRelations(b), 0L)
-  expect_equal(nElements(b), 0L)
+  expect_length(name_sets(b), 4L)
+  expect_equal(nSets(b), 4L)
+  expect_equal(nRelations(b), 7L)
+  expect_equal(nElements(b), 7L)
 
   # Simple case with duplicate relations
   relations <- data.frame(sets = c(rep("a", 5), "b", "c"),
@@ -35,11 +35,11 @@ test_that("intersection works with fuzzy", {
   expect_equal(relations(b)$fuzzy, min(relations(a)[6:7, "fuzzy"]))
 
 
-  d <- intersection(a, c("a", "c"), "d")
+  d <- intersection(a, c("a", "c"), "d", keep = TRUE)
   expect_s4_class(d, "TidySet")
-  expect_equal(nRelations(d), 0L)
-  expect_equal(nSets(d), 1L)
-  expect_equal(nElements(d), 0L)
+  expect_equal(nRelations(d), 7L)
+  expect_equal(nSets(d), 4L)
+  expect_equal(nElements(d), 6L)
 })
 
 test_that("intersection keep", {

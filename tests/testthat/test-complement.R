@@ -20,7 +20,7 @@ test_that("complement set works for several sets", {
 
   expect_equal(nSets(b), 4L)
   expect_equal(nElements(b), 6L)
-  expect_equal(nRelations(b), 13L)
+  expect_equal(nRelations(b), 14L)
 })
 
 test_that("complement element works", {
