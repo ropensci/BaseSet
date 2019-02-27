@@ -46,6 +46,7 @@ setMethod("subtract",
             if (nrow(relations) >= 1) {
               relations$sets <- name
             }
+
             object <- add_sets(object, name)
             object <- replace_interactions(object, relations, keep_relations)
 

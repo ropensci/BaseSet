@@ -1,5 +1,6 @@
 #' @importFrom dplyr mutate
-NULL
+#' @export
+dplyr::mutate
 
 #' Mutate
 #'
@@ -17,34 +18,12 @@ NULL
 #'                         fuzzy = runif(12))
 #' a <- tidySet(relations)
 #' mutate_element(a, Type = c(rep("Gene", 4), rep("lncRNA", 2)))
-mutate <- function(.data, ...) {
-  UseMethod("mutate")
-}
-
-#' @rdname mutate
-#' @export
-mutate_set <- function(.data, ...) {
-  UseMethod("mutate_set")
-}
-
-#' @rdname mutate
-#' @export
-mutate_element <- function(.data, ...) {
-  UseMethod("mutate_element")
-}
-
-#' @rdname mutate
-#' @export
-mutate_relation <- function(.data, ...) {
-  UseMethod("mutate_relation")
-}
-
-#' @rdname mutate
+#' @rdname mutate_
 #' @export
 #' @method mutate TidySet
 mutate.TidySet <- function(.data, ...) {
   if (is.null(active(.data))) {
-  stop("Must indicate what do you want to modify.\n",
+    stop("Must indicate what do you want to modify.\n",
          "Perhaps you missed activate?")
   } else {
     switch(
@@ -55,6 +34,26 @@ mutate.TidySet <- function(.data, ...) {
     )
   }
 }
+
+
+#' @rdname mutate_
+#' @export
+mutate_set <- function(.data, ...) {
+  UseMethod("mutate_set")
+}
+
+#' @rdname mutate_
+#' @export
+mutate_element <- function(.data, ...) {
+  UseMethod("mutate_element")
+}
+
+#' @rdname mutate_
+#' @export
+mutate_relation <- function(.data, ...) {
+  UseMethod("mutate_relation")
+}
+
 
 #' @export
 #' @method mutate_element TidySet

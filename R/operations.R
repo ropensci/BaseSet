@@ -221,6 +221,8 @@ sets_for_elements <- function(object, elements) {
 }
 
 replace_interactions <- function(object, new_relations, keep) {
+
+  stopifnot(is.logical(keep))
   old_relations <- object@relations
   if (keep) {
     # To ensure that the number of columns match

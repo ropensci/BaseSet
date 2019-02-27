@@ -2,10 +2,11 @@
 #' @importFrom rlang !!!
 #' @importFrom rlang enquos
 #' @importFrom dplyr filter
-NULL
+#' @export
+dplyr::filter
 
 
-#' Filter
+#' Filter TidySet
 #'
 #' Use filter to subset the TidySet object. You can use activate with filter or
 #' use the specific function. The S3 method filters using all the information
@@ -32,29 +33,7 @@ NULL
 #' filter(a, sets == "b", type == "lncRNA")
 #' # Filter sets
 #' filter_set(a, sets == "b")
-filter <- function(.data, ...) {
-  UseMethod("filter")
-}
-
-#' @rdname filter
-#' @export
-filter_set <- function(.data, ...) {
-  UseMethod("filter_set")
-}
-
-#' @rdname filter
-#' @export
-filter_element <- function(.data, ...) {
-  UseMethod("filter_element")
-}
-
-#' @rdname filter
-#' @export
-filter_relation <- function(.data, ...) {
-  UseMethod("filter_relation")
-}
-
-#' @rdname filter
+#' @rdname filter_
 #' @export
 #' @method filter TidySet
 filter.TidySet <- function(.data, ...) {
@@ -70,6 +49,25 @@ filter.TidySet <- function(.data, ...) {
     )
   }
 }
+
+#' @rdname filter_
+#' @export
+filter_set <- function(.data, ...) {
+  UseMethod("filter_set")
+}
+
+#' @rdname filter_
+#' @export
+filter_element <- function(.data, ...) {
+  UseMethod("filter_element")
+}
+
+#' @rdname filter_
+#' @export
+filter_relation <- function(.data, ...) {
+  UseMethod("filter_relation")
+}
+
 
 #' @export
 #' @method filter_set TidySet
