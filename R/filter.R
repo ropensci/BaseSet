@@ -1,6 +1,4 @@
 #' @include AllClasses.R AllGenerics.R
-#' @importFrom rlang !!!
-#' @importFrom rlang enquos
 #' @importFrom dplyr filter
 #' @export
 dplyr::filter
@@ -73,7 +71,7 @@ filter_relation <- function(.data, ...) {
 #' @method filter_set TidySet
 filter_set.TidySet <- function(.data, ...) {
   sets <- sets(.data)
-  out <- dplyr::filter(sets, !!!enquos(...))
+  out <- dplyr::filter(sets, ...)
   original_sets <- name_sets(.data)
 
   if (nrow(out) == 0) {
@@ -88,7 +86,7 @@ filter_set.TidySet <- function(.data, ...) {
 #' @method filter_element TidySet
 filter_element.TidySet <- function(.data, ...) {
   elements <- elements(.data)
-  out <- dplyr::filter(elements, !!!enquos(...))
+  out <- dplyr::filter(elements, ...)
   original_elements <- name_elements(.data)
 
   if (nrow(out) == 0) {
@@ -103,7 +101,7 @@ filter_element.TidySet <- function(.data, ...) {
 filter_relation.TidySet <- function(.data, ...) {
 
   relations <- relations(.data)
-  out <- dplyr::filter(relations, !!!enquos(...))
+  out <- dplyr::filter(relations, ...)
 
   if (nrow(out) == 0) {
     relations(.data) <- out[0, , drop = FALSE]

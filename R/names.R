@@ -5,8 +5,13 @@ NULL
 #' @export name_sets
 setMethod("name_sets",
           signature = signature(object = "TidySet"),
-          function(object){
-            levels(sets(object)$sets)
+          function(object) {
+            s <- sets(object)$sets
+            if (is.factor(s)) {
+              levels(s)
+            } else if (is.character(s)) {
+              s
+            }
           }
 )
 
@@ -15,7 +20,12 @@ setMethod("name_sets",
 setMethod("name_elements",
           signature = signature(object = "TidySet"),
           function(object){
-            levels(elements(object)$elements)
+            e <- elements(object)$elements
+            if (is.factor(e)) {
+              levels(e)
+            } else if (is.character(e)) {
+              e
+            }
           }
 )
 
@@ -24,7 +34,7 @@ setMethod("name_elements",
 setMethod("name_elements<-",
           signature = signature(object = "TidySet", value = "characterORfactor"),
           function(object, value){
-            old <- levels(object@elements$elements)
+            old <- name_elements(object)
 
             if (is.factor(value)) {
               value <- as.character(value)
@@ -49,7 +59,8 @@ setMethod("name_elements<-",
 setMethod("name_sets<-",
           signature = signature(object = "TidySet", value = "characterORfactor"),
           function(object, value) {
-            old <- levels(object@sets$sets)
+            old <- name_sets(object)
+
             if (is.factor(value)) {
               value <- as.character(value)
             }
@@ -60,6 +71,7 @@ setMethod("name_sets<-",
               stop("Duplicated sets but with different information",
                    call. = FALSE)
             }
+
             old_relations <- levels(object@relations$sets)
             replace <- match(old_relations, old)
             levels(object@relations$sets)[replace] <- value

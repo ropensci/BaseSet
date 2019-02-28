@@ -32,5 +32,33 @@ test_that("mutate works", {
   expect_equal(ncol(relations(b)), ncol(relations(a)) + 1)
   expect_equal(nRelations(b), 6L)
   b <- deactivate(b)
-  expect_error(mutate(b, Type2 = ifelse(elements == "b", "B2", "D2")))
+  d <- mutate(b, Type2 = ifelse(elements == "b", "B2", "D2"))
+  expect_length(colnames(relations(d)), 5L)
+
+  a_df <- as.data.frame(a)
+  a <- deactivate(a)
+  b <- mutate(a, elements = ifelse(elements == "b", "B", "D"))
+  b_df <- as.data.frame(b)
+  expect_equal(name_elements(b), c("B", "D"))
+  # Check by fuzzy number
+  expect_equal(b_df$fuzzy[b_df$elements == "B"],
+               a_df$fuzzy[a_df$elements == "b"])
+})
+
+test_that("mutate allows changing the name of elements", {
+  a_df <- as.data.frame(a)
+  b <- mutate_element(a, elements = ifelse(elements == "b", "B", "D"))
+  b_df <- as.data.frame(b)
+  expect_equal(name_elements(b), c("D", "B"))
+  expect_equal(a_df$fuzzy[a_df$elements == "b"],
+               b_df$fuzzy[b_df$elements == "B"])
+})
+
+test_that("mutate allows changing the name of sets", {
+  a_df <- as.data.frame(a)
+  b <- mutate(a, sets = ifelse(sets == "b", "B", "D"))
+  expect_equal(name_sets(b), c("B", "D"))
+  b_df <- as.data.frame(b)
+  expect_equal(a_df$fuzzy[a_df$sets == "b"],
+               b_df$fuzzy[b_df$sets == "B"])
 })

@@ -1,4 +1,5 @@
 #' @importFrom dplyr mutate
+#' @importFrom rlang exprs
 #' @export
 dplyr::mutate
 
@@ -22,9 +23,10 @@ dplyr::mutate
 #' @export
 #' @method mutate TidySet
 mutate.TidySet <- function(.data, ...) {
+  # browser()
   if (is.null(active(.data))) {
-    stop("Must indicate what do you want to modify.\n",
-         "Perhaps you missed activate?")
+    df <- dplyr::mutate(as.data.frame(.data), ...)
+    df2TS(.data, df)
   } else {
     switch(
       active(.data),
@@ -58,17 +60,30 @@ mutate_relation <- function(.data, ...) {
 #' @export
 #' @method mutate_element TidySet
 mutate_element.TidySet <- function(.data, ...) {
+
   elements <- elements(.data)
-  out <- dplyr::mutate(elements, !!!enquos(...))
-  elements(.data) <- out
+  out <- dplyr::mutate(elements, ...)
+  if ("elements" %in% names(exprs(...))) {
+    old_names <- name_elements(.data)
+    new_names <- out$elements
+    order <- match(.data@relations$elements, old_names)
+    .data@relations$elements <- new_names[order]
+  }
+  elements(.data) <- unique(out)
   droplevels(.data)
 }
 #' @export
 #' @method mutate_set TidySet
 mutate_set.TidySet <- function(.data, ...) {
   sets <- sets(.data)
-  out <- dplyr::mutate(sets, !!!enquos(...))
-  sets(.data) <- out
+  out <- dplyr::mutate(sets, ...)
+  if ("sets" %in% names(exprs(...))) {
+    old_names <- name_sets(.data)
+    new_names <- out$setes
+    order <- match(.data@relations$sets, old_names)
+    .data@relations$elements <- new_names[order]
+  }
+  sets(.data) <- unique(out)
   droplevels(.data)
 }
 
@@ -77,7 +92,7 @@ mutate_set.TidySet <- function(.data, ...) {
 #' @method mutate_relation TidySet
 mutate_relation.TidySet <- function(.data, ...) {
   relations <- relations(.data)
-  out <- dplyr::mutate(relations, !!!enquos(...))
+  out <- dplyr::mutate(relations, ...)
   relations(.data) <- out
   droplevels(.data)
 }

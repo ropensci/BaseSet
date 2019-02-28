@@ -40,18 +40,29 @@ as.data.frame.TidySet <- function(x, ...) {
 #' @param df The flattened data.frame
 #' @return A TidySet object
 #' @noRd
-df2TS <- function(.data, df){
-  colnames_sets <- colnames(sets(.data))
-  colnames_elements <- colnames(elements(.data))
-  colnames_relations <- colnames(relations(.data))
-  TS <- tidySet(df[, colnames_relations])
+df2TS <- function(.data = NULL, df){
+  if (!is.null(.data)) {
+    colnames_sets <- colnames(sets(.data))
+    colnames_elements <- colnames(elements(.data))
+    colnames_relations <- colnames(relations(.data))
+  } else {
+    colnames_sets <- c("sets")
+    colnames_elements <- c("elements")
+    colnames_relations <- c("elements", "sets")
+  }
+  final_colnames <- colnames(df)
+  colnames_data <- c(colnames_sets, colnames_elements, colnames_relations)
+  new_colnames <- setdiff(final_colnames, colnames_data)
+  relations <- df[, c(colnames_relations, new_colnames)]
+
+  TS <- tidySet(df[, c(colnames_relations, new_colnames)])
 
   TS@elements <- merge(TS@elements,
                        unique(df[, colnames_elements, drop = FALSE]),
-                       all.x = TRUE, all.y = FALSE)
+                       all.x = TRUE, all.y = FALSE, sort = FALSE)
   TS@sets <- merge(TS@sets,
                    unique(df[, colnames_sets, drop = FALSE]),
-                   all.x = TRUE, all.y = FALSE)
+                   all.x = TRUE, all.y = FALSE, sort = FALSE)
   validObject(TS)
   TS
 }
