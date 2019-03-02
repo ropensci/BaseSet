@@ -50,6 +50,7 @@ Collate:
     'elements.R'
     'filter.R'
     'fuzzification.R'
+    'genesetcollection.R'
     'incidence.R'
     'operations.R'
     'intersection.R'

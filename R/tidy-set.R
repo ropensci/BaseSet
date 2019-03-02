@@ -4,11 +4,15 @@ NULL
 #' Create a TidySet object
 #'
 #' This functions help to create a \code{TidySet} object.
-#' @param relations (required) Depending on the method, it should be a
-#' \code{data.frame} with at least one column for the elements and one for the
-#' sets, a \code{list} with the elements that belong to each set, a
+#' @param object An object to be coerced to a TidySet.
+#' It can be a \code{data.frame} with at least one column for the elements and
+#' one for the sets,
+#' a \code{list} with the elements that belong to each set, a
 #' \code{matrix} with the elements as the rownames and the sets as the column
 #' names.
+#' a \code{GeneSet} from the GSEABase package
+#' a \code{GeneSetCollection} from the GSEABase package
+#'
 #' @return A TidySet object
 #' @examples
 #' relations <- data.frame(sets = c(rep("a", 5), "b"),
