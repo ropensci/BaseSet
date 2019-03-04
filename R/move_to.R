@@ -1,10 +1,34 @@
+#' @include AllClasses.R AllGenerics.R
+NULL
 
-
+#' @describeIn move_to Move columns
 #' @export
-move_to <- function(object, from, to, columns) {
-  from <- match.arg(from, c("sets", "elements", "relations"))
-  to <- match.arg(to, c("sets", "elements", "relations"))
-  from_df <- slot(object, from)
-  moving <- unique(from_df[, columns, drop = FALSE])
-  add_column(object, slot, moving)
-}
+setMethod("move_to",
+          signature = signature(object = "TidySet",
+                                from = "characterORfactor",
+                                to = "characterORfactor",
+                                columns = "character"),
+          function(object, from, to, columns) {
+            if (from == to) {
+              return(object)
+            }
+
+            from <- match.arg(from, c("sets", "elements", "relations"))
+            to <- match.arg(to, c("sets", "elements", "relations"))
+            from_df <- slot(object, from)
+            to_df <- slot(object, to)
+            if (!all(columns %in% colnames(from_df))) {
+              stop("All columns must come from the same table.", call. = FALSE)
+            }
+            df <- as.data.frame(object)
+
+            to_colnames <- colnames(to_df)
+            from_colnames <- colnames(from_df)
+
+            slot(object, to) <- unique(df[, c(to_colnames, columns), drop = FALSE])
+            slot(object, from) <- unique(from_df[, !from_colnames %in% columns,
+                                                 drop = FALSE])
+            validObject(object)
+            object
+          }
+)

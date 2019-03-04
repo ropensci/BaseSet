@@ -456,3 +456,19 @@ setGeneric("complement_element", function(object, elements, ...)
 #' subtract(a, "a", "b", keep = FALSE)
 setGeneric("subtract", function(object, set_in, not_in, ...)
   standardGeneric("subtract"))
+
+#' Move columns
+#'
+#' Moves information from one slot to other slots.
+#' @param object A TidySet object.
+#' @param from The name of the slot where the content is.
+#' @param to The name of the slot to move the content.
+#' @param columns The name of the columns that should be moved.
+#' @return A TidySet object where the content is moved from one slot to other.
+#' @examples
+#' x <- list("a" = c("A" = 0.1, "B" = 0.5), "b" = c("A" = 0.2, "B" = 1))
+#' a <- tidySet(x)
+#' a <- mutate_element(a, b = runif(2))
+#' b <- move_to(a, from = "elements", to = "relations", "b")
+setGeneric("move_to", function(object, from, to, columns)
+  standardGeneric("move_to"))
