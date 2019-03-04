@@ -1,8 +1,16 @@
+#' @include AllClasses.R AllGenerics.R
+NULL
 
-#' @describeIn tidySet Converts to a tidySet given a GeneSet
+#' @rdname tidySet
 #' @export
-#' @method tidySet GeneSetCollection
-tidySet.GeneSetCollection <- function(object) {
+tidy <- function(object) {
+  UseMethod("tidy")
+}
+
+#' @describeIn tidySet Converts to a tidySet given a GeneSetCollection
+#' @export
+#' @method tidy GeneSetCollection
+tidy.GeneSetCollection <- function(object) {
   # browser()
   data <- slot(object, ".Data")
   sets <- lapply(data, tidySet)
@@ -14,8 +22,8 @@ tidySet.GeneSetCollection <- function(object) {
 
 #' @describeIn tidySet Converts to a tidySet given a GeneSet
 #' @export
-#' @method tidySet GeneSet
-tidySet.GeneSet <- function(object) {
+#' @method tidy GeneSet
+tidy.GeneSet <- function(object) {
   # browser()
   relations <- data.frame(elements = object@geneIds,
                           sets = object@setName)
@@ -32,10 +40,6 @@ tidySet.GeneSet <- function(object) {
   sets(TS) <- as.data.frame(t(new_sets))
   validObject(TS)
   TS
-}
-
-tidy <- function(object) {
-  UseMethod("tidy")
 }
 
 helper_tidy <- function(object) {
