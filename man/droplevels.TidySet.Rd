@@ -9,9 +9,9 @@
 \arguments{
 \item{x}{A TidySet object.}
 
-\item{elements}{Logical value: Should elements be droped?}
+\item{elements}{Logical value: Should elements be dropped?}
 
-\item{sets}{Logical value: Should sets be droped?}
+\item{sets}{Logical value: Should sets be dropped?}
 
 \item{...}{Other arguments, currently ignored.}
 }

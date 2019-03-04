@@ -2,8 +2,8 @@
 #'
 #' Drop elements and sets without any relation.
 #' @param x A TidySet object.
-#' @param elements Logical value: Should elements be droped?
-#' @param sets Logical value: Should sets be droped?
+#' @param elements Logical value: Should elements be dropped?
+#' @param sets Logical value: Should sets be dropped?
 #' @param ... Other arguments, currently ignored.
 #' @return A TidySet object.
 #' @export

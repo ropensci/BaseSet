@@ -185,7 +185,7 @@ setGeneric("name_elements", function(object)
 #' @param object A TidySet object.
 #' @param value A character with the new names for the elements.
 #' @return A \code{TidySet} object.
-#' @family namess
+#' @family names
 #' @seealso \code{\link{rename_elements}}
 #' @export
 #' @aliases name_elements<-
@@ -205,7 +205,7 @@ setGeneric("name_elements<-", function(object, value)
 #' @param object A TidySet object.
 #' @param value A character with the new names for the sets.
 #' @return A \code{TidySet} object.
-#' @family namess
+#' @family names
 #' @seealso \code{\link{rename_set}}
 #' @export
 #' @aliases name_sets<-
