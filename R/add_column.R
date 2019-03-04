@@ -8,6 +8,7 @@ setMethod("add_column",
                                 slot = "character",
                                 columns = "ANY"),
           function(object, slot, columns) {
+            slot <- match.arg(slot, c("sets", "elements", "relations"))
             original <- slot(object, slot)
 
             if (nrow(columns) != nrow(original)) {
