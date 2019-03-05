@@ -72,14 +72,13 @@ filter_relation <- function(.data, ...) {
 filter_set.TidySet <- function(.data, ...) {
   sets <- sets(.data)
   out <- dplyr::filter(sets, ...)
-  original_sets <- name_sets(.data)
 
   if (nrow(out) == 0) {
-    sets(.data) <- out[0, , drop = FALSE]
+    .data@sets <- out[0, , drop = FALSE]
+  } else {
+    .data@sets <- droplevels(out)
   }
-
-  remove_sets <- setdiff(original_sets, out$sets)
-  remove_set(.data, remove_sets)
+  droplevels(.data)
 }
 
 #' @export
@@ -87,13 +86,13 @@ filter_set.TidySet <- function(.data, ...) {
 filter_element.TidySet <- function(.data, ...) {
   elements <- elements(.data)
   out <- dplyr::filter(elements, ...)
-  original_elements <- name_elements(.data)
 
   if (nrow(out) == 0) {
-    elements(.data) <- out[0, , drop = FALSE]
+    .data@elements <- out[0, , drop = FALSE]
+  } else {
+    .data@elements <- droplevels(out)
   }
-  remove_elements <- setdiff(original_elements, out$elements)
-  remove_element(.data, remove_elements)
+  droplevels(.data)
 }
 
 #' @export
@@ -104,15 +103,10 @@ filter_relation.TidySet <- function(.data, ...) {
   out <- dplyr::filter(relations, ...)
 
   if (nrow(out) == 0) {
-    relations(.data) <- out[0, , drop = FALSE]
+    .data@relations <- out[0, , drop = FALSE]
+  } else {
+    .data@relations <- droplevels(out)
   }
-
-  original_elements <- as.character(relations$elements)
-  original_sets <- as.character(relations$sets)
-
-  remove_elements <- original_elements[!original_elements %in% out$elements]
-  .data <- remove_element(.data, remove_elements)
-  remove_sets <- original_sets[!original_sets %in% out$sets]
-  remove_set(.data, remove_sets)
+  droplevels(.data)
 }
 
