@@ -48,14 +48,14 @@ df2TS <- function(.data = NULL, df){
   } else {
     colnames_sets <- c("sets")
     colnames_elements <- c("elements")
-    colnames_relations <- c("elements", "sets")
+    colnames_relations <- c("elements", "sets", "fuzzy")
   }
   final_colnames <- colnames(df)
   colnames_data <- c(colnames_sets, colnames_elements, colnames_relations)
   new_colnames <- setdiff(final_colnames, colnames_data)
   relations <- df[, c(colnames_relations, new_colnames)]
 
-  TS <- tidySet(df[, c(colnames_relations, new_colnames)])
+  TS <- tidySet(relations)
 
   TS@elements <- merge(TS@elements,
                        unique(df[, colnames_elements, drop = FALSE]),
