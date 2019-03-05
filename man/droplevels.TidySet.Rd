@@ -4,7 +4,8 @@
 \alias{droplevels.TidySet}
 \title{Drop unused elements and sets}
 \usage{
-\method{droplevels}{TidySet}(x, elements = TRUE, sets = TRUE, ...)
+\method{droplevels}{TidySet}(x, elements = TRUE, sets = TRUE,
+  relations = TRUE, ...)
 }
 \arguments{
 \item{x}{A TidySet object.}
@@ -12,6 +13,8 @@
 \item{elements}{Logical value: Should elements be dropped?}
 
 \item{sets}{Logical value: Should sets be dropped?}
+
+\item{relations}{Logical value: Should sets be dropped?}
 
 \item{...}{Other arguments, currently ignored.}
 }

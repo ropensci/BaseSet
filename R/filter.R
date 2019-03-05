@@ -92,7 +92,7 @@ filter_element.TidySet <- function(.data, ...) {
   } else {
     .data@elements <- droplevels(out)
   }
-  droplevels(.data)
+  droplevels(.data, sets = FALSE) # Allow empty sets
 }
 
 #' @export
