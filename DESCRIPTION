@@ -51,6 +51,7 @@ Collate:
     'elements.R'
     'filter.R'
     'fuzzification.R'
+    'group.R'
     'incidence.R'
     'operations.R'
     'intersection.R'
