@@ -23,7 +23,6 @@ dplyr::mutate
 #' @export
 #' @method mutate TidySet
 mutate.TidySet <- function(.data, ...) {
-  # browser()
   if (is.null(active(.data))) {
     df <- dplyr::mutate(as.data.frame(.data), ...)
     df2TS(.data, df)

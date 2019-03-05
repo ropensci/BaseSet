@@ -124,6 +124,7 @@ setMethod("set_size",
               stop("Please introduce valid element names. See name_sets",
                    call. = FALSE)
             }
+            object <- droplevels(object)
             rel <- relations(object)
             if (is.null(set)) {
               names_sets <- name_sets(object)
@@ -158,6 +159,7 @@ setMethod("element_size",
               stop("Please introduce valid element names. See element_names",
                    call. = FALSE)
             }
+            object <- droplevels(object)
             out <- rowsum(rep(1, nRelations(object)),
                    relations(object)$elements)
             if (is.null(element)) {

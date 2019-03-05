@@ -11,7 +11,6 @@ tidy <- function(object) {
 #' @export
 #' @method tidy GeneSetCollection
 tidy.GeneSetCollection <- function(object) {
-  # browser()
   data <- slot(object, ".Data")
   sets <- lapply(data, tidySet)
   TS <- Reduce(merge_tidySets, sets)
@@ -24,7 +23,6 @@ tidy.GeneSetCollection <- function(object) {
 #' @export
 #' @method tidy GeneSet
 tidy.GeneSet <- function(object) {
-  # browser()
   relations <- data.frame(elements = object@geneIds,
                           sets = object@setName)
   TS <- tidySet(relations)
