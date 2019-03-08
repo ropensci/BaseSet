@@ -18,7 +18,7 @@ arrange_relation(.data, ...)
 \arguments{
 \item{.data}{The TidySet object}
 
-\item{...}{The literal variable name, a positive integer or a negative
+\item{...}{Comma separated list of variables names or expressions
 integer column position.}
 }
 \value{
@@ -34,14 +34,14 @@ relations <- data.frame(sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
                         elements = rep(letters[seq_len(6)], 2),
                         fuzzy = runif(12))
 a <- tidySet(relations)
-elements(a) <- cbind(elements(a),
-                 type = c(rep("Gene", 4), rep("lncRNA", 2)))
+a <- mutate_element(a,
+                    type = c(rep("Gene", 4), rep("lncRNA", 2)))
 
-b <- arrange(a, -type)
+b <- arrange(a, desc(type))
 elements(b)
 b <- arrange_element(a, elements)
 elements(b)
-# Filter sets
+# Arrange sets
 arrange_set(a, sets)
 }
 \seealso{

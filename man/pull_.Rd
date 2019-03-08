@@ -34,8 +34,7 @@ relations <- data.frame(sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
                         elements = rep(letters[seq_len(6)], 2),
                         fuzzy = runif(12))
 a <- tidySet(relations)
-elements(a) <- cbind(elements(a),
-                 type = c(rep("Gene", 4), rep("lncRNA", 2)))
+a <- mutate_element(a, type = c(rep("Gene", 4), rep("lncRNA", 2)))
 pull(a, type)
 # Equivalent to pull_relation
 b <- activate(a, "relations")
