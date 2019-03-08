@@ -35,6 +35,9 @@ library("BiocStyle")
 
 # Getting started
 
+This vignette explains how to use the methods available in this package.
+
+
 ## The BaseSets class
 
 This is a basic example which shows you how to create a `TidySet` object, to store associations between genes and sets:
@@ -180,7 +183,7 @@ complement_set(fuzzy_set, c("A", "B"))
 
 # tidyverse
 
-You can also use `mutate`, `filter` and other `dplyr` verbs with TidySets:
+You can also use `mutate`, `filter` and other `dplyr` verbs with TidySets (with the only exception being `group_by`):
 
 ```{r tidyverse}
 library("dplyr")
@@ -205,6 +208,23 @@ set_modified %>%
   filter(Pathway == "pathway1", Important == 1)
 ```
 
+If you want to use `group_by` to group some elements then you need to create a 
+new set:
+
+```{r group}
+# A new group of those elements in pathway1 and with Important == 1
+set_modified %>% 
+  deactivate() %>% 
+  group("new", Pathway == "pathway1", Important == 1)
+```
+
+After grouping or mutating sometimes we might be interested in moving a column describing something to other places. We can do by simiply:
+
+```{r}
+elements(set_modified)
+out <- move_to(set_modified, "elements", "relations", "Pathway")
+relations(out)
+```
 
 # Session info {.unnumbered}
 
