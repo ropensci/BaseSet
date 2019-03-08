@@ -66,6 +66,7 @@ Collate:
     'remove.R'
     'remove_column.R'
     'rename.R'
+    'select.R'
     'set.R'
     'subtract.R'
     'tidy-set.R'
