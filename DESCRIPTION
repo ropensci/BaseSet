@@ -43,6 +43,7 @@ Collate:
     'add_column.R'
     'add_relation.R'
     'add_set.R'
+    'arrange.R'
     'basesets-package.R'
     'complement.R'
     'data_frame.R'
