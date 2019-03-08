@@ -15,8 +15,9 @@ group <- function(object, name, ...) {
 #' @rdname group
 #' @export
 group.TidySet <- function(object, name, ...) {
-  elements <- elements(object)
-  out <- dplyr::filter(elements, ...)
+
+  out <- filter(object, ...)
+  out <- elements(out)[, "elements", drop = FALSE]
   out$sets <- name
   out$fuzzy <- 1
 
