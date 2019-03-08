@@ -12,5 +12,5 @@ test_that("subtract works", {
   expect_equal(nSets(b), 4L)
 
   b <- subtract(a, set_in = c("a", "b"), "c")
-  expect_equal(name_sets(b)[4], "(a∪b)∖(c)")
+  expect_equal(name_sets(b)[4], "(a∪b)∖c")
 })

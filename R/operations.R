@@ -248,10 +248,10 @@ naming <- function(start = NULL, sets1, middle = NULL, sets2 = NULL,
     stop("sets1 and sets2 should be separated by a symbol")
   }
 
-  if (!is.null(sets2)) {
+  if (!is.null(sets2) && length(sets2) > 1) {
     sets2 <- paste0("(", paste0(sets2, collapse = set_symbols[collapse_symbol]), ")")
   }
-  if (!is.null(start) || !is.null(middle)) {
+  if (!is.null(start) || !is.null(middle) && length(sets1) > 1) {
     sets1 <- paste0("(", paste0(sets1, collapse = set_symbols[collapse_symbol]), ")")
   } else {
     sets1 <- paste0(sets1, collapse = set_symbols[collapse_symbol])
