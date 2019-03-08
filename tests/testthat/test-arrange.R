@@ -15,4 +15,6 @@ test_that("arrange works", {
   expect_equal(as.character(sets(b)[1, "sets"]), "a")
   b <- arrange_relation(a, desc(sets))
   expect_equal(as.character(relations(b)[1, "sets"]), "b2")
+  b <- arrange(a, desc(sets))
+  expect_equal(as.character(relations(b)[1, "sets"]), "b2")
 })

@@ -62,3 +62,8 @@ test_that("mutate allows changing the name of sets", {
   expect_equal(a_df$fuzzy[a_df$sets == "b"],
                b_df$fuzzy[b_df$sets == "B"])
 })
+
+test_that("mutate sets works", {
+  b <- mutate_set(a, sets = paste0(sets, "2"))
+  expect_equal(name_sets(b), c("a2", "b2"))
+})
