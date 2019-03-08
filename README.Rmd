@@ -1,5 +1,7 @@
 ---
 output: github_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -18,11 +20,11 @@ knitr::opts_chunk$set(
 
 # BaseSet
 
-The goal of BaseSet is to facilitate working with sets
+The goal of BaseSet is to facilitate working with sets while using the dplyr verbs. 
 
 ## Installation
 
-You can install the released version of BaseSet from [Github](https://github.com/llrs/BaseSet) with:
+You can install the latest version of BaseSet from [Github](https://github.com/llrs/BaseSet) with:
 
 ```{r eval=FALSE}
 remotes::install_github("llrs/BaseSet")
@@ -46,15 +48,21 @@ a
 ```
 Perform typical operations like union, intersection:
 ```{r union-intersection}
-b <- union(a, "A", "B", "AuB")
+b <- union(a, c("A", "B"), "AuB", keep = TRUE)
 nSets(b)
 b
-d <- intersection(a, "A", "B", "D")
+d <- intersection(a, c("A", "B"), "D")
 nSets(d)
 d
 ```
 And compute size of sets among other things:
 ```{r set_size}
 set_size(a)
+```
+```{r subraction}
+subtract(a, "A", "B")
+```
+```{r}
+mutate(b, Keep = ifelse(fuzzy > 0.5, TRUE, FALSE))
 ```
 
