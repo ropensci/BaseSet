@@ -80,9 +80,9 @@ mutate_set.TidySet <- function(.data, ...) {
   out <- dplyr::mutate(sets, ...)
   if ("sets" %in% names(exprs(...))) {
     old_names <- name_sets(.data)
-    new_names <- out$setes
+    new_names <- out$sets
     order <- match(.data@relations$sets, old_names)
-    .data@relations$elements <- new_names[order]
+    .data@relations$sets <- new_names[order]
   }
   sets(.data) <- unique(out)
   droplevels(.data)
