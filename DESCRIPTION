@@ -61,6 +61,7 @@ Collate:
     'mutate.R'
     'names.R'
     'print.R'
+    'pull.R'
     'relations.R'
     'remove.R'
     'remove_column.R'
