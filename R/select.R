@@ -20,14 +20,14 @@ dplyr::select
 #'                         elements = rep(letters[seq_len(6)], 2),
 #'                         fuzzy = runif(12))
 #' a <- tidySet(relations)
-#' elements(a) <- cbind(elements(a),
+#' a <- mutate_element(a,
 #'                  type = c(rep("Gene", 4), rep("lncRNA", 2)))
 #'
 #' b <- select(a, -type)
 #' elements(b)
 #' b <- select_element(a, elements)
 #' elements(b)
-#' # Filter sets
+#' # Select sets
 #' select_set(a, sets)
 #' @rdname select_
 #' @export
