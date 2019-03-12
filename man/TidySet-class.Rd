@@ -25,4 +25,26 @@ a <- tidySet(x)
 }
 \seealso{
 \link{tidySet}
+
+Other methods: \code{\link{activate}},
+  \code{\link{add_column}}, \code{\link{add_relation}},
+  \code{\link{add_set}}, \code{\link{arrange.TidySet}},
+  \code{\link{complement_element}},
+  \code{\link{complement_set}}, \code{\link{element_size}},
+  \code{\link{elements}}, \code{\link{filter.TidySet}},
+  \code{\link{group}}, \code{\link{incidence}},
+  \code{\link{intersection}}, \code{\link{is.fuzzy}},
+  \code{\link{move_to}}, \code{\link{mutate.TidySet}},
+  \code{\link{nElements}}, \code{\link{nRelations}},
+  \code{\link{nSets}}, \code{\link{name_elements<-}},
+  \code{\link{name_sets<-}}, \code{\link{name_sets}},
+  \code{\link{pull.TidySet}}, \code{\link{relations}},
+  \code{\link{remove_column}},
+  \code{\link{remove_element}},
+  \code{\link{remove_relation}}, \code{\link{remove_set}},
+  \code{\link{rename_elements}}, \code{\link{rename_set}},
+  \code{\link{select.TidySet}}, \code{\link{set_size}},
+  \code{\link{sets}}, \code{\link{subtract}},
+  \code{\link{union}}
 }
+\concept{methods}

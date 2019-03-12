@@ -9,6 +9,7 @@
 #' @aliases TidySet
 #' @export
 #' @seealso \link{tidySet}
+#' @family methods
 #' @examples
 #' x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
 #' a <- tidySet(x)

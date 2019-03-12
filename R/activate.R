@@ -9,6 +9,7 @@ NULL
 #' @param .data A \code{TidySet} object.
 #' @param what Either "elements", "sets" or "relations"
 #' @return A \code{TidySet} object.
+#' @family methods
 #' @export
 #' @examples
 #' relations <- data.frame(sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),

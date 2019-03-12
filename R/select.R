@@ -15,6 +15,7 @@ dplyr::select
 #' @return A TidySet object
 #' @export
 #' @seealso dplyr \code{\link[dplyr]{select}} and \code{\link{activate}}
+#' @family methods
 #' @examples
 #' relations <- data.frame(sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
 #'                         elements = rep(letters[seq_len(6)], 2),

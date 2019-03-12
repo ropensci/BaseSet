@@ -7,6 +7,7 @@ NULL
 #' @param name The name of the new set.
 #' @param ... A logical condition to subset some elements
 #' @return A TidySet object with the new set
+#' @family methods
 #' @export
 group <- function(object, name, ...) {
   UseMethod("group")

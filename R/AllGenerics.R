@@ -11,6 +11,7 @@ NULL
 #' @export elements
 #' @seealso \code{\link{nElements}}
 #' @family slots
+#' @family methods
 #' @aliases elements<-
 setGeneric("elements", function(object) standardGeneric("elements"))
 
@@ -24,6 +25,7 @@ setGeneric("elements", function(object) standardGeneric("elements"))
 #' @aliases sets<-
 #' @seealso \code{\link{nSets}}
 #' @family slots
+#' @family methods
 setGeneric("sets", function(object) standardGeneric("sets"))
 
 #' Fuzzy Sets
@@ -32,6 +34,7 @@ setGeneric("sets", function(object) standardGeneric("sets"))
 #' @param object Object to be coerced or tested.
 #' @return A logical value.
 #' @export is.fuzzy
+#' @family methods
 setGeneric("is.fuzzy", function(object) standardGeneric("is.fuzzy"))
 
 #' Number of sets
@@ -40,6 +43,7 @@ setGeneric("is.fuzzy", function(object) standardGeneric("is.fuzzy"))
 #' @param object Object to be coerced or tested.
 #' @export nSets
 #' @family count functions
+#' @family methods
 setGeneric("nSets", function(object) standardGeneric("nSets"))
 
 #' Number of elements
@@ -49,6 +53,7 @@ setGeneric("nSets", function(object) standardGeneric("nSets"))
 #' @return A numeric value with the number of elements.
 #' @export nElements
 #' @family count functions
+#' @family methods
 setGeneric("nElements", function(object) standardGeneric("nElements"))
 
 #' Number of relations
@@ -58,6 +63,7 @@ setGeneric("nElements", function(object) standardGeneric("nElements"))
 #' @return A numeric value with the number of the relations.
 #' @export nRelations
 #' @family count functions
+#' @family methods
 setGeneric("nRelations", function(object) standardGeneric("nRelations"))
 
 #' Incidence
@@ -65,6 +71,7 @@ setGeneric("nRelations", function(object) standardGeneric("nRelations"))
 #' Check which elements are in which sets.
 #' @param object Object to be coerced or tested.
 #' @export incidence
+#' @family methods
 setGeneric("incidence", function(object) standardGeneric("incidence"))
 
 #' Find the relationship
@@ -76,6 +83,7 @@ setGeneric("incidence", function(object) standardGeneric("incidence"))
 #' @return A \code{data.frame} with information about the relations between
 #' elements and sets.
 #' @family slots
+#' @family methods
 #' @seealso \code{\link{nRelations}}
 #' @export
 setGeneric("relations", function(object) standardGeneric("relations"))
@@ -104,6 +112,7 @@ setGeneric("sets<-", function(object, value) standardGeneric("sets<-"))
 #' @export set_size
 #' @aliases cardinality
 #' @family sizes
+#' @family methods
 setGeneric("set_size", function(object, set = NULL) standardGeneric("set_size"))
 
 #' Calculates the size of the elements
@@ -115,6 +124,7 @@ setGeneric("set_size", function(object, set = NULL) standardGeneric("set_size"))
 #' size.
 #' @family sizes
 #' @export element_size
+#' @family methods
 setGeneric("element_size", function(object, element = NULL) standardGeneric("element_size"))
 
 #' Rename sets
@@ -128,6 +138,7 @@ setGeneric("element_size", function(object, element = NULL) standardGeneric("ele
 #' @family names
 #' @seealso \code{\link{name_sets}}
 #' @export
+#' @family methods
 setGeneric("rename_set", function(object, old, new) standardGeneric("rename_set"))
 
 #' Rename elements
@@ -141,6 +152,7 @@ setGeneric("rename_set", function(object, old, new) standardGeneric("rename_set"
 #' @family names
 #' @seealso \code{\link{name_elements}}
 #' @export
+#' @family methods
 setGeneric("rename_elements", function(object, old, new)
   standardGeneric("rename_elements"))
 
@@ -152,6 +164,7 @@ setGeneric("rename_elements", function(object, old, new)
 #' @param value A character with the new names for the sets.
 #' @return A \code{TidySet} object.
 #' @family names
+#' @family methods
 #' @export
 #' @examples
 #' relations <- data.frame(sets = c(rep("a", 5), "b"),
@@ -186,6 +199,7 @@ setGeneric("name_elements", function(object)
 #' @param value A character with the new names for the elements.
 #' @return A \code{TidySet} object.
 #' @family names
+#' @family methods
 #' @seealso \code{\link{rename_elements}}
 #' @export
 #' @aliases name_elements<-
@@ -206,6 +220,7 @@ setGeneric("name_elements<-", function(object, value)
 #' @param value A character with the new names for the sets.
 #' @return A \code{TidySet} object.
 #' @family names
+#' @family methods
 #' @seealso \code{\link{rename_set}}
 #' @export
 #' @aliases name_sets<-
@@ -227,6 +242,7 @@ setGeneric("name_sets<-", function(object, value)
 #' @param columns The columns to add.
 #' @return A \code{TidySet} object.
 #' @family column
+#' @family methods
 #' @seealso \code{\link{rename_set}}
 #' @export
 #' @examples
@@ -247,6 +263,7 @@ setGeneric("add_column", function(object, slot, columns)
 #' @param column_names The name of the columns.
 #' @return A \code{TidySet} object.
 #' @family column
+#' @family methods
 #' @seealso \code{\link{rename_set}}
 #' @export
 setGeneric("remove_column", function(object, slot, column_names)
@@ -268,6 +285,7 @@ setGeneric("remove_column", function(object, slot, column_names)
 #' @param ... Other arguments.
 #' @return A \code{TidySet} object.
 #' @export
+#' @family methods
 #' @examples
 #' relations <- data.frame(sets = c(rep("a", 5), "b"),
 #'                         elements = letters[seq_len(6)],
@@ -288,6 +306,7 @@ setGeneric("union", function(object, sets, name, ...)
 #' @param keep A logical value if you want to keep originals sets.
 #' @return A \code{TidySet} object.
 #' @export
+#' @family methods
 #' @examples
 #' relations <- data.frame(sets = c(rep("a", 5), "b"),
 #'                         elements = c("a", "b", "c", "d", "f", "f"),
@@ -308,6 +327,7 @@ setGeneric("intersection", function(object, sets, ...)
 #' @return A \code{TidySet} object.
 #' @family add functions
 #' @export
+#' @family methods
 #' @examples
 #' relations <- data.frame(sets = c(rep("a", 5), "b"),
 #'                         elements = letters[seq_len(6)],
@@ -326,6 +346,7 @@ setGeneric("add_set", function(object, elements, name, fuzzy, ...)
 #' @return A \code{TidySet} object.
 #' @family add functions
 #' @export
+#' @family methods
 #' @examples
 #' relations <- data.frame(sets = c(rep("a", 5), "b"),
 #'                         elements = letters[seq_len(6)],
@@ -348,6 +369,7 @@ setGeneric("add_relation", function(object, relations, ...)
 #' @param ... Other arguments.
 #' @return A \code{TidySet} object.
 #' @family remove functions
+#' @family methods
 #' @export
 #' @examples
 #' relations <- data.frame(sets = c(rep("a", 5), "b"),
@@ -368,6 +390,7 @@ setGeneric("remove_relation", function(object, elements, sets, ...)
 #' @return A \code{TidySet} object.
 #' @export
 #' @family remove functions
+#' @family methods
 #' @examples
 #' relations <- data.frame(sets = c(rep("a", 5), "b"),
 #'                         elements = letters[seq_len(6)],
@@ -387,6 +410,7 @@ setGeneric("remove_element", function(object, elements, ...)
 #' @return A \code{TidySet} object.
 #' @export
 #' @family remove functions
+#' @family methods
 #' @examples
 #' relations <- data.frame(sets = c("a", "a", "b", "b", "c", "c"),
 #'                         elements = letters[seq_len(6)],
@@ -407,6 +431,7 @@ setGeneric("remove_set", function(object, sets, ...)
 #' @inheritParams union
 #' @return A \code{TidySet} object.
 #' @family complements
+#' @family methods
 #' @seealso \code{\link{filter}}
 #' @export
 #' @examples
@@ -426,6 +451,7 @@ setGeneric("complement_set", function(object, sets, ...)
 #' @inheritParams complement_set
 #' @return A \code{TidySet} object.
 #' @family complements
+#' @family methods
 #' @export
 #' @examples
 #' relations <- data.frame(sets = c("a", "a", "b", "b", "c", "c"),
@@ -446,6 +472,7 @@ setGeneric("complement_element", function(object, elements, ...)
 #' @inheritParams complement_set
 #' @return A \code{TidySet} object.
 #' @family complements
+#' @family methods
 #' @export
 #' @examples
 #' relations <- data.frame(sets = c("a", "a", "b", "b", "c", "c"),
@@ -465,6 +492,7 @@ setGeneric("subtract", function(object, set_in, not_in, ...)
 #' @param to The name of the slot to move the content.
 #' @param columns The name of the columns that should be moved.
 #' @return A TidySet object where the content is moved from one slot to other.
+#' @family methods
 #' @examples
 #' x <- list("a" = c("A" = 0.1, "B" = 0.5), "b" = c("A" = 0.2, "B" = 1))
 #' a <- tidySet(x)

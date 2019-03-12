@@ -13,6 +13,7 @@ dplyr::filter
 #' @param ... The logical predicates in terms of the variables of the sets
 #' @return A TidySet object
 #' @export
+#' @family methods
 #' @seealso dplyr \code{\link[dplyr]{filter}} and \code{\link{activate}}
 #' @examples
 #' relations <- data.frame(sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
