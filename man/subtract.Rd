@@ -21,7 +21,7 @@ subtract(object, set_in, not_in, ...)
 
 \item{...}{Other arguments.}
 
-\item{name}{Name of the new set. By default it adds a "C_".}
+\item{name}{Name of the new set. By default it adds a "C".}
 
 \item{keep}{Logical value to keep all the other sets.}
 
@@ -54,6 +54,11 @@ subtract(a, "a", "b", keep = FALSE)
 Other complements: \code{\link{complement_element}},
   \code{\link{complement_set}}
 
+Other methods that create new sets: \code{\link{add_set}},
+  \code{\link{complement_element}},
+  \code{\link{complement_set}}, \code{\link{intersection}},
+  \code{\link{union}}
+
 Other methods: \code{\link{TidySet-class}},
   \code{\link{activate}}, \code{\link{add_column}},
   \code{\link{add_relation}}, \code{\link{add_set}},
@@ -77,3 +82,4 @@ Other methods: \code{\link{TidySet-class}},
 }
 \concept{complements}
 \concept{methods}
+\concept{methods that create new sets}

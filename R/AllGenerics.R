@@ -285,6 +285,7 @@ setGeneric("remove_column", function(object, slot, column_names)
 #' @param ... Other arguments.
 #' @return A \code{TidySet} object.
 #' @export
+#' @family methods that create new sets
 #' @family methods
 #' @examples
 #' relations <- data.frame(sets = c(rep("a", 5), "b"),
@@ -306,6 +307,7 @@ setGeneric("union", function(object, sets, name, ...)
 #' @param keep A logical value if you want to keep originals sets.
 #' @return A \code{TidySet} object.
 #' @export
+#' @family methods that create new sets
 #' @family methods
 #' @examples
 #' relations <- data.frame(sets = c(rep("a", 5), "b"),
@@ -326,6 +328,7 @@ setGeneric("intersection", function(object, sets, ...)
 #' @param ... Other arguments.
 #' @return A \code{TidySet} object.
 #' @family add functions
+#' @family methods that create new sets
 #' @export
 #' @family methods
 #' @examples
@@ -426,11 +429,12 @@ setGeneric("remove_set", function(object, sets, ...)
 #' @param object A TidySet object.
 #' @param sets The name of the set to look for the complement.
 #' @param keep Logical value to keep all the other sets.
-#' @param name Name of the new set. By default it adds a "C_".
+#' @param name Name of the new set. By default it adds a "C".
 #' @param ... Other arguments.
 #' @inheritParams union
 #' @return A \code{TidySet} object.
 #' @family complements
+#' @family methods that create new sets
 #' @family methods
 #' @seealso \code{\link{filter}}
 #' @export
@@ -451,6 +455,7 @@ setGeneric("complement_set", function(object, sets, ...)
 #' @inheritParams complement_set
 #' @return A \code{TidySet} object.
 #' @family complements
+#' @family methods that create new sets
 #' @family methods
 #' @export
 #' @examples
@@ -472,6 +477,7 @@ setGeneric("complement_element", function(object, elements, ...)
 #' @inheritParams complement_set
 #' @return A \code{TidySet} object.
 #' @family complements
+#' @family methods that create new sets
 #' @family methods
 #' @export
 #' @examples

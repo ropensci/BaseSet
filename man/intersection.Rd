@@ -52,6 +52,11 @@ a <- tidySet(relations)
 intersection(a, c("a", "b"), "C")
 }
 \seealso{
+Other methods that create new sets: \code{\link{add_set}},
+  \code{\link{complement_element}},
+  \code{\link{complement_set}}, \code{\link{subtract}},
+  \code{\link{union}}
+
 Other methods: \code{\link{TidySet-class}},
   \code{\link{activate}}, \code{\link{add_column}},
   \code{\link{add_relation}}, \code{\link{add_set}},
@@ -74,3 +79,4 @@ Other methods: \code{\link{TidySet-class}},
   \code{\link{union}}
 }
 \concept{methods}
+\concept{methods that create new sets}

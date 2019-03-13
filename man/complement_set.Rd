@@ -19,7 +19,7 @@ complement_set(object, sets, ...)
 
 \item{...}{Other arguments.}
 
-\item{name}{Name of the new set. By default it adds a "C_".}
+\item{name}{Name of the new set. By default it adds a "C".}
 
 \item{keep}{Logical value to keep all the other sets.}
 
@@ -53,6 +53,11 @@ complement_set(a, "a")
 Other complements: \code{\link{complement_element}},
   \code{\link{subtract}}
 
+Other methods that create new sets: \code{\link{add_set}},
+  \code{\link{complement_element}},
+  \code{\link{intersection}}, \code{\link{subtract}},
+  \code{\link{union}}
+
 Other methods: \code{\link{TidySet-class}},
   \code{\link{activate}}, \code{\link{add_column}},
   \code{\link{add_relation}}, \code{\link{add_set}},
@@ -76,3 +81,4 @@ Other methods: \code{\link{TidySet-class}},
 }
 \concept{complements}
 \concept{methods}
+\concept{methods that create new sets}

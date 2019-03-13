@@ -51,6 +51,10 @@ add_set(a, "a", "C")
 \seealso{
 Other add functions: \code{\link{add_relation}}
 
+Other methods that create new sets: \code{\link{complement_element}},
+  \code{\link{complement_set}}, \code{\link{intersection}},
+  \code{\link{subtract}}, \code{\link{union}}
+
 Other methods: \code{\link{TidySet-class}},
   \code{\link{activate}}, \code{\link{add_column}},
   \code{\link{add_relation}},
@@ -75,3 +79,4 @@ Other methods: \code{\link{TidySet-class}},
 }
 \concept{add functions}
 \concept{methods}
+\concept{methods that create new sets}
