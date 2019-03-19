@@ -28,6 +28,13 @@ Calculate the probability of being of different sizes for a given set.
 \item \code{TidySet}: Calculates the size of a set either fuzzy or not
 }}
 
+\examples{
+relations <- data.frame(sets = c(rep("a", 5), "b", "c"),
+                        elements = c(letters[seq_len(6)], letters[6]),
+                        fuzzy = runif(7))
+a <- tidySet(relations)
+set_size(a)
+}
 \seealso{
 Other sizes: \code{\link{element_size}}
 

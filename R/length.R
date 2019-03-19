@@ -116,6 +116,12 @@ length_set <- function(fuzziness) {
 
 #' @describeIn set_size Calculates the size of a set either fuzzy or not
 #' @export
+#' @examples
+#' relations <- data.frame(sets = c(rep("a", 5), "b", "c"),
+#'                         elements = c(letters[seq_len(6)], letters[6]),
+#'                         fuzzy = runif(7))
+#' a <- tidySet(relations)
+#' set_size(a)
 setMethod("set_size",
           signature = signature(object = "TidySet"),
           function(object, set = NULL) {
@@ -124,7 +130,7 @@ setMethod("set_size",
               stop("Please introduce valid element names. See name_sets",
                    call. = FALSE)
             }
-            object <- droplevels(object)
+            # object <- droplevels(object)
             rel <- relations(object)
             if (is.null(set)) {
               names_sets <- name_sets(object)
@@ -151,6 +157,12 @@ setMethod("set_size",
 
 #' @describeIn element_size Calculates the number of sets one element appears
 #' @export
+#' @examples
+#' relations <- data.frame(sets = c(rep("a", 5), "b", "c"),
+#'                         elements = c(letters[seq_len(6)], letters[6]),
+#'                         fuzzy = runif(7))
+#' a <- tidySet(relations)
+#' element_size(a)
 setMethod("element_size",
           signature = signature(object = "TidySet"),
           function(object, element = NULL) {
@@ -159,16 +171,27 @@ setMethod("element_size",
               stop("Please introduce valid element names. See element_names",
                    call. = FALSE)
             }
-            object <- droplevels(object)
-            out <- rowsum(rep(1, nRelations(object)),
-                   relations(object)$elements)
+            # object <- droplevels(object)
+            rel <- relations(object)
             if (is.null(element)) {
-              out[, 1]
-              data.frame(element = rownames(out), size = out[, 1],
-                         probability = 1)
+              names_elements <- name_elements(object)
             } else {
-              data.frame(element = element, size = out[, 1][element],
-                         probability = 1)
+              names_elements <- element
+            }
+            sizes <- lapply(names_elements, function(x){
+              length_set(rel[rel$elements == x, "fuzzy"])
+            })
+
+            elements <- rep(names_elements, lengths(sizes))
+            lengths_set <- unlist(lapply(sizes, names), use.names = FALSE)
+            probability_length <- unlist(sizes, use.names = FALSE)
+            out <- data.frame(element = elements,
+                              size = as.numeric(lengths_set),
+                              probability = probability_length)
+            if (is.null(element)) {
+              out
+            } else {
+              out[elements %in% element, ]
             }
           }
 )

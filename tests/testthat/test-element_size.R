@@ -9,5 +9,6 @@ test_that("element_size works", {
   expect_equal(colnames(df), c("element", "size", "probability"))
   expect_error(element_size(a, "z"))
   out <- element_size(a, "b")
-  expect_equal(nrow(out), 1L)
+  expect_equal(nrow(out), 2L)
+  expect_equal(out$size, c(0, 1))
 })
