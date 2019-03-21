@@ -64,7 +64,9 @@ Or any other verb from [dplyr](https://cran.r-project.org/package=dplyr). Like m
 library("magrittr")
 set.seed(4673) # To make it reproducible in your machine
 mutate(sets_analysis, Keep = sample(c(TRUE, FALSE), 7, replace = TRUE)) %>% 
-    filter(Keep == TRUE)
+    filter(Keep == TRUE) %>% 
+    activate("sets") %>% 
+    mutate(sets_origin = c("Reactome", "KEGG"))
 ```
 You can do the same operations with fuzzy sets:
 ```{r fuzzy}
@@ -72,6 +74,7 @@ relations <- data.frame(sets = c(rep("A", 5), "B", "B"),
                         elements = c("a", "b", "c", "d", "e", "a", "f"),
                         fuzzy = runif(7))
 fuzzy_set <- tidySet(relations)
+fuzzy_set
 union(fuzzy_set, c("A", "B"))
 union(fuzzy_set, c("A", "B"), "D", keep = TRUE)
 intersection(fuzzy_set, c("A", "B"), "D") 
@@ -81,6 +84,8 @@ set_size(fuzzy_set) # A set could be empty!
 element_size(fuzzy_set)
 
 mutate(fuzzy_set, Keep = ifelse(fuzzy > 0.5, TRUE, FALSE)) %>% 
-    filter(Keep == TRUE)
+    filter(Keep == TRUE) %>% 
+    activate("sets") %>% 
+    mutate(sets_origin = c("Reactome", "KEGG"))
 ```
 
