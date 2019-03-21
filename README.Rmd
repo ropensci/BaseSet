@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 
 # BaseSet
 
-The goal of BaseSet is to facilitate working with sets while using the dplyr verbs. 
+The goal of BaseSet is to facilitate working with sets in an efficient way.
 
 ## Installation
 
@@ -37,32 +37,50 @@ library("BaseSet")
 ```
 
 To work with sets we need to have the relations between the elements and the sets:
-
 ```{r TidySet}
-relations <- data.frame(sets = c(rep("A", 5), "B", "B"), 
-                        elements = c("a", "b", "c", "d", "e", "a", "f"),
-                        fuzzy = runif(7))
-a <- tidySet(relations = relations)
-nSets(a)
-a
+sets <- list(A = letters[1:5], B = c("a", "f"))
+sets_analysis <- tidySet(sets)
 ```
 Perform typical operations like union, intersection:
 ```{r union-intersection}
-b <- union(a, c("A", "B"), "AuB", keep = TRUE)
-nSets(b)
-b
-d <- intersection(a, c("A", "B"), "D")
-nSets(d)
-d
+union(sets_analysis, c("A", "B")) 
+# Or we can give a name to the new set and keep the others sets
+union(sets_analysis, c("A", "B"), "D", keep = TRUE)
+# We can do the same in the intersection
+intersection(sets_analysis, c("A", "B"), "D") 
+# Or we can omit the new name: 
+intersection(sets_analysis, c("A", "B"), keep = TRUE)
 ```
 And compute size of sets among other things:
 ```{r set_size}
-set_size(a)
+set_size(sets_analysis)
 ```
+The elements in one set not present in other:
 ```{r subraction}
-subtract(a, "A", "B")
+subtract(sets_analysis, "A", "B", keep = FALSE)
 ```
-```{r}
-mutate(b, Keep = ifelse(fuzzy > 0.5, TRUE, FALSE))
+Or any other verb from [dplyr](https://cran.r-project.org/package=dplyr). Like mutate
+```{r dplyr}
+library("magrittr")
+set.seed(4673) # To make it reproducible in your machine
+mutate(sets_analysis, Keep = sample(c(TRUE, FALSE), 7, replace = TRUE)) %>% 
+    filter(Keep == TRUE)
+```
+You can do the same operations with fuzzy sets:
+```{r fuzzy}
+relations <- data.frame(sets = c(rep("A", 5), "B", "B"), 
+                        elements = c("a", "b", "c", "d", "e", "a", "f"),
+                        fuzzy = runif(7))
+fuzzy_set <- tidySet(relations)
+union(fuzzy_set, c("A", "B"))
+union(fuzzy_set, c("A", "B"), "D", keep = TRUE)
+intersection(fuzzy_set, c("A", "B"), "D") 
+intersection(fuzzy_set, c("A", "B"), keep = TRUE)
+# Note here the difference:
+set_size(fuzzy_set) # A set could be empty!
+element_size(fuzzy_set)
+
+mutate(fuzzy_set, Keep = ifelse(fuzzy > 0.5, TRUE, FALSE)) %>% 
+    filter(Keep == TRUE)
 ```
 
