@@ -19,7 +19,7 @@ setMethod("union",
           signature = signature(object = "TidySet",
                                 sets = "characterORfactor",
                                 name = "characterORfactor"),
-          function(object, sets, name, FUN = "max", keep = FALSE,
+          function(object, sets, name = NULL, FUN = "max", keep = FALSE,
                    keep_relations = keep,
                    keep_elements = keep,
                    keep_sets = keep) {
@@ -43,5 +43,20 @@ setMethod("union",
             new_object <- droplevels(new_object, !keep_elements, !keep_sets)
             validObject(new_object)
             new_object
+          }
+)
+
+#' @describeIn union Applies the standard union
+#' @export
+setMethod("union",
+          signature = signature(object = "TidySet",
+                                sets = "characterORfactor",
+                                name = "missing"),
+          function(object, sets, FUN = "max", keep = FALSE,
+                   keep_relations = keep,
+                   keep_elements = keep,
+                   keep_sets = keep) {
+              name <- naming(sets1 = sets)
+              NextMethod(object = object, generic = "union", name = name)
           }
 )
