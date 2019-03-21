@@ -182,18 +182,21 @@ elements_sets <- function(object){
 fapply <- function(relations, FUN) {
   # Handle the duplicate cases
   basic <- paste(relations$elements, relations$sets)
-  indices <- split(seq_along(basic), basic)
+  fuzzy <- split(relations$fuzzy, basic)
   # Helper function probably useful for intersection too
-  iterate <- function(i, fuzzy, fun) {
-    fun(fuzzy[i])
+  iterate <- function(fuzzy, fun) {
+    fun(fuzzy)
   }
 
-
   FUN <- match.fun(FUN)
-  fuzzy <- vapply(indices, iterate, fuzzy = relations$fuzzy,
-                  fun = FUN, numeric(1L))
+  fuzzy <- vapply(fuzzy, iterate, fun = FUN, numeric(1L))
   relations2 <- unique(relations[, c("sets", "elements")])
-  cbind(relations2, fuzzy = fuzzy)
+  if (ncol(relations) > 3) {
+      warning("Dropping columns. Consider using move_to")
+  }
+  basic2 <- paste(relations2$elements, relations2$sets)
+  # Sort again to match the new relations
+  cbind(relations2, fuzzy = fuzzy[match(basic2, names(fuzzy))])
 }
 
 merge_tidySets <- function(object1, object2) {

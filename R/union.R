@@ -57,6 +57,9 @@ setMethod("union",
                    keep_elements = keep,
                    keep_sets = keep) {
               name <- naming(sets1 = sets)
-              NextMethod(object = object, generic = "union", name = name)
+              union(object, sets = sets, name = name, FUN = FUN, keep = keep,
+                         keep_relations = keep_relations,
+                         keep_elements = keep_elements,
+                         keep_sets = keep_sets)
           }
 )
