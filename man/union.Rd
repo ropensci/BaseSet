@@ -4,12 +4,17 @@
 \name{union}
 \alias{union}
 \alias{union,TidySet,characterORfactor,characterORfactor-method}
+\alias{union,TidySet,characterORfactor,missing-method}
 \title{Merge two sets}
 \usage{
 union(object, sets, name, ...)
 
 \S4method{union}{TidySet,characterORfactor,characterORfactor}(object, sets,
-  name, FUN = "max", keep = FALSE, keep_relations = keep,
+  name = NULL, FUN = "max", keep = FALSE, keep_relations = keep,
+  keep_elements = keep, keep_sets = keep)
+
+\S4method{union}{TidySet,characterORfactor,missing}(object, sets,
+  FUN = "max", keep = FALSE, keep_relations = keep,
   keep_elements = keep, keep_sets = keep)
 }
 \arguments{
@@ -42,6 +47,8 @@ Given a TidySets merges two sets into the new one.
 \section{Methods (by class)}{
 \itemize{
 \item \code{object = TidySet,sets = characterORfactor,name = characterORfactor}: Applies the standard union
+
+\item \code{object = TidySet,sets = characterORfactor,name = missing}: Applies the standard union provding an automatic name
 }}
 
 \examples{
