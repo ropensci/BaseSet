@@ -219,7 +219,7 @@ set_modified %>%
   group("new", Pathway == "pathway1", Important == 1)
 ```
 
-After grouping or mutating sometimes we might be interested in moving a column describing something to other places. We can do by simiply:
+After grouping or mutating sometimes we might be interested in moving a column describing something to other places. We can do by simplify:
 
 ```{r}
 elements(set_modified)
