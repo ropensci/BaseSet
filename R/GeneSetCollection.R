@@ -12,7 +12,7 @@ tidy <- function(object) {
 #' @method tidy GeneSetCollection
 tidy.GeneSetCollection <- function(object) {
   data <- slot(object, ".Data")
-  sets <- lapply(data, tidySet)
+  sets <- lapply(data, tidy)
   TS <- Reduce(merge_tidySets, sets)
   validObject(TS)
   TS
@@ -23,9 +23,15 @@ tidy.GeneSetCollection <- function(object) {
 #' @export
 #' @method tidy GeneSet
 tidy.GeneSet <- function(object) {
-  relations <- data.frame(elements = object@geneIds,
+    if (length(object@geneIds) == 0) {
+        elements <- character(length = 1)
+    } else {
+        elements <- object@geneIds
+    }
+  relations <- data.frame(elements = elements,
                           sets = object@setName)
   TS <- tidySet(relations)
+  TS <- filter_element(TS, elements != "")
   new_sets <- c(sets = as.character(sets(TS)$sets[1]),
                 Identifier = slot(object, "setIdentifier"),
                 shortDescripton = slot(object, "shortDescription"),
