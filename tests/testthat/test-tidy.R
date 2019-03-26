@@ -1,10 +1,9 @@
 context("test-tidy")
 
 test_that("tidy works in GeneSet", {
-    library("GSEABase")
-    gs1 <- GeneSet(setName = "set1", setIdentifier = "101",
+    gs1 <- GSEABase::GeneSet(setName = "set1", setIdentifier = "101",
                    geneIds = c("a", "b"))
-    gs2 <- GeneSet(setName = "set2", setIdentifier = "102",
+    gs2 <- GSEABase::GeneSet(setName = "set2", setIdentifier = "102",
                    geneIds = c("b", "c"))
     expect_error(TS <- tidy(gs1), NA)
     expect_equal(ncol(sets(TS)), 5)
@@ -18,12 +17,12 @@ test_that("tidy works in GeneSet", {
 })
 
 test_that("tidy works in GeneSetCollection", {
-    library("GSEABase")
-    gs1 <- GeneSet(setName = "set1", setIdentifier = "101",
+
+    gs1 <- GSEABase::GeneSet(setName = "set1", setIdentifier = "101",
                    geneIds = c("a", "b"))
-    gs2 <- GeneSet(setName = "set2", setIdentifier = "102",
+    gs2 <- GSEABase::GeneSet(setName = "set2", setIdentifier = "102",
                    geneIds = c("b", "c"))
-    gsc <- GeneSetCollection(gs1, gs2)
+    gsc <- GSEABase::GeneSetCollection(gs1, gs2)
 
     expect_error(TS <- tidy(gsc), NA)
     expect_equal(nSets(TS), 2)
