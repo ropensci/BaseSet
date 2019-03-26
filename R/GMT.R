@@ -9,7 +9,7 @@ NULL
 #' @return A TidySet object
 #' @export
 #' @examples
-#' gmtFile <- gmtFile <- system.file(package = "BaseSet", "extdata",
+#' gmtFile <- system.file(package = "BaseSet", "extdata",
 #'                                   "hallmark.gene.symbol.gmt")
 #' gs <- getGMT(gmtFile)
 #' nRelations(gs)

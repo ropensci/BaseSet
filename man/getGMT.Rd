@@ -20,7 +20,7 @@ A TidySet object
 Import GMT files
 }
 \examples{
-gmtFile <- gmtFile <- system.file(package = "BaseSet", "extdata",
+gmtFile <- system.file(package = "BaseSet", "extdata",
                                   "hallmark.gene.symbol.gmt")
 gs <- getGMT(gmtFile)
 nRelations(gs)
