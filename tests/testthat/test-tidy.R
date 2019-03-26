@@ -29,3 +29,14 @@ test_that("tidy works in GeneSetCollection", {
     expect_equal(nElements(TS), 3)
     expect_equal(ncol(sets(TS)), 5)
 })
+
+test_that("tidy works in GeneColorSet", {
+    data("sample.ExpressionSet", package = "Biobase")
+    gcs1 <- GSEABase::GeneColorSet(sample.ExpressionSet[100:109],
+                         phenotype = "imaginary")
+
+    expect_error(TS <- tidy(gcs1), NA)
+    expect_equal(nSets(TS), 1)
+    expect_equal(nElements(TS), 10)
+    expect_equal(ncol(sets(TS)), 9)
+})

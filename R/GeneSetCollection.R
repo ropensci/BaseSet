@@ -28,8 +28,14 @@ tidy.GeneSet <- function(object) {
     } else {
         elements <- object@geneIds
     }
+
+    if (is.na(object@setName)) {
+        sets <- "set1"
+    } else {
+        sets <- object@setName
+    }
   relations <- data.frame(elements = elements,
-                          sets = object@setName)
+                          sets = sets)
   TS <- tidySet(relations)
   TS <- filter_element(TS, elements != "")
   new_sets <- c(sets = as.character(sets(TS)$sets[1]),
