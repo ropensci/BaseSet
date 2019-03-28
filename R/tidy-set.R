@@ -43,10 +43,18 @@ tidySet.data.frame <- function(relations) {
 #' @export
 #' @describeIn tidySet Convert to a TidySet from a list
 #' @examples
-#' x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
-#' a <- tidySet(x)
+#' # A
+#' x <- list("A" = letters[1:5], "B" = LETTERS[3:7])
+#' tidySet(x)
+#' # A fuzzy set taken encoded as a list
+#' A <- runif(5)
+#' names(A) <- letters[1:5]
+#' B <- runif(5)
+#' names(B) <- letters[3:7]
+#' relations <- list(A, B)
+#' tidySet(relations)
 #' \dontrun{
-#' x <- list("a" = letters[1:5], "b" = LETTERS[3:7], "c" = runif(5))
+#' x <- list("A" = letters[1:5], "B" = LETTERS[3:7], "c" = runif(5))
 #' a <- tidySet(x) # An error for mixing letters and numbers
 #' }
 tidySet.list <- function(relations) {
@@ -57,6 +65,9 @@ tidySet.list <- function(relations) {
   if (!all(char) && !all(num)) {
     stop("The list should have either characters or named numeric vectors",
          call. = FALSE)
+  }
+  if (is.null(names(relations))) {
+      names(relations) <- paste0("Set", seq_along(relations))
   }
   if (all(char)) {
     relations <- lapply(relations, unique)

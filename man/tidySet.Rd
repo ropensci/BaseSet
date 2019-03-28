@@ -50,10 +50,17 @@ This functions help to create a \code{TidySet} object.
 relations <- data.frame(sets = c(rep("a", 5), "b"),
                         elements = letters[seq_len(6)])
 tidySet(relations)
-x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
-a <- tidySet(x)
+x <- list("A" = letters[1:5], "B" = LETTERS[3:7])
+tidySet(x)
+# A fuzzy set taken encoded as a list
+A <- runif(5)
+names(A) <- letters[1:5]
+B <- runif(5)
+names(B) <- letters[3:7]
+relations <- list(A, B)
+tidySet(relations)
 \dontrun{
-x <- list("a" = letters[1:5], "b" = LETTERS[3:7], "c" = runif(5))
+x <- list("A" = letters[1:5], "B" = LETTERS[3:7], "c" = runif(5))
 a <- tidySet(x) # An error for mixing letters and numbers
 }
 # Numeric input should be named
