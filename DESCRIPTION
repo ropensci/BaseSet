@@ -46,6 +46,7 @@ Collate:
     'add_set.R'
     'arrange.R'
     'basesets-package.R'
+    'cartesian.R'
     'complement.R'
     'data_frame.R'
     'deactivate.R'

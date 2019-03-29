@@ -50,6 +50,7 @@ This functions help to create a \code{TidySet} object.
 relations <- data.frame(sets = c(rep("a", 5), "b"),
                         elements = letters[seq_len(6)])
 tidySet(relations)
+# A
 x <- list("A" = letters[1:5], "B" = LETTERS[3:7])
 tidySet(x)
 # A fuzzy set taken encoded as a list

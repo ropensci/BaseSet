@@ -19,4 +19,5 @@ set_symbols <- c("intersection" = "\u2229",
              "empty" = "\u2205",
              "contains" = "\u220B",
              "notContained" = "\u220C",
-             "minus" = "\u2216")
+             "minus" = "\u2216",
+             "product" = "\u2A2F")

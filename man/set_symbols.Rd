@@ -4,7 +4,7 @@
 \name{set_symbols}
 \alias{set_symbols}
 \title{A subset of symbols related to sets}
-\format{An object of class \code{character} of length 14.}
+\format{An object of class \code{character} of length 15.}
 \usage{
 set_symbols
 }
