@@ -136,14 +136,22 @@ setMethod("set_size",
               names_sets <- name_sets(object)
             } else {
               names_sets <- set
+              rel <- rel[rel$sets %in% set, ]
             }
-            sizes <- lapply(names_sets, function(x){
-              length_set(rel[rel$sets == x, "fuzzy"])
-            })
+            if (is.fuzzy(object)) {
+                sizes <- lapply(names_sets, function(x){
+                    length_set(rel[rel$sets == x, "fuzzy"])
+                })
 
-            sets <- rep(names_sets, lengths(sizes))
-            lengths_set <- unlist(lapply(sizes, names), use.names = FALSE)
-            probability_length <- unlist(sizes, use.names = FALSE)
+                sets <- rep(names_sets, lengths(sizes))
+                lengths_set <- unlist(lapply(sizes, names), use.names = FALSE)
+                probability_length <- unlist(sizes, use.names = FALSE)
+            } else {
+                sets <- names_sets
+                lengths_set <- table(rel$sets)[names_sets]
+                probability_length <- 1
+            }
+
             out <- data.frame(set = sets,
                        size = as.numeric(lengths_set),
                        probability = probability_length)
@@ -177,14 +185,21 @@ setMethod("element_size",
               names_elements <- name_elements(object)
             } else {
               names_elements <- element
+              rel <- rel[rel$elements %in% element, ]
             }
-            sizes <- lapply(names_elements, function(x){
-              length_set(rel[rel$elements == x, "fuzzy"])
-            })
+            if (is.fuzzy(object)) {
+                sizes <- lapply(names_elements, function(x){
+                    length_set(rel[rel$elements == x, "fuzzy"])
+                })
 
-            elements <- rep(names_elements, lengths(sizes))
-            lengths_set <- unlist(lapply(sizes, names), use.names = FALSE)
-            probability_length <- unlist(sizes, use.names = FALSE)
+                elements <- rep(names_elements, lengths(sizes))
+                lengths_set <- unlist(lapply(sizes, names), use.names = FALSE)
+                probability_length <- unlist(sizes, use.names = FALSE)
+            } else {
+                elements <- names_elements
+                lengths_set <- table(rel$elements)[names_elements]
+                probability_length <- 1
+            }
             out <- data.frame(element = elements,
                               size = as.numeric(lengths_set),
                               probability = probability_length)
