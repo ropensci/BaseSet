@@ -44,6 +44,7 @@ Collate:
     'add_column.R'
     'add_relation.R'
     'add_set.R'
+    'adjacency.R'
     'arrange.R'
     'basesets-package.R'
     'cartesian.R'

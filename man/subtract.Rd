@@ -35,7 +35,8 @@ subtract(object, set_in, not_in, ...)
 A \code{TidySet} object.
 }
 \description{
-Elements in a set not present in the other set.
+Elements in a set not present in the other set. Equivalent to
+\code{\link{setdiff}}.
 }
 \section{Methods (by class)}{
 \itemize{
@@ -51,6 +52,8 @@ subtract(a, "a", "b")
 subtract(a, "a", "b", keep = FALSE)
 }
 \seealso{
+\code{\link{setdiff}}
+
 Other complements: \code{\link{complement_element}},
   \code{\link{complement_set}}
 
