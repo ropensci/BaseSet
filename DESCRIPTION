@@ -64,6 +64,7 @@ Collate:
     'move_to.R'
     'mutate.R'
     'names.R'
+    'power_set.R'
     'print.R'
     'pull.R'
     'relations.R'

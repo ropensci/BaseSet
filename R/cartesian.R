@@ -3,7 +3,7 @@ NULL
 
 #' Create the cartesian product of two sets
 #'
-#'
+#' Given two sets creates new sets with one element of each set
 #' @param object A TidySet object.
 #' @param set1,set2 The name of the sets to be used for the cartesian product
 #' @param name The name of the new set.

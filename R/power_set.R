@@ -14,13 +14,14 @@
 #' relations <- data.frame(sets = c(rep("a", 5), "b"),
 #'                         elements = letters[seq_len(6)])
 #' TS <- tidySet(relations)
-#' power_set(TS, "a")
+#' power_set(TS, "a", name = "power_set")
 power_set <- function(object, set, name, ...) {
     UseMethod("power_set")
 }
 
 #' @export
 #' @method power_set TidySet
+#' @importFrom utils combn
 power_set.TidySet <- function(object, set, name, keep = TRUE,
                               keep_relations = keep,
                               keep_elements = keep,

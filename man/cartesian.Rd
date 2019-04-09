@@ -32,7 +32,7 @@ cartesian(object, set1, set2, name = NULL, ...)
 A TidySet object with the new set
 }
 \description{
-Create the cartesian product of two sets
+Given two sets creates new sets with one element of each set
 }
 \examples{
 relations <- data.frame(sets = c(rep("a", 5), "b"),
@@ -54,8 +54,8 @@ Other methods: \code{\link{TidySet-class}},
   \code{\link{nElements}}, \code{\link{nRelations}},
   \code{\link{nSets}}, \code{\link{name_elements<-}},
   \code{\link{name_sets<-}}, \code{\link{name_sets}},
-  \code{\link{pull.TidySet}}, \code{\link{relations}},
-  \code{\link{remove_column}},
+  \code{\link{power_set}}, \code{\link{pull.TidySet}},
+  \code{\link{relations}}, \code{\link{remove_column}},
   \code{\link{remove_element}},
   \code{\link{remove_relation}}, \code{\link{remove_set}},
   \code{\link{rename_elements}}, \code{\link{rename_set}},
