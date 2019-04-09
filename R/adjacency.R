@@ -15,16 +15,19 @@ adjacency <- function(object) {
     UseMethod("adjacency")
 }
 
+#' @rdname adjacency
 #' @export
 adjacency_element <- function(object) {
     UseMethod("adjacency_element")
 }
 
+#' @rdname adjacency
 #' @export
 adjacency_set <- function(object) {
     UseMethod("adjacency_set")
 }
 
+#' @rdname adjacency
 #' @export
 #' @method adjacency TidySet
 adjacency.TidySet <- function(object) {
@@ -35,7 +38,7 @@ adjacency.TidySet <- function(object) {
         adjacency_element(object)
     } else if (activated == "sets") {
         adjacency_set(object)
-        }
+    }
 }
 
 #' @export

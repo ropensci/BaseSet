@@ -2,8 +2,17 @@
 % Please edit documentation in R/adjacency.R
 \name{adjacency}
 \alias{adjacency}
+\alias{adjacency_element}
+\alias{adjacency_set}
+\alias{adjacency.TidySet}
 \title{Adjacency}
 \usage{
+\method{adjacency}{TidySet}(object)
+
+adjacency_element(object)
+
+adjacency_set(object)
+
 \method{adjacency}{TidySet}(object)
 }
 \arguments{
