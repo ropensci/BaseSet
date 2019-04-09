@@ -61,15 +61,16 @@ tidySet.list <- function(relations) {
 
   char <- vapply(relations, is.character, logical(1L))
   num <- vapply(relations, is.numeric, logical(1L))
+  fact <- vapply(relations, is.factor, logical(1L))
 
-  if (!all(char) && !all(num)) {
+  if (!all(char | fact) && !all(num)) {
     stop("The list should have either characters or named numeric vectors",
          call. = FALSE)
   }
   if (is.null(names(relations))) {
       names(relations) <- paste0("Set", seq_along(relations))
   }
-  if (all(char)) {
+  if (all(char | fact)) {
     relations <- lapply(relations, unique)
     elements <- unlist(relations, use.names = FALSE)
     fuzzy <- rep(1, length(elements))

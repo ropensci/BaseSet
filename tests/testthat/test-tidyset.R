@@ -36,6 +36,11 @@ test_that("tidySet list", {
   relations <- list("A" = letters[1:5],
                     "B" = c(letters[1:7], "a"))
   expect_s4_class(tidySet(relations), "TidySet")
+
+  # Mix of character and factors (just in case)
+  relations <- list("A" = as.factor(letters[1:5]),
+                    "B" = c(letters[1:7], "a"))
+  expect_s4_class(tidySet(relations), "TidySet")
 })
 
 test_that("tidySet fails", {
