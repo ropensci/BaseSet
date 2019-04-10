@@ -48,7 +48,7 @@ Given a TidySets merges two sets into the new one.
 \itemize{
 \item \code{object = TidySet,sets = characterORfactor,name = characterORfactor}: Applies the standard union
 
-\item \code{object = TidySet,sets = characterORfactor,name = missing}: Applies the standard union provding an automatic name
+\item \code{object = TidySet,sets = characterORfactor,name = missing}: Applies the standard union providing an automatic name
 }}
 
 \examples{
@@ -71,14 +71,15 @@ Other methods: \code{\link{TidySet-class}},
   \code{\link{complement_element}},
   \code{\link{complement_set}}, \code{\link{element_size}},
   \code{\link{elements}}, \code{\link{filter.TidySet}},
-  \code{\link{group}}, \code{\link{incidence}},
-  \code{\link{intersection}}, \code{\link{is.fuzzy}},
-  \code{\link{move_to}}, \code{\link{mutate.TidySet}},
-  \code{\link{nElements}}, \code{\link{nRelations}},
-  \code{\link{nSets}}, \code{\link{name_elements<-}},
-  \code{\link{name_sets<-}}, \code{\link{name_sets}},
-  \code{\link{power_set}}, \code{\link{pull.TidySet}},
-  \code{\link{relations}}, \code{\link{remove_column}},
+  \code{\link{group_by.TidySet}}, \code{\link{group}},
+  \code{\link{incidence}}, \code{\link{intersection}},
+  \code{\link{is.fuzzy}}, \code{\link{move_to}},
+  \code{\link{mutate.TidySet}}, \code{\link{nElements}},
+  \code{\link{nRelations}}, \code{\link{nSets}},
+  \code{\link{name_elements<-}}, \code{\link{name_sets<-}},
+  \code{\link{name_sets}}, \code{\link{power_set}},
+  \code{\link{pull.TidySet}}, \code{\link{relations}},
+  \code{\link{remove_column}},
   \code{\link{remove_element}},
   \code{\link{remove_relation}}, \code{\link{remove_set}},
   \code{\link{rename_elements}}, \code{\link{rename_set}},

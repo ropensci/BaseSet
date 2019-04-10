@@ -46,7 +46,7 @@ setMethod("union",
           }
 )
 
-#' @describeIn union Applies the standard union provding an automatic name
+#' @describeIn union Applies the standard union providing an automatic name
 #' @export
 setMethod("union",
           signature = signature(object = "TidySet",
