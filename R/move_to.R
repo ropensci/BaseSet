@@ -25,9 +25,11 @@ setMethod("move_to",
             to_colnames <- colnames(to_df)
             from_colnames <- colnames(from_df)
 
-            slot(object, to) <- unique(df[, c(to_colnames, columns), drop = FALSE])
-            slot(object, from) <- unique(from_df[, !from_colnames %in% columns,
-                                                 drop = FALSE])
+            new_to <- unique(df[, c(to_colnames, columns), drop = FALSE])
+            new_from <- unique(from_df[, !from_colnames %in% columns,
+                                       drop = FALSE])
+            slot(object, to, check = FALSE) <- new_to
+            slot(object, from, check = FALSE) <- new_from
             validObject(object)
             object
           }
