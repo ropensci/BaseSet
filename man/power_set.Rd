@@ -25,7 +25,7 @@ Create the power set
 relations <- data.frame(sets = c(rep("a", 5), "b"),
                         elements = letters[seq_len(6)])
 TS <- tidySet(relations)
-power_set(TS, "a")
+power_set(TS, "a", name = "power_set")
 }
 \seealso{
 Other methods: \code{\link{TidySet-class}},
@@ -35,14 +35,14 @@ Other methods: \code{\link{TidySet-class}},
   \code{\link{complement_element}},
   \code{\link{complement_set}}, \code{\link{element_size}},
   \code{\link{elements}}, \code{\link{filter.TidySet}},
-  \code{\link{group}}, \code{\link{incidence}},
-  \code{\link{intersection}}, \code{\link{is.fuzzy}},
-  \code{\link{move_to}}, \code{\link{mutate.TidySet}},
-  \code{\link{nElements}}, \code{\link{nRelations}},
-  \code{\link{nSets}}, \code{\link{name_elements<-}},
-  \code{\link{name_sets<-}}, \code{\link{name_sets}},
-  \code{\link{pull.TidySet}}, \code{\link{relations}},
-  \code{\link{remove_column}},
+  \code{\link{group_by.TidySet}}, \code{\link{group}},
+  \code{\link{incidence}}, \code{\link{intersection}},
+  \code{\link{is.fuzzy}}, \code{\link{move_to}},
+  \code{\link{mutate.TidySet}}, \code{\link{nElements}},
+  \code{\link{nRelations}}, \code{\link{nSets}},
+  \code{\link{name_elements<-}}, \code{\link{name_sets<-}},
+  \code{\link{name_sets}}, \code{\link{pull.TidySet}},
+  \code{\link{relations}}, \code{\link{remove_column}},
   \code{\link{remove_element}},
   \code{\link{remove_relation}}, \code{\link{remove_set}},
   \code{\link{rename_elements}}, \code{\link{rename_set}},
