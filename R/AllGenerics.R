@@ -318,28 +318,6 @@ setGeneric("union", function(object, sets, name, ...)
 setGeneric("intersection", function(object, sets, ...)
   standardGeneric("intersection"))
 
-#' Add a new set
-#'
-#' Given a TidySets adds a new sets
-#' @param object A TidySet object
-#' @param elements The elements of the sets.
-#' @param name The name of the new set.
-#' @param fuzzy The membership of each element with the set.
-#' @param ... Other arguments.
-#' @return A \code{TidySet} object.
-#' @family add functions
-#' @family methods that create new sets
-#' @export
-#' @family methods
-#' @examples
-#' relations <- data.frame(sets = c(rep("a", 5), "b"),
-#'                         elements = letters[seq_len(6)],
-#'                         fuzzy = runif(6))
-#' a <- tidySet(relations)
-#' add_set(a, "a", "C")
-setGeneric("add_set", function(object, elements, name, fuzzy, ...)
-  standardGeneric("add_set"))
-
 #' Add relations
 #'
 #' Given a TidySets adds relations

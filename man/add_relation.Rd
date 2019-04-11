@@ -40,12 +40,9 @@ relations <- data.frame(sets = c(rep("a2", 5), "b2"),
 add_relation(a, relations)
 }
 \seealso{
-Other add functions: \code{\link{add_set}}
-
 Other methods: \code{\link{TidySet-class}},
   \code{\link{activate}}, \code{\link{add_column}},
-  \code{\link{add_set}}, \code{\link{arrange.TidySet}},
-  \code{\link{cartesian}},
+  \code{\link{arrange.TidySet}}, \code{\link{cartesian}},
   \code{\link{complement_element}},
   \code{\link{complement_set}}, \code{\link{element_size}},
   \code{\link{elements}}, \code{\link{filter.TidySet}},

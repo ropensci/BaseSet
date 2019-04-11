@@ -53,14 +53,13 @@ complement_set(a, "a")
 Other complements: \code{\link{complement_element}},
   \code{\link{subtract}}
 
-Other methods that create new sets: \code{\link{add_set}},
-  \code{\link{complement_element}},
+Other methods that create new sets: \code{\link{complement_element}},
   \code{\link{intersection}}, \code{\link{subtract}},
   \code{\link{union}}
 
 Other methods: \code{\link{TidySet-class}},
   \code{\link{activate}}, \code{\link{add_column}},
-  \code{\link{add_relation}}, \code{\link{add_set}},
+  \code{\link{add_relation}},
   \code{\link{arrange.TidySet}}, \code{\link{cartesian}},
   \code{\link{complement_element}},
   \code{\link{element_size}}, \code{\link{elements}},

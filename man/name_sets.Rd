@@ -45,7 +45,7 @@ Other names: \code{\link{name_elements<-}},
 
 Other methods: \code{\link{TidySet-class}},
   \code{\link{activate}}, \code{\link{add_column}},
-  \code{\link{add_relation}}, \code{\link{add_set}},
+  \code{\link{add_relation}},
   \code{\link{arrange.TidySet}}, \code{\link{cartesian}},
   \code{\link{complement_element}},
   \code{\link{complement_set}}, \code{\link{element_size}},

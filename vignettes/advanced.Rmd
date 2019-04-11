@@ -156,6 +156,62 @@ As you can see on the second plot we have very large values but that are on asso
 head(sizes_set, 10)
 ```
 
+# Human pathways
+
+Now we will repeat the same analysis with pathways:
+
+```{r prepare_reactome}
+# We load some libraries
+library("reactome.db")
+
+# Prepare the data (is easier, there isn't any ontoogy or evidence column)
+h2p <- as.data.frame(reactomeEXTID2PATHID)
+colnames(h2p) <- c("sets", "elements")
+# Filter only for human pathways
+h2p <- h2p[grepl("^R-HSA-", h2p$sets), ]
+
+# There are duplicate relations with different evidence codes!!: 
+summary(duplicated(h2p[, c("elements", "sets")]))
+h2p <- unique(h2p)
+```
+
+```{r numbers}
+# Create a tidySet and move the Ontology description of the set to its slot
+h2p_TS <- tidySet(h2p) %>% 
+    # Add all the genes 
+    add_elements(keys(org.Hs.eg.db))
+
+sizes_element <- element_size(h2p_TS) %>% 
+    arrange(desc(size))
+sum(sizes_element$size == 0)
+sum(sizes_element$size != 0)
+
+sizes_set <- set_size(h2p_TS) %>% 
+    arrange(desc(size))
+```
+We can see there are more genes without pathways than genes with pathways.
+
+```{r}
+sizes_element %>% 
+    filter(size != 0) %>% 
+    ggplot() +
+    geom_histogram(aes(size), binwidth = 1) +
+    scale_y_log10() +
+    theme_minimal() +
+    labs(x = "# sets per element", y = "Count")
+
+sizes_set %>% 
+    ggplot() +
+    geom_histogram(aes(size), binwidth = 1) +
+    scale_y_log10() +
+    theme_minimal() +
+    labs(x = "# elements per set", y = "Count")
+```
+As you can see on the second plot we have very large values but that are on associated on many genes:
+```{r distr_sizes}
+head(sizes_set, 10)
+```
+
 # Session info {.unnumbered}
 
 ```{r sessionInfo, echo=FALSE}
