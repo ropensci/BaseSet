@@ -152,6 +152,10 @@ setMethod("set_size",
                 probability_length <- 1
             }
 
+            if (any(is.na(lengths_set))) {
+                lengths_set[is.na(lengths_set)] <- 0
+            }
+
             out <- data.frame(set = sets,
                        size = as.numeric(lengths_set),
                        probability = probability_length)
@@ -174,7 +178,6 @@ setMethod("set_size",
 setMethod("element_size",
           signature = signature(object = "TidySet"),
           function(object, element = NULL) {
-
             if (!element %in% name_elements(object) && !is.null(element)) {
               stop("Please introduce valid element names. See element_names",
                    call. = FALSE)
@@ -200,6 +203,11 @@ setMethod("element_size",
                 lengths_set <- table(rel$elements)[names_elements]
                 probability_length <- 1
             }
+
+            if (any(is.na(lengths_set))) {
+                lengths_set[is.na(lengths_set)] <- 0
+            }
+
             out <- data.frame(element = elements,
                               size = as.numeric(lengths_set),
                               probability = probability_length)
