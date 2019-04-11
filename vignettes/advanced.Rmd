@@ -57,7 +57,104 @@ sample_set %>%
   set_size()
 ```
 
+# Human GO
 
+We will explore the genes related with GO. 
+
+```{r prepare_GO}
+# We load some libraries
+library("org.Hs.eg.db")
+library("GO.db")
+library("dplyr")
+library("tidyr")
+library("ggplot2")
+library("forcats")
+
+# Prepare the data 
+h2GO <- as.data.frame(org.Hs.egGO)
+colnames(h2GO) <- c("elements", "sets",  "Evidence", "Ontology")
+
+# There are duplicate relations with different evidence codes!!: 
+summary(duplicated(h2GO[, c("elements", "sets")]))
+# We extract the evidence codes
+evidence_codes <- as.character(unique(h2GO$Evidence))
+
+# Transform each evidence code into its own column 
+df2 <- pivot_wider(h2GO, names_from = Evidence, values_from = Evidence)
+
+# Transform to a numeric code
+df2[, evidence_codes][!is.na(df2[, evidence_codes])] <- 1
+df2[, evidence_codes][is.na(df2[, evidence_codes])] <- 0
+df2[, evidence_codes] <- apply(df2[, evidence_codes], 2, as.numeric)
+df3 <- cbind(df2, nEvidence = rowSums(df2[, evidence_codes]))
+```
+We can now explore if there are differences in evidence usage for each ontology in GO:
+```{r evidence_ontology}
+h2GO %>% 
+    group_by(Evidence, Ontology) %>% 
+    count(name = "Freq") %>% 
+    ungroup() %>% 
+    mutate(Evidence = fct_reorder2(Evidence, Ontology, -Freq)) %>% 
+    ggplot() +
+    geom_col(aes(Evidence, Freq)) +
+    facet_grid(~Ontology) + 
+    theme_bw() +
+    coord_flip() +
+    xlab("Evidence")
+```
+We can see that 
+This graph doesn't consider that some relationships are better annotated than other:
+```{r nEvidence_plot}
+table(df3$nEvidence)
+ggplot(df3) +
+    geom_histogram(aes(nEvidence), binwidth = 1) +
+    theme_minimal() +
+    # scale_y_log10() +
+    labs(x = "Evidence codes", 
+         title = "Evidence codes for each relation between GO and a gene",
+         subtitle = "in human annotation")
+```
+We can see that mostly all the annotations are done with a single evidence code.
+So far we have explored the code that it is related to a gene but how many genes don't have any annotation?
+```{r numbers}
+# Create a tidySet and move the Ontology description of the set to its slot
+h2GO_TS <- tidySet(df3) %>% 
+    move_to("relations", "sets", "Ontology")
+# Add all the genes and GO terms
+h2GO_TS2 <- add_element(h2GO_TS, keys(org.Hs.eg.db))
+h2GO_TS2 <- add_sets(h2GO_TS2, grepl("^GO:", keys(GO.db), value = TRUE))
+
+sizes_element <- element_size(h2GO_TS2) %>% 
+    arrange(desc(size))
+sum(sizes_element$size == 0)
+sum(sizes_element$size != 0)
+
+sizes_set <- set_size(h2GO_TS2) %>% 
+    arrange(desc(size))
+sum(sizes_set$size == 0)
+sum(sizes_set$size != 0)
+```
+So we can seee that both there are more genes without annotation and more GO terms without a (direct) gene annotated.
+
+```{r}
+sizes_element %>% 
+    filter(size != 0) %>% 
+    ggplot() +
+    geom_histogram(aes(size), binwidth = 1) +
+    theme_minimal() +
+    labs(x = "# sets per element", y = "Count")
+
+sizes_set %>% 
+    filter(size != 0) %>% 
+    ggplot() +
+    geom_histogram(aes(size), binwidth = 1) +
+    theme_minimal() +
+    labs(x = "# elements per set", y = "Count")
+```
+As you can see on the second plot we have very large values but that are on associated on many genes:
+```{r distr_sizes}
+head(sizes_set, 10)
+```
 
 # Session info {.unnumbered}
 
