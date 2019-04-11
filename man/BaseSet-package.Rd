@@ -12,7 +12,7 @@ A set collection, while not "tidy" in itself, can
     load and use these virtual data frames.
 }
 \details{
-It provides a class TidySet with lots of methods to do operations with sets
+It provides a class \code{\link{TidySets}} with lots of methods to do operations with sets
 }
 \seealso{
 Useful links:
