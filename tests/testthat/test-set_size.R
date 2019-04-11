@@ -5,7 +5,10 @@ test_that("set_size works", {
   a <- tidySet(x)
   out <- set_size(a, "a")
   expect_equal(nrow(out), 1L)
-  expect_error(set_size(a, "z"), "valid element")
+  expect_error(set_size(a, "z"), "valid set")
+
+  a1 <- add_sets(a, set = "c")
+  expect_equal(set_size(a1, "c")$size, 0)
 })
 
 test_that("set_size works with fuzzy sets", {

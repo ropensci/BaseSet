@@ -127,7 +127,7 @@ setMethod("set_size",
           function(object, set = NULL) {
 
             if (!set %in% name_sets(object) && !is.null(set)) {
-              stop("Please introduce valid element names. See name_sets",
+              stop("Please introduce valid set names. See name_sets",
                    call. = FALSE)
             }
             # object <- droplevels(object)

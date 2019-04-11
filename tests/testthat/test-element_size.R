@@ -11,4 +11,7 @@ test_that("element_size works", {
   out <- element_size(a, "b")
   expect_equal(nrow(out), 2L)
   expect_equal(out$size, c(0, 1))
+
+  a1 <- add_elements(a, element = "g")
+  expect_equal(element_size(a1, "g")$size, 0)
 })
