@@ -71,17 +71,15 @@ is.valid <- function(object) {
 
   if (!"fuzzy" %in% colnames(object@relations)) {
     errors <- c(errors, "A fuzzy column must be present")
-  } else {
+  } else if (length(object@relations$fuzzy) != 0) {
     fuzz <- object@relations$fuzzy
     if (!is.numeric(fuzz)) {
-      errors <- c(errors, "fuzzy column is restricted to a number")
-      if (min(fuzz) < 0 || max(fuzz) > 1 ) {
+        errors <- c(errors, "fuzzy column is restricted to a number")
+    } else if (min(fuzz) < 0 || max(fuzz) > 1 ) {
         errors <- c(errors,
                     "fuzzy column is restricted to a number between 0 and 1.")
-      }
     }
   }
-
 
   # Check that the slots don't have duplicated information
   colnames_elements <- colnames(object@elements)
