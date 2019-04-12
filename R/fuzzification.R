@@ -7,7 +7,7 @@ fuzzy <- function(FUN, ...) {
   df
 }
 
-#' Transfrom a numeric value to a TidySet
+#' Transform a numeric value to a TidySet
 #'
 #' @param name Name of the set
 #' @param FUN A function that returns a data.frame

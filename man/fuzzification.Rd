@@ -2,7 +2,7 @@
 % Please edit documentation in R/fuzzification.R
 \name{fuzzification}
 \alias{fuzzification}
-\title{Transfrom a numeric value to a TidySet}
+\title{Transform a numeric value to a TidySet}
 \usage{
 fuzzification(name, FUN, ...)
 }
@@ -17,5 +17,5 @@ fuzzification(name, FUN, ...)
 A TidySet object.
 }
 \description{
-Transfrom a numeric value to a TidySet
+Transform a numeric value to a TidySet
 }

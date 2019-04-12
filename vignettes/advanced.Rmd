@@ -119,22 +119,22 @@ So far we have explored the code that it is related to a gene but how many genes
 ```{r numbers}
 # Create a tidySet and move the Ontology description of the set to its slot
 h2GO_TS <- tidySet(df3) %>% 
-    move_to("relations", "sets", "Ontology")
-# Add all the genes and GO terms
-h2GO_TS2 <- add_element(h2GO_TS, keys(org.Hs.eg.db))
-h2GO_TS2 <- add_sets(h2GO_TS2, grepl("^GO:", keys(GO.db), value = TRUE))
+    move_to("relations", "sets", "Ontology") %>% 
+    # Add all the genes and GO terms
+    add_elements(keys(org.Hs.eg.db)) %>% 
+    add_sets(grep("^GO:", keys(GO.db), value = TRUE))
 
-sizes_element <- element_size(h2GO_TS2) %>% 
+sizes_element <- element_size(h2GO_TS) %>% 
     arrange(desc(size))
 sum(sizes_element$size == 0)
 sum(sizes_element$size != 0)
 
-sizes_set <- set_size(h2GO_TS2) %>% 
+sizes_set <- set_size(h2GO_TS) %>% 
     arrange(desc(size))
 sum(sizes_set$size == 0)
 sum(sizes_set$size != 0)
 ```
-So we can seee that both there are more genes without annotation and more GO terms without a (direct) gene annotated.
+So we can see that both there are more genes without annotation and more GO terms without a (direct) gene annotated.
 
 ```{r}
 sizes_element %>% 
@@ -173,14 +173,13 @@ h2p <- h2p[grepl("^R-HSA-", h2p$sets), ]
 # There are duplicate relations with different evidence codes!!: 
 summary(duplicated(h2p[, c("elements", "sets")]))
 h2p <- unique(h2p)
-```
-
-```{r numbers}
-# Create a tidySet and move the Ontology description of the set to its slot
+# Create a tidySet and 
 h2p_TS <- tidySet(h2p) %>% 
     # Add all the genes 
     add_elements(keys(org.Hs.eg.db))
-
+```
+Now that we have everything ready we can start measuring some things..
+```{r numbers_pathways}
 sizes_element <- element_size(h2p_TS) %>% 
     arrange(desc(size))
 sum(sizes_element$size == 0)
@@ -191,7 +190,7 @@ sizes_set <- set_size(h2p_TS) %>%
 ```
 We can see there are more genes without pathways than genes with pathways.
 
-```{r}
+```{r pathways_plots}
 sizes_element %>% 
     filter(size != 0) %>% 
     ggplot() +
@@ -208,7 +207,7 @@ sizes_set %>%
     labs(x = "# elements per set", y = "Count")
 ```
 As you can see on the second plot we have very large values but that are on associated on many genes:
-```{r distr_sizes}
+```{r distr_sizes_pathways}
 head(sizes_set, 10)
 ```
 
