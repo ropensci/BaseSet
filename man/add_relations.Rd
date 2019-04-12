@@ -4,7 +4,7 @@
 \alias{add_relations}
 \title{Add relations to a TidySet}
 \usage{
-add_relations(object, elements, sets, ...)
+add_relations(object, elements, sets, fuzzy, ...)
 }
 \arguments{
 \item{object}{A \code{\link{TidySet}} object}
@@ -13,9 +13,9 @@ add_relations(object, elements, sets, ...)
 
 \item{sets}{A character vector of sets to be added.}
 
-\item{...}{Other arguments passed along.}
-
 \item{fuzzy}{The strength of the membership.}
+
+\item{...}{Other arguments passed along.}
 }
 \value{
 A \code{\link{TidySet}} object with the new relations.
@@ -33,7 +33,10 @@ Remember to add/modify them if needed with \code{\link{mutate}} or \code{\link{m
 x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
 a <- tidySet(x)
 add_relations(a, elements = c("a", "b", "g"), sets = "d")
-add_relations(a, elements = c("a", "b", "g"), sets = c("d", "g"))
+add_relations(a, elements = c("a", "b"), sets = c("d", "g"))
+add_relations(a, elements = c("a", "b"), sets = c("d", "g"), fuzzy = 0.5)
+add_relations(a, elements = c("a", "b"), sets = c("d", "g"),
+              fuzzy = c(0.5, 0.7))
 }
 \seealso{
 Other add_*: \code{\link{add_elements}},

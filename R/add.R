@@ -114,7 +114,7 @@ add_elements <- function(object, elements, ...) {
 
 #' @export
 #' @method add_elements TidySet
-add_elements.TidySet <- function(object, elements) {
+add_elements.TidySet <- function(object, elements, ...) {
     object <- add_elements_internal(object, elements)
     validObject(object)
     object
@@ -143,7 +143,7 @@ add_sets <- function(object, sets, ...) {
 
 #' @export
 #' @method add_sets TidySet
-add_sets.TidySet <- function(object, sets) {
+add_sets.TidySet <- function(object, sets, ...) {
     object <- add_sets_internal(object, sets)
     validObject(object)
     object
@@ -171,13 +171,13 @@ add_sets.TidySet <- function(object, sets) {
 #'               fuzzy = c(0.5, 0.7))
 
 #' @export
-add_relations <- function(object, elements, sets, ...) {
+add_relations <- function(object, elements, sets, fuzzy, ...) {
     UseMethod("add_relations")
 }
 
 #' @export
 #' @method add_relations TidySet
-add_relations.TidySet <- function(object, elements, sets, fuzzy = 1) {
+add_relations.TidySet <- function(object, elements, sets, fuzzy = 1, ...) {
 
     object <- add_elements(object, elements)
     object <- add_sets(object, sets)
@@ -193,8 +193,14 @@ add_relations.TidySet <- function(object, elements, sets, fuzzy = 1) {
     eo_so <- paste(elements, sets)
     m <- match(e_s, eo_so)
     m <- m[!is.na(m)]
+    if (length(fuzzy) != length(elements)) {
+        fuzzy <- rep(fuzzy, length(elements))
+    } else {
+        browser()
+        fuzzy <- fuzzy[m]
+    }
     relations$fuzzy[relations$elements %in% elements &
-                        relations$sets %in% sets] <- fuzzy[m]
+                        relations$sets %in% sets] <- fuzzy
     relations(object) <- relations
     validObject(object)
     object
