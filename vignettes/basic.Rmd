@@ -11,7 +11,6 @@ output:
     code_folding: show
     self_contained: yes
     toc_float:
-      
       collapsed: true
       toc_depth: 3
 author:
@@ -164,22 +163,22 @@ To work with sets several methods are provided. All methods work with fuzzy and 
 
 By default it provides the standard union, but you can provide a function.
 ```{r union}
-union(fuzzy_set, c("C", "B"), "D")
-union(fuzzy_set, c("C", "B"), "D", FUN = "mean")
+union(fuzzy_set, sets = c("C", "B"), name = "D")
+union(fuzzy_set, sets = c("C", "B"), name =  "D", FUN = "mean")
 ```
 
 ## Intersection
 
 
 ```{r intersection}
-intersection(fuzzy_set, c("A", "B"), "D", keep = TRUE)
+intersection(fuzzy_set, sets = c("A", "B"), name = "D", keep = TRUE)
 ```
 
 ## Complement
 
 We can look for the complement of one or several sets:
 ```{r complement}
-complement_set(fuzzy_set, c("A", "B"))
+complement_set(fuzzy_set, sets = c("A", "B"))
 ```
 
 # tidyverse
