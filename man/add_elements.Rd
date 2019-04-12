@@ -2,22 +2,27 @@
 % Please edit documentation in R/add.R
 \name{add_elements}
 \alias{add_elements}
-\title{Add to a TidySet}
+\title{Add elements to a TidySet}
 \usage{
 add_elements(object, elements, ...)
 }
 \arguments{
 \item{object}{A \code{\link{TidySet}} object}
 
-\item{elements}{The new elements}
+\item{elements}{A character vector of the elements.}
 
-\item{sets}{The new sets}
+\item{...}{Other arguments passed along.}
 }
 \value{
-A \code{\link{TidySet}} object with the new sets or elements.
+A \code{\link{TidySet}} object with the new elements.
 }
 \description{
-Functions to add elements or sets
+Functions to add elements. If the elements are new they are added,
+otherwise they are omitted.
+}
+\note{
+\code{add_element} doesn't set up any other information about the elements.
+Remember to add/modify them if needed with \code{\link{mutate}} or \code{\link{mutate_element}}
 }
 \examples{
 x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
@@ -26,6 +31,7 @@ b <- add_elements(a, "fg")
 elements(b)
 }
 \seealso{
-Other add_*: \code{\link{add_sets}}
+Other add_*: \code{\link{add_relations}},
+  \code{\link{add_sets}}
 }
 \concept{add_*}

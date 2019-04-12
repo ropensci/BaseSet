@@ -87,13 +87,16 @@ add_relations_interal <- function(object, elements, sets, fuzzy) {
 
 
 
-#' Add to a TidySet
+#' Add elements to a TidySet
 #'
-#' Functions to add elements or sets
+#' Functions to add elements. If the elements are new they are added,
+#' otherwise they are omitted.
+#' @note `add_element` doesn't set up any other information about the elements.
+#' Remember to add/modify them if needed with [`mutate`] or [`mutate_element`]
 #' @param object A [`TidySet`] object
-#' @param elements The new elements
-#' @param sets The new sets
-#' @return A [`TidySet`] object with the new sets or elements.
+#' @param elements A character vector of the elements.
+#' @param ... Other arguments passed along.
+#' @return A [`TidySet`] object with the new elements.
 #' @family add_*
 #' @examples
 #' x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
@@ -114,11 +117,14 @@ add_elements.TidySet <- function(object, elements) {
 }
 
 
-#' Add to a TidySet
+#' Add sets to a TidySet
 #'
-#' Functions to add elements or sets
-#' @param object A [`TidySet`] object.
-#' @param sets A character vector with the new sets.
+#' Functions to add sets. If the sets are new they are added,
+#' otherwise they are omitted.
+#' @note `add_sets` doesn't set up any other information about the sets.
+#' Remember to add/modify them if needed with [`mutate`] or [`mutate_set`]
+#' @inheritParams add_elements
+#' @param sets A character vector of sets to be added.
 #' @return A [`TidySet`] object with the new sets.
 #' @family add_*
 #' @examples
@@ -138,13 +144,34 @@ add_sets.TidySet <- function(object, sets) {
     validObject(object)
     object
 }
-#
-# add_relation <- function(object, ...) {
-#     l <- as.list(...)
-#     browser()
-#     object <- add_elements(object, l$elements)
-#     object <- add_sets(object, l$sets)
-#     # object <- add_relations_interal(object, as.data.frame(l))
-#     validObject(object)
-#     object
-# }
+
+#' Add relations to a TidySet
+#'
+#' Adds new relations to existing or new sets and elements.
+#' If the sets or elements do not exist they are added.
+#' @note `add_relations` doesn't set up any other information about the
+#' relationship.
+#' Remember to add/modify them if needed with [`mutate`] or [`mutate_relation`]
+#' @inheritParams add_sets
+#' @inheritParams add_elements
+#' @return A [`TidySet`] object with the new relations.
+#' @family add_*
+#' @examples
+#' x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
+#' a <- tidySet(x)
+#' add_relations(a, elements = c("a", "b", "g"), sets = "d")
+#' @export
+add_relations <- function(object, elements, sets) {
+    UseMethod("add_relations")
+}
+
+#' @export
+#' @method add_relations TidySet
+add_relations.TidySet <- function(object, elements, sets) {
+    browser()
+    object <- add_elements(object, elements)
+    object <- add_sets(object, sets)
+    object <- add_relations_interal(object, elements, sets, 1)
+    validObject(object)
+    object
+}
