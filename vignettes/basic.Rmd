@@ -19,15 +19,17 @@ author:
     - August Pi i Sunyer Biomedical Research Institute (IDIBAPS); Liver Unit, Hospital Clinic
   email: lluis.revilla@gmail.com
 vignette: >
-  %\VignetteIndexEntry{About BaseSet}
+  %\VignetteIndexEntry{1. Introduction}
   %\VignetteEncoding{UTF-8}  
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
   chunk_output_type: console
 ---
-```{r knitsetup, message=FALSE, warning=FALSE, include=FALSE}
+```{r setup, message=FALSE, warning=FALSE, include=FALSE}
 knitr::opts_knit$set(root.dir = ".")
-knitr::opts_chunk$set(collapse = TRUE, warning = TRUE)
+knitr::opts_chunk$set(collapse = TRUE, 
+                      warning = TRUE,
+                      comment = "#>")
 BiocStyle::markdown()
 library("BiocStyle")
 ```
@@ -162,11 +164,15 @@ To work with sets several methods are provided. All methods work with fuzzy and 
 ## Union
 
 By default it provides the standard union, but you can provide a function.
-```{r union}
+
+```{r union, eval=FALSE}
 union(fuzzy_set, sets = c("C", "B"), name = "D")
 union(fuzzy_set, sets = c("C", "B"), name =  "D", FUN = "mean")
 ```
-
+```{r false_union, eval=TRUE, echo=FALSE, results="show"}
+BaseSet::union(fuzzy_set, sets = c("C", "B"), name = "D")
+BaseSet::union(fuzzy_set, sets = c("C", "B"), name =  "D", FUN = "mean")
+```
 ## Intersection
 
 
@@ -179,6 +185,14 @@ intersection(fuzzy_set, sets = c("A", "B"), name = "D", keep = TRUE)
 We can look for the complement of one or several sets:
 ```{r complement}
 complement_set(fuzzy_set, sets = c("A", "B"))
+```
+
+## Subtract
+
+This is the equivalent of `setdiff`, but clearer:
+```{r subtract}
+subtract(fuzzy_set, set_in = "A", not_in = "B", keep = FALSE)
+subtract(fuzzy_set, set_in = "B", not_in = "A", keep = FALSE)
 ```
 
 # tidyverse
@@ -220,7 +234,7 @@ set_modified %>%
 
 After grouping or mutating sometimes we might be interested in moving a column describing something to other places. We can do by simplify:
 
-```{r}
+```{r moving}
 elements(set_modified)
 out <- move_to(set_modified, "elements", "relations", "Pathway")
 relations(out)

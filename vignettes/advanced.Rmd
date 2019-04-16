@@ -10,7 +10,6 @@ output:
     code_folding: show
     self_contained: yes
     toc_float:
-      
       collapsed: true
       toc_depth: 3
 author:
@@ -19,21 +18,20 @@ author:
     - August Pi i Sunyer Biomedical Research Institute (IDIBAPS); Liver Unit, Hospital Clinic
   email: lluis.revilla@gmail.com
 vignette: >
-  %\VignetteIndexEntry{Advanced examples}
+  %\VignetteIndexEntry{2. Advanced examples}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
   chunk_output_type: console
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, 
+                      warning = TRUE,
+                      comment = "#>")
 ```
 To show compatibility with tidy workflows we will use magrittr pipe operator
-```{r setup}
+```{r setupr}
 library("dplyr")
 library("BaseSet")
 ```
@@ -136,7 +134,7 @@ sum(sizes_set$size != 0)
 ```
 So we can see that both there are more genes without annotation and more GO terms without a (direct) gene annotated.
 
-```{r}
+```{r plots_GO}
 sizes_element %>% 
     filter(size != 0) %>% 
     ggplot() +
