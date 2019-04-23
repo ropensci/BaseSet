@@ -32,8 +32,7 @@ Suggests:
     reactome.db,
     rmarkdown,
     spelling,
-    testthat,
-    tidyr
+    testthat
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

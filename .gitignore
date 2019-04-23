@@ -4,3 +4,5 @@ inst/doc
 .Rproj.user
 vignettes/*.R
 vignettes/*.html
+doc
+Meta

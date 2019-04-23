@@ -64,7 +64,6 @@ We will explore the genes related with GO.
 library("org.Hs.eg.db")
 library("GO.db")
 library("dplyr")
-library("tidyr")
 library("ggplot2")
 library("forcats")
 
@@ -78,13 +77,15 @@ summary(duplicated(h2GO[, c("elements", "sets")]))
 evidence_codes <- as.character(unique(h2GO$Evidence))
 
 # Transform each evidence code into its own column 
-df2 <- pivot_wider(h2GO, names_from = Evidence, values_from = Evidence)
+e_s <- paste(h2GO$elements, h2GO$sets)
+tt <- as(table(e_s, h2GO$Evidence), "matrix")
+tt2 <- as.data.frame(tt)
+tt2$elements <- gsub(" GO:.*", "", rownames(tt2))
+tt2$sets <- gsub(".* ", "", rownames(tt2))
+rownames(tt2) <- NULL
 
-# Transform to a numeric code
-df2[, evidence_codes][!is.na(df2[, evidence_codes])] <- 1
-df2[, evidence_codes][is.na(df2[, evidence_codes])] <- 0
-df2[, evidence_codes] <- apply(df2[, evidence_codes], 2, as.numeric)
-df3 <- cbind(df2, nEvidence = rowSums(df2[, evidence_codes]))
+df2 <- cbind(tt2, nEvidence = rowSums(tt))
+df3 <- merge(df2, h2GO[, c("elements", "sets", "Ontology")])
 ```
 We can now explore if there are differences in evidence usage for each ontology in GO:
 ```{r evidence_ontology}
