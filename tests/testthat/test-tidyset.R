@@ -53,4 +53,7 @@ test_that("tidySet fails", {
   expect_true(any(grepl("Sets must be characters or factors", is.valid(a))))
   expect_true(any(grepl("Elements must be characters or factors", is.valid(a))))
   expect_true(any(grepl("A fuzzy column must be present", is.valid(a))))
+
+  df <- data.frame(elements = c("a", letters[1:4]), sets = sample(LETTERS[3]))
+  expect_error(tidySet(df), "must be unique")
 })

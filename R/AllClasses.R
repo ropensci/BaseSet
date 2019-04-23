@@ -91,13 +91,10 @@ is.valid <- function(object) {
   }
 
   # Check that relations are unique
-  colnames_relations <- colnames(object@relations)
-  if (all(c("elements", "relations") %in%  colnames_relations)) {
-    if (anyDuplicated(slot(object, "relations")[, c("elements", "sets")]) > 1) {
-      errors <- c(errors,
-                  "A relationship between an element and a set must be unique."
-      )
-    }
+  if (anyDuplicated(slot(object, "relations")[, c("elements", "sets")]) >= 1) {
+    errors <- c(errors,
+                "A relationship between an element and a set must be unique."
+    )
   }
   if (length(errors) == 0) {
     TRUE
