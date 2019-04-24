@@ -17,25 +17,19 @@ setMethod("complement_set",
             }
 
             old_relations <- relations(object)
+            involved_relations <- old_relations$sets %in% sets
             # Elements present on sets
-            complement <- old_relations[old_relations$sets %in% sets, ,
-                                        drop = FALSE]
+            complement <- old_relations[involved_relations, , drop = FALSE]
             complement$fuzzy <- 1 - complement$fuzzy
-            # Elements not present on sets
-            complement2 <- old_relations[!old_relations$sets %in% sets, ,
-                                        drop = FALSE]
-            complement <- rbind(complement, complement2)
-            rownames(complement) <- NULL
 
             if (is.null(name)) {
               name <- naming("complement", sets)
             }
 
+            object <- add_sets(object, name)
             complement$sets <- name
-            complement <- complement[complement$fuzzy != 0, , drop = FALSE]
 
             object <- replace_interactions(object, complement, keep_relations)
-            object <- add_sets(object, name)
 
             object <- droplevels(object, !keep_elements, !keep_sets)
             validObject(object)
