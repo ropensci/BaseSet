@@ -36,21 +36,24 @@ test_that("mutate works", {
 
   a_df <- as.data.frame(a)
   a <- deactivate(a)
-  b <- mutate(a, elements = ifelse(elements == "b", "B", "D"))
+  expect_error(mutate(a, elements = ifelse(elements == "b", "B", "D")),
+               "must be unique")
+  b <- mutate(a, sets = ifelse(sets == "a", "A", "B"))
   b_df <- as.data.frame(b)
-  expect_equal(name_elements(b), c("B", "D"))
+  expect_equal(name_sets(b), c("A", "B"))
   # Check by fuzzy number
-  expect_equal(b_df$fuzzy[b_df$elements == "B"],
-               a_df$fuzzy[a_df$elements == "b"])
+  expect_equal(b_df$fuzzy[b_df$sets == "B"],
+               a_df$fuzzy[a_df$sets == "b"])
 })
 
 test_that("mutate allows changing the name of elements", {
   a_df <- as.data.frame(a)
-  b <- mutate_element(a, elements = ifelse(elements == "b", "B", "D"))
+  b <- mutate(a, sets = ifelse(sets == "a", "A", "B"))
   b_df <- as.data.frame(b)
-  expect_equal(name_elements(b), c("D", "B"))
-  expect_equal(a_df$fuzzy[a_df$elements == "b"],
-               b_df$fuzzy[b_df$elements == "B"])
+  expect_equal(name_sets(b), c("A", "B"))
+  # Check by fuzzy number
+  expect_equal(b_df$fuzzy[b_df$sets == "B"],
+               a_df$fuzzy[a_df$sets == "b"])
 })
 
 test_that("mutate allows changing the name of sets", {
