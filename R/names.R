@@ -42,7 +42,7 @@ setMethod("name_elements<-",
             value2 <- rep(value, length.out = length(name_elements(object)))
             levels(object@elements$elements) <- value2
             object@elements <- unique(object@elements)
-            if (anyDuplicated(object@elements$element)) {
+            if (anyDuplicated(object@elements$element) > 0) {
               stop("Duplicated elements but with different information",
                    call. = FALSE)
             }
@@ -67,7 +67,7 @@ setMethod("name_sets<-",
             value2 <- rep(value, length.out = length(name_sets(object)))
             levels(object@sets$sets) <- value2
             object@sets <- unique(object@sets)
-            if (anyDuplicated(object@sets$sets)) {
+            if (anyDuplicated(object@sets$sets) > 0) {
               stop("Duplicated sets but with different information",
                    call. = FALSE)
             }
