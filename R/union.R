@@ -49,21 +49,14 @@ union.TidySet <- function(object, sets, name = NULL, FUN = "max", keep = FALSE,
     } else if (length(name) != 1) {
         stop("The new union can only have one name", call. = FALSE)
     }
+    object <- add_sets(object, name)
 
-    new_object <- rename_set(object, sets, name)
-    if (!keep_relations) {
-        old_sets <- name_sets(object)
-        remove_sets <- old_sets[!old_sets %in% name]
-        new_object <- remove_sets(new_object, remove_sets)
-        new_object <- rm_relations_with_sets(new_object, remove_sets)
-        new_object <- remove_elements(new_object, object %e-e% new_object)
-    } else {
-        new_object <- merge_tidySets(object, new_object)
-    }
-    relations <- fapply(new_object@relations, FUN)
-    new_object@relations <- relations
-
-    new_object <- droplevels(new_object, !keep_elements, !keep_sets)
-    validObject(new_object)
-    new_object
+    relations <- relations(object)
+    union <- relations[relations$sets %in% sets, ]
+    levels(union$sets)[levels(union$sets) %in% sets] <- name
+    union <- fapply(union, FUN)
+    object <- replace_interactions(object, union, keep_relations)
+    object <- droplevels(object, !keep_elements, !keep_sets)
+    validObject(object)
+    object
 }
