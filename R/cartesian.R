@@ -66,7 +66,7 @@ cartesian.TidySet <- function(object, set1, set2, name = NULL, keep = TRUE,
     cart$sets <- name
 
     if (keep_relations) {
-        relations(object) <- rbind(relations, cart)
+        relations(object) <- unique(rbind(relations, cart))
     } else {
         relations(object) <- cart
     }

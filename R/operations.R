@@ -141,13 +141,14 @@ replace_interactions <- function(object, new_relations, keep) {
 
   stopifnot(is.logical(keep))
   old_relations <- object@relations
+
   if (keep) {
     # To ensure that the number of columns match
     new_columns <- setdiff(colnames(old_relations), colnames(new_relations))
     new_relations[, new_columns] <- NA
     new_relations <- rbind(old_relations, new_relations)
   }
-  object@relations <- new_relations
+  object@relations <- unique(new_relations)
   object
 }
 

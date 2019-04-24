@@ -196,7 +196,6 @@ add_relations.TidySet <- function(object, elements, sets, fuzzy = 1, ...) {
     if (length(fuzzy) != length(elements)) {
         fuzzy <- rep(fuzzy, length(elements))
     } else {
-        browser()
         fuzzy <- fuzzy[m]
     }
     relations$fuzzy[relations$elements %in% elements &
