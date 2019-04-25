@@ -8,6 +8,7 @@
 \alias{tidySet.data.frame}
 \alias{tidySet.list}
 \alias{tidySet.matrix}
+\alias{tidySet.Go3AnnDbBimap}
 \title{Create a TidySet object}
 \usage{
 tidy(object)
@@ -23,6 +24,8 @@ tidySet(relations)
 \method{tidySet}{list}(relations)
 
 \method{tidySet}{matrix}(relations)
+
+\method{tidySet}{Go3AnnDbBimap}(relations)
 }
 \arguments{
 \item{relations, object}{An object to be coerced to a TidySet.}
@@ -44,6 +47,8 @@ This functions help to create a \code{TidySet} object.
 \item \code{list}: Convert to a TidySet from a list
 
 \item \code{matrix}: Convert an incidence matrix into a TidySet
+
+\item \code{Go3AnnDbBimap}: Convert Go3AnnDbBimap into a TidySet object.
 }}
 
 \examples{

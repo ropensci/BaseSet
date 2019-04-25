@@ -123,3 +123,26 @@ tidySet.matrix <- function(relations) {
   relations <- cbind.data.frame(relations, fuzzy)
   tidySet(relations = relations)
 }
+
+
+
+#' @describeIn tidySet Convert Go3AnnDbBimap into a TidySet object.
+#' @export
+tidySet.Go3AnnDbBimap <- function(relations) {
+  # Prepare the data
+  df <- as.data.frame(relations)
+  colnames(df) <- c("elements", "sets",  "Evidence", "Ontology")
+
+  # Transform each evidence code into its own column
+  e_s <- paste(df$elements, df$sets)
+  tt <- as(table(e_s, df$Evidence), "matrix")
+  tt2 <- as.data.frame(tt)
+  tt2$elements <- gsub(" GO:.*", "", rownames(tt2))
+  tt2$sets <- gsub(".* ", "", rownames(tt2))
+  rownames(tt2) <- NULL
+
+  df2 <- cbind(tt2, nEvidence = rowSums(tt))
+  df3 <- merge(df2, unique(df[, c("sets", "Ontology")]))
+  TS <- tidySet.data.frame(df3)
+  move_to(TS, "relations", "sets", "Ontology")
+  }

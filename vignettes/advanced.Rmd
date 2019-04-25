@@ -62,32 +62,15 @@ We will explore the genes related with GO.
 ```{r prepare_GO}
 # We load some libraries
 library("org.Hs.eg.db")
-library("GO.db")
 library("ggplot2")
-library("forcats")
 
 # Prepare the data 
+h2GO_TS <- tidySet(org.Hs.egGO)
 h2GO <- as.data.frame(org.Hs.egGO)
-colnames(h2GO) <- c("elements", "sets",  "Evidence", "Ontology")
-
-# There are duplicate relations with different evidence codes!!: 
-summary(duplicated(h2GO[, c("elements", "sets")]))
-# We extract the evidence codes
-evidence_codes <- as.character(unique(h2GO$Evidence))
-
-# Transform each evidence code into its own column 
-e_s <- paste(h2GO$elements, h2GO$sets)
-tt <- as(table(e_s, h2GO$Evidence), "matrix")
-tt2 <- as.data.frame(tt)
-tt2$elements <- gsub(" GO:.*", "", rownames(tt2))
-tt2$sets <- gsub(".* ", "", rownames(tt2))
-rownames(tt2) <- NULL
-
-df2 <- cbind(tt2, nEvidence = rowSums(tt))
-df3 <- merge(df2, unique(h2GO[, c("sets", "Ontology")]))
 ```
 We can now explore if there are differences in evidence usage for each ontology in GO:
 ```{r evidence_ontology}
+library("forcats")
 h2GO %>% 
     group_by(Evidence, Ontology) %>% 
     count(name = "Freq") %>% 
@@ -103,8 +86,9 @@ h2GO %>%
 We can see that 
 This graph doesn't consider that some relationships are better annotated than other:
 ```{r nEvidence_plot}
-table(df3$nEvidence)
-ggplot(df3) +
+h2GO_TS %>% 
+  relations() %>% 
+  ggplot() +
     geom_histogram(aes(nEvidence), binwidth = 1) +
     theme_minimal() +
     # scale_y_log10() +
@@ -115,12 +99,10 @@ ggplot(df3) +
 We can see that mostly all the annotations are done with a single evidence code.
 So far we have explored the code that it is related to a gene but how many genes don't have any annotation?
 ```{r numbers}
-# Create a tidySet and move the Ontology description of the set to its slot
-h2GO_TS <- tidySet(df3) %>% 
-    move_to("relations", "sets", "Ontology") %>% 
-    # Add all the genes and GO terms
-    add_elements(keys(org.Hs.eg.db)) %>% 
-    add_sets(grep("^GO:", keys(GO.db), value = TRUE))
+# Add all the genes and GO terms
+library("GO.db")
+h2GO_TS <- add_elements(h2GO_TS, keys(org.Hs.eg.db)) %>% 
+  add_sets(grep("^GO:", keys(GO.db), value = TRUE))
 
 sizes_element <- element_size(h2GO_TS) %>% 
     arrange(desc(size))
