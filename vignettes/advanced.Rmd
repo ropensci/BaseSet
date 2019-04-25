@@ -63,7 +63,6 @@ We will explore the genes related with GO.
 # We load some libraries
 library("org.Hs.eg.db")
 library("GO.db")
-library("dplyr")
 library("ggplot2")
 library("forcats")
 
@@ -85,7 +84,7 @@ tt2$sets <- gsub(".* ", "", rownames(tt2))
 rownames(tt2) <- NULL
 
 df2 <- cbind(tt2, nEvidence = rowSums(tt))
-df3 <- merge(df2, h2GO[, c("elements", "sets", "Ontology")])
+df3 <- merge(df2, unique(h2GO[, c("sets", "Ontology")]))
 ```
 We can now explore if there are differences in evidence usage for each ontology in GO:
 ```{r evidence_ontology}
