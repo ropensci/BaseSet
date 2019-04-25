@@ -12,7 +12,7 @@ independent(object, sets)
 \item{sets}{A character vector with the names of the sets to analyze.}
 }
 \value{
-A logical value indicating if the sets are independent or not.
+A logical value indicating if the sets are independent (TRUE) or not.
 }
 \description{
 Checks if the elements of the sets are present in more than one set.
@@ -23,4 +23,5 @@ TS <- tidySet(x)
 independent(TS)
 independent(TS, c("A", "B"))
 independent(TS, c("A", "C"))
+independent(TS, c("B", "C"))
 }
