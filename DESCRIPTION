@@ -32,7 +32,7 @@ Suggests:
     reactome.db,
     rmarkdown,
     spelling,
-    testthat
+    testthat (>= 2.1.0)
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
@@ -63,6 +63,7 @@ Collate:
     'group.R'
     'group_by.R'
     'incidence.R'
+    'independent.R'
     'operations.R'
     'intersection.R'
     'length.R'

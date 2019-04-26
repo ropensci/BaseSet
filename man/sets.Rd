@@ -6,6 +6,7 @@
 \alias{sets<-}
 \alias{sets,TidySet-method}
 \alias{sets<-,TidySet-method}
+\alias{replace_sets}
 \alias{nSets,TidySet-method}
 \title{Retrieve the names of the sets}
 \usage{
@@ -16,6 +17,8 @@ sets(object) <- value
 \S4method{sets}{TidySet}(object)
 
 \S4method{sets}{TidySet}(object) <- value
+
+replace_sets(object, value)
 
 \S4method{nSets}{TidySet}(object)
 }

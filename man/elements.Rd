@@ -6,6 +6,7 @@
 \alias{elements<-}
 \alias{elements,TidySet-method}
 \alias{elements<-,TidySet-method}
+\alias{replace_elements}
 \title{Retrieve the elements}
 \usage{
 elements(object)
@@ -15,6 +16,8 @@ elements(object) <- value
 \S4method{elements}{TidySet}(object)
 
 \S4method{elements}{TidySet}(object) <- value
+
+replace_elements(object, value)
 }
 \arguments{
 \item{object}{A TidySet object.}

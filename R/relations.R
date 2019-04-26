@@ -9,6 +9,18 @@ setMethod("relations",
             slot(object, "relations")
           })
 
+#' @rdname relations
+#' @export
+replace_relations <- function(object, value) {
+    UseMethod("replace_relations")
+}
+
+#' @export
+#' @method replace_relations TidySet
+replace_relations.TidySet <- function(object, value) {
+    relations(object) <- value
+}
+
 #' @describeIn relations Modify the relations
 #' @export
 setMethod("relations<-",
