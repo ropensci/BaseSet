@@ -17,3 +17,17 @@ test_that("adjacency_set works", {
     expect_true(all(diag(out) == 1))
     expect_equal(out["a", "b"], 0)
 })
+
+
+test_that("adjacency works", {
+    x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
+    a <- tidySet(x)
+    expect_true(is.null(adjacency(a)))
+
+    b <- activate(a, "relations")
+    expect_true(is.null(adjacency(b)))
+    b <- activate(a, "sets")
+    expect_is(adjacency(b), "matrix")
+    b <- activate(a, "elements")
+    expect_is(adjacency(b), "matrix")
+})

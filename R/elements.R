@@ -20,6 +20,17 @@ setMethod("elements<-",
             object
           })
 
+#' @rdname elements
+#' @export
+replace_elements <- function(object, value) {
+    UseMethod("replace_elements")
+}
+
+#' @export
+#' @method replace_elements TidySet
+replace_elements.TidySet <- function(object, value) {
+    elements(object) <- value
+}
 
 #' @describeIn nElements Return the number of elements
 #' @export

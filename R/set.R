@@ -20,6 +20,18 @@ setMethod("sets<-",
             object
           })
 
+#' @rdname sets
+#' @export
+replace_sets <- function(object, value) {
+    UseMethod("replace_sets")
+}
+
+#' @export
+#' @method replace_sets TidySet
+replace_sets.TidySet <- function(object, value) {
+    sets(object) <- value
+}
+
 #' @describeIn sets Return the number of sets
 #' @export
 setMethod("nSets",

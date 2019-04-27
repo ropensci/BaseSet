@@ -5,6 +5,7 @@
 \alias{relations}
 \alias{relations<-}
 \alias{relations,TidySet-method}
+\alias{replace_relations}
 \alias{relations<-,TidySet-method}
 \title{Find the relationship}
 \usage{
@@ -13,6 +14,8 @@ relations(object)
 relations(object) <- value
 
 \S4method{relations}{TidySet}(object)
+
+replace_relations(object, value)
 
 \S4method{relations}{TidySet}(object) <- value
 }
