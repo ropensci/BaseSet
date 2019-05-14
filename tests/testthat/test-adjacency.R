@@ -22,7 +22,7 @@ test_that("adjacency_set works", {
 test_that("adjacency works", {
     x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
     a <- tidySet(x)
-    expect_true(is.null(adjacency(a)))
+    expect_null(expect_warning(adjacency(a)))
 
     b <- activate(a, "relations")
     expect_true(is.null(adjacency(b)))
