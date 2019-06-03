@@ -1,6 +1,7 @@
-#' Is it nested?
+#' Are some sets as elements of other sets?
 #'
-#' Test if some elements are also sets of others.
+#' Check if some elements are also sets of others. This is also known as
+#' hierarchical sets.
 #' @param object A TidySet object.
 #' @return A logical value
 #' @family methods

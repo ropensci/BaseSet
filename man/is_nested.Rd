@@ -3,7 +3,7 @@
 \name{is_nested}
 \alias{is_nested}
 \alias{is_nested.TidySet}
-\title{Is it nested?}
+\title{Are some sets as elements of other sets?}
 \usage{
 is_nested(object)
 
@@ -16,7 +16,8 @@ is_nested(object)
 A logical value
 }
 \description{
-Test if some elements are also sets of others.
+Check if some elements are also sets of others. This is also known as
+hierarchical sets.
 }
 \examples{
 relations <- list(A = letters[1:3], B = c(letters[4:5], "A"))
