@@ -18,7 +18,5 @@ is_nested <- function(object) {
 #' @rdname is_nested
 #' @export
 is_nested.TidySet <- function(object) {
-    e <- elements(object)$elements
-    s <- sets(object)$sets
-    any(e %in% s)
+    any(name_elements(object) %in% name_sets(object))
 }
