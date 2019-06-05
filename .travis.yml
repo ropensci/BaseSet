@@ -7,8 +7,7 @@ cache: packages
 after_success:
     - Rscript -e 'covr::codecov()'
 
-r:
-    - bioc-devel
+r: bioc-devel
 
 notifications: # To avoid filling the inbox
   email:
