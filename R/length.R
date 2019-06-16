@@ -107,11 +107,18 @@ length_set <- function(fuzziness) {
     return(out) # Non fuzzy sets
   }
 
-  l <- seq(from = sum(fuzziness == 1), to = length(fuzziness))
-  v <- vapply(l, length_probability, p = fuzziness, numeric(1L))
+  l <- seq(from = sum(p1), to = length(fuzziness))
+  # Exclude those cases that are obvious
+  l2 <- l - sum(p1)
+  l2 <- l2[l2 != 0]
+  v <- vapply(l2, length_probability, p = fuzziness[!p1], numeric(1L))
 
-  names(v) <- as.character(l)
-  v
+  # Substitute in the original possibilities
+  names(l) <- as.character(l)
+  l[] <- 0
+  l[as.character(l2 + sum(p1))] <- v
+  l[as.character(sum(p1))] <- 1 - sum(v)
+  l
 }
 
 #' @describeIn set_size Calculates the size of a set either fuzzy or not
@@ -130,6 +137,7 @@ setMethod("set_size",
               stop("Please introduce valid set names. See name_sets",
                    call. = FALSE)
             }
+
             # object <- droplevels(object)
             rel <- relations(object)
             if (is.null(set)) {
