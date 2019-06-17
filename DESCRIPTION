@@ -32,7 +32,8 @@ Suggests:
     reactome.db,
     rmarkdown,
     spelling,
-    testthat (>= 2.1.0)
+    testthat (>= 2.1.0),
+    Biobase
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
