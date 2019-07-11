@@ -164,9 +164,10 @@ setMethod("set_size",
                 lengths_set[is.na(lengths_set)] <- 0
             }
 
-            out <- data.frame(set = sets,
+            out <- data.frame(sets = sets,
                        size = as.numeric(lengths_set),
                        probability = probability_length)
+            out <- merge(out, sets(object), sort = FALSE)
             if (is.null(set)) {
               out
             } else {
@@ -216,9 +217,11 @@ setMethod("element_size",
                 lengths_set[is.na(lengths_set)] <- 0
             }
 
-            out <- data.frame(element = elements,
+            out <- data.frame(elements = elements,
                               size = as.numeric(lengths_set),
                               probability = probability_length)
+            out <- merge(out, elements(object), sort = FALSE)
+
             if (is.null(element)) {
               out
             } else {

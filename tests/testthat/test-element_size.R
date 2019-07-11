@@ -6,7 +6,7 @@ test_that("element_size works", {
                           fuzzy = runif(7))
   a <- tidySet(relations)
   df <- element_size(a)
-  expect_equal(colnames(df), c("element", "size", "probability"))
+  expect_equal(colnames(df), c("elements", "size", "probability"))
   expect_error(element_size(a, "z"))
   out <- element_size(a, "b")
   expect_equal(nrow(out), 2L)
