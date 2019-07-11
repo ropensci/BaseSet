@@ -24,9 +24,9 @@ tidySet.data.frame <- function(relations) {
 
   if (ncol(relations) >= 2 && all(c("sets", "elements") %in% colnames(relations))) {
     sets <- data.frame(sets = unique(relations$sets),
-                       stringsAsFactors = TRUE)
+                       stringsAsFactors = FALSE)
     elements <- data.frame(elements = unique(relations$elements),
-                           stringsAsFactors = TRUE)
+                           stringsAsFactors = FALSE)
   } else {
     stop("Unable to create a TidySet object.\n",
          "The data.frame is not in the right format", call. = FALSE)
@@ -84,7 +84,7 @@ tidySet.list <- function(relations) {
   }
   sets <- rep(names(relations), lengths(relations))
   relations <- data.frame(elements, sets, fuzzy,
-                          stringsAsFactors = TRUE)
+                          stringsAsFactors = FALSE)
   tidySet.data.frame(relations = relations)
 }
 

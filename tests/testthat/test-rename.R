@@ -15,3 +15,14 @@ test_that("rename_set works", {
   expect_true(any(grepl("gh", name_sets(b))))
   expect_error(rename_set(a, "z"), "must be found")
 })
+
+
+test_that("name_elements<- works well", {
+  x <- data.frame(
+    elements = c("a", "b", "c", "d", "e", "C", "D", "E", "F", "G"),
+    sets = c("A", "A", "A", "A", "A", "B", "B", "B", "B", "B")
+  )
+  y <- tidySet(x)
+  name_elements(y) <- letters[1:10]
+  expect_equal(name_elements(y), letters[1:10])
+})
