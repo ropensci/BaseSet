@@ -1,4 +1,4 @@
-test_that("multiplication works", {
+test_that("getOBO works", {
     fl <- system.file("extdata", "goslim_plant.obo", package="GSEABase")
     y <- getOBO(fl)
     expect_true(is(y, "TidySet"))
