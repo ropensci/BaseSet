@@ -3,7 +3,7 @@ context("test-fuzzification")
 test_that("fuzzification works", {
   fuz <- function(x) {
     y <- ifelse(x > 0.5, "high", "low")
-    out <- cbind.data.frame(x, y)
+    out <- cbind.data.frame(x, y, stringsAsFactors = FALSE)
     colnames(out) <- c("fuzzy", "elements")
     out
   }

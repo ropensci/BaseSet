@@ -34,7 +34,7 @@ tidySet.data.frame <- function(relations) {
 
   if (!"fuzzy" %in% colnames(relations)) {
     fuzzy <- 1
-    relations <- cbind.data.frame(relations, fuzzy)
+    relations <- cbind.data.frame(relations, fuzzy, stringsAsFactors = FALSE)
   }
 
   new("TidySet", sets = sets, elements = elements, relations = relations)
@@ -120,7 +120,7 @@ tidySet.matrix <- function(relations) {
   fuzzy <- apply(relations, 1, function(x){
     incid[x[1], x[2]]
   })
-  relations <- cbind.data.frame(relations, fuzzy)
+  relations <- cbind.data.frame(relations, fuzzy, stringsAsFactors = FALSE)
   tidySet(relations = relations)
 }
 
