@@ -12,7 +12,7 @@ getOBO <- function(x){
     data <- sub(parser$comment, "", data)
     stnz <- grep(parser$stanza, data)
     stnz <- stnz[stnz %in% (grep(parser$blank_line, data) + 1)]
-    browser()
+
     stanza <- data.frame(id = c(0, stnz),
                          value = c("Root", sub(parser$stanza, "\\1", data[stnz])),
                          stringsAsFactors = FALSE)
@@ -60,8 +60,18 @@ getGAF <- function(x) {
 
     # Classification of the columns according to where do they belong
     elements <- c(1, 2, 3, 10, 11, 12, 13, 17)
-    sets <- c(5, 6, 7, 9, 14, 15, 16)
-    relations <- c(4, 8)
+    sets <- c(5, 6, 9, 16)
+    relations <- c(4, 8, 7, 14, 15)
 
-    df
+    colnames(df) <- gsub("O_ID", "sets", colnames(df))
+    colnames(df) <- gsub("DB_Object_Symbol", "elements", colnames(df))
+
+    columns_gaf <- function(names, originals) {
+        names[names %in% originals]
+    }
+    df <- duplicated_relations(df)
+    TS <- tidySet(df)
+    TS <- move_to(TS, "relations", "sets", columns_gaf(gaf_columns[sets], colnames(df)))
+    TS <- move_to(TS, "relations", "elements",  columns_gaf(gaf_columns[elements], colnames(df)))
+    TS
 }
