@@ -57,3 +57,43 @@ test_that("tidySet fails", {
   df <- data.frame(elements = c("a", letters[1:4]), sets = sample(LETTERS[3]))
   expect_error(tidySet(df), "must be unique")
 })
+
+
+test_that("tidySet long",  {
+  df <- data.frame(
+    DB = c("RNAcentral", "RNAcentral", "RNAcentral",
+           "RNAcentral", "RNAcentral"),
+    DB_Object_ID = c("URS000003E1A9_9606", "URS000003E1A9_9606",
+                     "URS000003E1A9_9606", "URS000003E1A9_9606",
+                     "URS000003E1A9_9606"),
+    elements = c("URS000003E1A9_9606", "URS000003E1A9_9606",
+                 "URS000003E1A9_9606", "URS000003E1A9_9606",
+                 "URS000003E1A9_9606" ),
+    Qualifier = c("", "", "", "", ""),
+    sets = c("GO:0035195", "GO:0035195", "GO:0035195",
+             "GO:0035195", "GO:0035195"),
+    DB_Reference = c("PMID:15131085", "PMID:16762633",
+                     "PMID:23874542", "PMID:26371161", "PMID:28008308"),
+    Evidence_Code = c("IDA", "IMP", "IDA", "IDA", "IGI"),
+    With_From = c("", "", "", "", "RNAcentral:URS000008DA94_10090"),
+    Aspect = c("BP", "BP", "BP", "BP", "BP"),
+    DB_Object_Name = c("Homo sapiens (human) hsa-miR-141-3p",
+                       "Homo sapiens (human) hsa-miR-141-3p",
+                       "Homo sapiens (human) hsa-miR-141-3p",
+                       "Homo sapiens (human) hsa-miR-141-3p",
+                       "Homo sapiens (human) hsa-miR-141-3p"),
+    DB_Object_Type = c("miRNA", "miRNA", "miRNA", "miRNA", "miRNA"),
+    Taxon = c("taxon:9606", "taxon:9606", "taxon:9606",
+              "taxon:9606", "taxon:9606"),
+    Date = c(20171020L, 20150925L, 20160616L, 20160622L, 20190307L),
+    Assigned_By = c("BHF-UCL", "BHF-UCL", "BHF-UCL", "BHF-UCL",
+                    "ARUK-UCL"),
+    Annotation_Extension = c(
+      "regulates_expression_of(ENSEMBL:ENSG00000134852)",
+      "regulates_expression_of(ENSEMBL:ENSG00000134852)",
+      "regulates_expression_of(ENSEMBL:ENSG00000128513)",
+      "occurs_in(CL:0002618),regulates_expression_of(ENSEMBL:ENSG00000090339)",
+      "regulates_expression_of(ENSEMBL:ENSG00000171862)"),
+    stringsAsFactors = FALSE)
+  expect_error(tidySet(df))
+})
