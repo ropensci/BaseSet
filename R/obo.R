@@ -1,4 +1,17 @@
-getOBO <- function(x){
+#' Read an OBO file
+#'
+#' Read a OBO formatted file
+#'
+#' @param x A file in OBO format
+#' @return A TidySet object
+#' @family IO functions
+#' @export
+#' @examples
+#' oboFile <- system.file(package = "BaseSet", "extdata",
+#'                                   ".obo")
+#' gs <- getOBO(oboFile)
+#' head(gs)
+getOBO <- function(x) {
     parser <- list(blank_line = "^\\s*$",
                    comment_line = "^\\s*!",
                    comment = "\\s*!.*$",
@@ -37,6 +50,19 @@ getOBO <- function(x){
 
 # Using data downloaded from http://geneontology.org/gene-associations/goa_human_rna.gaf.gz on 20190711
 # About the format: http://geneontology.org/docs/go-annotation-file-gaf-format-2.1/
+#' Read a GAF file
+#'
+#' Read a GAF formatted file, see \url{http://geneontology.org/docs/go-annotation-file-gaf-format-2.1/}
+#'
+#' @param x A file in GAF format
+#' @return A TidySet object
+#' @export
+#' @family IO functions
+#' @examples
+#' gafFile <- system.file(package = "BaseSet", "extdata",
+#'                                   "go_human_rna_valid_subset.gaf")
+#' gs <- getGAF(gafFile)
+#' head(gs)
 getGAF <- function(x) {
     df <- read.delim(x, header = FALSE, comment.char = "!",
                      stringsAsFactors = FALSE)

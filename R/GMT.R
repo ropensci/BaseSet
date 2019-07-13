@@ -7,6 +7,7 @@ NULL
 #' @param sep Separation of the file
 #' @param ... Other arguments passed to strsplit
 #' @return A TidySet object
+#' @family IO functions
 #' @export
 #' @examples
 #' gmtFile <- system.file(package = "BaseSet", "extdata",

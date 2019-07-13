@@ -27,3 +27,8 @@ nRelations(gs)
 nElements(gs)
 nSets(gs)
 }
+\seealso{
+Other IO functions: \code{\link{getGAF}},
+  \code{\link{getOBO}}
+}
+\concept{IO functions}
