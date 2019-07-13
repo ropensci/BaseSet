@@ -8,7 +8,7 @@
 #' @export
 #' @examples
 #' oboFile <- system.file(package = "BaseSet", "extdata",
-#'                                   ".obo")
+#'                                   "go-basic_subset.obo")
 #' gs <- getOBO(oboFile)
 #' head(gs)
 getOBO <- function(x) {
@@ -46,6 +46,41 @@ getOBO <- function(x) {
                      key = kv_key[!id_keys], value = kv_value[!id_keys],
                      stringsAsFactors = FALSE, row.names = "id")
     idx <- kv$stanza_id == ".__Root__" & kv$key == "subsetdef"
+    # Variables that define the file thus all sets
+    # data-version, format-version, remark, subsetdef, ontology, deault-namespace, synonymtypedef
+    # remove obselete terms
+    obsolete_ontologies <- kv$stanza_id[kv$key == "is_obsolete" & kv$value == "true"]
+    kv <- kv[!kv$stanza_id %in% obsolete_ontologies, ]
+    # unique per GO
+    # comment, data-version, def, default-namespace, format-version, name, namespace, ontology,
+    relations <- kv[kv$key == "relationship" | kv$key == "is_a", ]
+    val <- lapply(strsplit(relations$value, split = " "), function(x) {
+        if (length(x) == 1) {
+            c("is_a", x)
+        } else {
+            x
+        }
+    })
+    rels <- t(simplify2array(val, higher = FALSE))
+    relations <- cbind.data.frame(relations, rels, stringsAsFactors = FALSE)
+    relations <- relations[, -c(2, 3), drop = FALSE]
+    colnames(relations) <- c("elements", "type", "sets")
+    relations <- relations[!(relations$sets %in% obsolete_ontologies), ]
+    relations <- relations[!(relations$elements %in% obsolete_ontologies), ]
+    relations$fuzzy <- 1
+
+    elements <- data.frame(
+        elements = unique(kv$stanza_id[kv$stanza_id != ".__Root__"]),
+        stringsAsFactors = FALSE)
+    sets <- data.frame(sets = unique(c(elements$elements, relations$sets)),
+                       stringsAsFactors = FALSE)
+    root <- kv[kv$stanza_id == ".__Root__", 2:3]
+    files_info <- t(root[root$key %in% c("data-version", "date", "saved-by",
+                                         "ontology", "default-namespace"), ])
+    colnames(files_info) <- files_info[1, ]
+    files_info <- files_info[-1, , drop = FALSE]
+    sets <- cbind(sets, files_info[rep(1, nrow(sets)), ])
+    new("TidySet", elements = elements, relations = relations, sets = sets)
 }
 
 # Using data downloaded from http://geneontology.org/gene-associations/goa_human_rna.gaf.gz on 20190711
@@ -58,6 +93,7 @@ getOBO <- function(x) {
 #' @return A TidySet object
 #' @export
 #' @family IO functions
+#' @importFrom utils read.delim
 #' @examples
 #' gafFile <- system.file(package = "BaseSet", "extdata",
 #'                                   "go_human_rna_valid_subset.gaf")

@@ -17,7 +17,7 @@ Read a OBO formatted file
 }
 \examples{
 oboFile <- system.file(package = "BaseSet", "extdata",
-                                  ".obo")
+                                  "go-basic_subset.obo")
 gs <- getOBO(oboFile)
 head(gs)
 }
