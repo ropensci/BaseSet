@@ -146,6 +146,10 @@ setMethod("set_size",
               names_sets <- set
               rel <- rel[rel$sets %in% set, ]
             }
+
+            # Duplicate relationships with different information...
+            rel <- unique(rel[, c("fuzzy", "elements", "sets")])
+
             if (is.fuzzy(object)) {
                 sizes <- lapply(names_sets, function(x){
                     length_set(rel[rel$sets == x, "fuzzy"])
@@ -199,6 +203,10 @@ setMethod("element_size",
               names_elements <- element
               rel <- rel[rel$elements %in% element, ]
             }
+
+            # To filter to unique relationships
+            rel <- unique(rel[, c("fuzzy", "elements", "sets")])
+
             if (is.fuzzy(object)) {
                 sizes <- lapply(names_elements, function(x){
                     length_set(rel[rel$elements == x, "fuzzy"])
