@@ -183,3 +183,11 @@ naming <- function(start = NULL, sets1, middle = NULL, sets2 = NULL,
 check_sets <- function(object, sets) {
   sets %in% object@relations$sets
 }
+
+
+#' @importFrom dplyr n_distinct
+check_fuzziness <- function(object) {
+  r <- relations(object)
+  fuzziness <- tapply(r$fuzzy,  paste(r$elements, r$sets), FUN = n_distinct)
+  all(fuzziness == 1)
+}

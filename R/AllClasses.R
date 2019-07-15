@@ -74,10 +74,14 @@ is.valid <- function(object) {
   } else if (length(object@relations$fuzzy) != 0) {
     fuzz <- object@relations$fuzzy
     if (!is.numeric(fuzz)) {
-        errors <- c(errors, "fuzzy column is restricted to a number")
+      errors <- c(errors, "fuzzy column is restricted to a number")
     } else if (min(fuzz) < 0 || max(fuzz) > 1 ) {
-        errors <- c(errors,
-                    "fuzzy column is restricted to a number between 0 and 1.")
+      errors <- c(errors,
+                  "fuzzy column is restricted to a number between 0 and 1.")
+    }
+    if (!check_fuzziness(object)) {
+      errors <- c(errors,
+                  "fuzzy column musts be equal for the same relationship between set and element.")
     }
   }
 
