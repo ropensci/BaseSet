@@ -55,7 +55,7 @@ test_that("tidySet fails", {
   expect_true(any(grepl("A fuzzy column must be present", is.valid(a))))
 
   df <- data.frame(elements = c("a", letters[1:4]), sets = sample(LETTERS[3]))
-  expect_error(tidySet(df), "must be unique")
+  expect_s4_class(tidySet(df), "TidySet")
 })
 
 
@@ -95,5 +95,5 @@ test_that("tidySet long",  {
       "occurs_in(CL:0002618),regulates_expression_of(ENSEMBL:ENSG00000090339)",
       "regulates_expression_of(ENSEMBL:ENSG00000171862)"),
     stringsAsFactors = FALSE)
-  expect_error(tidySet(df))
+  expect_s4_class(tidySet(df), "TidySet")
 })

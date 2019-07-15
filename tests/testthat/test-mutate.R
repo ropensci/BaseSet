@@ -37,7 +37,7 @@ test_that("mutate works", {
   a_df <- as.data.frame(a)
   a <- deactivate(a)
   expect_error(mutate(a, elements = ifelse(elements == "b", "B", "D")),
-               "must be unique")
+               "must have a single fuzzy value")
   b <- mutate(a, sets = ifelse(sets == "a", "A", "B"))
   b_df <- as.data.frame(b)
   expect_equal(name_sets(b), c("A", "B"))

@@ -79,10 +79,6 @@ is.valid <- function(object) {
       errors <- c(errors,
                   "fuzzy column is restricted to a number between 0 and 1.")
     }
-    if (!check_fuzziness(object)) {
-      errors <- c(errors,
-                  "fuzzy column musts be equal for the same relationship between set and element.")
-    }
   }
 
   # Check that the slots don't have duplicated information
@@ -94,12 +90,15 @@ is.valid <- function(object) {
                 "You might want to add a column to the relations instead")
   }
 
-  # Check that relations are unique
+  # Check that relations are unique for fuzzy values
   relations <- slot(object, "relations")
   if (nrow(relations) > 0) {
-    if (anyDuplicated(relations[, c("elements", "sets")]) >= 1) {
+    fuzziness <- tapply(fuzz,
+                        paste(relations$elements, relations$sets),
+                        FUN = n_distinct)
+    if (!all(fuzziness == 1)){
       errors <- c(errors,
-                  "A relationship between an element and a set must be unique."
+                  "A relationship between an element and a set must have a single fuzzy value"
       )
     }
   }
