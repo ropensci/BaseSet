@@ -21,7 +21,7 @@ Check the number of relations of the TidySet.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{TidySet}: Return the number of relations
+\item \code{TidySet}: Return the number of unique relations
 }}
 
 \seealso{
