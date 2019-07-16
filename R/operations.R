@@ -94,6 +94,10 @@ elements_sets <- function(object){
 #' @return A modified TidySet object
 #' @noRd
 fapply <- function(relations, FUN) {
+
+  if (ncol(relations) > 3) {
+      warning("Dropping columns. Consider using `move_to`")
+  }
   # Handle the duplicate cases
   basic <- paste(relations$elements, relations$sets)
   fuzzy <- split(relations$fuzzy, basic)
@@ -105,9 +109,6 @@ fapply <- function(relations, FUN) {
   FUN <- match.fun(FUN)
   fuzzy <- vapply(fuzzy, iterate, fun = FUN, numeric(1L))
   relations2 <- unique(relations[, c("sets", "elements")])
-  if (ncol(relations) > 3) {
-      warning("Dropping columns. Consider using move_to")
-  }
   basic2 <- paste(relations2$elements, relations2$sets)
   # Sort again to match the new relations
   cbind(relations2, fuzzy = fuzzy[match(basic2, names(fuzzy))])
