@@ -15,11 +15,11 @@ setMethod("incidence",
                                 ncol = nSets(object),
                                 dimnames = list(elements(object)$element,
                                                 sets(object)$set))
+            rel <- unique(relations(object)[, c("sets", "elements", "fuzzy")])
+            elements <- as.character(rel$elements)
+            sets <- as.character(rel$sets)
 
-            elements <- as.character(object@relations$elements)
-            sets <- as.character(object@relations$sets)
-
-            fuzziness <- object@relations$fuzzy
+            fuzziness <- rel$fuzzy
             for (p in seq_len(nRelations(object))) {
               Incidence[elements[p], sets[p]] <- fuzziness[p]
             }
