@@ -55,7 +55,7 @@ subtract(a, "a", "b", keep = FALSE)
 \code{\link{setdiff}}
 
 Other complements: \code{\link{complement_element}},
-  \code{\link{complement_set}}
+  \code{\link{complement_set}}, \code{\link{complement}}
 
 Other methods that create new sets: \code{\link{complement_element}},
   \code{\link{complement_set}}, \code{\link{intersection}},
@@ -66,8 +66,9 @@ Other methods: \code{\link{TidySet-class}},
   \code{\link{add_relation}},
   \code{\link{arrange.TidySet}}, \code{\link{cartesian}},
   \code{\link{complement_element}},
-  \code{\link{complement_set}}, \code{\link{element_size}},
-  \code{\link{elements}}, \code{\link{filter.TidySet}},
+  \code{\link{complement_set}}, \code{\link{complement}},
+  \code{\link{element_size}}, \code{\link{elements}},
+  \code{\link{filter.TidySet}},
   \code{\link{group_by.TidySet}}, \code{\link{group}},
   \code{\link{incidence}}, \code{\link{intersection}},
   \code{\link{is.fuzzy}}, \code{\link{is_nested}},

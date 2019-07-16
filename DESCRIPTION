@@ -58,7 +58,6 @@ Collate:
     'data_frame.R'
     'deactivate.R'
     'droplevels.R'
-    'duplicated_relations.R'
     'elements.R'
     'filter.R'
     'fuzzification.R'

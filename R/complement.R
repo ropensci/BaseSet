@@ -1,7 +1,6 @@
 #' @include AllClasses.R AllGenerics.R
 NULL
 
-
 #' @describeIn complement_set Complement of the sets.
 #' @export
 setMethod("complement_set",
@@ -37,8 +36,6 @@ setMethod("complement_set",
           }
 )
 
-
-
 #' @describeIn complement_element Complement of the elements.
 #' @export
 setMethod("complement_element",
@@ -68,3 +65,49 @@ setMethod("complement_element",
             object
           }
 )
+
+#' Complement TidySet
+#'
+#' Use complement to find elements or sets the TidySet object. You can use
+#' activate with complement or use the specific function. You must specify if
+#' you want the complements of sets or elements.
+#' @param .data The TidySet object
+#' @param x The elements or sets to use for the complement
+#' @param name The name of the new set. Optional for sets
+#' @param ... Other arguments passed to either \code{\link}
+#' @return A TidySet object
+#' @export
+#' @family complements
+#' @family methods
+#' @seealso \code{\link{activate}}
+#' @examples
+#' relations <- data.frame(sets = c("a", "a", "b", "b", "c", "c"),
+#'                         elements = letters[seq_len(6)],
+#'                         fuzzy = runif(6))
+#' a <- tidySet(relations)
+#' a %>% activate("elements") %>% complement("a", "C_a")
+#' a %>% activate("elements") %>% complement("a", "C_a", keep = FALSE)
+#' a %>% activate("set") %>% complement("a")
+#' a %>% activate("set") %>% complement("a", keep = FALSE)
+#' @export
+complement <- function(.data, x, ...) {
+    UseMethod("complement")
+}
+
+#' @export
+#' @method complement TidySet
+complement.TidySet <- function(.data, x, ...) {
+    if (is.null(active(.data))) {
+        stop("Specify about what do you wan the complement. sets or elements?")
+    } else {
+        switch(
+            active(.data),
+            elements = complement_element(.data, x, ...),
+            sets = complement_set(.data, x, ...),
+            relations = stop("Select either elements or sets")
+        )
+    }
+}
+
+
+
