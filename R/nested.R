@@ -8,9 +8,13 @@
 #' @export
 #' @seealso adjacency
 #' @examples
-#' relations <- list(A = letters[1:3], B = c(letters[4:5], "A"))
+#' relations <- list(A = letters[1:3], B = c(letters[4:5]))
 #' TS <- tidySet(relations)
 #' is_nested(TS)
+#' TS2 <- add_relation(TS, data.frame(elements = "A", sets = "B"))
+#' # Note that A is both a set and an element of B
+#' TS2
+#' is_nested(TS2)
 is_nested <- function(object) {
     UseMethod("is_nested")
 }
