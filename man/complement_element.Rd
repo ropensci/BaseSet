@@ -9,8 +9,8 @@
 complement_element(object, elements, ...)
 
 \S4method{complement_element}{TidySet,characterORfactor}(object, elements,
-  name, keep = TRUE, keep_relations = keep, keep_elements = keep,
-  keep_sets = keep)
+  name = NULL, keep = TRUE, keep_relations = keep,
+  keep_elements = keep, keep_sets = keep)
 }
 \arguments{
 \item{object}{A TidySet object.}

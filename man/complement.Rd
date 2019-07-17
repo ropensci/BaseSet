@@ -9,11 +9,8 @@ complement(.data, x, ...)
 \arguments{
 \item{.data}{The TidySet object}
 
-\item{x}{The elements or sets to use for the complement}
-
-\item{...}{Other arguments passed to either \code{\link}}
-
-\item{name}{The name of the new set. Optional for sets}
+\item{...}{Other arguments passed to either \code{\link{complement_set}} or
+\code{\link{complement_element}}.}
 }
 \value{
 A TidySet object
@@ -28,10 +25,10 @@ relations <- data.frame(sets = c("a", "a", "b", "b", "c", "c"),
                         elements = letters[seq_len(6)],
                         fuzzy = runif(6))
 a <- tidySet(relations)
-a \%>\% activate("elements") \%>\% complement(a, "a", "C_a")
-a \%>\% activate("elements") \%>\% complement(a, "a", "C_a", keep = FALSE)
-a \%>\% activate("set") \%>\% complement(a, "a")
-a \%>\% activate("set") \%>\% complement(a, "a", keep = FALSE)
+a \%>\% activate("elements") \%>\% complement("a")
+a \%>\% activate("elements") \%>\% complement("a", "C_a", keep = FALSE)
+a \%>\% activate("set") \%>\% complement("a")
+a \%>\% activate("set") \%>\% complement("a", keep = FALSE)
 }
 \seealso{
 \code{\link{activate}}
