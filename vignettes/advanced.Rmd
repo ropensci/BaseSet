@@ -89,8 +89,10 @@ This graph doesn't consider that some relationships are better annotated than ot
 ```{r nEvidence_plot}
 h2GO_TS %>% 
   relations() %>% 
+  group_by(elements, sets) %>% 
+  count(sort = TRUE) %>% 
   ggplot() +
-    geom_histogram(aes(nEvidence), binwidth = 1) +
+    geom_histogram(aes(n), binwidth = 1) +
     theme_minimal() +
     # scale_y_log10() +
     labs(x = "Evidence codes", 
