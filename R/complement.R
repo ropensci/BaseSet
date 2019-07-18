@@ -92,7 +92,7 @@ setMethod("complement_element",
 #' a %>% activate("set") %>% complement("a")
 #' a %>% activate("set") %>% complement("a", keep = FALSE)
 #' @export
-complement <- function(.data, x, ...) {
+complement <- function(.data, ...) {
     UseMethod("complement")
 }
 

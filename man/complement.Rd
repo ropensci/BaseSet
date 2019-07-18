@@ -4,7 +4,7 @@
 \alias{complement}
 \title{Complement TidySet}
 \usage{
-complement(.data, x, ...)
+complement(.data, ...)
 }
 \arguments{
 \item{.data}{The TidySet object}
