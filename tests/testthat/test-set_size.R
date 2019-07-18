@@ -35,6 +35,9 @@ test_that("set_size works well", {
                     Bcell = c("CD45" = 1, "CD19" = 0.5, "CD40" = 1, "IgM" = 0.8))
 
   cells <- tidySet(signature)
+  b <- activate(cells, "sets")
+  bs2 <- set_size(b, "Bcell")
   bs <- set_size(cells, "Bcell")
   expect_equal(sum(bs$probability), 1L)
+  expect_equal(bs, bs2)
 })
