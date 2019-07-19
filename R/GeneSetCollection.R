@@ -64,31 +64,3 @@ helper_tidy <- function(object) {
 tidy.CollectionType <- function(object) {
   helper_tidy(object)
 }
-
-
-#' @export
-#' @method tidy GOCollection
-tidy.GOCollection <- function(object) {
-  out <- NextMethod()
-  if (length(object@ontology) > 1)  {
-    out["ontology"] <- NA
-  } else {
-    out["ontology"] <- object@ontology
-  }
-  out
-}
-
-#' @export
-#' @method tidy BroadCollection
-tidy.BroadCollection <- function(object) {
-  out <- NextMethod()
-  out["category"] <- object@category
-  out["subCategory"] <- object@subCategory
-  out
-}
-
-#' @export
-#' @method tidy GeneIdentifierType
-tidy.GeneIdentifierType <- function(object) {
-  helper_tidy(object)
-}
