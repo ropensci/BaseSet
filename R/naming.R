@@ -5,7 +5,7 @@ collapse_sets <- function(sets, symbol = "union") {
     symbol <- check_symbol(symbol)
 
     if (length(symbol) == 0) {
-        stop("Unrecognized set symbol. See set_symbol")
+        stop("Unrecognized set symbol. See set_symbols")
     }
 
     if (length(sets) > 1){
@@ -30,7 +30,7 @@ check_symbol <- function(symbol) {
 #' @param sets1,sets2 Character of sets
 #' @param collapse_symbol Name of the symbol that joins the sets on \code{sets1} and
 #' \code{sets2}.
-#' @seealso \code{\link{set_symbol}}
+#' @seealso \code{\link{set_symbols}}
 #' @return A character vector combining the sets
 #' @export
 #' @examples
@@ -39,7 +39,7 @@ check_symbol <- function(symbol) {
 #' naming(sets1 = "a", middle = "intersection", sets2 = c("b", "c"))
 #' naming(sets1 = "a", middle = "intersection", sets2 = c("b", "c"))
 #' naming(start = "complement", sets1 = "a", middle = "intersection",
-#' sets2 = c("b", "c"), collapse_symbol = "intersection")
+#'        sets2 = c("b", "c"), collapse_symbol = "intersection")
 naming <- function(start = NULL, sets1, middle = NULL, sets2 = NULL,
                    collapse_symbol = "union") {
     msg <- "Symbol should be of length 1"

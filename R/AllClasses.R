@@ -58,7 +58,7 @@ is.valid <- function(object) {
   }
   sets <- object@sets$sets
   if (length(unique(sets)) != length(sets)) {
-    errors <- c(errors, "Set on the sets slot must be unique")
+    errors <- c(errors, "Sets on the sets slot must be unique")
   }
 
   # Check the type of data
@@ -74,7 +74,8 @@ is.valid <- function(object) {
   } else if (length(object@relations$fuzzy) != 0) {
     fuzz <- object@relations$fuzzy
     if (!is.numeric(fuzz)) {
-      errors <- c(errors, "fuzzy column is restricted to a number")
+      errors <- c(errors,
+                  "fuzzy column is restricted to a number between 0 and 1.")
     } else if (min(fuzz) < 0 || max(fuzz) > 1 ) {
       errors <- c(errors,
                   "fuzzy column is restricted to a number between 0 and 1.")

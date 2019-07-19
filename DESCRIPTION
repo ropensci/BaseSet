@@ -73,6 +73,7 @@ Collate:
     'move_to.R'
     'mutate.R'
     'names.R'
+    'naming.R'
     'nested.R'
     'obo.R'
     'power_set.R'
