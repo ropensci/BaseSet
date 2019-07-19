@@ -73,9 +73,41 @@ test_that("tidySet fails", {
   expect_false(is_valid(a))
 
   expect_error(any(grepl("Set on the sets slot must be unique",
-                         new("TidySet", sets = data.frame(sets = c("A", "A"))))))
+                         new("TidySet", sets = data.frame(
+                           sets = c("A", "A"))))))
   expect_error(any(grepl("Elements on the elements slot must be unique",
-                         new("TidySet", elements = data.frame(elements = c("A", "A"))))))
+                         new("TidySet",
+                             elements = data.frame(elements = c("A", "A"))))))
+
+  expect_error(any(grepl("fuzzy column is restricted to a number between 0 and 1",
+                         new("TidySet",
+                             elements = data.frame(elements = "a"),
+                         relations = data.frame(elements = "a",
+                                                sets = "A",
+                                                fuzzy = "a"),
+                         sets = data.frame(sets = "A")))))
+  expect_error(any(grepl("fuzzy column is restricted to a number between 0 and 1",
+                         new("TidySet",
+                             elements = data.frame(elements = "a"),
+                         relations = data.frame(elements = "a",
+                                                sets = "A",
+                                                fuzzy = 3),
+                         sets = data.frame(sets = "A")))))
+  expect_error(any(grepl("share a column name.",
+                         new("TidySet",
+                             elements = data.frame(elements = "a",
+                                                   colnames = "b"),
+                             relations = data.frame(elements = "a",
+                                                    sets = "A", fuzzy = 3),
+                             sets = data.frame(sets = "A",  colnames = "b")))))
+
+  expect_error(any(grepl("must have a single fuzzy value",
+                         new("TidySet",
+                             elements = data.frame(elements = "a"),
+                             relations = data.frame(elements = c("a", "a"),
+                                                    sets = c("A", "A"),
+                                                    fuzzy = c(0.1, 0.2)),
+                             sets = data.frame(sets = "A")))))
 
   df <- data.frame(elements = c("a", letters[1:4]), sets = sample(LETTERS[3]))
   expect_s4_class(tidySet(df), "TidySet")
