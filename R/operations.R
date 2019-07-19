@@ -154,33 +154,6 @@ replace_interactions <- function(object, new_relations, keep) {
 }
 
 
-
-collapse_sets <- function(sets, symbol) {
-  paste0(sets, collapse = set_symbols[symbol])
-
-}
-
-naming <- function(start = NULL, sets1, middle = NULL, sets2 = NULL,
-                         collapse_symbol = "union") {
-
-  if (!is.null(sets2) & is.null(middle)) {
-    stop("sets1 and sets2 should be separated by a symbol")
-  }
-
-  if (!is.null(sets2) && length(sets2) > 1) {
-    sets2 <- paste0("(", paste0(sets2, collapse = set_symbols[collapse_symbol]), ")")
-  }
-  if (!is.null(start) || !is.null(middle) && length(sets1) > 1) {
-    sets1 <- paste0("(", paste0(sets1, collapse = set_symbols[collapse_symbol]), ")")
-  } else {
-    sets1 <- paste0(sets1, collapse = set_symbols[collapse_symbol])
-  }
-
-  paste0(set_symbols[start],
-         sets1, set_symbols[middle],
-         sets2)
-}
-
 check_sets <- function(object, sets) {
   sets %in% object@relations$sets
 }
