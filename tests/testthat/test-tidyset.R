@@ -13,7 +13,6 @@ test_that("tidySet data.frame", {
   relations <- data.frame(sets = c(rep("a", 5), "b"),
                           elements = letters[seq_len(6)],
                           fuzzy = letters[seq_len(6)])
-
   expect_error(tidySet(relations),
                "fuzzy column is restricted to a number between 0 and 1.")
 
