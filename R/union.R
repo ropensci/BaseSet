@@ -50,10 +50,13 @@ union.TidySet <- function(object, sets, name = NULL, FUN = "max", keep = FALSE,
         stop("The new union can only have one name", call. = FALSE)
     }
     object <- add_sets(object, name)
-
     relations <- relations(object)
     union <- relations[relations$sets %in% sets, ]
-    levels(union$sets)[levels(union$sets) %in% sets] <- name
+    if (is.factor(union$sets)) {
+        levels(union$sets)[levels(union$sets) %in% sets] <- name
+    } else {
+        union$sets[union$sets %in% sets] <- name
+    }
     union <- fapply(union, FUN)
     object <- replace_interactions(object, union, keep_relations)
     object <- droplevels(object, !keep_elements, !keep_sets)

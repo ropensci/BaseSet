@@ -1,43 +1,34 @@
-
 add_elements_internal <- function(object, elements){
-
     original_elements <- name_elements(object)
-    if (is.factor(elements)) {
-        elements <- as.character(elements)
-    }
     final_elements <- unique(c(original_elements, elements))
+    new_elements <- setdiff(final_elements, original_elements)
 
-    if (length(final_elements) != length(original_elements)) {
-        levels(object@elements$elements) <- final_elements
-
-        new_elements <- setdiff(elements, original_elements)
-        df_elements <- data.frame(elements = new_elements)
-        column_names <- setdiff(colnames(object@elements), "elements")
-        df_elements[, column_names] <- NA
-        object@elements <- rbind(object@elements, df_elements)
+    if (length(new_elements) == 0) {
+        return(object)
     }
+    df_elements <- data.frame(elements = new_elements)
+    column_names <- setdiff(colnames(object@elements), "elements")
+    df_elements[, column_names] <- NA
+    object@elements <- rbind(object@elements, df_elements)
+
     rownames(object@elements) <- NULL
     object@elements <- droplevels(object@elements)
     object
 }
 
 add_sets_internal <- function(object, set) {
-
     original_sets <- name_sets(object)
-    if (is.factor(set)) {
-        set <- as.character(set)
-    }
     final_sets <- unique(c(original_sets, set))
+    new_sets <- setdiff(final_sets, original_sets)
 
-    if (length(final_sets) != length(original_sets)) {
-        levels(object@sets$sets) <- final_sets
-
-        new_sets <- setdiff(set, original_sets)
-        df_sets <- data.frame(sets = new_sets)
-        column_names <- setdiff(colnames(object@sets), "sets")
-        df_sets[, column_names] <- NA
-        object@sets <- rbind(object@sets, df_sets)
+    if (length(new_sets) == 0) {
+        return(object)
     }
+    df_sets <- data.frame(sets = new_sets)
+    column_names <- setdiff(colnames(object@sets), "sets")
+    df_sets[, column_names] <- NA
+    object@sets <- rbind(object@sets, df_sets)
+
     rownames(object@sets) <- NULL
     object@sets <- droplevels(object@sets)
     object
