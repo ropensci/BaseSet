@@ -6,12 +6,12 @@ GeneSet
 GeneSetCollection
 getter
 Github
+GSEABase
 lifecycle
 Lluís
 magrittr
 OBO
 Revilla
-SetCollection
 strsplit
 tidySet
 TidySet

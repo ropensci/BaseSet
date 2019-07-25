@@ -7,6 +7,7 @@
 \alias{elements,TidySet-method}
 \alias{elements<-,TidySet-method}
 \alias{replace_elements}
+\alias{nElements,TidySet-method}
 \title{Elements of the TidySet}
 \usage{
 elements(object)
@@ -18,6 +19,8 @@ elements(object) <- value
 \S4method{elements}{TidySet}(object) <- value
 
 replace_elements(object, value)
+
+\S4method{nElements}{TidySet}(object)
 }
 \arguments{
 \item{object}{A TidySet object.}
@@ -35,6 +38,8 @@ Given TidySet retrieve the elements or substitute them.
 \item \code{TidySet}: Retrieve the elements
 
 \item \code{TidySet}: Modify the elements
+
+\item \code{TidySet}: Return the number of elements
 }}
 
 \examples{
@@ -42,6 +47,8 @@ TS <- tidySet(list(A = letters[1:5], B = letters[2:10]))
 elements(TS)
 elements(TS) <- data.frame(elements = letters[10:1])
 TS2 <- replace_elements(TS, data.frame(elements = letters[1:11]))
+nElements(TS)
+nElements(TS2)
 }
 \seealso{
 \code{\link{nElements}}

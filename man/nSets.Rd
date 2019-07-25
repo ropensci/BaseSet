@@ -12,6 +12,10 @@ nSets(object)
 \description{
 Check the number of sets of the TidySet
 }
+\examples{
+TS <- tidySet(list(A = letters[1:2], B = letters[5:7]))
+nSets(TS)
+}
 \seealso{
 Other count functions: \code{\link{nElements}},
   \code{\link{nRelations}}

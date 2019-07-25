@@ -51,6 +51,9 @@ setGeneric("is.fuzzy", function(object) standardGeneric("is.fuzzy"))
 #' @export nSets
 #' @family count functions
 #' @family methods
+#' @examples
+#' TS <- tidySet(list(A = letters[1:2], B = letters[5:7]))
+#' nSets(TS)
 setGeneric("nSets", function(object) standardGeneric("nSets"))
 
 #' Number of elements
@@ -61,6 +64,9 @@ setGeneric("nSets", function(object) standardGeneric("nSets"))
 #' @export nElements
 #' @family count functions
 #' @family methods
+#' @examples
+#' TS <- tidySet(list(A = letters[1:2], B = letters[5:7]))
+#' nElements(TS)
 setGeneric("nElements", function(object) standardGeneric("nElements"))
 
 #' Number of relations
@@ -71,6 +77,9 @@ setGeneric("nElements", function(object) standardGeneric("nElements"))
 #' @export nRelations
 #' @family count functions
 #' @family methods
+#' @examples
+#' TS <- tidySet(list(A = letters[1:2], B = letters[5:7]))
+#' nRelations(TS)
 setGeneric("nRelations", function(object) standardGeneric("nRelations"))
 
 #' Incidence
@@ -93,6 +102,9 @@ setGeneric("incidence", function(object) standardGeneric("incidence"))
 #' @family methods
 #' @seealso \code{\link{nRelations}}
 #' @export
+#' @examples
+#' TS <- tidySet(list(A = letters[1:2], B = letters[5:7]))
+#' relations(TS)
 setGeneric("relations", function(object) standardGeneric("relations"))
 
 #' @rdname relations

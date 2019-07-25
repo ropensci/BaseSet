@@ -7,6 +7,7 @@
 \alias{relations,TidySet-method}
 \alias{replace_relations}
 \alias{relations<-,TidySet-method}
+\alias{nRelations,TidySet-method}
 \title{Relations of the TidySet}
 \usage{
 relations(object)
@@ -18,6 +19,8 @@ relations(object) <- value
 replace_relations(object, value)
 
 \S4method{relations}{TidySet}(object) <- value
+
+\S4method{nRelations}{TidySet}(object)
 }
 \arguments{
 \item{object}{Object to be coerced or tested.}
@@ -37,8 +40,14 @@ Given TidySet retrieve the relations or substitute them.
 \item \code{TidySet}: Retrieve the relations
 
 \item \code{TidySet}: Modify the relations
+
+\item \code{TidySet}: Return the number of unique relations
 }}
 
+\examples{
+TS <- tidySet(list(A = letters[1:2], B = letters[5:7]))
+relations(TS)
+}
 \seealso{
 \code{\link{nRelations}}
 

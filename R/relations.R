@@ -35,7 +35,7 @@ setMethod("relations<-",
   slot(object, "relations") <- value
 }
 
-#' @describeIn nRelations Return the number of unique relations
+#' @describeIn relations Return the number of unique relations
 #' @export
 setMethod("nRelations",
           signature = signature(object = "TidySet"),

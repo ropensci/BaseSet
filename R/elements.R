@@ -37,7 +37,7 @@ replace_elements.TidySet <- function(object, value) {
     object
 }
 
-#' @describeIn nElements Return the number of elements
+#' @describeIn elements Return the number of elements
 #' @export
 #' @examples
 #' nElements(TS)
