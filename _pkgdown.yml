@@ -1,1 +1,85 @@
 destination: docs
+reference:
+  - title: "Transfrom between classes"
+    desc: >
+      Functions to create a TidySet from other formats
+    contents:
+      - '`tidySet`'
+      - '`tidy`'
+      - '`as.data.frame.TidySet`'
+      - '`as.list.TidySet`'
+      - '`incidence`'
+  - title: "Set operations"
+    desc: Functions to perform set operations
+    contents:
+      - '`adjacency`'
+      - '`cartesian`'
+      - '`complement`'
+      - '`complement_element`'
+      - '`complement_set`'
+      - '`incidence`'
+      - '`independent`'
+      - '`intersection`'
+      - '`is.fuzzy`'
+      - '`power_set`'
+      - '`size`'
+      - '`subtract`'
+      - '`union`'
+  - title: Working with  TidySet
+    desc: ~
+    contents:
+      - '`TidySet-class`'
+      - '`activate`'
+      - '`add_column`'
+      - '`add_elements`'
+      - '`add_fuzzification`'
+      - '`add_relation`'
+      - '`add_relations`'
+      - '`add_sets`'
+      - '`adjacency`'
+      - '`droplevels.TidySet`'
+      - '`element_size`'
+      - '`elements`'
+      - '`fuzzification`'
+      - '`group`'
+      - '`is_nested`'
+      - '`nElements`'
+      - '`nRelations`'
+      - '`nSets`'
+      - '`move_to`'
+      - '`name_elements<-`'
+      - '`name_elements`'
+      - '`name_sets<-`'
+      - '`name_sets`'
+      - '`remove_column`'
+      - '`remove_element`'
+      - '`remove_relation`'
+      - '`remove_set`'
+      - '`rename_elements`'
+      - '`rename_set`'
+      - '`relations`'
+      - '`set_size`'
+      - '`sets`'
+  - title: "Reading files"
+    desc: >
+      Functions to read files in several formats
+    contents:
+      - '`getGAF`'
+      - '`getGMT`'
+      - '`getOBO`'
+  - title: "dplyr functions"
+    desc: ~
+    contents:
+      - '`arrange.TidySet`'
+      - '`filter.TidySet`'
+      - '`group_by.TidySet`'
+      - '`mutate.TidySet`'
+      - '`pull.TidySet`'
+      - '`select.TidySet`'
+      - '`show,TidySet-method`'
+  - title: "Utiles"
+    desc: Functions or data to help or show how to work with sets
+    contents:
+      - '`naming`'
+      - '`set_symbols`'
+      - '`length_set`'
