@@ -21,7 +21,7 @@ add_relation(object, relations, ...)
 A \code{TidySet} object.
 }
 \description{
-Given a TidySets adds relations
+Given a TidySets adds new relations between elements and sets.
 }
 \section{Methods (by class)}{
 \itemize{

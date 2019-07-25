@@ -4,7 +4,7 @@
 \name{move_to}
 \alias{move_to}
 \alias{move_to,TidySet,characterORfactor,characterORfactor,character-method}
-\title{Move columns}
+\title{Move columns between slots}
 \usage{
 move_to(object, from, to, columns)
 
@@ -26,6 +26,7 @@ A TidySet object where the content is moved from one slot to other.
 }
 \description{
 Moves information from one slot to other slots.
+For instance from the sets to the relations.
 }
 \section{Methods (by class)}{
 \itemize{

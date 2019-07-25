@@ -1,13 +1,15 @@
 #' @include AllClasses.R AllGenerics.R
 NULL
 
-#' @rdname tidySet
+#' Convert GSEABase classes to a TidySet
+#' @param object A GeneSetCollection or a GeneSet derived object
+#' @return A TidySet object
 #' @export
 tidy <- function(object) {
   UseMethod("tidy")
 }
 
-#' @describeIn tidySet Converts to a tidySet given a GeneSetCollection
+#' @describeIn tidy Converts to a tidySet given a GeneSetCollection
 #' @export
 #' @method tidy GeneSetCollection
 tidy.GeneSetCollection <- function(object) {
@@ -19,7 +21,7 @@ tidy.GeneSetCollection <- function(object) {
 }
 
 
-#' @describeIn tidySet Converts to a tidySet given a GeneSet
+#' @describeIn tidy Converts to a tidySet given a GeneSet
 #' @export
 #' @method tidy GeneSet
 tidy.GeneSet <- function(object) {

@@ -4,7 +4,7 @@
 \name{is.fuzzy}
 \alias{is.fuzzy}
 \alias{is.fuzzy,TidySet-method}
-\title{Fuzzy Sets}
+\title{Check if a TidySet is fuzzy.}
 \usage{
 is.fuzzy(object)
 
@@ -17,7 +17,8 @@ is.fuzzy(object)
 A logical value.
 }
 \description{
-Check if there are fuzzy sets.
+Check if there are fuzzy sets. A fuzzy set is a set where the relationship
+between elements is given by a probability (or uncertainty).
 }
 \section{Methods (by class)}{
 \itemize{

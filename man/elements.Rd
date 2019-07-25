@@ -7,7 +7,7 @@
 \alias{elements,TidySet-method}
 \alias{elements<-,TidySet-method}
 \alias{replace_elements}
-\title{Retrieve the elements}
+\title{Elements of the TidySet}
 \usage{
 elements(object)
 
@@ -28,7 +28,7 @@ replace_elements(object, value)
 A \code{data.frame} with information about the elements
 }
 \description{
-Given TidySet retrieve the elements.
+Given TidySet retrieve the elements or substitute them.
 }
 \section{Methods (by class)}{
 \itemize{
@@ -37,6 +37,12 @@ Given TidySet retrieve the elements.
 \item \code{TidySet}: Modify the elements
 }}
 
+\examples{
+TS <- tidySet(list(A = letters[1:5], B = letters[2:10]))
+elements(TS)
+elements(TS) <- data.frame(elements = letters[10:1])
+TS2 <- replace_elements(TS, data.frame(elements = letters[1:11]))
+}
 \seealso{
 \code{\link{nElements}}
 

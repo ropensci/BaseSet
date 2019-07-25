@@ -24,6 +24,10 @@ Check the number of elements of the TidySet.
 \item \code{TidySet}: Return the number of elements
 }}
 
+\examples{
+nElements(TS)
+nElements(TS2)
+}
 \seealso{
 Other count functions: \code{\link{nRelations}},
   \code{\link{nSets}}

@@ -13,7 +13,8 @@ is_nested(object)
 \item{object}{A TidySet object.}
 }
 \value{
-A logical value
+A logical value: TRUE if there are some sets included as elements of
+others.
 }
 \description{
 Check if some elements are also sets of others. This is also known as

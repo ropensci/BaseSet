@@ -152,6 +152,7 @@ add_sets.TidySet <- function(object, sets, ...) {
 #' @param fuzzy The strength of the membership.
 #' @return A [`TidySet`] object with the new relations.
 #' @family add_*
+#' @seealso \code{\link{add_relation}} to add relations with new sets or/and new elements.
 #' @examples
 #' x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
 #' a <- tidySet(x)

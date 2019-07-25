@@ -7,7 +7,7 @@
 \alias{relations,TidySet-method}
 \alias{replace_relations}
 \alias{relations<-,TidySet-method}
-\title{Find the relationship}
+\title{Relations of the TidySet}
 \usage{
 relations(object)
 
@@ -29,7 +29,7 @@ A \code{data.frame} with information about the relations between
 elements and sets.
 }
 \description{
-Method to find the relationships between the elements and the sets of a given
+Given TidySet retrieve the relations or substitute them.
 \code{\link{TidySet}} object
 }
 \section{Methods (by class)}{

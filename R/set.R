@@ -24,15 +24,15 @@ setMethod("sets<-",
 
 #' @rdname sets
 #' @export
+#' @examples
+#' TS2 <- replace_sets(TS, data.frame(sets = c("A", "B", "C")))
+#' sets(TS2)
 replace_sets <- function(object, value) {
     UseMethod("replace_sets")
 }
 
-#' @method replace_sets TidySet
 #' @export
-#' @examples
-#' TS2 <- replace_sets(TS, data.frame(sets = c("A", "B", "C")))
-#' sets(TS2)
+#' @method replace_sets TidySet
 replace_sets.TidySet <- function(object, value) {
     sets(object) <- value
     object

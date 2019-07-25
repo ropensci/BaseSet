@@ -2,9 +2,9 @@
 #' @import methods
 NULL
 
-#' Retrieve the elements
+#' Elements of the TidySet
 #'
-#' Given TidySet retrieve the elements.
+#' Given TidySet retrieve the elements or substitute them.
 #' @param object A TidySet object.
 #' @param value Modification of the elements.
 #' @return A \code{data.frame} with information about the elements
@@ -18,9 +18,9 @@ NULL
 #' elements(TS)
 setGeneric("elements", function(object) standardGeneric("elements"))
 
-#' Retrieve the names of the sets
+#' Sets of the TidySet
 #'
-#' Given a TidySet retrieve the names of the sets.
+#' Given TidySet retrieve the sets or substitute them.
 #' @param object A \code{SetCollection} object.
 #' @param value Modification of the sets.
 #' @return A \code{data.frame} with information from the sets.
@@ -34,9 +34,10 @@ setGeneric("elements", function(object) standardGeneric("elements"))
 #' sets(TS)
 setGeneric("sets", function(object) standardGeneric("sets"))
 
-#' Fuzzy Sets
+#' Check if a TidySet is fuzzy.
 #'
-#' Check if there are fuzzy sets.
+#' Check if there are fuzzy sets. A fuzzy set is a set where the relationship
+#' between elements is given by a probability (or uncertainty).
 #' @param object Object to be coerced or tested.
 #' @return A logical value.
 #' @export is.fuzzy
@@ -80,9 +81,9 @@ setGeneric("nRelations", function(object) standardGeneric("nRelations"))
 #' @family methods
 setGeneric("incidence", function(object) standardGeneric("incidence"))
 
-#' Find the relationship
+#' Relations of the TidySet
 #'
-#' Method to find the relationships between the elements and the sets of a given
+#' Given TidySet retrieve the relations or substitute them.
 #' \code{\link{TidySet}} object
 #' @param object Object to be coerced or tested.
 #' @param value Modification of the relations.
@@ -299,7 +300,7 @@ setGeneric("intersection", function(object, sets, ...)
 
 #' Add relations
 #'
-#' Given a TidySets adds relations
+#' Given a TidySets adds new relations between elements and sets.
 #' @param object A TidySet object
 #' @param relations A data.frame object
 #' @param ... Other arguments.
@@ -449,9 +450,10 @@ setGeneric("complement_element", function(object, elements, ...)
 setGeneric("subtract", function(object, set_in, not_in, ...)
   standardGeneric("subtract"))
 
-#' Move columns
+#' Move columns between slots
 #'
 #' Moves information from one slot to other slots.
+#' For instance from the sets to the relations.
 #' @param object A TidySet object.
 #' @param from The name of the slot where the content is.
 #' @param to The name of the slot to move the content.

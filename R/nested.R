@@ -3,7 +3,8 @@
 #' Check if some elements are also sets of others. This is also known as
 #' hierarchical sets.
 #' @param object A TidySet object.
-#' @return A logical value
+#' @return A logical value: TRUE if there are some sets included as elements of
+#' others.
 #' @family methods
 #' @export
 #' @seealso adjacency

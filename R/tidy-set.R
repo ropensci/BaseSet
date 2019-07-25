@@ -4,7 +4,7 @@ NULL
 #' Create a TidySet object
 #'
 #' This functions help to create a \code{TidySet} object.
-#' @param relations,object An object to be coerced to a TidySet.
+#' @param relations An object to be coerced to a TidySet.
 #' @return A TidySet object
 #' @examples
 #' relations <- data.frame(sets = c(rep("a", 5), "b"),
