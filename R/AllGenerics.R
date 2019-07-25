@@ -13,6 +13,9 @@ NULL
 #' @family slots
 #' @family methods
 #' @aliases elements<-
+#' @examples
+#' TS <- tidySet(list(A = letters[1:5], B = letters[2:10]))
+#' elements(TS)
 setGeneric("elements", function(object) standardGeneric("elements"))
 
 #' Retrieve the names of the sets
@@ -26,6 +29,9 @@ setGeneric("elements", function(object) standardGeneric("elements"))
 #' @seealso \code{\link{nSets}}
 #' @family slots
 #' @family methods
+#' @examples
+#' TS <- tidySet(list(A = letters[1:5], B = letters[2:10]))
+#' sets(TS)
 setGeneric("sets", function(object) standardGeneric("sets"))
 
 #' Fuzzy Sets
