@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retrieve the elements — elements • BaseSet</title>
+<title>Elements of the TidySet — elements • BaseSet</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Retrieve the elements — elements" />
+<meta property="og:title" content="Elements of the TidySet — elements" />
 
-<meta property="og:description" content="Given TidySet retrieve the elements." />
+<meta property="og:description" content="Given TidySet retrieve the elements or substitute them." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -117,14 +117,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Retrieve the elements</h1>
+    <h1>Elements of the TidySet</h1>
     <small class="dont-index">Source: <a href='https://github.com/llrs/BaseSet/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/llrs/BaseSet/blob/master/R/elements.R'><code>R/elements.R</code></a></small>
     <div class="hidden name"><code>elements.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Given TidySet retrieve the elements.</p>
+    <p>Given TidySet retrieve the elements or substitute them.</p>
     
     </div>
 
@@ -138,7 +138,10 @@
 <span class='co'># S4 method for TidySet</span>
 <span class='fu'>elements</span>(<span class='no'>object</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
 
-<span class='fu'>replace_elements</span>(<span class='no'>object</span>, <span class='no'>value</span>)</pre>
+<span class='fu'>replace_elements</span>(<span class='no'>object</span>, <span class='no'>value</span>)
+
+<span class='co'># S4 method for TidySet</span>
+<span class='fu'><a href='nElements.html'>nElements</a></span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -162,6 +165,7 @@
     <ul>
 <li><p><code>TidySet</code>: Retrieve the elements</p></li>
 <li><p><code>TidySet</code>: Modify the elements</p></li>
+<li><p><code>TidySet</code>: Return the number of elements</p></li>
 </ul>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -192,6 +196,21 @@
   <code><a href='union.html'>union</a></code></p></div>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>TS</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tidySet.html'>tidySet</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>A</span> <span class='kw'>=</span> <span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>5</span>], <span class='kw'>B</span> <span class='kw'>=</span> <span class='no'>letters</span>[<span class='fl'>2</span>:<span class='fl'>10</span>]))
+<span class='fu'>elements</span>(<span class='no'>TS</span>)</div><div class='output co'>#&gt;    elements
+#&gt; 1         a
+#&gt; 2         b
+#&gt; 3         c
+#&gt; 4         d
+#&gt; 5         e
+#&gt; 6         f
+#&gt; 7         g
+#&gt; 8         h
+#&gt; 9         i
+#&gt; 10        j</div><div class='input'><span class='fu'>elements</span>(<span class='no'>TS</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>elements</span> <span class='kw'>=</span> <span class='no'>letters</span>[<span class='fl'>10</span>:<span class='fl'>1</span>])
+<span class='no'>TS2</span> <span class='kw'>&lt;-</span> <span class='fu'>replace_elements</span>(<span class='no'>TS</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>elements</span> <span class='kw'>=</span> <span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>11</span>]))
+<span class='fu'><a href='nElements.html'>nElements</a></span>(<span class='no'>TS</span>)</div><div class='output co'>#&gt; [1] 10</div><div class='input'><span class='fu'><a href='nElements.html'>nElements</a></span>(<span class='no'>TS2</span>)</div><div class='output co'>#&gt; [1] 11</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -203,7 +222,9 @@
       <li><a href="#methods-by-class-">Methods (by class)</a></li>
 
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

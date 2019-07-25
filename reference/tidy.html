@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check if a TidySet is fuzzy. — is.fuzzy • BaseSet</title>
+<title>Convert GSEABase classes to a TidySet — tidy • BaseSet</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,9 @@
 
 
 
-<meta property="og:title" content="Check if a TidySet is fuzzy. — is.fuzzy" />
+<meta property="og:title" content="Convert GSEABase classes to a TidySet — tidy" />
 
-<meta property="og:description" content="Check if there are fuzzy sets. A fuzzy set is a set where the relationship
-between elements is given by a probability (or uncertainty)." />
+<meta property="og:description" content="Convert GSEABase classes to a TidySet" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -118,67 +117,44 @@ between elements is given by a probability (or uncertainty)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Check if a TidySet is fuzzy.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/llrs/BaseSet/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/llrs/BaseSet/blob/master/R/relations.R'><code>R/relations.R</code></a></small>
-    <div class="hidden name"><code>is.fuzzy.Rd</code></div>
+    <h1>Convert GSEABase classes to a TidySet</h1>
+    <small class="dont-index">Source: <a href='https://github.com/llrs/BaseSet/blob/master/R/GeneSetCollection.R'><code>R/GeneSetCollection.R</code></a></small>
+    <div class="hidden name"><code>tidy.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Check if there are fuzzy sets. A fuzzy set is a set where the relationship
-between elements is given by a probability (or uncertainty).</p>
+    <p>Convert GSEABase classes to a TidySet</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>is.fuzzy</span>(<span class='no'>object</span>)
+    <pre class="usage"><span class='fu'>tidy</span>(<span class='no'>object</span>)
 
-<span class='co'># S4 method for TidySet</span>
-<span class='fu'>is.fuzzy</span>(<span class='no'>object</span>)</pre>
+<span class='co'># S3 method for GeneSetCollection</span>
+<span class='fu'>tidy</span>(<span class='no'>object</span>)
+
+<span class='co'># S3 method for GeneSet</span>
+<span class='fu'>tidy</span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>object</th>
-      <td><p>Object to be coerced or tested.</p></td>
+      <td><p>A GeneSetCollection or a GeneSet derived object</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A logical value.</p>
+    <p>A TidySet object</p>
     
     <h2 class="hasAnchor" id="methods-by-class-"><a class="anchor" href="#methods-by-class-"></a>Methods (by class)</h2>
 
     <ul>
-<li><p><code>TidySet</code>: Check if it is fuzzy</p></li>
+<li><p><code>GeneSetCollection</code>: Converts to a tidySet given a GeneSetCollection</p></li>
+<li><p><code>GeneSet</code>: Converts to a tidySet given a GeneSet</p></li>
 </ul>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other methods: <code><a href='TidySet-class.html'>TidySet-class</a></code>,
-  <code><a href='activate.html'>activate</a></code>, <code><a href='add_column.html'>add_column</a></code>,
-  <code><a href='add_relation.html'>add_relation</a></code>,
-  <code><a href='arrange_.html'>arrange.TidySet</a></code>, <code><a href='cartesian.html'>cartesian</a></code>,
-  <code><a href='complement_element.html'>complement_element</a></code>,
-  <code><a href='complement_set.html'>complement_set</a></code>, <code><a href='complement.html'>complement</a></code>,
-  <code><a href='element_size.html'>element_size</a></code>, <code><a href='elements.html'>elements</a></code>,
-  <code><a href='filter_.html'>filter.TidySet</a></code>,
-  <code><a href='group_by_.html'>group_by.TidySet</a></code>, <code><a href='group.html'>group</a></code>,
-  <code><a href='incidence.html'>incidence</a></code>, <code><a href='intersection.html'>intersection</a></code>,
-  <code><a href='is_nested.html'>is_nested</a></code>, <code><a href='move_to.html'>move_to</a></code>,
-  <code><a href='mutate_.html'>mutate.TidySet</a></code>, <code><a href='nElements.html'>nElements</a></code>,
-  <code><a href='nRelations.html'>nRelations</a></code>, <code><a href='nSets.html'>nSets</a></code>,
-  <code>name_elements&lt;-</code>, <code>name_sets&lt;-</code>,
-  <code><a href='name_sets.html'>name_sets</a></code>, <code><a href='power_set.html'>power_set</a></code>,
-  <code><a href='pull_.html'>pull.TidySet</a></code>, <code><a href='relations.html'>relations</a></code>,
-  <code><a href='remove_column.html'>remove_column</a></code>,
-  <code><a href='remove_element.html'>remove_element</a></code>,
-  <code><a href='remove_relation.html'>remove_relation</a></code>, <code><a href='remove_set.html'>remove_set</a></code>,
-  <code><a href='rename_elements.html'>rename_elements</a></code>, <code><a href='rename_set.html'>rename_set</a></code>,
-  <code><a href='select_.html'>select.TidySet</a></code>, <code><a href='set_size.html'>set_size</a></code>,
-  <code><a href='sets.html'>sets</a></code>, <code><a href='subtract.html'>subtract</a></code>,
-  <code><a href='union.html'>union</a></code></p></div>
     
 
   </div>
@@ -190,8 +166,6 @@ between elements is given by a probability (or uncertainty).</p>
       <li><a href="#value">Value</a></li>
 
       <li><a href="#methods-by-class-">Methods (by class)</a></li>
-
-      <li><a href="#see-also">See also</a></li>
           </ul>
 
   </div>

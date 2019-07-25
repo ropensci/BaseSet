@@ -128,7 +128,131 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
+          <h2 id="section-transfrom-between-classes" class="hasAnchor"><a href="#section-transfrom-between-classes" class="anchor"></a>Transfrom between classes</h2>
+          <p class="section-desc"><p>Functions to create a TidySet from other formats</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="tidySet.html">tidySet()</a></code> </p>
+        </td>
+        <td><p>Create a TidySet object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="tidy.html">tidy()</a></code> </p>
+        </td>
+        <td><p>Convert GSEABase classes to a TidySet</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="as.data.frame.TidySet.html">as.data.frame(<i>&lt;TidySet&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Transforms a TidySet to a data.frame</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="as.list.TidySet.html">as.list(<i>&lt;TidySet&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Convert to list</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="incidence.html">incidence()</a></code> </p>
+        </td>
+        <td><p>Incidence</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-set-operations" class="hasAnchor"><a href="#section-set-operations" class="anchor"></a>Set operations</h2>
+          <p class="section-desc"><p>Functions to perform set operations</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="adjacency.html">adjacency(<i>&lt;TidySet&gt;</i>)</a></code> <code><a href="adjacency.html">adjacency_element()</a></code> <code><a href="adjacency.html">adjacency_set()</a></code> <code><a href="adjacency.html">adjacency(<i>&lt;TidySet&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Adjacency</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="cartesian.html">cartesian()</a></code> </p>
+        </td>
+        <td><p>Create the cartesian product of two sets</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="complement.html">complement()</a></code> </p>
+        </td>
+        <td><p>Complement TidySet</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="complement_element.html">complement_element()</a></code> </p>
+        </td>
+        <td><p>Complement of elements</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="complement_set.html">complement_set()</a></code> </p>
+        </td>
+        <td><p>Complement of a set</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="incidence.html">incidence()</a></code> </p>
+        </td>
+        <td><p>Incidence</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="independent.html">independent()</a></code> </p>
+        </td>
+        <td><p>Independence of the sets</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="intersection.html">intersection()</a></code> </p>
+        </td>
+        <td><p>Intersection of two sets</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="is.fuzzy.html">is.fuzzy()</a></code> </p>
+        </td>
+        <td><p>Check if a TidySet is fuzzy.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="power_set.html">power_set()</a></code> </p>
+        </td>
+        <td><p>Create the power set</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="size.html">size()</a></code> </p>
+        </td>
+        <td><p>Size</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="subtract.html">subtract()</a></code> </p>
+        </td>
+        <td><p>Subtract</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="union.html">union()</a></code> </p>
+        </td>
+        <td><p>Merge two sets</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-working-with-tidyset" class="hasAnchor"><a href="#section-working-with-tidyset" class="anchor"></a>Working with  TidySet</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -143,11 +267,7 @@
         <td>
           <p><code><a href="activate.html">activate()</a></code> <code><a href="activate.html">active()</a></code> <code><a href="activate.html">deactivate()</a></code> </p>
         </td>
-        <td><p>Determine the context of subsequent manipulations.
-<code>activate</code>: To table the focus of future manipulations: elements, sets
-or relations.
-<code>active</code>: To check the focus on the <code>TidySet</code>.
-<code>deactivate</code>: To remove the focus on a specific <code>TidySet</code>-</p></td>
+        <td><p>Determine the context of subsequent manipulations.</p></td>
       </tr><tr>
         
         <td>
@@ -193,48 +313,6 @@ or relations.
       </tr><tr>
         
         <td>
-          <p><code><a href="arrange_.html">arrange(<i>&lt;TidySet&gt;</i>)</a></code> <code><a href="arrange_.html">arrange_set()</a></code> <code><a href="arrange_.html">arrange_element()</a></code> <code><a href="arrange_.html">arrange_relation()</a></code> </p>
-        </td>
-        <td><p>arrange from a TidySet</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="as.data.frame.TidySet.html">as.data.frame(<i>&lt;TidySet&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Transforms a TidySet to a data.frame</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="as.list.TidySet.html">as.list(<i>&lt;TidySet&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Convert to list</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="cartesian.html">cartesian()</a></code> </p>
-        </td>
-        <td><p>Create the cartesian product of two sets</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="complement.html">complement()</a></code> </p>
-        </td>
-        <td><p>Complement TidySet</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="complement_element.html">complement_element()</a></code> </p>
-        </td>
-        <td><p>Complement of elements</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="complement_set.html">complement_set()</a></code> </p>
-        </td>
-        <td><p>Complement of a set</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="droplevels.TidySet.html">droplevels(<i>&lt;TidySet&gt;</i>)</a></code> </p>
         </td>
         <td><p>Drop unused elements and sets</p></td>
@@ -247,15 +325,9 @@ or relations.
       </tr><tr>
         
         <td>
-          <p><code><a href="elements.html">elements()</a></code> <code><a href="elements.html">`elements<-`()</a></code> <code><a href="elements.html">replace_elements()</a></code> </p>
+          <p><code><a href="elements.html">elements()</a></code> <code><a href="elements.html">`elements<-`()</a></code> <code><a href="elements.html">replace_elements()</a></code> <code><a href="elements.html">nElements(<i>&lt;TidySet&gt;</i>)</a></code> </p>
         </td>
-        <td><p>Retrieve the elements</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="filter_.html">filter(<i>&lt;TidySet&gt;</i>)</a></code> <code><a href="filter_.html">filter_set()</a></code> <code><a href="filter_.html">filter_element()</a></code> <code><a href="filter_.html">filter_relation()</a></code> </p>
-        </td>
-        <td><p>Filter TidySet</p></td>
+        <td><p>Elements of the TidySet</p></td>
       </tr><tr>
         
         <td>
@@ -265,81 +337,15 @@ or relations.
       </tr><tr>
         
         <td>
-          <p><code><a href="getGAF.html">getGAF()</a></code> </p>
-        </td>
-        <td><p>Read a GAF file</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="getGMT.html">getGMT()</a></code> </p>
-        </td>
-        <td><p>Import GMT files</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="getOBO.html">getOBO()</a></code> </p>
-        </td>
-        <td><p>Read an OBO file</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="group.html">group()</a></code> </p>
         </td>
         <td><p>Create a new set from existing elements</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="group_by_.html">group_by(<i>&lt;TidySet&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>group_by TidySet</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="incidence.html">incidence()</a></code> </p>
-        </td>
-        <td><p>Incidence</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="independent.html">independent()</a></code> </p>
-        </td>
-        <td><p>Independence of the sets</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="intersection.html">intersection()</a></code> </p>
-        </td>
-        <td><p>Intersection of two sets</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="is.fuzzy.html">is.fuzzy()</a></code> </p>
-        </td>
-        <td><p>Fuzzy Sets</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="is_nested.html">is_nested()</a></code> </p>
         </td>
         <td><p>Are some sets as elements of other sets?</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="length_set.html">length_set()</a></code> </p>
-        </td>
-        <td><p>Calculates the probability</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="move_to.html">move_to()</a></code> </p>
-        </td>
-        <td><p>Move columns</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="mutate_.html">mutate(<i>&lt;TidySet&gt;</i>)</a></code> <code><a href="mutate_.html">mutate_set()</a></code> <code><a href="mutate_.html">mutate_element()</a></code> <code><a href="mutate_.html">mutate_relation()</a></code> </p>
-        </td>
-        <td><p>Mutate</p></td>
       </tr><tr>
         
         <td>
@@ -358,6 +364,12 @@ or relations.
           <p><code><a href="nSets.html">nSets()</a></code> </p>
         </td>
         <td><p>Number of sets</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="move_to.html">move_to()</a></code> </p>
+        </td>
+        <td><p>Move columns between slots</p></td>
       </tr><tr>
         
         <td>
@@ -382,30 +394,6 @@ or relations.
           <p><code><a href="name_sets.html">name_sets()</a></code> <code><a href="name_sets.html">`name_sets<-`(<i>&lt;TidySet&gt;</i>,<i>&lt;characterORfactor&gt;</i>)</a></code> </p>
         </td>
         <td><p>Name sets</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="naming.html">naming()</a></code> </p>
-        </td>
-        <td><p>Name an operation</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="power_set.html">power_set()</a></code> </p>
-        </td>
-        <td><p>Create the power set</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pull_.html">pull(<i>&lt;TidySet&gt;</i>)</a></code> <code><a href="pull_.html">pull_set()</a></code> <code><a href="pull_.html">pull_element()</a></code> <code><a href="pull_.html">pull_relation()</a></code> </p>
-        </td>
-        <td><p>Pull from a TidySet</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="relations.html">relations()</a></code> <code><a href="relations.html">`relations<-`()</a></code> <code><a href="relations.html">replace_relations()</a></code> </p>
-        </td>
-        <td><p>Find the relationship</p></td>
       </tr><tr>
         
         <td>
@@ -445,9 +433,9 @@ or relations.
       </tr><tr>
         
         <td>
-          <p><code><a href="select_.html">select(<i>&lt;TidySet&gt;</i>)</a></code> <code><a href="select_.html">select_set()</a></code> <code><a href="select_.html">select_element()</a></code> <code><a href="select_.html">select_relation()</a></code> </p>
+          <p><code><a href="relations.html">relations()</a></code> <code><a href="relations.html">`relations<-`()</a></code> <code><a href="relations.html">replace_relations()</a></code> <code><a href="relations.html">nRelations(<i>&lt;TidySet&gt;</i>)</a></code> </p>
         </td>
-        <td><p>select from a TidySet</p></td>
+        <td><p>Relations of the TidySet</p></td>
       </tr><tr>
         
         <td>
@@ -457,45 +445,111 @@ or relations.
       </tr><tr>
         
         <td>
-          <p><code><a href="set_symbols.html">set_symbols</a></code> </p>
+          <p><code><a href="sets.html">sets()</a></code> <code><a href="sets.html">`sets<-`()</a></code> <code><a href="sets.html">replace_sets()</a></code> <code><a href="sets.html">nSets(<i>&lt;TidySet&gt;</i>)</a></code> </p>
         </td>
-        <td><p>A subset of symbols related to sets</p></td>
+        <td><p>Sets of the TidySet</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-reading-files" class="hasAnchor"><a href="#section-reading-files" class="anchor"></a>Reading files</h2>
+          <p class="section-desc"><p>Functions to read files in several formats</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="getGAF.html">getGAF()</a></code> </p>
+        </td>
+        <td><p>Read a GAF file</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="sets.html">sets()</a></code> <code><a href="sets.html">`sets<-`()</a></code> <code><a href="sets.html">replace_sets()</a></code> <code><a href="sets.html">nSets(<i>&lt;TidySet&gt;</i>)</a></code> </p>
+          <p><code><a href="getGMT.html">getGMT()</a></code> </p>
         </td>
-        <td><p>Retrieve the names of the sets</p></td>
+        <td><p>Import GMT files</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="getOBO.html">getOBO()</a></code> </p>
+        </td>
+        <td><p>Read an OBO file</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-dplyr-functions" class="hasAnchor"><a href="#section-dplyr-functions" class="anchor"></a>dplyr functions</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="arrange_.html">arrange(<i>&lt;TidySet&gt;</i>)</a></code> <code><a href="arrange_.html">arrange_set()</a></code> <code><a href="arrange_.html">arrange_element()</a></code> <code><a href="arrange_.html">arrange_relation()</a></code> </p>
+        </td>
+        <td><p>arrange from a TidySet</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="filter_.html">filter(<i>&lt;TidySet&gt;</i>)</a></code> <code><a href="filter_.html">filter_set()</a></code> <code><a href="filter_.html">filter_element()</a></code> <code><a href="filter_.html">filter_relation()</a></code> </p>
+        </td>
+        <td><p>Filter TidySet</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="group_by_.html">group_by(<i>&lt;TidySet&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>group_by TidySet</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="mutate_.html">mutate(<i>&lt;TidySet&gt;</i>)</a></code> <code><a href="mutate_.html">mutate_set()</a></code> <code><a href="mutate_.html">mutate_element()</a></code> <code><a href="mutate_.html">mutate_relation()</a></code> </p>
+        </td>
+        <td><p>Mutate</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pull_.html">pull(<i>&lt;TidySet&gt;</i>)</a></code> <code><a href="pull_.html">pull_set()</a></code> <code><a href="pull_.html">pull_element()</a></code> <code><a href="pull_.html">pull_relation()</a></code> </p>
+        </td>
+        <td><p>Pull from a TidySet</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="select_.html">select(<i>&lt;TidySet&gt;</i>)</a></code> <code><a href="select_.html">select_set()</a></code> <code><a href="select_.html">select_element()</a></code> <code><a href="select_.html">select_relation()</a></code> </p>
+        </td>
+        <td><p>select from a TidySet</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="show-TidySet-method.html">show(<i>&lt;TidySet&gt;</i>)</a></code> </p>
         </td>
         <td><p>Method to show the TidySet object</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-utiles" class="hasAnchor"><a href="#section-utiles" class="anchor"></a>Utiles</h2>
+          <p class="section-desc"><p>Functions or data to help or show how to work with sets</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="naming.html">naming()</a></code> </p>
+        </td>
+        <td><p>Name an operation</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="size.html">size()</a></code> </p>
+          <p><code><a href="set_symbols.html">set_symbols</a></code> </p>
         </td>
-        <td><p>Size</p></td>
+        <td><p>A subset of symbols related to sets</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="subtract.html">subtract()</a></code> </p>
+          <p><code><a href="length_set.html">length_set()</a></code> </p>
         </td>
-        <td><p>Subtract</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tidySet.html">tidy()</a></code> <code><a href="tidySet.html">tidySet()</a></code> </p>
-        </td>
-        <td><p>Create a TidySet object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="union.html">union()</a></code> </p>
-        </td>
-        <td><p>Merge two sets</p></td>
+        <td><p>Calculates the probability</p></td>
       </tr>
     </tbody>
     </table>
@@ -504,7 +558,12 @@ or relations.
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-transfrom-between-classes">Transfrom between classes</a></li>
+      <li><a href="#section-set-operations">Set operations</a></li>
+      <li><a href="#section-working-with-tidyset">Working with  TidySet</a></li>
+      <li><a href="#section-reading-files">Reading files</a></li>
+      <li><a href="#section-dplyr-functions">dplyr functions</a></li>
+      <li><a href="#section-utiles">Utiles</a></li>
     </ul>
   </div>
 </div>

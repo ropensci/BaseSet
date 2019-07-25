@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a TidySet object — tidy • BaseSet</title>
+<title>Create a TidySet object — tidySet • BaseSet</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:title" content="Create a TidySet object — tidy" />
+<meta property="og:title" content="Create a TidySet object — tidySet" />
 
 <meta property="og:description" content="This functions help to create a TidySet object." />
 <meta name="twitter:card" content="summary" />
@@ -118,7 +118,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Create a TidySet object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/llrs/BaseSet/blob/master/R/GeneSetCollection.R'><code>R/GeneSetCollection.R</code></a>, <a href='https://github.com/llrs/BaseSet/blob/master/R/tidy-set.R'><code>R/tidy-set.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/llrs/BaseSet/blob/master/R/tidy-set.R'><code>R/tidy-set.R</code></a></small>
     <div class="hidden name"><code>tidySet.Rd</code></div>
     </div>
 
@@ -128,15 +128,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>tidy</span>(<span class='no'>object</span>)
-
-<span class='co'># S3 method for GeneSetCollection</span>
-<span class='fu'>tidy</span>(<span class='no'>object</span>)
-
-<span class='co'># S3 method for GeneSet</span>
-<span class='fu'>tidy</span>(<span class='no'>object</span>)
-
-<span class='fu'>tidySet</span>(<span class='no'>relations</span>)
+    <pre class="usage"><span class='fu'>tidySet</span>(<span class='no'>relations</span>)
 
 <span class='co'># S3 method for data.frame</span>
 <span class='fu'>tidySet</span>(<span class='no'>relations</span>)
@@ -154,7 +146,7 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>relations, object</th>
+      <th>relations</th>
       <td><p>An object to be coerced to a TidySet.</p></td>
     </tr>
     </table>
@@ -166,8 +158,6 @@
     <h2 class="hasAnchor" id="methods-by-class-"><a class="anchor" href="#methods-by-class-"></a>Methods (by class)</h2>
 
     <ul>
-<li><p><code>GeneSetCollection</code>: Converts to a tidySet given a GeneSetCollection</p></li>
-<li><p><code>GeneSet</code>: Converts to a tidySet given a GeneSet</p></li>
 <li><p><code>data.frame</code>: Given the relations in a data.frame</p></li>
 <li><p><code>list</code>: Convert to a TidySet from a list</p></li>
 <li><p><code>matrix</code>: Convert an incidence matrix into a TidySet</p></li>

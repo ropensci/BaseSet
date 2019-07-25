@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Find the relationship — relations • BaseSet</title>
+<title>Relations of the TidySet — relations • BaseSet</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Find the relationship — relations" />
+<meta property="og:title" content="Relations of the TidySet — relations" />
 
-<meta property="og:description" content="Method to find the relationships between the elements and the sets of a given
+<meta property="og:description" content="Given TidySet retrieve the relations or substitute them.
 TidySet object" />
 <meta name="twitter:card" content="summary" />
 
@@ -118,14 +118,14 @@ TidySet object" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Find the relationship</h1>
+    <h1>Relations of the TidySet</h1>
     <small class="dont-index">Source: <a href='https://github.com/llrs/BaseSet/blob/master/R/AllGenerics.R'><code>R/AllGenerics.R</code></a>, <a href='https://github.com/llrs/BaseSet/blob/master/R/relations.R'><code>R/relations.R</code></a></small>
     <div class="hidden name"><code>relations.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Method to find the relationships between the elements and the sets of a given
+    <p>Given TidySet retrieve the relations or substitute them.
 <code><a href='TidySet-class.html'>TidySet</a></code> object</p>
     
     </div>
@@ -140,7 +140,10 @@ TidySet object" />
 <span class='fu'>replace_relations</span>(<span class='no'>object</span>, <span class='no'>value</span>)
 
 <span class='co'># S4 method for TidySet</span>
-<span class='fu'>relations</span>(<span class='no'>object</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span></pre>
+<span class='fu'>relations</span>(<span class='no'>object</span>) <span class='kw'>&lt;-</span> <span class='no'>value</span>
+
+<span class='co'># S4 method for TidySet</span>
+<span class='fu'><a href='nRelations.html'>nRelations</a></span>(<span class='no'>object</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -165,6 +168,7 @@ elements and sets.</p>
     <ul>
 <li><p><code>TidySet</code>: Retrieve the relations</p></li>
 <li><p><code>TidySet</code>: Modify the relations</p></li>
+<li><p><code>TidySet</code>: Return the number of unique relations</p></li>
 </ul>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -196,6 +200,14 @@ elements and sets.</p>
   <code><a href='union.html'>union</a></code></p></div>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>TS</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tidySet.html'>tidySet</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>A</span> <span class='kw'>=</span> <span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>2</span>], <span class='kw'>B</span> <span class='kw'>=</span> <span class='no'>letters</span>[<span class='fl'>5</span>:<span class='fl'>7</span>]))
+<span class='fu'>relations</span>(<span class='no'>TS</span>)</div><div class='output co'>#&gt;   elements sets fuzzy
+#&gt; 1        a    A     1
+#&gt; 2        b    A     1
+#&gt; 3        e    B     1
+#&gt; 4        f    B     1
+#&gt; 5        g    B     1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -207,7 +219,9 @@ elements and sets.</p>
       <li><a href="#methods-by-class-">Methods (by class)</a></li>
 
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
