@@ -64,7 +64,6 @@ We will explore the genes related with GO.
 library("org.Hs.eg.db")
 library("GO.db")
 library("ggplot2")
-
 # Prepare the data 
 h2GO_TS <- tidySet(org.Hs.egGO)
 h2GO <- as.data.frame(org.Hs.egGO)
@@ -84,8 +83,9 @@ h2GO %>%
     coord_flip() +
     xlab("Evidence")
 ```
-We can see that 
+
 This graph doesn't consider that some relationships are better annotated than other:
+
 ```{r nEvidence_plot}
 h2GO_TS %>% 
   relations() %>% 
@@ -99,8 +99,10 @@ h2GO_TS %>%
          title = "Evidence codes for each relation between GO and a gene",
          subtitle = "in human annotation")
 ```
+
 We can see that mostly all the annotations are done with a single evidence code.
 So far we have explored the code that it is related to a gene but how many genes don't have any annotation?
+
 ```{r numbers}
 # Add all the genes and GO terms
 library("GO.db")
@@ -117,6 +119,7 @@ sizes_set <- set_size(h2GO_TS) %>%
 sum(sizes_set$size == 0)
 sum(sizes_set$size != 0)
 ```
+
 So we can see that both there are more genes without annotation and more GO terms without a (direct) gene annotated.
 
 ```{r plots_GO}
@@ -134,7 +137,9 @@ sizes_set %>%
     theme_minimal() +
     labs(x = "# elements per set", y = "Count")
 ```
+
 As you can see on the second plot we have very large values but that are on associated on many genes:
+
 ```{r distr_sizes}
 head(sizes_set, 10)
 ```
@@ -161,7 +166,9 @@ h2p_TS <- tidySet(h2p) %>%
     # Add all the genes 
     add_elements(keys(org.Hs.eg.db))
 ```
-Now that we have everything ready we can start measuring some things..
+
+Now that we have everything ready we can start measuring some things...
+
 ```{r numbers_pathways}
 sizes_element <- element_size(h2p_TS) %>% 
     arrange(desc(size))
@@ -171,6 +178,7 @@ sum(sizes_element$size != 0)
 sizes_set <- set_size(h2p_TS) %>% 
     arrange(desc(size))
 ```
+
 We can see there are more genes without pathways than genes with pathways.
 
 ```{r pathways_plots}
@@ -189,7 +197,9 @@ sizes_set %>%
     theme_minimal() +
     labs(x = "# elements per set", y = "Count")
 ```
+
 As you can see on the second plot we have very large values but that are on associated on many genes:
+
 ```{r distr_sizes_pathways}
 head(sizes_set, 10)
 ```

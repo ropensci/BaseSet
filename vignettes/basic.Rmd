@@ -39,7 +39,7 @@ library("BiocStyle")
 This vignette explains how to use the methods available in this package.
 
 
-## The BaseSets class
+# The TidySet class
 
 This is a basic example which shows you how to create a `TidySet` object, to store associations between genes and sets:
 
@@ -53,7 +53,9 @@ tidy_set <- tidySet(gene_lists)
 tidy_set
 ```
 
-Metadata for each element and set can be added:
+This is then stored internaly in three slots `relations`, `elements`, and `sets` slots.
+
+If you have more information for each element or set it can be used added:
 
 ```{r metadata, message=FALSE}
 gene_data <- data.frame(
@@ -70,7 +72,7 @@ tidy_set <- add_column(tidy_set, "sets", set_data)
 tidy_set
 ```
 
-The `relations`, `elements`, and `sets` slots can directly accessed using their getter methods.
+This data is stored in one of the three slots, which can be directly accessed using their getter methods:
 
 ```{r getters}
 relations(tidy_set)
@@ -78,7 +80,7 @@ elements(tidy_set)
 sets(tidy_set)
 ```
 
-All the relations are inherently fuzzy
+You can add as much information as you want, with the only restriction of for a "fuzzy" column for the `relations`. This column is restricted to a numeric value between 0 and 1. To indicate the strength (or probability) of the relationship between the element and the set. 
 
 ```{r fuzzy}
 set.seed(4567) # To be able to have exact replicates
@@ -88,40 +90,90 @@ relations <- data.frame(sets = c(rep("A", 5), "B", "C"),
 fuzzy_set <- tidySet(relations)
 ```
 
+# Creating a TidySet
+
+As you can see it is possible to create a TidySet from a list and a data.frame, but it is also possible from a matrix:
+
+```{r tidySet_matrix}
+m <- matrix(c(0, 0, 1, 1, 1, 1), ncol = 2, nrow =3,  
+               dimnames = list(letters[1:3], LETTERS[1:2]))
+m
+tidySet(m)
+```
+
+Or they can be created from a GeneSet and GeneSetCollection objects. Additionally it has several function to read files related to sets like the OBO files (`getOBO`) and GAF (`getGAF`)
 
 # Converting to other formats
 
 It is possible to extract the gene sets as a `list`, for use with functions such as `lapply`.
 
 ```{r as.list}
-(list_set <- as.list(tidy_set))
-(list_set <- as.list(fuzzy_set))
+as.list(tidy_set)
+as.list(fuzzy_set)
 ```
 
-It is also possible to visualize membership between gene and gene sets as a matrix.
-
-Notably, `incidence` return a `numeric` matrix of membership:
+Or if you need to apply some network methods and you need a matrix, you can create it with `incidence`:
 
 ```{r incidence}
-(incidence_matrix <- incidence(tidy_set))
-(incidence_matrix <- incidence(fuzzy_set))
+incidence(tidy_set)
+incidence(fuzzy_set)
 ```
 
+# Operations with sets
 
-# Converting from other formats
+To work with sets several methods are provided. In general you can provide a new name for the resulting set of the operation, but if you don't one will be automatically provided using `naming`. All methods work with fuzzy and non-fuzzy sets
 
-Conversely, it is also possible to make objects from incidence matrices.
+## Union
 
-Notably, `BaseSets` are suitable for `numeric` matrices indicating membership:
+You can make a union of two sets present on the same object.
 
-```{r tidySet_matrix}
-tidySet(incidence_matrix)
+```{r union, eval=FALSE}
+union(fuzzy_set, sets = c("C", "B"), name = "D")
+union(fuzzy_set, sets = c("C", "B"), name =  "D", FUN = "mean")
+```
+```{r false_union, eval=TRUE, echo=FALSE, results="show"}
+BaseSet::union(fuzzy_set, sets = c("C", "B"), name = "D")
+BaseSet::union(fuzzy_set, sets = c("C", "B"), name =  "D", FUN = "mean")
 ```
 
-Or can also be created from lists:
-```{r tidySet_list}
-tidySet(list("A" = letters[1:4], "B" = letters[7:10]))
+Observe tha the fuzziness on the resulting set has changed (on the traditional sets it doesn't matter)
+
+## Intersection
+
+
+```{r intersection}
+intersection(fuzzy_set, sets = c("A", "B"), name = "D", keep = TRUE)
 ```
+
+The keep argument used here is if you want to keep all the other previous sets:
+
+```{r intersection}
+intersection(fuzzy_set, sets = c("A", "B"), name = "D", keep = FALSE)
+```
+
+## Complement
+
+We can look for the complement of one or several sets:
+
+```{r complement}
+complement_set(fuzzy_set, sets = c("A", "B"))
+```
+
+Observe that we haven't provided a name for the resulting set but we can provide one if we prefer to
+
+```{r complement}
+complement_set(fuzzy_set, sets = c("A", "B"), name = "F")
+```
+
+## Subtract
+
+This is the equivalent of `setdiff`, but clearer:
+
+```{r subtract}
+subtract(fuzzy_set, set_in = "A", not_in = "B", keep = FALSE, name = "A-B")
+subtract(fuzzy_set, set_in = "B", not_in = "A", keep = FALSE)
+```
+
 
 # Additional information
 
@@ -157,47 +209,10 @@ name_sets(tidy_set) <- paste0("Geneset", seq_len(nSets(tidy_set)))
 name_sets(tidy_set)
 ```
 
-# Operations with sets
 
-To work with sets several methods are provided. All methods work with fuzzy and non-fuzzy sets
+# Using `dplyr` verbs
 
-## Union
-
-By default it provides the standard union, but you can provide a function.
-
-```{r union, eval=FALSE}
-union(fuzzy_set, sets = c("C", "B"), name = "D")
-union(fuzzy_set, sets = c("C", "B"), name =  "D", FUN = "mean")
-```
-```{r false_union, eval=TRUE, echo=FALSE, results="show"}
-BaseSet::union(fuzzy_set, sets = c("C", "B"), name = "D")
-BaseSet::union(fuzzy_set, sets = c("C", "B"), name =  "D", FUN = "mean")
-```
-## Intersection
-
-
-```{r intersection}
-intersection(fuzzy_set, sets = c("A", "B"), name = "D", keep = TRUE)
-```
-
-## Complement
-
-We can look for the complement of one or several sets:
-```{r complement}
-complement_set(fuzzy_set, sets = c("A", "B"))
-```
-
-## Subtract
-
-This is the equivalent of `setdiff`, but clearer:
-```{r subtract}
-subtract(fuzzy_set, set_in = "A", not_in = "B", keep = FALSE)
-subtract(fuzzy_set, set_in = "B", not_in = "A", keep = FALSE)
-```
-
-# tidyverse
-
-You can also use `mutate`, `filter` and other `dplyr` verbs with TidySets (with the only exception being `group_by`):
+You can also use `mutate`, `filter` and other `dplyr` verbs with TidySets (with the only exception being `group_by`), but you usually need to activate which three slots you want to affect with `activate`:
 
 ```{r tidyverse}
 library("dplyr")
@@ -222,6 +237,8 @@ set_modified %>%
   filter(Pathway == "pathway1", Important == 1)
 ```
 
+
+If you think you need group_by usually this would mean that you need a new set. You can create a new one with `group`. 
 If you want to use `group_by` to group some elements then you need to create a 
 new set:
 
@@ -229,10 +246,14 @@ new set:
 # A new group of those elements in pathway1 and with Important == 1
 set_modified %>% 
   deactivate() %>% 
-  group("new", Pathway == "pathway1", Important == 1)
+  group(name = "new", Pathway == "pathway1", Important == 1)
+```
+```{r group}
+fuzzy_set %>% 
+  group("pathway1", elements %in% c("b", "f", "g"))
 ```
 
-After grouping or mutating sometimes we might be interested in moving a column describing something to other places. We can do by simplify:
+After grouping or mutating sometimes we might be interested in moving a column describing something to other places. We can do by this with:
 
 ```{r moving}
 elements(set_modified)
