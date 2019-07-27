@@ -147,7 +147,7 @@ intersection(fuzzy_set, sets = c("A", "B"), name = "D", keep = TRUE)
 
 The keep argument used here is if you want to keep all the other previous sets:
 
-```{r intersection}
+```{r intersection2}
 intersection(fuzzy_set, sets = c("A", "B"), name = "D", keep = FALSE)
 ```
 
@@ -161,7 +161,7 @@ complement_set(fuzzy_set, sets = c("A", "B"))
 
 Observe that we haven't provided a name for the resulting set but we can provide one if we prefer to
 
-```{r complement}
+```{r complement2}
 complement_set(fuzzy_set, sets = c("A", "B"), name = "F")
 ```
 
@@ -212,7 +212,7 @@ name_sets(tidy_set)
 
 # Using `dplyr` verbs
 
-You can also use `mutate`, `filter` and other `dplyr` verbs with TidySets (with the only exception being `group_by`), but you usually need to activate which three slots you want to affect with `activate`:
+You can also use `mutate`, `filter` and other `dplyr` verbs with TidySets (with the only exception being `group_by`), but you usually need to activate which three slots you want to affecte with `activate`:
 
 ```{r tidyverse}
 library("dplyr")
@@ -248,7 +248,7 @@ set_modified %>%
   deactivate() %>% 
   group(name = "new", Pathway == "pathway1", Important == 1)
 ```
-```{r group}
+```{r group2}
 fuzzy_set %>% 
   group("pathway1", elements %in% c("b", "f", "g"))
 ```
