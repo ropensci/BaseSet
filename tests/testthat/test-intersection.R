@@ -76,3 +76,19 @@ test_that("intersection with three sets", {
   expect_equal(nSets(b), 1L)
   expect_equal(nElements(b), 1L)
 })
+
+test_that("intersection without duplicated values", {
+  df <- data.frame(elements = c("a", "b", "c", "d", "e", "f", "f"),
+                 sets = c("A", "A", "A", "A", "A", "B", "C"),
+             fuzzy = c(0.230918602552265, 0.741255367407575, 0.18338343128562,
+                       0.422168243443593,
+                       0.599639905616641, 0.277331340359524, 0.730731174349785))
+
+  TS <- tidySet(df)
+  out <- intersection(fuzzy_set, sets = c("A", "B"), name = "D", keep = TRUE)
+  expect_s4_class(out, "TidySet")
+  expect_equal(nSets(out), 4L)
+  expect_equal(nRelations(out), 13L)
+
+})
+

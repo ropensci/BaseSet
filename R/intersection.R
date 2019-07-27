@@ -3,7 +3,7 @@ NULL
 
 .intersection <- function(object, sets, name, FUN, keep_relations,
                           keep_elements, keep_sets) {
-
+  browser()
   if (length(name) > 1) {
     stop("The name of the new set must be of length 1", call. = FALSE)
   }
@@ -33,10 +33,11 @@ NULL
   t_relations <- table(relations)
   k_relations <- t_relations >= sum(length(sets))
   dup_relations <- names(t_relations)[k_relations]
-  intersection <- intersection[relations %in% dup_relations, ,
-                               drop = FALSE]
-  # Look that the resulting size cannot be bigger than the bigger initial set!!!
-  intersection <- fapply(intersection, FUN)
+  duplicate_rel <- relations %in% dup_relations
+  if (any(duplicate_rel)) {
+    intersection <- intersection[duplicate_rel, , drop = FALSE]
+    intersection <- fapply(intersection, FUN)
+  }
 
   object <- replace_interactions(object, intersection, keep_relations)
   object <- add_sets(object, name)
