@@ -3,7 +3,6 @@ NULL
 
 .intersection <- function(object, sets, name, FUN, keep_relations,
                           keep_elements, keep_sets) {
-  browser()
   if (length(name) > 1) {
     stop("The name of the new set must be of length 1", call. = FALSE)
   }

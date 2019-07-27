@@ -8,7 +8,7 @@ test_that("intersection works", {
   expect_s4_class(b, "TidySet")
   expect_length(name_sets(b), 4L)
   expect_equal(nSets(b), 4L)
-  expect_equal(nRelations(b), 7L)
+  expect_equal(nRelations(b), 9L)
   expect_equal(nElements(b), 7L)
 
   # Simple case with duplicate relations
@@ -37,7 +37,7 @@ test_that("intersection works with fuzzy", {
 
   d <- intersection(a, c("a", "c"), "d", keep = TRUE)
   expect_s4_class(d, "TidySet")
-  expect_equal(nRelations(d), 7L)
+  expect_equal(nRelations(d), 13L)
   expect_equal(nSets(d), 4L)
   expect_equal(nElements(d), 6L)
 })
@@ -61,7 +61,7 @@ test_that("intersection keep", {
   d2 <- intersection(d1, c("c", "b"), "e", keep = TRUE)
   expect_s4_class(d2, "TidySet")
   expect_equal(nSets(d2), 5L)
-  expect_equal(nRelations(d2), 8L)
+  expect_equal(nRelations(d2), 14L)
   expect_equal(nElements(d2), 6L)
 })
 
@@ -85,7 +85,7 @@ test_that("intersection without duplicated values", {
                        0.599639905616641, 0.277331340359524, 0.730731174349785))
 
   TS <- tidySet(df)
-  out <- intersection(fuzzy_set, sets = c("A", "B"), name = "D", keep = TRUE)
+  out <- intersection(TS, sets = c("A", "B"), name = "D", keep = TRUE)
   expect_s4_class(out, "TidySet")
   expect_equal(nSets(out), 4L)
   expect_equal(nRelations(out), 13L)
