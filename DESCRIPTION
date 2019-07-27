@@ -19,7 +19,8 @@ Imports:
     dplyr (>= 0.7.8),
     magrittr,
     methods,
-    rlang
+    rlang,
+    XML
 Suggests: 
     BiocStyle,
     covr,
@@ -90,4 +91,5 @@ Collate:
     'tidy-set.R'
     'union.R'
     'utils-pipe.R'
+    'xml.R'
     'zzz.R'
