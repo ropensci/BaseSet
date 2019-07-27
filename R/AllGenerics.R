@@ -2,9 +2,9 @@
 #' @import methods
 NULL
 
-#' Retrieve the elements
+#' Elements of the TidySet
 #'
-#' Given TidySet retrieve the elements.
+#' Given TidySet retrieve the elements or substitute them.
 #' @param object A TidySet object.
 #' @param value Modification of the elements.
 #' @return A \code{data.frame} with information about the elements
@@ -13,11 +13,14 @@ NULL
 #' @family slots
 #' @family methods
 #' @aliases elements<-
+#' @examples
+#' TS <- tidySet(list(A = letters[1:5], B = letters[2:10]))
+#' elements(TS)
 setGeneric("elements", function(object) standardGeneric("elements"))
 
-#' Retrieve the names of the sets
+#' Sets of the TidySet
 #'
-#' Given a TidySet retrieve the names of the sets.
+#' Given TidySet retrieve the sets or substitute them.
 #' @param object A \code{SetCollection} object.
 #' @param value Modification of the sets.
 #' @return A \code{data.frame} with information from the sets.
@@ -26,11 +29,15 @@ setGeneric("elements", function(object) standardGeneric("elements"))
 #' @seealso \code{\link{nSets}}
 #' @family slots
 #' @family methods
+#' @examples
+#' TS <- tidySet(list(A = letters[1:5], B = letters[2:10]))
+#' sets(TS)
 setGeneric("sets", function(object) standardGeneric("sets"))
 
-#' Fuzzy Sets
+#' Check if a TidySet is fuzzy.
 #'
-#' Check if there are fuzzy sets.
+#' Check if there are fuzzy sets. A fuzzy set is a set where the relationship
+#' between elements is given by a probability (or uncertainty).
 #' @param object Object to be coerced or tested.
 #' @return A logical value.
 #' @export is.fuzzy
@@ -44,6 +51,9 @@ setGeneric("is.fuzzy", function(object) standardGeneric("is.fuzzy"))
 #' @export nSets
 #' @family count functions
 #' @family methods
+#' @examples
+#' TS <- tidySet(list(A = letters[1:2], B = letters[5:7]))
+#' nSets(TS)
 setGeneric("nSets", function(object) standardGeneric("nSets"))
 
 #' Number of elements
@@ -54,6 +64,9 @@ setGeneric("nSets", function(object) standardGeneric("nSets"))
 #' @export nElements
 #' @family count functions
 #' @family methods
+#' @examples
+#' TS <- tidySet(list(A = letters[1:2], B = letters[5:7]))
+#' nElements(TS)
 setGeneric("nElements", function(object) standardGeneric("nElements"))
 
 #' Number of relations
@@ -64,6 +77,9 @@ setGeneric("nElements", function(object) standardGeneric("nElements"))
 #' @export nRelations
 #' @family count functions
 #' @family methods
+#' @examples
+#' TS <- tidySet(list(A = letters[1:2], B = letters[5:7]))
+#' nRelations(TS)
 setGeneric("nRelations", function(object) standardGeneric("nRelations"))
 
 #' Incidence
@@ -74,9 +90,9 @@ setGeneric("nRelations", function(object) standardGeneric("nRelations"))
 #' @family methods
 setGeneric("incidence", function(object) standardGeneric("incidence"))
 
-#' Find the relationship
+#' Relations of the TidySet
 #'
-#' Method to find the relationships between the elements and the sets of a given
+#' Given TidySet retrieve the relations or substitute them.
 #' \code{\link{TidySet}} object
 #' @param object Object to be coerced or tested.
 #' @param value Modification of the relations.
@@ -86,6 +102,9 @@ setGeneric("incidence", function(object) standardGeneric("incidence"))
 #' @family methods
 #' @seealso \code{\link{nRelations}}
 #' @export
+#' @examples
+#' TS <- tidySet(list(A = letters[1:2], B = letters[5:7]))
+#' relations(TS)
 setGeneric("relations", function(object) standardGeneric("relations"))
 
 #' @rdname relations
@@ -293,7 +312,7 @@ setGeneric("intersection", function(object, sets, ...)
 
 #' Add relations
 #'
-#' Given a TidySets adds relations
+#' Given a TidySets adds new relations between elements and sets.
 #' @param object A TidySet object
 #' @param relations A data.frame object
 #' @param ... Other arguments.
@@ -443,9 +462,10 @@ setGeneric("complement_element", function(object, elements, ...)
 setGeneric("subtract", function(object, set_in, not_in, ...)
   standardGeneric("subtract"))
 
-#' Move columns
+#' Move columns between slots
 #'
 #' Moves information from one slot to other slots.
+#' For instance from the sets to the relations.
 #' @param object A TidySet object.
 #' @param from The name of the slot where the content is.
 #' @param to The name of the slot to move the content.

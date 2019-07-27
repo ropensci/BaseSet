@@ -35,12 +35,13 @@ setMethod("relations<-",
   slot(object, "relations") <- value
 }
 
-#' @describeIn nRelations Return the number of relations
+#' @describeIn relations Return the number of unique relations
 #' @export
 setMethod("nRelations",
           signature = signature(object = "TidySet"),
           function(object) {
-            nrow(slot(object, "relations"))
+            r <- slot(object, "relations")
+            nrow(unique(r[, c("sets", "elements")]))
           })
 
 #' @describeIn is.fuzzy Check if it is fuzzy

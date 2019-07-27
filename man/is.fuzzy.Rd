@@ -4,7 +4,7 @@
 \name{is.fuzzy}
 \alias{is.fuzzy}
 \alias{is.fuzzy,TidySet-method}
-\title{Fuzzy Sets}
+\title{Check if a TidySet is fuzzy.}
 \usage{
 is.fuzzy(object)
 
@@ -17,7 +17,8 @@ is.fuzzy(object)
 A logical value.
 }
 \description{
-Check if there are fuzzy sets.
+Check if there are fuzzy sets. A fuzzy set is a set where the relationship
+between elements is given by a probability (or uncertainty).
 }
 \section{Methods (by class)}{
 \itemize{
@@ -30,8 +31,9 @@ Other methods: \code{\link{TidySet-class}},
   \code{\link{add_relation}},
   \code{\link{arrange.TidySet}}, \code{\link{cartesian}},
   \code{\link{complement_element}},
-  \code{\link{complement_set}}, \code{\link{element_size}},
-  \code{\link{elements}}, \code{\link{filter.TidySet}},
+  \code{\link{complement_set}}, \code{\link{complement}},
+  \code{\link{element_size}}, \code{\link{elements}},
+  \code{\link{filter.TidySet}},
   \code{\link{group_by.TidySet}}, \code{\link{group}},
   \code{\link{incidence}}, \code{\link{intersection}},
   \code{\link{is_nested}}, \code{\link{move_to}},

@@ -94,6 +94,10 @@ elements_sets <- function(object){
 #' @return A modified TidySet object
 #' @noRd
 fapply <- function(relations, FUN) {
+
+  if (ncol(relations) > 3) {
+      warning("Dropping columns. Consider using `move_to`")
+  }
   # Handle the duplicate cases
   basic <- paste(relations$elements, relations$sets)
   fuzzy <- split(relations$fuzzy, basic)
@@ -105,9 +109,6 @@ fapply <- function(relations, FUN) {
   FUN <- match.fun(FUN)
   fuzzy <- vapply(fuzzy, iterate, fun = FUN, numeric(1L))
   relations2 <- unique(relations[, c("sets", "elements")])
-  if (ncol(relations) > 3) {
-      warning("Dropping columns. Consider using move_to")
-  }
   basic2 <- paste(relations2$elements, relations2$sets)
   # Sort again to match the new relations
   cbind(relations2, fuzzy = fuzzy[match(basic2, names(fuzzy))])
@@ -153,33 +154,14 @@ replace_interactions <- function(object, new_relations, keep) {
 }
 
 
-
-collapse_sets <- function(sets, symbol) {
-  paste0(sets, collapse = set_symbols[symbol])
-
-}
-
-naming <- function(start = NULL, sets1, middle = NULL, sets2 = NULL,
-                         collapse_symbol = "union") {
-
-  if (!is.null(sets2) & is.null(middle)) {
-    stop("sets1 and sets2 should be separated by a symbol")
-  }
-
-  if (!is.null(sets2) && length(sets2) > 1) {
-    sets2 <- paste0("(", paste0(sets2, collapse = set_symbols[collapse_symbol]), ")")
-  }
-  if (!is.null(start) || !is.null(middle) && length(sets1) > 1) {
-    sets1 <- paste0("(", paste0(sets1, collapse = set_symbols[collapse_symbol]), ")")
-  } else {
-    sets1 <- paste0(sets1, collapse = set_symbols[collapse_symbol])
-  }
-
-  paste0(set_symbols[start],
-         sets1, set_symbols[middle],
-         sets2)
-}
-
 check_sets <- function(object, sets) {
   sets %in% object@relations$sets
+}
+
+
+#' @importFrom dplyr n_distinct
+check_fuzziness <- function(object) {
+  r <- relations(object)
+  fuzziness <- tapply(r$fuzzy,  paste(r$elements, r$sets), FUN = n_distinct)
+  all(fuzziness == 1)
 }

@@ -4,11 +4,7 @@
 \alias{activate}
 \alias{active}
 \alias{deactivate}
-\title{Determine the context of subsequent manipulations.
-\code{activate}: To table the focus of future manipulations: elements, sets
-or relations.
-\code{active}: To check the focus on the \code{TidySet}.
-\code{deactivate}: To remove the focus on a specific \code{TidySet}-}
+\title{Determine the context of subsequent manipulations.}
 \usage{
 activate(.data, what)
 
@@ -25,7 +21,8 @@ deactivate(.data)
 A \code{TidySet} object.
 }
 \description{
-Determine the context of subsequent manipulations.
+Functions to help to perform some action to just some type of data: elements,
+sets or relations.
 \code{activate}: To table the focus of future manipulations: elements, sets
 or relations.
 \code{active}: To check the focus on the \code{TidySet}.
@@ -55,8 +52,9 @@ Other methods: \code{\link{TidySet-class}},
   \code{\link{add_column}}, \code{\link{add_relation}},
   \code{\link{arrange.TidySet}}, \code{\link{cartesian}},
   \code{\link{complement_element}},
-  \code{\link{complement_set}}, \code{\link{element_size}},
-  \code{\link{elements}}, \code{\link{filter.TidySet}},
+  \code{\link{complement_set}}, \code{\link{complement}},
+  \code{\link{element_size}}, \code{\link{elements}},
+  \code{\link{filter.TidySet}},
   \code{\link{group_by.TidySet}}, \code{\link{group}},
   \code{\link{incidence}}, \code{\link{intersection}},
   \code{\link{is.fuzzy}}, \code{\link{is_nested}},

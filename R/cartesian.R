@@ -56,6 +56,7 @@ cartesian.TidySet <- function(object, set1, set2, name = NULL, keep = TRUE,
     new_sets <- l[lengths(l) == 2]
 
     new_names <- paste0(name, "_", seq_along(new_sets))
+
     object <- add_sets(object, name)
     object <- add_sets(object, new_names)
     relation <- data.frame(elements = unlist(new_sets),
@@ -70,7 +71,7 @@ cartesian.TidySet <- function(object, set1, set2, name = NULL, keep = TRUE,
     } else {
         relations(object) <- cart
     }
-    droplevels(object)
+    object <- droplevels(object)
     validObject(object)
     object
 }

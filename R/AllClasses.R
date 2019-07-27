@@ -58,7 +58,7 @@ is.valid <- function(object) {
   }
   sets <- object@sets$sets
   if (length(unique(sets)) != length(sets)) {
-    errors <- c(errors, "Set on the sets slot must be unique")
+    errors <- c(errors, "Sets on the sets slot must be unique")
   }
 
   # Check the type of data
@@ -74,10 +74,11 @@ is.valid <- function(object) {
   } else if (length(object@relations$fuzzy) != 0) {
     fuzz <- object@relations$fuzzy
     if (!is.numeric(fuzz)) {
-        errors <- c(errors, "fuzzy column is restricted to a number")
+      errors <- c(errors,
+                  "fuzzy column is restricted to a number between 0 and 1.")
     } else if (min(fuzz) < 0 || max(fuzz) > 1 ) {
-        errors <- c(errors,
-                    "fuzzy column is restricted to a number between 0 and 1.")
+      errors <- c(errors,
+                  "fuzzy column is restricted to a number between 0 and 1.")
     }
   }
 
@@ -90,12 +91,15 @@ is.valid <- function(object) {
                 "You might want to add a column to the relations instead")
   }
 
-  # Check that relations are unique
+  # Check that relations are unique for fuzzy values
   relations <- slot(object, "relations")
   if (nrow(relations) > 0) {
-    if (anyDuplicated(relations[, c("elements", "sets")]) >= 1) {
+    fuzziness <- tapply(fuzz,
+                        paste(relations$elements, relations$sets),
+                        FUN = n_distinct)
+    if (!all(fuzziness == 1)){
       errors <- c(errors,
-                  "A relationship between an element and a set must be unique."
+                  "A relationship between an element and a set must have a single fuzzy value"
       )
     }
   }

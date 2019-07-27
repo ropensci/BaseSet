@@ -12,6 +12,10 @@ nSets(object)
 \description{
 Check the number of sets of the TidySet
 }
+\examples{
+TS <- tidySet(list(A = letters[1:2], B = letters[5:7]))
+nSets(TS)
+}
 \seealso{
 Other count functions: \code{\link{nElements}},
   \code{\link{nRelations}}
@@ -21,8 +25,9 @@ Other methods: \code{\link{TidySet-class}},
   \code{\link{add_relation}},
   \code{\link{arrange.TidySet}}, \code{\link{cartesian}},
   \code{\link{complement_element}},
-  \code{\link{complement_set}}, \code{\link{element_size}},
-  \code{\link{elements}}, \code{\link{filter.TidySet}},
+  \code{\link{complement_set}}, \code{\link{complement}},
+  \code{\link{element_size}}, \code{\link{elements}},
+  \code{\link{filter.TidySet}},
   \code{\link{group_by.TidySet}}, \code{\link{group}},
   \code{\link{incidence}}, \code{\link{intersection}},
   \code{\link{is.fuzzy}}, \code{\link{is_nested}},

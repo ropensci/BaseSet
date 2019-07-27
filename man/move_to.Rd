@@ -4,7 +4,7 @@
 \name{move_to}
 \alias{move_to}
 \alias{move_to,TidySet,characterORfactor,characterORfactor,character-method}
-\title{Move columns}
+\title{Move columns between slots}
 \usage{
 move_to(object, from, to, columns)
 
@@ -26,6 +26,7 @@ A TidySet object where the content is moved from one slot to other.
 }
 \description{
 Moves information from one slot to other slots.
+For instance from the sets to the relations.
 }
 \section{Methods (by class)}{
 \itemize{
@@ -44,8 +45,9 @@ Other methods: \code{\link{TidySet-class}},
   \code{\link{add_relation}},
   \code{\link{arrange.TidySet}}, \code{\link{cartesian}},
   \code{\link{complement_element}},
-  \code{\link{complement_set}}, \code{\link{element_size}},
-  \code{\link{elements}}, \code{\link{filter.TidySet}},
+  \code{\link{complement_set}}, \code{\link{complement}},
+  \code{\link{element_size}}, \code{\link{elements}},
+  \code{\link{filter.TidySet}},
   \code{\link{group_by.TidySet}}, \code{\link{group}},
   \code{\link{incidence}}, \code{\link{intersection}},
   \code{\link{is.fuzzy}}, \code{\link{is_nested}},

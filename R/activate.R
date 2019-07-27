@@ -2,6 +2,9 @@
 NULL
 
 #' Determine the context of subsequent manipulations.
+#'
+#' Functions to help to perform some action to just some type of data: elements,
+#'  sets or relations.
 #' \code{activate}: To table the focus of future manipulations: elements, sets
 #' or relations.
 #' \code{active}: To check the focus on the \code{TidySet}.

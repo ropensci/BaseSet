@@ -9,8 +9,8 @@
 complement_element(object, elements, ...)
 
 \S4method{complement_element}{TidySet,characterORfactor}(object, elements,
-  name, keep = TRUE, keep_relations = keep, keep_elements = keep,
-  keep_sets = keep)
+  name = NULL, keep = TRUE, keep_relations = keep,
+  keep_elements = keep, keep_sets = keep)
 }
 \arguments{
 \item{object}{A TidySet object.}
@@ -50,7 +50,7 @@ complement_element(a, "a", "C_a", keep = FALSE)
 }
 \seealso{
 Other complements: \code{\link{complement_set}},
-  \code{\link{subtract}}
+  \code{\link{complement}}, \code{\link{subtract}}
 
 Other methods that create new sets: \code{\link{complement_set}},
   \code{\link{intersection}}, \code{\link{subtract}},
@@ -60,8 +60,9 @@ Other methods: \code{\link{TidySet-class}},
   \code{\link{activate}}, \code{\link{add_column}},
   \code{\link{add_relation}},
   \code{\link{arrange.TidySet}}, \code{\link{cartesian}},
-  \code{\link{complement_set}}, \code{\link{element_size}},
-  \code{\link{elements}}, \code{\link{filter.TidySet}},
+  \code{\link{complement_set}}, \code{\link{complement}},
+  \code{\link{element_size}}, \code{\link{elements}},
+  \code{\link{filter.TidySet}},
   \code{\link{group_by.TidySet}}, \code{\link{group}},
   \code{\link{incidence}}, \code{\link{intersection}},
   \code{\link{is.fuzzy}}, \code{\link{is_nested}},

@@ -8,7 +8,7 @@
 \alias{sets<-,TidySet-method}
 \alias{replace_sets}
 \alias{nSets,TidySet-method}
-\title{Retrieve the names of the sets}
+\title{Sets of the TidySet}
 \usage{
 sets(object)
 
@@ -31,7 +31,7 @@ replace_sets(object, value)
 A \code{data.frame} with information from the sets.
 }
 \description{
-Given a TidySet retrieve the names of the sets.
+Given TidySet retrieve the sets or substitute them.
 }
 \section{Methods (by class)}{
 \itemize{
@@ -42,6 +42,15 @@ Given a TidySet retrieve the names of the sets.
 \item \code{TidySet}: Return the number of sets
 }}
 
+\examples{
+TS <- tidySet(list(A = letters[1:5], B = letters[2:10]))
+sets(TS)
+sets(TS) <- data.frame(sets = c("B", "A"))
+TS2 <- replace_sets(TS, data.frame(sets = c("A", "B", "C")))
+sets(TS2)
+nSets(TS)
+nSets(TS2)
+}
 \seealso{
 \code{\link{nSets}}
 
@@ -53,8 +62,9 @@ Other methods: \code{\link{TidySet-class}},
   \code{\link{add_relation}},
   \code{\link{arrange.TidySet}}, \code{\link{cartesian}},
   \code{\link{complement_element}},
-  \code{\link{complement_set}}, \code{\link{element_size}},
-  \code{\link{elements}}, \code{\link{filter.TidySet}},
+  \code{\link{complement_set}}, \code{\link{complement}},
+  \code{\link{element_size}}, \code{\link{elements}},
+  \code{\link{filter.TidySet}},
   \code{\link{group_by.TidySet}}, \code{\link{group}},
   \code{\link{incidence}}, \code{\link{intersection}},
   \code{\link{is.fuzzy}}, \code{\link{is_nested}},

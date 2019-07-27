@@ -22,14 +22,20 @@ A TidySet object with the new set
 \description{
 Create a new set from existing elements
 }
+\examples{
+x <- list("a" = c("A" = 0.1, "B" = 0.5), "b" = c("A" = 0.2, "B" = 1))
+a <- tidySet(x)
+b <- group(a, "c", elements \%in\% c("A", "B"))
+}
 \seealso{
 Other methods: \code{\link{TidySet-class}},
   \code{\link{activate}}, \code{\link{add_column}},
   \code{\link{add_relation}},
   \code{\link{arrange.TidySet}}, \code{\link{cartesian}},
   \code{\link{complement_element}},
-  \code{\link{complement_set}}, \code{\link{element_size}},
-  \code{\link{elements}}, \code{\link{filter.TidySet}},
+  \code{\link{complement_set}}, \code{\link{complement}},
+  \code{\link{element_size}}, \code{\link{elements}},
+  \code{\link{filter.TidySet}},
   \code{\link{group_by.TidySet}}, \code{\link{incidence}},
   \code{\link{intersection}}, \code{\link{is.fuzzy}},
   \code{\link{is_nested}}, \code{\link{move_to}},

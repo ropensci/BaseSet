@@ -7,7 +7,8 @@
 \alias{relations,TidySet-method}
 \alias{replace_relations}
 \alias{relations<-,TidySet-method}
-\title{Find the relationship}
+\alias{nRelations,TidySet-method}
+\title{Relations of the TidySet}
 \usage{
 relations(object)
 
@@ -18,6 +19,8 @@ relations(object) <- value
 replace_relations(object, value)
 
 \S4method{relations}{TidySet}(object) <- value
+
+\S4method{nRelations}{TidySet}(object)
 }
 \arguments{
 \item{object}{Object to be coerced or tested.}
@@ -29,7 +32,7 @@ A \code{data.frame} with information about the relations between
 elements and sets.
 }
 \description{
-Method to find the relationships between the elements and the sets of a given
+Given TidySet retrieve the relations or substitute them.
 \code{\link{TidySet}} object
 }
 \section{Methods (by class)}{
@@ -37,8 +40,14 @@ Method to find the relationships between the elements and the sets of a given
 \item \code{TidySet}: Retrieve the relations
 
 \item \code{TidySet}: Modify the relations
+
+\item \code{TidySet}: Return the number of unique relations
 }}
 
+\examples{
+TS <- tidySet(list(A = letters[1:2], B = letters[5:7]))
+relations(TS)
+}
 \seealso{
 \code{\link{nRelations}}
 
@@ -49,8 +58,9 @@ Other methods: \code{\link{TidySet-class}},
   \code{\link{add_relation}},
   \code{\link{arrange.TidySet}}, \code{\link{cartesian}},
   \code{\link{complement_element}},
-  \code{\link{complement_set}}, \code{\link{element_size}},
-  \code{\link{elements}}, \code{\link{filter.TidySet}},
+  \code{\link{complement_set}}, \code{\link{complement}},
+  \code{\link{element_size}}, \code{\link{elements}},
+  \code{\link{filter.TidySet}},
   \code{\link{group_by.TidySet}}, \code{\link{group}},
   \code{\link{incidence}}, \code{\link{intersection}},
   \code{\link{is.fuzzy}}, \code{\link{is_nested}},

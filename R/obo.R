@@ -123,17 +123,30 @@ getGAF <- function(x) {
     # Classification of the columns according to where do they belong
     elements <- c(1, 2, 3, 10, 11, 12, 13, 17)
     sets <- c(5, 6, 9, 16)
-    relations <- c(4, 8, 7, 14, 15)
 
+    # Change the name of the columns to be ready to use tidySet.data.frame
     colnames(df) <- gsub("O_ID", "sets", colnames(df))
     colnames(df) <- gsub("DB_Object_Symbol", "elements", colnames(df))
 
-    columns_gaf <- function(names, originals) {
+    TS <- tidySet(df)
+
+    # Check that the columns really have information that allows them to be moved
+    # to the new slot.
+    columns_gaf <- function(names, originals) { # Check just in case there is a missing column
         names[names %in% originals]
     }
-    df <- duplicated_relations(df)
-    TS <- tidySet(df)
-    TS <- move_to(TS, "relations", "sets", columns_gaf(gaf_columns[sets], colnames(df)))
-    TS <- move_to(TS, "relations", "elements",  columns_gaf(gaf_columns[elements], colnames(df)))
+    sets_columns <- columns_gaf(gaf_columns[sets], colnames(df))
+    nColm <- vapply(sets_columns, function(x){
+        nrow(unique(df[, c("sets", x)]))
+    }, numeric(1))
+    sets_columns <- sets_columns[nColm <= length(unique(df$sets))]
+    elements_columns <- columns_gaf(gaf_columns[elements], colnames(df))
+    nColm <- vapply(sets_columns, function(x){
+        nrow(unique(df[, c("elements", x)]))
+    }, numeric(1))
+    elements_columns <- elements_columns[nColm <= length(unique(df$elements))]
+
+    TS <- move_to(TS, "relations", "sets", sets_columns)
+    TS <- move_to(TS, "relations", "elements",  elements_columns)
     TS
 }

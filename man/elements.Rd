@@ -7,7 +7,8 @@
 \alias{elements,TidySet-method}
 \alias{elements<-,TidySet-method}
 \alias{replace_elements}
-\title{Retrieve the elements}
+\alias{nElements,TidySet-method}
+\title{Elements of the TidySet}
 \usage{
 elements(object)
 
@@ -18,6 +19,8 @@ elements(object) <- value
 \S4method{elements}{TidySet}(object) <- value
 
 replace_elements(object, value)
+
+\S4method{nElements}{TidySet}(object)
 }
 \arguments{
 \item{object}{A TidySet object.}
@@ -28,15 +31,25 @@ replace_elements(object, value)
 A \code{data.frame} with information about the elements
 }
 \description{
-Given TidySet retrieve the elements.
+Given TidySet retrieve the elements or substitute them.
 }
 \section{Methods (by class)}{
 \itemize{
 \item \code{TidySet}: Retrieve the elements
 
 \item \code{TidySet}: Modify the elements
+
+\item \code{TidySet}: Return the number of elements
 }}
 
+\examples{
+TS <- tidySet(list(A = letters[1:5], B = letters[2:10]))
+elements(TS)
+elements(TS) <- data.frame(elements = letters[10:1])
+TS2 <- replace_elements(TS, data.frame(elements = letters[1:11]))
+nElements(TS)
+nElements(TS2)
+}
 \seealso{
 \code{\link{nElements}}
 
@@ -47,8 +60,8 @@ Other methods: \code{\link{TidySet-class}},
   \code{\link{add_relation}},
   \code{\link{arrange.TidySet}}, \code{\link{cartesian}},
   \code{\link{complement_element}},
-  \code{\link{complement_set}}, \code{\link{element_size}},
-  \code{\link{filter.TidySet}},
+  \code{\link{complement_set}}, \code{\link{complement}},
+  \code{\link{element_size}}, \code{\link{filter.TidySet}},
   \code{\link{group_by.TidySet}}, \code{\link{group}},
   \code{\link{incidence}}, \code{\link{intersection}},
   \code{\link{is.fuzzy}}, \code{\link{is_nested}},
