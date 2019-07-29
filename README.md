@@ -34,7 +34,7 @@ sets_analysis <- tidySet(sets)
 Perform typical operations like union, intersection:
 
 ``` r
-union(sets_analysis, c("A", "B")) 
+union(sets_analysis, sets = c("A", "B")) 
 #>   elements sets
 #> 1        a  A∪B
 #> 2        b  A∪B
@@ -43,36 +43,22 @@ union(sets_analysis, c("A", "B"))
 #> 5        e  A∪B
 #> 6        f  A∪B
 # Or we can give a name to the new set and keep the others sets
-union(sets_analysis, c("A", "B"), "D", keep = TRUE)
-#>    elements sets
-#> 1         a    A
-#> 2         a    B
-#> 3         a    D
-#> 4         b    D
-#> 5         b    A
-#> 6         c    A
-#> 7         c    D
-#> 8         d    D
-#> 9         d    A
-#> 10        e    A
-#> 11        e    D
-#> 12        f    B
-#> 13        f    D
+union(sets_analysis, sets = c("A", "B"), name = "D")
+#>   elements sets
+#> 1        a    D
+#> 2        b    D
+#> 3        c    D
+#> 4        d    D
+#> 5        e    D
+#> 6        f    D
 # We can do the same in the intersection
-intersection(sets_analysis, c("A", "B"), "D") 
+intersection(sets_analysis, sets = c("A", "B"), name = "D") 
 #>   elements sets
 #> 1        a    D
 # Or we can omit the new name: 
-intersection(sets_analysis, c("A", "B"), keep = TRUE)
+intersection(sets_analysis, sets = c("A", "B"))
 #>   elements sets
-#> 1        a    A
-#> 2        a    B
-#> 3        a  A∩B
-#> 4        b    A
-#> 5        c    A
-#> 6        d    A
-#> 7        e    A
-#> 8        f    B
+#> 1        a  A∩B
 ```
 
 And compute size of sets among other things:
@@ -87,7 +73,7 @@ set_size(sets_analysis)
 The elements in one set not present in other:
 
 ``` r
-subtract(sets_analysis, "A", "B", keep = FALSE)
+subtract(sets_analysis, set_in = "A", not_in = "B", keep = FALSE)
 #>   elements sets
 #> 1        b  A∖B
 #> 2        c  A∖B
@@ -106,10 +92,11 @@ library("magrittr")
 #> 
 #>     subtract
 set.seed(4673) # To make it reproducible in your machine
-mutate(sets_analysis, Keep = sample(c(TRUE, FALSE), 7, replace = TRUE)) %>% 
-    filter(Keep == TRUE) %>% 
-    activate("sets") %>% 
-    mutate(sets_origin = c("Reactome", "KEGG"))
+sets_analysis %>% 
+  mutate(Keep = sample(c(TRUE, FALSE), 7, replace = TRUE)) %>% 
+  filter(Keep == TRUE) %>% 
+  activate("sets") %>% 
+  mutate(sets_origin = c("Reactome", "KEGG"))
 #>   elements sets Keep sets_origin
 #> 1        a    A TRUE    Reactome
 #> 2        a    B TRUE        KEGG
@@ -118,6 +105,8 @@ mutate(sets_analysis, Keep = sample(c(TRUE, FALSE), 7, replace = TRUE)) %>%
 #> 5        d    A TRUE    Reactome
 #> 6        f    B TRUE        KEGG
 ```
+
+## Fuzzy sets
 
 You can do the same operations with fuzzy sets:
 
@@ -135,7 +124,7 @@ fuzzy_set
 #> 5        d    A 0.5800610
 #> 6        e    A 0.5724973
 #> 7        f    B 0.9460158
-union(fuzzy_set, c("A", "B"))
+union(fuzzy_set, sets = c("A", "B"))
 #>   elements sets     fuzzy
 #> 1        a  A∪B 0.9381182
 #> 2        b  A∪B 0.4567009
@@ -143,7 +132,7 @@ union(fuzzy_set, c("A", "B"))
 #> 4        d  A∪B 0.5800610
 #> 5        e  A∪B 0.5724973
 #> 6        f  A∪B 0.9460158
-union(fuzzy_set, c("A", "B"), "D", keep = TRUE)
+union(fuzzy_set, sets = c("A", "B"), name = "D", keep = TRUE)
 #>    elements sets     fuzzy
 #> 1         a    A 0.1837246
 #> 2         a    B 0.9381182
@@ -158,10 +147,10 @@ union(fuzzy_set, c("A", "B"), "D", keep = TRUE)
 #> 11        e    D 0.5724973
 #> 12        f    B 0.9460158
 #> 13        f    D 0.9460158
-intersection(fuzzy_set, c("A", "B"), "D") 
+intersection(fuzzy_set, sets = c("A", "B"), name = "D") 
 #>   elements sets     fuzzy
 #> 1        a    D 0.1837246
-intersection(fuzzy_set, c("A", "B"), keep = TRUE)
+intersection(fuzzy_set, sets = c("A", "B"), keep = TRUE)
 #>   elements sets     fuzzy
 #> 1        a    A 0.1837246
 #> 2        a    B 0.9381182
@@ -198,11 +187,11 @@ element_size(fuzzy_set)
 #> 11        e    1  0.57249732
 #> 12        f    0  0.05398419
 #> 13        f    1  0.94601581
-
-mutate(fuzzy_set, Keep = ifelse(fuzzy > 0.5, TRUE, FALSE)) %>% 
-    filter(Keep == TRUE) %>% 
-    activate("sets") %>% 
-    mutate(sets_origin = c("Reactome", "KEGG"))
+fuzzy_set %>% 
+  mutate(Keep = ifelse(fuzzy > 0.5, TRUE, FALSE)) %>% 
+  filter(Keep == TRUE) %>% 
+  activate("sets") %>% 
+  mutate(sets_origin = c("Reactome", "KEGG"))
 #>   elements sets     fuzzy Keep sets_origin
 #> 1        a    B 0.9381182 TRUE    Reactome
 #> 2        f    B 0.9460158 TRUE    Reactome

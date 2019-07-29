@@ -37,55 +37,69 @@ library("BaseSet")
 ```
 
 To work with sets we need to have the relations between the elements and the sets:
+
 ```{r TidySet}
 sets <- list(A = letters[1:5], B = c("a", "f"))
 sets_analysis <- tidySet(sets)
 ```
+
 Perform typical operations like union, intersection:
+
 ```{r union-intersection}
-union(sets_analysis, c("A", "B")) 
+union(sets_analysis, sets = c("A", "B")) 
 # Or we can give a name to the new set and keep the others sets
-union(sets_analysis, c("A", "B"), "D", keep = TRUE)
+union(sets_analysis, sets = c("A", "B"), name = "D")
 # We can do the same in the intersection
-intersection(sets_analysis, c("A", "B"), "D") 
+intersection(sets_analysis, sets = c("A", "B"), name = "D") 
 # Or we can omit the new name: 
-intersection(sets_analysis, c("A", "B"), keep = TRUE)
+intersection(sets_analysis, sets = c("A", "B"))
 ```
+
 And compute size of sets among other things:
+
 ```{r set_size}
 set_size(sets_analysis)
 ```
+
 The elements in one set not present in other:
+
 ```{r subraction}
-subtract(sets_analysis, "A", "B", keep = FALSE)
+subtract(sets_analysis, set_in = "A", not_in = "B", keep = FALSE)
 ```
+
 Or any other verb from [dplyr](https://cran.r-project.org/package=dplyr). Like mutate
+
 ```{r dplyr}
 library("magrittr")
 set.seed(4673) # To make it reproducible in your machine
-mutate(sets_analysis, Keep = sample(c(TRUE, FALSE), 7, replace = TRUE)) %>% 
-    filter(Keep == TRUE) %>% 
-    activate("sets") %>% 
-    mutate(sets_origin = c("Reactome", "KEGG"))
+sets_analysis %>% 
+  mutate(Keep = sample(c(TRUE, FALSE), 7, replace = TRUE)) %>% 
+  filter(Keep == TRUE) %>% 
+  activate("sets") %>% 
+  mutate(sets_origin = c("Reactome", "KEGG"))
 ```
+
+## Fuzzy sets
+
 You can do the same operations with fuzzy sets:
+
 ```{r fuzzy}
 relations <- data.frame(sets = c(rep("A", 5), "B", "B"), 
                         elements = c("a", "b", "c", "d", "e", "a", "f"),
                         fuzzy = runif(7))
 fuzzy_set <- tidySet(relations)
 fuzzy_set
-union(fuzzy_set, c("A", "B"))
-union(fuzzy_set, c("A", "B"), "D", keep = TRUE)
-intersection(fuzzy_set, c("A", "B"), "D") 
-intersection(fuzzy_set, c("A", "B"), keep = TRUE)
+union(fuzzy_set, sets = c("A", "B"))
+union(fuzzy_set, sets = c("A", "B"), name = "D", keep = TRUE)
+intersection(fuzzy_set, sets = c("A", "B"), name = "D") 
+intersection(fuzzy_set, sets = c("A", "B"), keep = TRUE)
 # Note here the difference:
 set_size(fuzzy_set) # A set could be empty!
 element_size(fuzzy_set)
-
-mutate(fuzzy_set, Keep = ifelse(fuzzy > 0.5, TRUE, FALSE)) %>% 
-    filter(Keep == TRUE) %>% 
-    activate("sets") %>% 
-    mutate(sets_origin = c("Reactome", "KEGG"))
+fuzzy_set %>% 
+  mutate(Keep = ifelse(fuzzy > 0.5, TRUE, FALSE)) %>% 
+  filter(Keep == TRUE) %>% 
+  activate("sets") %>% 
+  mutate(sets_origin = c("Reactome", "KEGG"))
 ```
 
