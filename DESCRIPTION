@@ -20,7 +20,6 @@ Imports:
     magrittr,
     methods,
     rlang,
-    XML,
     utils
 Suggests: 
     BiocStyle,
@@ -62,7 +61,6 @@ Collate:
     'droplevels.R'
     'elements.R'
     'filter.R'
-    'fuzzification.R'
     'group.R'
     'group_by.R'
     'head.R'
@@ -92,5 +90,4 @@ Collate:
     'tidy-set.R'
     'union.R'
     'utils-pipe.R'
-    'xml.R'
     'zzz.R'
