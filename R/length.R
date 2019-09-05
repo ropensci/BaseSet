@@ -11,14 +11,14 @@ NULL
 # multiply_probabilities(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), c(1, 3))
 multiply_probabilities <- function(p, i) {
 
-  if (length(i) == length(p)) {
-    return(prod(p))
-  } else if (length(i) == 0) {
-    i <- seq_along(p)
-  }
-  a <- prod(p[-i])
-  b <- prod((1 - p)[i])
-  a*b
+    if (length(i) == length(p)) {
+        return(prod(p))
+    } else if (length(i) == 0) {
+        i <- seq_along(p)
+    }
+    a <- prod(p[-i])
+    b <- prod((1 - p)[i])
+    a*b
 }
 
 
@@ -33,44 +33,44 @@ multiply_probabilities <- function(p, i) {
 #' @keywords internal
 # combn_indices(5, 2)
 combn_indices <- function(x, m) {
-  stopifnot(length(m) == 1L, is.numeric(m))
-  if (m < 0)
-    stop("m < 0", domain = NA, call. = FALSE)
-  if (is.numeric(x) && length(x) == 1L && x > 0 && trunc(x) == x)
-    x <- seq_len(x)
-  n <- base::length(x)
-  if (n < m)
-    stop("n < m", domain = NA, call. = FALSE)
+    stopifnot(length(m) == 1L, is.numeric(m))
+    if (m < 0)
+        stop("m < 0", domain = NA, call. = FALSE)
+    if (is.numeric(x) && length(x) == 1L && x > 0 && trunc(x) == x)
+        x <- seq_len(x)
+    n <- base::length(x)
+    if (n < m)
+        stop("n < m", domain = NA, call. = FALSE)
 
-  m <- as.integer(m)
-  e <- 0
-  h <- m
-  a <- seq_len(m)
-  count <- as.integer(round(choose(n, m)))
+    m <- as.integer(m)
+    e <- 0
+    h <- m
+    a <- seq_len(m)
+    count <- as.integer(round(choose(n, m)))
 
-  out <- vector("list", count)
-  out[[1L]] <- a
+    out <- vector("list", count)
+    out[[1L]] <- a
 
-  if (m > 0) {
-    i <- 2L
-    nmmp1 <- n - m + 1L
-    while (a[1L] != nmmp1) {
-      if (e < n - h) {
-        h <- 1L
-        e <- a[m]
-        j <- 1L
-      }
-      else {
-        e <- a[m - h]
-        h <- h + 1L
-        j <- 1L:h
-      }
-      a[m - h + j] <- e + j
-      out[[i]] <- a
-      i <- i + 1L
+    if (m > 0) {
+        i <- 2L
+        nmmp1 <- n - m + 1L
+        while (a[1L] != nmmp1) {
+            if (e < n - h) {
+                h <- 1L
+                e <- a[m]
+                j <- 1L
+            }
+            else {
+                e <- a[m - h]
+                h <- h + 1L
+                j <- 1L:h
+            }
+            a[m - h + j] <- e + j
+            out[[i]] <- a
+            i <- i + 1L
+        }
     }
-  }
-  out
+    out
 }
 
 #' Calculates the probability of a single length
@@ -83,9 +83,9 @@ combn_indices <- function(x, m) {
 #' @keywords internal
 # length_probability(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), 2)
 length_probability <- function(p, n) {
-  i <- combn_indices(x = length(p), m = n)
-  out <- vapply(i, multiply_probabilities, p = p, numeric(1L))
-  sum(out)
+    i <- combn_indices(x = length(p), m = n)
+    out <- vapply(i, multiply_probabilities, p = p, numeric(1L))
+    sum(out)
 }
 
 
@@ -99,26 +99,26 @@ length_probability <- function(p, n) {
 #' @examples
 #' length_set(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23))
 length_set <- function(fuzziness) {
-  p1 <- fuzziness == 1
+    p1 <- fuzziness == 1
 
-  if (all(p1)) {
-    out <- c(1)
-    names(out) <- as.character(sum(fuzziness))
-    return(out) # Non fuzzy sets
-  }
+    if (all(p1)) {
+        out <- c(1)
+        names(out) <- as.character(sum(fuzziness))
+        return(out) # Non fuzzy sets
+    }
 
-  l <- seq(from = sum(p1), to = length(fuzziness))
-  # Exclude those cases that are obvious
-  l2 <- l - sum(p1)
-  l2 <- l2[l2 != 0]
-  v <- vapply(l2, length_probability, p = fuzziness[!p1], numeric(1L))
+    l <- seq(from = sum(p1), to = length(fuzziness))
+    # Exclude those cases that are obvious
+    l2 <- l - sum(p1)
+    l2 <- l2[l2 != 0]
+    v <- vapply(l2, length_probability, p = fuzziness[!p1], numeric(1L))
 
-  # Substitute in the original possibilities
-  names(l) <- as.character(l)
-  l[] <- 0
-  l[as.character(l2 + sum(p1))] <- v
-  l[as.character(sum(p1))] <- 1 - sum(v)
-  l
+    # Substitute in the original possibilities
+    names(l) <- as.character(l)
+    l[] <- 0
+    l[as.character(l2 + sum(p1))] <- v
+    l[as.character(sum(p1))] <- 1 - sum(v)
+    l
 }
 
 #' @describeIn set_size Calculates the size of a set either fuzzy or not
@@ -133,50 +133,48 @@ setMethod("set_size",
           signature = signature(object = "TidySet"),
           function(object, set = NULL) {
 
-            if (!set %in% name_sets(object) && !is.null(set)) {
-              stop("Please introduce valid set names. See name_sets",
-                   call. = FALSE)
-            }
+              if (!set %in% name_sets(object) && !is.null(set)) {
+                  stop("Please introduce valid set names. See name_sets",
+                       call. = FALSE)
+              }
+              # object <- droplevels(object)
+              rel <- relations(object)
+              if (is.null(set)) {
+                  names_sets <- name_sets(object)
+              } else {
+                  names_sets <- set
+                  rel <- rel[rel$sets %in% set, ]
+              }
 
-            # object <- droplevels(object)
-            rel <- relations(object)
-            if (is.null(set)) {
-              names_sets <- name_sets(object)
-            } else {
-              names_sets <- set
-              rel <- rel[rel$sets %in% set, ]
-            }
+              # Duplicate relationships with different information...
+              rel <- unique(rel[, c("fuzzy", "elements", "sets")])
 
-            # Duplicate relationships with different information...
-            rel <- unique(rel[, c("fuzzy", "elements", "sets")])
+              if (is.fuzzy(object)) {
 
-            if (is.fuzzy(object)) {
-                sizes <- lapply(names_sets, function(x){
-                    length_set(rel[rel$sets == x, "fuzzy"])
-                })
+                  fuzzy_values <- split(rel$fuzzy, rel$sets)
+                  sizes <- lapply(fuzzy_values, length_set)
+                  sets <- rep(unique(rel$sets), lengths(sizes))
+                  lengths_set <- unlist(lapply(sizes, names), use.names = FALSE)
+                  probability_length <- unlist(sizes, use.names = FALSE)
+              } else {
+                  sets <- names_sets
+                  lengths_set <- table(rel$sets)[names_sets]
+                  probability_length <- 1
+              }
 
-                sets <- rep(names_sets, lengths(sizes))
-                lengths_set <- unlist(lapply(sizes, names), use.names = FALSE)
-                probability_length <- unlist(sizes, use.names = FALSE)
-            } else {
-                sets <- names_sets
-                lengths_set <- table(rel$sets)[names_sets]
-                probability_length <- 1
-            }
+              if (any(is.na(lengths_set))) {
+                  lengths_set[is.na(lengths_set)] <- 0
+              }
 
-            if (any(is.na(lengths_set))) {
-                lengths_set[is.na(lengths_set)] <- 0
-            }
-
-            out <- data.frame(sets = sets,
-                       size = as.numeric(lengths_set),
-                       probability = probability_length)
-            out <- merge(out, sets(object), sort = FALSE)
-            if (is.null(set)) {
-              out
-            } else {
-              out[sets %in% set, ]
-            }
+              out <- data.frame(sets = sets,
+                                size = as.numeric(lengths_set),
+                                probability = probability_length)
+              out <- merge(out, sets(object), sort = FALSE)
+              if (is.null(set)) {
+                  out
+              } else {
+                  out[sets %in% set, ]
+              }
           }
 )
 
@@ -191,50 +189,48 @@ setMethod("set_size",
 setMethod("element_size",
           signature = signature(object = "TidySet"),
           function(object, element = NULL) {
-            if (!element %in% name_elements(object) && !is.null(element)) {
-              stop("Please introduce valid element names. See element_names",
-                   call. = FALSE)
-            }
-            # object <- droplevels(object)
-            rel <- relations(object)
-            if (is.null(element)) {
-              names_elements <- name_elements(object)
-            } else {
-              names_elements <- element
-              rel <- rel[rel$elements %in% element, ]
-            }
+              if (!element %in% name_elements(object) && !is.null(element)) {
+                  stop("Please introduce valid element names. See element_names",
+                       call. = FALSE)
+              }
+              # object <- droplevels(object)
+              rel <- relations(object)
+              if (is.null(element)) {
+                  names_elements <- name_elements(object)
+              } else {
+                  names_elements <- element
+                  rel <- rel[rel$elements %in% element, ]
+              }
 
-            # To filter to unique relationships
-            rel <- unique(rel[, c("fuzzy", "elements", "sets")])
+              # To filter to unique relationships
+              rel <- unique(rel[, c("fuzzy", "elements", "sets")])
 
-            if (is.fuzzy(object)) {
-                sizes <- lapply(names_elements, function(x){
-                    length_set(rel[rel$elements == x, "fuzzy"])
-                })
+              if (is.fuzzy(object)) {
+                  fuzzy_values <- split(rel$fuzzy, rel$elements)
+                  sizes <- lapply(fuzzy_values, length_set)
+                  elements <- rep(unique(rel$elements), lengths(sizes))
+                  lengths_set <- unlist(lapply(sizes, names), use.names = FALSE)
+                  probability_length <- unlist(sizes, use.names = FALSE)
+              } else {
+                  elements <- names_elements
+                  lengths_set <- table(rel$elements)[names_elements]
+                  probability_length <- 1
+              }
 
-                elements <- rep(names_elements, lengths(sizes))
-                lengths_set <- unlist(lapply(sizes, names), use.names = FALSE)
-                probability_length <- unlist(sizes, use.names = FALSE)
-            } else {
-                elements <- names_elements
-                lengths_set <- table(rel$elements)[names_elements]
-                probability_length <- 1
-            }
+              if (any(is.na(lengths_set))) {
+                  lengths_set[is.na(lengths_set)] <- 0
+              }
 
-            if (any(is.na(lengths_set))) {
-                lengths_set[is.na(lengths_set)] <- 0
-            }
+              out <- data.frame(elements = elements,
+                                size = as.numeric(lengths_set),
+                                probability = probability_length)
+              out <- merge(out, elements(object), sort = FALSE)
 
-            out <- data.frame(elements = elements,
-                              size = as.numeric(lengths_set),
-                              probability = probability_length)
-            out <- merge(out, elements(object), sort = FALSE)
-
-            if (is.null(element)) {
-              out
-            } else {
-              out[elements %in% element, ]
-            }
+              if (is.null(element)) {
+                  out
+              } else {
+                  out[elements %in% element, ]
+              }
           }
 )
 
