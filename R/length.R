@@ -137,23 +137,24 @@ setMethod("set_size",
                   stop("Please introduce valid set names. See name_sets",
                        call. = FALSE)
               }
-              # object <- droplevels(object)
-              rel <- relations(object)
+
               if (is.null(set)) {
                   names_sets <- name_sets(object)
               } else {
                   names_sets <- set
-                  rel <- rel[rel$sets %in% set, ]
               }
 
+              rel <- relations(object)
+              rel <- rel[rel$sets %in% names_sets, ]
               # Duplicate relationships with different information...
               rel <- unique(rel[, c("fuzzy", "elements", "sets")])
+              rel <- droplevels(rel)
 
               if (is.fuzzy(object)) {
 
                   fuzzy_values <- split(rel$fuzzy, rel$sets)
                   sizes <- lapply(fuzzy_values, length_set)
-                  sets <- rep(unique(rel$sets), lengths(sizes))
+                  sets <- rep(names(fuzzy_values), lengths(sizes))
                   lengths_set <- unlist(lapply(sizes, names), use.names = FALSE)
                   probability_length <- unlist(sizes, use.names = FALSE)
               } else {
@@ -161,11 +162,16 @@ setMethod("set_size",
                   lengths_set <- table(rel$sets)[names_sets]
                   probability_length <- 1
               }
-
+              # Empty set
               if (any(is.na(lengths_set))) {
                   lengths_set[is.na(lengths_set)] <- 0
               }
-
+              # Nothing is present
+              if (is.null(lengths_set) & is.null(probability_length)) {
+                  sets <- names_sets
+                  lengths_set <- rep(0, length(sets))
+                  probability_length <- rep(1, length(sets))
+              }
               out <- data.frame(sets = sets,
                                 size = as.numeric(lengths_set),
                                 probability = probability_length)
@@ -199,16 +205,17 @@ setMethod("element_size",
                   names_elements <- name_elements(object)
               } else {
                   names_elements <- element
-                  rel <- rel[rel$elements %in% element, ]
               }
+              rel <- rel[rel$elements %in% names_elements, ]
 
               # To filter to unique relationships
               rel <- unique(rel[, c("fuzzy", "elements", "sets")])
+              rel <- droplevels(rel)
 
               if (is.fuzzy(object)) {
                   fuzzy_values <- split(rel$fuzzy, rel$elements)
                   sizes <- lapply(fuzzy_values, length_set)
-                  elements <- rep(unique(rel$elements), lengths(sizes))
+                  elements <- rep(names(fuzzy_values), lengths(sizes))
                   lengths_set <- unlist(lapply(sizes, names), use.names = FALSE)
                   probability_length <- unlist(sizes, use.names = FALSE)
               } else {
@@ -216,9 +223,15 @@ setMethod("element_size",
                   lengths_set <- table(rel$elements)[names_elements]
                   probability_length <- 1
               }
-
+              # Empty group
               if (any(is.na(lengths_set))) {
                   lengths_set[is.na(lengths_set)] <- 0
+              }
+              # Nothing is present
+              if (is.null(lengths_set) & is.null(probability_length)) {
+                  elements <- names_elements
+                  lengths_set <- rep(0, length(elements))
+                  probability_length <- rep(1, length(elements))
               }
 
               out <- data.frame(elements = elements,
