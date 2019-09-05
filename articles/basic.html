@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About BaseSet • BaseSet</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="About BaseSet">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
@@ -38,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -67,7 +68,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/llrs/BaseSet">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -80,6 +81,7 @@
 <!--/.navbar -->
 
       
+
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -89,7 +91,7 @@
       August Pi i Sunyer Biomedical Research Institute (IDIBAPS); Liver Unit, Hospital Clinic<br><a class="author_email" href="mailto:#"></a><a href="mailto:lluis.revilla@gmail.com">lluis.revilla@gmail.com</a>
       </address>
                   
-            <h4 class="date">29 July 2019</h4>
+            <h4 class="date">5 September 2019</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/llrs/BaseSet/blob/master/vignettes/basic.Rmd"><code>vignettes/basic.Rmd</code></a></small>
       <div class="hidden name"><code>basic.Rmd</code></div>
@@ -111,10 +113,10 @@
 <h1 class="hasAnchor">
 <a href="#the-tidyset-class" class="anchor"></a>The TidySet class</h1>
 <p>This is a basic example which shows you how to create a <code>TidySet</code> object, to store associations between genes and sets:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"BaseSet"</span>)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">gene_lists &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">    <span class="dt">geneset1 =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"A"</span>, <span class="st">"B"</span>),</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">    <span class="dt">geneset2 =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>)</a>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"BaseSet"</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">gene_lists &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">    <span class="dt">geneset1 =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>, <span class="st">"B"</span>),</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">    <span class="dt">geneset2 =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>)</a>
 <a class="sourceLine" id="cb1-5" data-line-number="5">)</a>
 <a class="sourceLine" id="cb1-6" data-line-number="6">tidy_set &lt;-<span class="st"> </span><span class="kw"><a href="../reference/tidySet.html">tidySet</a></span>(gene_lists)</a>
 <a class="sourceLine" id="cb1-7" data-line-number="7">tidy_set</a>
@@ -126,15 +128,15 @@
 <a class="sourceLine" id="cb1-13" data-line-number="13"><span class="co">#&gt; 5        D geneset2</span></a></code></pre></div>
 <p>This is then stored internaly in three slots <code>relations</code>, <code>elements</code>, and <code>sets</code> slots.</p>
 <p>If you have more information for each element or set it can be used added:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">gene_data &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">    <span class="dt">stat1     =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>( <span class="dv">1</span>,   <span class="dv">2</span>,   <span class="dv">3</span>,   <span class="dv">4</span> ),</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">    <span class="dt">info1     =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>)</a>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">gene_data &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">    <span class="dt">stat1     =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>( <span class="dv">1</span>,   <span class="dv">2</span>,   <span class="dv">3</span>,   <span class="dv">4</span> ),</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">    <span class="dt">info1     =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>)</a>
 <a class="sourceLine" id="cb2-4" data-line-number="4">)</a>
 <a class="sourceLine" id="cb2-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb2-6" data-line-number="6">tidy_set &lt;-<span class="st"> </span><span class="kw"><a href="../reference/add_column.html">add_column</a></span>(tidy_set, <span class="st">"elements"</span>, gene_data)</a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">set_data &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(</a>
-<a class="sourceLine" id="cb2-8" data-line-number="8">    <span class="dt">Group     =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(      <span class="dv">100</span>,        <span class="dv">200</span> ),</a>
-<a class="sourceLine" id="cb2-9" data-line-number="9">    <span class="dt">Colum     =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(     <span class="st">"abc"</span>,      <span class="st">"def"</span>)</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">set_data &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">    <span class="dt">Group     =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(      <span class="dv">100</span>,        <span class="dv">200</span> ),</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">    <span class="dt">Colum     =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(     <span class="st">"abc"</span>,      <span class="st">"def"</span>)</a>
 <a class="sourceLine" id="cb2-10" data-line-number="10">)</a>
 <a class="sourceLine" id="cb2-11" data-line-number="11">tidy_set &lt;-<span class="st"> </span><span class="kw"><a href="../reference/add_column.html">add_column</a></span>(tidy_set, <span class="st">"sets"</span>, set_data)</a>
 <a class="sourceLine" id="cb2-12" data-line-number="12">tidy_set</a>
@@ -163,18 +165,18 @@
 <a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; 1 geneset1   100   abc</span></a>
 <a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt; 2 geneset2   200   def</span></a></code></pre></div>
 <p>You can add as much information as you want, with the only restriction of for a “fuzzy” column for the <code>relations</code>. This column is restricted to a numeric value between 0 and 1. To indicate the strength (or probability) of the relationship between the element and the set.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/Random">set.seed</a></span>(<span class="dv">4567</span>) <span class="co"># To be able to have exact replicates</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">relations &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">sets =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(<span class="st">"A"</span>, <span class="dv">5</span>), <span class="st">"B"</span>, <span class="st">"C"</span>),</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">                          <span class="dt">elements =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(letters[<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq_len</a></span>(<span class="dv">6</span>)], letters[<span class="dv">6</span>]),</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">                          <span class="dt">fuzzy =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/Uniform">runif</a></span>(<span class="dv">7</span>))</a>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="dv">4567</span>) <span class="co"># To be able to have exact replicates</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">relations &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">sets =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="st">"A"</span>, <span class="dv">5</span>), <span class="st">"B"</span>, <span class="st">"C"</span>),</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">                          <span class="dt">elements =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(letters[<span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span>(<span class="dv">6</span>)], letters[<span class="dv">6</span>]),</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">                          <span class="dt">fuzzy =</span> <span class="kw"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span>(<span class="dv">7</span>))</a>
 <a class="sourceLine" id="cb4-5" data-line-number="5">fuzzy_set &lt;-<span class="st"> </span><span class="kw"><a href="../reference/tidySet.html">tidySet</a></span>(relations)</a></code></pre></div>
 </div>
 <div id="creating-a-tidyset" class="section level1">
 <h1 class="hasAnchor">
 <a href="#creating-a-tidyset" class="anchor"></a>Creating a TidySet</h1>
 <p>As you can see it is possible to create a TidySet from a list and a data.frame, but it is also possible from a matrix:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">m &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/matrix">matrix</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">nrow =</span><span class="dv">3</span>,  </a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">               <span class="dt">dimnames =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>], LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]))</a>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">m &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">nrow =</span><span class="dv">3</span>,  </a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">               <span class="dt">dimnames =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>], LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>]))</a>
 <a class="sourceLine" id="cb5-3" data-line-number="3">m</a>
 <a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt;   A B</span></a>
 <a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; a 0 1</span></a>
@@ -192,7 +194,7 @@
 <h1 class="hasAnchor">
 <a href="#converting-to-other-formats" class="anchor"></a>Converting to other formats</h1>
 <p>It is possible to extract the gene sets as a <code>list</code>, for use with functions such as <code>lapply</code>.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">as.list</a></span>(tidy_set)</a>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/list.html">as.list</a></span>(tidy_set)</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; $geneset1</span></a>
 <a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; A B </span></a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; 1 1 </span></a>
@@ -200,7 +202,7 @@
 <a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; $geneset2</span></a>
 <a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; B C D </span></a>
 <a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; 1 1 1</span></a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">as.list</a></span>(fuzzy_set)</a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="kw"><a href="https://rdrr.io/r/base/list.html">as.list</a></span>(fuzzy_set)</a>
 <a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; $A</span></a>
 <a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt;         a         b         c         d         e </span></a>
 <a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; 0.2309186 0.7412554 0.1833834 0.4221682 0.5996399 </span></a>
@@ -236,8 +238,8 @@
 <h2 class="hasAnchor">
 <a href="#union" class="anchor"></a>Union</h2>
 <p>You can make a union of two sets present on the same object.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="../reference/union.html">union</a></span>(fuzzy_set, <span class="dt">sets =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"C"</span>, <span class="st">"B"</span>), <span class="dt">name =</span> <span class="st">"D"</span>)</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw"><a href="../reference/union.html">union</a></span>(fuzzy_set, <span class="dt">sets =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"C"</span>, <span class="st">"B"</span>), <span class="dt">name =</span>  <span class="st">"D"</span>, <span class="dt">FUN =</span> <span class="st">"mean"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="../reference/union.html">union</a></span>(fuzzy_set, <span class="dt">sets =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"C"</span>, <span class="st">"B"</span>), <span class="dt">name =</span> <span class="st">"D"</span>)</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw"><a href="../reference/union.html">union</a></span>(fuzzy_set, <span class="dt">sets =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"C"</span>, <span class="st">"B"</span>), <span class="dt">name =</span>  <span class="st">"D"</span>, <span class="dt">FUN =</span> <span class="st">"mean"</span>)</a></code></pre></div>
 <pre><code>#&gt;   elements sets     fuzzy
 #&gt; 1        f    D 0.7307312
 #&gt;   elements sets     fuzzy
@@ -247,7 +249,7 @@
 <div id="intersection" class="section level2">
 <h2 class="hasAnchor">
 <a href="#intersection" class="anchor"></a>Intersection</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="../reference/intersection.html">intersection</a></span>(fuzzy_set, <span class="dt">sets =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="dt">name =</span> <span class="st">"D"</span>, <span class="dt">keep =</span> <span class="ot">TRUE</span>)</a>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="../reference/intersection.html">intersection</a></span>(fuzzy_set, <span class="dt">sets =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="dt">name =</span> <span class="st">"D"</span>, <span class="dt">keep =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb10-2" data-line-number="2"><span class="co">#&gt;    elements sets     fuzzy</span></a>
 <a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">#&gt; 1         a    A 0.2309186</span></a>
 <a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#&gt; 2         a    D 0.2309186</span></a>
@@ -263,7 +265,7 @@
 <a class="sourceLine" id="cb10-14" data-line-number="14"><span class="co">#&gt; 12        f    C 0.7307312</span></a>
 <a class="sourceLine" id="cb10-15" data-line-number="15"><span class="co">#&gt; 13        f    D 0.2773313</span></a></code></pre></div>
 <p>The keep argument used here is if you want to keep all the other previous sets:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="../reference/intersection.html">intersection</a></span>(fuzzy_set, <span class="dt">sets =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="dt">name =</span> <span class="st">"D"</span>, <span class="dt">keep =</span> <span class="ot">FALSE</span>)</a>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="../reference/intersection.html">intersection</a></span>(fuzzy_set, <span class="dt">sets =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="dt">name =</span> <span class="st">"D"</span>, <span class="dt">keep =</span> <span class="ot">FALSE</span>)</a>
 <a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co">#&gt;   elements sets     fuzzy</span></a>
 <a class="sourceLine" id="cb11-3" data-line-number="3"><span class="co">#&gt; 1        a    D 0.2309186</span></a>
 <a class="sourceLine" id="cb11-4" data-line-number="4"><span class="co">#&gt; 2        b    D 0.7412554</span></a>
@@ -276,7 +278,7 @@
 <h2 class="hasAnchor">
 <a href="#complement" class="anchor"></a>Complement</h2>
 <p>We can look for the complement of one or several sets:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="../reference/complement_set.html">complement_set</a></span>(fuzzy_set, <span class="dt">sets =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"A"</span>, <span class="st">"B"</span>))</a>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="../reference/complement_set.html">complement_set</a></span>(fuzzy_set, <span class="dt">sets =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>, <span class="st">"B"</span>))</a>
 <a class="sourceLine" id="cb12-2" data-line-number="2"><span class="co">#&gt;    elements sets     fuzzy</span></a>
 <a class="sourceLine" id="cb12-3" data-line-number="3"><span class="co">#&gt; 1         a    A 0.2309186</span></a>
 <a class="sourceLine" id="cb12-4" data-line-number="4"><span class="co">#&gt; 2         a ∁A∪B 0.7690814</span></a>
@@ -292,7 +294,7 @@
 <a class="sourceLine" id="cb12-14" data-line-number="14"><span class="co">#&gt; 12        f    C 0.7307312</span></a>
 <a class="sourceLine" id="cb12-15" data-line-number="15"><span class="co">#&gt; 13        f ∁A∪B 0.7226687</span></a></code></pre></div>
 <p>Observe that we haven’t provided a name for the resulting set but we can provide one if we prefer to</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="../reference/complement_set.html">complement_set</a></span>(fuzzy_set, <span class="dt">sets =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="dt">name =</span> <span class="st">"F"</span>)</a>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="../reference/complement_set.html">complement_set</a></span>(fuzzy_set, <span class="dt">sets =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="dt">name =</span> <span class="st">"F"</span>)</a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co">#&gt;    elements sets     fuzzy</span></a>
 <a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co">#&gt; 1         a    A 0.2309186</span></a>
 <a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co">#&gt; 2         a    F 0.7690814</span></a>
@@ -356,12 +358,12 @@
 <p>The identifiers of elements and sets can be inspected and renamed using <code>name_elements</code> and</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw"><a href="../reference/name_elements.html">name_elements</a></span>(tidy_set)</a>
 <a class="sourceLine" id="cb18-2" data-line-number="2"><span class="co">#&gt; [1] "A" "B" "C" "D"</span></a>
-<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="kw"><a href="../reference/name_elements.html">name_elements</a></span>(tidy_set) &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste0</a></span>(<span class="st">"Gene"</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq_len</a></span>(<span class="kw"><a href="../reference/nElements.html">nElements</a></span>(tidy_set)))</a>
+<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="kw"><a href="../reference/name_elements.html">name_elements</a></span>(tidy_set) &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"Gene"</span>, <span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span>(<span class="kw"><a href="../reference/nElements.html">nElements</a></span>(tidy_set)))</a>
 <a class="sourceLine" id="cb18-4" data-line-number="4"><span class="kw"><a href="../reference/name_elements.html">name_elements</a></span>(tidy_set)</a>
 <a class="sourceLine" id="cb18-5" data-line-number="5"><span class="co">#&gt; [1] "Gene1" "Gene2" "Gene3" "Gene4"</span></a>
 <a class="sourceLine" id="cb18-6" data-line-number="6"><span class="kw"><a href="../reference/name_sets.html">name_sets</a></span>(tidy_set)</a>
 <a class="sourceLine" id="cb18-7" data-line-number="7"><span class="co">#&gt; [1] "geneset1" "geneset2"</span></a>
-<a class="sourceLine" id="cb18-8" data-line-number="8"><span class="kw"><a href="../reference/name_sets.html">name_sets</a></span>(tidy_set) &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste0</a></span>(<span class="st">"Geneset"</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq_len</a></span>(<span class="kw"><a href="../reference/nSets.html">nSets</a></span>(tidy_set)))</a>
+<a class="sourceLine" id="cb18-8" data-line-number="8"><span class="kw"><a href="../reference/name_sets.html">name_sets</a></span>(tidy_set) &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"Geneset"</span>, <span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span>(<span class="kw"><a href="../reference/nSets.html">nSets</a></span>(tidy_set)))</a>
 <a class="sourceLine" id="cb18-9" data-line-number="9"><span class="kw"><a href="../reference/name_sets.html">name_sets</a></span>(tidy_set)</a>
 <a class="sourceLine" id="cb18-10" data-line-number="10"><span class="co">#&gt; [1] "Geneset1" "Geneset2"</span></a></code></pre></div>
 </div>
@@ -369,7 +371,7 @@
 <h1 class="hasAnchor">
 <a href="#using-dplyr-verbs" class="anchor"></a>Using <code>dplyr</code> verbs</h1>
 <p>You can also use <code>mutate</code>, <code>filter</code> and other <code>dplyr</code> verbs with TidySets (with the only exception being <code>group_by</code>), but you usually need to activate which three slots you want to affecte with <code>activate</code>:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(<span class="st">"dplyr"</span>)</a>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"dplyr"</span>)</a>
 <a class="sourceLine" id="cb19-2" data-line-number="2"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb19-3" data-line-number="3"><span class="co">#&gt; Attaching package: 'dplyr'</span></a>
 <a class="sourceLine" id="cb19-4" data-line-number="4"><span class="co">#&gt; The following object is masked from 'package:BaseSet':</span></a>
@@ -383,7 +385,7 @@
 <a class="sourceLine" id="cb19-12" data-line-number="12"><span class="co">#&gt;     intersect, setdiff, setequal, union</span></a>
 <a class="sourceLine" id="cb19-13" data-line-number="13">fuzzy_set <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb19-14" data-line-number="14"><span class="st">  </span><span class="kw"><a href="../reference/activate.html">activate</a></span>(<span class="st">"relations"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb19-15" data-line-number="15"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">Important =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/numeric">as.numeric</a></span>(fuzzy <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.5</span>))</a>
+<a class="sourceLine" id="cb19-15" data-line-number="15"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">Important =</span> <span class="kw"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span>(fuzzy <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.5</span>))</a>
 <a class="sourceLine" id="cb19-16" data-line-number="16"><span class="co">#&gt;   elements sets     fuzzy Important</span></a>
 <a class="sourceLine" id="cb19-17" data-line-number="17"><span class="co">#&gt; 1        a    A 0.2309186         0</span></a>
 <a class="sourceLine" id="cb19-18" data-line-number="18"><span class="co">#&gt; 2        b    A 0.7412554         1</span></a>
@@ -395,9 +397,9 @@
 <p>You can use activate to select what are the verbs modifying:</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">set_modified &lt;-<span class="st"> </span>fuzzy_set <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb20-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/activate.html">activate</a></span>(<span class="st">"relations"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">Important =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/numeric">as.numeric</a></span>(fuzzy <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.5</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb20-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">Important =</span> <span class="kw"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span>(fuzzy <span class="op">&gt;</span><span class="st"> </span><span class="fl">0.5</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb20-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/activate.html">activate</a></span>(<span class="st">"elements"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">Pathway =</span> <span class="kw"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span>(elements <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"b"</span>, <span class="st">"f"</span>, <span class="st">"g"</span>), </a>
+<a class="sourceLine" id="cb20-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">Pathway =</span> <span class="kw"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span>(elements <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"b"</span>, <span class="st">"f"</span>, <span class="st">"g"</span>), </a>
 <a class="sourceLine" id="cb20-6" data-line-number="6">                           <span class="st">"pathway1"</span>, </a>
 <a class="sourceLine" id="cb20-7" data-line-number="7">                           <span class="st">"pathway2"</span>))</a>
 <a class="sourceLine" id="cb20-8" data-line-number="8">set_modified</a>
@@ -431,7 +433,7 @@
 <a class="sourceLine" id="cb21-13" data-line-number="13"><span class="co">#&gt; 8        f    C 0.7307312         1 pathway1</span></a>
 <a class="sourceLine" id="cb21-14" data-line-number="14"><span class="co">#&gt; 9        f  new 1.0000000        NA pathway1</span></a></code></pre></div>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">fuzzy_set <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb22-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/group.html">group</a></span>(<span class="st">"pathway1"</span>, elements <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"b"</span>, <span class="st">"f"</span>, <span class="st">"g"</span>))</a>
+<a class="sourceLine" id="cb22-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/group.html">group</a></span>(<span class="st">"pathway1"</span>, elements <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"b"</span>, <span class="st">"f"</span>, <span class="st">"g"</span>))</a>
 <a class="sourceLine" id="cb22-3" data-line-number="3"><span class="co">#&gt;   elements     sets     fuzzy</span></a>
 <a class="sourceLine" id="cb22-4" data-line-number="4"><span class="co">#&gt; 1        a        A 0.2309186</span></a>
 <a class="sourceLine" id="cb22-5" data-line-number="5"><span class="co">#&gt; 2        b        A 0.7412554</span></a>
@@ -488,22 +490,22 @@
 #&gt; [1] dplyr_0.8.3        BaseSet_0.0.0.9003 BiocStyle_2.13.2  
 #&gt; 
 #&gt; loaded via a namespace (and not attached):
-#&gt;  [1] Rcpp_1.0.2         knitr_1.23         xml2_1.2.0        
-#&gt;  [4] magrittr_1.5       roxygen2_6.1.1     MASS_7.3-51.4     
-#&gt;  [7] tidyselect_0.2.5   R6_2.4.0           rlang_0.4.0       
-#&gt; [10] stringr_1.4.0      tools_3.6.1        xfun_0.8          
-#&gt; [13] htmltools_0.3.6    commonmark_1.7     yaml_2.2.0        
-#&gt; [16] digest_0.6.20      assertthat_0.2.1   rprojroot_1.3-2   
-#&gt; [19] tibble_2.1.3       bookdown_0.12      pkgdown_1.3.0     
-#&gt; [22] crayon_1.3.4       purrr_0.3.2        BiocManager_1.30.4
-#&gt; [25] fs_1.3.1           glue_1.3.1         memoise_1.1.0     
-#&gt; [28] evaluate_0.14      rmarkdown_1.14     stringi_1.4.3     
-#&gt; [31] pillar_1.4.2       compiler_3.6.1     desc_1.2.0        
-#&gt; [34] backports_1.1.4    pkgconfig_2.0.2</code></pre>
+#&gt;  [1] Rcpp_1.0.2         knitr_1.24         magrittr_1.5      
+#&gt;  [4] MASS_7.3-51.4      tidyselect_0.2.5   R6_2.4.0          
+#&gt;  [7] rlang_0.4.0        stringr_1.4.0      tools_3.6.1       
+#&gt; [10] xfun_0.9           htmltools_0.3.6    yaml_2.2.0        
+#&gt; [13] assertthat_0.2.1   digest_0.6.20      rprojroot_1.3-2   
+#&gt; [16] tibble_2.1.3       pkgdown_1.4.0      crayon_1.3.4      
+#&gt; [19] bookdown_0.13      purrr_0.3.2        BiocManager_1.30.4
+#&gt; [22] fs_1.3.1           glue_1.3.1         memoise_1.1.0     
+#&gt; [25] evaluate_0.14      rmarkdown_1.15     stringi_1.4.3     
+#&gt; [28] pillar_1.4.2       compiler_3.6.1     desc_1.2.0        
+#&gt; [31] backports_1.1.4    XML_3.98-1.20      pkgconfig_2.0.2</code></pre>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
         <div id="tocnav">
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
@@ -530,17 +532,20 @@
 </div>
 
 
+
       <footer><div class="copyright">
   <p>Developed by Lluís  Revilla Sancho.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>
