@@ -26,4 +26,3 @@ Useful links:
 \strong{Maintainer}: Lluís  Revilla Sancho \email{lluis.revilla@gmail.com}
 
 }
-\keyword{internal}

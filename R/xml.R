@@ -5,5 +5,5 @@
 getXML <- function(x, ...) {
     # GSEABAse::getBroadSets -> .fromXML
     res <- XML::xmlTreeParse(x, useInternalNodes = TRUE, ...)
-    browser()
+    # browser()
 }

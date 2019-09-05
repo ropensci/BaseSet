@@ -110,7 +110,7 @@ setGeneric("relations", function(object) standardGeneric("relations"))
 #' @rdname relations
 #' @export
 setGeneric("relations<-", function(object, value)
-  standardGeneric("relations<-"))
+    standardGeneric("relations<-"))
 
 
 #' @rdname elements
@@ -173,7 +173,7 @@ setGeneric("rename_set", function(object, old, new) standardGeneric("rename_set"
 #' @export
 #' @family methods
 setGeneric("rename_elements", function(object, old, new)
-  standardGeneric("rename_elements"))
+    standardGeneric("rename_elements"))
 
 
 #' Name sets
@@ -192,7 +192,7 @@ setGeneric("rename_elements", function(object, old, new)
 #' a <- tidySet(relations)
 #' name_sets(a)
 setGeneric("name_sets", function(object)
-  standardGeneric("name_sets"))
+    standardGeneric("name_sets"))
 
 #' Name elements
 #'
@@ -209,7 +209,7 @@ setGeneric("name_sets", function(object)
 #' a <- tidySet(relations)
 #' name_elements(a)
 setGeneric("name_elements", function(object)
-  standardGeneric("name_elements"))
+    standardGeneric("name_elements"))
 
 #' Rename elements
 #'
@@ -230,7 +230,7 @@ setGeneric("name_elements", function(object)
 #' a
 #' name_elements(a) <- letters[1:6]
 setGeneric("name_elements<-", function(object, value)
-  standardGeneric("name_elements<-"))
+    standardGeneric("name_elements<-"))
 
 #' Rename sets
 #'
@@ -251,7 +251,7 @@ setGeneric("name_elements<-", function(object, value)
 #' a
 #' name_sets(a) <- LETTERS[1:2]
 setGeneric("name_sets<-", function(object, value)
-  standardGeneric("name_sets<-"))
+    standardGeneric("name_sets<-"))
 
 #' Add column
 #'
@@ -272,7 +272,7 @@ setGeneric("name_sets<-", function(object, value)
 #' add_column(a, "relations", data.frame(well = c("GOOD", "BAD", "WORSE", "UGLY",
 #' "FOE", "HEY")))
 setGeneric("add_column", function(object, slot, columns)
-  standardGeneric("add_column"))
+    standardGeneric("add_column"))
 
 #' Remove column
 #'
@@ -286,7 +286,7 @@ setGeneric("add_column", function(object, slot, columns)
 #' @seealso \code{\link{rename_set}}
 #' @export
 setGeneric("remove_column", function(object, slot, column_names)
-  standardGeneric("remove_column"))
+    standardGeneric("remove_column"))
 
 #' Intersection of two sets
 #'
@@ -308,7 +308,7 @@ setGeneric("remove_column", function(object, slot, column_names)
 #' a <- tidySet(relations)
 #' intersection(a, c("a", "b"), "C")
 setGeneric("intersection", function(object, sets, ...)
-  standardGeneric("intersection"))
+    standardGeneric("intersection"))
 
 #' Add relations
 #'
@@ -331,7 +331,7 @@ setGeneric("intersection", function(object, sets, ...)
 #'                         new = runif(6))
 #' add_relation(a, relations)
 setGeneric("add_relation", function(object, relations, ...)
-  standardGeneric("add_relation"))
+    standardGeneric("add_relation"))
 
 #' Remove a relation
 #'
@@ -351,7 +351,7 @@ setGeneric("add_relation", function(object, relations, ...)
 #' a <- tidySet(relations)
 #' remove_relation(a, "a", "a")
 setGeneric("remove_relation", function(object, elements, sets, ...)
-  standardGeneric("remove_relation"))
+    standardGeneric("remove_relation"))
 
 #' Remove elements
 #'
@@ -371,7 +371,7 @@ setGeneric("remove_relation", function(object, elements, sets, ...)
 #' a <- tidySet(relations)
 #' remove_element(a, "c")
 setGeneric("remove_element", function(object, elements, ...)
-  standardGeneric("remove_element"))
+    standardGeneric("remove_element"))
 
 #' Remove sets
 #'
@@ -391,7 +391,7 @@ setGeneric("remove_element", function(object, elements, ...)
 #' a <- tidySet(relations)
 #' remove_set(a, "b")
 setGeneric("remove_set", function(object, sets, ...)
-  standardGeneric("remove_set"))
+    standardGeneric("remove_set"))
 
 #' Complement of a set
 #'
@@ -415,7 +415,7 @@ setGeneric("remove_set", function(object, sets, ...)
 #' a <- tidySet(relations)
 #' complement_set(a, "a")
 setGeneric("complement_set", function(object, sets, ...)
-  standardGeneric("complement_set"))
+    standardGeneric("complement_set"))
 
 #' Complement of elements
 #'
@@ -436,7 +436,7 @@ setGeneric("complement_set", function(object, sets, ...)
 #' complement_element(a, "a", "C_a")
 #' complement_element(a, "a", "C_a", keep = FALSE)
 setGeneric("complement_element", function(object, elements, ...)
-  standardGeneric("complement_element"))
+    standardGeneric("complement_element"))
 
 #' Subtract
 #'
@@ -460,7 +460,7 @@ setGeneric("complement_element", function(object, elements, ...)
 #' subtract(a, "a", "b")
 #' subtract(a, "a", "b", keep = FALSE)
 setGeneric("subtract", function(object, set_in, not_in, ...)
-  standardGeneric("subtract"))
+    standardGeneric("subtract"))
 
 #' Move columns between slots
 #'
@@ -478,4 +478,4 @@ setGeneric("subtract", function(object, set_in, not_in, ...)
 #' a <- mutate_element(a, b = runif(2))
 #' b <- move_to(a, from = "elements", to = "relations", "b")
 setGeneric("move_to", function(object, from, to, columns)
-  standardGeneric("move_to"))
+    standardGeneric("move_to"))

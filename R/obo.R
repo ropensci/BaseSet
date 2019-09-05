@@ -109,7 +109,7 @@ getGAF <- function(x) {
                      "Annotation_Extension", "Gene_Product_Form_ID")
     colnames(df) <- gaf_columns
 
-        # Check which optional columns are missing
+    # Check which optional columns are missing
     optional_columns <- c(4, 8, 10, 11, 16, 17)
     remove <- apply(df[, optional_columns], 2, function(x){all(is.na(x))})
     df <- df[, -optional_columns[remove]]

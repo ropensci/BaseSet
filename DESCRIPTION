@@ -14,13 +14,14 @@ License: MIT + file LICENSE
 URL: https://github.com/llrs/BaseSet
 BugReports: https://github.com/llrs/BaseSet/issues
 Depends: 
-    R (>= 3.5.0)
+    R (>= 3.6.0)
 Imports: 
     dplyr (>= 0.7.8),
     magrittr,
     methods,
     rlang,
-    XML
+    XML,
+    utils
 Suggests: 
     BiocStyle,
     covr,
