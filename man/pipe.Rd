@@ -6,6 +6,10 @@
 \usage{
 lhs \%>\% rhs
 }
+\value{
+The result of the left-hand side (lhs) is passed to the right-hand
+side (rhs).
+}
 \description{
 See \code{magrittr::\link[magrittr]{\%>\%}} for details.
 }

@@ -9,6 +9,9 @@ nSets(object)
 \arguments{
 \item{object}{Object to be coerced or tested.}
 }
+\value{
+The number of sets present.
+}
 \description{
 Check the number of sets of the TidySet
 }

@@ -51,6 +51,7 @@ setGeneric("is.fuzzy", function(object) standardGeneric("is.fuzzy"))
 #' @export nSets
 #' @family count functions
 #' @family methods
+#' @return The number of sets present.
 #' @examples
 #' TS <- tidySet(list(A = letters[1:2], B = letters[5:7]))
 #' nSets(TS)

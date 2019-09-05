@@ -11,6 +11,9 @@ size(object, ...)
 
 \item{...}{Other arguments to filter which size should be shown.}
 }
+\value{
+The size of the active slot. Not available for relations.
+}
 \description{
 Calculate the size of the elements or sets
 }

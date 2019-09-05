@@ -13,6 +13,10 @@ incidence(object)
 \arguments{
 \item{object}{Object to be coerced or tested.}
 }
+\value{
+A matrix with elements in rows and sets in columns where the values
+indicate the relationship between the element and the set.
+}
 \description{
 Check which elements are in which sets.
 }
