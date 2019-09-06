@@ -59,7 +59,7 @@ union.TidySet <- function(object, sets, name = NULL, FUN = "max", keep = FALSE,
     }
     union <- fapply(union, FUN)
     object <- replace_interactions(object, union, keep_relations)
-    object <- droplevels(object, !keep_elements, !keep_sets)
+    object <- droplevels(object, !keep_elements, !keep_sets, !keep_relations)
     validObject(object)
     object
 }

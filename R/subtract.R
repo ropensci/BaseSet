@@ -12,6 +12,7 @@ setMethod("subtract",
                    keep_relations = keep, keep_elements = keep,
                    keep_sets = keep) {
 
+              # browser()
               old_relations <- relations(object)
               test_set_in <- set_in %in% old_relations$sets
               if (!any(test_set_in)) {
@@ -49,8 +50,7 @@ setMethod("subtract",
 
               object <- add_sets(object, name)
               object <- replace_interactions(object, relations, keep_relations)
-
-              object <- droplevels(object, !keep_elements, !keep_sets)
+              object <- droplevels(object, !keep_elements, !keep_sets, !keep_relations)
               validObject(object)
               object
 

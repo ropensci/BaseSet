@@ -17,10 +17,12 @@ drop_relations <- function(object) {
   sets <- name_sets(object)
   elements <- name_elements(object)
   relations <- object@relations
-  keep_sets <- relations$sets %in% sets
-  keep_elements <- relations$elements %in% elements
+  if (nrow(relations) != 0) {
+    keep_sets <- relations$sets %in% sets
+    keep_elements <- relations$elements %in% elements
 
-  object@relations <- relations[keep_sets & keep_elements, , drop = FALSE]
+    object@relations <- relations[keep_sets & keep_elements, , drop = FALSE]
+  }
   object
 }
 

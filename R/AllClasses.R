@@ -26,13 +26,14 @@ is.valid <- function(object) {
   errors <- c()
 
   # Check that slots are not empty
-  empty <- vapply(slotNames(object), function(x){
+
+  empty <- vapply(c("sets", "elements"), function(x){
     nrow(slot(object, x)) == 0
   }, logical(1L))
 
-  if (all(empty)) {
+    if (all(empty)) {
     errors <- c(errors,
-                "A TidySet object must have an element, a set or a relation")
+                "A TidySet object must have at least an element or a set.")
   }
 
   # Check that the slots have the right columns

@@ -14,3 +14,12 @@ test_that("subtract works", {
   b <- subtract(a, set_in = c("a", "b"), "c")
   expect_equal(name_sets(b)[4], "(a∪b)∖c")
 })
+
+
+test_that("error", {
+  TS <- tidySet(data.frame(elements = c("c", "c", "a", "b", "b"),
+                sets = c("A", "B", "B", "B", "C")))
+  out <- subtract(TS, set_in = "A", not_in = "B", name = "A-B",
+                  keep_elements = TRUE, keep_sets = TRUE, keep_relations = FALSE)
+
+})
