@@ -5,7 +5,7 @@ abstract: >
 date: "`r BiocStyle::doc_date()`"
 package: "`r BiocStyle::pkg_ver('BaseSet')`"
 output:
-  BiocStyle::html_document:
+  html_document:
     fig_caption: true
     code_folding: show
     self_contained: yes
@@ -18,7 +18,7 @@ author:
     - August Pi i Sunyer Biomedical Research Institute (IDIBAPS); Liver Unit, Hospital Clinic
   email: lluis.revilla@gmail.com
 vignette: >
-  %\VignetteIndexEntry{2. Advanced examples}
+  %\VignetteIndexEntry{3. Advanced examples}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
@@ -203,7 +203,6 @@ As you can see on the second plot we have very large values but that are on asso
 ```{r distr_sizes_pathways}
 head(sizes_set, 10)
 ```
-
 
 # Session info {.unnumbered}
 
