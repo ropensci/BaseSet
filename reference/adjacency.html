@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">BaseSet</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.9</span>
       </span>
     </div>
 
@@ -161,17 +161,19 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='st'>"a"</span> <span class='kw'>=</span> <span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>5</span>], <span class='st'>"b"</span> <span class='kw'>=</span> <span class='no'>LETTERS</span>[<span class='fl'>3</span>:<span class='fl'>7</span>])
 <span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tidySet.html'>tidySet</a></span>(<span class='no'>x</span>)
-<span class='fu'><a href='incidence.html'>incidence</a></span>(<span class='no'>a</span>)</div><div class='output co'>#&gt;   a b
+<span class='fu'>adjacency_element</span>(<span class='no'>a</span>)</div><div class='output co'>#&gt;   a b c d e C D E F G
+#&gt; a 1 1 1 1 1 0 0 0 0 0
+#&gt; b 1 1 1 1 1 0 0 0 0 0
+#&gt; c 1 1 1 1 1 0 0 0 0 0
+#&gt; d 1 1 1 1 1 0 0 0 0 0
+#&gt; e 1 1 1 1 1 0 0 0 0 0
+#&gt; C 0 0 0 0 0 1 1 1 1 1
+#&gt; D 0 0 0 0 0 1 1 1 1 1
+#&gt; E 0 0 0 0 0 1 1 1 1 1
+#&gt; F 0 0 0 0 0 1 1 1 1 1
+#&gt; G 0 0 0 0 0 1 1 1 1 1</div><div class='input'><span class='fu'>adjacency_set</span>(<span class='no'>a</span>)</div><div class='output co'>#&gt;   a b
 #&gt; a 1 0
-#&gt; b 1 0
-#&gt; c 1 0
-#&gt; d 1 0
-#&gt; e 1 0
-#&gt; C 0 1
-#&gt; D 0 1
-#&gt; E 0 1
-#&gt; F 0 1
-#&gt; G 0 1</div></pre>
+#&gt; b 0 1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
