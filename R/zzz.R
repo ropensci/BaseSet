@@ -21,4 +21,5 @@ set_symbols <- c("intersection" = "\u2229",
              "contains" = "\u220B",
              "notContained" = "\u220C",
              "minus" = "\u2216",
-             "product" = "\u2A2F")
+             "product" = "\u2A2F",
+             "conditional" = "|")

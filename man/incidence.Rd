@@ -31,6 +31,8 @@ a <- tidySet(x)
 incidence(a)
 }
 \seealso{
+\code{\link{adjacency}}
+
 Other methods: \code{\link{TidySet-class}},
   \code{\link{activate}}, \code{\link{add_column}},
   \code{\link{add_relation}},

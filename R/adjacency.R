@@ -10,7 +10,8 @@
 #' @examples
 #' x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
 #' a <- tidySet(x)
-#' incidence(a)
+#' adjacency_element(a)
+#' adjacency_set(a)
 adjacency <- function(object) {
     UseMethod("adjacency")
 }

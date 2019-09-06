@@ -89,6 +89,7 @@ setGeneric("nRelations", function(object) standardGeneric("nRelations"))
 #' @param object Object to be coerced or tested.
 #' @export incidence
 #' @family methods
+#' @seealso \code{\link{adjacency}}
 setGeneric("incidence", function(object) standardGeneric("incidence"))
 
 #' Relations of the TidySet
