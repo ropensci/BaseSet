@@ -4,4 +4,5 @@ pkgdown_sha: ~
 articles:
   advanced: advanced.html
   basic: basic.html
+  fuzzy: fuzzy.html
 

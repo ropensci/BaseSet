@@ -97,6 +97,9 @@
     <li>
       <a href="../articles/basic.html">About BaseSet</a>
     </li>
+    <li>
+      <a href="../articles/fuzzy.html">Fuzzy sets</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -155,13 +158,20 @@
     <pre class="examples"><div class='input'><span class='no'>oboFile</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"BaseSet"</span>, <span class='st'>"extdata"</span>,
                                   <span class='st'>"go-basic_subset.obo"</span>)
 <span class='no'>gs</span> <span class='kw'>&lt;-</span> <span class='fu'>getOBO</span>(<span class='no'>oboFile</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>gs</span>)</div><div class='output co'>#&gt;     elements       sets type        data-version default-namespace ontology
-#&gt; 1 GO:0000001 GO:0048308 is_a releases/2017-11-25     gene_ontology       go
-#&gt; 2 GO:0000001 GO:0048311 is_a releases/2017-11-25     gene_ontology       go
-#&gt; 3 GO:0000011 GO:0048308 is_a releases/2017-11-25     gene_ontology       go
-#&gt; 4 GO:0000011 GO:0007033 is_a releases/2017-11-25     gene_ontology       go
-#&gt; 5 GO:0000002 GO:0007005 is_a releases/2017-11-25     gene_ontology       go
-#&gt; 6 GO:0000003 GO:0008150 is_a releases/2017-11-25     gene_ontology       go</div></pre>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>gs</span>)</div><div class='output co'>#&gt;     elements       sets type fuzzy        data-version default-namespace
+#&gt; 1 GO:0000001 GO:0048308 is_a     1 releases/2017-11-25     gene_ontology
+#&gt; 2 GO:0000001 GO:0048311 is_a     1 releases/2017-11-25     gene_ontology
+#&gt; 3 GO:0000011 GO:0048308 is_a     1 releases/2017-11-25     gene_ontology
+#&gt; 4 GO:0000011 GO:0007033 is_a     1 releases/2017-11-25     gene_ontology
+#&gt; 5 GO:0000002 GO:0007005 is_a     1 releases/2017-11-25     gene_ontology
+#&gt; 6 GO:0000003 GO:0008150 is_a     1 releases/2017-11-25     gene_ontology
+#&gt;   ontology
+#&gt; 1       go
+#&gt; 2       go
+#&gt; 3       go
+#&gt; 4       go
+#&gt; 5       go
+#&gt; 6       go</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

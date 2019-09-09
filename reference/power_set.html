@@ -97,6 +97,9 @@
     <li>
       <a href="../articles/basic.html">About BaseSet</a>
     </li>
+    <li>
+      <a href="../articles/fuzzy.html">Fuzzy sets</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -188,193 +191,193 @@
     <pre class="examples"><div class='input'><span class='no'>relations</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>sets</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"a"</span>, <span class='fl'>5</span>), <span class='st'>"b"</span>),
                         <span class='kw'>elements</span> <span class='kw'>=</span> <span class='no'>letters</span>[<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>6</span>)])
 <span class='no'>TS</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tidySet.html'>tidySet</a></span>(<span class='no'>relations</span>)
-<span class='fu'>power_set</span>(<span class='no'>TS</span>, <span class='st'>"a"</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"power_set"</span>)</div><div class='output co'>#&gt;     elements           sets
-#&gt; 1          a              a
-#&gt; 2          a  power_set_5_2
-#&gt; 3          a  power_set_3_3
-#&gt; 4          a  power_set_4_1
-#&gt; 5          a  power_set_4_8
-#&gt; 6          a  power_set_3_4
-#&gt; 7          a  power_set_2_1
-#&gt; 8          a  power_set_3_9
-#&gt; 9          a  power_set_2_2
-#&gt; 10         a  power_set_3_5
-#&gt; 11         a  power_set_2_3
-#&gt; 12         a  power_set_3_6
-#&gt; 13         a  power_set_2_4
-#&gt; 14         a  power_set_3_2
-#&gt; 15         a  power_set_2_5
-#&gt; 16         a  power_set_4_4
-#&gt; 17         a  power_set_5_3
-#&gt; 18         a  power_set_3_8
-#&gt; 19         a power_set_4_10
-#&gt; 20         a  power_set_4_5
-#&gt; 21         a  power_set_4_3
-#&gt; 22         a  power_set_4_2
-#&gt; 23         a  power_set_5_5
-#&gt; 24         a power_set_3_10
-#&gt; 25         a  power_set_3_7
-#&gt; 26         a  power_set_5_4
-#&gt; 27         a  power_set_5_1
-#&gt; 28         a  power_set_4_7
-#&gt; 29         a  power_set_3_1
-#&gt; 30         a  power_set_4_6
-#&gt; 31         a  power_set_4_9
-#&gt; 32         b  power_set_2_7
-#&gt; 33         b  power_set_4_1
-#&gt; 34         b  power_set_3_3
-#&gt; 35         b  power_set_2_9
-#&gt; 36         b power_set_3_14
-#&gt; 37         b power_set_4_11
-#&gt; 38         b power_set_3_12
-#&gt; 39         b  power_set_4_2
-#&gt; 40         b power_set_3_11
-#&gt; 41         b  power_set_5_4
-#&gt; 42         b  power_set_2_1
-#&gt; 43         b  power_set_5_2
-#&gt; 44         b  power_set_4_4
-#&gt; 45         b  power_set_2_6
-#&gt; 46         b              a
-#&gt; 47         b  power_set_4_5
-#&gt; 48         b  power_set_5_3
-#&gt; 49         b  power_set_5_6
-#&gt; 50         b  power_set_2_8
-#&gt; 51         b  power_set_3_1
-#&gt; 52         b  power_set_4_3
-#&gt; 53         b  power_set_5_1
-#&gt; 54         b power_set_4_13
-#&gt; 55         b  power_set_3_2
-#&gt; 56         b power_set_4_14
-#&gt; 57         b  power_set_3_4
-#&gt; 58         b power_set_4_12
-#&gt; 59         b power_set_3_13
-#&gt; 60         b power_set_3_15
-#&gt; 61         b  power_set_4_6
-#&gt; 62         b power_set_3_16
-#&gt; 63         c  power_set_4_8
-#&gt; 64         c power_set_3_11
-#&gt; 65         c power_set_3_19
-#&gt; 66         c power_set_3_17
-#&gt; 67         c  power_set_4_1
-#&gt; 68         c  power_set_3_7
-#&gt; 69         c power_set_3_12
-#&gt; 70         c power_set_4_13
-#&gt; 71         c power_set_2_11
-#&gt; 72         c  power_set_2_6
-#&gt; 73         c power_set_4_11
-#&gt; 74         c  power_set_5_2
-#&gt; 75         c  power_set_2_2
-#&gt; 76         c  power_set_3_5
-#&gt; 77         c  power_set_4_9
-#&gt; 78         c power_set_3_13
-#&gt; 79         c  power_set_3_1
-#&gt; 80         c  power_set_5_1
-#&gt; 81         c  power_set_4_3
-#&gt; 82         c  power_set_5_6
-#&gt; 83         c              a
-#&gt; 84         c power_set_3_18
-#&gt; 85         c  power_set_4_2
-#&gt; 86         c  power_set_3_6
-#&gt; 87         c power_set_4_15
-#&gt; 88         c power_set_2_10
-#&gt; 89         c  power_set_4_7
-#&gt; 90         c power_set_4_12
-#&gt; 91         c  power_set_5_3
-#&gt; 92         c power_set_2_12
-#&gt; 93         c  power_set_5_5
-#&gt; 94         d  power_set_2_7
-#&gt; 95         d  power_set_4_1
-#&gt; 96         d power_set_2_13
-#&gt; 97         d power_set_4_10
-#&gt; 98         d  power_set_5_2
-#&gt; 99         d power_set_3_17
-#&gt; 100        d              a
-#&gt; 101        d power_set_4_14
-#&gt; 102        d power_set_3_15
-#&gt; 103        d  power_set_5_4
-#&gt; 104        d  power_set_3_5
-#&gt; 105        d power_set_4_15
-#&gt; 106        d  power_set_4_7
-#&gt; 107        d  power_set_4_4
-#&gt; 108        d  power_set_3_8
-#&gt; 109        d power_set_3_20
-#&gt; 110        d  power_set_4_8
-#&gt; 111        d power_set_2_10
-#&gt; 112        d  power_set_5_6
-#&gt; 113        d  power_set_4_5
-#&gt; 114        d  power_set_2_3
-#&gt; 115        d power_set_3_11
-#&gt; 116        d  power_set_5_1
-#&gt; 117        d power_set_4_12
-#&gt; 118        d power_set_4_11
-#&gt; 119        d power_set_2_14
-#&gt; 120        d  power_set_3_2
-#&gt; 121        d  power_set_3_9
-#&gt; 122        d power_set_3_18
-#&gt; 123        d power_set_3_14
-#&gt; 124        d  power_set_5_5
-#&gt; 125        e power_set_4_13
-#&gt; 126        e power_set_3_20
-#&gt; 127        e  power_set_5_1
-#&gt; 128        e  power_set_2_4
-#&gt; 129        e  power_set_4_4
-#&gt; 130        e power_set_4_10
-#&gt; 131        e power_set_4_15
-#&gt; 132        e power_set_3_12
-#&gt; 133        e power_set_2_11
-#&gt; 134        e              a
-#&gt; 135        e  power_set_3_6
-#&gt; 136        e power_set_3_17
-#&gt; 137        e  power_set_4_7
-#&gt; 138        e  power_set_4_6
-#&gt; 139        e  power_set_3_8
-#&gt; 140        e power_set_3_19
-#&gt; 141        e  power_set_5_5
-#&gt; 142        e power_set_3_16
-#&gt; 143        e  power_set_4_2
-#&gt; 144        e  power_set_4_9
-#&gt; 145        e power_set_3_10
-#&gt; 146        e power_set_3_14
-#&gt; 147        e power_set_4_14
-#&gt; 148        e  power_set_3_3
-#&gt; 149        e power_set_2_13
-#&gt; 150        e  power_set_5_4
-#&gt; 151        e  power_set_5_6
-#&gt; 152        e  power_set_5_3
-#&gt; 153        e power_set_2_15
-#&gt; 154        e power_set_4_11
-#&gt; 155        e  power_set_2_8
-#&gt; 156        f  power_set_4_3
-#&gt; 157        f power_set_3_20
-#&gt; 158        f  power_set_2_5
-#&gt; 159        f power_set_3_13
-#&gt; 160        f  power_set_4_6
-#&gt; 161        f  power_set_2_9
-#&gt; 162        f  power_set_4_5
-#&gt; 163        f power_set_2_12
-#&gt; 164        f power_set_3_16
-#&gt; 165        f power_set_4_13
-#&gt; 166        f power_set_2_15
-#&gt; 167        f  power_set_3_4
-#&gt; 168        f  power_set_4_8
-#&gt; 169        f              b
-#&gt; 170        f power_set_3_18
-#&gt; 171        f  power_set_5_3
-#&gt; 172        f power_set_3_10
-#&gt; 173        f power_set_3_19
-#&gt; 174        f power_set_3_15
-#&gt; 175        f power_set_4_10
-#&gt; 176        f  power_set_5_4
-#&gt; 177        f  power_set_3_7
-#&gt; 178        f power_set_4_14
-#&gt; 179        f  power_set_5_2
-#&gt; 180        f power_set_2_14
-#&gt; 181        f  power_set_5_5
-#&gt; 182        f power_set_4_15
-#&gt; 183        f  power_set_3_9
-#&gt; 184        f power_set_4_12
-#&gt; 185        f  power_set_4_9
-#&gt; 186        f  power_set_5_6</div></pre>
+<span class='fu'>power_set</span>(<span class='no'>TS</span>, <span class='st'>"a"</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"power_set"</span>)</div><div class='output co'>#&gt;     elements           sets fuzzy
+#&gt; 1          a              a     1
+#&gt; 2          a  power_set_5_2     1
+#&gt; 3          a  power_set_3_3     1
+#&gt; 4          a  power_set_4_1     1
+#&gt; 5          a  power_set_4_8     1
+#&gt; 6          a  power_set_3_4     1
+#&gt; 7          a  power_set_2_1     1
+#&gt; 8          a  power_set_3_9     1
+#&gt; 9          a  power_set_2_2     1
+#&gt; 10         a  power_set_3_5     1
+#&gt; 11         a  power_set_2_3     1
+#&gt; 12         a  power_set_3_6     1
+#&gt; 13         a  power_set_2_4     1
+#&gt; 14         a  power_set_3_2     1
+#&gt; 15         a  power_set_2_5     1
+#&gt; 16         a  power_set_4_4     1
+#&gt; 17         a  power_set_5_3     1
+#&gt; 18         a  power_set_3_8     1
+#&gt; 19         a power_set_4_10     1
+#&gt; 20         a  power_set_4_5     1
+#&gt; 21         a  power_set_4_3     1
+#&gt; 22         a  power_set_4_2     1
+#&gt; 23         a  power_set_5_5     1
+#&gt; 24         a power_set_3_10     1
+#&gt; 25         a  power_set_3_7     1
+#&gt; 26         a  power_set_5_4     1
+#&gt; 27         a  power_set_5_1     1
+#&gt; 28         a  power_set_4_7     1
+#&gt; 29         a  power_set_3_1     1
+#&gt; 30         a  power_set_4_6     1
+#&gt; 31         a  power_set_4_9     1
+#&gt; 32         b  power_set_2_7     1
+#&gt; 33         b  power_set_4_1     1
+#&gt; 34         b  power_set_3_3     1
+#&gt; 35         b  power_set_2_9     1
+#&gt; 36         b power_set_3_14     1
+#&gt; 37         b power_set_4_11     1
+#&gt; 38         b power_set_3_12     1
+#&gt; 39         b  power_set_4_2     1
+#&gt; 40         b power_set_3_11     1
+#&gt; 41         b  power_set_5_4     1
+#&gt; 42         b  power_set_2_1     1
+#&gt; 43         b  power_set_5_2     1
+#&gt; 44         b  power_set_4_4     1
+#&gt; 45         b  power_set_2_6     1
+#&gt; 46         b              a     1
+#&gt; 47         b  power_set_4_5     1
+#&gt; 48         b  power_set_5_3     1
+#&gt; 49         b  power_set_5_6     1
+#&gt; 50         b  power_set_2_8     1
+#&gt; 51         b  power_set_3_1     1
+#&gt; 52         b  power_set_4_3     1
+#&gt; 53         b  power_set_5_1     1
+#&gt; 54         b power_set_4_13     1
+#&gt; 55         b  power_set_3_2     1
+#&gt; 56         b power_set_4_14     1
+#&gt; 57         b  power_set_3_4     1
+#&gt; 58         b power_set_4_12     1
+#&gt; 59         b power_set_3_13     1
+#&gt; 60         b power_set_3_15     1
+#&gt; 61         b  power_set_4_6     1
+#&gt; 62         b power_set_3_16     1
+#&gt; 63         c  power_set_4_8     1
+#&gt; 64         c power_set_3_11     1
+#&gt; 65         c power_set_3_19     1
+#&gt; 66         c power_set_3_17     1
+#&gt; 67         c  power_set_4_1     1
+#&gt; 68         c  power_set_3_7     1
+#&gt; 69         c power_set_3_12     1
+#&gt; 70         c power_set_4_13     1
+#&gt; 71         c power_set_2_11     1
+#&gt; 72         c  power_set_2_6     1
+#&gt; 73         c power_set_4_11     1
+#&gt; 74         c  power_set_5_2     1
+#&gt; 75         c  power_set_2_2     1
+#&gt; 76         c  power_set_3_5     1
+#&gt; 77         c  power_set_4_9     1
+#&gt; 78         c power_set_3_13     1
+#&gt; 79         c  power_set_3_1     1
+#&gt; 80         c  power_set_5_1     1
+#&gt; 81         c  power_set_4_3     1
+#&gt; 82         c  power_set_5_6     1
+#&gt; 83         c              a     1
+#&gt; 84         c power_set_3_18     1
+#&gt; 85         c  power_set_4_2     1
+#&gt; 86         c  power_set_3_6     1
+#&gt; 87         c power_set_4_15     1
+#&gt; 88         c power_set_2_10     1
+#&gt; 89         c  power_set_4_7     1
+#&gt; 90         c power_set_4_12     1
+#&gt; 91         c  power_set_5_3     1
+#&gt; 92         c power_set_2_12     1
+#&gt; 93         c  power_set_5_5     1
+#&gt; 94         d  power_set_2_7     1
+#&gt; 95         d  power_set_4_1     1
+#&gt; 96         d power_set_2_13     1
+#&gt; 97         d power_set_4_10     1
+#&gt; 98         d  power_set_5_2     1
+#&gt; 99         d power_set_3_17     1
+#&gt; 100        d              a     1
+#&gt; 101        d power_set_4_14     1
+#&gt; 102        d power_set_3_15     1
+#&gt; 103        d  power_set_5_4     1
+#&gt; 104        d  power_set_3_5     1
+#&gt; 105        d power_set_4_15     1
+#&gt; 106        d  power_set_4_7     1
+#&gt; 107        d  power_set_4_4     1
+#&gt; 108        d  power_set_3_8     1
+#&gt; 109        d power_set_3_20     1
+#&gt; 110        d  power_set_4_8     1
+#&gt; 111        d power_set_2_10     1
+#&gt; 112        d  power_set_5_6     1
+#&gt; 113        d  power_set_4_5     1
+#&gt; 114        d  power_set_2_3     1
+#&gt; 115        d power_set_3_11     1
+#&gt; 116        d  power_set_5_1     1
+#&gt; 117        d power_set_4_12     1
+#&gt; 118        d power_set_4_11     1
+#&gt; 119        d power_set_2_14     1
+#&gt; 120        d  power_set_3_2     1
+#&gt; 121        d  power_set_3_9     1
+#&gt; 122        d power_set_3_18     1
+#&gt; 123        d power_set_3_14     1
+#&gt; 124        d  power_set_5_5     1
+#&gt; 125        e power_set_4_13     1
+#&gt; 126        e power_set_3_20     1
+#&gt; 127        e  power_set_5_1     1
+#&gt; 128        e  power_set_2_4     1
+#&gt; 129        e  power_set_4_4     1
+#&gt; 130        e power_set_4_10     1
+#&gt; 131        e power_set_4_15     1
+#&gt; 132        e power_set_3_12     1
+#&gt; 133        e power_set_2_11     1
+#&gt; 134        e              a     1
+#&gt; 135        e  power_set_3_6     1
+#&gt; 136        e power_set_3_17     1
+#&gt; 137        e  power_set_4_7     1
+#&gt; 138        e  power_set_4_6     1
+#&gt; 139        e  power_set_3_8     1
+#&gt; 140        e power_set_3_19     1
+#&gt; 141        e  power_set_5_5     1
+#&gt; 142        e power_set_3_16     1
+#&gt; 143        e  power_set_4_2     1
+#&gt; 144        e  power_set_4_9     1
+#&gt; 145        e power_set_3_10     1
+#&gt; 146        e power_set_3_14     1
+#&gt; 147        e power_set_4_14     1
+#&gt; 148        e  power_set_3_3     1
+#&gt; 149        e power_set_2_13     1
+#&gt; 150        e  power_set_5_4     1
+#&gt; 151        e  power_set_5_6     1
+#&gt; 152        e  power_set_5_3     1
+#&gt; 153        e power_set_2_15     1
+#&gt; 154        e power_set_4_11     1
+#&gt; 155        e  power_set_2_8     1
+#&gt; 156        f  power_set_4_3     1
+#&gt; 157        f power_set_3_20     1
+#&gt; 158        f  power_set_2_5     1
+#&gt; 159        f power_set_3_13     1
+#&gt; 160        f  power_set_4_6     1
+#&gt; 161        f  power_set_2_9     1
+#&gt; 162        f  power_set_4_5     1
+#&gt; 163        f power_set_2_12     1
+#&gt; 164        f power_set_3_16     1
+#&gt; 165        f power_set_4_13     1
+#&gt; 166        f power_set_2_15     1
+#&gt; 167        f  power_set_3_4     1
+#&gt; 168        f  power_set_4_8     1
+#&gt; 169        f              b     1
+#&gt; 170        f power_set_3_18     1
+#&gt; 171        f  power_set_5_3     1
+#&gt; 172        f power_set_3_10     1
+#&gt; 173        f power_set_3_19     1
+#&gt; 174        f power_set_3_15     1
+#&gt; 175        f power_set_4_10     1
+#&gt; 176        f  power_set_5_4     1
+#&gt; 177        f  power_set_3_7     1
+#&gt; 178        f power_set_4_14     1
+#&gt; 179        f  power_set_5_2     1
+#&gt; 180        f power_set_2_14     1
+#&gt; 181        f  power_set_5_5     1
+#&gt; 182        f power_set_4_15     1
+#&gt; 183        f  power_set_3_9     1
+#&gt; 184        f power_set_4_12     1
+#&gt; 185        f  power_set_4_9     1
+#&gt; 186        f  power_set_5_6     1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -98,6 +98,9 @@ hierarchical sets." />
     <li>
       <a href="../articles/basic.html">About BaseSet</a>
     </li>
+    <li>
+      <a href="../articles/fuzzy.html">Fuzzy sets</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -184,13 +187,13 @@ others.</p>
 <span class='no'>TS</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tidySet.html'>tidySet</a></span>(<span class='no'>relations</span>)
 <span class='fu'>is_nested</span>(<span class='no'>TS</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='no'>TS2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='add_relation.html'>add_relation</a></span>(<span class='no'>TS</span>, <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>elements</span> <span class='kw'>=</span> <span class='st'>"A"</span>, <span class='kw'>sets</span> <span class='kw'>=</span> <span class='st'>"B"</span>))
 <span class='co'># Note that A is both a set and an element of B</span>
-<span class='no'>TS2</span></div><div class='output co'>#&gt;   elements sets
-#&gt; 1        a    A
-#&gt; 2        b    A
-#&gt; 3        c    A
-#&gt; 4        d    B
-#&gt; 5        e    B
-#&gt; 6        A    B</div><div class='input'><span class='fu'>is_nested</span>(<span class='no'>TS2</span>)</div><div class='output co'>#&gt; [1] TRUE</div></pre>
+<span class='no'>TS2</span></div><div class='output co'>#&gt;   elements sets fuzzy
+#&gt; 1        a    A     1
+#&gt; 2        b    A     1
+#&gt; 3        c    A     1
+#&gt; 4        d    B     1
+#&gt; 5        e    B     1
+#&gt; 6        A    B     1</div><div class='input'><span class='fu'>is_nested</span>(<span class='no'>TS2</span>)</div><div class='output co'>#&gt; [1] TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
