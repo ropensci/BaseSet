@@ -11,12 +11,6 @@ setAs("TidySet", "data.frame", function(from) {
                all.x = TRUE, suffix = c("", ".elements")
     )
 
-    # Don't show the fuzzy column if they are all fuzzy
-    # Could confuse users when they see this column appear in relations
-    if (!is.fuzzy(from)) {
-        keep <- setdiff(colnames(o), "fuzzy")
-        o <- o[, keep]
-    }
     o
 })
 
