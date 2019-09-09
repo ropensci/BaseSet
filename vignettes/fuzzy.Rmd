@@ -29,6 +29,7 @@ knitr::opts_chunk$set(collapse = TRUE,
                       warning = TRUE,
                       comment = "#>")
 library("BaseSet")
+library("dplyr")
 ```
 
 
@@ -106,7 +107,7 @@ subtract(fuzzy_set, set_in = "A", not_in = "B", keep = FALSE, name = "A-B")
 subtract(fuzzy_set, set_in = "B", not_in = "A", keep = FALSE)
 ```
 
-Note that here there is also a substraction of the fuzzy value.
+Note that here there is also a subtraction of the fuzzy value.
 
 # Sizes
 
@@ -187,7 +188,7 @@ But this doesn't make sense, because there must be some cell misclassification: 
 ```{r}
 nElements(sc_classification) == sum(sample_cells$size)
 ```
-Ideally the predicted number of cells per type and the cells with higher conficence about the type should match. 
+Ideally the predicted number of cells per type and the cells with higher confidence about the type should match. 
 
 We can also look the other way around: How good is the prediction of a cell type for each cell? 
 
@@ -209,5 +210,3 @@ sc_classification %>%
 ```
 
 And as we can see it is mostly as likely to be on the three cell types than in none of the cell types present.
-
-In conclusion, fuzzy sets allows you to look for the roo
