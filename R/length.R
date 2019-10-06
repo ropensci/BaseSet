@@ -106,8 +106,12 @@ length_set <- function(fuzziness) {
         names(out) <- as.character(sum(fuzziness))
         return(out) # Non fuzzy sets
     }
-
-    l <- seq(from = sum(p1), to = length(fuzziness))
+    if (all(fuzziness == 0)) {
+        max_length <- 0
+    } else {
+        max_length <- length(fuzziness)
+    }
+    l <- seq(from = sum(p1), to = max_length)
     # Exclude those cases that are obvious
     l2 <- l - sum(p1)
     l2 <- l2[l2 != 0]
@@ -146,6 +150,12 @@ setMethod("set_size",
 
               rel <- relations(object)
               rel <- rel[rel$sets %in% names_sets, ]
+              missing <- names_sets[!names_sets %in% rel$sets]
+              if (length(missing) != 0) {
+                  missing <- data.frame(sets = missing, elements = NA, fuzzy = 0)
+                  rel <- rbind(rel, missing)
+              }
+
               # Duplicate relationships with different information...
               # To filter to unique relationships
               rel <- rel[, c("fuzzy", "elements", "sets")]
@@ -154,7 +164,7 @@ setMethod("set_size",
                   rel <- droplevels(rel)
               }
 
-              if (is.fuzzy(object)) {
+              if (!all(rel$fuzzy == 1)) {
 
                   fuzzy_values <- split(rel$fuzzy, rel$sets)
                   sizes <- lapply(fuzzy_values, length_set)
@@ -204,6 +214,7 @@ setMethod("element_size",
                   stop("Please introduce valid element names. See element_names",
                        call. = FALSE)
               }
+
               # object <- droplevels(object)
               rel <- relations(object)
               if (is.null(element)) {
@@ -213,14 +224,20 @@ setMethod("element_size",
               }
               rel <- rel[rel$elements %in% names_elements, ]
 
+              missing <- names_elements[!names_elements %in% rel$elements]
+              if (length(missing) != 0) {
+                  missing <- data.frame(sets = NA, elements = missing, fuzzy = 0)
+                  rel <- rbind(rel, missing)
+              }
+
               # To filter to unique relationships
               rel <- rel[, c("fuzzy", "elements", "sets")]
               if (anyDuplicated(rel) != 0) {
                   rel <- unique(rel)
                   rel <- droplevels(rel)
               }
-
-              if (is.fuzzy(object)) {
+# browser()
+              if (!all(rel$fuzzy == 1)) {
                   fuzzy_values <- split(rel$fuzzy, rel$elements)
                   sizes <- lapply(fuzzy_values, length_set)
                   elements <- rep(names(fuzzy_values), lengths(sizes))
