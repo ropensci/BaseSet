@@ -147,8 +147,12 @@ setMethod("set_size",
               rel <- relations(object)
               rel <- rel[rel$sets %in% names_sets, ]
               # Duplicate relationships with different information...
-              rel <- unique(rel[, c("fuzzy", "elements", "sets")])
-              rel <- droplevels(rel)
+              # To filter to unique relationships
+              rel <- rel[, c("fuzzy", "elements", "sets")]
+              if (anyDuplicated(rel) != 0) {
+                  rel <- unique(rel)
+                  rel <- droplevels(rel)
+              }
 
               if (is.fuzzy(object)) {
 
@@ -174,7 +178,8 @@ setMethod("set_size",
               }
               out <- data.frame(sets = sets,
                                 size = as.numeric(lengths_set),
-                                probability = probability_length)
+                                probability = probability_length,
+                                stringsAsFactors = FALSE)
               out <- merge(out, sets(object), sort = FALSE)
               if (is.null(set)) {
                   out
@@ -209,8 +214,11 @@ setMethod("element_size",
               rel <- rel[rel$elements %in% names_elements, ]
 
               # To filter to unique relationships
-              rel <- unique(rel[, c("fuzzy", "elements", "sets")])
-              rel <- droplevels(rel)
+              rel <- rel[, c("fuzzy", "elements", "sets")]
+              if (anyDuplicated(rel) != 0) {
+                  rel <- unique(rel)
+                  rel <- droplevels(rel)
+              }
 
               if (is.fuzzy(object)) {
                   fuzzy_values <- split(rel$fuzzy, rel$elements)
@@ -236,7 +244,8 @@ setMethod("element_size",
 
               out <- data.frame(elements = elements,
                                 size = as.numeric(lengths_set),
-                                probability = probability_length)
+                                probability = probability_length,
+                                stringsAsFactors = FALSE)
               out <- merge(out, elements(object), sort = FALSE)
 
               if (is.null(element)) {
