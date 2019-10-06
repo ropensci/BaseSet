@@ -49,8 +49,7 @@ setMethod("nRelations",
 setMethod("is.fuzzy",
           signature = signature(object = "TidySet"),
           function(object) {
-            one <- sum(relations(object)$fuzzy == 1)
-            if (sum(one) == nRelations(object)) {
+            if (all(relations(object)$fuzzy == 1)) {
               FALSE
             } else {
               TRUE
