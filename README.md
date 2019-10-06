@@ -33,36 +33,45 @@ the sets:
 ``` r
 sets <- list(A = letters[1:5], B = c("a", "f"))
 sets_analysis <- tidySet(sets)
+sets_analysis
+#>   elements sets fuzzy
+#> 1        a    A     1
+#> 2        a    B     1
+#> 3        b    A     1
+#> 4        c    A     1
+#> 5        d    A     1
+#> 6        e    A     1
+#> 7        f    B     1
 ```
 
 Perform typical operations like union, intersection:
 
 ``` r
 union(sets_analysis, sets = c("A", "B")) 
-#>   elements sets
-#> 1        a  A∪B
-#> 2        b  A∪B
-#> 3        c  A∪B
-#> 4        d  A∪B
-#> 5        e  A∪B
-#> 6        f  A∪B
+#>   elements sets fuzzy
+#> 1        a  A∪B     1
+#> 2        b  A∪B     1
+#> 3        c  A∪B     1
+#> 4        d  A∪B     1
+#> 5        e  A∪B     1
+#> 6        f  A∪B     1
 # Or we can give a name to the new set and keep the others sets
 union(sets_analysis, sets = c("A", "B"), name = "D")
-#>   elements sets
-#> 1        a    D
-#> 2        b    D
-#> 3        c    D
-#> 4        d    D
-#> 5        e    D
-#> 6        f    D
+#>   elements sets fuzzy
+#> 1        a    D     1
+#> 2        b    D     1
+#> 3        c    D     1
+#> 4        d    D     1
+#> 5        e    D     1
+#> 6        f    D     1
 # We can do the same in the intersection
 intersection(sets_analysis, sets = c("A", "B"), name = "D") 
-#>   elements sets
-#> 1        a    D
+#>   elements sets fuzzy
+#> 1        a    D     1
 # Or we can omit the new name: 
 intersection(sets_analysis, sets = c("A", "B"))
-#>   elements sets
-#> 1        a  A∩B
+#>   elements sets fuzzy
+#> 1        a  A∩B     1
 ```
 
 And compute size of sets among other things:
@@ -78,11 +87,11 @@ The elements in one set not present in other:
 
 ``` r
 subtract(sets_analysis, set_in = "A", not_in = "B", keep = FALSE)
-#>   elements sets
-#> 1        b  A∖B
-#> 2        c  A∖B
-#> 3        d  A∖B
-#> 4        e  A∖B
+#>   elements sets fuzzy
+#> 1        b  A∖B     1
+#> 2        c  A∖B     1
+#> 3        d  A∖B     1
+#> 4        e  A∖B     1
 ```
 
 Or any other verb from
@@ -101,13 +110,13 @@ sets_analysis %>%
   filter(Keep == TRUE) %>% 
   activate("sets") %>% 
   mutate(sets_origin = c("Reactome", "KEGG"))
-#>   elements sets Keep sets_origin
-#> 1        a    A TRUE    Reactome
-#> 2        a    B TRUE        KEGG
-#> 3        b    A TRUE    Reactome
-#> 4        c    A TRUE    Reactome
-#> 5        d    A TRUE    Reactome
-#> 6        f    B TRUE        KEGG
+#>   elements sets fuzzy Keep sets_origin
+#> 1        a    A     1 TRUE    Reactome
+#> 2        a    B     1 TRUE        KEGG
+#> 3        b    A     1 TRUE    Reactome
+#> 4        c    A     1 TRUE    Reactome
+#> 5        d    A     1 TRUE    Reactome
+#> 6        f    B     1 TRUE        KEGG
 ```
 
 ## Fuzzy sets
@@ -203,3 +212,7 @@ fuzzy_set %>%
 #> 4        d    A 0.5800610 TRUE        KEGG
 #> 5        e    A 0.5724973 TRUE        KEGG
 ```
+
+Please note that the ‘BaseSet’ project is released with a [Contributor
+Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,
+you agree to abide by its terms.

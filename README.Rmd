@@ -42,6 +42,7 @@ To work with sets we need to have the relations between the elements and the set
 ```{r TidySet}
 sets <- list(A = letters[1:5], B = c("a", "f"))
 sets_analysis <- tidySet(sets)
+sets_analysis
 ```
 
 Perform typical operations like union, intersection:
@@ -104,3 +105,6 @@ fuzzy_set %>%
   mutate(sets_origin = c("Reactome", "KEGG"))
 ```
 
+
+Please note that the 'BaseSet' project is released with a  [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
+By contributing to this project, you agree to abide by its terms.
