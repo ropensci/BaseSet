@@ -151,6 +151,8 @@ setMethod("set_size",
               rel <- relations(object)
               rel <- rel[rel$sets %in% names_sets, ]
               missing <- names_sets[!names_sets %in% rel$sets]
+              rel <- rel[, c("fuzzy", "elements", "sets")]
+
               if (length(missing) != 0) {
                   missing <- data.frame(sets = missing, elements = NA, fuzzy = 0)
                   rel <- rbind(rel, missing)
@@ -158,7 +160,6 @@ setMethod("set_size",
 
               # Duplicate relationships with different information...
               # To filter to unique relationships
-              rel <- rel[, c("fuzzy", "elements", "sets")]
               if (anyDuplicated(rel) != 0) {
                   rel <- unique(rel)
                   rel <- droplevels(rel)
@@ -222,16 +223,17 @@ setMethod("element_size",
               } else {
                   names_elements <- element
               }
-              rel <- rel[rel$elements %in% names_elements, ]
 
+              rel <- rel[rel$elements %in% names_elements, ]
+              rel <- rel[, c("fuzzy", "elements", "sets")]
               missing <- names_elements[!names_elements %in% rel$elements]
+
               if (length(missing) != 0) {
                   missing <- data.frame(sets = NA, elements = missing, fuzzy = 0)
                   rel <- rbind(rel, missing)
               }
 
               # To filter to unique relationships
-              rel <- rel[, c("fuzzy", "elements", "sets")]
               if (anyDuplicated(rel) != 0) {
                   rel <- unique(rel)
                   rel <- droplevels(rel)
