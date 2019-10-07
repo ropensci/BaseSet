@@ -4,11 +4,11 @@ NULL
 setAs("TidySet", "data.frame", function(from) {
     s <- merge(from@relations, from@sets,
                by.x = "sets", by.y = "sets", sort = FALSE,
-               all.x = TRUE, suffix = c(".relations", ".sets")
+               all.x = TRUE, suffixes = c(".relations", ".sets")
     )
     o <- merge(s, from@elements,
                by.x = "elements", by.y = "elements", sort = FALSE,
-               all.x = TRUE, suffix = c("", ".elements")
+               all.x = TRUE, suffixes = c("", ".elements")
     )
 
     o
