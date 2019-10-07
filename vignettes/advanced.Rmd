@@ -36,7 +36,7 @@ knitr::opts_chunk$set(collapse = TRUE,
 To show compatibility with tidy workflows we will use magrittr pipe operator and the
 dplyr verbs.
 
-```{r setupr, include=FALSE}
+```{r setupr, message=FALSE}
 library("dplyr")
 library("BaseSet")
 ```
@@ -45,7 +45,7 @@ library("BaseSet")
 
 We will explore the genes related with GO. 
 
-```{r prepare_GO}
+```{r prepare_GO, message=FALSE}
 # We load some libraries
 library("org.Hs.eg.db")
 library("GO.db")
@@ -78,12 +78,12 @@ h2GO_TS %>%
   group_by(elements, sets) %>% 
   count(sort = TRUE) %>% 
   ggplot() +
-    geom_histogram(aes(n), binwidth = 1) +
-    theme_minimal() +
-    # scale_y_log10() +
-    labs(x = "Evidence codes", 
-         title = "Evidence codes for each relation between GO and a gene",
-         subtitle = "in human annotation")
+  geom_histogram(aes(n), binwidth = 1) +
+  theme_minimal() +
+  # scale_y_log10() +
+  labs(x = "Evidence codes", 
+       title = "Evidence codes for each relation between GO and a gene",
+       subtitle = "in human annotation")
 ```
 
 We can see that mostly all the annotations are done with a single evidence code.
