@@ -108,6 +108,6 @@ filter_relation.TidySet <- function(.data, ...) {
   } else {
     .data@relations <- droplevels(out)
   }
-  droplevels(.data)
+  droplevels(.data, sets = FALSE, elements = FALSE)
 }
 
