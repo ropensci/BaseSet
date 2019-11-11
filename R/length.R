@@ -16,8 +16,8 @@ multiply_probabilities <- function(p, i) {
     } else if (length(i) == 0) {
         i <- seq_along(p)
     }
-    a <- prod(p[-i])
-    b <- prod((1 - p)[i])
+    a <- prod(p[i])
+    b <- prod((1 - p)[-i])
     a*b
 }
 
@@ -125,6 +125,7 @@ length_set <- function(fuzziness) {
     l
 }
 
+# TODO Use matrix operations to simplify tha process for large objects
 #' @describeIn set_size Calculates the size of a set either fuzzy or not
 #' @export
 #' @examples
