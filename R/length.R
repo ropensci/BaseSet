@@ -7,7 +7,7 @@ NULL
 #' @param p Probabilities
 #' @param i Index of the complementary probability
 #' @return  The log10 of the probability
-#' @keywords internal
+#' @export
 #' @examples
 #' multiply_probabilities(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), c(1, 3))
 multiply_probabilities <- function(p, i) {
@@ -20,6 +20,13 @@ multiply_probabilities <- function(p, i) {
     prod(p[i], (1 - p)[-i])
 }
 
+multiply_probabilities_m <- function(p, q, i) {
+    stopifnot(dim(p) == dim(q))
+    a <- apply(p[i, , drop = FALSE], 2, prod)
+    b <- apply(q[-i, , drop = FALSE], 2, prod)
+    a*b
+}
+
 #' Calculates the probability of a single length
 #'
 #' Creates all the possibilities and then add them up.
@@ -27,7 +34,6 @@ multiply_probabilities <- function(p, i) {
 #' @param n Size
 #' @return A numeric value of the probability of the given size
 #' @export
-#' @keywords internal
 #' @examples
 #' length_probability(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), 2)
 length_probability <- function(p, n) {
