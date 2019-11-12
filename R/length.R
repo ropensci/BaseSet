@@ -8,7 +8,8 @@ NULL
 #' @param i Index of the complementary probability
 #' @return  The log10 of the probability
 #' @keywords internal
-# multiply_probabilities(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), c(1, 3))
+#' @examples
+#' multiply_probabilities(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), c(1, 3))
 multiply_probabilities <- function(p, i) {
 
     if (length(i) == length(p)) {
@@ -16,61 +17,7 @@ multiply_probabilities <- function(p, i) {
     } else if (length(i) == 0) {
         i <- seq_along(p)
     }
-    a <- prod(p[i])
-    b <- prod((1 - p)[-i])
-    a*b
-}
-
-
-# From the soucre code of combn
-# (with some modifications because a function cannot be passed along)
-#' Title
-#'
-#' @param x An integer.
-#' @param m number of elements to choose.
-#'
-#' @return A list of indices
-#' @keywords internal
-# combn_indices(5, 2)
-combn_indices <- function(x, m) {
-    stopifnot(length(m) == 1L, is.numeric(m))
-    if (m < 0)
-        stop("m < 0", domain = NA, call. = FALSE)
-    if (is.numeric(x) && length(x) == 1L && x > 0 && trunc(x) == x)
-        x <- seq_len(x)
-    n <- base::length(x)
-    if (n < m)
-        stop("n < m", domain = NA, call. = FALSE)
-
-    m <- as.integer(m)
-    e <- 0
-    h <- m
-    a <- seq_len(m)
-    count <- as.integer(round(choose(n, m)))
-
-    out <- vector("list", count)
-    out[[1L]] <- a
-
-    if (m > 0) {
-        i <- 2L
-        nmmp1 <- n - m + 1L
-        while (a[1L] != nmmp1) {
-            if (e < n - h) {
-                h <- 1L
-                e <- a[m]
-                j <- 1L
-            }
-            else {
-                e <- a[m - h]
-                h <- h + 1L
-                j <- 1L:h
-            }
-            a[m - h + j] <- e + j
-            out[[i]] <- a
-            i <- i + 1L
-        }
-    }
-    out
+    prod(p[i], (1 - p)[-i])
 }
 
 #' Calculates the probability of a single length
@@ -81,11 +28,11 @@ combn_indices <- function(x, m) {
 #' @return A numeric value of the probability of the given size
 #' @export
 #' @keywords internal
-# length_probability(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), 2)
+#' @examples
+#' length_probability(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), 2)
 length_probability <- function(p, n) {
-    i <- combn_indices(x = length(p), m = n)
-    out <- vapply(i, multiply_probabilities, p = p, numeric(1L))
-    sum(out)
+    pos <- combn(seq_along(p), n)
+    sum(apply(pos, 2, multiply_probabilities, p = p))
 }
 
 
@@ -129,7 +76,7 @@ length_set <- function(fuzziness) {
 #' @describeIn set_size Calculates the size of a set either fuzzy or not
 #' @export
 #' @examples
-#' relations <- data.frame(sets = c(rep("a", 5), "b", "c"),
+#' relations <- data.frame(sets = c(rep("A", 5), "B", "C"),
 #'                         elements = c(letters[seq_len(6)], letters[6]),
 #'                         fuzzy = runif(7))
 #' a <- tidySet(relations)
@@ -204,7 +151,7 @@ setMethod("set_size",
 #' @describeIn element_size Calculates the number of sets one element appears
 #' @export
 #' @examples
-#' relations <- data.frame(sets = c(rep("a", 5), "b", "c"),
+#' relations <- data.frame(sets = c(rep("A", 5), "B", "C"),
 #'                         elements = c(letters[seq_len(6)], letters[6]),
 #'                         fuzzy = runif(7))
 #' a <- tidySet(relations)

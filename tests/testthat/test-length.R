@@ -48,9 +48,3 @@ test_that("length_set works", {
   expect_equivalent(o2["2"], 0L)
   expect_true(all(o2[-c(1, 2)] == 0L))
 })
-
-test_that("combn_indices works", {
-  i <- combn_indices(5, 2)
-  expect_length(i, choose(5, 2))
-  expect_true(all(table(unlist(i)) == 4))
-})

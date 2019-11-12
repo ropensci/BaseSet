@@ -17,4 +17,7 @@ A numeric value of the probability of the given size
 \description{
 Creates all the possibilities and then add them up.
 }
+\examples{
+length_probability(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), 2)
+}
 \keyword{internal}

@@ -17,4 +17,7 @@ The log10 of the probability
 \description{
 Calculates the probability that all happened simultaneously
 }
+\examples{
+multiply_probabilities(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), c(1, 3))
+}
 \keyword{internal}
