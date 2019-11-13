@@ -94,7 +94,7 @@
       August Pi i Sunyer Biomedical Research Institute (IDIBAPS); Liver Unit, Hospital Clinic<br><a class="author_email" href="mailto:#"></a><a href="mailto:lluis.revilla@gmail.com">lluis.revilla@gmail.com</a>
       </address>
                   
-            <h4 class="date">10 October 2019</h4>
+            <h4 class="date">13 November 2019</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/llrs/BaseSet/blob/master/vignettes/advanced.Rmd"><code>vignettes/advanced.Rmd</code></a></small>
       <div class="hidden name"><code>advanced.Rmd</code></div>
@@ -161,16 +161,16 @@
 <a class="sourceLine" id="cb5-6" data-line-number="6">sizes_element &lt;-<span class="st"> </span><span class="kw"><a href="../reference/element_size.html">element_size</a></span>(h2GO_TS) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb5-7" data-line-number="7"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(size))</a>
 <a class="sourceLine" id="cb5-8" data-line-number="8"><span class="kw"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(sizes_element<span class="op">$</span>size <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; [1] 41314</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; [1] 40729</span></a>
 <a class="sourceLine" id="cb5-10" data-line-number="10"><span class="kw"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(sizes_element<span class="op">$</span>size <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; [1] 20207</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; [1] 20488</span></a>
 <a class="sourceLine" id="cb5-12" data-line-number="12"></a>
 <a class="sourceLine" id="cb5-13" data-line-number="13">sizes_set &lt;-<span class="st"> </span><span class="kw"><a href="../reference/set_size.html">set_size</a></span>(h2GO_TS) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb5-14" data-line-number="14"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(size))</a>
 <a class="sourceLine" id="cb5-15" data-line-number="15"><span class="kw"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(sizes_set<span class="op">$</span>size <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; [1] 27553</span></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; [1] 26872</span></a>
 <a class="sourceLine" id="cb5-17" data-line-number="17"><span class="kw"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(sizes_set<span class="op">$</span>size <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt; [1] 17496</span></a></code></pre></div>
+<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt; [1] 18177</span></a></code></pre></div>
 <p>So we can see that both there are more genes without annotation and more GO terms without a (direct) gene annotated.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">sizes_element <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(size <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -190,16 +190,16 @@
 <p>As you can see on the second plot we have very large values but that are on associated on many genes:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(sizes_set, <span class="dv">10</span>)</a>
 <a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt;          sets size probability Ontology</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; 1  GO:0005515 9664           1       MF</span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; 2  GO:0005829 4871           1       CC</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; 3  GO:0005634 4561           1       CC</span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; 4  GO:0005886 4271           1       CC</span></a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; 5  GO:0016021 3490           1       CC</span></a>
-<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; 6  GO:0005737 3433           1       CC</span></a>
-<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt; 7  GO:0005654 3123           1       CC</span></a>
-<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt; 8  GO:0046872 2267           1       MF</span></a>
-<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt; 9  GO:0070062 2162           1       CC</span></a>
-<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt; 10 GO:0005576 1865           1       CC</span></a></code></pre></div>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; 1  GO:0005515 9690           1       MF</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; 2  GO:0005634 5626           1       CC</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; 3  GO:0005829 5026           1       CC</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; 4  GO:0005886 4481           1       CC</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; 5  GO:0005737 4437           1       CC</span></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; 6  GO:0016021 3638           1       CC</span></a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt; 7  GO:0005654 3168           1       CC</span></a>
+<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt; 8  GO:0046872 2292           1       MF</span></a>
+<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt; 9  GO:0070062 2163           1       CC</span></a>
+<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt; 10 GO:0016020 1987           1       CC</span></a></code></pre></div>
 </div>
 <div id="human-pathways" class="section level1">
 <h1 class="hasAnchor">
@@ -217,7 +217,7 @@
 <a class="sourceLine" id="cb9-10" data-line-number="10"><span class="co"># There are duplicate relations with different evidence codes!!: </span></a>
 <a class="sourceLine" id="cb9-11" data-line-number="11"><span class="kw"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/duplicated.html">duplicated</a></span>(h2p[, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"elements"</span>, <span class="st">"sets"</span>)]))</a>
 <a class="sourceLine" id="cb9-12" data-line-number="12"><span class="co">#&gt;    Mode   FALSE    TRUE </span></a>
-<a class="sourceLine" id="cb9-13" data-line-number="13"><span class="co">#&gt; logical  110537   11877</span></a>
+<a class="sourceLine" id="cb9-13" data-line-number="13"><span class="co">#&gt; logical  111759   11951</span></a>
 <a class="sourceLine" id="cb9-14" data-line-number="14">h2p &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/unique.html">unique</a></span>(h2p)</a>
 <a class="sourceLine" id="cb9-15" data-line-number="15"><span class="co"># Create a tidySet and </span></a>
 <a class="sourceLine" id="cb9-16" data-line-number="16">h2p_TS &lt;-<span class="st"> </span><span class="kw"><a href="../reference/tidySet.html">tidySet</a></span>(h2p) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -227,9 +227,9 @@
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">sizes_element &lt;-<span class="st"> </span><span class="kw"><a href="../reference/element_size.html">element_size</a></span>(h2p_TS) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb10-2" data-line-number="2"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(size))</a>
 <a class="sourceLine" id="cb10-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(sizes_element<span class="op">$</span>size <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#&gt; [1] 50902</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#&gt; [1] 50563</span></a>
 <a class="sourceLine" id="cb10-5" data-line-number="5"><span class="kw"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(sizes_element<span class="op">$</span>size <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#&gt; [1] 10696</span></a>
+<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#&gt; [1] 10736</span></a>
 <a class="sourceLine" id="cb10-7" data-line-number="7"></a>
 <a class="sourceLine" id="cb10-8" data-line-number="8">sizes_set &lt;-<span class="st"> </span><span class="kw"><a href="../reference/set_size.html">set_size</a></span>(h2p_TS) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb10-9" data-line-number="9"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(size))</a></code></pre></div>
@@ -242,7 +242,7 @@
 <a class="sourceLine" id="cb11-6" data-line-number="6"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb11-7" data-line-number="7"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">x =</span> <span class="st">"# sets per element"</span>, <span class="dt">y =</span> <span class="st">"Count"</span>)</a>
 <a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">#&gt; Warning: Transformation introduced infinite values in continuous y-axis</span></a>
-<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#&gt; Warning: Removed 249 rows containing missing values (geom_bar).</span></a></code></pre></div>
+<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#&gt; Warning: Removed 254 rows containing missing values (geom_bar).</span></a></code></pre></div>
 <p><img src="advanced_files/figure-html/pathways_plots-1.png" width="700"></p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"></a>
 <a class="sourceLine" id="cb12-2" data-line-number="2">sizes_set <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -252,26 +252,26 @@
 <a class="sourceLine" id="cb12-6" data-line-number="6"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb12-7" data-line-number="7"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">x =</span> <span class="st">"# elements per set"</span>, <span class="dt">y =</span> <span class="st">"Count"</span>)</a>
 <a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; Warning: Transformation introduced infinite values in continuous y-axis</span></a>
-<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="co">#&gt; Warning: Removed 2466 rows containing missing values (geom_bar).</span></a></code></pre></div>
+<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="co">#&gt; Warning: Removed 2509 rows containing missing values (geom_bar).</span></a></code></pre></div>
 <p><img src="advanced_files/figure-html/pathways_plots-2.png" width="700"></p>
 <p>As you can see on the second plot we have very large values but that are on associated on many genes:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(sizes_set, <span class="dv">10</span>)</a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co">#&gt;             sets size probability</span></a>
-<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co">#&gt; 1   R-HSA-162582 2715           1</span></a>
-<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co">#&gt; 2  R-HSA-1430728 2108           1</span></a>
-<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">#&gt; 3   R-HSA-392499 2032           1</span></a>
-<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">#&gt; 4   R-HSA-168256 2015           1</span></a>
+<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co">#&gt; 1   R-HSA-162582 2761           1</span></a>
+<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co">#&gt; 2   R-HSA-168256 2142           1</span></a>
+<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">#&gt; 3  R-HSA-1430728 2110           1</span></a>
+<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">#&gt; 4   R-HSA-392499 2035           1</span></a>
 <a class="sourceLine" id="cb13-7" data-line-number="7"><span class="co">#&gt; 5    R-HSA-74160 1480           1</span></a>
-<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="co">#&gt; 6   R-HSA-597592 1429           1</span></a>
+<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="co">#&gt; 6   R-HSA-597592 1430           1</span></a>
 <a class="sourceLine" id="cb13-9" data-line-number="9"><span class="co">#&gt; 7    R-HSA-73857 1340           1</span></a>
 <a class="sourceLine" id="cb13-10" data-line-number="10"><span class="co">#&gt; 8   R-HSA-212436 1217           1</span></a>
-<a class="sourceLine" id="cb13-11" data-line-number="11"><span class="co">#&gt; 9   R-HSA-372790 1174           1</span></a>
-<a class="sourceLine" id="cb13-12" data-line-number="12"><span class="co">#&gt; 10 R-HSA-1643685 1132           1</span></a></code></pre></div>
+<a class="sourceLine" id="cb13-11" data-line-number="11"><span class="co">#&gt; 9   R-HSA-372790 1183           1</span></a>
+<a class="sourceLine" id="cb13-12" data-line-number="12"><span class="co">#&gt; 10 R-HSA-1643685 1131           1</span></a></code></pre></div>
 </div>
 <div id="session-info" class="section level1 unnumbered">
 <h1 class="hasAnchor">
 <a href="#session-info" class="anchor"></a>Session info</h1>
-<pre><code>#&gt; R version 3.6.1 (2017-01-27)
+<pre><code>#&gt; R Under development (unstable) (2019-11-12 r77405)
 #&gt; Platform: x86_64-pc-linux-gnu (64-bit)
 #&gt; Running under: Ubuntu 16.04.6 LTS
 #&gt; 
@@ -292,29 +292,25 @@
 #&gt; [8] methods   base     
 #&gt; 
 #&gt; other attached packages:
-#&gt;  [1] reactome.db_1.68.0   forcats_0.4.0        ggplot2_3.2.1       
-#&gt;  [4] GO.db_3.8.2          org.Hs.eg.db_3.8.2   AnnotationDbi_1.47.1
-#&gt;  [7] IRanges_2.19.16      S4Vectors_0.23.25    Biobase_2.45.1      
-#&gt; [10] BiocGenerics_0.31.6  BaseSet_0.0.9        dplyr_0.8.3         
+#&gt;  [1] reactome.db_1.70.0   forcats_0.4.0        ggplot2_3.2.1       
+#&gt;  [4] GO.db_3.10.0         org.Hs.eg.db_3.10.0  AnnotationDbi_1.49.0
+#&gt;  [7] IRanges_2.21.1       S4Vectors_0.25.0     Biobase_2.47.0      
+#&gt; [10] BiocGenerics_0.33.0  BaseSet_0.0.9        dplyr_0.8.3         
 #&gt; 
 #&gt; loaded via a namespace (and not attached):
-#&gt;  [1] tidyselect_0.2.5   xfun_0.10          purrr_0.3.2       
-#&gt;  [4] reshape2_1.4.3     colorspace_1.4-1   vctrs_0.2.0       
-#&gt;  [7] htmltools_0.4.0    yaml_2.2.0         blob_1.2.0        
-#&gt; [10] rlang_0.4.0        pkgdown_1.4.1      pillar_1.4.2      
-#&gt; [13] glue_1.3.1         withr_2.1.2        DBI_1.0.0         
-#&gt; [16] bit64_0.9-7        plyr_1.8.4         stringr_1.4.0     
-#&gt; [19] munsell_0.5.0      gtable_0.3.0       memoise_1.1.0     
-#&gt; [22] evaluate_0.14      labeling_0.3       knitr_1.25        
-#&gt; [25] Rcpp_1.0.2         backports_1.1.5    scales_1.0.0      
-#&gt; [28] BiocManager_1.30.7 desc_1.2.0         fs_1.3.1          
-#&gt; [31] bit_1.1-14         BiocStyle_2.13.2   digest_0.6.21     
-#&gt; [34] stringi_1.4.3      rprojroot_1.3-2    grid_3.6.1        
-#&gt; [37] tools_3.6.1        magrittr_1.5       lazyeval_0.2.2    
-#&gt; [40] tibble_2.1.3       RSQLite_2.1.2      crayon_1.3.4      
-#&gt; [43] pkgconfig_2.0.3    zeallot_0.1.0      MASS_7.3-51.4     
-#&gt; [46] ellipsis_0.3.0     assertthat_0.2.1   rmarkdown_1.16    
-#&gt; [49] R6_2.4.0           compiler_3.6.1</code></pre>
+#&gt;  [1] tidyselect_0.2.5   xfun_0.11          purrr_0.3.3        reshape2_1.4.3    
+#&gt;  [5] colorspace_1.4-1   vctrs_0.2.0        htmltools_0.4.0    yaml_2.2.0        
+#&gt;  [9] blob_1.2.0         rlang_0.4.1        pkgdown_1.4.1      pillar_1.4.2      
+#&gt; [13] glue_1.3.1         withr_2.1.2        DBI_1.0.0          bit64_0.9-7       
+#&gt; [17] plyr_1.8.4         stringr_1.4.0      munsell_0.5.0      gtable_0.3.0      
+#&gt; [21] memoise_1.1.0      evaluate_0.14      labeling_0.3       knitr_1.26        
+#&gt; [25] Rcpp_1.0.3         backports_1.1.5    scales_1.0.0       BiocManager_1.30.9
+#&gt; [29] desc_1.2.0         fs_1.3.1           bit_1.1-14         BiocStyle_2.15.0  
+#&gt; [33] digest_0.6.22      stringi_1.4.3      rprojroot_1.3-2    grid_4.0.0        
+#&gt; [37] tools_4.0.0        magrittr_1.5       lazyeval_0.2.2     tibble_2.1.3      
+#&gt; [41] RSQLite_2.1.2      crayon_1.3.4       pkgconfig_2.0.3    zeallot_0.1.0     
+#&gt; [45] MASS_7.3-51.4      ellipsis_0.3.0     assertthat_0.2.1   rmarkdown_1.16    
+#&gt; [49] R6_2.4.0           compiler_4.0.0</code></pre>
 </div>
   </div>
 

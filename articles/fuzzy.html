@@ -204,10 +204,10 @@
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="../reference/set_size.html">set_size</a></span>(fuzzy_set)</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt;    sets size probability</span></a>
 <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; 1     A    0 0.037593610</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; 2     A    1 0.080805868</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt; 3     A    2 0.278302802</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; 4     A    3 0.384150899</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt; 5     A    4 0.211200558</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; 2     A    1 0.211200558</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt; 3     A    2 0.384150899</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; 4     A    3 0.278302802</span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt; 5     A    4 0.080805868</span></a>
 <a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt; 6     A    5 0.007946263</span></a>
 <a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt; 7     B    0 0.722668660</span></a>
 <a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt; 8     B    1 0.277331340</span></a>
@@ -306,11 +306,11 @@
 <a class="sourceLine" id="cb11-7" data-line-number="7"><span class="co">#&gt; # Groups:   sets [4]</span></a>
 <a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">#&gt;   sets      size probability</span></a>
 <a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#&gt;   &lt;chr&gt;    &lt;dbl&gt;       &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="co">#&gt; 1 alpha        9       0.313</span></a>
-<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="co">#&gt; 2 beta         9       0.302</span></a>
-<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">#&gt; 3 delta        9       0.313</span></a>
-<a class="sourceLine" id="cb11-13" data-line-number="13"><span class="co">#&gt; 4 endothel     8       0.303</span></a></code></pre></div>
-<p>And we can see that there are 9 alpha cells, 9 beta cells, 9 delta cells, 8 endothel cells,. But this doesn’t make sense, because there must be some cell misclassification: we have only 10 cells in this example but there are 35 cells predicted for these types:</p>
+<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="co">#&gt; 1 alpha        1       0.313</span></a>
+<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="co">#&gt; 2 beta         1       0.302</span></a>
+<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">#&gt; 3 delta        1       0.313</span></a>
+<a class="sourceLine" id="cb11-13" data-line-number="13"><span class="co">#&gt; 4 endothel     2       0.303</span></a></code></pre></div>
+<p>And we can see that there are 1 alpha cells, 1 beta cells, 1 delta cells, 2 endothel cells,. But this doesn’t make sense, because there must be some cell misclassification: we have only 10 cells in this example but there are 5 cells predicted for these types:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="../reference/nElements.html">nElements</a></span>(sc_classification) <span class="op">==</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(sample_cells<span class="op">$</span>size)</a>
 <a class="sourceLine" id="cb12-2" data-line-number="2"><span class="co">#&gt; [1] FALSE</span></a></code></pre></div>
 <p>Ideally the predicted number of cells per type and the cells with higher confidence about the type should match.</p>
@@ -327,23 +327,23 @@
 <a class="sourceLine" id="cb13-10" data-line-number="10"><span class="co">#&gt;  1 D2ex_1       0       0.422</span></a>
 <a class="sourceLine" id="cb13-11" data-line-number="11"><span class="co">#&gt;  2 D2ex_10      0       0.449</span></a>
 <a class="sourceLine" id="cb13-12" data-line-number="12"><span class="co">#&gt;  3 D2ex_11      0       0.508</span></a>
-<a class="sourceLine" id="cb13-13" data-line-number="13"><span class="co">#&gt;  4 D2ex_12      3       0.412</span></a>
+<a class="sourceLine" id="cb13-13" data-line-number="13"><span class="co">#&gt;  4 D2ex_12      1       0.412</span></a>
 <a class="sourceLine" id="cb13-14" data-line-number="14"><span class="co">#&gt;  5 D2ex_13      0       0.482</span></a>
 <a class="sourceLine" id="cb13-15" data-line-number="15"><span class="co">#&gt;  6 D2ex_14      0       0.456</span></a>
 <a class="sourceLine" id="cb13-16" data-line-number="16"><span class="co">#&gt;  7 D2ex_15      0       0.484</span></a>
 <a class="sourceLine" id="cb13-17" data-line-number="17"><span class="co">#&gt;  8 D2ex_16      0       0.422</span></a>
 <a class="sourceLine" id="cb13-18" data-line-number="18"><span class="co">#&gt;  9 D2ex_17      0       0.488</span></a>
-<a class="sourceLine" id="cb13-19" data-line-number="19"><span class="co">#&gt; 10 D2ex_18      3       0.414</span></a></code></pre></div>
+<a class="sourceLine" id="cb13-19" data-line-number="19"><span class="co">#&gt; 10 D2ex_18      1       0.414</span></a></code></pre></div>
 <p>We can see that for most cells the most probable cell type is not present (we don’t know the type of cell), and some cells could be classified in more than 1 cell type.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">sc_classification <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb14-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/element_size.html">element_size</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb14-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(elements <span class="op">==</span><span class="st"> "D2ex_18"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb14-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw">desc</span>(probability))</a>
 <a class="sourceLine" id="cb14-5" data-line-number="5"><span class="co">#&gt;   elements size probability</span></a>
-<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co">#&gt; 1  D2ex_18    3 0.413778624</span></a>
+<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co">#&gt; 1  D2ex_18    1 0.413778624</span></a>
 <a class="sourceLine" id="cb14-7" data-line-number="7"><span class="co">#&gt; 2  D2ex_18    0 0.392733301</span></a>
 <a class="sourceLine" id="cb14-8" data-line-number="8"><span class="co">#&gt; 3  D2ex_18    2 0.163108322</span></a>
-<a class="sourceLine" id="cb14-9" data-line-number="9"><span class="co">#&gt; 4  D2ex_18    1 0.028514280</span></a>
+<a class="sourceLine" id="cb14-9" data-line-number="9"><span class="co">#&gt; 4  D2ex_18    3 0.028514280</span></a>
 <a class="sourceLine" id="cb14-10" data-line-number="10"><span class="co">#&gt; 5  D2ex_18    4 0.001865473</span></a></code></pre></div>
 <p>And as we can see it is mostly as likely to be on the three cell types than in none of the cell types present.</p>
 </div>
