@@ -92,16 +92,19 @@ is.valid <- function(object) {
                 "You might want to add a column to the relations instead")
   }
 
-  # Check that relations are unique for fuzzy values
   relations <- slot(object, "relations")
   if (nrow(relations) > 0) {
-    fuzziness <- tapply(fuzz,
-                        paste(relations$elements, relations$sets),
-                        FUN = n_distinct)
-    if (!all(fuzziness == 1)){
-      errors <- c(errors,
-                  "A relationship between an element and a set must have a single fuzzy value"
-      )
+    # Check that there are duplicated ids
+    es <- paste(relations$elements, relations$sets)
+
+    # Check that relations have the same fuzzy value when the
+    if (anyDuplicated(es) != 0 & !all(fuzz == 1)) {
+      fuzziness <- tapply(fuzz, es, FUN = n_distinct)
+      if (!all(fuzziness == 1)){
+        errors <- c(errors,
+                    "A relationship between an element and a set must have a single fuzzy value"
+        )
+      }
     }
   }
 
