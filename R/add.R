@@ -70,9 +70,7 @@ add_relations_interal <- function(object, elements, sets, fuzzy) {
                                    fuzzy = fuzzy)
         column_names <- setdiff(colnames(object@relations),
                                 c("sets", "elements", "fuzzy"))
-        if (length(column_names) > 0) {
-            df_relations[, column_names] <- NA
-        }
+        df_relations[, column_names] <- NA
         object@relations <- rbind.data.frame(object@relations, df_relations)
     }
     rownames(object@relations) <- NULL
