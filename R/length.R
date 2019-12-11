@@ -11,7 +11,8 @@ NULL
 #' @examples
 #' multiply_probabilities(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), c(1, 3))
 multiply_probabilities <- function(p, i) {
-
+    stopifnot(all(i > 0))
+    stopifnot(all(p >= 0))
     if (length(i) == length(p)) {
         return(prod(p))
     } else if (length(i) == 0) {
