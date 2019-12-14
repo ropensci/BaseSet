@@ -158,20 +158,41 @@
     <pre class="examples"><div class='input'><span class='no'>oboFile</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"BaseSet"</span>, <span class='st'>"extdata"</span>,
                                   <span class='st'>"go-basic_subset.obo"</span>)
 <span class='no'>gs</span> <span class='kw'>&lt;-</span> <span class='fu'>getOBO</span>(<span class='no'>oboFile</span>)
-<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>gs</span>)</div><div class='output co'>#&gt;     elements       sets type fuzzy        data-version default-namespace
-#&gt; 1 GO:0000001 GO:0048308 is_a     1 releases/2017-11-25     gene_ontology
-#&gt; 2 GO:0000001 GO:0048311 is_a     1 releases/2017-11-25     gene_ontology
-#&gt; 3 GO:0000011 GO:0048308 is_a     1 releases/2017-11-25     gene_ontology
-#&gt; 4 GO:0000011 GO:0007033 is_a     1 releases/2017-11-25     gene_ontology
-#&gt; 5 GO:0000002 GO:0007005 is_a     1 releases/2017-11-25     gene_ontology
-#&gt; 6 GO:0000003 GO:0008150 is_a     1 releases/2017-11-25     gene_ontology
-#&gt;   ontology
-#&gt; 1       go
-#&gt; 2       go
-#&gt; 3       go
-#&gt; 4       go
-#&gt; 5       go
-#&gt; 6       go</div></pre>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>gs</span>)</div><div class='output co'>#&gt;     elements       sets                             name          namespace
+#&gt; 1 GO:0000001 GO:0048308        mitochondrion inheritance biological_process
+#&gt; 2 GO:0000001 GO:0048311        mitochondrion inheritance biological_process
+#&gt; 3 GO:0000011 GO:0048308              vacuole inheritance biological_process
+#&gt; 4 GO:0000011 GO:0007033              vacuole inheritance biological_process
+#&gt; 5 GO:0000002 GO:0007005 mitochondrial genome maintenance biological_process
+#&gt; 6 GO:0000003 GO:0008150                     reproduction biological_process
+#&gt;                                                                                                                                                                                                                                 def
+#&gt; 1 "The distribution of mitochondria, including the mitochondrial genome, into daughter cells after mitosis or meiosis, mediated by interactions between mitochondria and the cytoskeleton." [GOC:mcc, PMID:10873824, PMID:11389764]
+#&gt; 2 "The distribution of mitochondria, including the mitochondrial genome, into daughter cells after mitosis or meiosis, mediated by interactions between mitochondria and the cytoskeleton." [GOC:mcc, PMID:10873824, PMID:11389764]
+#&gt; 3                                              "The distribution of vacuoles into daughter cells after mitosis or meiosis, mediated by interactions between vacuoles and the cytoskeleton." [GOC:mcc, PMID:10873824, PMID:14616069]
+#&gt; 4                                              "The distribution of vacuoles into daughter cells after mitosis or meiosis, mediated by interactions between vacuoles and the cytoskeleton." [GOC:mcc, PMID:10873824, PMID:14616069]
+#&gt; 5                                                              "The maintenance of the structure and integrity of the mitochondrial genome; includes replication and segregation of the mitochondrial chromosome." [GOC:ai, GOC:vw]
+#&gt; 6                                       "The production of new individuals that contain some portion of genetic material inherited from one or more parent organisms." [GOC:go_curators, GOC:isa_complete, GOC:jl, ISBN:0198506732]
+#&gt;                                         synonym     alt_id     subset comment
+#&gt; 1          "mitochondrial inheritance" EXACT []       &lt;NA&gt;       &lt;NA&gt;    &lt;NA&gt;
+#&gt; 2          "mitochondrial inheritance" EXACT []       &lt;NA&gt;       &lt;NA&gt;    &lt;NA&gt;
+#&gt; 3                                          &lt;NA&gt;       &lt;NA&gt;       &lt;NA&gt;    &lt;NA&gt;
+#&gt; 4                                          &lt;NA&gt;       &lt;NA&gt;       &lt;NA&gt;    &lt;NA&gt;
+#&gt; 5                                          &lt;NA&gt;       &lt;NA&gt;       &lt;NA&gt;    &lt;NA&gt;
+#&gt; 6 "reproductive physiological process" EXACT [] GO:0019952 goslim_agr    &lt;NA&gt;
+#&gt;   consider relationship                   set_name ref_origin     ref_code
+#&gt; 1     &lt;NA&gt;         &lt;NA&gt;      organelle inheritance       &lt;NA&gt;         &lt;NA&gt;
+#&gt; 2     &lt;NA&gt;         &lt;NA&gt; mitochondrion distribution       &lt;NA&gt;         &lt;NA&gt;
+#&gt; 3     &lt;NA&gt;         &lt;NA&gt;      organelle inheritance       &lt;NA&gt;         &lt;NA&gt;
+#&gt; 4     &lt;NA&gt;         &lt;NA&gt;       vacuole organization       &lt;NA&gt;         &lt;NA&gt;
+#&gt; 5     &lt;NA&gt;         &lt;NA&gt; mitochondrion organization       &lt;NA&gt;         &lt;NA&gt;
+#&gt; 6     &lt;NA&gt;         &lt;NA&gt;         biological_process  Wikipedia Reproduction
+#&gt;   fuzzy
+#&gt; 1     1
+#&gt; 2     1
+#&gt; 3     1
+#&gt; 4     1
+#&gt; 5     1
+#&gt; 6     1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
