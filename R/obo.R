@@ -12,12 +12,7 @@
 #' gs <- getOBO(oboFile)
 #' head(gs)
 getOBO <- function(x) {
-    parser <- list(blank_line = "^\\s*$",
-                   comment_line = "^\\s*!",
-                   comment = "\\s*!.*$",
-                   stanza = "^\\[(.+)\\]",
-                   subsetdef = "^(\\w+)\\s*\"(.*)\"",
-                   kv = "^([^:]*):\\s*(.*)")
+
     data <- readLines(x)
     # Remove empty lines
     n <- vapply(data, nchar, numeric(1L))
@@ -25,93 +20,45 @@ getOBO <- function(x) {
     # Look for terms
     kv0 <- strsplit(data, ": ", fixed = TRUE)
     kv <- kv0[lengths(kv0) == 2]
-    k <- vapply(kv, "[", character(1L), i = 1)
-    v <- vapply(kv, "[", character(1L), i = 2)
-    d <- which(k == "id")
+    k <- vapply(kv, "[", character(1L), i = 1) # Keys
+    v <- vapply(kv, "[", character(1L), i = 2) # Values
+    d <- which(k == "id") # Which position indicate a beginning of description
     tk <- vector("list", length(d))
+
+    keys <- k[d[1]:length(k)]
+    df <- data.frame(matrix(ncol = length(unique(keys)), nrow = 0))
+    colnames(df) <- unique(keys)
+
+    # For each term obtain a data.frame
     for (i in seq_along(d)) {
         if (i == length(d)) {
             l <- seq(from = d[i], to = length(kv), by = 1)
         } else {
             l <- seq(from = d[i], to = d[i+1]-1, by = 1)
         }
-        ch <- as.character(v[l])
-        names(ch) <- as.character(k[l])
+        ch <- v[l]
+        names(ch) <- k[l]
+
         keys <- unique(k[l])
-        lr <- lapply(keys, function(a, y){y[names(y) == a]}, y = ch)
+        m <- max(table(k[l]))
+
+        lr <- lapply(keys, function(a, y){rep_len(y[names(y) == a], m)}, y = ch)
         names(lr) <- keys
-        m <- max(lengths(lr))
-        lr <- lapply(lr, function(l, m){rep_len(l, m)}, m = m)
-        tk[[i]] <- as.data.frame(lr)
+
+        not_pres <- setdiff(colnames(df), keys)
+        sub_df <- as.data.frame(lr)
+        sub_df[, not_pres] <- NA
+        df <- rbind(df, sub_df)
     }
-    keys <- unique(k)
-    df <- data.frame(matrix(ncol = length(keys), nrow = 0))
-    colnames(df) <- keys
-    sapply(tk, )
+    # Names depend on it
+    # df <- read.csv("obo2.csv", row.names = 1, stringsAsFactors = FALSE)
+    df <- df[is.na(df[, "is_obsolete"]), ]
+    strs <- strsplit(df$is_a, " ! ")
+    df$set <- vapply(strs, "[", character(1L), i = 1)
+    df$set_name <- vapply(strs, "[", character(1L), i = 2)
+    df$fuzzy <- 1
 
-
-    comments <- grep(parser$comment_line, data)
-    if (length(comments) > 0)
-        data <- data[-comments]
-    data <- sub(parser$comment, "", data)
-    stnz <- grep(parser$stanza, data)
-    stnz <- stnz[stnz %in% (grep(parser$blank_line, data) + 1)]
-
-    stanza <- data.frame(id = c(0, stnz),
-                         value = c("Root", sub(parser$stanza, "\\1", data[stnz])),
-                         stringsAsFactors = FALSE)
-    kv_id <- grep(parser$kv, data)
-    stanza_id <- sapply(kv_id, function(x) {
-        idx <- x > stanza$id
-        stanza$id[xor(idx, c(idx[-1], FALSE))]
-    })
-    kv_pairs <- data[kv_id]
-    kv_key = sub(parser$kv, "\\1", kv_pairs)
-    kv_value = sub(parser$kv, "\\2", kv_pairs)
-    id_keys <- kv_key == "id"
-    stanza_idx <- match(stanza_id[id_keys], stanza$id)
-    row.names(stanza)[c(1, stanza_idx)] <- c(".__Root__", kv_value[id_keys])
-    stanza_id <- row.names(stanza)[match(stanza_id, stanza$id)]
-    stanza$id <- NULL
-    kv <- data.frame(id = kv_id[!id_keys], stanza_id = stanza_id[!id_keys],
-                     key = kv_key[!id_keys], value = kv_value[!id_keys],
-                     stringsAsFactors = FALSE, row.names = "id")
-    idx <- kv$stanza_id == ".__Root__" & kv$key == "subsetdef"
-    # Variables that define the file thus all sets
-    # data-version, format-version, remark, subsetdef, ontology, deault-namespace, synonymtypedef
-    # remove obselete terms
-    obsolete_ontologies <- kv$stanza_id[kv$key == "is_obsolete" & kv$value == "true"]
-    kv <- kv[!kv$stanza_id %in% obsolete_ontologies, ]
-    # unique per GO
-    # comment, data-version, def, default-namespace, format-version, name, namespace, ontology,
-    relations <- kv[kv$key == "relationship" | kv$key == "is_a", ]
-    val <- lapply(strsplit(relations$value, split = " "), function(x) {
-        if (length(x) == 1) {
-            c("is_a", x)
-        } else {
-            x
-        }
-    })
-    rels <- t(simplify2array(val, higher = FALSE))
-    relations <- cbind.data.frame(relations, rels, stringsAsFactors = FALSE)
-    relations <- relations[, -c(2, 3), drop = FALSE]
-    colnames(relations) <- c("elements", "type", "sets")
-    relations <- relations[!(relations$sets %in% obsolete_ontologies), ]
-    relations <- relations[!(relations$elements %in% obsolete_ontologies), ]
-    relations$fuzzy <- 1
-
-    elements <- data.frame(
-        elements = unique(kv$stanza_id[kv$stanza_id != ".__Root__"]),
-        stringsAsFactors = FALSE)
-    sets <- data.frame(sets = unique(c(elements$elements, relations$sets)),
-                       stringsAsFactors = FALSE)
-    root <- kv[kv$stanza_id == ".__Root__", 2:3]
-    files_info <- t(root[root$key %in% c("data-version", "date", "saved-by",
-                                         "ontology", "default-namespace"), ])
-    colnames(files_info) <- files_info[1, ]
-    files_info <- files_info[-1, , drop = FALSE]
-    sets <- cbind(sets, files_info[rep(1, nrow(sets)), ])
-    new("TidySet", elements = elements, relations = relations, sets = sets)
+    tidySet.data.frame(df)
 }
 
 # Using data downloaded from http://geneontology.org/gene-associations/goa_human_rna.gaf.gz on 20190711
