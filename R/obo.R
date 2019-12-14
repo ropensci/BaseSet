@@ -26,10 +26,11 @@ getOBO <- function(x) {
     tk <- vector("list", length(d))
 
     keys <- k[d[1]:length(k)]
-    df <- data.frame(matrix(ncol = length(unique(keys)), nrow = 0))
+    df <- data.frame(matrix(ncol = length(unique(keys)), nrow = 0),
+                     stringsAsFactors = FALSE)
     colnames(df) <- unique(keys)
 
-    # For each term obtain a data.frame
+    # For each term parse it in a tidy data frame
     for (i in seq_along(d)) {
         if (i == length(d)) {
             l <- seq(from = d[i], to = length(kv), by = 1)
@@ -46,20 +47,26 @@ getOBO <- function(x) {
         names(lr) <- keys
 
         not_pres <- setdiff(colnames(df), keys)
-        sub_df <- as.data.frame(lr)
+        sub_df <- as.data.frame(lr, stringsAsFactors = FALSE)
         sub_df[, not_pres] <- NA
         df <- rbind(df, sub_df)
     }
-    # Names depend on it
-    # df <- read.csv("obo2.csv", row.names = 1, stringsAsFactors = FALSE)
-    df <- df[is.na(df[, "is_obsolete"]), ]
+    # Clean the data a bit
+    if ("is_obsolete" %in% colnames(df)) {
+        df <- df[is.na(df[, "is_obsolete"]), ]
+    }
     strs <- strsplit(df$is_a, " ! ")
     df$sets <- vapply(strs, "[", character(1L), i = 1)
     df$set_name <- vapply(strs, "[", character(1L), i = 2)
+    strs <- strsplit(df$xref, ":")
+    df$ref_origin <- vapply(strs, "[", character(1L), i = 1)
+    df$ref_code <- vapply(strs, "[", character(1L), i = 2)
     df$fuzzy <- 1
     colnames(df)[colnames(df) == "id"] <- "elements"
     df <- df[!is.na(df$sets), ]
-    TS <- tidySet.data.frame(df)
+    keep_columns <- setdiff(colnames(df), c("xref", "is_obsolete", "is_a"))
+    df <- df[, keep_columns]
+    tidySet.data.frame(df)
 }
 
 # Using data downloaded from http://geneontology.org/gene-associations/goa_human_rna.gaf.gz on 20190711
