@@ -26,7 +26,7 @@ setMethod("incidence",
     sets <- as.character(rel$sets)
 
     fuzziness <- rel$fuzzy
-    for (p in seq_len(nRelations(object))) {
+    for (p in seq_along(rel$fuzzy)) {
       Incidence[elements[p], sets[p]] <- fuzziness[p]
     }
     Incidence
