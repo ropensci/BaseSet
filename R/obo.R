@@ -54,11 +54,12 @@ getOBO <- function(x) {
     # df <- read.csv("obo2.csv", row.names = 1, stringsAsFactors = FALSE)
     df <- df[is.na(df[, "is_obsolete"]), ]
     strs <- strsplit(df$is_a, " ! ")
-    df$set <- vapply(strs, "[", character(1L), i = 1)
+    df$sets <- vapply(strs, "[", character(1L), i = 1)
     df$set_name <- vapply(strs, "[", character(1L), i = 2)
     df$fuzzy <- 1
-
-    tidySet.data.frame(df)
+    colnames(df)[colnames(df) == "id"] <- "elements"
+    df <- df[!is.na(df$sets), ]
+    TS <- tidySet.data.frame(df)
 }
 
 # Using data downloaded from http://geneontology.org/gene-associations/goa_human_rna.gaf.gz on 20190711
