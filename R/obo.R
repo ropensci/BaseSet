@@ -19,6 +19,37 @@ getOBO <- function(x) {
                    subsetdef = "^(\\w+)\\s*\"(.*)\"",
                    kv = "^([^:]*):\\s*(.*)")
     data <- readLines(x)
+    # Remove empty lines
+    n <- vapply(data, nchar, numeric(1L))
+    data <- data[n != 0]
+    # Look for terms
+    kv0 <- strsplit(data, ": ", fixed = TRUE)
+    kv <- kv0[lengths(kv0) == 2]
+    k <- vapply(kv, "[", character(1L), i = 1)
+    v <- vapply(kv, "[", character(1L), i = 2)
+    d <- which(k == "id")
+    tk <- vector("list", length(d))
+    for (i in seq_along(d)) {
+        if (i == length(d)) {
+            l <- seq(from = d[i], to = length(kv), by = 1)
+        } else {
+            l <- seq(from = d[i], to = d[i+1]-1, by = 1)
+        }
+        ch <- as.character(v[l])
+        names(ch) <- as.character(k[l])
+        keys <- unique(k[l])
+        lr <- lapply(keys, function(a, y){y[names(y) == a]}, y = ch)
+        names(lr) <- keys
+        m <- max(lengths(lr))
+        lr <- lapply(lr, function(l, m){rep_len(l, m)}, m = m)
+        tk[[i]] <- as.data.frame(lr)
+    }
+    keys <- unique(k)
+    df <- data.frame(matrix(ncol = length(keys), nrow = 0))
+    colnames(df) <- keys
+    sapply(tk, )
+
+
     comments <- grep(parser$comment_line, data)
     if (length(comments) > 0)
         data <- data[-comments]
