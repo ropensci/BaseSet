@@ -20,7 +20,8 @@ Imports:
     magrittr,
     methods,
     rlang,
-    utils
+    utils,
+    xml2
 Suggests: 
     BiocStyle,
     covr,
