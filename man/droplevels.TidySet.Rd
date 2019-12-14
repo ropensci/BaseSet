@@ -4,8 +4,7 @@
 \alias{droplevels.TidySet}
 \title{Drop unused elements and sets}
 \usage{
-\method{droplevels}{TidySet}(x, elements = TRUE, sets = TRUE,
-  relations = TRUE, ...)
+\method{droplevels}{TidySet}(x, elements = TRUE, sets = TRUE, relations = TRUE, ...)
 }
 \arguments{
 \item{x}{A TidySet object.}

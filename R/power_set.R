@@ -5,7 +5,6 @@
 #' @param object A TidySet object.
 #' @param set The name of the set to be used for the power set
 #' @param name The root name of the new set.
-#' @inheritParams union
 #' @param ... Other arguments passed down if possible
 #' @return A TidySet object with the new set
 #' @family methods

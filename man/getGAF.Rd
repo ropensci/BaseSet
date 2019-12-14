@@ -22,7 +22,9 @@ gs <- getGAF(gafFile)
 head(gs)
 }
 \seealso{
-Other IO functions: \code{\link{getGMT}},
-  \code{\link{getOBO}}
+Other IO functions: 
+\code{\link{getGMT}()},
+\code{\link{getOBO}()},
+\code{\link{getXML}()}
 }
 \concept{IO functions}

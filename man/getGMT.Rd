@@ -28,7 +28,9 @@ nElements(gs)
 nSets(gs)
 }
 \seealso{
-Other IO functions: \code{\link{getGAF}},
-  \code{\link{getOBO}}
+Other IO functions: 
+\code{\link{getGAF}()},
+\code{\link{getOBO}()},
+\code{\link{getXML}()}
 }
 \concept{IO functions}

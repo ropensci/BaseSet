@@ -7,9 +7,17 @@
 \usage{
 cartesian(object, set1, set2, name = NULL, ...)
 
-\method{cartesian}{TidySet}(object, set1, set2, name = NULL,
-  keep = TRUE, keep_relations = keep, keep_elements = keep,
-  keep_sets = keep, ...)
+\method{cartesian}{TidySet}(
+  object,
+  set1,
+  set2,
+  name = NULL,
+  keep = TRUE,
+  keep_relations = keep,
+  keep_elements = keep,
+  keep_sets = keep,
+  ...
+)
 }
 \arguments{
 \item{object}{A TidySet object.}
@@ -41,28 +49,45 @@ TS <- tidySet(relations)
 cartesian(TS, "a", "b")
 }
 \seealso{
-Other methods: \code{\link{TidySet-class}},
-  \code{\link{activate}}, \code{\link{add_column}},
-  \code{\link{add_relation}},
-  \code{\link{arrange.TidySet}},
-  \code{\link{complement_element}},
-  \code{\link{complement_set}}, \code{\link{complement}},
-  \code{\link{element_size}}, \code{\link{elements}},
-  \code{\link{filter.TidySet}},
-  \code{\link{group_by.TidySet}}, \code{\link{group}},
-  \code{\link{incidence}}, \code{\link{intersection}},
-  \code{\link{is.fuzzy}}, \code{\link{is_nested}},
-  \code{\link{move_to}}, \code{\link{mutate.TidySet}},
-  \code{\link{nElements}}, \code{\link{nRelations}},
-  \code{\link{nSets}}, \code{\link{name_elements<-}},
-  \code{\link{name_sets<-}}, \code{\link{name_sets}},
-  \code{\link{power_set}}, \code{\link{pull.TidySet}},
-  \code{\link{relations}}, \code{\link{remove_column}},
-  \code{\link{remove_element}},
-  \code{\link{remove_relation}}, \code{\link{remove_set}},
-  \code{\link{rename_elements}}, \code{\link{rename_set}},
-  \code{\link{select.TidySet}}, \code{\link{set_size}},
-  \code{\link{sets}}, \code{\link{subtract}},
-  \code{\link{union}}
+Other methods: 
+\code{\link{TidySet-class}},
+\code{\link{activate}()},
+\code{\link{add_column}()},
+\code{\link{add_relation}()},
+\code{\link{arrange.TidySet}()},
+\code{\link{complement_element}()},
+\code{\link{complement_set}()},
+\code{\link{complement}()},
+\code{\link{element_size}()},
+\code{\link{elements}()},
+\code{\link{filter.TidySet}()},
+\code{\link{group_by.TidySet}()},
+\code{\link{group}()},
+\code{\link{incidence}()},
+\code{\link{intersection}()},
+\code{\link{is.fuzzy}()},
+\code{\link{is_nested}()},
+\code{\link{move_to}()},
+\code{\link{mutate.TidySet}()},
+\code{\link{nElements}()},
+\code{\link{nRelations}()},
+\code{\link{nSets}()},
+\code{\link{name_elements<-}()},
+\code{\link{name_sets<-}()},
+\code{\link{name_sets}()},
+\code{\link{power_set}()},
+\code{\link{pull.TidySet}()},
+\code{\link{relations}()},
+\code{\link{remove_column}()},
+\code{\link{remove_element}()},
+\code{\link{remove_relation}()},
+\code{\link{remove_set}()},
+\code{\link{rename_elements}()},
+\code{\link{rename_set}()},
+\code{\link{select.TidySet}()},
+\code{\link{set_size}()},
+\code{\link{sets}()},
+\code{\link{subtract}()},
+\code{\link{union}()}
 }
 \concept{methods}

@@ -4,8 +4,13 @@
 \alias{naming}
 \title{Name an operation}
 \usage{
-naming(start = NULL, sets1, middle = NULL, sets2 = NULL,
-  collapse_symbol = "union")
+naming(
+  start = NULL,
+  sets1,
+  middle = NULL,
+  sets2 = NULL,
+  collapse_symbol = "union"
+)
 }
 \arguments{
 \item{start, middle}{Character used as a start symbol or to divide

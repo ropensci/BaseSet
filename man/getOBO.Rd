@@ -22,7 +22,9 @@ gs <- getOBO(oboFile)
 head(gs)
 }
 \seealso{
-Other IO functions: \code{\link{getGAF}},
-  \code{\link{getGMT}}
+Other IO functions: 
+\code{\link{getGAF}()},
+\code{\link{getGMT}()},
+\code{\link{getXML}()}
 }
 \concept{IO functions}
