@@ -109,7 +109,8 @@ setMethod("set_size",
               rel <- rel[, c("fuzzy", "elements", "sets")]
 
               if (length(missing) != 0) {
-                  missing <- data.frame(sets = missing, elements = NA, fuzzy = 0)
+                  missing <- data.frame(sets = missing, elements = NA,
+                                        fuzzy = 0)
                   rel <- rbind(rel, missing)
               }
 
@@ -184,7 +185,8 @@ setMethod("element_size",
               missing <- names_elements[!names_elements %in% rel$elements]
 
               if (length(missing) != 0) {
-                  missing <- data.frame(sets = NA, elements = missing, fuzzy = 0)
+                  missing <- data.frame(sets = NA, elements = missing,
+                                        fuzzy = 0)
                   rel <- rbind(rel, missing)
               }
 

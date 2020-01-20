@@ -32,7 +32,8 @@ setMethod("name_elements",
 #' @describeIn name_elements Rename elements
 #' @export name_elements<-
 setMethod("name_elements<-",
-          signature = signature(object = "TidySet", value = "characterORfactor"),
+          signature = signature(object = "TidySet",
+                                value = "characterORfactor"),
           function(object, value){
             old <- name_elements(object)
 
@@ -68,7 +69,8 @@ setMethod("name_elements<-",
 #' @describeIn name_sets Rename sets
 #' @export name_sets<-
 setMethod("name_sets<-",
-          signature = signature(object = "TidySet", value = "characterORfactor"),
+          signature = signature(object = "TidySet",
+                                value = "characterORfactor"),
           function(object, value) {
             old <- name_sets(object)
 

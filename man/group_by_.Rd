@@ -15,8 +15,8 @@
 A grouped data.frame (See The dplyr help page)
 }
 \description{
-Use group_by to group the TidySet object. You can use activate with group_by or
-with the whole data.
+Use group_by to group the TidySet object. You can use activate with group_by
+or with the whole data.
 }
 \examples{
 relations <- data.frame(sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),

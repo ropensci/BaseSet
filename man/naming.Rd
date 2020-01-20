@@ -18,8 +18,8 @@ naming(
 
 \item{sets1, sets2}{Character of sets}
 
-\item{collapse_symbol}{Name of the symbol that joins the sets on \code{sets1} and
-\code{sets2}.}
+\item{collapse_symbol}{Name of the symbol that joins the sets on
+\code{sets1} and \code{sets2}.}
 }
 \value{
 A character vector combining the sets

@@ -7,9 +7,9 @@ dplyr::select
 
 #' select from a TidySet
 #'
-#' Use select to extract the columns of a TidySet object. You can use activate with filter or
-#' use the specific function. The S3 method filters using all the information
-#' on the TidySet.
+#' Use select to extract the columns of a TidySet object. You can use activate
+#' with filter or use the specific function. The S3 method filters using all
+#' the information on the TidySet.
 #' @param .data The TidySet object
 #' @param ... The name of the columns you want to keep, remove or rename.
 #' @return A TidySet object

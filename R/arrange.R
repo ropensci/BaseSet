@@ -7,9 +7,9 @@ dplyr::arrange
 
 #' arrange from a TidySet
 #'
-#' Use arrange to extract the columns of a TidySet object. You can use activate with filter or
-#' use the specific function. The S3 method filters using all the information
-#' on the TidySet.
+#' Use arrange to extract the columns of a TidySet object. You can use activate
+#' with filter or use the specific function. The S3 method filters using all
+#' the information on the TidySet.
 #' @param .data The TidySet object
 #' @param ... Comma separated list of variables names or expressions
 #' integer column position.
