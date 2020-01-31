@@ -1,6 +1,6 @@
 Package: BaseSet
 Title: Provides classes for working with sets
-Version: 0.0.9
+Version: 0.0.10
 Authors@R: 
     person(given = "Lluís ",
            family = "Revilla Sancho",

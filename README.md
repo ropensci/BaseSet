@@ -177,10 +177,10 @@ intersection(fuzzy_set, sets = c("A", "B"), keep = TRUE)
 set_size(fuzzy_set) # A set could be empty!
 #>   sets size probability
 #> 1    A    0 0.014712455
-#> 2    A    1 0.166499731
-#> 3    A    2 0.357078627
-#> 4    A    3 0.318386944
-#> 5    A    4 0.120607154
+#> 2    A    1 0.120607154
+#> 3    A    2 0.318386944
+#> 4    A    3 0.357078627
+#> 5    A    4 0.166499731
 #> 6    A    5 0.022715089
 #> 7    B    0 0.003340637
 #> 8    B    1 0.109184679
@@ -212,6 +212,8 @@ fuzzy_set %>%
 #> 4        d    A 0.5800610 TRUE        KEGG
 #> 5        e    A 0.5724973 TRUE        KEGG
 ```
+
+# Code of Conduct
 
 Please note that the ‘BaseSet’ project is released with a [Contributor
 Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,

@@ -22,7 +22,7 @@ dplyr::mutate
 #' a <- mutate_element(a, Type = c(rep("Gene", 4), rep("lncRNA", 2)))
 #' a
 #' b <- mutate_relation(a, Type = sample(c("PPI", "PF", "MP"), 12,
-#'                                          replace = TRUE))
+#'                                       replace = TRUE))
 #' @rdname mutate_
 #' @export
 #' @method mutate TidySet
