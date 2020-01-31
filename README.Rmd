@@ -25,11 +25,22 @@ The goal of BaseSet is to facilitate working with sets in an efficient way.
 
 ## Installation
 
+Before installation you might need to install some of the suggested packages from Bioconductor:
+
+```{r dep, eval = FALSE}
+if (!require("BiocManager")) {
+  install.packages("BiocManager")
+  BiocManager::install(c("Biobase", "GO.db", "GSEABase", "org.HS.eg.db", 
+                         "reactome.db", "BiocStyle"))
+}
+```
+
 You can install the latest version of BaseSet from [Github](https://github.com/llrs/BaseSet) with:
 
 ```{r eval=FALSE}
-remotes::install_github("llrs/BaseSet")
+BiocManager::install("llrs/BaseSet")
 ```
+
  
 ## Examples
 
