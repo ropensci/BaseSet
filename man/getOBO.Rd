@@ -24,7 +24,6 @@ head(gs)
 \seealso{
 Other IO functions: 
 \code{\link{getGAF}()},
-\code{\link{getGMT}()},
-\code{\link{getXML}()}
+\code{\link{getGMT}()}
 }
 \concept{IO functions}

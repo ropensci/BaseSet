@@ -32,8 +32,8 @@ relations <- data.frame(sets = c(rep("a", 5), "b"),
                         elements = letters[seq_len(6)],
                         fuzzy = runif(6))
 a <- tidySet(relations)
-add_column(a, "relations", data.frame(well = c("GOOD", "BAD", "WORSE", "UGLY",
-"FOE", "HEY")))
+add_column(a, "relations", data.frame(well = c("GOOD", "BAD", "WORSE",
+"UGLY", "FOE", "HEY")))
 }
 \seealso{
 \code{\link{rename_set}}

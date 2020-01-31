@@ -141,12 +141,13 @@ setGeneric("set_size", function(object, set = NULL) standardGeneric("set_size"))
 #' Calculate the probability of being of different sizes for a given set.
 #' @param object A TidySet object.
 #' @param element The element from which the length is calculated.
-#' @return A list with the size of the elements or the probability of having that
-#' size.
+#' @return A list with the size of the elements or the probability of having
+#' that size.
 #' @family sizes
 #' @export element_size
 #' @family methods
-setGeneric("element_size", function(object, element = NULL) standardGeneric("element_size"))
+setGeneric("element_size", function(object, element = NULL)
+    standardGeneric("element_size"))
 
 #' Rename sets
 #'
@@ -160,7 +161,8 @@ setGeneric("element_size", function(object, element = NULL) standardGeneric("ele
 #' @seealso \code{\link{name_sets}}
 #' @export
 #' @family methods
-setGeneric("rename_set", function(object, old, new) standardGeneric("rename_set"))
+setGeneric("rename_set", function(object, old, new)
+    standardGeneric("rename_set"))
 
 #' Rename elements
 #'
@@ -271,8 +273,8 @@ setGeneric("name_sets<-", function(object, value)
 #'                         elements = letters[seq_len(6)],
 #'                         fuzzy = runif(6))
 #' a <- tidySet(relations)
-#' add_column(a, "relations", data.frame(well = c("GOOD", "BAD", "WORSE", "UGLY",
-#' "FOE", "HEY")))
+#' add_column(a, "relations", data.frame(well = c("GOOD", "BAD", "WORSE",
+#' "UGLY", "FOE", "HEY")))
 setGeneric("add_column", function(object, slot, columns)
     standardGeneric("add_column"))
 
@@ -296,8 +298,8 @@ setGeneric("remove_column", function(object, slot, column_names)
 #' @param sets The character of sets to be intersect.
 #' @inheritParams union
 #' @param FUN A function to be applied when performing the union.
-#' The standard intersection is the "min" function, but you can provide any other
-#' function that given a numeric vector returns a single number.
+#' The standard intersection is the "min" function, but you can provide any
+#' other function that given a numeric vector returns a single number.
 #' @param keep A logical value if you want to keep originals sets.
 #' @return A \code{TidySet} object.
 #' @export

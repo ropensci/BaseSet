@@ -28,7 +28,7 @@ test_that("intersection works with fuzzy", {
                           elements = c(letters[seq_len(6)], letters[6]),
                           fuzzy = runif(7))
   a <- tidySet(relations)
-  b <- intersection(a, c("c", "b"), "d") # Simple case without merging fuzzy (just renaming)
+  b <- intersection(a, c("c", "b"), "d") # Without merging fuzzy, just renaming
   expect_s4_class(b, "TidySet")
   expect_equal(nRelations(b), 1L)
   expect_equal(nSets(b), 1L)
@@ -49,7 +49,7 @@ test_that("intersection keep", {
                           fuzzy = runif(7))
   a <- tidySet(relations)
   expect_equal(nSets(a), 3L)
-  b <- intersection(a, c("c", "b"), "d", keep = TRUE) # Simple case without merging fuzzy (just renaming)
+  b <- intersection(a, c("c", "b"), "d", keep = TRUE)
   expect_s4_class(b, "TidySet")
   expect_equal(nSets(b), 4L)
   expect_equal(nElements(b), 6L)

@@ -62,7 +62,8 @@ active <- function(.data) {
       sets = 'sets',
       relation = ,
       relations = 'relations',
-      stop('Only possible to activate elements, sets and relations', call. = FALSE)
+      stop('Only possible to activate elements, sets and relations',
+           call. = FALSE)
     )
     attr(x, 'active') <- value
   }

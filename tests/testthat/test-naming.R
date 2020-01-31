@@ -11,7 +11,8 @@ test_that("naming works", {
     expect_equal(n1, n2)
     expect_equal(n1, "a∪b")
 
-    expect_error(naming(sets1 = "a", sets2 = "b"), "should be separated by a symbol")
+    expect_error(naming(sets1 = "a", sets2 = "b"),
+                 "should be separated by a symbol")
 
     n3 <- naming(sets1 = "a", sets2 = c("b", "c"), middle = "union")
     expect_equal(n3, "a∪b∪c")

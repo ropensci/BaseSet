@@ -15,8 +15,8 @@ element_size(object, element = NULL)
 \item{element}{The element from which the length is calculated.}
 }
 \value{
-A list with the size of the elements or the probability of having that
-size.
+A list with the size of the elements or the probability of having
+that size.
 }
 \description{
 Calculate the probability of being of different sizes for a given set.

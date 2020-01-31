@@ -6,8 +6,8 @@ dplyr::group_by
 
 #' group_by TidySet
 #'
-#' Use group_by to group the TidySet object. You can use activate with group_by or
-#' with the whole data.
+#' Use group_by to group the TidySet object. You can use activate with
+#' group_by or with the whole data.
 #' @param .data The TidySet object
 #' @param ... The logical predicates in terms of the variables of the sets
 #' @return A grouped data.frame (See The dplyr help page)

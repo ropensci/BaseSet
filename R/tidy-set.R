@@ -22,7 +22,8 @@ tidySet <- function(relations) {
 #' @export
 tidySet.data.frame <- function(relations) {
 
-  if (ncol(relations) >= 2 && all(c("sets", "elements") %in% colnames(relations))) {
+  check_colnames <- all(c("sets", "elements") %in% colnames(relations))
+  if (ncol(relations) >= 2 && check_colnames) {
     sets <- data.frame(sets = unique(relations$sets),
                        stringsAsFactors = FALSE)
     elements <- data.frame(elements = unique(relations$elements),

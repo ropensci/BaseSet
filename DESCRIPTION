@@ -20,8 +20,7 @@ Imports:
     magrittr,
     methods,
     rlang,
-    utils,
-    xml2
+    utils
 Suggests: 
     BiocStyle,
     covr,
@@ -42,7 +41,7 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.0.1
+RoxygenNote: 7.0.2
 Collate: 
     'AllClasses.R'
     'AllGenerics.R'
@@ -91,5 +90,4 @@ Collate:
     'tidy-set.R'
     'union.R'
     'utils-pipe.R'
-    'xml.R'
     'zzz.R'

@@ -25,7 +25,9 @@ size <- function(object, ...) {
 size.TidySet <- function(object, ...) {
     a <- active(object)
     if (is.null(a) || a == "relations") {
-        warning("Unable to calculate the size, activate either elements or sets.")
+        msg <- paste("Unable to calculate the size,",
+                     "activate either elements or sets.")
+        warning(msg)
     } else {
         switch(a,
                elements = element_size(object, ...),

@@ -100,10 +100,10 @@ is.valid <- function(object) {
     # Check that relations have the same fuzzy value when the
     if (anyDuplicated(es) != 0 & !all(fuzz == 1)) {
       fuzziness <- tapply(fuzz, es, FUN = n_distinct)
-      if (!all(fuzziness == 1)){
-        errors <- c(errors,
-                    "A relationship between an element and a set must have a single fuzzy value"
-        )
+      if (!all(fuzziness == 1)) {
+        msg <- paste0("A relationship between an element",
+                      "and a set must have a single fuzzy value")
+        errors <- c(errors, msg)
       }
     }
   }

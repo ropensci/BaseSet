@@ -78,13 +78,14 @@ test_that("tidySet fails", {
                          new("TidySet",
                              elements = data.frame(elements = c("A", "A"))))))
 
-  expect_error(any(grepl("fuzzy column is restricted to a number between 0 and 1",
-                         new("TidySet",
-                             elements = data.frame(elements = "a"),
-                         relations = data.frame(elements = "a",
-                                                sets = "A",
-                                                fuzzy = "a"),
-                         sets = data.frame(sets = "A")))))
+  expect_error(any(
+    grepl("fuzzy column is restricted to a number between 0 and 1",
+          new("TidySet",
+              elements = data.frame(elements = "a"),
+              relations = data.frame(elements = "a",
+                                     sets = "A",
+                                     fuzzy = "a"),
+              sets = data.frame(sets = "A")))))
   expect_error(
     new("TidySet",
         elements = data.frame(elements = "a"),
@@ -93,7 +94,8 @@ test_that("tidySet fails", {
     "fuzzy column is restricted to a number between 0 and 1")
   expect_error(new("TidySet",
                    elements = data.frame(elements = "a", colnames = "b"),
-                   relations = data.frame(elements = "a", sets = "A", fuzzy = 3),
+                   relations = data.frame(elements = "a", sets = "A",
+                                          fuzzy = 3),
                    sets = data.frame(sets = "A",  colnames = "b")),
                "share a column name.")
 

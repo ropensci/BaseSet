@@ -2,7 +2,8 @@
 #' A subset of symbols related to sets
 #'
 #' Name and symbol of operations related to sets:
-#' @references \url{https://www.fileformat.info/info/unicode/category/Sm/list.htm}
+#' @references
+#' \url{https://www.fileformat.info/info/unicode/category/Sm/list.htm}
 #' @export
 #' @examples
 #' set_symbols

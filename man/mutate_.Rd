@@ -35,7 +35,8 @@ relations <- data.frame(sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
 a <- tidySet(relations)
 a <- mutate_element(a, Type = c(rep("Gene", 4), rep("lncRNA", 2)))
 a
-b <- mutate_relation(a, Type = sample(c("PPI", "PF", "MP"), 12,  replace = TRUE))
+b <- mutate_relation(a, Type = sample(c("PPI", "PF", "MP"), 12,
+                                         replace = TRUE))
 }
 \seealso{
 \code{\link[dplyr]{mutate}} and \code{\link{activate}}

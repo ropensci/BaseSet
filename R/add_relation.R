@@ -13,7 +13,8 @@ setMethod("add_relation",
               if (non_fuzzyness) {
                   relations <- cbind(relations, fuzzy = 1)
               }
-              valid <- check_colnames(colnames(relations), c("elements", "sets"))
+              valid <- check_colnames(colnames(relations),
+                                      c("elements", "sets"))
               if (valid) {
                   stop("Relations must have elements and sets columns.")
               }

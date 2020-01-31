@@ -31,7 +31,8 @@ test_that("length_probability works", {
   expect_length(out, 1L)
   expect_equal(out, 0.8)
 
-  out <- length_probability(c(a = 0, b = 0, c = 0, d = 0, e = 0, f = 0.0486625612247735), 1)
+  out <- length_probability(c(a = 0, b = 0, c = 0, d = 0,
+                              e = 0, f = 0.0486625612247735), 1)
   expect_equivalent(out, 0.04866256)
 })
 

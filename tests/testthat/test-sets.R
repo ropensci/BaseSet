@@ -19,3 +19,12 @@ test_that("sets<- works", {
   sets(a) <- cbind(sets(a), test = "1")
   expect_equal(ncol(sets(a)), 2L)
 })
+
+test_that("replace_sets", {
+  TS <- tidySet(list(A = letters[1:5], B = letters[2:10]))
+  TS2 <- replace_sets(TS, data.frame(sets = c("A", "B", "C")))
+  expect_s4_class(TS2, "TidySet")
+  expect_equal(nrow(sets(TS2)), 3L)
+  expect_length(name_sets(TS2), 3L)
+  expect_equal(name_sets(TS2), c("A", "B", "C"))
+})

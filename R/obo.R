@@ -69,11 +69,14 @@ getOBO <- function(x) {
     tidySet.data.frame(df)
 }
 
-# Using data downloaded from http://geneontology.org/gene-associations/goa_human_rna.gaf.gz on 20190711
-# About the format: http://geneontology.org/docs/go-annotation-file-gaf-format-2.1/
+# Using data downloaded from
+# http://geneontology.org/gene-associations/goa_human_rna.gaf.gz on 20190711
+# About the format:
+# http://geneontology.org/docs/go-annotation-file-gaf-format-2.1/
 #' Read a GAF file
 #'
-#' Read a GAF formatted file, see \url{http://geneontology.org/docs/go-annotation-file-gaf-format-2.1/}
+#' Read a GAF formatted file, see
+#' \url{http://geneontology.org/docs/go-annotation-file-gaf-format-2.1/}
 #'
 #' @param x A file in GAF format
 #' @return A TidySet object
@@ -116,9 +119,9 @@ getGAF <- function(x) {
 
     TS <- tidySet(df)
 
-    # Check that the columns really have information that allows them to be moved
-    # to the new slot.
-    columns_gaf <- function(names, originals) { # Check just in case there is a missing column
+    # Check that the columns really have information that allows them to be
+    # moved to the new slot.
+    columns_gaf <- function(names, originals) { # If there is a missing column
         names[names %in% originals]
     }
     sets_columns <- columns_gaf(gaf_columns[sets], colnames(df))

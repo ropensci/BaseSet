@@ -41,7 +41,8 @@ setMethod("subtract",
                                      drop = FALSE]
 
               if (is.null(name)) {
-                  name <- naming(sets1 = set_in, middle = "minus", sets2 = not_in)
+                  name <- naming(sets1 = set_in, middle = "minus",
+                                 sets2 = not_in)
               }
 
               if (nrow(relations) >= 1) {
@@ -50,7 +51,8 @@ setMethod("subtract",
 
               object <- add_sets(object, name)
               object <- replace_interactions(object, relations, keep_relations)
-              object <- droplevels(object, !keep_elements, !keep_sets, !keep_relations)
+              object <- droplevels(object, !keep_elements, !keep_sets,
+                                   !keep_relations)
               validObject(object)
               object
 

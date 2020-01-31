@@ -8,9 +8,11 @@ test_that("add_relations works", {
   expect_s4_class(b, "TidySet")
   expect_equal(nSets(b), nSets(a) + 1)
 
-  expect_error(add_relations(a, elements = letters[7:15], sets = c("ha", "he")))
+  expect_error(add_relations(a, elements = letters[7:15],
+                             sets = c("ha", "he")))
 
-  elements(a) <- cbind(elements(a), Ha = c("bla", "ble", "bli", "blo", "blu", NA))
+  elements(a) <- cbind(elements(a),
+                       Ha = c("bla", "ble", "bli", "blo", "blu", NA))
   d <- add_relations(a, elements = letters[1:2], sets = "DF2")
   expect_equal(nSets(d), nSets(a) + 1)
   b <- add_relations(a, elements = letters[1:2],

@@ -4,7 +4,7 @@ test_that("union works", {
   relations <- data.frame(sets = c(rep("a", 5), "b", "c"),
                           elements = letters[seq_len(7)])
   a <- tidySet(relations)
-  b <- union(a, c("c", "b"), "d") # Simple case without merging fuzzy (just renaming)
+  b <- union(a, c("c", "b"), "d")
   expect_s4_class(b, "TidySet")
   expect_equal(name_sets(b), "d")
   expect_equal(name_elements(b), c("f", "g"))
@@ -24,7 +24,7 @@ test_that("union works fuzzy", {
                           elements = c(letters[seq_len(6)], letters[6]),
                           fuzzy = runif(7))
   a <- tidySet(relations)
-  b <- union(a, c("c", "b"), "d") # Simple case without merging fuzzy (just renaming)
+  b <- union(a, c("c", "b"), "d")
   expect_s4_class(b, "TidySet")
   expect_equal(name_sets(b), "d")
   expect_equal(name_elements(b), "f")
@@ -53,7 +53,7 @@ test_that("union works fuzzy keep", {
                           elements = c(letters[seq_len(6)], letters[6]),
                           fuzzy = runif(7))
   a <- tidySet(relations)
-  b <- union(a, c("c", "b"), "d", keep = TRUE) # Simple case without merging fuzzy (just renaming)
+  b <- union(a, c("c", "b"), "d", keep = TRUE)
   expect_s4_class(b, "TidySet")
   expect_equal(nSets(b), nSets(a) + 1)
   expect_equal(b@relations$fuzzy[8], max(a@relations$fuzzy[6:7]))

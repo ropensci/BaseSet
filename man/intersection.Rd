@@ -28,8 +28,8 @@ intersection(object, sets, ...)
 \item{name}{The name of the new set.}
 
 \item{FUN}{A function to be applied when performing the union.
-The standard intersection is the "min" function, but you can provide any other
-function that given a numeric vector returns a single number.}
+The standard intersection is the "min" function, but you can provide any
+other function that given a numeric vector returns a single number.}
 
 \item{keep}{A logical value if you want to keep originals sets.}
 

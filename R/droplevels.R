@@ -36,8 +36,8 @@ drop_relations <- function(object) {
 #' @param ... Other arguments, currently ignored.
 #' @return A TidySet object.
 #' @export
-droplevels.TidySet <- function(x, elements = TRUE, sets = TRUE, relations = TRUE,
-                               ...) {
+droplevels.TidySet <- function(x, elements = TRUE, sets = TRUE,
+                               relations = TRUE, ...) {
   stopifnot(is.logical(elements))
   stopifnot(is.logical(sets))
   stopifnot(is.logical(relations))

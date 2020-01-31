@@ -51,7 +51,8 @@ add_relations_interal <- function(object, elements, sets, fuzzy) {
     new_relations <- setdiff(relations, original_relations)
 
     if (length(fuzzy) > length(new_relations)) {
-        stop("Redefining the same relations with a different fuzzy number", call. = FALSE)
+        stop("Redefining the same relations with a different fuzzy number",
+             call. = FALSE)
     } else if (length(fuzzy) <= length(new_relations) && length(fuzzy) == 1) {
         fuzzy <- rep(fuzzy, length(new_relations))
     } else if (length(fuzzy) != length(elements)) {
@@ -150,7 +151,8 @@ add_sets.TidySet <- function(object, sets, ...) {
 #' @param fuzzy The strength of the membership.
 #' @return A [`TidySet`] object with the new relations.
 #' @family add_*
-#' @seealso \code{\link{add_relation}} to add relations with new sets or/and new elements.
+#' @seealso \code{\link{add_relation}} to add relations with new sets or/and
+#' new elements.
 #' @examples
 #' x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
 #' a <- tidySet(x)

@@ -13,7 +13,8 @@ getGAF(x)
 A TidySet object
 }
 \description{
-Read a GAF formatted file, see \url{http://geneontology.org/docs/go-annotation-file-gaf-format-2.1/}
+Read a GAF formatted file, see
+\url{http://geneontology.org/docs/go-annotation-file-gaf-format-2.1/}
 }
 \examples{
 gafFile <- system.file(package = "BaseSet", "extdata",
@@ -24,7 +25,6 @@ head(gs)
 \seealso{
 Other IO functions: 
 \code{\link{getGMT}()},
-\code{\link{getOBO}()},
-\code{\link{getXML}()}
+\code{\link{getOBO}()}
 }
 \concept{IO functions}

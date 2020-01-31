@@ -30,7 +30,6 @@ nSets(gs)
 \seealso{
 Other IO functions: 
 \code{\link{getGAF}()},
-\code{\link{getOBO}()},
-\code{\link{getXML}()}
+\code{\link{getOBO}()}
 }
 \concept{IO functions}

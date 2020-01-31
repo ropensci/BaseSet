@@ -39,7 +39,8 @@ add_relations(a, elements = c("a", "b"), sets = c("d", "g"),
               fuzzy = c(0.5, 0.7))
 }
 \seealso{
-\code{\link{add_relation}} to add relations with new sets or/and new elements.
+\code{\link{add_relation}} to add relations with new sets or/and
+new elements.
 
 Other add_*: 
 \code{\link{add_elements}()},

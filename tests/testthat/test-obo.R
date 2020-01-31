@@ -5,7 +5,8 @@ test_that("getOBO works", {
 })
 
 test_that("getGAF works", {
-    fl <- system.file("extdata", "go_human_rna_valid_subset.gaf", package="BaseSet")
+    fl <- system.file("extdata", "go_human_rna_valid_subset.gaf",
+                      package="BaseSet")
     y <- getGAF(fl)
     expect_true(is(y, "TidySet"))
 })
