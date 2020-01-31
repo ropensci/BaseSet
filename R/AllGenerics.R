@@ -1,5 +1,11 @@
 #' @include AllClasses.R
-#' @import methods
+#' @importFrom methods setGeneric
+#' @importFrom methods as
+#' @importFrom methods new
+#' @importFrom methods slot
+#' @importFrom methods slot<-
+#' @importFrom methods validObject
+#' @importFrom methods show
 NULL
 
 #' Elements of the TidySet
@@ -16,7 +22,7 @@ NULL
 #' @examples
 #' TS <- tidySet(list(A = letters[1:5], B = letters[2:10]))
 #' elements(TS)
-setGeneric("elements", function(object) standardGeneric("elements"))
+methods::setGeneric("elements", function(object) setGeneric("elements"))
 
 #' Sets of the TidySet
 #'
@@ -32,7 +38,7 @@ setGeneric("elements", function(object) standardGeneric("elements"))
 #' @examples
 #' TS <- tidySet(list(A = letters[1:5], B = letters[2:10]))
 #' sets(TS)
-setGeneric("sets", function(object) standardGeneric("sets"))
+methods::setGeneric("sets", function(object) standardGeneric("sets"))
 
 #' Check if a TidySet is fuzzy.
 #'
@@ -42,7 +48,7 @@ setGeneric("sets", function(object) standardGeneric("sets"))
 #' @return A logical value.
 #' @export is.fuzzy
 #' @family methods
-setGeneric("is.fuzzy", function(object) standardGeneric("is.fuzzy"))
+methods::setGeneric("is.fuzzy", function(object) standardGeneric("is.fuzzy"))
 
 #' Number of sets
 #'
@@ -55,7 +61,7 @@ setGeneric("is.fuzzy", function(object) standardGeneric("is.fuzzy"))
 #' @examples
 #' TS <- tidySet(list(A = letters[1:2], B = letters[5:7]))
 #' nSets(TS)
-setGeneric("nSets", function(object) standardGeneric("nSets"))
+methods::setGeneric("nSets", function(object) standardGeneric("nSets"))
 
 #' Number of elements
 #'
@@ -68,7 +74,7 @@ setGeneric("nSets", function(object) standardGeneric("nSets"))
 #' @examples
 #' TS <- tidySet(list(A = letters[1:2], B = letters[5:7]))
 #' nElements(TS)
-setGeneric("nElements", function(object) standardGeneric("nElements"))
+methods::setGeneric("nElements", function(object) standardGeneric("nElements"))
 
 #' Number of relations
 #'
@@ -81,7 +87,7 @@ setGeneric("nElements", function(object) standardGeneric("nElements"))
 #' @examples
 #' TS <- tidySet(list(A = letters[1:2], B = letters[5:7]))
 #' nRelations(TS)
-setGeneric("nRelations", function(object) standardGeneric("nRelations"))
+methods::setGeneric("nRelations", function(object) standardGeneric("nRelations"))
 
 #' Incidence
 #'
@@ -90,7 +96,7 @@ setGeneric("nRelations", function(object) standardGeneric("nRelations"))
 #' @export incidence
 #' @family methods
 #' @seealso \code{\link{adjacency}}
-setGeneric("incidence", function(object) standardGeneric("incidence"))
+methods::setGeneric("incidence", function(object) standardGeneric("incidence"))
 
 #' Relations of the TidySet
 #'
@@ -107,21 +113,21 @@ setGeneric("incidence", function(object) standardGeneric("incidence"))
 #' @examples
 #' TS <- tidySet(list(A = letters[1:2], B = letters[5:7]))
 #' relations(TS)
-setGeneric("relations", function(object) standardGeneric("relations"))
+methods::setGeneric("relations", function(object) standardGeneric("relations"))
 
 #' @rdname relations
 #' @export
-setGeneric("relations<-", function(object, value)
+methods::setGeneric("relations<-", function(object, value)
     standardGeneric("relations<-"))
 
 
 #' @rdname elements
 #' @export
-setGeneric("elements<-", function(object, value) standardGeneric("elements<-"))
+methods::setGeneric("elements<-", function(object, value) standardGeneric("elements<-"))
 
 #' @rdname sets
 #' @export
-setGeneric("sets<-", function(object, value) standardGeneric("sets<-"))
+methods::setGeneric("sets<-", function(object, value) standardGeneric("sets<-"))
 
 #' Calculates the cardinality of a set
 #'
@@ -134,7 +140,7 @@ setGeneric("sets<-", function(object, value) standardGeneric("sets<-"))
 #' @aliases cardinality
 #' @family sizes
 #' @family methods
-setGeneric("set_size", function(object, set = NULL) standardGeneric("set_size"))
+methods::setGeneric("set_size", function(object, set = NULL) standardGeneric("set_size"))
 
 #' Calculates the size of the elements
 #'
@@ -146,7 +152,7 @@ setGeneric("set_size", function(object, set = NULL) standardGeneric("set_size"))
 #' @family sizes
 #' @export element_size
 #' @family methods
-setGeneric("element_size", function(object, element = NULL)
+methods::setGeneric("element_size", function(object, element = NULL)
     standardGeneric("element_size"))
 
 #' Rename sets
@@ -161,7 +167,7 @@ setGeneric("element_size", function(object, element = NULL)
 #' @seealso \code{\link{name_sets}}
 #' @export
 #' @family methods
-setGeneric("rename_set", function(object, old, new)
+methods::setGeneric("rename_set", function(object, old, new)
     standardGeneric("rename_set"))
 
 #' Rename elements
@@ -176,7 +182,7 @@ setGeneric("rename_set", function(object, old, new)
 #' @seealso \code{\link{name_elements}}
 #' @export
 #' @family methods
-setGeneric("rename_elements", function(object, old, new)
+methods::setGeneric("rename_elements", function(object, old, new)
     standardGeneric("rename_elements"))
 
 
@@ -195,7 +201,7 @@ setGeneric("rename_elements", function(object, old, new)
 #'                         fuzzy = runif(6))
 #' a <- tidySet(relations)
 #' name_sets(a)
-setGeneric("name_sets", function(object)
+methods::setGeneric("name_sets", function(object)
     standardGeneric("name_sets"))
 
 #' Name elements
@@ -212,7 +218,7 @@ setGeneric("name_sets", function(object)
 #'                         fuzzy = runif(6))
 #' a <- tidySet(relations)
 #' name_elements(a)
-setGeneric("name_elements", function(object)
+methods::setGeneric("name_elements", function(object)
     standardGeneric("name_elements"))
 
 #' Rename elements
@@ -233,7 +239,7 @@ setGeneric("name_elements", function(object)
 #' a <- tidySet(relations)
 #' a
 #' name_elements(a) <- letters[1:6]
-setGeneric("name_elements<-", function(object, value)
+methods::setGeneric("name_elements<-", function(object, value)
     standardGeneric("name_elements<-"))
 
 #' Rename sets
@@ -254,7 +260,7 @@ setGeneric("name_elements<-", function(object, value)
 #' a <- tidySet(relations)
 #' a
 #' name_sets(a) <- LETTERS[1:2]
-setGeneric("name_sets<-", function(object, value)
+methods::setGeneric("name_sets<-", function(object, value)
     standardGeneric("name_sets<-"))
 
 #' Add column
@@ -275,7 +281,7 @@ setGeneric("name_sets<-", function(object, value)
 #' a <- tidySet(relations)
 #' add_column(a, "relations", data.frame(well = c("GOOD", "BAD", "WORSE",
 #' "UGLY", "FOE", "HEY")))
-setGeneric("add_column", function(object, slot, columns)
+methods::setGeneric("add_column", function(object, slot, columns)
     standardGeneric("add_column"))
 
 #' Remove column
@@ -289,7 +295,7 @@ setGeneric("add_column", function(object, slot, columns)
 #' @family methods
 #' @seealso \code{\link{rename_set}}
 #' @export
-setGeneric("remove_column", function(object, slot, column_names)
+methods::setGeneric("remove_column", function(object, slot, column_names)
     standardGeneric("remove_column"))
 
 #' Intersection of two sets
@@ -311,7 +317,7 @@ setGeneric("remove_column", function(object, slot, column_names)
 #'                         fuzzy = runif(6))
 #' a <- tidySet(relations)
 #' intersection(a, c("a", "b"), "C")
-setGeneric("intersection", function(object, sets, ...)
+methods::setGeneric("intersection", function(object, sets, ...)
     standardGeneric("intersection"))
 
 #' Add relations
@@ -334,7 +340,7 @@ setGeneric("intersection", function(object, sets, ...)
 #'                         fuzzy = runif(6),
 #'                         new = runif(6))
 #' add_relation(a, relations)
-setGeneric("add_relation", function(object, relations, ...)
+methods::setGeneric("add_relation", function(object, relations, ...)
     standardGeneric("add_relation"))
 
 #' Remove a relation
@@ -354,7 +360,7 @@ setGeneric("add_relation", function(object, relations, ...)
 #'                         fuzzy = runif(6))
 #' a <- tidySet(relations)
 #' remove_relation(a, "a", "a")
-setGeneric("remove_relation", function(object, elements, sets, ...)
+methods::setGeneric("remove_relation", function(object, elements, sets, ...)
     standardGeneric("remove_relation"))
 
 #' Remove elements
@@ -374,7 +380,7 @@ setGeneric("remove_relation", function(object, elements, sets, ...)
 #'                         fuzzy = runif(6))
 #' a <- tidySet(relations)
 #' remove_element(a, "c")
-setGeneric("remove_element", function(object, elements, ...)
+methods::setGeneric("remove_element", function(object, elements, ...)
     standardGeneric("remove_element"))
 
 #' Remove sets
@@ -394,7 +400,7 @@ setGeneric("remove_element", function(object, elements, ...)
 #'                         fuzzy = runif(6))
 #' a <- tidySet(relations)
 #' remove_set(a, "b")
-setGeneric("remove_set", function(object, sets, ...)
+methods::setGeneric("remove_set", function(object, sets, ...)
     standardGeneric("remove_set"))
 
 #' Complement of a set
@@ -418,7 +424,7 @@ setGeneric("remove_set", function(object, sets, ...)
 #'                         fuzzy = runif(6))
 #' a <- tidySet(relations)
 #' complement_set(a, "a")
-setGeneric("complement_set", function(object, sets, ...)
+methods::setGeneric("complement_set", function(object, sets, ...)
     standardGeneric("complement_set"))
 
 #' Complement of elements
@@ -439,7 +445,7 @@ setGeneric("complement_set", function(object, sets, ...)
 #' a <- tidySet(relations)
 #' complement_element(a, "a", "C_a")
 #' complement_element(a, "a", "C_a", keep = FALSE)
-setGeneric("complement_element", function(object, elements, ...)
+methods::setGeneric("complement_element", function(object, elements, ...)
     standardGeneric("complement_element"))
 
 #' Subtract
@@ -463,7 +469,7 @@ setGeneric("complement_element", function(object, elements, ...)
 #' a <- tidySet(relations)
 #' subtract(a, "a", "b")
 #' subtract(a, "a", "b", keep = FALSE)
-setGeneric("subtract", function(object, set_in, not_in, ...)
+methods::setGeneric("subtract", function(object, set_in, not_in, ...)
     standardGeneric("subtract"))
 
 #' Move columns between slots
@@ -481,5 +487,5 @@ setGeneric("subtract", function(object, set_in, not_in, ...)
 #' a <- tidySet(x)
 #' a <- mutate_element(a, b = runif(2))
 #' b <- move_to(a, from = "elements", to = "relations", "b")
-setGeneric("move_to", function(object, from, to, columns)
+methods::setGeneric("move_to", function(object, from, to, columns)
     standardGeneric("move_to"))

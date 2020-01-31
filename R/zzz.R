@@ -7,7 +7,6 @@
 #' @export
 #' @examples
 #' set_symbols
-#' @import utils
 set_symbols <- c("intersection" = "\u2229",
              "union" = "\U222A",
              "complement" = "\u2201",
