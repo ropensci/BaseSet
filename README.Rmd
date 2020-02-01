@@ -35,14 +35,15 @@ Before installation you might need to install some of the suggested packages fro
 if (!require("BiocManager")) {
   install.packages("BiocManager")
   BiocManager::install(c("Biobase", "GO.db", "GSEABase", "org.HS.eg.db", 
-                         "reactome.db", "BiocStyle"))
+                         "reactome.db", "BiocStyle"), type = "source")
 }
 ```
 
 You can install the latest version of BaseSet from [Github](https://github.com/llrs/BaseSet) with:
 
 ```{r eval=FALSE}
-BiocManager::install("llrs/BaseSet")
+BiocManager::install("llrs/BaseSet", 
+                     dependencies = TRUE, build_vignettes = TRUE, force = TRUE)
 ```
 
  

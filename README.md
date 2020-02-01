@@ -1,6 +1,8 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+<!-- badges: start -->
+
 [![Travis build
 status](https://travis-ci.org/llrs/BaseSet.svg?branch=master)](https://travis-ci.org/llrs/BaseSet)
 [![Coverage
@@ -10,6 +12,8 @@ maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![](https://badges.ropensci.org/359_status.svg)](https://github.com/ropensci/software-review/issues/359)
+<!-- badges: end -->
 
 # BaseSet
 
@@ -18,11 +22,23 @@ way.
 
 ## Installation
 
+Before installation you might need to install some of the suggested
+packages from Bioconductor:
+
+``` r
+if (!require("BiocManager")) {
+  install.packages("BiocManager")
+  BiocManager::install(c("Biobase", "GO.db", "GSEABase", "org.HS.eg.db", 
+                         "reactome.db", "BiocStyle"), type = "source")
+}
+```
+
 You can install the latest version of BaseSet from
 [Github](https://github.com/llrs/BaseSet) with:
 
 ``` r
-remotes::install_github("llrs/BaseSet")
+BiocManager::install("llrs/BaseSet", 
+                     dependencies = TRUE, build_vignettes = TRUE, force = TRUE)
 ```
 
 ## Examples
@@ -215,6 +231,6 @@ fuzzy_set %>%
 
 # Code of Conduct
 
-Please note that the ‘BaseSet’ project is released with a [Contributor
+Please note that the BaseSet project is released with a [Contributor
 Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,
 you agree to abide by its terms.
