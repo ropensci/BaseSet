@@ -8,8 +8,8 @@ jobs:
   include:
     - r: bioc-release
     - r: release
-      script: Rscript -e `remotes::install_cran("BiocManager"); BiocManager::install(c("Biobase", "GO.db", "GSEABase", "org.HS.eg.db", 
-                         "reactome.db", "BiocStyle"), type = "source")`
+      script: Rscript -e 'remotes::install_cran("BiocManager"); BiocManager::install(c("Biobase", "GO.db", "GSEABase", "org.HS.eg.db", 
+                         "reactome.db", "BiocStyle"), type = "source")'
 after_success:
     - Rscript -e 'covr::codecov()'
 
