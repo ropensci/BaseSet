@@ -3,12 +3,30 @@ on: [push, pull_request]
 name: R-CMD-check
 
 jobs:
-  R-CMD-check:
+  macOS-check:
     runs-on: macOS-latest
     steps:
       - uses: actions/checkout@v1
       - uses: r-lib/actions/setup-r@master
       - name: Install dependencies
-        run: Rscript -e "install.packages(c('remotes', 'rcmdcheck'))" -e "remotes::install_deps(dependencies = TRUE)"
+        run: Rscript -e "install.packages(c('remotes', 'rcmdcheck'))" -e "remotes::install_deps(dependencies = TRUE)" -e 'install.packages("BiocManager"); BiocManager::install(c("Biobase", "GO.db", "GSEABase", "org.HS.eg.db", "reactome.db", "BiocStyle"), type = "source")'
+      - name: Check
+        run: Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on = 'error')"
+  windows-check:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: r-lib/actions/setup-r@master
+      - name: Install dependencies
+        run: Rscript -e "install.packages(c('remotes', 'rcmdcheck'))" -e "remotes::install_deps(dependencies = TRUE)" -e 'install.packages("BiocManager"); BiocManager::install(c("Biobase", "GO.db", "GSEABase", "org.HS.eg.db", "reactome.db", "BiocStyle"), type = "source")'
+      - name: Check
+        run: Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on = 'error')"
+  Linux-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: r-lib/actions/setup-r@master
+      - name: Install dependencies
+        run: Rscript -e "install.packages(c('remotes', 'rcmdcheck'))" -e "remotes::install_deps(dependencies = TRUE)" -e 'install.packages("BiocManager"); BiocManager::install(c("Biobase", "GO.db", "GSEABase", "org.HS.eg.db", "reactome.db", "BiocStyle"), type = "source")'
       - name: Check
         run: Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on = 'error')"
