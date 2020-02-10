@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: r-lib/actions/setup-r@master
       - name: Install dependencies
-        run: Rscript -e "install.packages('BiocManager')" -e 'BiocManager::install("llrs/BaseSet")'
+        run: Rscript -e "install.packages(c('remotes', 'rcmdcheck', 'BiocManager'))" -e 'BiocManager::install("llrs/BaseSet")'
       - name: Check
         run: Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on = 'error')"
   windows-check:
@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: r-lib/actions/setup-r@master
       - name: Install dependencies
-        run: Rscript -e "install.packages('BiocManager')" -e 'BiocManager::install("llrs/BaseSet")'
+        run: Rscript -e "install.packages(c('remotes', 'rcmdcheck', 'BiocManager'))" -e 'BiocManager::install("llrs/BaseSet")'
       - name: Check
         run: Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on = 'error')"
   Linux-check:
@@ -27,6 +27,6 @@ jobs:
       - uses: actions/checkout@v1
       - uses: r-lib/actions/setup-r@master
       - name: Install dependencies
-        run: Rscript -e "install.packages('BiocManager')" -e 'BiocManager::install("llrs/BaseSet")'
+        run: Rscript -e "install.packages(c('remotes', 'rcmdcheck', 'BiocManager'))" -e 'BiocManager::install("llrs/BaseSet")'
       - name: Check
         run: Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on = 'error')"
