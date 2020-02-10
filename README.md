@@ -18,7 +18,44 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 # BaseSet
 
 The goal of BaseSet is to facilitate working with sets in an efficient
-way.
+way. The package implements methods to work on sets, doing intersection,
+union, complementary, power sets, cartesian product and other set
+operations in a tidy way. Both for classical and fuzzy sets. On fuzzy
+sets, elements have a probability to belong to a set.
+
+It also allows to import from several formats used in the life science
+world. Like the GMT and the GAF or the [OBO
+format](http://www.obofoundry.org/) file for ontologies.
+
+# Related packages
+
+There are several other packages related to sets, which partially
+overlap with BaseSet functionality:
+
+  - [sets](https://CRAN.R-project.org/package=sets)  
+    Implements a more generalized approach, that can store functions or
+    lists as an element of a set (while BaseSet only allows to store a
+    character or factor), but it is harder to operate in a tidy/long
+    way. Also the operations of intersection and union need to happen
+    between two different objects, while a single TidySet object (the
+    class implemented in BaseSet) can store one or thousands of sets.
+
+  - [GSEABase](https://bioconductor.org/packages/GSEABase)  
+    Implements a class to store sets and related information, but it
+    doesn’t allow to store fuzzy sets and it is also quite slow as it
+    creates several classes for annotating each set.
+
+  - [BiocSets](https://bioconductor.org/packages/BiocSets)  
+    Implements a tidy class for sets but does not handle fuzzy sets. It
+    also has less functionality to operate with sets, like power sets
+    and cartesian product. BiocSets was influenced by the development of
+    this
+    package.
+
+  - [hierarchicalSets](https://CRAN.R-project.org/package=hierarchicalSets)  
+    This package is focused on clustering of sets that are inside other
+    sets and visualizations. However, BaseSet is focused on storing and
+    manipulate sets including hierarchical sets.
 
 ## Installation
 
