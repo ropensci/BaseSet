@@ -32,10 +32,10 @@ on the object itself. For instance origin of the set, categorical or
 numeric data associated with sets…
 
 Watch BaseSet working on the [examples](#Examples) below and in the
-vignettes. You can also find [related packages](#related) and the
-differences with BaseSet. If you have some questions or bugs [open an
-issue](https://github.com/llrs/BaseSet/issues) (remember of the [Code of
-Conduct](#CoC))
+vignettes. You can also find [related packages](#Related-packages) and
+the differences with BaseSet. If you have some questions or bugs [open
+an issue](https://github.com/llrs/BaseSet/issues) (remember of the [Code
+of Conduct](#Code-of-Conduct))
 
 # Installation
 
