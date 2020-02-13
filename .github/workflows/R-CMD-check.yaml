@@ -3,7 +3,7 @@ on: [push, pull_request]
 name: R-CMD-check
 
 jobs:
-  R-CMD-check:
+  check:
     runs-on: [macOS-latest, ubuntu-latest, windows-latest]
     name: R ${{ jobs.runs-on }} sample
     steps:
