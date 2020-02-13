@@ -6,7 +6,8 @@ jobs:
   check:
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: false # Avoid canceling other builds if one fails.
+      # Avoid cancelling builds if one of them fails
+      fail-fast: false
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
     steps:
