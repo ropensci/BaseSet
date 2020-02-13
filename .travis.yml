@@ -8,7 +8,6 @@ jobs:
   include:
     - r: bioc-release
     - r: release
-      script: Rscript -e 'remotes::install_cran("BiocManager"); BiocManager::install(c("llrs/BaseSet", dependencies = TRUE)'
 after_success:
     - Rscript -e 'covr::codecov()'
 
@@ -17,7 +16,7 @@ notifications: # To avoid filling the inbox
     on_success: change
     on_failure: change
 
-before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
+before_cache: Rscript -e 'remotes::install_cran("pkgdown"); remotes::install_cran("BiocManager"); BiocManager::install(c("llrs/BaseSet", dependencies = TRUE)'
 deploy:
   provider: script
   script: Rscript -e 'pkgdown::deploy_site_github()'
