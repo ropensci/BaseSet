@@ -3,14 +3,14 @@ on: [push, pull_request]
 name: R-CMD-check
 
 jobs:
-  R-CMD-check:
-    runs-on: [macOS-latest, ubuntu-latest, windows-latest]
-    steps:
-      - uses: actions/checkout@v1
-      - uses: r-lib/actions/setup-r@master
-      - name: Install basic dependencies
-        run: Rscript -e "install.packages(c('remotes', 'rcmdcheck', 'BiocManager'))"
-      - name: Install all dependencies
-        run: Rscript -e 'BiocManager::install("llrs/BaseSet", dependencies = TRUE)'
-      - name: Check
-        run: Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on = 'error')"
+  runs-on: [macOS-latest, ubuntu-latest, windows-latest]
+  name: R ${{ jobs.runs-on }} sample
+  steps:
+    - uses: actions/checkout@v1
+    - uses: r-lib/actions/setup-r@master
+    - name: Install basic dependencies
+      run: Rscript -e "install.packages(c('remotes', 'rcmdcheck', 'BiocManager'))"
+    - name: Install all dependencies
+      run: Rscript -e 'BiocManager::install("llrs/BaseSet", dependencies = TRUE)'
+    - name: Check
+      run: Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on = 'error')"
