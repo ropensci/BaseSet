@@ -8,6 +8,11 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
+      include:
+        os: ubuntu-latest
+        - steps:
+          - name: curl
+            run: apt install libcurl4-openssl-dev
     steps:
       - uses: actions/checkout@v1
       - uses: r-lib/actions/setup-r@master
