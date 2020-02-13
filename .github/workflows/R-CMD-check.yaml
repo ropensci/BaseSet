@@ -4,8 +4,10 @@ name: R-CMD-check
 
 jobs:
   check:
-    runs-on: [macOS-latest, ubuntu-latest, windows-latest]
-    name: R ${{ jobs.runs-on }} sample
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
     steps:
       - uses: actions/checkout@v1
       - uses: r-lib/actions/setup-r@master
