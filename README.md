@@ -5,8 +5,8 @@
 
 [![Travis build
 status](https://travis-ci.org/llrs/BaseSet.svg?branch=master)](https://travis-ci.org/llrs/BaseSet)
-![Actions
-CI](https://github.com/llrs/BaseSet/workflows/R-CMD-check/badge.svg)
+[![Actions
+CI](https://github.com/llrs/BaseSet/workflows/R-CMD-check/badge.svg)](https://github.com/llrs/BaseSet/actions?query=workflow%3AR-CMD-check)
 [![Coverage
 status](https://codecov.io/gh/llrs/BaseSet/branch/master/graph/badge.svg)](https://codecov.io/github/llrs/BaseSet?branch=master)
 [![Lifecycle:
@@ -207,7 +207,7 @@ fuzzy_set
 #> 7        f    B 0.9460158
 ```
 
-The equivalent oprations are possible with the sets
+The equivalent operations are possible with the sets
 
 ``` r
 union(fuzzy_set, sets = c("A", "B")) 

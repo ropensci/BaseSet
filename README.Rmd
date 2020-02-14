@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/llrs/BaseSet.svg?branch=master)](https://travis-ci.org/llrs/BaseSet)
-![Actions CI](https://github.com/llrs/BaseSet/workflows/R-CMD-check/badge.svg)
+[![Actions CI](https://github.com/llrs/BaseSet/workflows/R-CMD-check/badge.svg)](https://github.com/llrs/BaseSet/actions?query=workflow%3AR-CMD-check)
 [![Coverage status](https://codecov.io/gh/llrs/BaseSet/branch/master/graph/badge.svg)](https://codecov.io/github/llrs/BaseSet?branch=master)
 [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -124,7 +124,7 @@ fuzzy_set <- tidySet(relations)
 fuzzy_set
 ```
 
-The equivalent oprations are possible with the sets
+The equivalent operations are possible with the sets
 
 ```{r fuzzy-operations}
 union(fuzzy_set, sets = c("A", "B")) 

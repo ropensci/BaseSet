@@ -20,6 +20,8 @@ jobs:
         run: Rscript -e "install.packages(c('remotes', 'rcmdcheck', 'BiocManager'))"
       - name: Install all dependencies
         run: Rscript -e "BiocManager::install('llrs/BaseSet', dependencies = TRUE, build_vignettes = TRUE)"
+      - name: Session Info
+        run: Rscript -e "sessionInfo()"
       - name: Check
         run: Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on = 'error')"
 
