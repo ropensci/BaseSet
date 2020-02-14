@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/llrs/BaseSet.svg?branch=master)](https://travis-ci.org/llrs/BaseSet)
+![Actions CI](https://github.com/llrs/BaseSet/workflows/R-CMD-check/badge.svg)
 [![Coverage status](https://codecov.io/gh/llrs/BaseSet/branch/master/graph/badge.svg)](https://codecov.io/github/llrs/BaseSet?branch=master)
 [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -36,13 +37,11 @@ Watch BaseSet working on the [examples](#Examples) below and in the vignettes. Y
 
 # Installation
 
-Before installation you might need to install some of the suggested packages from Bioconductor:
+The package depends on some packages from Bioconductor. In order to install some of its dependencies you'll need first to install BiocManager:
 
 ```{r dep, eval = FALSE}
 if (!require("BiocManager")) {
   install.packages("BiocManager")
-  BiocManager::install(c("Biobase", "GO.db", "GSEABase", "org.HS.eg.db", 
-                         "reactome.db", "BiocStyle"), type = "source")
 }
 ```
 

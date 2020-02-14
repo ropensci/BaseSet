@@ -5,6 +5,8 @@
 
 [![Travis build
 status](https://travis-ci.org/llrs/BaseSet.svg?branch=master)](https://travis-ci.org/llrs/BaseSet)
+![Actions
+CI](https://github.com/llrs/BaseSet/workflows/R-CMD-check/badge.svg)
 [![Coverage
 status](https://codecov.io/gh/llrs/BaseSet/branch/master/graph/badge.svg)](https://codecov.io/github/llrs/BaseSet?branch=master)
 [![Lifecycle:
@@ -39,14 +41,13 @@ of Conduct](#Code-of-Conduct))
 
 # Installation
 
-Before installation you might need to install some of the suggested
-packages from Bioconductor:
+The package depends on some packages from Bioconductor. In order to
+install some of its dependencies you’ll need first to install
+BiocManager:
 
 ``` r
 if (!require("BiocManager")) {
   install.packages("BiocManager")
-  BiocManager::install(c("Biobase", "GO.db", "GSEABase", "org.HS.eg.db", 
-                         "reactome.db", "BiocStyle"), type = "source")
 }
 ```
 
