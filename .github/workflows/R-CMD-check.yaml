@@ -19,3 +19,8 @@ jobs:
         run: Rscript -e "BiocManager::install('llrs/BaseSet', dependencies = TRUE)"
       - name: Check
         run: Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on = 'error')"
+      - name: Install system dependencies
+        if: runner.os == 'Linux'
+        run: sudo apt install libcurl4-openssl-dev
+
+
