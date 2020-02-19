@@ -36,8 +36,8 @@ numeric data associated with sets…
 Watch BaseSet working on the [examples](#Examples) below and in the
 vignettes. You can also find [related packages](#Related-packages) and
 the differences with BaseSet. If you have some questions or bugs [open
-an issue](https://github.com/llrs/BaseSet/issues) (remember of the [Code
-of Conduct](#Code-of-Conduct))
+an issue](https://github.com/llrs/BaseSet/issues) (remember the [Code of
+Conduct](#Code-of-Conduct))
 
 # Installation
 
@@ -337,7 +337,7 @@ overlap with BaseSet functionality:
   - [set6](https://cran.r-project.org/package=set6) This package
     implements different classes for different type of sets including
     fuzzy sets, conditional sets. However, it doesn’t handle information
-    associated to the elements or sets.
+    associated to elements, sets or relationship.
 
 # Code of Conduct
 
