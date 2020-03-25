@@ -20,7 +20,8 @@ Imports:
     magrittr,
     methods,
     rlang,
-    utils
+    utils,
+    Rcpp
 Suggests: 
     BiocStyle,
     covr,
@@ -91,3 +92,5 @@ Collate:
     'union.R'
     'utils-pipe.R'
     'zzz.R'
+LinkingTo: 
+    Rcpp
