@@ -2,8 +2,8 @@
 #include <algorithm>
 using namespace Rcpp;
 
-
-double prod(NumericVector x) {
+// [[Rcpp::export]]
+double prod2(NumericVector x) {
     double out;
     out = 1;
     NumericVector::iterator it;
@@ -14,20 +14,40 @@ double prod(NumericVector x) {
 }
 
 // [[Rcpp::export]]
-NumericVector multiply_probabilities(NumericVector p, NumericVector i) {
+NumericVector not_in(NumericVector p, NumericVector i) {
+    int it;
+    // i = std::sort(i);
+    for(it = 0; it < i.size(); it++) {
+        if (i[it] != 0) {
+            i = i -1;
+        }
+        p.erase(i[it]);
+    }
+    return p;
+}
+
+
+// [[Rcpp::export]]
+NumericVector multiply_probabilities2(NumericVector p, NumericVector i) {
     int n = i.size();
-    double out;
+    double out = 1;
     if (n == p.size()) {
-        return prod(p);
+        return prod2(p);
     } else if (n == 0) {
         i = seq_len(n);
     }
-    i = i - 1; // To account for starting index at 0 for c++ and 1 in R
-    NumericVector sel;
-    sel = p.erase(i);
-    out = prod(p[i])*prod(1-sel);
+        std::cout << i;
+    NumericVector sel = not_in(p, i);
+    NumericVector one;
+    one = rep(1, sel.size());
+
+    out *= prod2(p[i]);
+    NumericVector two;
+    two = one - sel;
+    out *= prod2(two);
     return out;
 }
+
 
 // You can include R code blocks in C++ files processed with sourceCpp
 // (useful for testing and development). The R code will be automatically
@@ -35,5 +55,25 @@ NumericVector multiply_probabilities(NumericVector p, NumericVector i) {
 //
 
 /*** R
-# multiply_probabilities(42)
+prod2(c(0.5, 0.1, 0.3, 0.85, 0.25, 0.23)) == prod(c(0.5, 0.1, 0.3, 0.85, 0.25, 0.23))
+not_in(c(0.5, 0.1, 0.3, 0.85, 0.25, 0.23), c(1, 2)) == c(0.5, 0.1, 0.3, 0.85, 0.25, 0.23)[-c(1, 2)]
+multiply_probabilities2(c(0.5, 0.1, 0.3, 0.85, 0.25, 0.23), c(1, 2))
+multiply_probabilities(c(0.5, 0.1, 0.3, 0.85, 0.25, 0.23), c(1, 2))
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
