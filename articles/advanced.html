@@ -6,19 +6,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Advanced examples • BaseSet</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Advanced examples">
-<meta property="og:description" content="">
-<meta name="twitter:card" content="summary">
+<meta property="og:description" content="BaseSet">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -70,7 +70,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/llrs/BaseSet">
+  <a href="https://github.com/llrs/BaseSet/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -88,13 +88,13 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Advanced examples</h1>
+      <h1 data-toc-skip>Advanced examples</h1>
                         <h4 class="author">Lluís Revilla</h4>
             <address class="author_afil">
       August Pi i Sunyer Biomedical Research Institute (IDIBAPS); Liver Unit, Hospital Clinic<br><a class="author_email" href="mailto:#"></a><a href="mailto:lluis.revilla@gmail.com">lluis.revilla@gmail.com</a>
       </address>
                   
-            <h4 class="date">25 March 2020</h4>
+            <h4 class="date">9 April 2020</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/llrs/BaseSet/blob/master/vignettes/advanced.Rmd"><code>vignettes/advanced.Rmd</code></a></small>
       <div class="hidden name"><code>advanced.Rmd</code></div>
@@ -111,162 +111,162 @@
 <h1 class="hasAnchor">
 <a href="#initial-setup" class="anchor"></a>Initial setup</h1>
 <p>To show compatibility with tidy workflows we will use magrittr pipe operator and the dplyr verbs.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"dplyr"</span>)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"BaseSet"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"dplyr"</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"BaseSet"</span>)</pre></body></html></div>
 </div>
 <div id="human-go" class="section level1">
 <h1 class="hasAnchor">
 <a href="#human-go" class="anchor"></a>Human GO</h1>
 <p>We will explore the genes related with GO.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># We load some libraries</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"org.Hs.eg.db"</span>)</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"GO.db"</span>)</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"ggplot2"</span>)</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co"># Prepare the data </span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">h2GO_TS &lt;-<span class="st"> </span><span class="kw"><a href="../reference/tidySet.html">tidySet</a></span>(org.Hs.egGO)</a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">h2GO &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>(org.Hs.egGO)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="co"># We load some libraries</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"org.Hs.eg.db"</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"GO.db"</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"ggplot2"</span>)
+<span class="co"># Prepare the data </span>
+<span class="no">h2GO_TS</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/tidySet.html">tidySet</a></span>(<span class="no">org.Hs.egGO</span>)
+<span class="no">h2GO</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>(<span class="no">org.Hs.egGO</span>)</pre></body></html></div>
 <p>We can now explore if there are differences in evidence usage for each ontology in GO:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"forcats"</span>)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">h2GO <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(Evidence, Ontology) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/tally.html">count</a></span>(<span class="dt">name =</span> <span class="st">"Freq"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">Evidence =</span> <span class="kw"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder2</a></span>(Evidence, Ontology, <span class="op">-</span>Freq)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(Evidence, Freq)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span>(<span class="op">~</span>Ontology) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span>(<span class="st">"Evidence"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"forcats"</span>)
+<span class="no">h2GO</span> <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">Evidence</span>, <span class="no">Ontology</span>) <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tally.html">count</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="st">"Freq"</span>) <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">Evidence</span> <span class="kw">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder2</a></span>(<span class="no">Evidence</span>, <span class="no">Ontology</span>, -<span class="no">Freq</span>)) <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>() +
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">Evidence</span>, <span class="no">Freq</span>)) +
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span>(~<span class="no">Ontology</span>) +
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>() +
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span>() +
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span>(<span class="st">"Evidence"</span>)</pre></body></html></div>
 <p><img src="advanced_files/figure-html/evidence_ontology-1.png" width="700"></p>
 <p>This graph doesn’t consider that some relationships are better annotated than other:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">h2GO_TS <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/relations.html">relations</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(elements, sets) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/tally.html">count</a></span>(<span class="dt">sort =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(n), <span class="dt">binwidth =</span> <span class="dv">1</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="st">  </span><span class="co"># scale_y_log10() +</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">x =</span> <span class="st">"Evidence codes"</span>, </a>
-<a class="sourceLine" id="cb4-10" data-line-number="10">       <span class="dt">title =</span> <span class="st">"Evidence codes for each relation between GO and a gene"</span>,</a>
-<a class="sourceLine" id="cb4-11" data-line-number="11">       <span class="dt">subtitle =</span> <span class="st">"in human annotation"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">h2GO_TS</span> <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="../reference/relations.html">relations</a></span>() <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">elements</span>, <span class="no">sets</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tally.html">count</a></span>(<span class="kw">sort</span> <span class="kw">=</span> <span class="fl">TRUE</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>() +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">n</span>), <span class="kw">binwidth</span> <span class="kw">=</span> <span class="fl">1</span>) +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span>() +
+  <span class="co"># scale_y_log10() +</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="st">"Evidence codes"</span>,
+       <span class="kw">title</span> <span class="kw">=</span> <span class="st">"Evidence codes for each relation between GO and a gene"</span>,
+       <span class="kw">subtitle</span> <span class="kw">=</span> <span class="st">"in human annotation"</span>)</pre></body></html></div>
 <p><img src="advanced_files/figure-html/nEvidence_plot-1.png" width="700"></p>
 <p>We can see that mostly all the annotations are done with a single evidence code. So far we have explored the code that it is related to a gene but how many genes don’t have any annotation?</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># Add all the genes and GO terms</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"GO.db"</span>)</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">h2GO_TS &lt;-<span class="st"> </span><span class="kw"><a href="../reference/add_elements.html">add_elements</a></span>(h2GO_TS, <span class="kw">keys</span>(org.Hs.eg.db)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/add_sets.html">add_sets</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/grep.html">grep</a></span>(<span class="st">"^GO:"</span>, <span class="kw">keys</span>(GO.db), <span class="dt">value =</span> <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6">sizes_element &lt;-<span class="st"> </span><span class="kw"><a href="../reference/element_size.html">element_size</a></span>(h2GO_TS) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(size))</a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="kw"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(sizes_element<span class="op">$</span>size <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; [1] 40729</span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="kw"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(sizes_element<span class="op">$</span>size <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; [1] 20488</span></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13">sizes_set &lt;-<span class="st"> </span><span class="kw"><a href="../reference/set_size.html">set_size</a></span>(h2GO_TS) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(size))</a>
-<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="kw"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(sizes_set<span class="op">$</span>size <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; [1] 26872</span></a>
-<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="kw"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(sizes_set<span class="op">$</span>size <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt; [1] 18177</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="co"># Add all the genes and GO terms</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"GO.db"</span>)
+<span class="no">h2GO_TS</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/add_elements.html">add_elements</a></span>(<span class="no">h2GO_TS</span>, <span class="fu">keys</span>(<span class="no">org.Hs.eg.db</span>)) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="../reference/add_sets.html">add_sets</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span>(<span class="st">"^GO:"</span>, <span class="fu">keys</span>(<span class="no">GO.db</span>), <span class="kw">value</span> <span class="kw">=</span> <span class="fl">TRUE</span>))
+
+<span class="no">sizes_element</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/element_size.html">element_size</a></span>(<span class="no">h2GO_TS</span>) <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="no">size</span>))
+<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">sizes_element</span>$<span class="no">size</span> <span class="kw">==</span> <span class="fl">0</span>)
+<span class="co">#&gt; [1] 40729</span>
+<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">sizes_element</span>$<span class="no">size</span> <span class="kw">!=</span> <span class="fl">0</span>)
+<span class="co">#&gt; [1] 20488</span>
+
+<span class="no">sizes_set</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/set_size.html">set_size</a></span>(<span class="no">h2GO_TS</span>) <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="no">size</span>))
+<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">sizes_set</span>$<span class="no">size</span> <span class="kw">==</span> <span class="fl">0</span>)
+<span class="co">#&gt; [1] 26872</span>
+<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">sizes_set</span>$<span class="no">size</span> <span class="kw">!=</span> <span class="fl">0</span>)
+<span class="co">#&gt; [1] 18177</span></pre></body></html></div>
 <p>So we can see that both there are more genes without annotation and more GO terms without a (direct) gene annotated.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">sizes_element <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(size <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(size), <span class="dt">binwidth =</span> <span class="dv">1</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">x =</span> <span class="st">"# sets per element"</span>, <span class="dt">y =</span> <span class="st">"Count"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">sizes_element</span> <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">size</span> <span class="kw">!=</span> <span class="fl">0</span>) <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>() +
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">size</span>), <span class="kw">binwidth</span> <span class="kw">=</span> <span class="fl">1</span>) +
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span>() +
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="st">"# sets per element"</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="st">"Count"</span>)</pre></body></html></div>
 <p><img src="advanced_files/figure-html/plots_GO-1.png" width="700"></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">sizes_set <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(size <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(size), <span class="dt">binwidth =</span> <span class="dv">1</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">x =</span> <span class="st">"# elements per set"</span>, <span class="dt">y =</span> <span class="st">"Count"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><html><body><pre class="r">
+<span class="no">sizes_set</span> <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">size</span> <span class="kw">!=</span> <span class="fl">0</span>) <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>() +
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">size</span>), <span class="kw">binwidth</span> <span class="kw">=</span> <span class="fl">1</span>) +
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span>() +
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="st">"# elements per set"</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="st">"Count"</span>)</pre></body></html></div>
 <p><img src="advanced_files/figure-html/plots_GO-2.png" width="700"></p>
 <p>As you can see on the second plot we have very large values but that are on associated on many genes:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(sizes_set, <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt;          sets size probability Ontology</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; 1  GO:0005515 9690           1       MF</span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; 2  GO:0005634 5626           1       CC</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt; 3  GO:0005829 5026           1       CC</span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt; 4  GO:0005886 4481           1       CC</span></a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; 5  GO:0005737 4437           1       CC</span></a>
-<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; 6  GO:0016021 3638           1       CC</span></a>
-<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt; 7  GO:0005654 3168           1       CC</span></a>
-<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt; 8  GO:0046872 2292           1       MF</span></a>
-<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt; 9  GO:0070062 2163           1       CC</span></a>
-<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt; 10 GO:0016020 1987           1       CC</span></a></code></pre></div>
+<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">sizes_set</span>, <span class="fl">10</span>)
+<span class="co">#&gt;          sets size probability Ontology</span>
+<span class="co">#&gt; 1  GO:0005515 9690           1       MF</span>
+<span class="co">#&gt; 2  GO:0005634 5626           1       CC</span>
+<span class="co">#&gt; 3  GO:0005829 5026           1       CC</span>
+<span class="co">#&gt; 4  GO:0005886 4481           1       CC</span>
+<span class="co">#&gt; 5  GO:0005737 4437           1       CC</span>
+<span class="co">#&gt; 6  GO:0016021 3638           1       CC</span>
+<span class="co">#&gt; 7  GO:0005654 3168           1       CC</span>
+<span class="co">#&gt; 8  GO:0046872 2292           1       MF</span>
+<span class="co">#&gt; 9  GO:0070062 2163           1       CC</span>
+<span class="co">#&gt; 10 GO:0016020 1987           1       CC</span></pre></body></html></div>
 </div>
 <div id="human-pathways" class="section level1">
 <h1 class="hasAnchor">
 <a href="#human-pathways" class="anchor"></a>Human pathways</h1>
 <p>Now we will repeat the same analysis with pathways:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="co"># We load some libraries</span></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"reactome.db"</span>)</a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co"># Prepare the data (is easier, there isn't any ontoogy or evidence column)</span></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5">h2p &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>(reactomeEXTID2PATHID)</a>
-<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="kw"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(h2p) &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"sets"</span>, <span class="st">"elements"</span>)</a>
-<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co"># Filter only for human pathways</span></a>
-<a class="sourceLine" id="cb9-8" data-line-number="8">h2p &lt;-<span class="st"> </span>h2p[<span class="kw"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span>(<span class="st">"^R-HSA-"</span>, h2p<span class="op">$</span>sets), ]</a>
-<a class="sourceLine" id="cb9-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="co"># There are duplicate relations with different evidence codes!!: </span></a>
-<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="kw"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/duplicated.html">duplicated</a></span>(h2p[, <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"elements"</span>, <span class="st">"sets"</span>)]))</a>
-<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="co">#&gt;    Mode   FALSE    TRUE </span></a>
-<a class="sourceLine" id="cb9-13" data-line-number="13"><span class="co">#&gt; logical  111759   11951</span></a>
-<a class="sourceLine" id="cb9-14" data-line-number="14">h2p &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/unique.html">unique</a></span>(h2p)</a>
-<a class="sourceLine" id="cb9-15" data-line-number="15"><span class="co"># Create a tidySet and </span></a>
-<a class="sourceLine" id="cb9-16" data-line-number="16">h2p_TS &lt;-<span class="st"> </span><span class="kw"><a href="../reference/tidySet.html">tidySet</a></span>(h2p) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb9-17" data-line-number="17"><span class="st">    </span><span class="co"># Add all the genes </span></a>
-<a class="sourceLine" id="cb9-18" data-line-number="18"><span class="st">    </span><span class="kw"><a href="../reference/add_elements.html">add_elements</a></span>(<span class="kw">keys</span>(org.Hs.eg.db))</a></code></pre></div>
+<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="co"># We load some libraries</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"reactome.db"</span>)
+
+<span class="co"># Prepare the data (is easier, there isn't any ontoogy or evidence column)</span>
+<span class="no">h2p</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span>(<span class="no">reactomeEXTID2PATHID</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span>(<span class="no">h2p</span>) <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"sets"</span>, <span class="st">"elements"</span>)
+<span class="co"># Filter only for human pathways</span>
+<span class="no">h2p</span> <span class="kw">&lt;-</span> <span class="no">h2p</span>[<span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span>(<span class="st">"^R-HSA-"</span>, <span class="no">h2p</span>$<span class="no">sets</span>), ]
+
+<span class="co"># There are duplicate relations with different evidence codes!!: </span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/duplicated.html">duplicated</a></span>(<span class="no">h2p</span>[, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"elements"</span>, <span class="st">"sets"</span>)]))
+<span class="co">#&gt;    Mode   FALSE    TRUE </span>
+<span class="co">#&gt; logical  111759   11951</span>
+<span class="no">h2p</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span>(<span class="no">h2p</span>)
+<span class="co"># Create a tidySet and </span>
+<span class="no">h2p_TS</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/tidySet.html">tidySet</a></span>(<span class="no">h2p</span>) <span class="kw">%&gt;%</span>
+    <span class="co"># Add all the genes </span>
+    <span class="fu"><a href="../reference/add_elements.html">add_elements</a></span>(<span class="fu">keys</span>(<span class="no">org.Hs.eg.db</span>))</pre></body></html></div>
 <p>Now that we have everything ready we can start measuring some things…</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">sizes_element &lt;-<span class="st"> </span><span class="kw"><a href="../reference/element_size.html">element_size</a></span>(h2p_TS) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(size))</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(sizes_element<span class="op">$</span>size <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#&gt; [1] 50563</span></a>
-<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="kw"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(sizes_element<span class="op">$</span>size <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#&gt; [1] 10736</span></a>
-<a class="sourceLine" id="cb10-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb10-8" data-line-number="8">sizes_set &lt;-<span class="st"> </span><span class="kw"><a href="../reference/set_size.html">set_size</a></span>(h2p_TS) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(size))</a></code></pre></div>
+<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">sizes_element</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/element_size.html">element_size</a></span>(<span class="no">h2p_TS</span>) <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="no">size</span>))
+<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">sizes_element</span>$<span class="no">size</span> <span class="kw">==</span> <span class="fl">0</span>)
+<span class="co">#&gt; [1] 50563</span>
+<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">sizes_element</span>$<span class="no">size</span> <span class="kw">!=</span> <span class="fl">0</span>)
+<span class="co">#&gt; [1] 10736</span>
+
+<span class="no">sizes_set</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/set_size.html">set_size</a></span>(<span class="no">h2p_TS</span>) <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="no">size</span>))</pre></body></html></div>
 <p>We can see there are more genes without pathways than genes with pathways.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">sizes_element <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(size <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(size), <span class="dt">binwidth =</span> <span class="dv">1</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_log10</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">x =</span> <span class="st">"# sets per element"</span>, <span class="dt">y =</span> <span class="st">"Count"</span>)</a>
-<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">#&gt; Warning: Transformation introduced infinite values in continuous y-axis</span></a>
-<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#&gt; Warning: Removed 254 rows containing missing values (geom_bar).</span></a></code></pre></div>
+<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="no">sizes_element</span> <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">size</span> <span class="kw">!=</span> <span class="fl">0</span>) <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>() +
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">size</span>), <span class="kw">binwidth</span> <span class="kw">=</span> <span class="fl">1</span>) +
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_log10</a></span>() +
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span>() +
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="st">"# sets per element"</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="st">"Count"</span>)
+<span class="co">#&gt; Warning: Transformation introduced infinite values in continuous y-axis</span>
+<span class="co">#&gt; Warning: Removed 254 rows containing missing values (geom_bar).</span></pre></body></html></div>
 <p><img src="advanced_files/figure-html/pathways_plots-1.png" width="700"></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"></a>
-<a class="sourceLine" id="cb12-2" data-line-number="2">sizes_set <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(size), <span class="dt">binwidth =</span> <span class="dv">1</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_log10</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">x =</span> <span class="st">"# elements per set"</span>, <span class="dt">y =</span> <span class="st">"Count"</span>)</a>
-<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; Warning: Transformation introduced infinite values in continuous y-axis</span></a>
-<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="co">#&gt; Warning: Removed 2509 rows containing missing values (geom_bar).</span></a></code></pre></div>
+<div class="sourceCode" id="cb12"><html><body><pre class="r">
+<span class="no">sizes_set</span> <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>() +
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">size</span>), <span class="kw">binwidth</span> <span class="kw">=</span> <span class="fl">1</span>) +
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_log10</a></span>() +
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span>() +
+    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="st">"# elements per set"</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="st">"Count"</span>)
+<span class="co">#&gt; Warning: Transformation introduced infinite values in continuous y-axis</span>
+<span class="co">#&gt; Warning: Removed 2509 rows containing missing values (geom_bar).</span></pre></body></html></div>
 <p><img src="advanced_files/figure-html/pathways_plots-2.png" width="700"></p>
 <p>As you can see on the second plot we have very large values but that are on associated on many genes:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(sizes_set, <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co">#&gt;             sets size probability</span></a>
-<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co">#&gt; 1   R-HSA-162582 2761           1</span></a>
-<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co">#&gt; 2   R-HSA-168256 2142           1</span></a>
-<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="co">#&gt; 3  R-HSA-1430728 2110           1</span></a>
-<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co">#&gt; 4   R-HSA-392499 2035           1</span></a>
-<a class="sourceLine" id="cb13-7" data-line-number="7"><span class="co">#&gt; 5    R-HSA-74160 1480           1</span></a>
-<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="co">#&gt; 6   R-HSA-597592 1430           1</span></a>
-<a class="sourceLine" id="cb13-9" data-line-number="9"><span class="co">#&gt; 7    R-HSA-73857 1340           1</span></a>
-<a class="sourceLine" id="cb13-10" data-line-number="10"><span class="co">#&gt; 8   R-HSA-212436 1217           1</span></a>
-<a class="sourceLine" id="cb13-11" data-line-number="11"><span class="co">#&gt; 9   R-HSA-372790 1183           1</span></a>
-<a class="sourceLine" id="cb13-12" data-line-number="12"><span class="co">#&gt; 10 R-HSA-1643685 1131           1</span></a></code></pre></div>
+<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">sizes_set</span>, <span class="fl">10</span>)
+<span class="co">#&gt;             sets size probability</span>
+<span class="co">#&gt; 1   R-HSA-162582 2761           1</span>
+<span class="co">#&gt; 2   R-HSA-168256 2142           1</span>
+<span class="co">#&gt; 3  R-HSA-1430728 2110           1</span>
+<span class="co">#&gt; 4   R-HSA-392499 2035           1</span>
+<span class="co">#&gt; 5    R-HSA-74160 1480           1</span>
+<span class="co">#&gt; 6   R-HSA-597592 1430           1</span>
+<span class="co">#&gt; 7    R-HSA-73857 1340           1</span>
+<span class="co">#&gt; 8   R-HSA-212436 1217           1</span>
+<span class="co">#&gt; 9   R-HSA-372790 1183           1</span>
+<span class="co">#&gt; 10 R-HSA-1643685 1131           1</span></pre></body></html></div>
 </div>
 <div id="session-info" class="section level1 unnumbered">
 <h1 class="hasAnchor">
@@ -301,35 +301,28 @@
 #&gt;  [1] tidyselect_1.0.0    xfun_0.12           purrr_0.3.3        
 #&gt;  [4] colorspace_1.4-1    vctrs_0.2.4         htmltools_0.4.0    
 #&gt;  [7] yaml_2.2.1          blob_1.2.1          rlang_0.4.5        
-#&gt; [10] pkgdown_1.4.1       pillar_1.4.3        glue_1.3.2         
+#&gt; [10] pkgdown_1.5.1       pillar_1.4.3        glue_1.4.0         
 #&gt; [13] withr_2.1.2         DBI_1.1.0           bit64_0.9-7        
 #&gt; [16] lifecycle_0.2.0     stringr_1.4.0       munsell_0.5.0      
 #&gt; [19] gtable_0.3.0        memoise_1.1.0       evaluate_0.14      
-#&gt; [22] labeling_0.3        knitr_1.28          Rcpp_1.0.4         
-#&gt; [25] backports_1.1.5     scales_1.1.0        BiocManager_1.30.10
-#&gt; [28] desc_1.2.0          farver_2.0.3        fs_1.3.1           
-#&gt; [31] bit_1.1-15.2        BiocStyle_2.14.4    digest_0.6.25      
-#&gt; [34] stringi_1.4.6       rprojroot_1.3-2     grid_3.6.2         
-#&gt; [37] tools_3.6.2         magrittr_1.5        tibble_2.1.3       
-#&gt; [40] RSQLite_2.2.0       crayon_1.3.4        pkgconfig_2.0.3    
-#&gt; [43] MASS_7.3-51.4       ellipsis_0.3.0      assertthat_0.2.1   
-#&gt; [46] rmarkdown_2.1       R6_2.4.1            compiler_3.6.2</code></pre>
+#&gt; [22] labeling_0.3        knitr_1.28          fansi_0.4.1        
+#&gt; [25] Rcpp_1.0.4.6        backports_1.1.6     scales_1.1.0       
+#&gt; [28] BiocManager_1.30.10 desc_1.2.0          farver_2.0.3       
+#&gt; [31] fs_1.3.1            bit_1.1-15.2        BiocStyle_2.14.4   
+#&gt; [34] digest_0.6.25       stringi_1.4.6       rprojroot_1.3-2    
+#&gt; [37] grid_3.6.2          cli_2.0.2           tools_3.6.2        
+#&gt; [40] magrittr_1.5        tibble_3.0.0        RSQLite_2.2.0      
+#&gt; [43] crayon_1.3.4        pkgconfig_2.0.3     MASS_7.3-51.4      
+#&gt; [46] ellipsis_0.3.0      assertthat_0.2.1    rmarkdown_2.1      
+#&gt; [49] R6_2.4.1            compiler_3.6.2</code></pre>
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <div id="tocnav">
-      <h2 class="hasAnchor">
-<a href="#tocnav" class="anchor"></a>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-<li><a href="#initial-setup">Initial setup</a></li>
-      <li><a href="#human-go">Human GO</a></li>
-      <li><a href="#human-pathways">Human pathways</a></li>
-      <li><a href="#session-info">Session info</a></li>
-      </ul>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
 </div>
-      </div>
 
 </div>
 
@@ -340,7 +333,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
