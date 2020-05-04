@@ -28,15 +28,26 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// multiply_probabilities2
-NumericVector multiply_probabilities2(NumericVector p, NumericVector i);
-RcppExport SEXP _BaseSet_multiply_probabilities2(SEXP pSEXP, SEXP iSEXP) {
+// multiply_probabilities
+// double multiply_probabilities(NumericVector p);
+RcppExport SEXP _BaseSet_multiply_probabilities(SEXP pSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type p(pSEXP);
+    rcpp_result_gen = Rcpp::wrap(multiply_probabilities(p));
+    return rcpp_result_gen;
+END_RCPP
+}
+// multiply_probabilities
+double multiply_probabilities(NumericVector p, NumericVector i);
+RcppExport SEXP _BaseSet_multiply_probabilities(SEXP pSEXP, SEXP iSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericVector >::type p(pSEXP);
     Rcpp::traits::input_parameter< NumericVector >::type i(iSEXP);
-    rcpp_result_gen = Rcpp::wrap(multiply_probabilities2(p, i));
+    rcpp_result_gen = Rcpp::wrap(multiply_probabilities(p, i));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -44,7 +55,8 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_BaseSet_prod2", (DL_FUNC) &_BaseSet_prod2, 1},
     {"_BaseSet_not_in", (DL_FUNC) &_BaseSet_not_in, 2},
-    {"_BaseSet_multiply_probabilities2", (DL_FUNC) &_BaseSet_multiply_probabilities2, 2},
+    {"_BaseSet_multiply_probabilities", (DL_FUNC) &_BaseSet_multiply_probabilities, 1},
+    {"_BaseSet_multiply_probabilities", (DL_FUNC) &_BaseSet_multiply_probabilities, 2},
     {NULL, NULL, 0}
 };
 

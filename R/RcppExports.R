@@ -2,14 +2,18 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 prod2 <- function(x) {
-    .Call('_BaseSet_prod2', PACKAGE = 'BaseSet', x)
+    .Call(`_BaseSet_prod2`, x)
 }
 
 not_in <- function(p, i) {
-    .Call('_BaseSet_not_in', PACKAGE = 'BaseSet', p, i)
+    .Call(`_BaseSet_not_in`, p, i)
 }
 
-multiply_probabilities2 <- function(p, i) {
-    .Call('_BaseSet_multiply_probabilities2', PACKAGE = 'BaseSet', p, i)
+multiply_probabilities <- function(p) {
+    .Call(`_BaseSet_multiply_probabilities`, p)
+}
+
+multiply_probabilities <- function(p, i) {
+    .Call(`_BaseSet_multiply_probabilities`, p, i)
 }
 
