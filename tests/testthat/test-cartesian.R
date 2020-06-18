@@ -1,8 +1,10 @@
 context("test-cartesian")
 
 test_that("cartesian works", {
-    relations <- data.frame(sets = c(rep("a", 5), "b"),
-                            elements = letters[seq_len(6)])
+    relations <- data.frame(
+        sets = c(rep("a", 5), "b"),
+        elements = letters[seq_len(6)]
+    )
     TS <- tidySet(relations)
     out <- cartesian(TS, "a", "b")
     expect_s4_class(out, "TidySet")

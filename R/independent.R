@@ -20,7 +20,6 @@ independent <- function(object, sets) {
 #' @export
 #' @method independent TidySet
 independent.TidySet <- function(object, sets = NULL) {
-
     if (is.null(sets)) {
         sets <- name_sets(object)
     } else if (any(!sets %in% name_sets(object))) {

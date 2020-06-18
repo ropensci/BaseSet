@@ -11,24 +11,24 @@ NULL
 #' a <- tidySet(x)
 #' incidence(a)
 setMethod("incidence",
-  signature = signature(object = "TidySet"),
-  function(object) {
-    Incidence <- matrix(0,
-      nrow = nElements(object),
-      ncol = nSets(object),
-      dimnames = list(
-        elements(object)$element,
-        sets(object)$set
-      )
-    )
-    rel <- unique(relations(object)[, c("sets", "elements", "fuzzy")])
-    elements <- as.character(rel$elements)
-    sets <- as.character(rel$sets)
+    signature = signature(object = "TidySet"),
+    function(object) {
+        Incidence <- matrix(0,
+            nrow = nElements(object),
+            ncol = nSets(object),
+            dimnames = list(
+                elements(object)$element,
+                sets(object)$set
+            )
+        )
+        rel <- unique(relations(object)[, c("sets", "elements", "fuzzy")])
+        elements <- as.character(rel$elements)
+        sets <- as.character(rel$sets)
 
-    fuzziness <- rel$fuzzy
-    for (p in seq_along(rel$fuzzy)) {
-      Incidence[elements[p], sets[p]] <- fuzziness[p]
+        fuzziness <- rel$fuzzy
+        for (p in seq_along(rel$fuzzy)) {
+            Incidence[elements[p], sets[p]] <- fuzziness[p]
+        }
+        Incidence
     }
-    Incidence
-  }
 )

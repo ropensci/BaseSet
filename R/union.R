@@ -20,9 +20,11 @@ NULL
 #' @family methods that create new sets
 #' @family methods
 #' @examples
-#' relations <- data.frame(sets = c(rep("a", 5), "b"),
-#'                         elements = letters[seq_len(6)],
-#'                         fuzzy = runif(6))
+#' relations <- data.frame(
+#'     sets = c(rep("a", 5), "b"),
+#'     elements = letters[seq_len(6)],
+#'     fuzzy = runif(6)
+#' )
 #' a <- tidySet(relations)
 #' union(a, c("a", "b"), "C")
 union <- function(object, ...) {
@@ -39,9 +41,9 @@ union <- function(object, ...) {
 #' @export
 #' @method union TidySet
 union.TidySet <- function(object, sets, name = NULL, FUN = "max", keep = FALSE,
-                          keep_relations = keep,
-                          keep_elements = keep,
-                          keep_sets = keep, ...) {
+    keep_relations = keep,
+    keep_elements = keep,
+    keep_sets = keep, ...) {
     if (is.null(name)) {
         name <- naming(sets1 = sets)
     } else if (length(name) != 1) {

@@ -4,22 +4,24 @@ NULL
 #' @describeIn sets Retrieve the sets information
 #' @export
 setMethod("sets",
-          signature = signature(object = "TidySet"),
-          function(object) {
-            slot(object, "sets")
-          })
+    signature = signature(object = "TidySet"),
+    function(object) {
+        slot(object, "sets")
+    }
+)
 
 #' @describeIn sets Modify the sets information
 #' @export
 #' @examples
 #' sets(TS) <- data.frame(sets = c("B", "A"))
 setMethod("sets<-",
-          signature = signature(object = "TidySet"),
-          function(object, value) {
-            slot(object, "sets") <- value
-            validObject(object)
-            object
-          })
+    signature = signature(object = "TidySet"),
+    function(object, value) {
+        slot(object, "sets") <- value
+        validObject(object)
+        object
+    }
+)
 
 #' @rdname sets
 #' @export
@@ -43,7 +45,8 @@ replace_sets.TidySet <- function(object, value) {
 #' nSets(TS)
 #' nSets(TS2)
 setMethod("nSets",
-          signature = signature(object = "TidySet"),
-          function(object) {
-            nrow(slot(object, "sets"))
-          })
+    signature = signature(object = "TidySet"),
+    function(object) {
+        nrow(slot(object, "sets"))
+    }
+)

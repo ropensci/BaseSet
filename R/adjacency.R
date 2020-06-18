@@ -34,8 +34,10 @@ adjacency_set <- function(object) {
 adjacency.TidySet <- function(object) {
     activated <- active(object)
     if (is.null(activated)) {
-        warning("You must especify on what do you want the adjacency?",
-                "\n\tYou might need activate() or adjacency_*")
+        warning(
+            "You must especify on what do you want the adjacency?",
+            "\n\tYou might need activate() or adjacency_*"
+        )
         NULL
     } else if (activated == "elements") {
         adjacency_element(object)

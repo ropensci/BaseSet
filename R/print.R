@@ -9,9 +9,10 @@ NULL
 #' @return A table with the information of the relationships
 #' @export
 setMethod("show",
-          signature = signature(object = "TidySet"),
-          function(object) {
-            validObject(object)
-            o <- as.data.frame(object)
-            print(o)
-          })
+    signature = signature(object = "TidySet"),
+    function(object) {
+        validObject(object)
+        o <- as.data.frame(object)
+        print(o)
+    }
+)

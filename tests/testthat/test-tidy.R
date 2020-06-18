@@ -1,10 +1,14 @@
 context("test-tidy")
 
 test_that("tidy works in GeneSet", {
-    gs1 <- GSEABase::GeneSet(setName = "set1", setIdentifier = "101",
-                   geneIds = c("a", "b"))
-    gs2 <- GSEABase::GeneSet(setName = "set2", setIdentifier = "102",
-                   geneIds = c("b", "c"))
+    gs1 <- GSEABase::GeneSet(
+        setName = "set1", setIdentifier = "101",
+        geneIds = c("a", "b")
+    )
+    gs2 <- GSEABase::GeneSet(
+        setName = "set2", setIdentifier = "102",
+        geneIds = c("b", "c")
+    )
     expect_error(TS <- tidy(gs1), NA)
     expect_equal(ncol(sets(TS)), 5)
     expect_equal(nElements(TS), 2)
@@ -17,11 +21,14 @@ test_that("tidy works in GeneSet", {
 })
 
 test_that("tidy works in GeneSetCollection", {
-
-    gs1 <- GSEABase::GeneSet(setName = "set1", setIdentifier = "101",
-                   geneIds = c("a", "b"))
-    gs2 <- GSEABase::GeneSet(setName = "set2", setIdentifier = "102",
-                   geneIds = c("b", "c"))
+    gs1 <- GSEABase::GeneSet(
+        setName = "set1", setIdentifier = "101",
+        geneIds = c("a", "b")
+    )
+    gs2 <- GSEABase::GeneSet(
+        setName = "set2", setIdentifier = "102",
+        geneIds = c("b", "c")
+    )
     gsc <- GSEABase::GeneSetCollection(gs1, gs2)
 
     expect_error(TS <- tidy(gsc), NA)
@@ -34,7 +41,8 @@ test_that("tidy works in GeneColorSet", {
     skip("experimentData is not imported")
     data("sample.ExpressionSet", package = "Biobase")
     gcs1 <- GSEABase::GeneColorSet(sample.ExpressionSet[100:109],
-                         phenotype = "imaginary")
+        phenotype = "imaginary"
+    )
 
     expect_error(TS <- tidy(gcs1), NA)
     expect_equal(nSets(TS), 1)

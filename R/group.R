@@ -14,27 +14,26 @@ NULL
 #' a <- tidySet(x)
 #' b <- group(a, "c", elements %in% c("A", "B"))
 group <- function(object, name, ...) {
-  UseMethod("group")
+    UseMethod("group")
 }
 
 #' @rdname group
 #' @export
 group.TidySet <- function(object, name, ...) {
+    out <- filter(object, ...)
+    out <- elements(out)[, "elements", drop = FALSE]
+    out$sets <- name
+    out$fuzzy <- 1
 
-  out <- filter(object, ...)
-  out <- elements(out)[, "elements", drop = FALSE]
-  out$sets <- name
-  out$fuzzy <- 1
+    new_colnames <- setdiff(colnames(object@relations), colnames(out))
+    out[, new_colnames] <- NA
+    object@relations <- rbind(object@relations, out)
 
-  new_colnames <- setdiff(colnames(object@relations), colnames(out))
-  out[, new_colnames] <- NA
-  object@relations <- rbind(object@relations, out)
+    new_colnames <- setdiff(colnames(object@sets), "sets")
+    sets <- data.frame(sets = name)
+    sets[, new_colnames] <- NA
+    object@sets <- rbind(object@sets, sets)
 
-  new_colnames <- setdiff(colnames(object@sets), "sets")
-  sets <- data.frame(sets = name)
-  sets[, new_colnames] <- NA
-  object@sets <- rbind(object@sets, sets)
-
-  validObject(object)
-  object
+    validObject(object)
+    object
 }

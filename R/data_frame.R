@@ -3,12 +3,12 @@ NULL
 
 setAs("TidySet", "data.frame", function(from) {
     s <- merge(from@relations, from@sets,
-               by.x = "sets", by.y = "sets", sort = FALSE,
-               all.x = TRUE, suffixes = c(".relations", ".sets")
+        by.x = "sets", by.y = "sets", sort = FALSE,
+        all.x = TRUE, suffixes = c(".relations", ".sets")
     )
     o <- merge(s, from@elements,
-               by.x = "elements", by.y = "elements", sort = FALSE,
-               all.x = TRUE, suffixes = c("", ".elements")
+        by.x = "elements", by.y = "elements", sort = FALSE,
+        all.x = TRUE, suffixes = c("", ".elements")
     )
 
     o
@@ -55,12 +55,12 @@ df2TS <- function(.data = NULL, df) {
     TS <- tidySet(relations)
 
     TS@elements <- merge(TS@elements,
-                         unique(df[, colnames_elements, drop = FALSE]),
-                         all.x = TRUE, all.y = FALSE, sort = FALSE
+        unique(df[, colnames_elements, drop = FALSE]),
+        all.x = TRUE, all.y = FALSE, sort = FALSE
     )
     TS@sets <- merge(TS@sets,
-                     unique(df[, colnames_sets, drop = FALSE]),
-                     all.x = TRUE, all.y = FALSE, sort = FALSE
+        unique(df[, colnames_sets, drop = FALSE]),
+        all.x = TRUE, all.y = FALSE, sort = FALSE
     )
     validObject(TS)
     TS

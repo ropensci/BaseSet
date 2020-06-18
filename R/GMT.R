@@ -10,8 +10,10 @@ NULL
 #' @family IO functions
 #' @export
 #' @examples
-#' gmtFile <- system.file(package = "BaseSet", "extdata",
-#'                                   "hallmark.gene.symbol.gmt")
+#' gmtFile <- system.file(
+#'     package = "BaseSet", "extdata",
+#'     "hallmark.gene.symbol.gmt"
+#' )
 #' gs <- getGMT(gmtFile)
 #' nRelations(gs)
 #' nElements(gs)
@@ -33,8 +35,8 @@ getGMT <- function(con, sep = "\t", ...) {
         stop("The file contain duplicate ids for the same set", call. = FALSE)
     }
 
-    names(lines) <- vapply(lines, '[', i = 1, character(1L))
-    links <- vapply(lines, '[', i = 2, character(1L))
+    names(lines) <- vapply(lines, "[", i = 1, character(1L))
+    links <- vapply(lines, "[", i = 2, character(1L))
     lines <- lapply(lines, function(x) {
         x[seq(from = 3, to = length(x))]
     })

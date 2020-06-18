@@ -9,8 +9,10 @@
 #' @family methods
 #' @export
 #' @examples
-#' relations <- data.frame(sets = c(rep("a", 5), "b"),
-#'                         elements = letters[seq_len(6)])
+#' relations <- data.frame(
+#'     sets = c(rep("a", 5), "b"),
+#'     elements = letters[seq_len(6)]
+#' )
 #' TS <- tidySet(relations)
 #' power_set(TS, "a", name = "power_set")
 power_set <- function(object, set, name, ...) {
@@ -21,10 +23,9 @@ power_set <- function(object, set, name, ...) {
 #' @method power_set TidySet
 #' @importFrom utils combn
 power_set.TidySet <- function(object, set, name, keep = TRUE,
-                              keep_relations = keep,
-                              keep_elements = keep,
-                              keep_sets = keep, ...) {
-
+    keep_relations = keep,
+    keep_elements = keep,
+    keep_sets = keep, ...) {
     if (!is.logical(keep)) {
         stop("keep must be a logical value.", call. = FALSE)
     }

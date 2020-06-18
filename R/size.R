@@ -6,9 +6,11 @@
 #' @export
 #' @return The size of the active slot. Not available for relations.
 #' @examples
-#' relations <- data.frame(sets = c(rep("a", 5), "b", "c"),
-#'                         elements = c(letters[seq_len(6)], letters[6]),
-#'                         fuzzy = runif(7))
+#' relations <- data.frame(
+#'     sets = c(rep("a", 5), "b", "c"),
+#'     elements = c(letters[seq_len(6)], letters[6]),
+#'     fuzzy = runif(7)
+#' )
 #' a <- tidySet(relations)
 #' a <- activate(a, "elements")
 #' size(a)
@@ -23,12 +25,15 @@ size <- function(object, ...) {
 size.TidySet <- function(object, ...) {
     a <- active(object)
     if (is.null(a) || a == "relations") {
-        msg <- paste("Unable to calculate the size,",
-                     "activate either elements or sets.")
+        msg <- paste(
+            "Unable to calculate the size,",
+            "activate either elements or sets."
+        )
         warning(msg)
     } else {
         switch(a,
-               elements = element_size(object, ...),
-               sets = set_size(object, ...))
+            elements = element_size(object, ...),
+            sets = set_size(object, ...)
+        )
     }
 }

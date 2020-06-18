@@ -1,7 +1,6 @@
 # Null doesn't use a symbol
 # Other it is a symbol
 collapse_sets <- function(sets, symbol = "union") {
-
     symbol <- check_symbol(symbol)
 
     if (length(symbol) == 0) {
@@ -13,13 +12,11 @@ collapse_sets <- function(sets, symbol = "union") {
     } else {
         sets
     }
-
 }
 
 check_symbol <- function(symbol) {
     p <- pmatch(symbol, names(set_symbols))
     names(set_symbols)[p]
-
 }
 
 #' Name an operation
@@ -38,10 +35,12 @@ check_symbol <- function(symbol) {
 #' naming(sets1 = "a", middle = "union", sets2 = "b")
 #' naming(sets1 = "a", middle = "intersection", sets2 = c("b", "c"))
 #' naming(sets1 = "a", middle = "intersection", sets2 = c("b", "c"))
-#' naming(start = "complement", sets1 = "a", middle = "intersection",
-#'        sets2 = c("b", "c"), collapse_symbol = "intersection")
+#' naming(
+#'     start = "complement", sets1 = "a", middle = "intersection",
+#'     sets2 = c("b", "c"), collapse_symbol = "intersection"
+#' )
 naming <- function(start = NULL, sets1, middle = NULL, sets2 = NULL,
-                   collapse_symbol = "union") {
+    collapse_symbol = "union") {
     msg <- "Symbol should be of length 1"
     if (length(collapse_symbol) > 1) {
         stop(msg)

@@ -13,8 +13,10 @@ NULL
 #' @family methods
 #' @export
 #' @examples
-#' relations <- data.frame(sets = c(rep("a", 5), "b"),
-#'                         elements = letters[seq_len(6)])
+#' relations <- data.frame(
+#'     sets = c(rep("a", 5), "b"),
+#'     elements = letters[seq_len(6)]
+#' )
 #' TS <- tidySet(relations)
 #' cartesian(TS, "a", "b")
 cartesian <- function(object, set1, set2, name = NULL, ...) {
@@ -25,10 +27,9 @@ cartesian <- function(object, set1, set2, name = NULL, ...) {
 #' @method cartesian TidySet
 #' @export
 cartesian.TidySet <- function(object, set1, set2, name = NULL, keep = TRUE,
-                              keep_relations = keep,
-                              keep_elements = keep,
-                              keep_sets = keep, ...) {
-
+    keep_relations = keep,
+    keep_elements = keep,
+    keep_sets = keep, ...) {
     if (!is.logical(keep)) {
         stop("keep must be a logical value.", call. = FALSE)
     }
@@ -48,7 +49,8 @@ cartesian.TidySet <- function(object, set1, set2, name = NULL, keep = TRUE,
     elements2 <- relations$elements[relations$sets %in% set2]
 
     new_sets <- base::expand.grid(elements1, elements2,
-                                  stringsAsFactors = FALSE)
+        stringsAsFactors = FALSE
+    )
     l <- vector("list", nrow(new_sets))
     for (i in seq_len(nrow(new_sets))) {
         l[[i]] <- unique(as.character(simplify2array(new_sets[i, ])))
@@ -59,8 +61,10 @@ cartesian.TidySet <- function(object, set1, set2, name = NULL, keep = TRUE,
 
     object <- add_sets(object, name)
     object <- add_sets(object, new_names)
-    relation <- data.frame(elements = unlist(new_sets),
-                           sets = rep(new_names, lengths(new_sets)))
+    relation <- data.frame(
+        elements = unlist(new_sets),
+        sets = rep(new_names, lengths(new_sets))
+    )
     object <- add_relation(object, relation)
     relations <- relations(object)
     cart <- relations[relations$sets %in% new_names, ]

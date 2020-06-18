@@ -7,12 +7,13 @@
 #' @family IO functions
 #' @export
 #' @examples
-#' oboFile <- system.file(package = "BaseSet", "extdata",
-#'                                   "go-basic_subset.obo")
+#' oboFile <- system.file(
+#'     package = "BaseSet", "extdata",
+#'     "go-basic_subset.obo"
+#' )
 #' gs <- getOBO(oboFile)
 #' head(gs)
 getOBO <- function(x) {
-
     data <- readLines(x)
     # Remove empty lines
     n <- vapply(data, nchar, numeric(1L))
@@ -27,7 +28,8 @@ getOBO <- function(x) {
 
     keys <- k[d[1]:length(k)]
     df <- data.frame(matrix(ncol = length(unique(keys)), nrow = 0),
-                     stringsAsFactors = FALSE)
+        stringsAsFactors = FALSE
+    )
     colnames(df) <- unique(keys)
 
     # For each term parse it in a tidy data frame
@@ -43,7 +45,9 @@ getOBO <- function(x) {
         keys <- unique(k[l])
         m <- max(table(k[l]))
 
-        lr <- lapply(keys, function(a, y) {rep_len(y[names(y) == a], m)}, y = ch)
+        lr <- lapply(keys, function(a, y) {
+            rep_len(y[names(y) == a], m)
+        }, y = ch)
         names(lr) <- keys
 
         not_pres <- setdiff(colnames(df), keys)
@@ -84,23 +88,31 @@ getOBO <- function(x) {
 #' @family IO functions
 #' @importFrom utils read.delim
 #' @examples
-#' gafFile <- system.file(package = "BaseSet", "extdata",
-#'                                   "go_human_rna_valid_subset.gaf")
+#' gafFile <- system.file(
+#'     package = "BaseSet", "extdata",
+#'     "go_human_rna_valid_subset.gaf"
+#' )
 #' gs <- getGAF(gafFile)
 #' head(gs)
 getGAF <- function(x) {
-    df <- read.delim(x, header = FALSE, comment.char = "!",
-                     stringsAsFactors = FALSE)
-    gaf_columns <- c("DB", "DB_Object_ID", "DB_Object_Symbol", "Qualifier",
-                     "O_ID", "DB_Reference", "Evidence_Code", "With_From",
-                     "Aspect", "DB_Object_Name", "DB_Object_Synonym",
-                     "DB_Object_Type", "Taxon", "Date", "Assigned_By",
-                     "Annotation_Extension", "Gene_Product_Form_ID")
+    df <- read.delim(x,
+        header = FALSE, comment.char = "!",
+        stringsAsFactors = FALSE
+    )
+    gaf_columns <- c(
+        "DB", "DB_Object_ID", "DB_Object_Symbol", "Qualifier",
+        "O_ID", "DB_Reference", "Evidence_Code", "With_From",
+        "Aspect", "DB_Object_Name", "DB_Object_Synonym",
+        "DB_Object_Type", "Taxon", "Date", "Assigned_By",
+        "Annotation_Extension", "Gene_Product_Form_ID"
+    )
     colnames(df) <- gaf_columns
 
     # Check which optional columns are missing
     optional_columns <- c(4, 8, 10, 11, 16, 17)
-    remove <- apply(df[, optional_columns], 2, function(x) {all(is.na(x))})
+    remove <- apply(df[, optional_columns], 2, function(x) {
+        all(is.na(x))
+    })
     df <- df[, -optional_columns[remove]]
 
     # Modify if they are GeneOntolgoy

@@ -15,12 +15,15 @@ dplyr::filter
 #' @family methods
 #' @seealso dplyr \code{\link[dplyr]{filter}} and \code{\link{activate}}
 #' @examples
-#' relations <- data.frame(sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
-#'                         elements = rep(letters[seq_len(6)], 2),
-#'                         fuzzy = runif(12))
+#' relations <- data.frame(
+#'     sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
+#'     elements = rep(letters[seq_len(6)], 2),
+#'     fuzzy = runif(12)
+#' )
 #' a <- tidySet(relations)
 #' elements(a) <- cbind(elements(a),
-#'                  type = c(rep("Gene", 4), rep("lncRNA", 2)))
+#'     type = c(rep("Gene", 4), rep("lncRNA", 2))
+#' )
 #' filter(a, elements == "a")
 #' # Equivalent to filter_relation
 #' filter(a, elements == "a", sets == "a")
@@ -35,76 +38,75 @@ dplyr::filter
 #' @export
 #' @method filter TidySet
 filter.TidySet <- function(.data, ...) {
-  if (is.null(active(.data))) {
-    df <- dplyr::filter(as.data.frame(.data), ...)
-    df2TS(.data, df)
-  } else {
-    switch(
-      active(.data),
-      elements = filter_element(.data, ...),
-      sets = filter_set(.data, ...),
-      relations = filter_relation(.data, ...)
-    )
-  }
+    if (is.null(active(.data))) {
+        df <- dplyr::filter(as.data.frame(.data), ...)
+        df2TS(.data, df)
+    } else {
+        switch(
+            active(.data),
+            elements = filter_element(.data, ...),
+            sets = filter_set(.data, ...),
+            relations = filter_relation(.data, ...)
+        )
+    }
 }
 
 #' @rdname filter_
 #' @export
 filter_set <- function(.data, ...) {
-  UseMethod("filter_set")
+    UseMethod("filter_set")
 }
 
 #' @rdname filter_
 #' @export
 filter_element <- function(.data, ...) {
-  UseMethod("filter_element")
+    UseMethod("filter_element")
 }
 
 #' @rdname filter_
 #' @export
 filter_relation <- function(.data, ...) {
-  UseMethod("filter_relation")
+    UseMethod("filter_relation")
 }
 
 #' @export
 #' @method filter_set TidySet
 filter_set.TidySet <- function(.data, ...) {
-  sets <- sets(.data)
-  out <- dplyr::filter(sets, ...)
+    sets <- sets(.data)
+    out <- dplyr::filter(sets, ...)
 
-  if (nrow(out) == 0) {
-    .data@sets <- out[0, , drop = FALSE]
-  } else {
-    .data@sets <- droplevels(out)
-  }
-  droplevels(.data, elements = FALSE) # Keep elements without sets
+    if (nrow(out) == 0) {
+        .data@sets <- out[0, , drop = FALSE]
+    } else {
+        .data@sets <- droplevels(out)
+    }
+    droplevels(.data, elements = FALSE) # Keep elements without sets
 }
 
 #' @export
 #' @method filter_element TidySet
 filter_element.TidySet <- function(.data, ...) {
-  elements <- elements(.data)
-  out <- dplyr::filter(elements, ...)
+    elements <- elements(.data)
+    out <- dplyr::filter(elements, ...)
 
-  if (nrow(out) == 0) {
-    .data@elements <- out[0, , drop = FALSE]
-  } else {
-    .data@elements <- droplevels(out)
-  }
-  droplevels(.data, sets = FALSE) # Allow empty sets
+    if (nrow(out) == 0) {
+        .data@elements <- out[0, , drop = FALSE]
+    } else {
+        .data@elements <- droplevels(out)
+    }
+    droplevels(.data, sets = FALSE) # Allow empty sets
 }
 
 #' @export
 #' @method filter_relation TidySet
 filter_relation.TidySet <- function(.data, ...) {
+    relations <- relations(.data)
+    out <- dplyr::filter(relations, ...)
 
-  relations <- relations(.data)
-  out <- dplyr::filter(relations, ...)
-
-  if (nrow(out) == 0) {
-    .data@relations <- out[0, , drop = FALSE]
-  } else {
-    .data@relations <- droplevels(out)
-  }
-  droplevels(.data, sets = FALSE, elements = FALSE)
+    if (nrow(out) == 0) {
+        .data@relations <- out[0, , drop = FALSE]
+    } else {
+        .data@relations <- droplevels(out)
+    }
+    droplevels(.data, sets = FALSE, elements = FALSE)
 }

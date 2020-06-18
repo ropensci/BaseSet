@@ -4,22 +4,24 @@ NULL
 #' @describeIn elements Retrieve the elements
 #' @export
 setMethod("elements",
-          signature = signature(object = "TidySet"),
-          function(object) {
-            slot(object, "elements")
-          })
+    signature = signature(object = "TidySet"),
+    function(object) {
+        slot(object, "elements")
+    }
+)
 
 #' @describeIn elements Modify the elements
 #' @export
 #' @examples
 #' elements(TS) <- data.frame(elements = letters[10:1])
 setMethod("elements<-",
-          signature = signature(object = "TidySet"),
-          function(object, value) {
-            slot(object, "elements") <- value
-            validObject(object)
-            object
-          })
+    signature = signature(object = "TidySet"),
+    function(object, value) {
+        slot(object, "elements") <- value
+        validObject(object)
+        object
+    }
+)
 
 #' @rdname elements
 #' @export
@@ -42,7 +44,8 @@ replace_elements.TidySet <- function(object, value) {
 #' nElements(TS)
 #' nElements(TS2)
 setMethod("nElements",
-          signature = signature(object = "TidySet"),
-          function(object) {
-            nrow(slot(object, "elements"))
-          })
+    signature = signature(object = "TidySet"),
+    function(object) {
+        nrow(slot(object, "elements"))
+    }
+)
