@@ -22,7 +22,9 @@ test_that("filter_element works", {
     b <- filter_element(a, elements == "b")
     expect_equal(nElements(b), 1L)
 
-    expect_error(filter_element(a, elements == "hi"), "must be")
+    expect_error(d <- filter_element(a, elements == "hi"), NA)
+    expect_equal(nElements(d), 0L)
+    expect_equal(nElements(d), 0L)
     expect_error(filter_element(a, sets == "hi"))
 })
 

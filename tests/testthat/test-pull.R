@@ -8,7 +8,7 @@ test_that("pull works", {
     )
     a <- tidySet(relations)
     a <- mutate_element(a, type = c(rep("Gene", 4), rep("lncRNA", 2)))
-    pull(a, type)
+    expect_length(pull(a, type), 12)
     # Equivalent to pull_relation
     b <- activate(a, "relations")
     out <- pull_relation(b, elements)
@@ -21,8 +21,5 @@ test_that("pull works", {
     expect_equal(out, c("Gene", "Gene", "Gene", "Gene", "lncRNA", "lncRNA"))
     # Filter sets
     out <- pull_set(a, sets)
-    expect_equal(out, structure(c(1L, 3L, 2L, 4L),
-        .Label = c("a", "a2", "b", "b2"),
-        class = "factor"
-    ))
+    expect_equal(out, c("a", "b", "a2", "b2"))
 })
