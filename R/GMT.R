@@ -8,7 +8,7 @@ NULL
 #' Each group is described by a name, a description, and the genes in it.
 #' @param con File name of the GMT file.
 #' @param sep GMT file field separator, by default tabs.
-#' @param ... Other arguments passed to readLines.
+#' @param ... Other arguments passed to `readLines`.
 #' @return A TidySet object
 #' @family IO functions
 #' @references

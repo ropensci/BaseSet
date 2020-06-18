@@ -7,13 +7,13 @@
 \alias{pull_relation}
 \title{Pull from a TidySet}
 \usage{
-\method{pull}{TidySet}(.data, var = -1)
+\method{pull}{TidySet}(.data, var = -1, name = NULL, ...)
 
-pull_set(.data, var)
+pull_set(.data, var, name, ...)
 
-pull_element(.data, var)
+pull_element(.data, var, name, ...)
 
-pull_relation(.data, var)
+pull_relation(.data, var, name, ...)
 }
 \arguments{
 \item{.data}{The TidySet object}

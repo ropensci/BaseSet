@@ -11,7 +11,7 @@ getGMT(con, sep = "\\t", ...)
 
 \item{sep}{GMT file field separator, by default tabs.}
 
-\item{...}{Other arguments passed to readLines.}
+\item{...}{Other arguments passed to \code{readLines}.}
 }
 \value{
 A TidySet object
