@@ -16,7 +16,7 @@ NULL
 #' nRelations(gs)
 #' nElements(gs)
 #' nSets(gs)
-getGMT <- function(con, sep = "\t", ...)  {
+getGMT <- function(con, sep = "\t", ...) {
     lines <- strsplit(readLines(con, ...), sep)
     if (any(lengths(lines) < 2)) {
         stop("all records in the GMT file must have >= 2 fields", call. = FALSE)
@@ -36,7 +36,7 @@ getGMT <- function(con, sep = "\t", ...)  {
     names(lines) <- vapply(lines, '[', i = 1, character(1L))
     links <- vapply(lines, '[', i = 2, character(1L))
     lines <- lapply(lines, function(x) {
-        x[seq(from = 3,  to = length(x))]
+        x[seq(from = 3, to = length(x))]
     })
     TS <- tidySet(lines)
     df <- data.frame(links = links, stringsAsFactors = FALSE)

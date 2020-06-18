@@ -35,7 +35,7 @@ getOBO <- function(x) {
         if (i == length(d)) {
             l <- seq(from = d[i], to = length(kv), by = 1)
         } else {
-            l <- seq(from = d[i], to = d[i+1]-1, by = 1)
+            l <- seq(from = d[i], to = d[i + 1] - 1, by = 1)
         }
         ch <- v[l]
         names(ch) <- k[l]
@@ -43,7 +43,7 @@ getOBO <- function(x) {
         keys <- unique(k[l])
         m <- max(table(k[l]))
 
-        lr <- lapply(keys, function(a, y){rep_len(y[names(y) == a], m)}, y = ch)
+        lr <- lapply(keys, function(a, y) {rep_len(y[names(y) == a], m)}, y = ch)
         names(lr) <- keys
 
         not_pres <- setdiff(colnames(df), keys)
@@ -100,7 +100,7 @@ getGAF <- function(x) {
 
     # Check which optional columns are missing
     optional_columns <- c(4, 8, 10, 11, 16, 17)
-    remove <- apply(df[, optional_columns], 2, function(x){all(is.na(x))})
+    remove <- apply(df[, optional_columns], 2, function(x) {all(is.na(x))})
     df <- df[, -optional_columns[remove]]
 
     # Modify if they are GeneOntolgoy
@@ -125,17 +125,17 @@ getGAF <- function(x) {
         names[names %in% originals]
     }
     sets_columns <- columns_gaf(gaf_columns[sets], colnames(df))
-    nColm <- vapply(sets_columns, function(x){
+    nColm <- vapply(sets_columns, function(x) {
         nrow(unique(df[, c("sets", x)]))
     }, numeric(1))
     sets_columns <- sets_columns[nColm <= length(unique(df$sets))]
     elements_columns <- columns_gaf(gaf_columns[elements], colnames(df))
-    nColm <- vapply(sets_columns, function(x){
+    nColm <- vapply(sets_columns, function(x) {
         nrow(unique(df[, c("elements", x)]))
     }, numeric(1))
     elements_columns <- elements_columns[nColm <= length(unique(df$elements))]
 
     TS <- move_to(TS, "relations", "sets", sets_columns)
-    TS <- move_to(TS, "relations", "elements",  elements_columns)
+    TS <- move_to(TS, "relations", "elements", elements_columns)
     TS
 }

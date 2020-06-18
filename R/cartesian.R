@@ -17,7 +17,7 @@ NULL
 #'                         elements = letters[seq_len(6)])
 #' TS <- tidySet(relations)
 #' cartesian(TS, "a", "b")
-cartesian <- function(object, set1, set2, name = NULL, ...){
+cartesian <- function(object, set1, set2, name = NULL, ...) {
     UseMethod("cartesian")
 }
 

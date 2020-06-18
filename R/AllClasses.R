@@ -27,7 +27,7 @@ is.valid <- function(object) {
 
   # Check that slots are not empty
 
-  empty <- vapply(c("sets", "elements"), function(x){
+  empty <- vapply(c("sets", "elements"), function(x) {
     nrow(slot(object, x)) == 0
   }, logical(1L))
 
@@ -77,7 +77,7 @@ is.valid <- function(object) {
     if (!is.numeric(fuzz)) {
       errors <- c(errors,
                   "fuzzy column is restricted to a number between 0 and 1.")
-    } else if (min(fuzz) < 0 || max(fuzz) > 1 ) {
+    } else if (min(fuzz) < 0 || max(fuzz) > 1) {
       errors <- c(errors,
                   "fuzzy column is restricted to a number between 0 and 1.")
     }

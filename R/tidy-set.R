@@ -117,7 +117,7 @@ tidySet.matrix <- function(relations) {
   relations[, 1] <- elements[relations[, 1]]
   relations[, 2] <- sets[relations[, 2]]
 
-  fuzzy <- apply(relations, 1, function(x){
+  fuzzy <- apply(relations, 1, function(x) {
     incid[x[1], x[2]]
   })
   relations <- cbind.data.frame(relations, fuzzy, stringsAsFactors = FALSE)
@@ -129,7 +129,7 @@ tidySet.matrix <- function(relations) {
 tidySet.Go3AnnDbBimap <- function(relations) {
   # Prepare the data
   df <- as.data.frame(relations)
-  colnames(df) <- c("elements", "sets",  "Evidence", "Ontology")
+  colnames(df) <- c("elements", "sets", "Evidence", "Ontology")
 
   # # Transform each evidence code into its own column
   # e_s <- paste(df$elements, df$sets)

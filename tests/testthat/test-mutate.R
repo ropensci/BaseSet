@@ -22,7 +22,7 @@ test_that("mutate_relation works", {
   b <- mutate_relation(a, Type = ifelse(elements == "b", "B", "D"))
   expect_equal(ncol(relations(b)), ncol(relations(a)) + 1)
   expect_equal(nRelations(b), 6L)
-  expect_error(mutate_relation(a, fuzzy = fuzzy*2), "is restricted")
+  expect_error(mutate_relation(a, fuzzy = fuzzy * 2), "is restricted")
 })
 
 test_that("mutate works", {

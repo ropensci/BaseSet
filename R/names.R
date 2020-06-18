@@ -19,7 +19,7 @@ setMethod("name_sets",
 #' @export name_elements
 setMethod("name_elements",
           signature = signature(object = "TidySet"),
-          function(object){
+          function(object) {
             e <- elements(object)$elements
             if (is.factor(e)) {
               levels(e)
@@ -34,7 +34,7 @@ setMethod("name_elements",
 setMethod("name_elements<-",
           signature = signature(object = "TidySet",
                                 value = "characterORfactor"),
-          function(object, value){
+          function(object, value) {
             old <- name_elements(object)
 
             if (is.factor(value)) {
@@ -56,7 +56,7 @@ setMethod("name_elements<-",
             if (is.factor(old_relations)) {
                 old_relations <- levels(old_relations)
                 replace <- match(old_relations, old)
-                levels(object@relations$elements)<- value[replace]
+                levels(object@relations$elements) <- value[replace]
             } else {
                 replace <- match(old_relations, old)
                 object@relations$elements <- value[replace]

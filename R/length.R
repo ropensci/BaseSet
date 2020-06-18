@@ -25,7 +25,7 @@ multiply_probabilities_m <- function(p, q, i) {
     stopifnot(dim(p) == dim(q))
     a <- apply(p[i, , drop = FALSE], 2, prod)
     b <- apply(q[-i, , drop = FALSE], 2, prod)
-    a*b
+    a * b
 }
 
 #' Calculates the probability of a single length

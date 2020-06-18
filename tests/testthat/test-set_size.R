@@ -20,11 +20,11 @@ test_that("set_size works with fuzzy sets", {
   out <- set_size(a)
   expect_equal(max(out$size), length(name_elements(a)))
   expect_equal(out$probability,
-               c(0.9*0.5,
-                 0.5*0.1 + 0.5*0.9,
-                 0.5*0.1,
-                 1*0.8 + 0*0.2,
-                 1*0.2))
+               c(0.9 * 0.5,
+                 0.5 * 0.1 + 0.5 * 0.9,
+                 0.5 * 0.1,
+                 1 * 0.8 + 0 * 0.2,
+                 1 * 0.2))
   checking <- rowsum(out$probability, out$set, reorder = FALSE)
   expect_true(all(checking[, 1] == 1))
 })

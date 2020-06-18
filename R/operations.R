@@ -2,12 +2,12 @@
 NULL
 
 remove_elements <- function(object, elements) {
-  if (length(elements) == 0 ) {
+  if (length(elements) == 0) {
     return(object)
   }
 
   keep_at_elements <- !object@elements$elements %in% elements
-  new_elements <- object@elements[keep_at_elements, ,drop = FALSE]
+  new_elements <- object@elements[keep_at_elements, , drop = FALSE]
   rownames(new_elements) <- NULL
   object@elements <- droplevels(new_elements)
   object
@@ -65,7 +65,7 @@ rm_relations_with_elements <- function(object, elements) {
   object
 }
 
-elements_sets <- function(object){
+elements_sets <- function(object) {
   paste(object@relations$elements, object@relations$sets)
 }
 
@@ -158,6 +158,6 @@ check_sets <- function(object, sets) {
 #' @importFrom dplyr n_distinct
 check_fuzziness <- function(object) {
   r <- relations(object)
-  fuzziness <- tapply(r$fuzzy,  paste(r$elements, r$sets), FUN = n_distinct)
+  fuzziness <- tapply(r$fuzzy, paste(r$elements, r$sets), FUN = n_distinct)
   all(fuzziness == 1)
 }

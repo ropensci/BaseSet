@@ -96,7 +96,7 @@ test_that("tidySet fails", {
                    elements = data.frame(elements = "a", colnames = "b"),
                    relations = data.frame(elements = "a", sets = "A",
                                           fuzzy = 3),
-                   sets = data.frame(sets = "A",  colnames = "b")),
+                   sets = data.frame(sets = "A", colnames = "b")),
                "share a column name.")
 
   expect_error(
@@ -111,7 +111,7 @@ test_that("tidySet fails", {
   expect_s4_class(tidySet(df), "TidySet")
 })
 
-test_that("tidySet long",  {
+test_that("tidySet long", {
   df <- data.frame(
     DB = c("RNAcentral", "RNAcentral", "RNAcentral",
            "RNAcentral", "RNAcentral"),
@@ -120,7 +120,7 @@ test_that("tidySet long",  {
                      "URS000003E1A9_9606"),
     elements = c("URS000003E1A9_9606", "URS000003E1A9_9606",
                  "URS000003E1A9_9606", "URS000003E1A9_9606",
-                 "URS000003E1A9_9606" ),
+                 "URS000003E1A9_9606"),
     Qualifier = c("", "", "", "", ""),
     sets = c("GO:0035195", "GO:0035195", "GO:0035195",
              "GO:0035195", "GO:0035195"),

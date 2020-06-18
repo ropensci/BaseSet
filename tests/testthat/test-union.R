@@ -58,13 +58,13 @@ test_that("union works fuzzy keep", {
 
   d <- union(a, c("a", "c"), "d", keep = TRUE)
   expect_s4_class(d, "TidySet")
-  expect_equal(nSets(d), nSets(a) + 1 )
+  expect_equal(nSets(d), nSets(a) + 1)
   expect_equal(name_sets(d), name_sets(b))
   expect_equal(name_elements(d), letters[1:6])
 })
 
 test_that("check coherence", {
-  relations <- data.frame(sets = c("A", "A","A","A","B", "C", "D"),
+  relations <- data.frame(sets = c("A", "A", "A", "A", "B", "C", "D"),
              elements = c("a", "b", "c", "d", "e", "f", "g"))
   a <- tidySet(relations = relations)
   b <- union(a, c("A", "B"), "AuB")
@@ -78,7 +78,7 @@ test_that("fapply works in order", {
             list(elements = structure(1:6,
                                       .Label = c("a", "b", "c", "d", "e", "f"),
                                       class = "factor")),
-            class = "data.frame", row.names = c(NA,-6L)),
+            class = "data.frame", row.names = c(NA, -6L)),
         sets = structure(list(sets = structure(1:2,
                                                .Label = c("A", "B"),
                                                class = "factor")),

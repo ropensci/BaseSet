@@ -10,8 +10,8 @@ test_that("multiplication works", {
                           fuzzy = runif(6),
                           new = runif(6))
   out <- add_relation(a, relations)
-  expect_equal(nRelations(out), nRelations(a)*2)
-  expect_equal(nSets(out), nSets(a)*2)
+  expect_equal(nRelations(out), nRelations(a) * 2)
+  expect_equal(nSets(out), nSets(a) * 2)
   expect_equal(nElements(out), nElements(a))
   expect_length(name_sets(a), 2L)
   expect_length(name_sets(out), 4L)

@@ -8,7 +8,7 @@ collapse_sets <- function(sets, symbol = "union") {
         stop("Unrecognized set symbol. See set_symbols")
     }
 
-    if (length(sets) > 1){
+    if (length(sets) > 1) {
         paste0(sets, collapse = set_symbols[symbol])
     } else {
         sets

@@ -1,4 +1,4 @@
-add_elements_internal <- function(object, elements){
+add_elements_internal <- function(object, elements) {
     original_elements <- name_elements(object)
     final_elements <- unique(c(original_elements, elements))
     new_elements <- setdiff(final_elements, original_elements)
@@ -158,7 +158,6 @@ add_sets.TidySet <- function(object, sets, ...) {
 #' add_relations(a, elements = c("a", "b"), sets = c("d", "g"), fuzzy = 0.5)
 #' add_relations(a, elements = c("a", "b"), sets = c("d", "g"),
 #'               fuzzy = c(0.5, 0.7))
-
 #' @export
 add_relations <- function(object, elements, sets, fuzzy, ...) {
     UseMethod("add_relations")
