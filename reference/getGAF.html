@@ -161,8 +161,10 @@ http://geneontology.org/docs/go-annotation-file-gaf-format-2.1/" />
 <code><a href='getOBO.html'>getOBO</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>gafFile</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"BaseSet"</span>, <span class='st'>"extdata"</span>,
-                                  <span class='st'>"go_human_rna_valid_subset.gaf"</span>)
+    <pre class="examples"><div class='input'><span class='no'>gafFile</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(
+    <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"BaseSet"</span>, <span class='st'>"extdata"</span>,
+    <span class='st'>"go_human_rna_valid_subset.gaf"</span>
+)
 <span class='no'>gs</span> <span class='kw'>&lt;-</span> <span class='fu'>getGAF</span>(<span class='no'>gafFile</span>)
 <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>gs</span>)</div><div class='output co'>#&gt;             elements       sets         DB       DB_Object_ID Evidence_Code
 #&gt; 1 URS0000001346_9606 GO:0006412 RNAcentral URS0000001346_9606           IEA

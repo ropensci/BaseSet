@@ -159,8 +159,10 @@
 <code><a href='getGMT.html'>getGMT</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>oboFile</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"BaseSet"</span>, <span class='st'>"extdata"</span>,
-                                  <span class='st'>"go-basic_subset.obo"</span>)
+    <pre class="examples"><div class='input'><span class='no'>oboFile</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(
+    <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"BaseSet"</span>, <span class='st'>"extdata"</span>,
+    <span class='st'>"go-basic_subset.obo"</span>
+)
 <span class='no'>gs</span> <span class='kw'>&lt;-</span> <span class='fu'>getOBO</span>(<span class='no'>oboFile</span>)
 <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>gs</span>)</div><div class='output co'>#&gt;     elements       sets                             name          namespace
 #&gt; 1 GO:0000001 GO:0048308        mitochondrion inheritance biological_process

@@ -109,7 +109,7 @@
 <div id="getting-started" class="section level1">
 <h1 class="hasAnchor">
 <a href="#getting-started" class="anchor"></a>Getting started</h1>
-<p>This vignettes supposes that you already read the “About Set” vignette This vignette explains what are the fuzzy sets and how to use them. As all methods for “normal” sets are available for fuzzy sets this vignette focuses on how to create, use them.</p>
+<p>This vignettes supposes that you already read the “About Set” vignette. This vignette explains what are the fuzzy sets and how to use them. As all methods for “normal” sets are available for fuzzy sets this vignette focuses on how to create, use them.</p>
 </div>
 <div id="creating-a-fuzzy-set" class="section level1">
 <h1 class="hasAnchor">
@@ -285,7 +285,7 @@
 <span class="co">#&gt;  9 D2ex_18  endothel 0.23 </span>
 <span class="co">#&gt; 10 D2ex_15  beta     0.169</span>
 <span class="co">#&gt; 11 D2ex_16  beta     0.2</span>
-<span class="co"># See how many cells of each type do we have</span>
+<span class="co"># See how many cells of each type we have</span>
 <span class="no">cells_assigned</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">sets</span>) <span class="kw">%&gt;%</span>
   <span class="fu">count</span>()
@@ -296,7 +296,7 @@
 <span class="co">#&gt; 1 alpha        1</span>
 <span class="co">#&gt; 2 beta         2</span>
 <span class="co">#&gt; 3 endothel     8</span></pre></body></html></div>
-<p>Now we know which is the cell type most probable for each cell, and how much of each type do we have. Let’s see how many cells of each type we are more likely to get:</p>
+<p>Now we know which is the cell type most probable for each cell, and how much of each type we have. Let’s see how many cells of each type we are more likely to get:</p>
 <div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="no">sample_cells</span> <span class="kw">&lt;-</span> <span class="no">sc_classification</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/set_size.html">set_size</a></span>() <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">sets</span>) <span class="kw">%&gt;%</span>

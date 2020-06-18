@@ -94,7 +94,7 @@
       August Pi i Sunyer Biomedical Research Institute (IDIBAPS); Liver Unit, Hospital Clinic<br><a class="author_email" href="mailto:#"></a><a href="mailto:lluis.revilla@gmail.com">lluis.revilla@gmail.com</a>
       </address>
                   
-            <h4 class="date">25 April 2020</h4>
+            <h4 class="date">18 June 2020</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/llrs/BaseSet/blob/master/vignettes/advanced.Rmd"><code>vignettes/advanced.Rmd</code></a></small>
       <div class="hidden name"><code>advanced.Rmd</code></div>
@@ -129,7 +129,7 @@
 <div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"forcats"</span>)
 <span class="no">h2GO</span> <span class="kw">%&gt;%</span>
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">Evidence</span>, <span class="no">Ontology</span>) <span class="kw">%&gt;%</span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tally.html">count</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="st">"Freq"</span>) <span class="kw">%&gt;%</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="st">"Freq"</span>) <span class="kw">%&gt;%</span>
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="kw">%&gt;%</span>
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">Evidence</span> <span class="kw">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder2</a></span>(<span class="no">Evidence</span>, <span class="no">Ontology</span>, -<span class="no">Freq</span>)) <span class="kw">%&gt;%</span>
     <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>() +
@@ -143,7 +143,7 @@
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">h2GO_TS</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/relations.html">relations</a></span>() <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">elements</span>, <span class="no">sets</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tally.html">count</a></span>(<span class="kw">sort</span> <span class="kw">=</span> <span class="fl">TRUE</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="kw">sort</span> <span class="kw">=</span> <span class="fl">TRUE</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>() +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">n</span>), <span class="kw">binwidth</span> <span class="kw">=</span> <span class="fl">1</span>) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span>() +
@@ -168,9 +168,9 @@
 <span class="no">sizes_set</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/set_size.html">set_size</a></span>(<span class="no">h2GO_TS</span>) <span class="kw">%&gt;%</span>
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="no">size</span>))
 <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">sizes_set</span>$<span class="no">size</span> <span class="kw">==</span> <span class="fl">0</span>)
-<span class="co">#&gt; [1] 26872</span>
+<span class="co">#&gt; [1] 26401</span>
 <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">sizes_set</span>$<span class="no">size</span> <span class="kw">!=</span> <span class="fl">0</span>)
-<span class="co">#&gt; [1] 18177</span></pre></body></html></div>
+<span class="co">#&gt; [1] 18107</span></pre></body></html></div>
 <p>So we can see that both there are more genes without annotation and more GO terms without a (direct) gene annotated.</p>
 <div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">sizes_element</span> <span class="kw">%&gt;%</span>
     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">size</span> <span class="kw">!=</span> <span class="fl">0</span>) <span class="kw">%&gt;%</span>
@@ -271,7 +271,7 @@
 <div id="session-info" class="section level1 unnumbered">
 <h1 class="hasAnchor">
 <a href="#session-info" class="anchor"></a>Session info</h1>
-<pre><code>#&gt; R version 3.6.2 (2017-01-27)
+<pre><code>#&gt; R version 4.0.0 (2020-04-24)
 #&gt; Platform: x86_64-pc-linux-gnu (64-bit)
 #&gt; Running under: Ubuntu 16.04.6 LTS
 #&gt; 
@@ -292,28 +292,29 @@
 #&gt; [8] methods   base     
 #&gt; 
 #&gt; other attached packages:
-#&gt;  [1] reactome.db_1.70.0   forcats_0.5.0        ggplot2_3.3.0       
-#&gt;  [4] GO.db_3.10.0         org.Hs.eg.db_3.10.0  AnnotationDbi_1.48.0
-#&gt;  [7] IRanges_2.20.2       S4Vectors_0.24.4     Biobase_2.46.0      
-#&gt; [10] BiocGenerics_0.32.0  BaseSet_0.0.11       dplyr_0.8.5         
+#&gt;  [1] reactome.db_1.70.0   forcats_0.5.0        ggplot2_3.3.1       
+#&gt;  [4] GO.db_3.11.4         org.Hs.eg.db_3.11.4  AnnotationDbi_1.50.0
+#&gt;  [7] IRanges_2.22.2       S4Vectors_0.26.1     Biobase_2.48.0      
+#&gt; [10] BiocGenerics_0.34.0  BaseSet_0.0.11       dplyr_1.0.0         
 #&gt; 
 #&gt; loaded via a namespace (and not attached):
-#&gt;  [1] Rcpp_1.0.4.6        compiler_3.6.2      pillar_1.4.3       
-#&gt;  [4] BiocManager_1.30.10 tools_3.6.2         bit_1.1-15.2       
-#&gt;  [7] digest_0.6.25       gtable_0.3.0        RSQLite_2.2.0      
-#&gt; [10] evaluate_0.14       memoise_1.1.0       tibble_3.0.1       
-#&gt; [13] lifecycle_0.2.0     pkgconfig_2.0.3     rlang_0.4.5        
+#&gt;  [1] Rcpp_1.0.4.6        compiler_4.0.0      pillar_1.4.4       
+#&gt;  [4] BiocManager_1.30.10 tools_4.0.0         bit_1.1-15.2       
+#&gt;  [7] digest_0.6.25       gtable_0.3.0        evaluate_0.14      
+#&gt; [10] memoise_1.1.0       RSQLite_2.2.0       lifecycle_0.2.0    
+#&gt; [13] tibble_3.0.1        pkgconfig_2.0.3     rlang_0.4.6        
 #&gt; [16] DBI_1.1.0           yaml_2.2.1          pkgdown_1.5.1      
-#&gt; [19] xfun_0.13           withr_2.2.0         stringr_1.4.0      
-#&gt; [22] knitr_1.28          desc_1.2.0          fs_1.3.1           
-#&gt; [25] vctrs_0.2.4         grid_3.6.2          bit64_0.9-7        
-#&gt; [28] rprojroot_1.3-2     tidyselect_1.0.0    glue_1.4.0         
-#&gt; [31] R6_2.4.1            rmarkdown_2.1       farver_2.0.3       
-#&gt; [34] blob_1.2.1          purrr_0.3.4         magrittr_1.5       
-#&gt; [37] scales_1.1.0        backports_1.1.6     htmltools_0.4.0    
-#&gt; [40] ellipsis_0.3.0      MASS_7.3-51.4       assertthat_0.2.1   
-#&gt; [43] colorspace_1.4-1    BiocStyle_2.14.4    labeling_0.3       
-#&gt; [46] stringi_1.4.6       munsell_0.5.0       crayon_1.3.4</code></pre>
+#&gt; [19] xfun_0.14           withr_2.2.0         stringr_1.4.0      
+#&gt; [22] knitr_1.28          generics_0.0.2      desc_1.2.0         
+#&gt; [25] fs_1.4.1            vctrs_0.3.1         grid_4.0.0         
+#&gt; [28] bit64_0.9-7         rprojroot_1.3-2     tidyselect_1.1.0   
+#&gt; [31] glue_1.4.1          R6_2.4.1            rmarkdown_2.3      
+#&gt; [34] farver_2.0.3        blob_1.2.1          purrr_0.3.4        
+#&gt; [37] magrittr_1.5        scales_1.1.1        backports_1.1.8    
+#&gt; [40] htmltools_0.5.0     ellipsis_0.3.1      MASS_7.3-51.5      
+#&gt; [43] assertthat_0.2.1    colorspace_1.4-1    BiocStyle_2.16.0   
+#&gt; [46] labeling_0.3        stringi_1.4.6       munsell_0.5.0      
+#&gt; [49] crayon_1.3.4</code></pre>
 </div>
   </div>
 

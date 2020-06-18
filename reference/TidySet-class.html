@@ -41,7 +41,7 @@
 
 <meta property="og:title" content="A tidy class to represent a set — TidySet-class" />
 <meta property="og:description" content="A set is a group of unique elements it can be either a fuzzy set, where the
-relationship is between 0 or 1 or nominal" />
+relationship is between 0 or 1 or nominal." />
 
 
 
@@ -137,11 +137,16 @@ relationship is between 0 or 1 or nominal" />
 
     <div class="ref-description">
     <p>A set is a group of unique elements it can be either a fuzzy set, where the
-relationship is between 0 or 1 or nominal</p>
+relationship is between 0 or 1 or nominal.</p>
     </div>
 
 
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>When printed if an element or a set do not have any relationship is not shown.
+They can be created from lists, matrices or data.frames. Check <code><a href='tidySet.html'>tidySet()</a></code>
+constructor for more information.</p>
     <h2 class="hasAnchor" id="slots"><a class="anchor" href="#slots"></a>Slots</h2>
 
     
@@ -199,8 +204,26 @@ relationship is between 0 or 1 or nominal</p>
 <code><a href='union.html'>union</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='st'>"a"</span> <span class='kw'>=</span> <span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>5</span>], <span class='st'>"b"</span> <span class='kw'>=</span> <span class='no'>LETTERS</span>[<span class='fl'>3</span>:<span class='fl'>7</span>])
-<span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tidySet.html'>tidySet</a></span>(<span class='no'>x</span>)</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='st'>"A"</span> <span class='kw'>=</span> <span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>5</span>], <span class='st'>"B"</span> <span class='kw'>=</span> <span class='no'>LETTERS</span>[<span class='fl'>3</span>:<span class='fl'>7</span>])
+<span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tidySet.html'>tidySet</a></span>(<span class='no'>x</span>)
+<span class='no'>a</span></div><div class='output co'>#&gt;    elements sets fuzzy
+#&gt; 1         a    A     1
+#&gt; 2         b    A     1
+#&gt; 3         c    A     1
+#&gt; 4         d    A     1
+#&gt; 5         e    A     1
+#&gt; 6         C    B     1
+#&gt; 7         D    B     1
+#&gt; 8         E    B     1
+#&gt; 9         F    B     1
+#&gt; 10        G    B     1</div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='st'>"A"</span> <span class='kw'>=</span> <span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>5</span>], <span class='st'>"B"</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>())
+<span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tidySet.html'>tidySet</a></span>(<span class='no'>x</span>)
+<span class='no'>b</span></div><div class='output co'>#&gt;   elements sets fuzzy
+#&gt; 1        a    A     1
+#&gt; 2        b    A     1
+#&gt; 3        c    A     1
+#&gt; 4        d    A     1
+#&gt; 5        e    A     1</div><div class='input'><span class='fu'><a href='name_sets.html'>name_sets</a></span>(<span class='no'>b</span>)</div><div class='output co'>#&gt; [1] "A" "B"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
