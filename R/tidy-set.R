@@ -75,6 +75,10 @@ is.ch_fct <- function(x) {
 #' a <- tidySet(x) # An error for mixing letters and numbers
 #' }
 tidySet.list <- function(relations) {
+    if (length(relations) == 0) {
+        stop("Provide a set.", call. = FALSE)
+    }
+
     char <- vapply(relations, is.character, logical(1L))
     num <- vapply(relations, is.numeric, logical(1L))
     fact <- vapply(relations, is.factor, logical(1L))
@@ -99,9 +103,19 @@ tidySet.list <- function(relations) {
         }
         fuzzy <- unlist(relations, use.names = FALSE)
     }
+
     sets_size <- lengths(relations)
+
     sets_size[sets_size == 0] <- 1
     sets <- rep(names(relations), sets_size)
+    if (length(elements) == 0) {
+        return(new("TidySet", sets = data.frame(sets = sets),
+                   elements = data.frame(elements = character()),
+                   relations = data.frame(elements = character(),
+                                          sets = character(),
+                                          fuzzy = numeric())))
+    }
+
     size <- c(length(elements), length(sets), length(fuzzy))
     min_size <- min(size)
 

@@ -84,6 +84,21 @@ test_that("tidySet.list keeps empty set", {
     expect_equal(nSets(TS), 4L)
 })
 
+
+test_that("Empty list to tidySet", {
+    expect_error(tidySet(list()))
+
+    expect_error(TS <- tidySet(list("a" = character(0))), NA)
+    expect_equal(name_sets(TS), "a")
+    expect_equal(nSets(TS), 1)
+    expect_equal(nElements(TS), 0)
+
+    TS <- tidySet(list("a"))
+    expect_s4_class(TS, "TidySet")
+    expect_equal(nElements(TS), 1)
+    expect_equal(nSets(TS), 1)
+    expect_equal(name_elements(TS), "a")
+})
 test_that("tidySet fails", {
     a <- new("TidySet")
     expect_s4_class(a, "TidySet")
@@ -214,4 +229,14 @@ test_that("tidySet long", {
         stringsAsFactors = FALSE
     )
     expect_s4_class(tidySet(df), "TidySet")
+})
+
+
+test_that("Raw creation of TidySets", {
+    expect_error(new("TidySet", sets = data.frame(sets = character()),
+                     elements = data.frame(elements = character()),
+                     relations = data.frame(sets = character(),
+                                            elements = character(),
+                                            fuzzy = numeric())),
+                 "at least an element or a set")
 })
