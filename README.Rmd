@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/llrs/BaseSet.svg?branch=master)](https://travis-ci.org/llrs/BaseSet)
+[![Actions CI](https://github.com/llrs/BaseSet/workflows/R-CMD-check/badge.svg)](https://github.com/llrs/BaseSet/actions?query=workflow%3AR-CMD-check)
 [![Coverage status](https://codecov.io/gh/llrs/BaseSet/branch/master/graph/badge.svg)](https://codecov.io/github/llrs/BaseSet?branch=master)
 [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -25,17 +26,22 @@ knitr::opts_chunk$set(
 
 # BaseSet
 
-The goal of BaseSet is to facilitate working with sets in an efficient way. 
+The goal of BaseSet is to facilitate working with sets in an efficient way. The package implements methods to work on sets, doing intersection, union, complementary, power sets, cartesian product and other set operations in a tidy way. Both for classical and fuzzy sets. On fuzzy sets, elements have a probability to belong to a set. 
 
-## Installation
 
-Before installation you might need to install some of the suggested packages from Bioconductor:
+It also allows to import from several formats used in the life science world. Like the GMT and the GAF or the [OBO format](http://www.obofoundry.org/) file for ontologies.
+
+You can save information about the elements, sets and their relationship on the object itself. For instance origin of the set, categorical or numeric data associated with sets...
+
+Watch BaseSet working on the [examples](#Examples) below and in the vignettes. You can also find [related packages](#Related-packages) and the differences with BaseSet. If you have some questions or bugs [open an issue](https://github.com/llrs/BaseSet/issues) (remember the [Code of Conduct](#Code-of-Conduct))
+
+# Installation
+
+The package depends on some packages from Bioconductor. In order to install some of its dependencies you'll need first to install BiocManager:
 
 ```{r dep, eval = FALSE}
 if (!require("BiocManager")) {
   install.packages("BiocManager")
-  BiocManager::install(c("Biobase", "GO.db", "GSEABase", "org.HS.eg.db", 
-                         "reactome.db", "BiocStyle"), type = "source")
 }
 ```
 
@@ -47,13 +53,15 @@ BiocManager::install("llrs/BaseSet",
 ```
 
  
-## Examples
+# Examples {#Examples}
 
 ```{r include=FALSE}
 library("BaseSet")
 ```
 
-To work with sets we need to have the relations between the elements and the sets:
+## Sets
+
+We can create a set like this:
 
 ```{r TidySet}
 sets <- list(A = letters[1:5], B = c("a", "f"))
@@ -61,16 +69,16 @@ sets_analysis <- tidySet(sets)
 sets_analysis
 ```
 
-Perform typical operations like union, intersection:
+Perform typical operations like union, intersection. You can name the resulting set or let the default name:
 
 ```{r union-intersection}
 union(sets_analysis, sets = c("A", "B")) 
-# Or we can give a name to the new set and keep the others sets
+# Or we can give a name to the new set
 union(sets_analysis, sets = c("A", "B"), name = "D")
-# We can do the same in the intersection
-intersection(sets_analysis, sets = c("A", "B"), name = "D") 
-# Or we can omit the new name: 
+# Or the intersection
 intersection(sets_analysis, sets = c("A", "B"))
+# Keeping the other sets:
+intersection(sets_analysis, sets = c("A", "B"), name = "D", keep = TRUE) 
 ```
 
 And compute size of sets among other things:
@@ -85,21 +93,28 @@ The elements in one set not present in other:
 subtract(sets_analysis, set_in = "A", not_in = "B", keep = FALSE)
 ```
 
-Or any other verb from [dplyr](https://cran.r-project.org/package=dplyr). Like mutate
+Or any other verb from [dplyr](https://cran.r-project.org/package=dplyr). We can add columns, filter, remove them and add information about the sets:
 
 ```{r dplyr}
 library("magrittr")
 set.seed(4673) # To make it reproducible in your machine
-sets_analysis %>% 
+sets_enriched <- sets_analysis %>% 
   mutate(Keep = sample(c(TRUE, FALSE), 7, replace = TRUE)) %>% 
   filter(Keep == TRUE) %>% 
+  select(-Keep) %>% 
   activate("sets") %>% 
   mutate(sets_origin = c("Reactome", "KEGG"))
+sets_enriched
+
+# Activating sets makes the verb affect only them:
+elements(sets_enriched)
+relations(sets_enriched)
+sets(sets_enriched)
 ```
 
 ## Fuzzy sets
 
-You can do the same operations with fuzzy sets:
+In fuzzy sets the elements are related to a set by a probability (the association is not guaranteed).
 
 ```{r fuzzy}
 relations <- data.frame(sets = c(rep("A", 5), "B", "B"), 
@@ -107,21 +122,64 @@ relations <- data.frame(sets = c(rep("A", 5), "B", "B"),
                         fuzzy = runif(7))
 fuzzy_set <- tidySet(relations)
 fuzzy_set
-union(fuzzy_set, sets = c("A", "B"))
-union(fuzzy_set, sets = c("A", "B"), name = "D", keep = TRUE)
-intersection(fuzzy_set, sets = c("A", "B"), name = "D") 
-intersection(fuzzy_set, sets = c("A", "B"), keep = TRUE)
-# Note here the difference:
-set_size(fuzzy_set) # A set could be empty!
+```
+
+The equivalent operations are possible with the sets
+
+```{r fuzzy-operations}
+union(fuzzy_set, sets = c("A", "B")) 
+# Or we can give a name to the new set
+union(fuzzy_set, sets = c("A", "B"), name = "D")
+# Or the intersection
+intersection(fuzzy_set, sets = c("A", "B"))
+# Keeping the other sets:
+intersection(fuzzy_set, sets = c("A", "B"), name = "D", keep = TRUE) 
+```
+
+With fuzzy sets, the number of elements or cardinality is a probability:
+
+```{r prob}
+# A set could be empty
+set_size(fuzzy_set)
+# The more probable size of the sets:
+set_size(fuzzy_set) %>% 
+  group_by(sets) %>% 
+  filter(probability == max(probability))
+# Probability of belonging to several sets:
 element_size(fuzzy_set)
+```
+
+With fuzzy sets we can filter at certain probability (called alpha cut):
+
+```{r}
 fuzzy_set %>% 
   mutate(Keep = ifelse(fuzzy > 0.5, TRUE, FALSE)) %>% 
   filter(Keep == TRUE) %>% 
+  select(-Keep) %>% 
   activate("sets") %>% 
   mutate(sets_origin = c("Reactome", "KEGG"))
 ```
 
-# Code of Conduct
+# Related packages {#related}
+
+There are several other packages related to sets, which partially overlap with BaseSet functionality:
+
+ - [sets]( https://CRAN.R-project.org/package=sets)  
+ Implements a more generalized approach, that can store functions or lists as an element of a set (while BaseSet only allows to store a character or factor), but it is harder to operate in a tidy/long way. Also the operations of intersection and union need to happen between two different objects, while a single TidySet object (the class implemented in BaseSet) can store one or thousands of sets.
+
+ - [GSEABase](https://bioconductor.org/packages/GSEABase)  
+ Implements a class to store sets and related information, but it doesn't allow to store fuzzy sets and it is also quite slow as it creates several classes for annotating each set. 
+  
+ - [BiocSets](https://bioconductor.org/packages/BiocSets)  
+ Implements a tidy class for sets but does not handle fuzzy sets. It also has less functionality to operate with sets, like power sets and cartesian product. BiocSets was influenced by the development of this package. 
+
+ - [hierarchicalSets](https://CRAN.R-project.org/package=hierarchicalSets)  
+ This package is focused on clustering of sets that are inside other sets and visualizations. However, BaseSet is focused on storing and manipulate sets including hierarchical sets.
+ 
+ - [set6](https://cran.r-project.org/package=set6)
+ This package implements different classes for different type of sets including fuzzy sets, conditional sets. However, it doesn't handle information associated to elements, sets or relationship. 
+
+# Code of Conduct {#CoC}
 
 Please note that the BaseSet project is released with a  [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.

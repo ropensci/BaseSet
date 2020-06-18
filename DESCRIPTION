@@ -1,15 +1,15 @@
 Package: BaseSet
-Title: Provides classes for working with sets
-Version: 0.0.10
+Title: Working with sets the tidy way
+Version: 0.0.11
 Authors@R: 
     person(given = "Lluís ",
            family = "Revilla Sancho",
            role = c("aut", "cre"),
            email = "lluis.revilla@gmail.com")
-Description: A set collection, while not "tidy" in itself, can
-    be thought of as three tidy data frames describing sets, elements and
-    relations respectively. 'BaseSet' provides an approach to manipulate,
-    load and use these virtual data frames.
+Description: The package implements a class and methods to work with sets, 
+    doing intersection, union, complementary, power sets, cartesian product and 
+    other set operations in a "tidy" way. Both for classical sets and fuzzy 
+    sets. It can import sets from GMT, GAF and the OBO formats. 
 License: MIT + file LICENSE
 URL: https://github.com/llrs/BaseSet
 BugReports: https://github.com/llrs/BaseSet/issues

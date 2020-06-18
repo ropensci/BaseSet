@@ -3,30 +3,26 @@ on: [push, pull_request]
 name: R-CMD-check
 
 jobs:
-  macOS-check:
-    runs-on: macOS-latest
+  check:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      # Avoid cancelling builds if one of them fails
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
     steps:
       - uses: actions/checkout@v1
       - uses: r-lib/actions/setup-r@master
-      - name: Install dependencies
-        run: Rscript -e "install.packages(c('remotes', 'rcmdcheck', 'BiocManager'))" -e 'BiocManager::install(c("Biobase", "GO.db", "GSEABase", "org.HS.eg.db", "reactome.db", "BiocStyle"), type = "source")' -e "remotes::install_deps(dependencies = TRUE)"
+      - name: Install Linux dependencies
+        if: runner.os == 'Linux'
+        run: sudo apt install libcurl4-openssl-dev
+      - name: Install basic dependencies
+        run: Rscript -e "install.packages(c('remotes', 'rcmdcheck', 'BiocManager'))"
+      - name: Install all dependencies
+        run: Rscript -e "BiocManager::install('llrs/BaseSet', dependencies = TRUE, build_vignettes = TRUE)"
+      - name: Session Info
+        run: Rscript -e "sessionInfo()"
       - name: Check
         run: Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on = 'error')"
-  windows-check:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: r-lib/actions/setup-r@master
-      - name: Install dependencies
-        run: Rscript -e "install.packages(c('remotes', 'rcmdcheck', 'BiocManager'))" -e 'BiocManager::install(c("Biobase", "GO.db", "GSEABase", "org.HS.eg.db", "reactome.db", "BiocStyle"), type = "source")' -e "remotes::install_deps(dependencies = TRUE)"
-      - name: Check
-        run: Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on = 'error')"
-  Linux-check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: r-lib/actions/setup-r@master
-      - name: Install dependencies
-        run: Rscript -e "install.packages(c('remotes', 'rcmdcheck', 'BiocManager'))" -e 'BiocManager::install(c("Biobase", "GO.db", "GSEABase", "org.HS.eg.db", "reactome.db", "BiocStyle"), type = "source")' -e "remotes::install_deps(dependencies = TRUE)"
-      - name: Check
-        run: Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on = 'error')"
+
+
