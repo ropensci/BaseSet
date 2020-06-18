@@ -36,7 +36,6 @@ test_that("union works fuzzy", {
   expect_equal(name_elements(d), letters[1:6])
 })
 
-
 test_that("union keep", {
   relations <- data.frame(sets = c(rep("A", 4), "B", "C", "D"),
                           elements = letters[seq_len(7)])
@@ -46,7 +45,6 @@ test_that("union keep", {
   expect_length(name_sets(b), 5L)
   expect_equal(nSets(b), nSets(a) + 1)
 })
-
 
 test_that("union works fuzzy keep", {
   relations <- data.frame(sets = c(rep("a", 5), "b", "c"),
@@ -73,7 +71,6 @@ test_that("check coherence", {
   d <- union(a, c("A", "B"), "AuB", keep = TRUE)
   expect_equal(nSets(b) + 4, nSets(d))
 })
-
 
 test_that("fapply works in order", {
     fuzzy_set <- new("TidySet",

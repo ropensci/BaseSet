@@ -8,7 +8,6 @@ test_that("check_fuzziness works", {
     expect_true(check_fuzziness(TS))
 })
 
-
 test_that("sets_for_elements works", {
     expect_true(is.character(sets_for_elements(TS, c("a", "b"))))
 })

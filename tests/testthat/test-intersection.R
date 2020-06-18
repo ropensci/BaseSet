@@ -34,7 +34,6 @@ test_that("intersection works with fuzzy", {
   expect_equal(nSets(b), 1L)
   expect_equal(relations(b)$fuzzy, min(relations(a)[6:7, "fuzzy"]))
 
-
   d <- intersection(a, c("a", "c"), "d", keep = TRUE)
   expect_s4_class(d, "TidySet")
   expect_equal(nRelations(d), 13L)
@@ -91,4 +90,3 @@ test_that("intersection without duplicated values", {
   expect_equal(nRelations(out), 13L)
 
 })
-

@@ -29,7 +29,6 @@ test_that("set_size works with fuzzy sets", {
   expect_true(all(checking[, 1] == 1))
 })
 
-
 test_that("set_size works well", {
   signature <- list(Tcell = c("CD4" = 1, "CD8" = 0.5,
                               "CD45" = 0.75, "Tbet" = 0.2),
@@ -44,7 +43,6 @@ test_that("set_size works well", {
   expect_equal(bs, bs2)
 })
 
-
 test_that("set_size works well", {
   signature <- list(Tcell = c("CD4" = 1, "CD8" = 0.5,
                               "CD45" = 0.75, "Tbet" = 0.2),
@@ -56,5 +54,3 @@ test_that("set_size works well", {
   bs2 <- size(b, "Bcell")
   expect_equal(sum(bs2$probability), 1L)
 })
-
-

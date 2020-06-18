@@ -28,7 +28,6 @@ test_that("filter_relation works", {
   expect_error(filter_relation(a, sets == "c"), NA)
 })
 
-
 test_that("filter works", {
   b <- filter(a, sets == "b")
   expect_equal(nSets(b), 1L)

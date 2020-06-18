@@ -111,7 +111,6 @@ test_that("tidySet fails", {
   expect_s4_class(tidySet(df), "TidySet")
 })
 
-
 test_that("tidySet long",  {
   df <- data.frame(
     DB = c("RNAcentral", "RNAcentral", "RNAcentral",

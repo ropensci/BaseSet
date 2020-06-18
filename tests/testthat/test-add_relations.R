@@ -37,4 +37,3 @@ test_that("add_relations fuzzy works", {
   expect_error(add_relations(a, elements = letters[7:15], sets = c("ha", "he"),
                              fuzzy = 1))
 })
-

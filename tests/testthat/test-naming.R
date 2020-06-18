@@ -4,7 +4,6 @@ test_that("collapse_sets works", {
     expect_true(is.character(collapse_sets(c("a", "b"))))
 })
 
-
 test_that("naming works", {
     n1 <- naming(sets1 = c("a", "b"))
     n2 <- naming(sets1 = "a", sets2 = "b", middle = "union")

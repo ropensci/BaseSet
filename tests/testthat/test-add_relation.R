@@ -18,4 +18,3 @@ test_that("multiplication works", {
   expect_length(name_elements(a), 6L)
   expect_length(name_elements(out), 6L)
 })
-

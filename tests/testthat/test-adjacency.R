@@ -18,7 +18,6 @@ test_that("adjacency_set works", {
     expect_equal(out["a", "b"], 0)
 })
 
-
 test_that("adjacency works", {
     x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
     a <- tidySet(x)

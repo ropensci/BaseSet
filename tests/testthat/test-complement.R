@@ -10,7 +10,6 @@ test_that("complement set works", {
   expect_equal(nElements(b), 6L)
 })
 
-
 test_that("complement set works for several sets", {
   relations <- data.frame(sets = c(rep("A", 5), "B", "C"),
                           elements = c(letters[seq_len(6)], letters[6]),
@@ -46,7 +45,6 @@ test_that("complement element works without name", {
   expect_equal(nRelations(b), 1L)
   expect_equal(relations(b)$fuzzy, 1 - relations[2, "fuzzy"])
 })
-
 
 # Not sure about this behaviour
 test_that("complement elements works for several elements", {

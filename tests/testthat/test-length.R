@@ -26,7 +26,6 @@ test_that("length_probability works", {
   expect_length(out, 1L)
   expect_equal(out, 0.00043125)
 
-
   out <- length_probability(c(1, 0.2), 1)
   expect_length(out, 1L)
   expect_equal(out, 0.8)
@@ -35,7 +34,6 @@ test_that("length_probability works", {
                               e = 0, f = 0.0486625612247735), 1)
   expect_equivalent(out, 0.04866256)
 })
-
 
 test_that("length_set works", {
   out <- length_set(p)

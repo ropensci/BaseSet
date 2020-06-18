@@ -16,7 +16,6 @@ test_that("rename_set works", {
   expect_error(rename_set(a, "z"), "must be found")
 })
 
-
 test_that("name_elements<- works well", {
   x <- data.frame(
     elements = c("a", "b", "c", "d", "e", "C", "D", "E", "F", "G"),
