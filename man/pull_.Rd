@@ -9,17 +9,21 @@
 \usage{
 \method{pull}{TidySet}(.data, var = -1, name = NULL, ...)
 
-pull_set(.data, var, name, ...)
+pull_set(.data, var = -1, name = NULL, ...)
 
-pull_element(.data, var, name, ...)
+pull_element(.data, var = -1, name = NULL, ...)
 
-pull_relation(.data, var, name, ...)
+pull_relation(.data, var = -1, name = NULL, ...)
 }
 \arguments{
 \item{.data}{The TidySet object}
 
 \item{var}{The literal variable name, a positive integer or a negative
 integer column position.}
+
+\item{name}{Column used to name the output.}
+
+\item{...}{For use by methods.}
 }
 \value{
 A TidySet object
