@@ -23,30 +23,40 @@ tidySet <- function(relations) {
 #' @export
 tidySet.data.frame <- function(relations) {
     check_colnames <- all(c("sets", "elements") %in% colnames(relations))
-    if (ncol(relations) >= 2 && check_colnames) {
-        sets <- data.frame(
-            sets = unique(relations$sets),
-            stringsAsFactors = FALSE
-        )
-        elements <- data.frame(
-            elements = unique(relations$elements),
-            stringsAsFactors = FALSE
-        )
-    } else {
+    if (ncol(relations) <= 2 && !check_colnames) {
         stop("Unable to create a TidySet object.\n",
-            "The data.frame is not in the right format",
+            "The data.frame does not have the sets and elements columns",
             call. = FALSE
         )
     }
-
+    if (!is.ch_fct(relations$sets)) {
+        stop("Sets should be a factor or a character.", call. = FALSE)
+    }
+    if (!is.ch_fct(relations$elements)) {
+        stop("Elements should be a factor or a character.", call. = FALSE)
+    }
+    sets <- data.frame(
+        sets = unique(relations$sets),
+        stringsAsFactors = FALSE
+    )
+    elements <- data.frame(
+        elements = unique(relations$elements),
+        stringsAsFactors = FALSE
+    )
     if (!"fuzzy" %in% colnames(relations)) {
         fuzzy <- 1
         relations <- cbind.data.frame(relations, fuzzy, stringsAsFactors = FALSE)
+    } else if (!is.numeric(relations$fuzzy)) {
+        stop("Fuzzy column should be a numeric column with numbers between 0 and 1.",
+             call. = FALSE)
     }
 
     new("TidySet", sets = sets, elements = elements, relations = relations)
 }
 
+is.ch_fct <- function(x) {
+    is.character(x) || is.factor(x)
+}
 #' @export
 #' @describeIn tidySet Convert to a TidySet from a list
 #' @examples
@@ -89,11 +99,27 @@ tidySet.list <- function(relations) {
         }
         fuzzy <- unlist(relations, use.names = FALSE)
     }
-    sets <- rep(names(relations), lengths(relations))
-    relations <- data.frame(elements, sets, fuzzy,
+    sets_size <- lengths(relations)
+    sets_size[sets_size == 0] <- 1
+    sets <- rep(names(relations), sets_size)
+    size <- c(length(elements), length(sets), length(fuzzy))
+    min_size <- min(size)
+
+    relations <- data.frame(elements = elements[seq_len(min_size)],
+                            sets = sets[seq_len(min_size)],
+                            fuzzy = fuzzy,
         stringsAsFactors = FALSE
     )
-    tidySet.data.frame(relations = relations)
+    TS <- tidySet.data.frame(relations = relations)
+    if (size[1] > min_size) {
+        e <- elements[seq(from = min_size + 1, to = size[1])]
+        add_elements(TS, e)
+    }
+    if (size[2] > min_size) {
+        s <- sets[seq(from = min_size + 1, to = size[2])]
+        TS <- add_sets(TS, s)
+    }
+    TS
 }
 
 #' @describeIn tidySet Convert an incidence matrix into a TidySet

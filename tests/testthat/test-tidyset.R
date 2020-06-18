@@ -74,6 +74,16 @@ test_that("tidySet list", {
     expect_s4_class(tidySet(relations), "TidySet")
 })
 
+test_that("tidySet.list keeps empty set", {
+    x <- list(a = c("A", "B"), b = character(0))
+    TS <- tidySet(x)
+    expect_equal(nSets(TS), 2L)
+
+    x <- list(a = c("A", "B"), b = character(0), c = character(0), d = character(0))
+    TS <- tidySet(x)
+    expect_equal(nSets(TS), 4L)
+})
+
 test_that("tidySet fails", {
     a <- new("TidySet")
     expect_s4_class(a, "TidySet")
