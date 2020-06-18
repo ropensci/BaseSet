@@ -26,7 +26,7 @@ test_that("filter_relation works", {
     b <- filter_relation(a, sets == "b")
     expect_equal(nSets(b), 2L)
 
-    # Allow TidySets without relations but elements and sets
+    # Allow TidySet without relations but elements and sets
     expect_error(filter_relation(a, sets == "c"), NA)
 })
 

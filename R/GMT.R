@@ -1,13 +1,18 @@
 #' @include AllClasses.R
 NULL
 
-#' Import GMT files
+#' Import GMT (Gene Matrix Transposed) files
 #'
+#' The GMT (Gene Matrix Transposed) file format is a tab delimited file format
+#' that describes groups of genes. In this format, each row represents a group.
+#' Each group is described by a name, a description, and the genes in it.
 #' @param con File name of the GMT file.
-#' @param sep Separation of the file
-#' @param ... Other arguments passed to strsplit
+#' @param sep GMT file field separator, by default tabs.
+#' @param ... Other arguments passed to readLines.
 #' @return A TidySet object
 #' @family IO functions
+#' @references
+#' The file format is defined by the Broad Institute [here](https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29)
 #' @export
 #' @examples
 #' gmtFile <- system.file(

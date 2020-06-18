@@ -320,7 +320,7 @@ methods::setGeneric("remove_column", function(object, slot, column_names) {
 
 #' Intersection of two sets
 #'
-#' Given a TidySets creates a new set with the elements on the both of them.
+#' Given a TidySet creates a new set with the elements on the both of them.
 #' @param sets The character of sets to be intersect.
 #' @inheritParams union
 #' @param FUN A function to be applied when performing the union.
@@ -345,7 +345,7 @@ methods::setGeneric("intersection", function(object, sets, ...) {
 
 #' Add relations
 #'
-#' Given a TidySets adds new relations between elements and sets.
+#' Given a TidySet adds new relations between elements and sets.
 #' @param object A TidySet object
 #' @param relations A data.frame object
 #' @param ... Other arguments.
@@ -373,7 +373,7 @@ methods::setGeneric("add_relation", function(object, relations, ...) {
 
 #' Remove a relation
 #'
-#' Given a TidySets removes relations between elements and sets
+#' Given a TidySet removes relations between elements and sets
 #' @param object A TidySet object
 #' @param elements The elements of the sets.
 #' @param sets The name of the new set.
@@ -396,7 +396,7 @@ methods::setGeneric("remove_relation", function(object, elements, sets, ...) {
 
 #' Remove elements
 #'
-#' Given a TidySets remove elements and the related relations and if
+#' Given a TidySet remove elements and the related relations and if
 #' required also the sets.
 #' @param object A TidySet object.
 #' @param elements The elements to be removed.
@@ -419,7 +419,7 @@ methods::setGeneric("remove_element", function(object, elements, ...) {
 
 #' Remove sets
 #'
-#' Given a TidySets remove sets and the related relations and if
+#' Given a TidySet remove sets and the related relations and if
 #' required also the elements
 #' @param object A TidySet object.
 #' @param sets The sets to be removed.

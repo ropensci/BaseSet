@@ -13,7 +13,6 @@ setMethod("subtract",
     keep_relations = keep, keep_elements = keep,
     keep_sets = keep) {
 
-        # browser()
         old_relations <- relations(object)
         test_set_in <- set_in %in% old_relations$sets
         if (!any(test_set_in)) {

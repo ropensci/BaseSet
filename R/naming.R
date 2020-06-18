@@ -53,7 +53,7 @@ naming <- function(start = NULL, sets1, middle = NULL, sets2 = NULL,
     }
 
     start <- check_symbol(start)
-    if (!is.null(sets2) & is.null(middle)) {
+    if (!is.null(sets2) && is.null(middle)) {
         stop("sets1 and sets2 should be separated by a symbol")
     }
     middle <- check_symbol(middle)
@@ -70,7 +70,7 @@ naming <- function(start = NULL, sets1, middle = NULL, sets2 = NULL,
         return(paste0(set_symbols[start], sets1, set_symbols[middle], sets2))
     }
 
-    if (!is.null(sets2) & nSets1 > 1) {
+    if (!is.null(sets2) && nSets1 > 1) {
         sets1 <- paste0("(", sets1, ")")
     }
     if (nSets2 > 1) {

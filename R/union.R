@@ -3,7 +3,7 @@ NULL
 
 #' Merge two sets
 #'
-#' Given a TidySets merges two sets into the new one.
+#' Given a TidySet merges two sets into the new one.
 #' @param object A TidySet object
 #' @param sets The name of the sets to be used.
 #' @param name The name of the new set.

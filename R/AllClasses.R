@@ -109,7 +109,7 @@ is.valid <- function(object) {
         es <- paste(relations$elements, relations$sets)
 
         # Check that relations have the same fuzzy value when the
-        if (anyDuplicated(es) != 0 & !all(fuzz == 1)) {
+        if (anyDuplicated(es) != 0 && !all(fuzz == 1)) {
             fuzziness <- tapply(fuzz, es, FUN = n_distinct)
             if (!all(fuzziness == 1)) {
                 msg <- paste0(

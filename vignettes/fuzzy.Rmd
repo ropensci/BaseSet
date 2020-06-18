@@ -35,7 +35,7 @@ library("dplyr")
 
 # Getting started
 
-This vignettes supposes that you already read the "About Set" vignette
+This vignettes supposes that you already read the "About Set" vignette. 
 This vignette explains what are the fuzzy sets and how to use them. 
 As all methods for "normal" sets are available for fuzzy sets this vignette focuses on how to create, use them.
 
@@ -166,13 +166,13 @@ cells_assigned <- sc_classification %>%
   group_by(elements) %>% 
   filter(fuzzy == max(fuzzy))
 cells_assigned
-# See how many cells of each type do we have
+# See how many cells of each type we have
 cells_assigned %>% 
   group_by(sets) %>% 
   count()
 ```
 
-Now we know which is the cell type most probable for each cell, and how much of each type do we have.
+Now we know which is the cell type most probable for each cell, and how much of each type we have.
 Let's see how many cells of each type we are more likely to get:
 
 ```{r cells_subset}

@@ -53,7 +53,7 @@ tidy_set
 
 This is then stored internally in three slots `relations`, `elements`, and `sets` slots.
 
-If you have more information for each element or set it can be used added:
+If you have more information for each element or set it can be added:
 
 ```{r metadata, message=FALSE}
 gene_data <- data.frame(
@@ -217,7 +217,7 @@ set_modified <- m_TS %>%
                            "pathway2"))
 set_modified
 set_modified %>% 
-  deactivate() %>% # To apply a filter independently to where it is
+  deactivate() %>% # To apply a filter independently of where it is
   filter(Pathway == "pathway1")
 ```
 

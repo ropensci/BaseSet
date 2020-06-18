@@ -78,7 +78,7 @@ length_set <- function(fuzziness) {
     l
 }
 
-# TODO Use matrix operations to simplify tha process for large objects
+# TODO Use matrix operations to simplify the process for large objects
 #' @describeIn set_size Calculates the size of a set either fuzzy or not
 #' @export
 #' @examples
@@ -140,7 +140,7 @@ setMethod("set_size",
             lengths_set[is.na(lengths_set)] <- 0
         }
         # Nothing is present
-        if (is.null(lengths_set) & is.null(probability_length)) {
+        if (is.null(lengths_set) && is.null(probability_length)) {
             sets <- names_sets
             lengths_set <- rep(0, length(sets))
             probability_length <- rep(1, length(sets))
@@ -206,7 +206,6 @@ setMethod("element_size",
             rel <- unique(rel)
             rel <- droplevels(rel)
         }
-        # browser()
         if (!all(rel$fuzzy == 1)) {
             fuzzy_values <- split(rel$fuzzy, rel$elements)
             sizes <- lapply(fuzzy_values, length_set)
@@ -223,7 +222,7 @@ setMethod("element_size",
             lengths_set[is.na(lengths_set)] <- 0
         }
         # Nothing is present
-        if (is.null(lengths_set) & is.null(probability_length)) {
+        if (is.null(lengths_set) && is.null(probability_length)) {
             elements <- names_elements
             lengths_set <- rep(0, length(elements))
             probability_length <- rep(1, length(elements))
