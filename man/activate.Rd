@@ -29,12 +29,15 @@ or relations.
 \code{deactivate}: To remove the focus on a specific \code{TidySet}-
 }
 \examples{
-relations <- data.frame(sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
-                        elements = rep(letters[seq_len(6)], 2),
-                        fuzzy = runif(12))
+relations <- data.frame(
+    sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
+    elements = rep(letters[seq_len(6)], 2),
+    fuzzy = runif(12)
+)
 a <- tidySet(relations)
 elements(a) <- cbind(elements(a),
-                 type = c(rep("Gene", 4), rep("lncRNA", 2)))
+    type = c(rep("Gene", 4), rep("lncRNA", 2))
+)
 # Filter in the whole TidySet
 filter(a, elements == "a")
 filter(a, elements == "a", type == "Gene")

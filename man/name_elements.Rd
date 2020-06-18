@@ -23,17 +23,19 @@ A \code{TidySet} object.
 \description{
 Retrieve the name of the elements.
 }
-\section{Methods (by class)}{
+\section{Functions}{
 \itemize{
-\item \code{TidySet}: Name elements
+\item \code{name_elements,TidySet-method}: Name elements
 
-\item \code{object = TidySet,value = characterORfactor}: Rename elements
+\item \code{name_elements<-,TidySet,characterORfactor-method}: Rename elements
 }}
 
 \examples{
-relations <- data.frame(sets = c(rep("a", 5), "b"),
-                        elements = letters[seq_len(6)],
-                        fuzzy = runif(6))
+relations <- data.frame(
+    sets = c(rep("a", 5), "b"),
+    elements = letters[seq_len(6)],
+    fuzzy = runif(6)
+)
 a <- tidySet(relations)
 name_elements(a)
 }

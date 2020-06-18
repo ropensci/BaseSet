@@ -17,8 +17,10 @@ Read a GAF formatted file, see
 \url{http://geneontology.org/docs/go-annotation-file-gaf-format-2.1/}
 }
 \examples{
-gafFile <- system.file(package = "BaseSet", "extdata",
-                                  "go_human_rna_valid_subset.gaf")
+gafFile <- system.file(
+    package = "BaseSet", "extdata",
+    "go_human_rna_valid_subset.gaf"
+)
 gs <- getGAF(gafFile)
 head(gs)
 }

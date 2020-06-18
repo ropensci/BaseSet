@@ -22,8 +22,10 @@ A TidySet object with the new set
 Create the power set
 }
 \examples{
-relations <- data.frame(sets = c(rep("a", 5), "b"),
-                        elements = letters[seq_len(6)])
+relations <- data.frame(
+    sets = c(rep("a", 5), "b"),
+    elements = letters[seq_len(6)]
+)
 TS <- tidySet(relations)
 power_set(TS, "a", name = "power_set")
 }

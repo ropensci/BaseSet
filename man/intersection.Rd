@@ -43,17 +43,19 @@ other function that given a numeric vector returns a single number.}
 A \code{TidySet} object.
 }
 \description{
-Given a TidySets creates a new set with the elements on the both of them.
+Given a TidySet creates a new set with the elements on the both of them.
 }
-\section{Methods (by class)}{
+\section{Functions}{
 \itemize{
-\item \code{object = TidySet,sets = character}: Applies the standard intersection
+\item \code{intersection,TidySet,character-method}: Applies the standard intersection
 }}
 
 \examples{
-relations <- data.frame(sets = c(rep("a", 5), "b"),
-                        elements = c("a", "b", "c", "d", "f", "f"),
-                        fuzzy = runif(6))
+relations <- data.frame(
+    sets = c(rep("a", 5), "b"),
+    elements = c("a", "b", "c", "d", "f", "f"),
+    fuzzy = runif(6)
+)
 a <- tidySet(relations)
 intersection(a, c("a", "b"), "C")
 }

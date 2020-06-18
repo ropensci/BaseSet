@@ -25,9 +25,9 @@ A TidySet object where the content is moved from one slot to other.
 Moves information from one slot to other slots.
 For instance from the sets to the relations.
 }
-\section{Methods (by class)}{
+\section{Functions}{
 \itemize{
-\item \code{object = TidySet,from = characterORfactor,to = characterORfactor,columns = character}: Move columns
+\item \code{move_to,TidySet,characterORfactor,characterORfactor,character-method}: Move columns
 }}
 
 \examples{

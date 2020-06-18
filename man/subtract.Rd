@@ -44,15 +44,17 @@ A \code{TidySet} object.
 Elements in a set not present in the other set. Equivalent to
 \code{\link{setdiff}}.
 }
-\section{Methods (by class)}{
+\section{Functions}{
 \itemize{
-\item \code{object = TidySet,set_in = characterORfactor,not_in = characterORfactor}: Elements present in sets but not in other sets
+\item \code{subtract,TidySet,characterORfactor,characterORfactor-method}: Elements present in sets but not in other sets
 }}
 
 \examples{
-relations <- data.frame(sets = c("a", "a", "b", "b", "c", "c"),
-                        elements = letters[seq_len(6)],
-                        fuzzy = runif(6))
+relations <- data.frame(
+    sets = c("a", "a", "b", "b", "c", "c"),
+    elements = letters[seq_len(6)],
+    fuzzy = runif(6)
+)
 a <- tidySet(relations)
 subtract(a, "a", "b")
 subtract(a, "a", "b", keep = FALSE)

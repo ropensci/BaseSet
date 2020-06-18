@@ -29,12 +29,15 @@ use the specific function. The S3 method filters using all the information
 on the TidySet.
 }
 \examples{
-relations <- data.frame(sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
-                        elements = rep(letters[seq_len(6)], 2),
-                        fuzzy = runif(12))
+relations <- data.frame(
+    sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
+    elements = rep(letters[seq_len(6)], 2),
+    fuzzy = runif(12)
+)
 a <- tidySet(relations)
 elements(a) <- cbind(elements(a),
-                 type = c(rep("Gene", 4), rep("lncRNA", 2)))
+    type = c(rep("Gene", 4), rep("lncRNA", 2))
+)
 filter(a, elements == "a")
 # Equivalent to filter_relation
 filter(a, elements == "a", sets == "a")

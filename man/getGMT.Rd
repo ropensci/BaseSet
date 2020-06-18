@@ -2,30 +2,37 @@
 % Please edit documentation in R/GMT.R
 \name{getGMT}
 \alias{getGMT}
-\title{Import GMT files}
+\title{Import GMT (Gene Matrix Transposed) files}
 \usage{
 getGMT(con, sep = "\\t", ...)
 }
 \arguments{
 \item{con}{File name of the GMT file.}
 
-\item{sep}{Separation of the file}
+\item{sep}{GMT file field separator, by default tabs.}
 
-\item{...}{Other arguments passed to strsplit}
+\item{...}{Other arguments passed to readLines.}
 }
 \value{
 A TidySet object
 }
 \description{
-Import GMT files
+The GMT (Gene Matrix Transposed) file format is a tab delimited file format
+that describes groups of genes. In this format, each row represents a group.
+Each group is described by a name, a description, and the genes in it.
 }
 \examples{
-gmtFile <- system.file(package = "BaseSet", "extdata",
-                                  "hallmark.gene.symbol.gmt")
+gmtFile <- system.file(
+    package = "BaseSet", "extdata",
+    "hallmark.gene.symbol.gmt"
+)
 gs <- getGMT(gmtFile)
 nRelations(gs)
 nElements(gs)
 nSets(gs)
+}
+\references{
+The file format is defined by the Broad Institute \href{https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29}{here}
 }
 \seealso{
 Other IO functions: 

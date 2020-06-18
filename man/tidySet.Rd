@@ -22,10 +22,14 @@ tidySet(relations)
 \item{relations}{An object to be coerced to a TidySet.}
 }
 \value{
-A TidySet object
+A TidySet object.
 }
 \description{
-This functions help to create a \code{TidySet} object.
+These functions help to create a \code{TidySet} object from
+\code{data.frame}, \code{list}, \code{matrix}, and \code{GO3AnnDbBimap}.
+}
+\details{
+They can create both fuzzy and standard sets, but no empty sets.
 }
 \section{Methods (by class)}{
 \itemize{
@@ -39,9 +43,17 @@ This functions help to create a \code{TidySet} object.
 }}
 
 \examples{
-relations <- data.frame(sets = c(rep("a", 5), "b"),
-                        elements = letters[seq_len(6)])
+relations <- data.frame(
+    sets = c(rep("a", 5), "b"),
+    elements = letters[seq_len(6)]
+)
 tidySet(relations)
+relations2 <- data.frame(
+    sets = c(rep("A", 5), "B"),
+    elements = letters[seq_len(6)],
+    fuzzy = runif(6)
+)
+tidySet(relations2)
 # A
 x <- list("A" = letters[1:5], "B" = LETTERS[3:7])
 tidySet(x)
@@ -54,12 +66,10 @@ relations <- list(A, B)
 tidySet(relations)
 \dontrun{
 x <- list("A" = letters[1:5], "B" = LETTERS[3:7], "c" = runif(5))
-a <- tidySet(x) # An error for mixing letters and numbers
+a <- tidySet(x) # Only characters or factors are allowed as elements.
 }
-# Numeric input should be named
-x <- list("a" = c("A" = 0.1, "B" = 0.5), "b" = c("A" = 0.2, "B" = 1))
-a <- tidySet(x)
-tidySet(incidence(a))
+M <- matrix(c(1, 0.5, 1, 0), ncol = 2, dimnames = list(c("A", "B"), c("a", "b")))
+tidySet(M)
 }
 \seealso{
 \code{\link{TidySet-class}}

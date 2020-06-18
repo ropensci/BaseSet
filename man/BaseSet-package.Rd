@@ -4,12 +4,12 @@
 \name{BaseSet-package}
 \alias{BaseSet}
 \alias{BaseSet-package}
-\title{BaseSet: Provides classes for working with sets}
+\title{BaseSet: Working with sets the tidy way}
 \description{
-A set collection, while not "tidy" in itself, can
-    be thought of as three tidy data frames describing sets, elements and
-    relations respectively. 'BaseSet' provides an approach to manipulate,
-    load and use these virtual data frames.
+The package implements a class and methods to work with sets, 
+    doing intersection, union, complementary, power sets, cartesian product and 
+    other set operations in a "tidy" way. Both for classical sets and fuzzy 
+    sets. It can import sets from GMT, GAF and the OBO formats.
 }
 \details{
 It provides a class \code{\link{TidySet}} with methods to do operations with sets.

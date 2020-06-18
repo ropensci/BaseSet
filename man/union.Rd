@@ -44,12 +44,14 @@ function that given a numeric vector returns a single number.}
 A \code{TidySet} object.
 }
 \description{
-Given a TidySets merges two sets into the new one.
+Given a TidySet merges two sets into the new one.
 }
 \examples{
-relations <- data.frame(sets = c(rep("a", 5), "b"),
-                        elements = letters[seq_len(6)],
-                        fuzzy = runif(6))
+relations <- data.frame(
+    sets = c(rep("a", 5), "b"),
+    elements = letters[seq_len(6)],
+    fuzzy = runif(6)
+)
 a <- tidySet(relations)
 union(a, c("a", "b"), "C")
 }

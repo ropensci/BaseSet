@@ -16,8 +16,10 @@ A TidySet object
 Read a OBO formatted file
 }
 \examples{
-oboFile <- system.file(package = "BaseSet", "extdata",
-                                  "go-basic_subset.obo")
+oboFile <- system.file(
+    package = "BaseSet", "extdata",
+    "go-basic_subset.obo"
+)
 gs <- getOBO(oboFile)
 head(gs)
 }

@@ -18,9 +18,11 @@ The size of the active slot. Not available for relations.
 Calculate the size of the elements or sets
 }
 \examples{
-relations <- data.frame(sets = c(rep("a", 5), "b", "c"),
-                        elements = c(letters[seq_len(6)], letters[6]),
-                        fuzzy = runif(7))
+relations <- data.frame(
+    sets = c(rep("a", 5), "b", "c"),
+    elements = c(letters[seq_len(6)], letters[6]),
+    fuzzy = runif(7)
+)
 a <- tidySet(relations)
 a <- activate(a, "elements")
 size(a)

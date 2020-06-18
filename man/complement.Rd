@@ -21,14 +21,24 @@ activate with complement or use the specific function. You must specify if
 you want the complements of sets or elements.
 }
 \examples{
-relations <- data.frame(sets = c("a", "a", "b", "b", "c", "c"),
-                        elements = letters[seq_len(6)],
-                        fuzzy = runif(6))
+relations <- data.frame(
+    sets = c("a", "a", "b", "b", "c", "c"),
+    elements = letters[seq_len(6)],
+    fuzzy = runif(6)
+)
 a <- tidySet(relations)
-a \%>\% activate("elements") \%>\% complement("a")
-a \%>\% activate("elements") \%>\% complement("a", "C_a", keep = FALSE)
-a \%>\% activate("set") \%>\% complement("a")
-a \%>\% activate("set") \%>\% complement("a", keep = FALSE)
+a \%>\%
+    activate("elements") \%>\%
+    complement("a")
+a \%>\%
+    activate("elements") \%>\%
+    complement("a", "C_a", keep = FALSE)
+a \%>\%
+    activate("set") \%>\%
+    complement("a")
+a \%>\%
+    activate("set") \%>\%
+    complement("a", keep = FALSE)
 }
 \seealso{
 \code{\link{activate}}

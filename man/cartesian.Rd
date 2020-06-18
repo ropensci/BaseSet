@@ -43,8 +43,10 @@ A TidySet object with the new set
 Given two sets creates new sets with one element of each set
 }
 \examples{
-relations <- data.frame(sets = c(rep("a", 5), "b"),
-                        elements = letters[seq_len(6)])
+relations <- data.frame(
+    sets = c(rep("a", 5), "b"),
+    elements = letters[seq_len(6)]
+)
 TS <- tidySet(relations)
 cartesian(TS, "a", "b")
 }

@@ -20,22 +20,26 @@ add_relation(object, relations, ...)
 A \code{TidySet} object.
 }
 \description{
-Given a TidySets adds new relations between elements and sets.
+Given a TidySet adds new relations between elements and sets.
 }
-\section{Methods (by class)}{
+\section{Functions}{
 \itemize{
-\item \code{object = TidySet,relations = data.frame}: Adds relations
+\item \code{add_relation,TidySet,data.frame-method}: Adds relations
 }}
 
 \examples{
-relations <- data.frame(sets = c(rep("a", 5), "b"),
-                        elements = letters[seq_len(6)],
-                        fuzzy = runif(6))
+relations <- data.frame(
+    sets = c(rep("a", 5), "b"),
+    elements = letters[seq_len(6)],
+    fuzzy = runif(6)
+)
 a <- tidySet(relations)
-relations <- data.frame(sets = c(rep("a2", 5), "b2"),
-                        elements = letters[seq_len(6)],
-                        fuzzy = runif(6),
-                        new = runif(6))
+relations <- data.frame(
+    sets = c(rep("a2", 5), "b2"),
+    elements = letters[seq_len(6)],
+    fuzzy = runif(6),
+    new = runif(6)
+)
 add_relation(a, relations)
 }
 \seealso{

@@ -22,17 +22,19 @@ remove_relation(object, elements, sets, ...)
 A \code{TidySet} object.
 }
 \description{
-Given a TidySets removes relations between elements and sets
+Given a TidySet removes relations between elements and sets
 }
-\section{Methods (by class)}{
+\section{Functions}{
 \itemize{
-\item \code{object = TidySet,elements = characterORfactor,sets = characterORfactor}: Removes a relation between elements and sets.
+\item \code{remove_relation,TidySet,characterORfactor,characterORfactor-method}: Removes a relation between elements and sets.
 }}
 
 \examples{
-relations <- data.frame(sets = c(rep("a", 5), "b"),
-                        elements = letters[seq_len(6)],
-                        fuzzy = runif(6))
+relations <- data.frame(
+    sets = c(rep("a", 5), "b"),
+    elements = letters[seq_len(6)],
+    fuzzy = runif(6)
+)
 a <- tidySet(relations)
 remove_relation(a, "a", "a")
 }

@@ -30,9 +30,11 @@ with filter or use the specific function. The S3 method filters using all
 the information on the TidySet.
 }
 \examples{
-relations <- data.frame(sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
-                        elements = rep(letters[seq_len(6)], 2),
-                        fuzzy = runif(12))
+relations <- data.frame(
+    sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
+    elements = rep(letters[seq_len(6)], 2),
+    fuzzy = runif(12)
+)
 a <- tidySet(relations)
 a <- mutate_element(a, type = c(rep("Gene", 4), rep("lncRNA", 2)))
 pull(a, type)

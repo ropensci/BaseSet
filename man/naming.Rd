@@ -32,8 +32,10 @@ naming(sets1 = c("a", "b"))
 naming(sets1 = "a", middle = "union", sets2 = "b")
 naming(sets1 = "a", middle = "intersection", sets2 = c("b", "c"))
 naming(sets1 = "a", middle = "intersection", sets2 = c("b", "c"))
-naming(start = "complement", sets1 = "a", middle = "intersection",
-       sets2 = c("b", "c"), collapse_symbol = "intersection")
+naming(
+    start = "complement", sets1 = "a", middle = "intersection",
+    sets2 = c("b", "c"), collapse_symbol = "intersection"
+)
 }
 \seealso{
 \code{\link{set_symbols}}

@@ -21,15 +21,17 @@ that size.
 \description{
 Calculate the probability of being of different sizes for a given set.
 }
-\section{Methods (by class)}{
+\section{Functions}{
 \itemize{
-\item \code{TidySet}: Calculates the number of sets one element appears
+\item \code{element_size,TidySet-method}: Calculates the number of sets one element appears
 }}
 
 \examples{
-relations <- data.frame(sets = c(rep("A", 5), "B", "C"),
-                        elements = c(letters[seq_len(6)], letters[6]),
-                        fuzzy = runif(7))
+relations <- data.frame(
+    sets = c(rep("A", 5), "B", "C"),
+    elements = c(letters[seq_len(6)], letters[6]),
+    fuzzy = runif(7)
+)
 a <- tidySet(relations)
 element_size(a)
 }

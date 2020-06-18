@@ -28,9 +28,11 @@ Calculate the probability of being of different sizes for a given set.
 }}
 
 \examples{
-relations <- data.frame(sets = c(rep("A", 5), "B", "C"),
-                        elements = c(letters[seq_len(6)], letters[6]),
-                        fuzzy = runif(7))
+relations <- data.frame(
+    sets = c(rep("A", 5), "B", "C"),
+    elements = c(letters[seq_len(6)], letters[6]),
+    fuzzy = runif(7)
+)
 a <- tidySet(relations)
 set_size(a)
 }

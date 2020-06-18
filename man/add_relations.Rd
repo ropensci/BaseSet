@@ -35,8 +35,10 @@ a <- tidySet(x)
 add_relations(a, elements = c("a", "b", "g"), sets = "d")
 add_relations(a, elements = c("a", "b"), sets = c("d", "g"))
 add_relations(a, elements = c("a", "b"), sets = c("d", "g"), fuzzy = 0.5)
-add_relations(a, elements = c("a", "b"), sets = c("d", "g"),
-              fuzzy = c(0.5, 0.7))
+add_relations(a,
+    elements = c("a", "b"), sets = c("d", "g"),
+    fuzzy = c(0.5, 0.7)
+)
 }
 \seealso{
 \code{\link{add_relation}} to add relations with new sets or/and

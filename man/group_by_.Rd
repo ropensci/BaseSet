@@ -19,12 +19,15 @@ Use group_by to group the TidySet object. You can use activate with
 group_by or with the whole data.
 }
 \examples{
-relations <- data.frame(sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
-                        elements = rep(letters[seq_len(6)], 2),
-                        fuzzy = runif(12))
+relations <- data.frame(
+    sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
+    elements = rep(letters[seq_len(6)], 2),
+    fuzzy = runif(12)
+)
 a <- tidySet(relations)
 elements(a) <- cbind(elements(a),
-                 type = c(rep("Gene", 4), rep("lncRNA", 2)))
+    type = c(rep("Gene", 4), rep("lncRNA", 2))
+)
 group_by(a, elements)
 }
 \seealso{

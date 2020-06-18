@@ -22,18 +22,22 @@ A \code{TidySet} object.
 \description{
 Add column to a slot of the TidySet object.
 }
-\section{Methods (by class)}{
+\section{Functions}{
 \itemize{
-\item \code{object = TidySet,slot = character}: Add a column to any slot
+\item \code{add_column,TidySet,character-method}: Add a column to any slot
 }}
 
 \examples{
-relations <- data.frame(sets = c(rep("a", 5), "b"),
-                        elements = letters[seq_len(6)],
-                        fuzzy = runif(6))
+relations <- data.frame(
+    sets = c(rep("a", 5), "b"),
+    elements = letters[seq_len(6)],
+    fuzzy = runif(6)
+)
 a <- tidySet(relations)
-add_column(a, "relations", data.frame(well = c("GOOD", "BAD", "WORSE",
-"UGLY", "FOE", "HEY")))
+add_column(a, "relations", data.frame(well = c(
+    "GOOD", "BAD", "WORSE",
+    "UGLY", "FOE", "HEY"
+)))
 }
 \seealso{
 \code{\link{rename_set}}

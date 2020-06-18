@@ -20,18 +20,20 @@ remove_set(object, sets, ...)
 A \code{TidySet} object.
 }
 \description{
-Given a TidySets remove sets and the related relations and if
+Given a TidySet remove sets and the related relations and if
 required also the elements
 }
-\section{Methods (by class)}{
+\section{Functions}{
 \itemize{
-\item \code{object = TidySet,sets = characterORfactor}: Removes everything related to a set
+\item \code{remove_set,TidySet,characterORfactor-method}: Removes everything related to a set
 }}
 
 \examples{
-relations <- data.frame(sets = c("a", "a", "b", "b", "c", "c"),
-                        elements = letters[seq_len(6)],
-                        fuzzy = runif(6))
+relations <- data.frame(
+    sets = c("a", "a", "b", "b", "c", "c"),
+    elements = letters[seq_len(6)],
+    fuzzy = runif(6)
+)
 a <- tidySet(relations)
 remove_set(a, "b")
 }

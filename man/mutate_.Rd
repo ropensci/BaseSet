@@ -29,14 +29,17 @@ use the specific function. The S3 method filters using all the information
 on the TidySet.
 }
 \examples{
-relations <- data.frame(sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
-                        elements = rep(letters[seq_len(6)], 2),
-                        fuzzy = runif(12))
+relations <- data.frame(
+    sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
+    elements = rep(letters[seq_len(6)], 2),
+    fuzzy = runif(12)
+)
 a <- tidySet(relations)
 a <- mutate_element(a, Type = c(rep("Gene", 4), rep("lncRNA", 2)))
 a
 b <- mutate_relation(a, Type = sample(c("PPI", "PF", "MP"), 12,
-                                      replace = TRUE))
+    replace = TRUE
+))
 }
 \seealso{
 \code{\link[dplyr]{mutate}} and \code{\link{activate}}

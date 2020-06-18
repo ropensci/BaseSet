@@ -40,15 +40,17 @@ A \code{TidySet} object.
 \description{
 Return the objects without the elements listed
 }
-\section{Methods (by class)}{
+\section{Functions}{
 \itemize{
-\item \code{object = TidySet,elements = characterORfactor}: Complement of the elements.
+\item \code{complement_element,TidySet,characterORfactor-method}: Complement of the elements.
 }}
 
 \examples{
-relations <- data.frame(sets = c("a", "a", "b", "b", "c", "c"),
-                        elements = letters[seq_len(6)],
-                        fuzzy = runif(6))
+relations <- data.frame(
+    sets = c("a", "a", "b", "b", "c", "c"),
+    elements = letters[seq_len(6)],
+    fuzzy = runif(6)
+)
 a <- tidySet(relations)
 complement_element(a, "a", "C_a")
 complement_element(a, "a", "C_a", keep = FALSE)

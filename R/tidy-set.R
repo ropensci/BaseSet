@@ -3,15 +3,24 @@ NULL
 
 #' Create a TidySet object
 #'
-#' This functions help to create a \code{TidySet} object.
+#' These functions help to create a \code{TidySet} object from
+#' `data.frame`, `list`, `matrix`, and `GO3AnnDbBimap`.
+#'
+#' They can create both fuzzy and standard sets, but no empty sets.
 #' @param relations An object to be coerced to a TidySet.
-#' @return A TidySet object
+#' @return A TidySet object.
 #' @examples
 #' relations <- data.frame(
 #'     sets = c(rep("a", 5), "b"),
 #'     elements = letters[seq_len(6)]
 #' )
 #' tidySet(relations)
+#' relations2 <- data.frame(
+#'     sets = c(rep("A", 5), "B"),
+#'     elements = letters[seq_len(6)],
+#'     fuzzy = runif(6)
+#' )
+#' tidySet(relations2)
 #' @export
 #' @seealso \code{\link{TidySet-class}}
 tidySet <- function(relations) {
@@ -72,7 +81,7 @@ is.ch_fct <- function(x) {
 #' tidySet(relations)
 #' \dontrun{
 #' x <- list("A" = letters[1:5], "B" = LETTERS[3:7], "c" = runif(5))
-#' a <- tidySet(x) # An error for mixing letters and numbers
+#' a <- tidySet(x) # Only characters or factors are allowed as elements.
 #' }
 tidySet.list <- function(relations) {
     if (length(relations) == 0) {
@@ -139,10 +148,8 @@ tidySet.list <- function(relations) {
 #' @describeIn tidySet Convert an incidence matrix into a TidySet
 #' @export
 #' @examples
-#' # Numeric input should be named
-#' x <- list("a" = c("A" = 0.1, "B" = 0.5), "b" = c("A" = 0.2, "B" = 1))
-#' a <- tidySet(x)
-#' tidySet(incidence(a))
+#' M <- matrix(c(1, 0.5, 1, 0), ncol = 2, dimnames = list(c("A", "B"), c("a", "b")))
+#' tidySet(M)
 tidySet.matrix <- function(relations) {
     if (anyDuplicated(colnames(relations))) {
         stop("There are duplicated colnames.", call. = FALSE)

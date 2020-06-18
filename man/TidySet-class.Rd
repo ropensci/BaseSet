@@ -7,7 +7,12 @@
 \title{A tidy class to represent a set}
 \description{
 A set is a group of unique elements it can be either a fuzzy set, where the
-relationship is between 0 or 1 or nominal
+relationship is between 0 or 1 or nominal.
+}
+\details{
+When printed if an element or a set do not have any relationship is not shown.
+They can be created from lists, matrices or data.frames. Check \code{\link[=tidySet]{tidySet()}}
+constructor for more information.
 }
 \section{Slots}{
 
@@ -20,8 +25,13 @@ relationship is between 0 or 1 or nominal
 }}
 
 \examples{
-x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
+x <- list("A" = letters[1:5], "B" = LETTERS[3:7])
 a <- tidySet(x)
+a
+x <- list("A" = letters[1:5], "B" = character())
+b <- tidySet(x)
+b
+name_sets(b)
 }
 \seealso{
 \link{tidySet}
