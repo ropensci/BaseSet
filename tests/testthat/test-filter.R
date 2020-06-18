@@ -10,7 +10,11 @@ a <- tidySet(relations = relations)
 test_that("filter_set works", {
     b <- filter_set(a, sets == "b")
     expect_equal(nSets(b), 1L)
-    expect_error(filter_set(a, sets == "c"), "must be")
+    # Check that it allows to filter and still keeps elements or sets
+    d <- filter_set(a, sets == "c")
+    expect_equal(nSets(d), 0)
+    expect_equal(nElements(d), 6)
+
     expect_error(filter_set(a, elements == "hi"))
 })
 
