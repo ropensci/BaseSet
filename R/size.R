@@ -18,8 +18,6 @@ size <- function(object, ...) {
     UseMethod("size")
 }
 
-
-
 #' @export
 #' @method size TidySet
 size.TidySet <- function(object, ...) {

@@ -42,7 +42,6 @@ length_probability <- function(p, n) {
     sum(apply(pos, 2, multiply_probabilities, p = p))
 }
 
-
 #' Calculates the probability
 #'
 #' Given several probabilities it looks for how probable is to have a vector of
@@ -232,4 +231,3 @@ setMethod("element_size",
               }
           }
 )
-

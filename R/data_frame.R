@@ -14,7 +14,6 @@ setAs("TidySet", "data.frame", function(from) {
     o
 })
 
-
 #' Transforms a TidySet to a data.frame
 #'
 #' Flattens the three slots to a single big table
@@ -26,7 +25,6 @@ setAs("TidySet", "data.frame", function(from) {
 as.data.frame.TidySet <- function(x, ...) {
     as(x, "data.frame")
 }
-
 
 #' The oposite of as.data.frame
 #'

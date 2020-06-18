@@ -3,7 +3,6 @@
 #' @export
 dplyr::group_by
 
-
 #' group_by TidySet
 #'
 #' Use group_by to group the TidySet object. You can use activate with

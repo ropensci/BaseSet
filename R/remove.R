@@ -16,7 +16,6 @@ setMethod("remove_relation",
           }
 )
 
-
 #' @describeIn remove_element Removes everything related to an element
 #' @export
 setMethod("remove_element",
@@ -30,7 +29,6 @@ setMethod("remove_element",
             new_object
           }
 )
-
 
 #' @describeIn remove_set Removes everything related to a set
 #' @export

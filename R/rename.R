@@ -1,7 +1,6 @@
 #' @include AllGenerics.R
 NULL
 
-
 #' @describeIn rename_set Rename sets
 #' @export rename_set
 setMethod("rename_set",

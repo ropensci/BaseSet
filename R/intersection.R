@@ -21,7 +21,6 @@ NULL
 
   old_relations <- relations(object)
 
-
   relevant_relations <- old_relations$sets %in% sets
   intersection <- old_relations[relevant_relations, , drop = FALSE]
   intersection <- droplevels(intersection)
@@ -59,4 +58,3 @@ setMethod("intersection",
                           keep_elements, keep_sets)
           }
 )
-

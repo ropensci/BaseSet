@@ -20,7 +20,6 @@ tidy.GeneSetCollection <- function(object) {
   TS
 }
 
-
 #' @describeIn tidy Converts to a tidySet given a GeneSet
 #' @export
 #' @method tidy GeneSet

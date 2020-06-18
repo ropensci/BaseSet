@@ -29,5 +29,3 @@ setMethod("add_relation",
               object
           }
 )
-
-

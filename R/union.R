@@ -1,8 +1,6 @@
 #' @include AllClasses.R AllGenerics.R operations.R
 NULL
 
-
-
 #' Merge two sets
 #'
 #' Given a TidySets merges two sets into the new one.

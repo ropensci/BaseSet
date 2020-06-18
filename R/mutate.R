@@ -40,7 +40,6 @@ mutate.TidySet <- function(.data, ...) {
   }
 }
 
-
 #' @rdname mutate_
 #' @export
 mutate_set <- function(.data, ...) {
@@ -58,7 +57,6 @@ mutate_element <- function(.data, ...) {
 mutate_relation <- function(.data, ...) {
   UseMethod("mutate_relation")
 }
-
 
 #' @export
 #' @method mutate_element TidySet
@@ -89,7 +87,6 @@ mutate_set.TidySet <- function(.data, ...) {
   sets(.data) <- unique(out)
   droplevels(.data)
 }
-
 
 #' @export
 #' @method mutate_relation TidySet

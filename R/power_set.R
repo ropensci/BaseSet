@@ -1,4 +1,3 @@
-
 #' Create the power set
 #'
 #'
@@ -41,7 +40,6 @@ power_set.TidySet <- function(object, set, name, keep = TRUE,
     names(new_sets) <- paste0(name, "_", length_sets, "_")
     list_sets <- unlist(new_sets, recursive = FALSE)
     new_object <- tidySet(list_sets)
-
 
     if (keep_relations) {
         out <- relations(new_object)

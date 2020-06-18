@@ -16,7 +16,6 @@ tidySet <- function(relations) {
   UseMethod("tidySet")
 }
 
-
 #' @describeIn tidySet Given the relations in a data.frame
 #' @method tidySet data.frame
 #' @export
@@ -124,8 +123,6 @@ tidySet.matrix <- function(relations) {
   relations <- cbind.data.frame(relations, fuzzy, stringsAsFactors = FALSE)
   tidySet(relations = relations)
 }
-
-
 
 #' @describeIn tidySet Convert Go3AnnDbBimap into a TidySet object.
 #' @export

@@ -4,7 +4,6 @@
 #' @export
 dplyr::select
 
-
 #' select from a TidySet
 #'
 #' Use select to extract the columns of a TidySet object. You can use activate
@@ -65,7 +64,6 @@ select_relation <- function(.data, ...) {
   UseMethod("select_relation")
 }
 
-
 #' @export
 #' @method select_set TidySet
 select_set.TidySet <- function(.data, ...) {
@@ -95,5 +93,3 @@ select_relation.TidySet <- function(.data, ...) {
   validObject(.data)
   .data
 }
-
-

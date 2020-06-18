@@ -3,7 +3,6 @@
 #' @export
 dplyr::filter
 
-
 #' Filter TidySet
 #'
 #' Use filter to subset the TidySet object. You can use activate with filter or
@@ -67,7 +66,6 @@ filter_relation <- function(.data, ...) {
   UseMethod("filter_relation")
 }
 
-
 #' @export
 #' @method filter_set TidySet
 filter_set.TidySet <- function(.data, ...) {
@@ -110,4 +108,3 @@ filter_relation.TidySet <- function(.data, ...) {
   }
   droplevels(.data, sets = FALSE, elements = FALSE)
 }
-

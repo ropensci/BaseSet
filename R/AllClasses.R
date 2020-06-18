@@ -125,7 +125,6 @@ is_valid <- function(x) {
   }
 }
 
-
 check_colnames_slot <- function(object, slot, colname) {
   array_names <- colnames(slot(object, slot))
 

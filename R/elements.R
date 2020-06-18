@@ -9,7 +9,6 @@ setMethod("elements",
             slot(object, "elements")
           })
 
-
 #' @describeIn elements Modify the elements
 #' @export
 #' @examples

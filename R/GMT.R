@@ -43,4 +43,3 @@ getGMT <- function(con, sep = "\t", ...)  {
     TS <- add_column(TS, "sets", df)
     TS
 }
-

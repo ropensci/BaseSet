@@ -4,7 +4,6 @@
 #' @export
 dplyr::arrange
 
-
 #' arrange from a TidySet
 #'
 #' Use arrange to extract the columns of a TidySet object. You can use activate
@@ -66,7 +65,6 @@ arrange_relation <- function(.data, ...) {
   UseMethod("arrange_relation")
 }
 
-
 #' @export
 #' @method arrange_set TidySet
 arrange_set.TidySet <- function(.data, ...) {
@@ -96,5 +94,3 @@ arrange_relation.TidySet <- function(.data, ...) {
   validObject(.data)
   .data
 }
-
-

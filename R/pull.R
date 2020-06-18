@@ -4,7 +4,6 @@
 #' @export
 dplyr::pull
 
-
 #' Pull from a TidySet
 #'
 #' Use pull to extract the columns of a TidySet object. You can use activate
@@ -66,7 +65,6 @@ pull_relation <- function(.data, var) {
   UseMethod("pull_relation")
 }
 
-
 #' @export
 #' @method pull_set TidySet
 pull_set.TidySet <- function(.data, var) {
@@ -88,5 +86,3 @@ pull_relation.TidySet <- function(.data, var) {
   relations <- relations(.data)
   dplyr::pull(relations, !!enquo(var))
 }
-
-

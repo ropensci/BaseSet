@@ -120,7 +120,6 @@ methods::setGeneric("relations", function(object) standardGeneric("relations"))
 methods::setGeneric("relations<-", function(object, value)
     standardGeneric("relations<-"))
 
-
 #' @rdname elements
 #' @export
 methods::setGeneric("elements<-", function(object, value) standardGeneric("elements<-"))
@@ -184,7 +183,6 @@ methods::setGeneric("rename_set", function(object, old, new)
 #' @family methods
 methods::setGeneric("rename_elements", function(object, old, new)
     standardGeneric("rename_elements"))
-
 
 #' Name sets
 #'

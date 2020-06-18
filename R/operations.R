@@ -1,7 +1,6 @@
 #' @include AllClasses.R AllGenerics.R
 NULL
 
-
 remove_elements <- function(object, elements) {
   if (length(elements) == 0 ) {
     return(object)
@@ -84,7 +83,6 @@ elements_sets <- function(object){
   setdiff(relations1, relations2)
 }
 
-
 #' Apply to fuzzy
 #'
 #' Simplify and returns unique results of the object
@@ -153,11 +151,9 @@ replace_interactions <- function(object, new_relations, keep) {
   object
 }
 
-
 check_sets <- function(object, sets) {
   sets %in% object@relations$sets
 }
-
 
 #' @importFrom dplyr n_distinct
 check_fuzziness <- function(object) {

@@ -1,7 +1,6 @@
 #' @include AllClasses.R AllGenerics.R
 NULL
 
-
 #' @describeIn subtract Elements present in sets but not in other sets
 #' @export
 setMethod("subtract",

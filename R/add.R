@@ -79,8 +79,6 @@ add_relations_interal <- function(object, elements, sets, fuzzy) {
     object
 }
 
-
-
 #' Add elements to a TidySet
 #'
 #' Functions to add elements. If the elements are new they are added,
@@ -109,7 +107,6 @@ add_elements.TidySet <- function(object, elements, ...) {
     validObject(object)
     object
 }
-
 
 #' Add sets to a TidySet
 #'

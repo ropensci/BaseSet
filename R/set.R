@@ -1,7 +1,6 @@
 #' @include AllClasses.R AllGenerics.R
 NULL
 
-
 #' @describeIn sets Retrieve the sets information
 #' @export
 setMethod("sets",
