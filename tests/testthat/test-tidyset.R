@@ -21,7 +21,7 @@ test_that("tidySet data.frame", {
     )
     expect_error(
         tidySet(relations),
-        "fuzzy column is restricted to a number between 0 and 1."
+        "between 0 and 1."
     )
 
     relations <- data.frame(
@@ -38,7 +38,7 @@ test_that("tidySet data.frame", {
     expect_error(tidySet(relations[0, ]), "must have")
 
     colnames(relations) <- c("a", "b")
-    expect_error(tidySet(relations), "Unable to create a TidySet")
+    expect_error(tidySet(relations), "sets and elements columns.")
 })
 
 test_that("tidySet matrix", {

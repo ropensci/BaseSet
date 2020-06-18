@@ -23,9 +23,9 @@ tidySet <- function(relations) {
 #' @export
 tidySet.data.frame <- function(relations) {
     check_colnames <- all(c("sets", "elements") %in% colnames(relations))
-    if (ncol(relations) <= 2 && !check_colnames) {
+    if (ncol(relations) < 2 || !check_colnames) {
         stop("Unable to create a TidySet object.\n",
-            "The data.frame does not have the sets and elements columns",
+            "The data.frame does not have the sets and elements columns.",
             call. = FALSE
         )
     }
