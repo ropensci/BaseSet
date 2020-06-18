@@ -1,4 +1,3 @@
-
 #' A subset of symbols related to sets
 #'
 #' Name and symbol of operations related to sets:
