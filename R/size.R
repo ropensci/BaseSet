@@ -1,13 +1,16 @@
 #' Size
 #'
-#' Calculate the size of the elements or sets
+#' Calculate the size of the elements or sets. First it must have active either
+#' sets or elements.
 #' @param object A TidySet object
-#' @param ... Other arguments to filter which size should be shown.
+#' @param ... Character vector with the name of elements or sets you want to calculate
+#' the size of.
 #' @export
-#' @return The size of the active slot. Not available for relations.
+#' @return The size of the elements or sets. If there is no active slot or it
+#' is the relations slot returns the TidySet object with a warning.
 #' @examples
 #' relations <- data.frame(
-#'     sets = c(rep("a", 5), "b", "c"),
+#'     sets = c(rep("A", 5), "B", "C"),
 #'     elements = c(letters[seq_len(6)], letters[6]),
 #'     fuzzy = runif(7)
 #' )
@@ -30,6 +33,7 @@ size.TidySet <- function(object, ...) {
             "activate either elements or sets."
         )
         warning(msg)
+        return(object)
     } else {
         switch(a,
             elements = element_size(object, ...),

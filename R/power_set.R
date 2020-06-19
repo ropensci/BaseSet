@@ -4,7 +4,7 @@
 #' @param object A TidySet object.
 #' @param set The name of the set to be used for the power set
 #' @param name The root name of the new set.
-#' @param ... Other arguments passed down if possible
+#' @param ... Other arguments passed down if possible. Currently ignored.
 #' @return A TidySet object with the new set
 #' @family methods
 #' @export

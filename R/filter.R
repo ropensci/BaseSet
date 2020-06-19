@@ -8,9 +8,9 @@ dplyr::filter
 #' Use filter to subset the TidySet object. You can use activate with filter or
 #' use the specific function. The S3 method filters using all the information
 #' on the TidySet.
-#' @param .data The TidySet object
-#' @param ... The logical predicates in terms of the variables of the sets
-#' @return A TidySet object
+#' @param .data The TidySet object.
+#' @param ... The logical predicates in terms of the variables of the sets.
+#' @return A TidySet object.
 #' @export
 #' @family methods
 #' @seealso dplyr \code{\link[dplyr]{filter}} and \code{\link{activate}}
@@ -18,22 +18,21 @@ dplyr::filter
 #' relations <- data.frame(
 #'     sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
 #'     elements = rep(letters[seq_len(6)], 2),
-#'     fuzzy = runif(12)
-#' )
-#' a <- tidySet(relations)
-#' elements(a) <- cbind(elements(a),
+#'     fuzzy = runif(12),
 #'     type = c(rep("Gene", 4), rep("lncRNA", 2))
 #' )
-#' filter(a, elements == "a")
+#' TS <- tidySet(relations)
+#' TS <- move_to(TS, from = "relations", to = "elements", column = "type")
+#' filter(TS, elements == "a")
 #' # Equivalent to filter_relation
-#' filter(a, elements == "a", sets == "a")
-#' filter_relation(a, elements == "a", sets == "a")
+#' filter(TS, elements == "a", sets == "a")
+#' filter_relation(TS, elements == "a", sets == "a")
 #' # Filter element
-#' filter_element(a, type == "Gene")
+#' filter_element(TS, type == "Gene")
 #' # Filter sets and by property of elements simultaneously
-#' filter(a, sets == "b", type == "lncRNA")
+#' filter(TS, sets == "b", type == "lncRNA")
 #' # Filter sets
-#' filter_set(a, sets == "b")
+#' filter_set(TS, sets == "b")
 #' @rdname filter_
 #' @export
 #' @method filter TidySet

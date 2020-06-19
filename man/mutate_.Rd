@@ -16,9 +16,9 @@ mutate_element(.data, ...)
 mutate_relation(.data, ...)
 }
 \arguments{
-\item{.data}{The TidySet object}
+\item{.data}{The TidySet object.}
 
-\item{...}{The logical predicates in terms of the variables of the sets}
+\item{...}{The logical predicates in terms of the variables of the sets.}
 }
 \value{
 A TidySet object

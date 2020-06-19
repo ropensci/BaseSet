@@ -93,7 +93,8 @@ add_relations_interal <- function(object, elements, sets, fuzzy) {
 #' Remember to add/modify them if needed with [`mutate`] or [`mutate_element`]
 #' @param object A [`TidySet`] object
 #' @param elements A character vector of the elements.
-#' @param ... Other arguments passed along.
+#' @param ... Placeholder for other arguments that could be passed to the
+#' method. Currently not used.
 #' @return A [`TidySet`] object with the new elements.
 #' @family add_*
 #' @examples

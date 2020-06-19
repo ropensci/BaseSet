@@ -14,7 +14,8 @@ remove_set(object, sets, ...)
 
 \item{sets}{The sets to be removed.}
 
-\item{...}{Other arguments.}
+\item{...}{Placeholder for other arguments that could be passed to the
+method. Currently not used.}
 }
 \value{
 A \code{TidySet} object.

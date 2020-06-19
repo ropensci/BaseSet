@@ -26,7 +26,8 @@ cartesian(object, set1, set2, name = NULL, ...)
 
 \item{name}{The name of the new set.}
 
-\item{...}{Other arguments passed down if possible}
+\item{...}{Placeholder for other arguments that could be passed to the
+method. Currently not used.}
 
 \item{keep}{A logical value if you want to keep}
 

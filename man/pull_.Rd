@@ -23,7 +23,7 @@ integer column position.}
 
 \item{name}{Column used to name the output.}
 
-\item{...}{For use by methods.}
+\item{...}{Currently not used.}
 }
 \value{
 A TidySet object

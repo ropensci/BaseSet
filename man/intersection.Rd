@@ -15,7 +15,8 @@ intersection(object, sets, ...)
   keep = FALSE,
   keep_relations = keep,
   keep_elements = keep,
-  keep_sets = keep
+  keep_sets = keep,
+  ...
 )
 }
 \arguments{
@@ -23,7 +24,7 @@ intersection(object, sets, ...)
 
 \item{sets}{The character of sets to be intersect.}
 
-\item{...}{Other arguments.}
+\item{...}{Other named arguments passed to \code{FUN}.}
 
 \item{name}{The name of the new set.}
 

@@ -59,7 +59,8 @@ tidySet.data.frame <- function(relations) {
         stop("Fuzzy column should be a numeric column with numbers between 0 and 1.",
              call. = FALSE)
     }
-
+    # Just in case
+    rownames(relations) <- seq_len(nrow(relations))
     new("TidySet", sets = sets, elements = elements, relations = relations)
 }
 

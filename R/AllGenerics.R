@@ -327,6 +327,7 @@ methods::setGeneric("remove_column", function(object, slot, column_names) {
 #' The standard intersection is the "min" function, but you can provide any
 #' other function that given a numeric vector returns a single number.
 #' @param keep A logical value if you want to keep originals sets.
+#' @param ... Other named arguments passed to `FUN`.
 #' @return A \code{TidySet} object.
 #' @export
 #' @family methods that create new sets
@@ -348,7 +349,8 @@ methods::setGeneric("intersection", function(object, sets, ...) {
 #' Given a TidySet adds new relations between elements and sets.
 #' @param object A TidySet object
 #' @param relations A data.frame object
-#' @param ... Other arguments.
+#' @param ... Placeholder for other arguments that could be passed to the
+#' method. Currently not used.
 #' @return A \code{TidySet} object.
 #' @family add functions
 #' @export
@@ -377,7 +379,8 @@ methods::setGeneric("add_relation", function(object, relations, ...) {
 #' @param object A TidySet object
 #' @param elements The elements of the sets.
 #' @param sets The name of the new set.
-#' @param ... Other arguments.
+#' @param ... Placeholder for other arguments that could be passed to the
+#' method. Currently not used.
 #' @return A \code{TidySet} object.
 #' @family remove functions
 #' @family methods
@@ -400,7 +403,8 @@ methods::setGeneric("remove_relation", function(object, elements, sets, ...) {
 #' required also the sets.
 #' @param object A TidySet object.
 #' @param elements The elements to be removed.
-#' @param ... Other arguments.
+#' @param ... Placeholder for other arguments that could be passed to the
+#' method. Currently not used.
 #' @return A \code{TidySet} object.
 #' @export
 #' @family remove functions
@@ -423,7 +427,8 @@ methods::setGeneric("remove_element", function(object, elements, ...) {
 #' required also the elements
 #' @param object A TidySet object.
 #' @param sets The sets to be removed.
-#' @param ... Other arguments.
+#' @param ... Placeholder for other arguments that could be passed to the
+#' method. Currently not used.
 #' @return A \code{TidySet} object.
 #' @export
 #' @family remove functions
@@ -447,7 +452,8 @@ methods::setGeneric("remove_set", function(object, sets, ...) {
 #' @param sets The name of the set to look for the complement.
 #' @param keep Logical value to keep all the other sets.
 #' @param name Name of the new set. By default it adds a "C".
-#' @param ... Other arguments.
+#' @param ... Placeholder for other arguments that could be passed to the
+#' method. Currently not used.
 #' @inheritParams union
 #' @return A \code{TidySet} object.
 #' @family complements

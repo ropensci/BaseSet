@@ -25,7 +25,8 @@ subtract(object, set_in, not_in, ...)
 
 \item{not_in}{Name of the sets where the elements should not be present.}
 
-\item{...}{Other arguments.}
+\item{...}{Placeholder for other arguments that could be passed to the
+method. Currently not used.}
 
 \item{name}{Name of the new set. By default it adds a "C".}
 

@@ -38,7 +38,7 @@ a <- tidySet(relations)
 a <- mutate_element(a,
     type = c(rep("Gene", 4), rep("lncRNA", 2))
 )
-
+a <- mutate_set(a, Group = c("UFM", "UAB", "UPF", "MIT"))
 b <- select(a, -type)
 elements(b)
 b <- select_element(a, elements)

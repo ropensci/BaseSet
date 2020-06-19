@@ -14,7 +14,8 @@ add_relation(object, relations, ...)
 
 \item{relations}{A data.frame object}
 
-\item{...}{Other arguments.}
+\item{...}{Placeholder for other arguments that could be passed to the
+method. Currently not used.}
 }
 \value{
 A \code{TidySet} object.

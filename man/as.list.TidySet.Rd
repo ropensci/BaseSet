@@ -7,13 +7,23 @@
 \method{as.list}{TidySet}(x, ...)
 }
 \arguments{
-\item{x}{object to be coerced.}
+\item{x}{A TidySet object to be coerced to a list.}
 
-\item{...}{objects, possibly named (currently ignored).}
+\item{...}{Placeholder for other arguments that could be passed to the
+method. Currently not used.}
 }
 \value{
-A list
+A list.
 }
 \description{
-Converts a TidySet to a list
+Converts a TidySet to a list.
+}
+\examples{
+r <- data.frame(sets = c("A", "A", "A", "B", "C"),
+             elements = c(letters[1:3], letters[2:3]),
+             fuzzy = runif(5),
+             info = rep_len(c("important", "very important"), 5))
+TS <- tidySet(r)
+TS
+as.list(TS)
 }

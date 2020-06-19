@@ -16,12 +16,12 @@ filter_element(.data, ...)
 filter_relation(.data, ...)
 }
 \arguments{
-\item{.data}{The TidySet object}
+\item{.data}{The TidySet object.}
 
-\item{...}{The logical predicates in terms of the variables of the sets}
+\item{...}{The logical predicates in terms of the variables of the sets.}
 }
 \value{
-A TidySet object
+A TidySet object.
 }
 \description{
 Use filter to subset the TidySet object. You can use activate with filter or
@@ -32,22 +32,21 @@ on the TidySet.
 relations <- data.frame(
     sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
     elements = rep(letters[seq_len(6)], 2),
-    fuzzy = runif(12)
-)
-a <- tidySet(relations)
-elements(a) <- cbind(elements(a),
+    fuzzy = runif(12),
     type = c(rep("Gene", 4), rep("lncRNA", 2))
 )
-filter(a, elements == "a")
+TS <- tidySet(relations)
+TS <- move_to(TS, from = "relations", to = "elements", column = "type")
+filter(TS, elements == "a")
 # Equivalent to filter_relation
-filter(a, elements == "a", sets == "a")
-filter_relation(a, elements == "a", sets == "a")
+filter(TS, elements == "a", sets == "a")
+filter_relation(TS, elements == "a", sets == "a")
 # Filter element
-filter_element(a, type == "Gene")
+filter_element(TS, type == "Gene")
 # Filter sets and by property of elements simultaneously
-filter(a, sets == "b", type == "lncRNA")
+filter(TS, sets == "b", type == "lncRNA")
 # Filter sets
-filter_set(a, sets == "b")
+filter_set(TS, sets == "b")
 }
 \seealso{
 dplyr \code{\link[dplyr]{filter}} and \code{\link{activate}}

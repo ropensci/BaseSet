@@ -22,7 +22,8 @@ complement_set(object, sets, ...)
 
 \item{sets}{The name of the set to look for the complement.}
 
-\item{...}{Other arguments.}
+\item{...}{Placeholder for other arguments that could be passed to the
+method. Currently not used.}
 
 \item{name}{Name of the new set. By default it adds a "C".}
 

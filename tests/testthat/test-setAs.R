@@ -16,6 +16,16 @@ test_that("setAs works", {
     expect_true(is.numeric(b[[1]]))
 })
 
+test_that("TidySet with two relations to list", {
+    r <- data.frame(sets = c("A", "A", "A", "B", "C"),
+                 elements = c(letters[1:3], letters[2:3]),
+                 fuzzy = runif(5),
+                 info = rep(c("important", "very important"), 5))
+    TS <- tidySet(r)
+    expect_warning(l <- as.list(TS), "the coercion.")
+    expect_length(l, 3L)
+})
+
 test_that("as.list works", {
     b <- as.list(a)
 

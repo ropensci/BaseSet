@@ -5,7 +5,7 @@
 \alias{arrange_set}
 \alias{arrange_element}
 \alias{arrange_relation}
-\title{arrange from a TidySet}
+\title{Arrange the order of a TidySet}
 \usage{
 \method{arrange}{TidySet}(.data, ...)
 
@@ -19,7 +19,7 @@ arrange_relation(.data, ...)
 \item{.data}{The TidySet object}
 
 \item{...}{Comma separated list of variables names or expressions
-integer column position.}
+integer column position to be used to reorder the TidySet.}
 }
 \value{
 A TidySet object
@@ -31,7 +31,7 @@ the information on the TidySet.
 }
 \examples{
 relations <- data.frame(
-    sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
+    sets = c(rep("A", 5), "B", rep("A2", 5), "B2"),
     elements = rep(letters[seq_len(6)], 2),
     fuzzy = runif(12)
 )

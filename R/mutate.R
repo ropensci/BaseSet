@@ -8,8 +8,8 @@ dplyr::mutate
 #' Use mutate to alter the TidySet object. You can use activate with mutate or
 #' use the specific function. The S3 method filters using all the information
 #' on the TidySet.
-#' @param .data The TidySet object
-#' @param ... The logical predicates in terms of the variables of the sets
+#' @param .data The TidySet object.
+#' @param ... The logical predicates in terms of the variables of the sets.
 #' @return A TidySet object
 #' @export
 #' @seealso \code{\link[dplyr]{mutate}} and \code{\link{activate}}

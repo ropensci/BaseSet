@@ -8,7 +8,8 @@ NULL
 #' @param set1,set2 The name of the sets to be used for the cartesian product
 #' @param name The name of the new set.
 #' @inheritParams union
-#' @param ... Other arguments passed down if possible
+#' @param ... Placeholder for other arguments that could be passed to the
+#' method. Currently not used.
 #' @return A TidySet object with the new set
 #' @family methods
 #' @export

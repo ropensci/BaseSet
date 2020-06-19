@@ -25,7 +25,7 @@ dplyr::select
 #' a <- mutate_element(a,
 #'     type = c(rep("Gene", 4), rep("lncRNA", 2))
 #' )
-#'
+#' a <- mutate_set(a, Group = c("UFM", "UAB", "UPF", "MIT"))
 #' b <- select(a, -type)
 #' elements(b)
 #' b <- select_element(a, elements)
@@ -38,7 +38,7 @@ dplyr::select
 select.TidySet <- function(.data, ...) {
     if (is.null(active(.data))) {
         out <- dplyr::select(as.data.frame(.data), ...)
-        df2TS(df = out)
+        df2TS(.data, df = out)
     } else {
         switch(
             active(.data),

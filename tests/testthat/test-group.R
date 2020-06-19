@@ -1,13 +1,25 @@
 context("test-group")
 
 test_that("group works", {
-    relations <- data.frame(
-        sets = c(rep("a", 5), "b"),
+    r <- data.frame(
+        sets = c(rep("A", 5), "B"),
         elements = letters[seq_len(6)],
         fuzzy = runif(6)
     )
-    a <- tidySet(relations = relations)
-    b <- group(a, "c", c(TRUE, FALSE, TRUE, FALSE, TRUE, FALSE))
+    a <- tidySet(relations = r)
+    b <- group(a, "C", c(TRUE, FALSE, TRUE, FALSE, TRUE, FALSE))
     expect_equal(nSets(b), nSets(a) + 1)
-    expect_equal(name_sets(b), letters[1:3])
+    expect_equal(name_sets(b), LETTERS[1:3])
+})
+
+test_that("group creates empty sets", {
+    r <- data.frame(
+        sets = c(rep("A", 5), "B"),
+        elements = letters[seq_len(6)],
+        fuzzy = runif(6)
+    )
+    a <- tidySet(relations = r)
+    b <- group(a, "C", rep(FALSE, 6))
+    expect_equal(nSets(b), nSets(a) + 1)
+    expect_equal(name_sets(b), LETTERS[1:3])
 })

@@ -16,7 +16,8 @@ remove_relation(object, elements, sets, ...)
 
 \item{sets}{The name of the new set.}
 
-\item{...}{Other arguments.}
+\item{...}{Placeholder for other arguments that could be passed to the
+method. Currently not used.}
 }
 \value{
 A \code{TidySet} object.

@@ -13,7 +13,7 @@ power_set(object, set, name, ...)
 
 \item{name}{The root name of the new set.}
 
-\item{...}{Other arguments passed down if possible}
+\item{...}{Other arguments passed down if possible. Currently ignored.}
 }
 \value{
 A TidySet object with the new set

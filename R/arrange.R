@@ -4,21 +4,21 @@
 #' @export
 dplyr::arrange
 
-#' arrange from a TidySet
+#' Arrange the order of a TidySet
 #'
 #' Use arrange to extract the columns of a TidySet object. You can use activate
 #' with filter or use the specific function. The S3 method filters using all
 #' the information on the TidySet.
 #' @param .data The TidySet object
 #' @param ... Comma separated list of variables names or expressions
-#' integer column position.
+#' integer column position to be used to reorder the TidySet.
 #' @return A TidySet object
 #' @export
 #' @seealso dplyr \code{\link[dplyr]{arrange}} and \code{\link{activate}}
 #' @family methods
 #' @examples
 #' relations <- data.frame(
-#'     sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
+#'     sets = c(rep("A", 5), "B", rep("A2", 5), "B2"),
 #'     elements = rep(letters[seq_len(6)], 2),
 #'     fuzzy = runif(12)
 #' )
@@ -39,7 +39,7 @@ dplyr::arrange
 arrange.TidySet <- function(.data, ...) {
     if (is.null(active(.data))) {
         out <- dplyr::arrange(as.data.frame(.data), ...)
-        df2TS(df = out)
+        df2TS(.data = .data, df = out)
     } else {
         switch(
             active(.data),

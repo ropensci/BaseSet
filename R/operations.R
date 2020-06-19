@@ -84,13 +84,14 @@ elements_sets <- function(object) {
 
 #' Apply to fuzzy
 #'
-#' Simplify and returns unique results of the object
+#' Simplify and returns unique results of the object.
 #' @param relations A data.frame or similar with fuzzy, sets and elements
-#' columns
-#' @param FUN A function to perform on the fuzzy numbers
+#' columns.
+#' @param FUN A function to perform on the fuzzy numbers.
+#' @param ... Other named arguments passed to `FUN`.
 #' @return A modified TidySet object
 #' @noRd
-fapply <- function(relations, FUN) {
+fapply <- function(relations, FUN, ...) {
     if (ncol(relations) > 3) {
         warning("Dropping columns. Consider using `move_to`")
     }
@@ -98,12 +99,12 @@ fapply <- function(relations, FUN) {
     basic <- paste(relations$elements, relations$sets)
     fuzzy <- split(relations$fuzzy, basic)
     # Helper function probably useful for intersection too
-    iterate <- function(fuzzy, fun) {
-        fun(fuzzy)
+    iterate <- function(fuzzy, fun, ...) {
+        fun(fuzzy, ...)
     }
 
     FUN <- match.fun(FUN)
-    fuzzy <- vapply(fuzzy, iterate, fun = FUN, numeric(1L))
+    fuzzy <- vapply(fuzzy, iterate, fun = FUN, numeric(1L), ... = ...)
     relations2 <- unique(relations[, c("sets", "elements")])
     basic2 <- paste(relations2$elements, relations2$sets)
     # Sort again to match the new relations

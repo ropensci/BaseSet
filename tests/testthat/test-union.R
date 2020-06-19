@@ -118,5 +118,21 @@ test_that("fapply works in order", {
         )
     )
     df <- as.data.frame(union(fuzzy_set, c("A", "B"), "D", keep = TRUE))
-    expect_equal(df$fuzzy[2], df$fuzzy[3])
+    expect_equal(df$fuzzy[df$elements == "b" & df$sets == "A"],
+                 df$fuzzy[df$elements == "b" & df$sets == "D"])
+})
+
+
+test_that("union pass other arguments to FUN",  {
+    set.seed(98632187)
+    relations <- data.frame(
+        sets = c(rep("A", 5), rep("B", 5)),
+        elements = c(letters[1:5], letters[2:6]),
+        fuzzy = runif(10)
+    )
+    a <- tidySet(relations)
+    q <- function(x, quantile) {quantile(x, probs = quantile)}
+    r <- union(a, c("A", "B"), "C", FUN = q, quantile = 0.5)
+    expect_equal(relations(r)$fuzzy[relations(r)$elements == "b"],
+                 unname(q(relations$fuzzy[relations$elements == "b"], 0.5)))
 })

@@ -15,7 +15,8 @@ add_relations(object, elements, sets, fuzzy, ...)
 
 \item{fuzzy}{The strength of the membership.}
 
-\item{...}{Other arguments passed along.}
+\item{...}{Placeholder for other arguments that could be passed to the
+method. Currently not used.}
 }
 \value{
 A \code{\link{TidySet}} object with the new relations.

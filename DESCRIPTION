@@ -16,7 +16,7 @@ BugReports: https://github.com/llrs/BaseSet/issues
 Depends: 
     R (>= 3.6.0)
 Imports: 
-    dplyr (>= 0.7.8),
+    dplyr (>= 1.0.0),
     magrittr,
     methods,
     rlang,

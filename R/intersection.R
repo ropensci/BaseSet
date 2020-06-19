@@ -2,7 +2,7 @@
 NULL
 
 .intersection <- function(object, sets, name, FUN, keep_relations,
-    keep_elements, keep_sets) {
+    keep_elements, keep_sets, ...) {
     if (length(name) > 1) {
         stop("The name of the new set must be of length 1", call. = FALSE)
     }
@@ -34,7 +34,7 @@ NULL
     duplicate_rel <- relations %in% dup_relations
     if (any(duplicate_rel)) {
         intersection <- intersection[duplicate_rel, , drop = FALSE]
-        intersection <- fapply(intersection, FUN)
+        intersection <- fapply(intersection, FUN, ... = ...)
     }
 
     object <- replace_interactions(object, intersection, keep_relations)
@@ -55,10 +55,11 @@ setMethod("intersection",
     function(object, sets, name = NULL, FUN = "min", keep = FALSE,
     keep_relations = keep,
     keep_elements = keep,
-    keep_sets = keep) {
+    keep_sets = keep,
+    ...) {
         .intersection(
             object, sets, name, match.fun(FUN), keep_relations,
-            keep_elements, keep_sets
+            keep_elements, keep_sets, ...
         )
     }
 )

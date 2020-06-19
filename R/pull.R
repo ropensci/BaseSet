@@ -13,7 +13,7 @@ dplyr::pull
 #' @param var The literal variable name, a positive integer or a negative
 #' integer column position.
 #' @param name Column used to name the output.
-#' @param ... For use by methods.
+#' @param ... Currently not used.
 #' @return A TidySet object
 #' @export
 #' @seealso dplyr \code{\link[dplyr]{pull}} and \code{\link{activate}}

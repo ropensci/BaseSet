@@ -14,18 +14,31 @@ group(object, name, ...)
 
 \item{name}{The name of the new set.}
 
-\item{...}{A logical condition to subset some elements}
+\item{...}{A logical condition to subset some elements.}
 }
 \value{
-A TidySet object with the new set
+A TidySet object with the new set.
 }
 \description{
-Create a new set from existing elements
+It allows to create a new set given some condition. If no element meet the
+condition an empty set is created.
 }
 \examples{
-x <- list("a" = c("A" = 0.1, "B" = 0.5), "b" = c("A" = 0.2, "B" = 1))
-a <- tidySet(x)
-b <- group(a, "c", elements \%in\% c("A", "B"))
+x <- list("A" = c("a" = 0.1, "b" = 0.5), "B" = c("a" = 0.2, "b" = 1))
+TS <- tidySet(x)
+TS1 <- group(TS, "C", fuzzy < 0.5)
+TS1
+sets(TS1)
+TS2 <- group(TS, "D", fuzzy < 0)
+sets(TS2)
+r <- data.frame(
+    sets = c(rep("A", 5), "B", rep("A2", 5), "B2"),
+    elements = rep(letters[seq_len(6)], 2),
+    fuzzy = runif(12),
+    type = c(rep("Gene", 2), rep("Protein", 2), rep("lncRNA", 2))
+)
+TS3 <- tidySet(r)
+group(TS3, "D", sets \%in\% c("A", "A2"))
 }
 \seealso{
 Other methods: 

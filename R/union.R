@@ -14,7 +14,7 @@ NULL
 #' @param keep_relations A logical value if you wan to keep old relations
 #' @param keep_elements A logical value if you wan to keep old elements
 #' @param keep_sets A logical value if you wan to keep old sets
-#' @param ... Other arguments.
+#' @param ... Other named arguments passed to `FUN`.
 #' @return A \code{TidySet} object.
 #' @export
 #' @family methods that create new sets
@@ -57,7 +57,7 @@ union.TidySet <- function(object, sets, name = NULL, FUN = "max", keep = FALSE,
     } else {
         union$sets[union$sets %in% sets] <- name
     }
-    union <- fapply(union, FUN)
+    union <- fapply(union, FUN, ... = ...)
     object <- replace_interactions(object, union, keep_relations)
     object <- droplevels(object, !keep_elements, !keep_sets, !keep_relations)
     validObject(object)

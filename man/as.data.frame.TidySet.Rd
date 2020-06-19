@@ -9,7 +9,8 @@
 \arguments{
 \item{x}{The \code{TidySet} object.}
 
-\item{...}{Other arguments currently ignored.}
+\item{...}{Placeholder for other arguments that could be passed to the
+method. Currently not used.}
 }
 \value{
 A \code{data.frame} table.

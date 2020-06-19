@@ -22,7 +22,7 @@ union(object, ...)
 \arguments{
 \item{object}{A TidySet object}
 
-\item{...}{Other arguments.}
+\item{...}{Other named arguments passed to \code{FUN}.}
 
 \item{sets}{The name of the sets to be used.}
 
