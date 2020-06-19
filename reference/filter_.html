@@ -156,17 +156,17 @@ on the TidySet.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>.data</th>
-      <td><p>The TidySet object</p></td>
+      <td><p>The TidySet object.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>The logical predicates in terms of the variables of the sets</p></td>
+      <td><p>The logical predicates in terms of the variables of the sets.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A TidySet object</p>
+    <p>A TidySet object.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>dplyr <code><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></code> and <code><a href='activate.html'>activate</a></code></p>
@@ -215,31 +215,30 @@ on the TidySet.</p>
     <pre class="examples"><div class='input'><span class='no'>relations</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
     <span class='kw'>sets</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"a"</span>, <span class='fl'>5</span>), <span class='st'>"b"</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"a2"</span>, <span class='fl'>5</span>), <span class='st'>"b2"</span>),
     <span class='kw'>elements</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='no'>letters</span>[<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>6</span>)], <span class='fl'>2</span>),
-    <span class='kw'>fuzzy</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>12</span>)
-)
-<span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tidySet.html'>tidySet</a></span>(<span class='no'>relations</span>)
-<span class='fu'><a href='elements.html'>elements</a></span>(<span class='no'>a</span>) <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span>(<span class='fu'><a href='elements.html'>elements</a></span>(<span class='no'>a</span>),
+    <span class='kw'>fuzzy</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>12</span>),
     <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"Gene"</span>, <span class='fl'>4</span>), <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"lncRNA"</span>, <span class='fl'>2</span>))
 )
-<span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>a</span>, <span class='no'>elements</span> <span class='kw'>==</span> <span class='st'>"a"</span>)</div><div class='output co'>#&gt;   elements sets     fuzzy type
-#&gt; 1        a    a 0.4659872 Gene
-#&gt; 2        a   a2 0.3848097 Gene</div><div class='input'><span class='co'># Equivalent to filter_relation</span>
-<span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>a</span>, <span class='no'>elements</span> <span class='kw'>==</span> <span class='st'>"a"</span>, <span class='no'>sets</span> <span class='kw'>==</span> <span class='st'>"a"</span>)</div><div class='output co'>#&gt;   elements sets     fuzzy type
-#&gt; 1        a    a 0.4659872 Gene</div><div class='input'><span class='fu'>filter_relation</span>(<span class='no'>a</span>, <span class='no'>elements</span> <span class='kw'>==</span> <span class='st'>"a"</span>, <span class='no'>sets</span> <span class='kw'>==</span> <span class='st'>"a"</span>)</div><div class='output co'>#&gt;   elements sets     fuzzy type
-#&gt; 1        a    a 0.4659872 Gene</div><div class='input'><span class='co'># Filter element</span>
-<span class='fu'>filter_element</span>(<span class='no'>a</span>, <span class='no'>type</span> <span class='kw'>==</span> <span class='st'>"Gene"</span>)</div><div class='output co'>#&gt;   elements sets      fuzzy type
-#&gt; 1        a    a 0.46598719 Gene
-#&gt; 2        a   a2 0.38480971 Gene
-#&gt; 3        b    a 0.39003139 Gene
-#&gt; 4        b   a2 0.52791704 Gene
-#&gt; 5        c    a 0.02006522 Gene
-#&gt; 6        c   a2 0.60063752 Gene
-#&gt; 7        d    a 0.37697093 Gene
-#&gt; 8        d   a2 0.26137136 Gene</div><div class='input'><span class='co'># Filter sets and by property of elements simultaneously</span>
-<span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>a</span>, <span class='no'>sets</span> <span class='kw'>==</span> <span class='st'>"b"</span>, <span class='no'>type</span> <span class='kw'>==</span> <span class='st'>"lncRNA"</span>)</div><div class='output co'>#&gt;   elements sets     fuzzy   type
-#&gt; 1        f    b 0.8570836 lncRNA</div><div class='input'><span class='co'># Filter sets</span>
-<span class='fu'>filter_set</span>(<span class='no'>a</span>, <span class='no'>sets</span> <span class='kw'>==</span> <span class='st'>"b"</span>)</div><div class='output co'>#&gt;   elements sets     fuzzy   type
-#&gt; 1        f    b 0.8570836 lncRNA</div></pre>
+<span class='no'>TS</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tidySet.html'>tidySet</a></span>(<span class='no'>relations</span>)
+<span class='no'>TS</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='move_to.html'>move_to</a></span>(<span class='no'>TS</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>"relations"</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='st'>"elements"</span>, <span class='kw'>column</span> <span class='kw'>=</span> <span class='st'>"type"</span>)
+<span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>TS</span>, <span class='no'>elements</span> <span class='kw'>==</span> <span class='st'>"a"</span>)</div><div class='output co'>#&gt;   elements sets     fuzzy type
+#&gt; 1        a    a 0.8570836 Gene
+#&gt; 2        a   a2 0.4800752 Gene</div><div class='input'><span class='co'># Equivalent to filter_relation</span>
+<span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>TS</span>, <span class='no'>elements</span> <span class='kw'>==</span> <span class='st'>"a"</span>, <span class='no'>sets</span> <span class='kw'>==</span> <span class='st'>"a"</span>)</div><div class='output co'>#&gt;   elements sets     fuzzy type
+#&gt; 1        a    a 0.8570836 Gene</div><div class='input'><span class='fu'>filter_relation</span>(<span class='no'>TS</span>, <span class='no'>elements</span> <span class='kw'>==</span> <span class='st'>"a"</span>, <span class='no'>sets</span> <span class='kw'>==</span> <span class='st'>"a"</span>)</div><div class='output co'>#&gt;   elements sets     fuzzy type
+#&gt; 1        a    a 0.8570836 Gene</div><div class='input'><span class='co'># Filter element</span>
+<span class='fu'>filter_element</span>(<span class='no'>TS</span>, <span class='no'>type</span> <span class='kw'>==</span> <span class='st'>"Gene"</span>)</div><div class='output co'>#&gt;   elements sets     fuzzy type
+#&gt; 1        a    a 0.8570836 Gene
+#&gt; 2        b    a 0.3848097 Gene
+#&gt; 3        c    a 0.5279170 Gene
+#&gt; 4        d    a 0.6006375 Gene
+#&gt; 5        a   a2 0.4800752 Gene
+#&gt; 6        b   a2 0.9200055 Gene
+#&gt; 7        c   a2 0.4007202 Gene
+#&gt; 8        d   a2 0.2131727 Gene</div><div class='input'><span class='co'># Filter sets and by property of elements simultaneously</span>
+<span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>TS</span>, <span class='no'>sets</span> <span class='kw'>==</span> <span class='st'>"b"</span>, <span class='no'>type</span> <span class='kw'>==</span> <span class='st'>"lncRNA"</span>)</div><div class='output co'>#&gt;   elements sets     fuzzy   type
+#&gt; 1        f    b 0.2900502 lncRNA</div><div class='input'><span class='co'># Filter sets</span>
+<span class='fu'>filter_set</span>(<span class='no'>TS</span>, <span class='no'>sets</span> <span class='kw'>==</span> <span class='st'>"b"</span>)</div><div class='output co'>#&gt;   elements sets     fuzzy   type
+#&gt; 1        f    b 0.2900502 lncRNA</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -221,7 +221,7 @@ the information on the TidySet.</p>
 <span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mutate_.html'>mutate_element</a></span>(<span class='no'>a</span>,
     <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"Gene"</span>, <span class='fl'>4</span>), <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"lncRNA"</span>, <span class='fl'>2</span>))
 )
-
+<span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='mutate_.html'>mutate_set</a></span>(<span class='no'>a</span>, <span class='kw'>Group</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"UFM"</span>, <span class='st'>"UAB"</span>, <span class='st'>"UPF"</span>, <span class='st'>"MIT"</span>))
 <span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>a</span>, -<span class='no'>type</span>)
 <span class='fu'><a href='elements.html'>elements</a></span>(<span class='no'>b</span>)</div><div class='output co'>#&gt;   elements
 #&gt; 1        a
@@ -237,19 +237,19 @@ the information on the TidySet.</p>
 #&gt; 4        d
 #&gt; 5        e
 #&gt; 6        f</div><div class='input'><span class='co'># Select sets</span>
-<span class='fu'>select_set</span>(<span class='no'>a</span>, <span class='no'>sets</span>)</div><div class='output co'>#&gt;    elements sets     fuzzy   type
-#&gt; 1         a    a 0.2472191   Gene
-#&gt; 2         a   a2 0.8877234   Gene
-#&gt; 3         b    a 0.6865692   Gene
-#&gt; 4         b   a2 0.8280144   Gene
-#&gt; 5         c   a2 0.1006565   Gene
-#&gt; 6         c    a 0.1636232   Gene
-#&gt; 7         d   a2 0.9060516   Gene
-#&gt; 8         d    a 0.9528248   Gene
-#&gt; 9         e    a 0.3218546 lncRNA
-#&gt; 10        e   a2 0.7727304 lncRNA
-#&gt; 11        f    b 0.3615341 lncRNA
-#&gt; 12        f   b2 0.3833707 lncRNA</div></pre>
+<span class='fu'>select_set</span>(<span class='no'>a</span>, <span class='no'>sets</span>)</div><div class='output co'>#&gt;    elements sets      fuzzy   type
+#&gt; 1         a    a 0.34929905   Gene
+#&gt; 2         b    a 0.94731827   Gene
+#&gt; 3         c    a 0.21609998   Gene
+#&gt; 4         d    a 0.03209271   Gene
+#&gt; 5         e    a 0.14531584 lncRNA
+#&gt; 6         f    b 0.85438389 lncRNA
+#&gt; 7         a   a2 0.21314931   Gene
+#&gt; 8         b   a2 0.21031074   Gene
+#&gt; 9         c   a2 0.03952069   Gene
+#&gt; 10        d   a2 0.94477480   Gene
+#&gt; 11        e   a2 0.24492799 lncRNA
+#&gt; 12        f   b2 0.78112257 lncRNA</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

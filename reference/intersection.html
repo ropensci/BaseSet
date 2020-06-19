@@ -149,7 +149,8 @@
   <span class='kw'>keep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>keep_relations</span> <span class='kw'>=</span> <span class='no'>keep</span>,
   <span class='kw'>keep_elements</span> <span class='kw'>=</span> <span class='no'>keep</span>,
-  <span class='kw'>keep_sets</span> <span class='kw'>=</span> <span class='no'>keep</span>
+  <span class='kw'>keep_sets</span> <span class='kw'>=</span> <span class='no'>keep</span>,
+  <span class='no'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -165,7 +166,7 @@
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Other arguments.</p></td>
+      <td><p>Other named arguments passed to <code>FUN</code>.</p></td>
     </tr>
     <tr>
       <th>name</th>
@@ -259,8 +260,8 @@ other function that given a numeric vector returns a single number.</p></td>
     <span class='kw'>fuzzy</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>6</span>)
 )
 <span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tidySet.html'>tidySet</a></span>(<span class='no'>relations</span>)
-<span class='fu'>intersection</span>(<span class='no'>a</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>), <span class='st'>"C"</span>)</div><div class='output co'>#&gt;   elements sets    fuzzy
-#&gt; 1        f    C 0.403911</div></pre>
+<span class='fu'>intersection</span>(<span class='no'>a</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>), <span class='st'>"C"</span>)</div><div class='output co'>#&gt;   elements sets     fuzzy
+#&gt; 1        f    C 0.5844753</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

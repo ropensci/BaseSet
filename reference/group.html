@@ -40,7 +40,8 @@
 
 
 <meta property="og:title" content="Create a new set from existing elements — group" />
-<meta property="og:description" content="Create a new set from existing elements" />
+<meta property="og:description" content="It allows to create a new set given some condition. If no element meet the
+condition an empty set is created." />
 
 
 
@@ -135,7 +136,8 @@
     </div>
 
     <div class="ref-description">
-    <p>Create a new set from existing elements</p>
+    <p>It allows to create a new set given some condition. If no element meet the
+condition an empty set is created.</p>
     </div>
 
     <pre class="usage"><span class='fu'>group</span>(<span class='no'>object</span>, <span class='no'>name</span>, <span class='no'>...</span>)
@@ -156,13 +158,13 @@
     </tr>
     <tr>
       <th>...</th>
-      <td><p>A logical condition to subset some elements</p></td>
+      <td><p>A logical condition to subset some elements.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A TidySet object with the new set</p>
+    <p>A TidySet object with the new set.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other methods: 
@@ -207,9 +209,46 @@
 <code><a href='union.html'>union</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='st'>"a"</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A"</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='st'>"B"</span> <span class='kw'>=</span> <span class='fl'>0.5</span>), <span class='st'>"b"</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A"</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='st'>"B"</span> <span class='kw'>=</span> <span class='fl'>1</span>))
-<span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tidySet.html'>tidySet</a></span>(<span class='no'>x</span>)
-<span class='no'>b</span> <span class='kw'>&lt;-</span> <span class='fu'>group</span>(<span class='no'>a</span>, <span class='st'>"c"</span>, <span class='no'>elements</span> <span class='kw'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A"</span>, <span class='st'>"B"</span>))</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='st'>"A"</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='st'>"b"</span> <span class='kw'>=</span> <span class='fl'>0.5</span>), <span class='st'>"B"</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span> <span class='kw'>=</span> <span class='fl'>0.2</span>, <span class='st'>"b"</span> <span class='kw'>=</span> <span class='fl'>1</span>))
+<span class='no'>TS</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tidySet.html'>tidySet</a></span>(<span class='no'>x</span>)
+<span class='no'>TS1</span> <span class='kw'>&lt;-</span> <span class='fu'>group</span>(<span class='no'>TS</span>, <span class='st'>"C"</span>, <span class='no'>fuzzy</span> <span class='kw'>&lt;</span> <span class='fl'>0.5</span>)
+<span class='no'>TS1</span></div><div class='output co'>#&gt;   elements sets fuzzy
+#&gt; 1        a    A   0.1
+#&gt; 2        b    A   0.5
+#&gt; 3        a    B   0.2
+#&gt; 4        b    B   1.0
+#&gt; 5        a    C   1.0</div><div class='input'><span class='fu'><a href='sets.html'>sets</a></span>(<span class='no'>TS1</span>)</div><div class='output co'>#&gt;   sets
+#&gt; 1    A
+#&gt; 2    B
+#&gt; 3    C</div><div class='input'><span class='no'>TS2</span> <span class='kw'>&lt;-</span> <span class='fu'>group</span>(<span class='no'>TS</span>, <span class='st'>"D"</span>, <span class='no'>fuzzy</span> <span class='kw'>&lt;</span> <span class='fl'>0</span>)
+<span class='fu'><a href='sets.html'>sets</a></span>(<span class='no'>TS2</span>)</div><div class='output co'>#&gt;   sets
+#&gt; 1    A
+#&gt; 2    B
+#&gt; 3    D</div><div class='input'><span class='no'>r</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(
+    <span class='kw'>sets</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"A"</span>, <span class='fl'>5</span>), <span class='st'>"B"</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"A2"</span>, <span class='fl'>5</span>), <span class='st'>"B2"</span>),
+    <span class='kw'>elements</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='no'>letters</span>[<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq_len</a></span>(<span class='fl'>6</span>)], <span class='fl'>2</span>),
+    <span class='kw'>fuzzy</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>12</span>),
+    <span class='kw'>type</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"Gene"</span>, <span class='fl'>2</span>), <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"Protein"</span>, <span class='fl'>2</span>), <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='st'>"lncRNA"</span>, <span class='fl'>2</span>))
+)
+<span class='no'>TS3</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tidySet.html'>tidySet</a></span>(<span class='no'>r</span>)
+<span class='fu'>group</span>(<span class='no'>TS3</span>, <span class='st'>"D"</span>, <span class='no'>sets</span> <span class='kw'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"A"</span>, <span class='st'>"A2"</span>))</div><div class='output co'>#&gt;    elements sets      fuzzy    type
+#&gt; 1         a    A 0.99706914    Gene
+#&gt; 2         b    A 0.14903547    Gene
+#&gt; 3         c    A 0.51855664 Protein
+#&gt; 4         d    A 0.84612005 Protein
+#&gt; 5         e    A 0.71826972  lncRNA
+#&gt; 6         f    B 0.24131402  lncRNA
+#&gt; 7         a   A2 0.54704337    Gene
+#&gt; 8         b   A2 0.83480182    Gene
+#&gt; 9         c   A2 0.02795603 Protein
+#&gt; 10        d   A2 0.46938430 Protein
+#&gt; 11        e   A2 0.80568003  lncRNA
+#&gt; 12        f   B2 0.81405131  lncRNA
+#&gt; 13        a    D 1.00000000    &lt;NA&gt;
+#&gt; 14        b    D 1.00000000    &lt;NA&gt;
+#&gt; 15        c    D 1.00000000    &lt;NA&gt;
+#&gt; 16        d    D 1.00000000    &lt;NA&gt;
+#&gt; 17        e    D 1.00000000    &lt;NA&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

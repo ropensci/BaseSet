@@ -163,7 +163,8 @@ If the sets or elements do not exist they are added.</p>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Other arguments passed along.</p></td>
+      <td><p>Placeholder for other arguments that could be passed to the
+method. Currently not used.</p></td>
     </tr>
     </table>
 
@@ -188,57 +189,57 @@ new elements.</p>
 <span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tidySet.html'>tidySet</a></span>(<span class='no'>x</span>)
 <span class='fu'>add_relations</span>(<span class='no'>a</span>, <span class='kw'>elements</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>, <span class='st'>"g"</span>), <span class='kw'>sets</span> <span class='kw'>=</span> <span class='st'>"d"</span>)</div><div class='output co'>#&gt;    elements sets fuzzy
 #&gt; 1         a    a     1
-#&gt; 2         a    d     1
-#&gt; 3         b    a     1
-#&gt; 4         b    d     1
-#&gt; 5         c    a     1
-#&gt; 6         d    a     1
-#&gt; 7         e    a     1
-#&gt; 8         C    b     1
-#&gt; 9         D    b     1
-#&gt; 10        E    b     1
-#&gt; 11        F    b     1
-#&gt; 12        G    b     1
+#&gt; 2         b    a     1
+#&gt; 3         c    a     1
+#&gt; 4         d    a     1
+#&gt; 5         e    a     1
+#&gt; 6         C    b     1
+#&gt; 7         D    b     1
+#&gt; 8         E    b     1
+#&gt; 9         F    b     1
+#&gt; 10        G    b     1
+#&gt; 11        a    d     1
+#&gt; 12        b    d     1
 #&gt; 13        g    d     1</div><div class='input'><span class='fu'>add_relations</span>(<span class='no'>a</span>, <span class='kw'>elements</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>), <span class='kw'>sets</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"d"</span>, <span class='st'>"g"</span>))</div><div class='output co'>#&gt;    elements sets fuzzy
 #&gt; 1         a    a     1
-#&gt; 2         a    d     1
-#&gt; 3         b    a     1
-#&gt; 4         b    g     1
-#&gt; 5         c    a     1
-#&gt; 6         d    a     1
-#&gt; 7         e    a     1
-#&gt; 8         C    b     1
-#&gt; 9         D    b     1
-#&gt; 10        E    b     1
-#&gt; 11        F    b     1
-#&gt; 12        G    b     1</div><div class='input'><span class='fu'>add_relations</span>(<span class='no'>a</span>, <span class='kw'>elements</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>), <span class='kw'>sets</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"d"</span>, <span class='st'>"g"</span>), <span class='kw'>fuzzy</span> <span class='kw'>=</span> <span class='fl'>0.5</span>)</div><div class='output co'>#&gt;    elements sets fuzzy
+#&gt; 2         b    a     1
+#&gt; 3         c    a     1
+#&gt; 4         d    a     1
+#&gt; 5         e    a     1
+#&gt; 6         C    b     1
+#&gt; 7         D    b     1
+#&gt; 8         E    b     1
+#&gt; 9         F    b     1
+#&gt; 10        G    b     1
+#&gt; 11        a    d     1
+#&gt; 12        b    g     1</div><div class='input'><span class='fu'>add_relations</span>(<span class='no'>a</span>, <span class='kw'>elements</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>), <span class='kw'>sets</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"d"</span>, <span class='st'>"g"</span>), <span class='kw'>fuzzy</span> <span class='kw'>=</span> <span class='fl'>0.5</span>)</div><div class='output co'>#&gt;    elements sets fuzzy
 #&gt; 1         a    a   1.0
-#&gt; 2         a    d   0.5
-#&gt; 3         b    a   1.0
-#&gt; 4         b    g   0.5
-#&gt; 5         c    a   1.0
-#&gt; 6         d    a   1.0
-#&gt; 7         e    a   1.0
-#&gt; 8         C    b   1.0
-#&gt; 9         D    b   1.0
-#&gt; 10        E    b   1.0
-#&gt; 11        F    b   1.0
-#&gt; 12        G    b   1.0</div><div class='input'><span class='fu'>add_relations</span>(<span class='no'>a</span>,
+#&gt; 2         b    a   1.0
+#&gt; 3         c    a   1.0
+#&gt; 4         d    a   1.0
+#&gt; 5         e    a   1.0
+#&gt; 6         C    b   1.0
+#&gt; 7         D    b   1.0
+#&gt; 8         E    b   1.0
+#&gt; 9         F    b   1.0
+#&gt; 10        G    b   1.0
+#&gt; 11        a    d   0.5
+#&gt; 12        b    g   0.5</div><div class='input'><span class='fu'>add_relations</span>(<span class='no'>a</span>,
     <span class='kw'>elements</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"a"</span>, <span class='st'>"b"</span>), <span class='kw'>sets</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"d"</span>, <span class='st'>"g"</span>),
     <span class='kw'>fuzzy</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.5</span>, <span class='fl'>0.7</span>)
 )</div><div class='output co'>#&gt;    elements sets fuzzy
 #&gt; 1         a    a   1.0
-#&gt; 2         a    d   0.5
-#&gt; 3         b    a   1.0
-#&gt; 4         b    g   0.7
-#&gt; 5         c    a   1.0
-#&gt; 6         d    a   1.0
-#&gt; 7         e    a   1.0
-#&gt; 8         C    b   1.0
-#&gt; 9         D    b   1.0
-#&gt; 10        E    b   1.0
-#&gt; 11        F    b   1.0
-#&gt; 12        G    b   1.0</div></pre>
+#&gt; 2         b    a   1.0
+#&gt; 3         c    a   1.0
+#&gt; 4         d    a   1.0
+#&gt; 5         e    a   1.0
+#&gt; 6         C    b   1.0
+#&gt; 7         D    b   1.0
+#&gt; 8         E    b   1.0
+#&gt; 9         F    b   1.0
+#&gt; 10        G    b   1.0
+#&gt; 11        a    d   0.5
+#&gt; 12        b    g   0.7</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

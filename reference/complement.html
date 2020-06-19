@@ -218,31 +218,31 @@ you want the complements of sets or elements.</p>
 <span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tidySet.html'>tidySet</a></span>(<span class='no'>relations</span>)
 <span class='no'>a</span> <span class='kw'>%&gt;%</span>
     <span class='fu'><a href='activate.html'>activate</a></span>(<span class='st'>"elements"</span>) <span class='kw'>%&gt;%</span>
-    <span class='fu'>complement</span>(<span class='st'>"a"</span>)</div><div class='output co'>#&gt;   elements sets     fuzzy
-#&gt; 1        a    a 0.9705209
-#&gt; 2        a   ∁a 0.0294791
-#&gt; 3        b    a 0.3891828
-#&gt; 4        c    b 0.4611865
-#&gt; 5        d    b 0.3152418
-#&gt; 6        e    c 0.1746759
-#&gt; 7        f    c 0.5315735</div><div class='input'><span class='no'>a</span> <span class='kw'>%&gt;%</span>
+    <span class='fu'>complement</span>(<span class='st'>"a"</span>)</div><div class='output co'>#&gt;   elements sets      fuzzy
+#&gt; 1        a    a 0.53157354
+#&gt; 2        b    a 0.49363702
+#&gt; 3        c    b 0.77930863
+#&gt; 4        d    b 0.20417834
+#&gt; 5        e    c 0.71339728
+#&gt; 6        f    c 0.06521611
+#&gt; 7        a   ∁a 0.46842646</div><div class='input'><span class='no'>a</span> <span class='kw'>%&gt;%</span>
     <span class='fu'><a href='activate.html'>activate</a></span>(<span class='st'>"elements"</span>) <span class='kw'>%&gt;%</span>
     <span class='fu'>complement</span>(<span class='st'>"a"</span>, <span class='st'>"C_a"</span>, <span class='kw'>keep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;   elements sets     fuzzy
-#&gt; 1        a  C_a 0.0294791</div><div class='input'><span class='no'>a</span> <span class='kw'>%&gt;%</span>
+#&gt; 1        a  C_a 0.4684265</div><div class='input'><span class='no'>a</span> <span class='kw'>%&gt;%</span>
     <span class='fu'><a href='activate.html'>activate</a></span>(<span class='st'>"set"</span>) <span class='kw'>%&gt;%</span>
-    <span class='fu'>complement</span>(<span class='st'>"a"</span>)</div><div class='output co'>#&gt;   elements sets     fuzzy
-#&gt; 1        a    a 0.9705209
-#&gt; 2        a   ∁a 0.0294791
-#&gt; 3        b    a 0.3891828
-#&gt; 4        b   ∁a 0.6108172
-#&gt; 5        c    b 0.4611865
-#&gt; 6        d    b 0.3152418
-#&gt; 7        e    c 0.1746759
-#&gt; 8        f    c 0.5315735</div><div class='input'><span class='no'>a</span> <span class='kw'>%&gt;%</span>
+    <span class='fu'>complement</span>(<span class='st'>"a"</span>)</div><div class='output co'>#&gt;   elements sets      fuzzy
+#&gt; 1        a    a 0.53157354
+#&gt; 2        b    a 0.49363702
+#&gt; 3        c    b 0.77930863
+#&gt; 4        d    b 0.20417834
+#&gt; 5        e    c 0.71339728
+#&gt; 6        f    c 0.06521611
+#&gt; 7        a   ∁a 0.46842646
+#&gt; 8        b   ∁a 0.50636298</div><div class='input'><span class='no'>a</span> <span class='kw'>%&gt;%</span>
     <span class='fu'><a href='activate.html'>activate</a></span>(<span class='st'>"set"</span>) <span class='kw'>%&gt;%</span>
     <span class='fu'>complement</span>(<span class='st'>"a"</span>, <span class='kw'>keep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;   elements sets     fuzzy
-#&gt; 1        a   ∁a 0.0294791
-#&gt; 2        b   ∁a 0.6108172</div></pre>
+#&gt; 1        a   ∁a 0.4684265
+#&gt; 2        b   ∁a 0.5063630</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

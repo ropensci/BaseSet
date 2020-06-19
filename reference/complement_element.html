@@ -164,7 +164,8 @@
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Other arguments.</p></td>
+      <td><p>Placeholder for other arguments that could be passed to the
+method. Currently not used.</p></td>
     </tr>
     <tr>
       <th>name</th>
@@ -256,15 +257,15 @@
     <span class='kw'>fuzzy</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span>(<span class='fl'>6</span>)
 )
 <span class='no'>a</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tidySet.html'>tidySet</a></span>(<span class='no'>relations</span>)
-<span class='fu'>complement_element</span>(<span class='no'>a</span>, <span class='st'>"a"</span>, <span class='st'>"C_a"</span>)</div><div class='output co'>#&gt;   elements sets      fuzzy
-#&gt; 1        a    a 0.49363702
-#&gt; 2        a  C_a 0.50636298
-#&gt; 3        b    a 0.77930863
-#&gt; 4        c    b 0.20417834
-#&gt; 5        d    b 0.71339728
-#&gt; 6        e    c 0.06521611
-#&gt; 7        f    c 0.35420680</div><div class='input'><span class='fu'>complement_element</span>(<span class='no'>a</span>, <span class='st'>"a"</span>, <span class='st'>"C_a"</span>, <span class='kw'>keep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;   elements sets    fuzzy
-#&gt; 1        a  C_a 0.506363</div></pre>
+<span class='fu'>complement_element</span>(<span class='no'>a</span>, <span class='st'>"a"</span>, <span class='st'>"C_a"</span>)</div><div class='output co'>#&gt;   elements sets     fuzzy
+#&gt; 1        a    a 0.3542068
+#&gt; 2        b    a 0.8251994
+#&gt; 3        c    b 0.2738182
+#&gt; 4        d    b 0.5700450
+#&gt; 5        e    c 0.3357191
+#&gt; 6        f    c 0.5962628
+#&gt; 7        a  C_a 0.6457932</div><div class='input'><span class='fu'>complement_element</span>(<span class='no'>a</span>, <span class='st'>"a"</span>, <span class='st'>"C_a"</span>, <span class='kw'>keep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;   elements sets     fuzzy
+#&gt; 1        a  C_a 0.6457932</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
