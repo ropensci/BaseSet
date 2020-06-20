@@ -45,9 +45,9 @@ pull.TidySet <- function(.data, var = -1, name = NULL, ...) {
     }
 
     switch(a,
-           elements = pull_element(.data, var, name, ...),
-           sets = pull_set(.data, var, name, ...),
-           relations = pull_relation(.data, var, name, ...))
+           elements = pull_element(.data, !!enquo(var), !!enquo(name), ...),
+           sets = pull_set(.data, !!enquo(var), !!enquo(name), ...),
+           relations = pull_relation(.data, !!enquo(var), !!enquo(name), ...))
 
 }
 
