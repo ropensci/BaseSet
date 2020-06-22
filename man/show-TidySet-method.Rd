@@ -10,8 +10,9 @@
 \item{object}{A TidySet}
 }
 \value{
-A table with the information of the relationships
+A table with the information of the relationships.
 }
 \description{
-Prints the resulting table of a TidySet object
+Prints the resulting table of a TidySet object. Does not shown elements or
+sets without any relationship (empty sets). To see them use \code{\link[=sets]{sets()}} or \code{\link[=elements]{elements()}}.
 }
