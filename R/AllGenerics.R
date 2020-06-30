@@ -87,7 +87,9 @@ methods::setGeneric("nElements", function(object) standardGeneric("nElements"))
 #' @examples
 #' TS <- tidySet(list(A = letters[1:2], B = letters[5:7]))
 #' nRelations(TS)
-methods::setGeneric("nRelations", function(object) standardGeneric("nRelations"))
+methods::setGeneric("nRelations", function(object)
+  standardGeneric("nRelations")
+)
 
 #' Incidence
 #'
@@ -117,17 +119,19 @@ methods::setGeneric("relations", function(object) standardGeneric("relations"))
 
 #' @rdname relations
 #' @export
-methods::setGeneric("relations<-", function(object, value) {
+methods::setGeneric("relations<-", function(object, value)
       standardGeneric("relations<-")
-  })
+)
 
 #' @rdname elements
 #' @export
-methods::setGeneric("elements<-", function(object, value) standardGeneric("elements<-"))
+methods::setGeneric("elements<-", function(object, value)
+  standardGeneric("elements<-"))
 
 #' @rdname sets
 #' @export
-methods::setGeneric("sets<-", function(object, value) standardGeneric("sets<-"))
+methods::setGeneric("sets<-", function(object, value)
+  standardGeneric("sets<-"))
 
 #' Calculates the cardinality of a set
 #'
@@ -140,7 +144,8 @@ methods::setGeneric("sets<-", function(object, value) standardGeneric("sets<-"))
 #' @aliases cardinality
 #' @family sizes
 #' @family methods
-methods::setGeneric("set_size", function(object, set = NULL) standardGeneric("set_size"))
+methods::setGeneric("set_size", function(object, set = NULL)
+  standardGeneric("set_size"))
 
 #' Calculates the size of the elements
 #'
@@ -152,9 +157,9 @@ methods::setGeneric("set_size", function(object, set = NULL) standardGeneric("se
 #' @family sizes
 #' @export element_size
 #' @family methods
-methods::setGeneric("element_size", function(object, element = NULL) {
+methods::setGeneric("element_size", function(object, element = NULL)
       standardGeneric("element_size")
-  })
+)
 
 #' Rename sets
 #'
@@ -168,9 +173,9 @@ methods::setGeneric("element_size", function(object, element = NULL) {
 #' @seealso \code{\link{name_sets}}
 #' @export
 #' @family methods
-methods::setGeneric("rename_set", function(object, old, new) {
+methods::setGeneric("rename_set", function(object, old, new)
       standardGeneric("rename_set")
-  })
+)
 
 #' Rename elements
 #'
@@ -184,9 +189,9 @@ methods::setGeneric("rename_set", function(object, old, new) {
 #' @seealso \code{\link{name_elements}}
 #' @export
 #' @family methods
-methods::setGeneric("rename_elements", function(object, old, new) {
+methods::setGeneric("rename_elements", function(object, old, new)
       standardGeneric("rename_elements")
-  })
+)
 
 #' Name sets
 #'
@@ -205,9 +210,9 @@ methods::setGeneric("rename_elements", function(object, old, new) {
 #' )
 #' a <- tidySet(relations)
 #' name_sets(a)
-methods::setGeneric("name_sets", function(object) {
+methods::setGeneric("name_sets", function(object)
       standardGeneric("name_sets")
-  })
+)
 
 #' Name elements
 #'
@@ -225,9 +230,9 @@ methods::setGeneric("name_sets", function(object) {
 #' )
 #' a <- tidySet(relations)
 #' name_elements(a)
-methods::setGeneric("name_elements", function(object) {
+methods::setGeneric("name_elements", function(object)
       standardGeneric("name_elements")
-  })
+)
 
 #' Rename elements
 #'
@@ -249,9 +254,9 @@ methods::setGeneric("name_elements", function(object) {
 #' a <- tidySet(relations)
 #' a
 #' name_elements(a) <- letters[1:6]
-methods::setGeneric("name_elements<-", function(object, value) {
+methods::setGeneric("name_elements<-", function(object, value)
       standardGeneric("name_elements<-")
-  })
+)
 
 #' Rename sets
 #'
@@ -273,9 +278,9 @@ methods::setGeneric("name_elements<-", function(object, value) {
 #' a <- tidySet(relations)
 #' a
 #' name_sets(a) <- LETTERS[1:2]
-methods::setGeneric("name_sets<-", function(object, value) {
+methods::setGeneric("name_sets<-", function(object, value)
       standardGeneric("name_sets<-")
-  })
+)
 
 #' Add column
 #'
@@ -299,9 +304,9 @@ methods::setGeneric("name_sets<-", function(object, value) {
 #'     "GOOD", "BAD", "WORSE",
 #'     "UGLY", "FOE", "HEY"
 #' )))
-methods::setGeneric("add_column", function(object, slot, columns) {
+methods::setGeneric("add_column", function(object, slot, columns)
       standardGeneric("add_column")
-  })
+)
 
 #' Remove column
 #'
@@ -314,9 +319,9 @@ methods::setGeneric("add_column", function(object, slot, columns) {
 #' @family methods
 #' @seealso \code{\link{rename_set}}
 #' @export
-methods::setGeneric("remove_column", function(object, slot, column_names) {
+methods::setGeneric("remove_column", function(object, slot, column_names)
       standardGeneric("remove_column")
-  })
+)
 
 #' Intersection of two sets
 #'
@@ -340,9 +345,9 @@ methods::setGeneric("remove_column", function(object, slot, column_names) {
 #' )
 #' a <- tidySet(relations)
 #' intersection(a, c("a", "b"), "C")
-methods::setGeneric("intersection", function(object, sets, ...) {
+methods::setGeneric("intersection", function(object, sets, ...)
       standardGeneric("intersection")
-  })
+)
 
 #' Add relations
 #'
@@ -369,9 +374,9 @@ methods::setGeneric("intersection", function(object, sets, ...) {
 #'     new = runif(6)
 #' )
 #' add_relation(a, relations)
-methods::setGeneric("add_relation", function(object, relations, ...) {
+methods::setGeneric("add_relation", function(object, relations, ...)
       standardGeneric("add_relation")
-  })
+)
 
 #' Remove a relation
 #'
@@ -393,9 +398,9 @@ methods::setGeneric("add_relation", function(object, relations, ...) {
 #' )
 #' a <- tidySet(relations)
 #' remove_relation(a, "a", "a")
-methods::setGeneric("remove_relation", function(object, elements, sets, ...) {
+methods::setGeneric("remove_relation", function(object, elements, sets, ...)
       standardGeneric("remove_relation")
-  })
+)
 
 #' Remove elements
 #'
@@ -417,9 +422,9 @@ methods::setGeneric("remove_relation", function(object, elements, sets, ...) {
 #' )
 #' a <- tidySet(relations)
 #' remove_element(a, "c")
-methods::setGeneric("remove_element", function(object, elements, ...) {
+methods::setGeneric("remove_element", function(object, elements, ...)
       standardGeneric("remove_element")
-  })
+)
 
 #' Remove sets
 #'
@@ -441,9 +446,9 @@ methods::setGeneric("remove_element", function(object, elements, ...) {
 #' )
 #' a <- tidySet(relations)
 #' remove_set(a, "b")
-methods::setGeneric("remove_set", function(object, sets, ...) {
+methods::setGeneric("remove_set", function(object, sets, ...)
       standardGeneric("remove_set")
-  })
+)
 
 #' Complement of a set
 #'
@@ -469,9 +474,9 @@ methods::setGeneric("remove_set", function(object, sets, ...) {
 #' )
 #' a <- tidySet(relations)
 #' complement_set(a, "a")
-methods::setGeneric("complement_set", function(object, sets, ...) {
+methods::setGeneric("complement_set", function(object, sets, ...)
       standardGeneric("complement_set")
-  })
+)
 
 #' Complement of elements
 #'
@@ -493,9 +498,9 @@ methods::setGeneric("complement_set", function(object, sets, ...) {
 #' a <- tidySet(relations)
 #' complement_element(a, "a", "C_a")
 #' complement_element(a, "a", "C_a", keep = FALSE)
-methods::setGeneric("complement_element", function(object, elements, ...) {
+methods::setGeneric("complement_element", function(object, elements, ...)
       standardGeneric("complement_element")
-  })
+)
 
 #' Subtract
 #'
@@ -520,9 +525,9 @@ methods::setGeneric("complement_element", function(object, elements, ...) {
 #' a <- tidySet(relations)
 #' subtract(a, "a", "b")
 #' subtract(a, "a", "b", keep = FALSE)
-methods::setGeneric("subtract", function(object, set_in, not_in, ...) {
+methods::setGeneric("subtract", function(object, set_in, not_in, ...)
       standardGeneric("subtract")
-  })
+)
 
 #' Move columns between slots
 #'
@@ -539,6 +544,6 @@ methods::setGeneric("subtract", function(object, set_in, not_in, ...) {
 #' a <- tidySet(x)
 #' a <- mutate_element(a, b = runif(2))
 #' b <- move_to(a, from = "elements", to = "relations", "b")
-methods::setGeneric("move_to", function(object, from, to, columns) {
+methods::setGeneric("move_to", function(object, from, to, columns)
       standardGeneric("move_to")
-  })
+)
