@@ -35,17 +35,33 @@ library("dplyr")
 
 # Getting started
 
-This vignettes supposes that you already read the "About Set" vignette. 
+This vignettes supposes that you already read the "About BaseSet" vignette. 
 This vignette explains what are the fuzzy sets and how to use them. 
 As all methods for "normal" sets are available for fuzzy sets this vignette focuses on how to create, use them.
 
+# What are fuzzy sets and why/when use them ?
+
+Fuzzy sets are generalizations of classical sets where there is some vagueness, one doesn't know for sure something on this relationship between the set and the element.
+This vagueness can be on the assignment to a set and/or on the membership on the set.
+One way these vagueness arise is when classifying a continuous scale on a categorical scale, for example: when the temperature is 20ºC is it hot or not? If the temperature drops to 15ºC is it warm?
+When does the switch happen from warm to hot?
+
+In fuzzy set theories the step from a continuous scale to a categorical scale is performed by the [membership function](https://en.wikipedia.org/wiki/Membership_function_(mathematics)) and is called [fuzzification](https://en.wikipedia.org/wiki/Fuzzy_logic#Fuzzification). 
+
+When there is a degree of membership and uncertainty on the membership it is considered a [type-2 fuzzy set](https://en.wikipedia.org/wiki/Type-2_fuzzy_sets_and_systems).
+We can understand it with using as example a paddel ball, it can be used for tennis or paddel (membership), but until we don't test it bouncing on the court we won't be sure (assignment) if it is a paddel ball or a tennis ball. 
+We could think about a ball equally good for tennis and paddel (membership) but which two people thought it is for tennis and the other for paddel. 
+
+These voting/rating system is also a common scenario where fuzzy sets arise.
+When several graders/people need to agree but compromise on a middle ground. 
 
 # Creating a fuzzy set
 
 
 To create a fuzzy set you need to have a column named "fuzzy" if you create it 
-from a data.frame. This column is restricted to a numeric value between 0 and 1. 
-The value indicates the strength (or probability) of the relationship between 
+from a `data.frame` or have a named numeric vector if you create it from a `list`.
+These values are restricted to a numeric value between 0 and 1. 
+The value indicates the strength, membership, truth value (or probability) of the relationship between 
 the element and the set. 
 
 ```{r fuzzy}

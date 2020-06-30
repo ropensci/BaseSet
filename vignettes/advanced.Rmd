@@ -61,7 +61,11 @@ h2GO %>%
     group_by(Evidence, Ontology) %>% 
     count(name = "Freq") %>% 
     ungroup() %>% 
-    mutate(Evidence = fct_reorder2(Evidence, Ontology, -Freq)) %>% 
+    mutate(Evidence = fct_reorder2(Evidence, Ontology, -Freq),
+           Ontology = case_when(Ontology == "CC" ~ "Cellular Component",
+                                Ontology == "MF" ~ "Molecular Function",
+                                Ontology == "BP" ~ "Biological Process",
+                                TRUE ~ NA_character_)) %>% 
     ggplot() +
     geom_col(aes(Evidence, Freq)) +
     facet_grid(~Ontology) + 
@@ -69,6 +73,9 @@ h2GO %>%
     coord_flip() +
     xlab("Evidence")
 ```
+
+We can see that biological process are more likely to be defined by IMP evidence code that means inferred from mutant phenotype. 
+While inferred from physical interaction (IPI) is almost exclusively used to assign molecular functions. 
 
 This graph doesn't consider that some relationships are better annotated than other:
 
@@ -129,6 +136,10 @@ As you can see on the second plot we have very large values but that are on asso
 ```{r distr_sizes}
 head(sizes_set, 10)
 ```
+
+This could radically change if we used fuzzy values. 
+We could assign a fuzzy value to each evidence code given the lowest fuzzy value for the [IEA (Inferred from Electronic Annotation)](http://wiki.geneontology.org/index.php/Inferred_from_Electronic_Annotation_(IEA)) evidence.
+The highest values would be for evidence codes coming from experiments or alike. 
 
 # Human pathways
 
