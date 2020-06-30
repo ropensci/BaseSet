@@ -10,8 +10,8 @@ complement_element(object, elements, ...)
 \S4method{complement_element}{TidySet,characterORfactor}(
   object,
   elements,
-  FUN = NULL,
   name = NULL,
+  FUN = NULL,
   keep = TRUE,
   keep_relations = keep,
   keep_elements = keep,
@@ -26,11 +26,11 @@ complement_element(object, elements, ...)
 \item{...}{Placeholder for other arguments that could be passed to the
 method. Currently not used.}
 
+\item{name}{Name of the new set. By default it adds a "C".}
+
 \item{FUN}{A function to be applied when performing the union.
 The standard union is the "max" function, but you can provide any other
 function that given a numeric vector returns a single number.}
-
-\item{name}{Name of the new set. By default it adds a "C".}
 
 \item{keep}{Logical value to keep all the other sets.}
 
