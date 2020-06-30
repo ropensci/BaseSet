@@ -35,7 +35,7 @@ test_that("tidySet data.frame", {
         "is restricted to a number between 0 and 1."
     )
 
-    expect_error(tidySet(relations[0, ]), "must have")
+    expect_error(tidySet(relations[0, ]), NA)
 
     colnames(relations) <- c("a", "b")
     expect_error(tidySet(relations), "sets and elements columns.")
@@ -92,7 +92,7 @@ test_that("TidySet  allows filtering to 0 elements or sets", {
 })
 
 test_that("Empty list to tidySet", {
-    expect_error(tidySet(list()))
+    expect_error(tidySet(list()), NA)
 
     expect_error(TS <- tidySet(list("a" = character(0))), NA)
     expect_equal(name_sets(TS), "a")
@@ -108,7 +108,6 @@ test_that("Empty list to tidySet", {
 test_that("tidySet fails", {
     a <- new("TidySet")
     expect_s4_class(a, "TidySet")
-    expect_true(any(grepl("must have", is.valid(a))))
     expect_true(any(grepl("colnames for elements", is.valid(a))))
     expect_true(any(grepl("colnames for sets", is.valid(a))))
     expect_true(any(grepl("colnames for relations", is.valid(a))))
@@ -239,11 +238,11 @@ test_that("tidySet long", {
 })
 
 
-test_that("Raw creation of TidySets", {
+test_that("Empty raw creation of TidySets", {
     expect_error(new("TidySet", sets = data.frame(sets = character()),
                      elements = data.frame(elements = character()),
                      relations = data.frame(sets = character(),
                                             elements = character(),
                                             fuzzy = numeric())),
-                 "at least an element or a set")
+                 NA)
 })

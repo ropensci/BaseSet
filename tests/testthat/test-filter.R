@@ -11,7 +11,7 @@ test_that("filter_set works", {
     b <- filter_set(a, sets == "b")
     expect_equal(nSets(b), 1L)
     # Check that it allows to filter and still keeps elements or sets
-    d <- filter_set(a, sets == "c")
+    expect_error(d <- filter_set(a, sets == "c"), NA)
     expect_equal(nSets(d), 0)
     expect_equal(nElements(d), 6)
 
@@ -40,5 +40,8 @@ test_that("filter works", {
     b <- filter(a, sets == "b")
     expect_equal(nSets(b), 1L)
 
-    expect_error(filter(a, sets == "c"), "must have")
+    expect_error(ts <- filter(a, sets == "c"), NA)
+    expect_equal(nSets(ts), 0L)
+    expect_equal(nRelations(ts), 0L)
+    expect_equal(nElements(ts), 0L)
 })

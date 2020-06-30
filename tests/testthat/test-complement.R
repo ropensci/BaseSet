@@ -41,6 +41,7 @@ test_that("complement element works", {
 })
 
 test_that("complement with custom function", {
+    set.seed(927)
     relations <- data.frame(
         sets = c(rep("a", 5), "b"),
         elements = letters[seq_len(6)],
