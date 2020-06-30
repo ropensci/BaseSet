@@ -20,13 +20,13 @@ intersection(object, sets, ...)
 )
 }
 \arguments{
-\item{object}{A TidySet object}
+\item{object}{A TidySet object.}
 
 \item{sets}{The character of sets to be intersect.}
 
 \item{...}{Other named arguments passed to \code{FUN}.}
 
-\item{name}{The name of the new set.}
+\item{name}{The name of the new set. By defaults joins the sets with an "∩".}
 
 \item{FUN}{A function to be applied when performing the union.
 The standard intersection is the "min" function, but you can provide any
@@ -44,7 +44,8 @@ other function that given a numeric vector returns a single number.}
 A \code{TidySet} object.
 }
 \description{
-Given a TidySet creates a new set with the elements on the both of them.
+Given a TidySet creates a new set with the elements on the both of them
+following the logic defined on FUN.
 }
 \section{Methods (by class)}{
 \itemize{
@@ -52,13 +53,23 @@ Given a TidySet creates a new set with the elements on the both of them.
 }}
 
 \examples{
-relations <- data.frame(
-    sets = c(rep("a", 5), "b"),
+rel <- data.frame(
+    sets = c(rep("A", 5), "B"),
+    elements = c("a", "b", "c", "d", "f", "f")
+)
+TS <- tidySet(rel)
+intersection(TS, c("A", "B")) # Default Name
+intersection(TS, c("A", "B"), "C") # Set the name
+# Fuzzy set
+rel <- data.frame(
+    sets = c(rep("A", 5), "B"),
     elements = c("a", "b", "c", "d", "f", "f"),
     fuzzy = runif(6)
 )
-a <- tidySet(relations)
-intersection(a, c("a", "b"), "C")
+TS2 <- tidySet(rel)
+intersection(TS2, c("A", "B"), "C")
+intersection(TS2, c("A", "B"), "C", FUN = function(x){max(sqrt(x))})
+
 }
 \seealso{
 Other methods that create new sets: 

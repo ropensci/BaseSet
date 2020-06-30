@@ -39,6 +39,9 @@ TS \%>\%
 TS \%>\%
     activate("set") \%>\%
     complement("A", keep = FALSE)
+TS \%>\%
+    activate("set") \%>\%
+    complement("A", FUN = function(x){abs(x - 0.2)}, keep = FALSE)
 }
 \seealso{
 \code{\link{activate}}

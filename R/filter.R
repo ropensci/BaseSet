@@ -79,7 +79,8 @@ filter_set.TidySet <- function(.data, ...) {
     } else {
         .data@sets <- droplevels(out)
     }
-    droplevels(.data, elements = FALSE) # Keep elements without sets
+    # Keep elements without sets, drop relations
+    droplevels(.data, elements = FALSE, relations = TRUE)
 }
 
 #' @export
@@ -93,7 +94,8 @@ filter_element.TidySet <- function(.data, ...) {
     } else {
         .data@elements <- droplevels(out)
     }
-    droplevels(.data, sets = FALSE) # Allow empty sets
+    # Keep empty sets, drop relations
+    droplevels(.data, sets = FALSE, relations = TRUE)
 }
 
 #' @export
@@ -107,5 +109,6 @@ filter_relation.TidySet <- function(.data, ...) {
     } else {
         .data@relations <- droplevels(out)
     }
+    # Keep empty sets and elements
     droplevels(.data, sets = FALSE, elements = FALSE)
 }

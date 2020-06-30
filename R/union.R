@@ -1,12 +1,13 @@
 #' @include AllClasses.R AllGenerics.R operations.R
 NULL
 
-#' Merge two sets
+#' Merge two or more sets
 #'
-#' Given a TidySet merges two sets into the new one.
-#' @param object A TidySet object
+#' Given a TidySet merges several sets into the new one using the logic
+#' defined on FUN.
+#' @param object A TidySet object.
 #' @param sets The name of the sets to be used.
-#' @param name The name of the new set.
+#' @param name The name of the new set. By defaults joins the sets with an "∪".
 #' @param FUN A function to be applied when performing the union.
 #' The standard union is the "max" function, but you can provide any other
 #' function that given a numeric vector returns a single number.
@@ -20,13 +21,27 @@ NULL
 #' @family methods that create new sets
 #' @family methods
 #' @examples
-#' relations <- data.frame(
-#'     sets = c(rep("a", 5), "b"),
-#'     elements = letters[seq_len(6)],
-#'     fuzzy = runif(6)
+#' # Classical set
+#' rel <- data.frame(
+#'     sets = c(rep("A", 5), "B", "B"),
+#'     elements = c(letters[seq_len(6)], "a")
 #' )
-#' a <- tidySet(relations)
-#' union(a, c("a", "b"), "C")
+#' TS <- tidySet(rel)
+#' union(TS, c("B", "A"))
+#' # Fuzzy set
+#' rel <- data.frame(
+#'     sets = c(rep("A", 5), "B", "B"),
+#'     elements = c(letters[seq_len(6)], "a"),
+#'     fuzzy = runif(7)
+#' )
+#' TS2 <- tidySet(rel)
+#' # Standard default logic
+#' union(TS2, c("B", "A"), "C")
+#' # Probability logic
+#' probability_logic <- function(x){
+#'     sum(x)-prod(x)
+#' }
+#' union(TS2, c("B", "A"), "C", FUN = probability_logic)
 union <- function(object, ...) {
     UseMethod("union")
 }
@@ -57,6 +72,7 @@ union.TidySet <- function(object, sets, name = NULL, FUN = "max", keep = FALSE,
     } else {
         union$sets[union$sets %in% sets] <- name
     }
+
     union <- fapply(union, FUN, ... = ...)
     object <- replace_interactions(object, union, keep_relations)
     object <- droplevels(object, !keep_elements, !keep_sets, !keep_relations)

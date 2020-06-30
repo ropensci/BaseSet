@@ -20,13 +20,13 @@ union(object, ...)
 )
 }
 \arguments{
-\item{object}{A TidySet object}
+\item{object}{A TidySet object.}
 
 \item{...}{Other named arguments passed to \code{FUN}.}
 
 \item{sets}{The name of the sets to be used.}
 
-\item{name}{The name of the new set.}
+\item{name}{The name of the new set. By defaults joins the sets with an "∪".}
 
 \item{FUN}{A function to be applied when performing the union.
 The standard union is the "max" function, but you can provide any other
@@ -44,16 +44,31 @@ function that given a numeric vector returns a single number.}
 A \code{TidySet} object.
 }
 \description{
-Given a TidySet merges two sets into the new one.
+Given a TidySet merges several sets into the new one, by using the logic
+defined on FUN.
 }
 \examples{
-relations <- data.frame(
-    sets = c(rep("a", 5), "b"),
-    elements = letters[seq_len(6)],
-    fuzzy = runif(6)
+# Classical set
+rel <- data.frame(
+    sets = c(rep("A", 5), "B", "B"),
+    elements = c(letters[seq_len(6)], "a")
 )
-a <- tidySet(relations)
-union(a, c("a", "b"), "C")
+TS <- tidySet(rel)
+union(TS, c("B", "A"))
+# Fuzzy set
+rel <- data.frame(
+    sets = c(rep("A", 5), "B", "B"),
+    elements = c(letters[seq_len(6)], "a"),
+    fuzzy = runif(7)
+)
+TS2 <- tidySet(rel)
+# Standard default logic
+union(TS2, c("B", "A"), "C")
+# Probability logic
+probability_logic <- function(x){
+    sum(x)-prod(x)
+}
+union(TS2, c("B", "A"), "C", FUN = probability_logic)
 }
 \seealso{
 Other methods that create new sets: 

@@ -121,6 +121,9 @@ setMethod("complement_element",
 #' TS %>%
 #'     activate("set") %>%
 #'     complement("A", keep = FALSE)
+#' TS %>%
+#'     activate("set") %>%
+#'     complement("A", FUN = function(x){abs(x - 0.2)}, keep = FALSE)
 #' @export
 complement <- function(.data, ...) {
     UseMethod("complement")
