@@ -345,6 +345,10 @@ methods::setGeneric("remove_column", function(object, slot, column_names)
 #'
 #' Given a TidySet creates a new set with the elements on the both of them
 #' following the logic defined on FUN.
+#'
+#' #' The default uses the `min` function following the [standard fuzzy
+#' definition](https://doi.org/10.1016/S0019-9958(65)90241-X), but it can be
+#' changed.
 #' @param sets The character of sets to be intersect.
 #' @param name The name of the new set. By defaults joins the sets with an "∩".
 #' @inheritParams union

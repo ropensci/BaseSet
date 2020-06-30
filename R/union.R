@@ -5,6 +5,10 @@ NULL
 #'
 #' Given a TidySet merges several sets into the new one using the logic
 #' defined on FUN.
+#'
+#' The default uses the `max` function following the [standard fuzzy
+#' definition](https://doi.org/10.1016/S0019-9958(65)90241-X), but it can be
+#' changed.
 #' @param object A TidySet object.
 #' @param sets The name of the sets to be used.
 #' @param name The name of the new set. By defaults joins the sets with an "∪".

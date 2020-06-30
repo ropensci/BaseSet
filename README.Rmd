@@ -161,10 +161,9 @@ element_size(fuzzy_set)
 
 With fuzzy sets we can filter at certain levels (called alpha cut):
 
-```{r alpha_cut}
+```{r alphaCut}
 fuzzy_set %>% 
   filter(fuzzy > 0.5) %>% 
-  select(-Keep) %>% 
   activate("sets") %>% 
   mutate(sets_origin = c("Reactome", "KEGG"))
 ```
@@ -187,6 +186,16 @@ There are several other packages related to sets, which partially overlap with B
  
  - [`{set6}`](https://cran.r-project.org/package=set6)
  This package implements different classes for different type of sets including fuzzy sets, conditional sets. However, it doesn't handle information associated to elements, sets or relationship. 
+ 
+# Why this package? {#why}
+
+On bioinformatics when looking for the impact of an experiment enrichment methods are applied.
+This involves obtaining several sets of genes from several resources and methods.
+Usually these curated sets of genes are taken at face value. 
+However there are several resources of sets and they [do not agree between them](https://doi.org/10.1186/1471-2105-14-112), regardless they are used without considering any uncertainty on the sets composition. 
+Fuzzy theory has long studied sets whose elements have degrees of membership and/or uncertainty. 
+Therefore one way to improve the methods involve using fuzzy methods and logic on this field. 
+As I couldn't find any package that provided methods for this I set on creating it (after trying to [expand](https://github.com/llrs/GSEAdv) the existing one I knew).
 
 # Code of Conduct {#CoC}
 

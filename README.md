@@ -22,12 +22,20 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 The goal of BaseSet is to facilitate working with sets in an efficient
 way. The package implements methods to work on sets, doing intersection,
 union, complementary, power sets, cartesian product and other set
-operations in a tidy way. Both for classical and fuzzy sets. On fuzzy
-sets, elements have a probability to belong to a set.
+operations in a tidy way.
+
+The package supports
+[classical](https://en.wikipedia.org/wiki/Set_\(mathematics\)) and
+[fuzzy](https://en.wikipedia.org/wiki/Fuzzy_set) sets. Fuzzy sets are
+similar to classical sets but there is some vagueness on the
+relationship between the element and the set.
 
 It also allows to import from several formats used in the life science
-world. Like the GMT and the GAF or the [OBO
-format](http://www.obofoundry.org/) file for ontologies.
+world. Like the
+[GMT](https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29)
+and the
+[GAF](http://geneontology.org/docs/go-annotation-file-gaf-format-2.1/)
+or the [OBO format](http://www.obofoundry.org/) file for ontologies.
 
 You can save information about the elements, sets and their relationship
 on the object itself. For instance origin of the set, categorical or
@@ -43,7 +51,7 @@ Conduct](#Code-of-Conduct))
 
 The package depends on some packages from Bioconductor. In order to
 install some of its dependencies you’ll need first to install
-BiocManager:
+`{BiocManager}`:
 
 ``` r
 if (!require("BiocManager")) {
@@ -188,8 +196,9 @@ sets(sets_enriched)
 
 ## Fuzzy sets
 
-In fuzzy sets the elements are related to a set by a probability (the
-association is not guaranteed).
+In [fuzzy sets](https://en.wikipedia.org/wiki/Fuzzy_set) the elements
+are vaguely related to the set by a numeric value usually between 0 and
+1. This implies that the association is not guaranteed.
 
 ``` r
 relations <- data.frame(sets = c(rep("A", 5), "B", "B"), 
@@ -207,7 +216,8 @@ fuzzy_set
 #> 7        f    B 0.9460158
 ```
 
-The equivalent operations are possible with the sets
+The equivalent operations performed on classical sets are possible with
+fuzzy sets:
 
 ``` r
 union(fuzzy_set, sets = c("A", "B")) 
@@ -244,7 +254,8 @@ intersection(fuzzy_set, sets = c("A", "B"), name = "D", keep = TRUE)
 #> 8        f    B 0.9460158
 ```
 
-With fuzzy sets, the number of elements or cardinality is a probability:
+Assuming that the fuzzy value is a probability, we can calculate which
+is the probability of having several elements:
 
 ``` r
 # A set could be empty
@@ -287,13 +298,11 @@ element_size(fuzzy_set)
 #> 13        f    1  0.94601581
 ```
 
-With fuzzy sets we can filter at certain probability (called alpha cut):
+With fuzzy sets we can filter at certain levels (called alpha cut):
 
 ``` r
 fuzzy_set %>% 
-  mutate(Keep = ifelse(fuzzy > 0.5, TRUE, FALSE)) %>% 
-  filter(Keep == TRUE) %>% 
-  select(-Keep) %>% 
+  filter(fuzzy > 0.5) %>% 
   activate("sets") %>% 
   mutate(sets_origin = c("Reactome", "KEGG"))
 #>   elements sets     fuzzy sets_origin
@@ -317,27 +326,42 @@ overlap with BaseSet functionality:
     between two different objects, while a single TidySet object (the
     class implemented in BaseSet) can store one or thousands of sets.
 
-  - [GSEABase](https://bioconductor.org/packages/GSEABase)  
+  - [`{GSEABase}`](https://bioconductor.org/packages/GSEABase)  
     Implements a class to store sets and related information, but it
     doesn’t allow to store fuzzy sets and it is also quite slow as it
     creates several classes for annotating each set.
 
-  - [BiocSets](https://bioconductor.org/packages/BiocSets)  
+  - [`{BiocSets}`](https://bioconductor.org/packages/BiocSets)  
     Implements a tidy class for sets but does not handle fuzzy sets. It
     also has less functionality to operate with sets, like power sets
     and cartesian product. BiocSets was influenced by the development of
-    this
-    package.
+    this package.
 
-  - [hierarchicalSets](https://CRAN.R-project.org/package=hierarchicalSets)  
+  - [`{hierarchicalSets}`](https://CRAN.R-project.org/package=hierarchicalSets)  
     This package is focused on clustering of sets that are inside other
     sets and visualizations. However, BaseSet is focused on storing and
     manipulate sets including hierarchical sets.
 
-  - [set6](https://cran.r-project.org/package=set6) This package
+  - [`{set6}`](https://cran.r-project.org/package=set6) This package
     implements different classes for different type of sets including
     fuzzy sets, conditional sets. However, it doesn’t handle information
     associated to elements, sets or relationship.
+
+# Why this package?
+
+On bioinformatics when looking for the impact of an experiment
+enrichment methods are applied. This involves obtaining several sets of
+genes from several resources and methods. Usually these curated sets of
+genes are taken at face value. However there are several resources of
+sets and they [do not agree between
+them](https://doi.org/10.1186/1471-2105-14-112), regardless they are
+used without considering any uncertainty on the sets composition. Fuzzy
+theory has long studied sets whose elements have degrees of membership
+and/or uncertainty. Therefore one way to improve the methods involve
+using fuzzy methods and logic on this field. As I couldn’t find any
+package that provided methods for this I set on creating it (after
+trying to [expand](https://github.com/llrs/GSEAdv) the existing one I
+knew).
 
 # Code of Conduct
 
