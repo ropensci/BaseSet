@@ -38,7 +38,7 @@ test_that("tidy works in GeneSetCollection", {
 })
 
 test_that("tidy works in GeneColorSet", {
-    skip("experimentData is not imported")
+    # skip("experimentData is not imported")
     data("sample.ExpressionSet", package = "Biobase")
     gcs1 <- GSEABase::GeneColorSet(sample.ExpressionSet[100:109],
         phenotype = "imaginary"
