@@ -25,7 +25,8 @@ test_that("pull works", {
 
     # Pull sets
     out <- pull_set(a, sets)
-    expect_equal(out, c("a", "b", "a2", "b2"))
+    # Not sure if it should return factors...
+    expect_equal(out, as.factor(c("a", "b", "a2", "b2")))
 })
 
 test_that("pull uses active", {
@@ -55,5 +56,5 @@ test_that("pull uses active", {
     # Pull sets
     a <- activate(a, "sets")
     out <- pull(a, sets)
-    expect_equal(out, c("a", "b", "a2", "b2"))
+    expect_equal(out, as.factor(c("a", "b", "a2", "b2")))
     })
