@@ -26,14 +26,23 @@ knitr::opts_chunk$set(
 
 # BaseSet
 
-The goal of BaseSet is to facilitate working with sets in an efficient way. The package implements methods to work on sets, doing intersection, union, complementary, power sets, cartesian product and other set operations in a tidy way. Both for classical and fuzzy sets. On fuzzy sets, elements have a probability to belong to a set. 
+The goal of BaseSet is to facilitate working with sets in an efficient way. 
+The package implements methods to work on sets, doing intersection, union, complementary, power sets, cartesian product and other set operations in a tidy way. 
 
 
-It also allows to import from several formats used in the life science world. Like the GMT and the GAF or the [OBO format](http://www.obofoundry.org/) file for ontologies.
+The package supports [classical](https://en.wikipedia.org/wiki/Set_(mathematics)) and [fuzzy](https://en.wikipedia.org/wiki/Fuzzy_set) sets. 
+Fuzzy sets are similar to classical sets but there is some vagueness on the relationship between the element and the set. 
 
-You can save information about the elements, sets and their relationship on the object itself. For instance origin of the set, categorical or numeric data associated with sets...
 
-Watch BaseSet working on the [examples](#Examples) below and in the vignettes. You can also find [related packages](#Related-packages) and the differences with BaseSet. If you have some questions or bugs [open an issue](https://github.com/llrs/BaseSet/issues) (remember the [Code of Conduct](#Code-of-Conduct))
+It also allows to import from several formats used in the life science world. 
+Like the [GMT](https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29) and the [GAF](http://geneontology.org/docs/go-annotation-file-gaf-format-2.1/) or the [OBO format](http://www.obofoundry.org/) file for ontologies.
+
+You can save information about the elements, sets and their relationship on the object itself. 
+For instance origin of the set, categorical or numeric data associated with sets...
+
+Watch BaseSet working on the [examples](#Examples) below and in the vignettes. 
+You can also find [related packages](#Related-packages) and the differences with BaseSet. 
+If you have some questions or bugs [open an issue](https://github.com/llrs/BaseSet/issues) (remember the [Code of Conduct](#Code-of-Conduct))
 
 # Installation
 
@@ -114,7 +123,8 @@ sets(sets_enriched)
 
 ## Fuzzy sets
 
-In fuzzy sets the elements are related to a set by a probability (the association is not guaranteed).
+In [fuzzy sets](https://en.wikipedia.org/wiki/Fuzzy_set) the elements are vaguely related to the set by a numeric value usually between 0 and 1.
+This implies that the association is not guaranteed.
 
 ```{r fuzzy}
 relations <- data.frame(sets = c(rep("A", 5), "B", "B"), 
@@ -124,7 +134,7 @@ fuzzy_set <- tidySet(relations)
 fuzzy_set
 ```
 
-The equivalent operations are possible with the sets
+The equivalent operations performed on classical sets are possible with fuzzy sets:
 
 ```{r fuzzy-operations}
 union(fuzzy_set, sets = c("A", "B")) 
@@ -136,7 +146,7 @@ intersection(fuzzy_set, sets = c("A", "B"))
 intersection(fuzzy_set, sets = c("A", "B"), name = "D", keep = TRUE) 
 ```
 
-With fuzzy sets, the number of elements or cardinality is a probability:
+Assuming that the fuzzy value is a probability, we can calculate which is the probability of having several elements:
 
 ```{r prob}
 # A set could be empty
@@ -149,12 +159,11 @@ set_size(fuzzy_set) %>%
 element_size(fuzzy_set)
 ```
 
-With fuzzy sets we can filter at certain probability (called alpha cut):
+With fuzzy sets we can filter at certain levels (called alpha cut):
 
-```{r}
+```{r alpha_cut}
 fuzzy_set %>% 
-  mutate(Keep = ifelse(fuzzy > 0.5, TRUE, FALSE)) %>% 
-  filter(Keep == TRUE) %>% 
+  filter(fuzzy > 0.5) %>% 
   select(-Keep) %>% 
   activate("sets") %>% 
   mutate(sets_origin = c("Reactome", "KEGG"))
