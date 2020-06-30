@@ -83,9 +83,6 @@ tidySet.data.frame <- function(relations) {
 #' a <- tidySet(x) # Only characters or factors are allowed as elements.
 #' }
 tidySet.list <- function(relations) {
-    if (length(relations) == 0) {
-        stop("Provide a set.", call. = FALSE)
-    }
 
     char <- vapply(relations, is.character, logical(1L))
     num <- vapply(relations, is.numeric, logical(1L))
@@ -97,7 +94,8 @@ tidySet.list <- function(relations) {
         )
     }
     if (is.null(names(relations))) {
-        names(relations) <- paste0("Set", seq_along(relations))
+        set_names <- paste0("Set", seq_along(relations))
+        names(relations) <- set_names[length(relations)]
     }
     if (all(char | fact)) {
         relations <- lapply(relations, unique)
