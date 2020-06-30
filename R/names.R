@@ -42,13 +42,24 @@ setMethod("name_elements<-",
         if (is.factor(value)) {
             value <- as.character(value)
         }
-        value2 <- rep(value, length.out = length(old))
-        if (is.factor(object@elements$elements)) {
-            levels(object@elements$elements) <- value2
-        } else {
-            object@elements$elements <- value2
+
+        elements <- elements(object)
+        if (is.factor(elements$elements)) {
+            levels(elements$elements) <- value
         }
-        object@elements <- unique(object@elements)
+        if (length(value) == length(old)) {
+            elements$elements <- value
+        } else if (length(value) > length(old)) {
+            stop("More elements provided than existing.\n\t",
+                 "Use add_elements() if you want to add elements.",
+                 call. = FALSE)
+        } else {
+            stop("Less names provided than existing.\n\t",
+                 "Use filter() if you want to remove some elements",
+                 call. = FALSE)
+        }
+
+        object@elements <- unique(elements)
         if (anyDuplicated(object@elements$element) > 0) {
             stop("Duplicated elements but with different information",
                 call. = FALSE
@@ -82,13 +93,24 @@ setMethod("name_sets<-",
         if (is.factor(value)) {
             value <- as.character(value)
         }
-        value2 <- rep(value, length.out = length(old))
-        if (is.factor(object@sets$sets)) {
-            levels(object@sets$sets) <- value2
-        } else {
-            object@sets$sets <- value2
+        sets <- sets(object)
+        if (is.factor(sets$sets)) {
+            levels(sets$sets) <- value
         }
-        object@sets <- unique(object@sets)
+
+        if (length(value) == length(old)) {
+            sets$sets <- value
+        } else if (length(value) > length(old)) {
+            stop("More sets provided than existing.\n\t",
+                 "Use add_sets() if you want to add sets.",
+                 call. = FALSE)
+        } else {
+            stop("Less names provided than existing.\n\t",
+                 "Use filter() if you want to remove some sets.",
+                 call. = FALSE)
+        }
+
+        object@sets <- unique(sets)
         if (anyDuplicated(object@sets$sets) > 0) {
             stop("Duplicated sets but with different information",
                 call. = FALSE
