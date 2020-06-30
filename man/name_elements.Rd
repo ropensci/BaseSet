@@ -23,11 +23,11 @@ A \code{TidySet} object.
 \description{
 Retrieve the name of the elements.
 }
-\section{Functions}{
+\section{Methods (by class)}{
 \itemize{
-\item \code{name_elements,TidySet-method}: Name elements
+\item \code{TidySet}: Name elements
 
-\item \code{name_elements<-,TidySet,characterORfactor-method}: Rename elements
+\item \code{object = TidySet,value = characterORfactor}: Rename elements
 }}
 
 \examples{

@@ -46,9 +46,9 @@ A \code{TidySet} object.
 \description{
 Given a TidySet creates a new set with the elements on the both of them.
 }
-\section{Functions}{
+\section{Methods (by class)}{
 \itemize{
-\item \code{intersection,TidySet,character-method}: Applies the standard intersection
+\item \code{object = TidySet,sets = character}: Applies the standard intersection
 }}
 
 \examples{

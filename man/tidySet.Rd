@@ -68,7 +68,8 @@ tidySet(relations)
 x <- list("A" = letters[1:5], "B" = LETTERS[3:7], "c" = runif(5))
 a <- tidySet(x) # Only characters or factors are allowed as elements.
 }
-M <- matrix(c(1, 0.5, 1, 0), ncol = 2, dimnames = list(c("A", "B"), c("a", "b")))
+M <- matrix(c(1, 0.5, 1, 0), ncol = 2,
+            dimnames = list(c("A", "B"), c("a", "b")))
 tidySet(M)
 }
 \seealso{

@@ -22,9 +22,9 @@ A \code{TidySet} object.
 \description{
 Change the default names of sets and elements.
 }
-\section{Functions}{
+\section{Methods (by class)}{
 \itemize{
-\item \code{rename_set,TidySet-method}: Rename sets
+\item \code{TidySet}: Rename sets
 }}
 
 \seealso{

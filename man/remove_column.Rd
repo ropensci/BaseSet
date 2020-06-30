@@ -22,9 +22,9 @@ A \code{TidySet} object.
 \description{
 Removes column from a slot of the TidySet object.
 }
-\section{Functions}{
+\section{Methods (by class)}{
 \itemize{
-\item \code{remove_column,TidySet,character,character-method}: Remove columns to any slot
+\item \code{object = TidySet,slot = character,column_names = character}: Remove columns to any slot
 }}
 
 \seealso{

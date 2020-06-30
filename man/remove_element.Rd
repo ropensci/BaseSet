@@ -24,9 +24,9 @@ A \code{TidySet} object.
 Given a TidySet remove elements and the related relations and if
 required also the sets.
 }
-\section{Functions}{
+\section{Methods (by class)}{
 \itemize{
-\item \code{remove_element,TidySet,characterORfactor-method}: Removes everything related to an element
+\item \code{object = TidySet,elements = characterORfactor}: Removes everything related to an element
 }}
 
 \examples{

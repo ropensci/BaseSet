@@ -41,7 +41,7 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Collate: 
     'AllClasses.R'
     'AllGenerics.R'
@@ -54,6 +54,7 @@ Collate:
     'adjacency.R'
     'arrange.R'
     'basesets-package.R'
+    'cardinality.R'
     'cartesian.R'
     'complement.R'
     'data_frame.R'

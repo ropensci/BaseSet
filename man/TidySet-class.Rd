@@ -10,7 +10,8 @@ A set is a group of unique elements it can be either a fuzzy set, where the
 relationship is between 0 or 1 or nominal.
 }
 \details{
-When printed if an element or a set do not have any relationship is not shown.
+When printed if an element or a set do not have any relationship is not
+shown.
 They can be created from lists, matrices or data.frames. Check \code{\link[=tidySet]{tidySet()}}
 constructor for more information.
 }

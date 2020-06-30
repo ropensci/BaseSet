@@ -22,9 +22,9 @@ A \code{TidySet} object.
 \description{
 Add column to a slot of the TidySet object.
 }
-\section{Functions}{
+\section{Methods (by class)}{
 \itemize{
-\item \code{add_column,TidySet,character-method}: Add a column to any slot
+\item \code{object = TidySet,slot = character}: Add a column to any slot
 }}
 
 \examples{

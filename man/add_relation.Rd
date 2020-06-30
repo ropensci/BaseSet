@@ -23,9 +23,9 @@ A \code{TidySet} object.
 \description{
 Given a TidySet adds new relations between elements and sets.
 }
-\section{Functions}{
+\section{Methods (by class)}{
 \itemize{
-\item \code{add_relation,TidySet,data.frame-method}: Adds relations
+\item \code{object = TidySet,relations = data.frame}: Adds relations
 }}
 
 \examples{

@@ -21,9 +21,9 @@ that size.
 \description{
 Calculate the probability of being of different sizes for a given set.
 }
-\section{Functions}{
+\section{Methods (by class)}{
 \itemize{
-\item \code{element_size,TidySet-method}: Calculates the number of sets one element appears
+\item \code{TidySet}: Calculates the number of sets one element appears
 }}
 
 \examples{

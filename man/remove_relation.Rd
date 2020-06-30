@@ -25,9 +25,9 @@ A \code{TidySet} object.
 \description{
 Given a TidySet removes relations between elements and sets
 }
-\section{Functions}{
+\section{Methods (by class)}{
 \itemize{
-\item \code{remove_relation,TidySet,characterORfactor,characterORfactor-method}: Removes a relation between elements and sets.
+\item \code{object = TidySet,elements = characterORfactor,sets = characterORfactor}: Removes a relation between elements and sets.
 }}
 
 \examples{

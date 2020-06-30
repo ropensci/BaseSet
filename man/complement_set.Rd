@@ -10,6 +10,7 @@ complement_set(object, sets, ...)
 \S4method{complement_set}{TidySet,characterORfactor}(
   object,
   sets,
+  FUN = NULL,
   name = NULL,
   keep = TRUE,
   keep_relations = keep,
@@ -24,6 +25,10 @@ complement_set(object, sets, ...)
 
 \item{...}{Placeholder for other arguments that could be passed to the
 method. Currently not used.}
+
+\item{FUN}{A function to be applied when performing the union.
+The standard union is the "max" function, but you can provide any other
+function that given a numeric vector returns a single number.}
 
 \item{name}{Name of the new set. By default it adds a "C".}
 
@@ -41,9 +46,9 @@ A \code{TidySet} object.
 \description{
 Return the complement for a set
 }
-\section{Functions}{
+\section{Methods (by class)}{
 \itemize{
-\item \code{complement_set,TidySet,characterORfactor-method}: Complement of the sets.
+\item \code{object = TidySet,sets = characterORfactor}: Complement of the sets.
 }}
 
 \examples{

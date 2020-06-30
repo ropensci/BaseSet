@@ -9,8 +9,8 @@ size(object, ...)
 \arguments{
 \item{object}{A TidySet object}
 
-\item{...}{Character vector with the name of elements or sets you want to calculate
-the size of.}
+\item{...}{Character vector with the name of elements or sets you want to
+calculate the size of.}
 }
 \value{
 The size of the elements or sets. If there is no active slot or it
