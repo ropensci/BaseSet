@@ -38,33 +38,12 @@ setClassUnion("characterORfactor", c("character", "factor"))
 is.valid <- function(object) {
     errors <- c()
 
-    # Check that slots are not empty
-
-    empty <- vapply(c("sets", "elements"), function(x) {
-        nrow(slot(object, x)) == 0
-    }, logical(1L))
-
-    if (all(empty)) {
-        errors <- c(
-            errors,
-            "A TidySet object must have at least an element or a set."
-        )
-    }
-
     # Check that the slots have the right columns
     errors <- c(errors, check_colnames_slot(object, "elements", "elements"))
     errors <- c(errors, check_colnames_slot(object, "sets", "sets"))
     errors <- c(errors, check_colnames_slot(object, "relations", "elements"))
     errors <- c(errors, check_colnames_slot(object, "relations", "sets"))
     errors <- c(errors, check_colnames_slot(object, "relations", "fuzzy"))
-
-    # Check that the tables are related
-    if (!all(unique(object@relations$sets) %in% object@sets$sets)) {
-        errors <- c(errors, "All sets must be described on their table.")
-    }
-    if (!all(unique(object@relations$elements) %in% object@elements$elements)) {
-        errors <- c(errors, "All elements must be described on their table.")
-    }
 
     # Check that the columns contain the least information required
     elements <- object@elements$elements
@@ -78,10 +57,10 @@ is.valid <- function(object) {
     }
 
     # Check the type of data
-    if (!is.character(sets) && !is.factor(sets)) {
+    if (!is.ch_fct(sets)) {
         errors <- c(errors, "Sets must be characters or factors")
     }
-    if (!is.character(elements) && !is.factor(elements)) {
+    if (!is.ch_fct(elements)) {
         errors <- c(errors, "Elements must be characters or factors")
     }
 
@@ -153,8 +132,8 @@ check_colnames_slot <- function(object, slot, colname) {
 
     if (length(array_names) == 0) {
         paste0(
-            "Provide at least the required colnames for ", slot,
-            ". See documentation."
+            "Missing required colnames for ", slot,
+            ". See tidySet documentation."
         )
     } else if (check_colnames(array_names, colname)) {
         paste0(colname, " column is not present on slot ", slot, ".")
@@ -163,4 +142,8 @@ check_colnames_slot <- function(object, slot, colname) {
 
 check_colnames <- function(array_names, colname) {
     all(!colname %in% array_names)
+}
+
+is.ch_fct <- function(x) {
+    is.character(x) || is.factor(x)
 }
