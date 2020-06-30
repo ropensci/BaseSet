@@ -23,3 +23,12 @@ A TidySet object.
 \description{
 Drop elements and sets without any relation.
 }
+\examples{
+rel <- list(A = letters[1:3], B = character())
+TS <- tidySet(rel)
+TS
+sets(TS)
+TS2 <- droplevels(TS)
+TS2
+sets(TS2)
+}
