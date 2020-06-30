@@ -8,7 +8,7 @@ setMethod("complement_set",
         object = "TidySet",
         sets = "characterORfactor"
     ),
-    function(object, sets, name = NULL, keep = TRUE,
+    function(object, sets, name = NULL, FUN = NULL, keep = TRUE,
     keep_relations = keep,
     keep_elements = keep,
     keep_sets = keep) {
@@ -20,7 +20,13 @@ setMethod("complement_set",
         involved_relations <- old_relations$sets %in% sets
         # Elements present on sets
         complement <- old_relations[involved_relations, , drop = FALSE]
-        complement$fuzzy <- 1 - complement$fuzzy
+
+        if (is.null(FUN)) {
+            complement$fuzzy <- 1 - complement$fuzzy
+        } else {
+            fun <- match.fun(FUN)
+            complement$fuzzy <- fun(complement$fuzzy)
+        }
 
         if (is.null(name)) {
             name <- naming("complement", sets)
@@ -47,7 +53,7 @@ setMethod("complement_element",
         object = "TidySet",
         elements = "characterORfactor"
     ),
-    function(object, elements, name = NULL, keep = TRUE,
+    function(object, elements, name = NULL, FUN = NULL, keep = TRUE,
     keep_relations = keep,
     keep_elements = keep,
     keep_sets = keep) {
@@ -58,7 +64,12 @@ setMethod("complement_element",
         complement <- old_relations[old_relations$elements %in% elements, ,
             drop = FALSE
         ]
-        complement$fuzzy <- 1 - complement$fuzzy
+        if (is.null(FUN)) {
+            complement$fuzzy <- 1 - complement$fuzzy
+        } else {
+            fun <- match.fun(FUN)
+            complement$fuzzy <- fun(complement$fuzzy)
+        }
 
         if (is.null(name)) {
             name <- naming("complement", elements)
@@ -92,24 +103,24 @@ setMethod("complement_element",
 #' @family methods
 #' @seealso \code{\link{activate}}
 #' @examples
-#' relations <- data.frame(
-#'     sets = c("a", "a", "b", "b", "c", "c"),
+#' rel <- data.frame(
+#'     sets = c("A", "A", "B", "B", "C", "C"),
 #'     elements = letters[seq_len(6)],
 #'     fuzzy = runif(6)
 #' )
-#' a <- tidySet(relations)
-#' a %>%
+#' TS <- tidySet(rel)
+#' TS %>%
 #'     activate("elements") %>%
 #'     complement("a")
-#' a %>%
+#' TS %>%
 #'     activate("elements") %>%
 #'     complement("a", "C_a", keep = FALSE)
-#' a %>%
+#' TS %>%
 #'     activate("set") %>%
-#'     complement("a")
-#' a %>%
+#'     complement("A")
+#' TS %>%
 #'     activate("set") %>%
-#'     complement("a", keep = FALSE)
+#'     complement("A", keep = FALSE)
 #' @export
 complement <- function(.data, ...) {
     UseMethod("complement")
@@ -119,7 +130,8 @@ complement <- function(.data, ...) {
 #' @method complement TidySet
 complement.TidySet <- function(.data, ...) {
     if (is.null(active(.data))) {
-        stop("Specify about what do you wan the complement. sets or elements?")
+        stop("Specify about what do you want the complement.
+             Activate sets or elements")
     } else {
         switch(
             active(.data),

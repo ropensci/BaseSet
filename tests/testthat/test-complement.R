@@ -40,6 +40,21 @@ test_that("complement element works", {
     expect_equal(relations(b)$fuzzy, 1 - relations[2, "fuzzy"])
 })
 
+test_that("complement with custom function", {
+    relations <- data.frame(
+        sets = c(rep("a", 5), "b"),
+        elements = letters[seq_len(6)],
+        fuzzy = runif(6)
+    )
+    a <- tidySet(relations = relations)
+    b <- complement_element(a, "b", "b_set", FUN = function(x){x-0.2},
+                            keep = FALSE)
+    expect_equal(nSets(b), 1L)
+    expect_equal(nElements(b), 1L)
+    expect_equal(nRelations(b), 1L)
+    expect_equal(relations(b)$fuzzy, relations[2, "fuzzy"] - 0.2)
+})
+
 test_that("complement element works without name", {
     relations <- data.frame(
         sets = c(rep("a", 5), "b"),
@@ -54,7 +69,7 @@ test_that("complement element works without name", {
     expect_equal(relations(b)$fuzzy, 1 - relations[2, "fuzzy"])
 })
 
-# Not sure about this behaviour
+# Not sure about this behavior
 test_that("complement elements works for several elements", {
     relations <- data.frame(
         sets = c(rep("A", 5), "B", "C"),
