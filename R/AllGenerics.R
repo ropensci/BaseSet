@@ -479,14 +479,25 @@ methods::setGeneric("remove_set", function(object, sets, ...)
 #' @export
 #' @examples
 #' relations <- data.frame(
-#'     sets = c("a", "a", "b", "b", "c", "c"),
+#'     sets = c("A", "A", "B", "B", "C", "C"),
 #'     elements = letters[seq_len(6)],
 #'     fuzzy = runif(6)
 #' )
 #' a <- tidySet(relations)
-#' complement_set(a, "a")
+#' complement_set(a, "A")
 methods::setGeneric("complement_set", function(object, sets, ...)
       standardGeneric("complement_set")
+)
+#' Cardinality or membership of sets
+#'
+#' Calculates the membership of sets according to the logic defined in FUN.
+#' @export
+#' @examples
+#' rel <- list(A = letters[1:3], B = letters[1:2])
+#' TS <- tidySet(rel)
+#' cardinality(TS, "A")
+methods::setGeneric("cardinality", function(object, sets = NULL, ...)
+  standardGeneric("cardinality")
 )
 
 #' Complement of elements

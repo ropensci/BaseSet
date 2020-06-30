@@ -1,0 +1,10 @@
+test_that("cardinality works", {
+    rel <- list(A = letters[1:3], B = letters[1:2])
+    TS <- tidySet(rel)
+    card <- cardinality(TS, "A")
+    expect_equal(card[1, 2], 3)
+    expect_equal(colnames(card), c("sets", "cardinality"))
+    card <- cardinality(TS)
+    expect_equal(colnames(card), c("sets", "cardinality"))
+    expect_equal(nrow(card), 2L)
+})
