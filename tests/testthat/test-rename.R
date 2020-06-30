@@ -24,4 +24,6 @@ test_that("name_elements<- works well", {
     y <- tidySet(x)
     name_elements(y) <- letters[1:10]
     expect_equal(name_elements(y), letters[1:10])
+
+    expect_error(name_elements(y) <- letters[1:11], "More elements provided")
 })
