@@ -9,7 +9,7 @@ test_that("droplevels sets works", {
 test_that("droplevels elements works", {
     rel <- list(A = letters[1:3])
     TS <- tidySet(rel)
-    name_elements(TS) <- letters[1:4]
+    TS <- add_elements(TS, letters[4])
     expect_equal(nrow(elements(TS)), 4)
     TS2 <- droplevels(TS)
     expect_equal(nrow(elements(TS2)), 3)
