@@ -54,7 +54,8 @@ tidySet.data.frame <- function(relations) {
     )
     if (!"fuzzy" %in% colnames(relations)) {
         fuzzy <- 1
-        relations <- cbind.data.frame(relations, fuzzy, stringsAsFactors = FALSE)
+        relations <- cbind.data.frame(relations, fuzzy,
+                                      stringsAsFactors = FALSE)
     } else if (!is.numeric(relations$fuzzy)) {
         stop("Fuzzy column should be a numeric column with numbers between 0 and 1.",
              call. = FALSE)
@@ -149,7 +150,8 @@ tidySet.list <- function(relations) {
 #' @describeIn tidySet Convert an incidence matrix into a TidySet
 #' @export
 #' @examples
-#' M <- matrix(c(1, 0.5, 1, 0), ncol = 2, dimnames = list(c("A", "B"), c("a", "b")))
+#' M <- matrix(c(1, 0.5, 1, 0), ncol = 2,
+#'             dimnames = list(c("A", "B"), c("a", "b")))
 #' tidySet(M)
 tidySet.matrix <- function(relations) {
     if (anyDuplicated(colnames(relations))) {

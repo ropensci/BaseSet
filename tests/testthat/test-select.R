@@ -23,7 +23,8 @@ test_that("select works", {
     ))
     b <- select_relation(a, random, sets, elements, fuzzy)
     expect_equal(dim(relations(b)), c(12, 4))
-    expect_equal(colnames(relations(b)), c("random", "sets", "elements", "fuzzy"))
+    expect_equal(colnames(relations(b)),
+                 c("random", "sets", "elements", "fuzzy"))
 
     b <- select(a, sets, elements, fuzzy)
     expect_equal(nRelations(b), 12L)

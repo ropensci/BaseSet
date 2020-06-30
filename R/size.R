@@ -3,8 +3,8 @@
 #' Calculate the size of the elements or sets. First it must have active either
 #' sets or elements.
 #' @param object A TidySet object
-#' @param ... Character vector with the name of elements or sets you want to calculate
-#' the size of.
+#' @param ... Character vector with the name of elements or sets you want to
+#' calculate the size of.
 #' @export
 #' @return The size of the elements or sets. If there is no active slot or it
 #' is the relations slot returns the TidySet object with a warning.

@@ -79,11 +79,17 @@ test_that("tidySet.list keeps empty set", {
     TS <- tidySet(x)
     expect_equal(nSets(TS), 2L)
 
-    x <- list(a = c("A", "B"), b = character(0), c = character(0), d = character(0))
+    x <- list(a = c("A", "B"), b = character(0), c = character(0),
+              d = character(0))
     TS <- tidySet(x)
     expect_equal(nSets(TS), 4L)
 })
 
+test_that("TidySet  allows filtering to 0 elements or sets", {
+    rel <- data.frame(elements = "a", sets = "B")
+    TS <- tidySet(rel)
+    expect_error(filter_element(TS, elements != "a"), NA)
+})
 
 test_that("Empty list to tidySet", {
     expect_error(tidySet(list()))
@@ -107,7 +113,8 @@ test_that("tidySet fails", {
     expect_true(any(grepl("colnames for sets", is.valid(a))))
     expect_true(any(grepl("colnames for relations", is.valid(a))))
     expect_true(any(grepl("Sets must be characters or factors", is.valid(a))))
-    expect_true(any(grepl("Elements must be characters or factors", is.valid(a))))
+    expect_true(any(grepl("Elements must be characters or factors",
+                          is.valid(a))))
     expect_true(any(grepl("A fuzzy column must be present", is.valid(a))))
     expect_false(is_valid(a))
 
@@ -223,7 +230,7 @@ test_that("tidySet long", {
             "regulates_expression_of(ENSEMBL:ENSG00000134852)",
             "regulates_expression_of(ENSEMBL:ENSG00000134852)",
             "regulates_expression_of(ENSEMBL:ENSG00000128513)",
-            "occurs_in(CL:0002618),regulates_expression_of(ENSEMBL:ENSG00000090339)",
+    "occurs_in(CL:0002618),regulates_expression_of(ENSEMBL:ENSG00000090339)",
             "regulates_expression_of(ENSEMBL:ENSG00000171862)"
         ),
         stringsAsFactors = FALSE

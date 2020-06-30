@@ -96,6 +96,7 @@ fapply <- function(relations, FUN, ...) {
         warning("Dropping columns. Consider using `move_to`")
     }
     # Handle the duplicate cases
+    relations <- unique(relations[, c("sets", "elements", "fuzzy")])
     basic <- paste(relations$elements, relations$sets)
     fuzzy <- split(relations$fuzzy, basic)
     # Helper function probably useful for intersection too
