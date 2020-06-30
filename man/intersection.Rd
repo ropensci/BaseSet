@@ -3,7 +3,7 @@
 \name{intersection}
 \alias{intersection}
 \alias{intersection,TidySet,character-method}
-\title{Intersection of two sets}
+\title{Intersection of two or more sets}
 \usage{
 intersection(object, sets, ...)
 

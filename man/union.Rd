@@ -3,7 +3,7 @@
 \name{union}
 \alias{union}
 \alias{union.TidySet}
-\title{Merge two sets}
+\title{Merge two or more sets}
 \usage{
 union(object, ...)
 
@@ -44,7 +44,7 @@ function that given a numeric vector returns a single number.}
 A \code{TidySet} object.
 }
 \description{
-Given a TidySet merges several sets into the new one, by using the logic
+Given a TidySet merges several sets into the new one using the logic
 defined on FUN.
 }
 \examples{
