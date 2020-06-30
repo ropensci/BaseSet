@@ -53,7 +53,7 @@ tidySet.data.frame <- function(relations) {
         stringsAsFactors = FALSE
     )
     if (!"fuzzy" %in% colnames(relations)) {
-        fuzzy <- 1
+        fuzzy <- rep(1, nrow(relations))
         relations <- cbind.data.frame(relations, fuzzy,
                                       stringsAsFactors = FALSE)
     } else if (!is.numeric(relations$fuzzy)) {
@@ -65,9 +65,6 @@ tidySet.data.frame <- function(relations) {
     new("TidySet", sets = sets, elements = elements, relations = relations)
 }
 
-is.ch_fct <- function(x) {
-    is.character(x) || is.factor(x)
-}
 #' @export
 #' @describeIn tidySet Convert to a TidySet from a list
 #' @examples
