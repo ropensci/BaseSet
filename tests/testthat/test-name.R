@@ -47,6 +47,7 @@ test_that("name_elements<- works", {
         fuzzy = runif(6)
     )
     a <- tidySet(relations = relations)
+    expect_error(name_elements(a)[1:2] <- LETTERS[1:2], NA)
     name_elements(a) <- LETTERS[1:6]
     out <- name_elements(a)
     expect_length(out, 6L)
