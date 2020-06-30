@@ -90,7 +90,7 @@ elements_sets <- function(object) {
 #' @param FUN A function to perform on the fuzzy numbers.
 #' @param ... Other named arguments passed to `FUN`.
 #' @return A modified TidySet object
-#' @noRd
+#' @keywords internal
 fapply <- function(relations, FUN, ...) {
     if (ncol(relations) > 3) {
         warning("Dropping columns. Consider using `move_to`")
@@ -113,9 +113,12 @@ fapply <- function(relations, FUN, ...) {
 }
 
 merge_tidySets <- function(object1, object2) {
-    new_relations <- rbind(object1@relations, object2@relations)
-    new_sets <- rbind(object1@sets, object2@sets)
-    new_elements <- rbind(object1@elements, object2@elements)
+    new_relations <- merge(object1@relations, object2@relations,
+                           all = TRUE, sort = FALSE)
+    new_sets <- merge(object1@sets, object2@sets,
+                      all = TRUE, sort = FALSE)
+    new_elements <- merge(object1@elements, object2@elements,
+                          all = TRUE, sort = FALSE)
 
     object2@relations <- unique(new_relations)
     object2@sets <- unique(new_sets)

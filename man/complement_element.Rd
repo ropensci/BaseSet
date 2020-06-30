@@ -34,11 +34,11 @@ function that given a numeric vector returns a single number.}
 
 \item{keep}{Logical value to keep all the other sets.}
 
-\item{keep_relations}{A logical value if you wan to keep old relations}
+\item{keep_relations}{A logical value if you wan to keep old relations.}
 
-\item{keep_elements}{A logical value if you wan to keep old elements}
+\item{keep_elements}{A logical value if you wan to keep old elements.}
 
-\item{keep_sets}{A logical value if you wan to keep old sets}
+\item{keep_sets}{A logical value if you wan to keep old sets.}
 }
 \value{
 A \code{TidySet} object.

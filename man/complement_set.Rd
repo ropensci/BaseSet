@@ -34,11 +34,11 @@ function that given a numeric vector returns a single number.}
 
 \item{keep}{Logical value to keep all the other sets.}
 
-\item{keep_relations}{A logical value if you wan to keep old relations}
+\item{keep_relations}{A logical value if you wan to keep old relations.}
 
-\item{keep_elements}{A logical value if you wan to keep old elements}
+\item{keep_elements}{A logical value if you wan to keep old elements.}
 
-\item{keep_sets}{A logical value if you wan to keep old sets}
+\item{keep_sets}{A logical value if you wan to keep old sets.}
 }
 \value{
 A \code{TidySet} object.
@@ -53,12 +53,12 @@ Return the complement for a set
 
 \examples{
 relations <- data.frame(
-    sets = c("a", "a", "b", "b", "c", "c"),
+    sets = c("A", "A", "B", "B", "C", "C"),
     elements = letters[seq_len(6)],
     fuzzy = runif(6)
 )
 a <- tidySet(relations)
-complement_set(a, "a")
+complement_set(a, "A")
 }
 \seealso{
 \code{\link{filter}}

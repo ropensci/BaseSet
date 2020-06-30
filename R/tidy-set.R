@@ -5,8 +5,9 @@ NULL
 #'
 #' These functions help to create a \code{TidySet} object from
 #' `data.frame`, `list`, `matrix`, and `GO3AnnDbBimap`.
+#' They can create both fuzzy and standard sets.
 #'
-#' They can create both fuzzy and standard sets, but no empty sets.
+#' Elements or sets without any relation are not shown when printed.
 #' @param relations An object to be coerced to a TidySet.
 #' @return A TidySet object.
 #' @examples

@@ -14,7 +14,7 @@ getGMT(con, sep = "\\t", ...)
 \item{...}{Other arguments passed to \code{readLines}.}
 }
 \value{
-A TidySet object
+A TidySet object.
 }
 \description{
 The GMT (Gene Matrix Transposed) file format is a tab delimited file format

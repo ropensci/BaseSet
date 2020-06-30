@@ -28,3 +28,18 @@ Convert GSEABase classes to a TidySet
 \item \code{GeneSet}: Converts to a tidySet given a GeneSet
 }}
 
+\examples{
+if (require(GSEABase)) {
+    library("GSEABase")
+} else {
+    stop("For this example you need GSEABase package from Bioconductor.")
+}
+gs <- GeneSet()
+gs
+tidy(gs)
+fl <- system.file("extdata", "Broad.xml", package="GSEABase")
+gs2 <- getBroadSets(fl) # actually, a list of two gene sets
+TS <- tidy(gs2)
+dim(TS)
+sets(TS)
+}

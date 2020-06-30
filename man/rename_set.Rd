@@ -27,6 +27,13 @@ Change the default names of sets and elements.
 \item \code{TidySet}: Rename sets
 }}
 
+\examples{
+x <- list("A" = letters[1:5], "B" = letters[3:7])
+TS <- tidySet(x)
+name_sets(TS)
+TS2 <- rename_set(TS, "A", "C")
+name_sets(TS2)
+}
 \seealso{
 \code{\link{name_sets}}
 

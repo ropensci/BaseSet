@@ -11,10 +11,10 @@ NULL
 #' @param FUN A function to be applied when performing the union.
 #' The standard union is the "max" function, but you can provide any other
 #' function that given a numeric vector returns a single number.
-#' @param keep A logical value if you want to keep
-#' @param keep_relations A logical value if you wan to keep old relations
-#' @param keep_elements A logical value if you wan to keep old elements
-#' @param keep_sets A logical value if you wan to keep old sets
+#' @param keep A logical value if you want to keep.
+#' @param keep_relations A logical value if you wan to keep old relations.
+#' @param keep_elements A logical value if you wan to keep old elements.
+#' @param keep_sets A logical value if you wan to keep old sets.
 #' @param ... Other named arguments passed to `FUN`.
 #' @return A \code{TidySet} object.
 #' @export

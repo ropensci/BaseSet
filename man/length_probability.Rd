@@ -4,19 +4,24 @@
 \alias{length_probability}
 \title{Calculates the probability of a single length}
 \usage{
-length_probability(p, n)
+length_probability(p, size)
 }
 \arguments{
-\item{p}{Probabilities}
+\item{p}{Numeric vector of probabilities.}
 
-\item{n}{Size}
+\item{size}{Integer value of the size of the selected values.}
 }
 \value{
-A numeric value of the probability of the given size
+A numeric value of the probability of the given size.
 }
 \description{
 Creates all the possibilities and then add them up.
 }
 \examples{
+length_probability(c(0.5, 0.75), 2)
+length_probability(c(0.5, 0.75, 0.66), 1)
 length_probability(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), 2)
+}
+\seealso{
+\code{\link[=multiply_probabilities]{multiply_probabilities()}} and \code{\link[=length_set]{length_set()}}
 }

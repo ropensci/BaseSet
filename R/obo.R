@@ -1,10 +1,11 @@
 #' Read an OBO file
 #'
-#' Read a OBO formatted file
-#'
-#' @param x A file in OBO format
-#' @return A TidySet object
+#' Read an Open Biological and Biomedical Ontologies (OBO) formatted file
+#' @param x Path to a file in OBO format.
+#' @return A TidySet object.
 #' @family IO functions
+#' @references The format is described [here](
+#' https://owlcollab.github.io/oboformat/doc/GO.format.obo-1_4.html)
 #' @export
 #' @examples
 #' oboFile <- system.file(
@@ -79,9 +80,10 @@ getOBO <- function(x) {
 # http://geneontology.org/docs/go-annotation-file-gaf-format-2.1/
 #' Read a GAF file
 #'
-#' Read a GAF formatted file, see
-#' \url{http://geneontology.org/docs/go-annotation-file-gaf-format-2.1/}
+#' Read a GO Annotation File (GAF) formatted file
 #'
+#' @references The format is defined [here](
+#' http://geneontology.org/docs/go-annotation-file-gaf-format-2.1/).
 #' @param x A file in GAF format
 #' @return A TidySet object
 #' @export

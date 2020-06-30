@@ -9,7 +9,7 @@ NULL
 #' @param con File name of the GMT file.
 #' @param sep GMT file field separator, by default tabs.
 #' @param ... Other arguments passed to `readLines`.
-#' @return A TidySet object
+#' @return A TidySet object.
 #' @family IO functions
 #' @references
 #' The file format is defined by the Broad Institute [here](https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29)

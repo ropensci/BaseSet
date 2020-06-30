@@ -27,6 +27,14 @@ Removes column from a slot of the TidySet object.
 \item \code{object = TidySet,slot = character,column_names = character}: Remove columns to any slot
 }}
 
+\examples{
+x <- data.frame(sets = c(rep("A", 5), rep("B", 5)),
+                elements = c(letters[1:5], letters[3:7]),
+                extra = sample(c("YES", "NO"), 10, replace = TRUE))
+TS <- tidySet(x)
+TS
+remove_column(TS, "relations", "extra")
+}
 \seealso{
 \code{\link{rename_set}}
 

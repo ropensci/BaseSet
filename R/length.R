@@ -4,9 +4,10 @@ NULL
 #' Calculates the probabilities
 #'
 #' Calculates the probability that all happened simultaneously
-#' @param p Probabilities
-#' @param i Index of the complementary probability
-#' @return  The log10 of the probability
+#' @param p Numeric vector of probabilities.
+#' @param i Numeric integer index of the complementary probability.
+#' @return A numeric value of the probability.
+#' @seealso [length_probability()]
 #' @export
 #' @examples
 #' multiply_probabilities(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), c(1, 3))
@@ -31,14 +32,17 @@ multiply_probabilities_m <- function(p, q, i) {
 #' Calculates the probability of a single length
 #'
 #' Creates all the possibilities and then add them up.
-#' @param p Probabilities
-#' @param n Size
-#' @return A numeric value of the probability of the given size
+#' @param p Numeric vector of probabilities.
+#' @param size Integer value of the size of the selected values.
+#' @return A numeric value of the probability of the given size.
+#' @seealso [multiply_probabilities()] and [length_set()]
 #' @export
 #' @examples
+#' length_probability(c(0.5, 0.75), 2)
+#' length_probability(c(0.5, 0.75, 0.66), 1)
 #' length_probability(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), 2)
-length_probability <- function(p, n) {
-    pos <- combn(seq_along(p), n)
+length_probability <- function(p, size) {
+    pos <- combn(seq_along(p), size)
     sum(apply(pos, 2, multiply_probabilities, p = p))
 }
 
@@ -46,29 +50,31 @@ length_probability <- function(p, n) {
 #'
 #' Given several probabilities it looks for how probable is to have a vector of
 #' each length
-#' @param fuzziness The probabilities
-#' @return A vector with the probability of each set
+#' @param probability A numeric vector of probabilities.
+#' @return A vector with the probability of each set.
+#' @seealso [length_probability()] to calculate the probability of a specific
+#' length.
 #' @export
 #' @examples
 #' length_set(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23))
-length_set <- function(fuzziness) {
-    p1 <- fuzziness == 1
+length_set <- function(probability) {
+    p1 <- probability == 1
 
     if (all(p1)) {
         out <- c(1)
-        names(out) <- as.character(sum(fuzziness))
+        names(out) <- as.character(sum(probability))
         return(out) # Non fuzzy sets
     }
-    if (all(fuzziness == 0)) {
+    if (all(probability == 0)) {
         max_length <- 0
     } else {
-        max_length <- length(fuzziness)
+        max_length <- length(probability)
     }
     l <- seq(from = sum(p1), to = max_length)
     # Exclude those cases that are obvious
     l2 <- l - sum(p1)
     l2 <- l2[l2 != 0]
-    v <- vapply(l2, length_probability, p = fuzziness[!p1], numeric(1L))
+    v <- vapply(l2, length_probability, p = probability[!p1], numeric(1L))
 
     # Substitute in the original possibilities
     names(l) <- as.character(l)

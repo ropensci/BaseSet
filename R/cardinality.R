@@ -1,4 +1,4 @@
-#' @param sets Character vector with the name of the sets.
+
 #' @param FUN Function that returns a single numeric value given a vector of
 #' fuzzy values.
 #' @param ... Other arguments passed to `FUN`.

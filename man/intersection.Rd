@@ -34,11 +34,11 @@ other function that given a numeric vector returns a single number.}
 
 \item{keep}{A logical value if you want to keep originals sets.}
 
-\item{keep_relations}{A logical value if you wan to keep old relations}
+\item{keep_relations}{A logical value if you wan to keep old relations.}
 
-\item{keep_elements}{A logical value if you wan to keep old elements}
+\item{keep_elements}{A logical value if you wan to keep old elements.}
 
-\item{keep_sets}{A logical value if you wan to keep old sets}
+\item{keep_sets}{A logical value if you wan to keep old sets.}
 }
 \value{
 A \code{TidySet} object.
@@ -69,7 +69,6 @@ rel <- data.frame(
 TS2 <- tidySet(rel)
 intersection(TS2, c("A", "B"), "C")
 intersection(TS2, c("A", "B"), "C", FUN = function(x){max(sqrt(x))})
-
 }
 \seealso{
 Other methods that create new sets: 

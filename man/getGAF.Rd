@@ -13,8 +13,7 @@ getGAF(x)
 A TidySet object
 }
 \description{
-Read a GAF formatted file, see
-\url{http://geneontology.org/docs/go-annotation-file-gaf-format-2.1/}
+Read a GO Annotation File (GAF) formatted file
 }
 \examples{
 gafFile <- system.file(
@@ -23,6 +22,9 @@ gafFile <- system.file(
 )
 gs <- getGAF(gafFile)
 head(gs)
+}
+\references{
+The format is defined \href{http://geneontology.org/docs/go-annotation-file-gaf-format-2.1/}{here}.
 }
 \seealso{
 Other IO functions: 

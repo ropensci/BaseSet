@@ -2,7 +2,6 @@
 % Please edit documentation in R/AllGenerics.R, R/length.R
 \name{set_size}
 \alias{set_size}
-\alias{cardinality}
 \alias{set_size,TidySet-method}
 \title{Calculates the cardinality of a set}
 \usage{

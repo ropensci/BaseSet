@@ -7,13 +7,13 @@
 getOBO(x)
 }
 \arguments{
-\item{x}{A file in OBO format}
+\item{x}{Path to a file in OBO format.}
 }
 \value{
-A TidySet object
+A TidySet object.
 }
 \description{
-Read a OBO formatted file
+Read an Open Biological and Biomedical Ontologies (OBO) formatted file
 }
 \examples{
 oboFile <- system.file(
@@ -22,6 +22,9 @@ oboFile <- system.file(
 )
 gs <- getOBO(oboFile)
 head(gs)
+}
+\references{
+The format is described \href{https://owlcollab.github.io/oboformat/doc/GO.format.obo-1_4.html}{here}
 }
 \seealso{
 Other IO functions: 

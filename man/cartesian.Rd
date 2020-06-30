@@ -29,13 +29,13 @@ cartesian(object, set1, set2, name = NULL, ...)
 \item{...}{Placeholder for other arguments that could be passed to the
 method. Currently not used.}
 
-\item{keep}{A logical value if you want to keep}
+\item{keep}{A logical value if you want to keep.}
 
-\item{keep_relations}{A logical value if you wan to keep old relations}
+\item{keep_relations}{A logical value if you wan to keep old relations.}
 
-\item{keep_elements}{A logical value if you wan to keep old elements}
+\item{keep_elements}{A logical value if you wan to keep old elements.}
 
-\item{keep_sets}{A logical value if you wan to keep old sets}
+\item{keep_sets}{A logical value if you wan to keep old sets.}
 }
 \value{
 A TidySet object with the new set

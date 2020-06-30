@@ -7,16 +7,19 @@
 multiply_probabilities(p, i)
 }
 \arguments{
-\item{p}{Probabilities}
+\item{p}{Numeric vector of probabilities.}
 
-\item{i}{Index of the complementary probability}
+\item{i}{Numeric integer index of the complementary probability.}
 }
 \value{
-The log10 of the probability
+A numeric value of the probability.
 }
 \description{
 Calculates the probability that all happened simultaneously
 }
 \examples{
 multiply_probabilities(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), c(1, 3))
+}
+\seealso{
+\code{\link[=length_probability]{length_probability()}}
 }

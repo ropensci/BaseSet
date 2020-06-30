@@ -27,9 +27,10 @@ A TidySet object.
 \description{
 These functions help to create a \code{TidySet} object from
 \code{data.frame}, \code{list}, \code{matrix}, and \code{GO3AnnDbBimap}.
+They can create both fuzzy and standard sets.
 }
 \details{
-They can create both fuzzy and standard sets, but no empty sets.
+Elements or sets without any relation are not shown when printed.
 }
 \section{Methods (by class)}{
 \itemize{

@@ -4,13 +4,13 @@
 \alias{length_set}
 \title{Calculates the probability}
 \usage{
-length_set(fuzziness)
+length_set(probability)
 }
 \arguments{
-\item{fuzziness}{The probabilities}
+\item{probability}{A numeric vector of probabilities.}
 }
 \value{
-A vector with the probability of each set
+A vector with the probability of each set.
 }
 \description{
 Given several probabilities it looks for how probable is to have a vector of
@@ -18,4 +18,8 @@ each length
 }
 \examples{
 length_set(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23))
+}
+\seealso{
+\code{\link[=length_probability]{length_probability()}} to calculate the probability of a specific
+length.
 }

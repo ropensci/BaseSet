@@ -42,8 +42,9 @@ as.data.frame.TidySet <- function(x, ...) {
 #' the position of the columns.
 #' @param .data The original TidySet
 #' @param df The flattened data.frame
+#' @seealso [tidySet.data.frame()]
 #' @return A TidySet object
-#' @noRd
+#' @keywords internal
 df2TS <- function(.data = NULL, df) {
     if (!is.null(.data)) {
         colnames_sets <- colnames(sets(.data))

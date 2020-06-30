@@ -141,7 +141,6 @@ methods::setGeneric("sets<-", function(object, value)
 #' @return A list with the size of the set or the probability of having that
 #' size.
 #' @export set_size
-#' @aliases cardinality
 #' @family sizes
 #' @family methods
 methods::setGeneric("set_size", function(object, set = NULL)
@@ -173,6 +172,12 @@ methods::setGeneric("element_size", function(object, element = NULL)
 #' @seealso \code{\link{name_sets}}
 #' @export
 #' @family methods
+#' @examples
+#' x <- list("A" = letters[1:5], "B" = letters[3:7])
+#' TS <- tidySet(x)
+#' name_sets(TS)
+#' TS2 <- rename_set(TS, "A", "C")
+#' name_sets(TS2)
 methods::setGeneric("rename_set", function(object, old, new)
       standardGeneric("rename_set")
 )
@@ -189,6 +194,12 @@ methods::setGeneric("rename_set", function(object, old, new)
 #' @seealso \code{\link{name_elements}}
 #' @export
 #' @family methods
+#' @examples
+#' x <- list("A" = letters[1:5], "B" = letters[3:7])
+#' TS <- tidySet(x)
+#' name_elements(TS)
+#' TS2 <- rename_elements(TS, "a", "first")
+#' name_elements(TS2)
 methods::setGeneric("rename_elements", function(object, old, new)
       standardGeneric("rename_elements")
 )
@@ -319,6 +330,13 @@ methods::setGeneric("add_column", function(object, slot, columns)
 #' @family methods
 #' @seealso \code{\link{rename_set}}
 #' @export
+#' @examples
+#' x <- data.frame(sets = c(rep("A", 5), rep("B", 5)),
+#'                 elements = c(letters[1:5], letters[3:7]),
+#'                 extra = sample(c("YES", "NO"), 10, replace = TRUE))
+#' TS <- tidySet(x)
+#' TS
+#' remove_column(TS, "relations", "extra")
 methods::setGeneric("remove_column", function(object, slot, column_names)
       standardGeneric("remove_column")
 )
@@ -488,10 +506,14 @@ methods::setGeneric("remove_set", function(object, sets, ...)
 methods::setGeneric("complement_set", function(object, sets, ...)
       standardGeneric("complement_set")
 )
+
 #' Cardinality or membership of sets
 #'
 #' Calculates the membership of sets according to the logic defined in FUN.
+#' @param object A TidySet object.
+#' @param sets Character vector with the name of the sets.
 #' @export
+#' @seealso [size()]
 #' @examples
 #' rel <- list(A = letters[1:3], B = letters[1:2])
 #' TS <- tidySet(rel)
