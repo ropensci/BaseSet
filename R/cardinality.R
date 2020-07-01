@@ -15,5 +15,7 @@ setMethod("cardinality",
           rel <- rel[rel$sets %in%  sets, ]
           fuzzy <- split(rel$fuzzy, rel$sets)
           card <- vapply(fuzzy, FUN, FUN.VALUE = numeric(1L), ... = ...)
-          data.frame(sets = names(fuzzy), cardinality = card)
+          df <- data.frame(sets = names(fuzzy), cardinality = card)
+          rownames(df) <- NULL
+          df
           })
