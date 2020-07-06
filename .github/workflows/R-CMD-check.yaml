@@ -11,12 +11,14 @@ jobs:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@vmaster
+      - uses: r-lib/actions/setup-pandoc@v1
+      with:
+        pandoc-version: '2.10' # The pandoc version to download
       - uses: r-lib/actions/setup-r@master
       - name: Install Linux dependencies
         if: runner.os == 'Linux'
         run: sudo apt install libcurl4-openssl-dev
-        run: sudo apt install pandoc pandoc-citeproc
       - name: Install basic dependencies
         run: Rscript -e "install.packages(c('remotes', 'rcmdcheck', 'BiocManager'))"
       - name: Install all dependencies
