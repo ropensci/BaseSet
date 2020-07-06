@@ -3,7 +3,7 @@ on: [push, pull_request]
 name: R-CMD-check
 
 jobs:
-  check:
+  setup:
     runs-on: ${{ matrix.os }}
     strategy:
       # Avoid cancelling builds if one of them fails
@@ -11,9 +11,8 @@ jobs:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
     steps:
-      - uses: actions/checkout@v1
-      - name: "Install pandoc"
-        uses: r-lib/actions/setup-pandoc@master
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-pandoc@master
         with:
           pandoc-version: '2.10' # The pandoc version to download
         run: echo "# Test" | pandoc -t html
@@ -23,6 +22,7 @@ jobs:
         run: sudo apt install libcurl4-openssl-dev
       - name: Install basic dependencies
         run: Rscript -e "install.packages(c('remotes', 'rcmdcheck', 'BiocManager'))"
+  check:
       - name: Install all dependencies
         run: Rscript -e "BiocManager::install('llrs/BaseSet', dependencies = TRUE, build_vignettes = TRUE)"
       - name: Session Info
