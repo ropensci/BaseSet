@@ -11,7 +11,7 @@ jobs:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
     steps:
-      - uses: actions/checkout@vmaster
+      - uses: actions/checkout@master
       - uses: r-lib/actions/setup-pandoc@master
       with:
         pandoc-version: '2.10' # The pandoc version to download
