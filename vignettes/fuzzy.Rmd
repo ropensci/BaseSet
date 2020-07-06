@@ -49,14 +49,17 @@ When does the switch happen from warm to hot?
 In fuzzy set theories the step from a continuous scale to a categorical scale is performed by the [membership function](https://en.wikipedia.org/wiki/Membership_function_(mathematics)) and is called [fuzzification](https://en.wikipedia.org/wiki/Fuzzy_logic#Fuzzification). 
 
 When there is a degree of membership and uncertainty on the membership it is considered a [type-2 fuzzy set](https://en.wikipedia.org/wiki/Type-2_fuzzy_sets_and_systems).
-We can understand it with using as example a paddel ball, it can be used for tennis or paddel (membership), but until we don't test it bouncing on the court we won't be sure (assignment) if it is a paddel ball or a tennis ball. 
-We could think about a ball equally good for tennis and paddel (membership) but which two people thought it is for tennis and the other for paddel. 
+We can understand it with using as example a paddle ball, it can be used for tennis or paddle (membership), but until we don't test it bouncing on the court we won't be sure (assignment) if it is a paddle ball or a tennis ball. 
+We could think about a ball equally good for tennis and paddle (membership) but which two people thought it is for tennis and the other for paddle. 
 
 These voting/rating system is also a common scenario where fuzzy sets arise.
 When several graders/people need to agree but compromise on a middle ground. 
+One modern example of this is ratting apps where several people vote between 1 and 5 an app and the displayed value takes into consideration all the votes. 
+
+As you can see when one does have some vagueness or uncertainty then fuzzy logic is a good choice.
+There have been developed several logic and methods. 
 
 # Creating a fuzzy set
-
 
 To create a fuzzy set you need to have a column named "fuzzy" if you create it 
 from a `data.frame` or have a named numeric vector if you create it from a `list`.
@@ -82,22 +85,24 @@ We can work with fuzzy sets as we do with normal sets. But if you remember that 
 You can make a union of two sets present on the same object.
 
 ```{r union}
-BaseSet::union(fuzzy_set, sets = c("C", "B"), name = "D")
-BaseSet::union(fuzzy_set, sets = c("C", "B"), name =  "D", FUN = "mean")
+BaseSet::union(fuzzy_set, sets = c("A", "B"))
+BaseSet::union(fuzzy_set, sets = c("A", "B"), name = "D")
 ```
 
-Observe the fuzziness on the resulting set has changed (on the traditional sets it doesn't matter)
+We get a new set with all the elements on both sets.
+There isn't an element in both sets A and B, so the fuzzy values here do not change.
 
 ## Intersection
 
-We can do the same with the intersection
+However if we do the intersection between B and C we can see some changes on the fuzzy value:
 
 ```{r intersection}
-intersection(fuzzy_set, sets = c("A", "B"), keep = FALSE)
-intersection(fuzzy_set, sets = c("A", "B"), keep = FALSE, FUN = "mean")
+intersection(fuzzy_set, sets = c("B", "C"), keep = FALSE)
+intersection(fuzzy_set, sets = c("B", "C"), keep = FALSE, FUN = "mean")
 ```
 
-But in this example we don't see any difference on the calculated values.
+Different logic on the `union()`, `intersection()`, `complement()`, and `cardinality()`, we get different fuzzy values. 
+Depending on the nature of our fuzziness and the intended goal we might apply one or other rules.
 
 ## Complement
 
@@ -107,10 +112,11 @@ We can look for the complement of one or several sets:
 complement_set(fuzzy_set, sets = "A", keep = FALSE)
 ```
 
-Note that the values of the complement are `1-fuzzy`:
+Note that the values of the complement are `1-fuzzy` but can be changed:
 
 ```{r complement_previous}
-fuzzy_set %>% filter(sets == "A")
+filter(fuzzy_set, sets == "A")
+complement_set(fuzzy_set, sets = "A", keep = FALSE, FUN = function(x){1-x^2})
 ```
 
 ## Subtract
@@ -127,7 +133,9 @@ Note that here there is also a subtraction of the fuzzy value.
 
 # Sizes
 
-Note that here the size of a set is not fixed:
+If we consider the fuzzy values as probabilities then the size of a set is not fixed.
+To calculate the size of a given set we have `set_size()`:
+
 ```{r set_size}
 set_size(fuzzy_set)
 ```
@@ -138,16 +146,16 @@ Or an element can be in 0 sets:
 element_size(fuzzy_set)
 ```
 
-In this example we can see that it is more probable that the element A is not 
-present than the element f being present in one set. 
+In this example we can see that it is more probable that the element "a" is not 
+present than the element "f" being present in one set. 
 
 # Interpretation
 
-Let's dive a bit in the interpretation.
+Let's dive a bit in the interpretation with an example.
 
 Imagine you have your experiment where you collected data from a sample of cells for each cell (our elements). 
-Then you used some program to classify which type of cell it is (delta endothelial, alpha, beta), this are our sets. 
-The software returns a score (between 0 and 1) for each type it has, the higher the more confident it is of the assignment, which is our fuzzy value:
+Then you used some program to classify which type of cell it is (alpha, beta, delta, endothelial), this are our sets. 
+The software returns a probability for each type it has: the higher, the more confident it is of the assignment. These are our fuzzy value:
 
 ```{r cells_0}
 sc_classification <- data.frame(
@@ -172,57 +180,54 @@ sc_classification <- data.frame(
 head(sc_classification)
 ```
 
-Our question is which type of cells did we have on the original sample?
+Our question is **which type of cells did we have on the original sample?**  
+
 We can easily answer this by looking at the relations that have higher confidence of the relationship for each cell.
 
 ```{r cells_classification}
-sc_classification <- tidySet(sc_classification)
-cells_assigned <- sc_classification %>% 
-  activate("relations") %>% 
+sc_classification %>% 
   group_by(elements) %>% 
-  filter(fuzzy == max(fuzzy))
-cells_assigned
-# See how many cells of each type we have
-cells_assigned %>% 
+  filter(fuzzy == max(fuzzy)) %>% 
   group_by(sets) %>% 
   count()
 ```
 
-Now we know which is the cell type most probable for each cell, and how much of each type we have.
-Let's see how many cells of each type we are more likely to get:
+There is a cell that can be in two cell types, because we started with 10 cells and we have 11 elements here. 
+However, how likely is that a cell is placed to just a single set? 
 
 ```{r cells_subset}
-sample_cells <- sc_classification %>% 
-  set_size() %>% 
-  group_by(sets) %>% 
+scTS <- tidySet(sc_classification) # Conversion of format
+sample_cells <- scTS %>% 
+  element_size() %>% 
+  group_by(elements) %>% 
   filter(probability == max(probability))
 sample_cells
 ```
 
-And we can see that there are `r paste(apply(sample_cells[, 1:2], 1, function(x){paste0(x[2], " ", x[1], " cells,")}), collapse = " ")`. 
-But this doesn't make sense, because there must be some cell misclassification: we have only `r nElements(sc_classification)` cells in this example but there are `r sum(sample_cells$size)` cells predicted for these types:
-```{r}
-nElements(sc_classification) == sum(sample_cells$size)
-```
+
+There must be some cell misclassification: we have `r nElements(sc_classification)` cells in this example but there are `r sum(sample_cells$size)` cells that the maximum probability predicted for these types is a single cell type. 
+Even the cell that had two equal probabilities for two cell types is more probable to be in no one of these cell types than in any of them. 
+
 Ideally the predicted number of cells per type and the cells with higher confidence about the type should match. 
 
 We can also look the other way around: How good is the prediction of a cell type for each cell? 
 
-```{r}
-cells_type <- sc_classification %>% 
-  element_size() %>% 
-  group_by(elements) %>% 
+```{r celltypes}
+scTS %>% 
+  set_size() %>% 
+  group_by(sets) %>% 
   filter(probability == max(probability))
-cells_type
 ```
 
-We can see that for most cells the most probable cell type is not present (we don't know the type of cell), and some cells could be classified in more than 1 cell type.
+We can see that for each cell type it is probable to have at least one cell and in the endothelial cell type two cells is the most probable outcome. 
+However, these probabilities are lower than the probabilities of cells being assigned a cell type.
+This would mean that this method is not a good method or that the cell types are not specific enough for the cell. 
 
-```{r}
-sc_classification %>% 
-  element_size() %>% 
-  filter(elements == "D2ex_18") %>% 
-  arrange(desc(probability))
+In summary, the cells that we had most probable are not those 4 cell types except in two cells were it might be. 
+
+
+# Session info {.unnumbered}
+
+```{r sessionInfo, echo=FALSE}
+sessionInfo()
 ```
-
-And as we can see it is mostly as likely to be on the three cell types than in none of the cell types present.

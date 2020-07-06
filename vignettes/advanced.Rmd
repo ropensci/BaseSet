@@ -41,9 +41,11 @@ library("dplyr")
 library("BaseSet")
 ```
 
-# Human GO
+# Human gene ontology
 
-We will explore the genes related with GO. 
+We will explore the genes with assigned gene ontology terms. 
+These terms describe what is the process and role of the genes.
+The links are annotated with different [evidence codes](http://geneontology.org/docs/guide-go-evidence-codes/) to indicate how such annotation is supported. 
 
 ```{r prepare_GO, message=FALSE}
 # We load some libraries
@@ -54,24 +56,27 @@ library("ggplot2")
 h2GO_TS <- tidySet(org.Hs.egGO)
 h2GO <- as.data.frame(org.Hs.egGO)
 ```
-We can now explore if there are differences in evidence usage for each ontology in GO:
+
+We can now explore if there are differences in evidence usage for each ontology in gene ontology:
+
 ```{r evidence_ontology}
 library("forcats")
 h2GO %>% 
-    group_by(Evidence, Ontology) %>% 
-    count(name = "Freq") %>% 
-    ungroup() %>% 
-    mutate(Evidence = fct_reorder2(Evidence, Ontology, -Freq),
-           Ontology = case_when(Ontology == "CC" ~ "Cellular Component",
-                                Ontology == "MF" ~ "Molecular Function",
-                                Ontology == "BP" ~ "Biological Process",
-                                TRUE ~ NA_character_)) %>% 
-    ggplot() +
-    geom_col(aes(Evidence, Freq)) +
-    facet_grid(~Ontology) + 
-    theme_bw() +
-    coord_flip() +
-    xlab("Evidence")
+  group_by(Evidence, Ontology) %>% 
+  count(name = "Freq") %>% 
+  ungroup() %>% 
+  mutate(Evidence = fct_reorder2(Evidence, Ontology, -Freq),
+         Ontology = case_when(Ontology == "CC" ~ "Cellular Component",
+                              Ontology == "MF" ~ "Molecular Function",
+                              Ontology == "BP" ~ "Biological Process",
+                              TRUE ~ NA_character_)) %>% 
+  ggplot() +
+  geom_col(aes(Evidence, Freq)) +
+  facet_grid(~Ontology) + 
+  theme_minimal() +
+  coord_flip() +
+  labs(x = element_blank(), y = element_blank(),
+       title = "Evidence codes for each ontology")
 ```
 
 We can see that biological process are more likely to be defined by IMP evidence code that means inferred from mutant phenotype. 
@@ -83,14 +88,16 @@ This graph doesn't consider that some relationships are better annotated than ot
 h2GO_TS %>% 
   relations() %>% 
   group_by(elements, sets) %>% 
-  count(sort = TRUE) %>% 
+  count(sort = TRUE, name = "Annotations") %>% 
+  ungroup() %>% 
+  count(Annotations, sort = TRUE) %>% 
   ggplot() +
-  geom_histogram(aes(n), binwidth = 1) +
+  geom_col(aes(Annotations, n)) +
   theme_minimal() +
-  # scale_y_log10() +
-  labs(x = "Evidence codes", 
-       title = "Evidence codes for each relation between GO and a gene",
-       subtitle = "in human annotation")
+  labs(x = "Evidence codes", y = "Annotations", 
+       title = "Evidence codes for each annotation",
+       subtitle = "in human") +
+  scale_x_continuous(breaks = 1:7)
 ```
 
 We can see that mostly all the annotations are done with a single evidence code.
@@ -113,7 +120,7 @@ sum(sizes_set$size == 0)
 sum(sizes_set$size != 0)
 ```
 
-So we can see that both there are more genes without annotation and more GO terms without a (direct) gene annotated.
+So we can see that both there are more genes without annotation and more gene ontology terms without a (direct) gene annotated.
 
 ```{r plots_GO}
 sizes_element %>% 
@@ -137,9 +144,86 @@ As you can see on the second plot we have very large values but that are on asso
 head(sizes_set, 10)
 ```
 
+
+## Using fuzzy values
+
 This could radically change if we used fuzzy values. 
 We could assign a fuzzy value to each evidence code given the lowest fuzzy value for the [IEA (Inferred from Electronic Annotation)](http://wiki.geneontology.org/index.php/Inferred_from_Electronic_Annotation_(IEA)) evidence.
 The highest values would be for evidence codes coming from experiments or alike. 
+
+```{r fuzzy_setup}
+nr <- h2GO_TS %>% 
+  relations() %>% 
+  select(sets, Evidence) %>% 
+  distinct() %>% 
+  mutate(fuzzy = case_when(
+    Evidence == "EXP" ~ 0.9,
+    Evidence == "IDA" ~ 0.8,
+    Evidence == "IPI" ~ 0.8,
+    Evidence == "IMP" ~ 0.75,
+    Evidence == "IGI" ~ 0.7,
+    Evidence == "IEP" ~ 0.65,
+    Evidence == "HEP" ~ 0.6,
+    Evidence == "HDA" ~ 0.6,
+    Evidence == "HMP" ~ 0.5,
+    Evidence == "IBA" ~ 0.45,
+    Evidence == "ISS" ~ 0.4,
+    Evidence == "ISO" ~ 0.32,
+    Evidence == "ISA" ~ 0.32,
+    Evidence == "ISM" ~ 0.3,
+    Evidence == "RCA" ~ 0.2,
+    Evidence == "TAS" ~ 0.15,
+    Evidence == "NAS" ~ 0.1,
+    Evidence == "IC" ~ 0.02,
+    Evidence == "ND" ~ 0.02,
+    Evidence == "IEA" ~ 0.01,
+    TRUE ~ 0.01)) %>% 
+  select(sets = "sets", elements = "Evidence", fuzzy = fuzzy)
+```
+
+We have several evidence codes for the same ontology, this would result on different fuzzy values for each relation. 
+Instead, we extract this and add them as new sets and elements and add an extra column to classify what are those elements:
+
+```{r fuzzy_setup2}
+ts <- h2GO_TS %>% 
+  relations() %>% 
+  select(-Evidence) %>% 
+  rbind(nr) %>% 
+  tidySet() %>% 
+  mutate_element(Type = ifelse(grepl("^[0-9]+$", elements), "gene", "evidence"))
+```
+
+Now we can see which gene ontologies are more supported by the evidence:
+
+```{r cardinality}
+ts %>% 
+  filter(Type != "Gene") %>% 
+  cardinality() %>% 
+  arrange(desc(cardinality)) %>% 
+  head()
+```
+
+Surprisingly the most supported terms are protein binding, nucleus and cytosol. 
+I would expect them to be the top three terms for cellular component, biological function and molecular function. 
+
+Calculating set sizes would be interesting but it requires computing a big number of combinations that make it last long and require many memory available.
+
+```{r size_go}
+ts %>% 
+  filter(sets %in% c("GO:0008152", "GO:0003674", "GO:0005575"),
+         Type != "gene") %>% 
+  set_size()
+```
+
+Unexpectedly there is few evidence for the main terms:
+
+```{r evidence_go}
+ts %>% 
+  filter(sets %in% c("GO:0008152", "GO:0003674", "GO:0005575")) %>% 
+  filter(Type != "gene") 
+```
+
+In fact those terms are arbitrarily decided or inferred from electronic analysis. 
 
 # Human pathways
 
