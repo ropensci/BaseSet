@@ -13,8 +13,10 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: r-lib/actions/setup-pandoc@master
+      - name: "Install pandoc"
       with:
         pandoc-version: '2.10' # The pandoc version to download
+      - run: echo "# Test" | pandoc -t html
       - uses: r-lib/actions/setup-r@master
       - name: Install Linux dependencies
         if: runner.os == 'Linux'
