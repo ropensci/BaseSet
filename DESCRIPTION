@@ -2,10 +2,15 @@ Package: BaseSet
 Title: Working with sets the tidy way
 Version: 0.0.11
 Authors@R: 
-    person(given = "Lluís ",
-           family = "Revilla Sancho",
-           role = c("aut", "cre"),
-           email = "lluis.revilla@gmail.com")
+    c(person(given = "Lluís",
+         family = "Revilla Sancho",
+         role = c("aut", "cre"),
+         email = "lluis.revilla@gmail.com",
+         comment = c(ORCID = "0000-0001-9747-2570")),
+  person("Zebulun", "Arendsee",
+         role = "rev"),
+  person("Jennifer Chang",
+         role = "rev"))
 Description: The package implements a class and methods to work with sets, 
     doing intersection, union, complementary, power sets, cartesian product and 
     other set operations in a "tidy" way. Both for classical sets and fuzzy 

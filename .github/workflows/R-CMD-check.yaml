@@ -16,6 +16,7 @@ jobs:
       - name: Install Linux dependencies
         if: runner.os == 'Linux'
         run: sudo apt install libcurl4-openssl-dev
+        run: sudo apt install pandoc pandoc-citeproc
       - name: Install basic dependencies
         run: Rscript -e "install.packages(c('remotes', 'rcmdcheck', 'BiocManager'))"
       - name: Install all dependencies
