@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 [![Coverage status](https://codecov.io/gh/llrs/BaseSet/branch/master/graph/badge.svg)](https://codecov.io/github/llrs/BaseSet?branch=master)
 [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![](https://badges.ropensci.org/359_status.svg)](https://github.com/ropensci/software-review/issues/359)
+[![rOpenSci](https://badges.ropensci.org/359_status.svg)](https://github.com/ropensci/software-review/issues/359)
 <!-- badges: end -->
 
 # BaseSet
@@ -192,10 +192,16 @@ There are several other packages related to sets, which partially overlap with B
 On bioinformatics when looking for the impact of an experiment enrichment methods are applied.
 This involves obtaining several sets of genes from several resources and methods.
 Usually these curated sets of genes are taken at face value. 
-However there are several resources of sets and they [do not agree between them](https://doi.org/10.1186/1471-2105-14-112), regardless they are used without considering any uncertainty on the sets composition. 
+However, there are several resources of sets and they [do not agree between them](https://doi.org/10.1186/1471-2105-14-112), regardless they are used without considering any uncertainty on sets composition. 
+
+
 Fuzzy theory has long studied sets whose elements have degrees of membership and/or uncertainty. 
 Therefore one way to improve the methods involve using fuzzy methods and logic on this field. 
 As I couldn't find any package that provided methods for this I set on creating it (after trying to [expand](https://github.com/llrs/GSEAdv) the existing one I knew).
+
+This package is intended to be easy to use for someone who is working with collections of sets but flexible about the methods and logic it can use. 
+To be consistent, the standard fuzzy logic is the default but it might not be the right one for your data. 
+Consider changing the defaults to match with the framework the data was obtained with. 
 
 # Code of Conduct {#CoC}
 
