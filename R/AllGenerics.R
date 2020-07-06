@@ -361,6 +361,7 @@ methods::setGeneric("remove_column", function(object, slot, column_names)
 #' @export
 #' @family methods that create new sets
 #' @family methods
+#' @aliases intersect
 #' @examples
 #' rel <- data.frame(
 #'     sets = c(rep("A", 5), "B"),
