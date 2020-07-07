@@ -205,7 +205,7 @@ sample_cells
 ```
 
 
-There must be some cell misclassification: we have `r nElements(sc_classification)` cells in this example but there are `r sum(sample_cells$size)` cells that the maximum probability predicted for these types is a single cell type. 
+There must be some cell misclassification: we have `r nElements(scTS)` cells in this example but there are `r sum(sample_cells$size)` cells that the maximum probability predicted for these types is a single cell type. 
 Even the cell that had two equal probabilities for two cell types is more probable to be in no one of these cell types than in any of them. 
 
 Ideally the predicted number of cells per type and the cells with higher confidence about the type should match. 
