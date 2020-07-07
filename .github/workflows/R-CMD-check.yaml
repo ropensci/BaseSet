@@ -22,8 +22,8 @@ jobs:
       - uses: r-lib/actions/setup-pandoc@master
         with:
           pandoc-version: '2.10' # The pandoc version to download
+      - uses: r-lib/actions/setup-r@master
       - name: Install Linux dependencies
-        uses: r-lib/actions/setup-r@master
         if: runner.os == 'Linux'
         run: sudo apt install libcurl4-openssl-dev
       - name: Install basic dependencies
