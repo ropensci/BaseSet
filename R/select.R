@@ -33,8 +33,8 @@ dplyr::select
 #' # Select sets
 #' select_set(a, sets)
 #' @rdname select_
-#' @export
 #' @method select TidySet
+#' @export
 select.TidySet <- function(.data, ...) {
     if (is.null(active(.data))) {
         out <- dplyr::select(as.data.frame(.data), ...)

@@ -154,7 +154,7 @@ The highest values would be for evidence codes coming from experiments or alike.
 ```{r fuzzy_setup}
 nr <- h2GO_TS %>% 
   relations() %>% 
-  select(sets, Evidence) %>% 
+  dplyr::select(sets, Evidence) %>% 
   distinct() %>% 
   mutate(fuzzy = case_when(
     Evidence == "EXP" ~ 0.9,
@@ -178,7 +178,7 @@ nr <- h2GO_TS %>%
     Evidence == "ND" ~ 0.02,
     Evidence == "IEA" ~ 0.01,
     TRUE ~ 0.01)) %>% 
-  select(sets = "sets", elements = "Evidence", fuzzy = fuzzy)
+  dplyr::select(sets = "sets", elements = "Evidence", fuzzy = fuzzy)
 ```
 
 We have several evidence codes for the same ontology, this would result on different fuzzy values for each relation. 
@@ -187,7 +187,7 @@ Instead, we extract this and add them as new sets and elements and add an extra 
 ```{r fuzzy_setup2}
 ts <- h2GO_TS %>% 
   relations() %>% 
-  select(-Evidence) %>% 
+  dplyr::select(-Evidence) %>% 
   rbind(nr) %>% 
   tidySet() %>% 
   mutate_element(Type = ifelse(grepl("^[0-9]+$", elements), "gene", "evidence"))
@@ -197,7 +197,7 @@ Now we can see which gene ontologies are more supported by the evidence:
 
 ```{r cardinality}
 ts %>% 
-  filter(Type != "Gene") %>% 
+  dplyr::filter(Type != "Gene") %>% 
   cardinality() %>% 
   arrange(desc(cardinality)) %>% 
   head()

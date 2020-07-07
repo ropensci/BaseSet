@@ -2,6 +2,7 @@
 % Please edit documentation in R/AllGenerics.R, R/intersection.R
 \name{intersection}
 \alias{intersection}
+\alias{intersect}
 \alias{intersection,TidySet,character-method}
 \title{Intersection of two or more sets}
 \usage{
