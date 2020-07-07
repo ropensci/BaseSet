@@ -37,8 +37,8 @@ To show compatibility with tidy workflows we will use magrittr pipe operator and
 dplyr verbs.
 
 ```{r setupr, message=FALSE}
-library("dplyr")
 library("BaseSet")
+library("dplyr")
 ```
 
 # Human gene ontology

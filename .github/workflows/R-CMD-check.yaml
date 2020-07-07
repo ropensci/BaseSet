@@ -1,9 +1,16 @@
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 name: R-CMD-check
 
 jobs:
-  setup:
+  R-CMD-check:
+    name: R-CMD-check
     runs-on: ${{ matrix.os }}
     strategy:
       # Avoid cancelling builds if one of them fails
@@ -17,7 +24,7 @@ jobs:
           pandoc-version: '2.10' # The pandoc version to download
       - run: echo "# Test" | pandoc -t html
       - name: Install Linux dependencies
-      - uses: r-lib/actions/setup-r@master
+        uses: r-lib/actions/setup-r@master
         if: runner.os == 'Linux'
       - run: sudo apt install libcurl4-openssl-dev
       - name: Install basic dependencies
