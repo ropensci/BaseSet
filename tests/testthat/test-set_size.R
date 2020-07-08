@@ -6,6 +6,7 @@ test_that("set_size works", {
     out <- set_size(a, "a")
     expect_equal(nrow(out), 1L)
     expect_error(set_size(a, "z"), "valid set")
+    expect_error(set_size(a, c("a", "b")), NA)
 
     a1 <- add_sets(a, set = "c")
     expect_equal(set_size(a1, "c")$size, 0)

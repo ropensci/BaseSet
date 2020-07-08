@@ -98,12 +98,11 @@ length_set <- function(probability) {
 setMethod("set_size",
     signature = signature(object = "TidySet"),
     function(object, set = NULL) {
-        if (!set %in% name_sets(object) && !is.null(set)) {
+        if (!all(set %in% name_sets(object)) && !is.null(set)) {
             stop("Please introduce valid set names. See name_sets",
                 call. = FALSE
             )
         }
-
         if (is.null(set)) {
             names_sets <- name_sets(object)
         } else {
@@ -179,7 +178,7 @@ setMethod("set_size",
 setMethod("element_size",
     signature = signature(object = "TidySet"),
     function(object, element = NULL) {
-        if (!element %in% name_elements(object) && !is.null(element)) {
+        if (!all(element %in% name_elements(object)) && !is.null(element)) {
             msg <- paste0(
                 "Please introduce valid ",
                 "element names. See element_names"

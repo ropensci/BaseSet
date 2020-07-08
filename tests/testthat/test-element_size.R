@@ -11,6 +11,7 @@ test_that("element_size works", {
     expect_equal(colnames(df), c("elements", "size", "probability"))
     expect_error(element_size(a, "z"))
     out <- element_size(a, "b")
+    expect_error(set_size(a, c("a", "b")), NA)
     b <- activate(a, "elements")
     out2 <- size(b, "b")
     expect_equal(out, out2)
