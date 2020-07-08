@@ -3,18 +3,20 @@ Title: Working with sets the tidy way
 Version: 0.0.11
 Authors@R: 
     c(person(given = "Lluís",
-         family = "Revilla Sancho",
-         role = c("aut", "cre"),
-         email = "lluis.revilla@gmail.com",
-         comment = c(ORCID = "0000-0001-9747-2570")),
-  person("Zebulun", "Arendsee",
-         role = "rev"),
-  person("Jennifer Chang",
-         role = "rev"))
-Description: The package implements a class and methods to work with sets, 
-    doing intersection, union, complementary, power sets, cartesian product and 
-    other set operations in a "tidy" way. Both for classical sets and fuzzy 
-    sets. It can import sets from GMT, GAF and the OBO formats. 
+             family = "Revilla Sancho",
+             role = c("aut", "cre"),
+             email = "lluis.revilla@gmail.com",
+             comment = c(ORCID = "0000-0001-9747-2570")),
+      person(given = "Zebulun",
+             family = "Arendsee",
+             role = "rev"),
+      person(given = "Jennifer Chang",
+             role = "rev"))
+Description: The package implements a class and methods to
+    work with sets, doing intersection, union, complementary, power sets,
+    cartesian product and other set operations in a "tidy" way. Both for
+    classical sets and fuzzy sets. It can import sets from GMT, GAF and
+    the OBO formats. 
 License: MIT + file LICENSE
 URL: https://github.com/llrs/BaseSet
 BugReports: https://github.com/llrs/BaseSet/issues
@@ -27,6 +29,7 @@ Imports:
     rlang,
     utils
 Suggests: 
+    Biobase,
     BiocStyle,
     covr,
     forcats,
@@ -38,8 +41,7 @@ Suggests:
     reactome.db,
     rmarkdown,
     spelling,
-    testthat (>= 2.1.0),
-    Biobase
+    testthat (>= 2.1.0)
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
