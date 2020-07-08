@@ -6,10 +6,11 @@
 \alias{BaseSet-package}
 \title{BaseSet: Working with sets the tidy way}
 \description{
-The package implements a class and methods to work with sets, 
-    doing intersection, union, complementary, power sets, cartesian product and 
-    other set operations in a "tidy" way. Both for classical sets and fuzzy 
-    sets. It can import sets from GMT, GAF and the OBO formats.
+The package implements a class and methods to
+    work with sets, doing intersection, union, complementary, power sets,
+    cartesian product and other set operations in a "tidy" way. Both for
+    classical sets and fuzzy sets. It can import sets from GMT, GAF and
+    the OBO formats.
 }
 \details{
 It provides a class \code{\link{TidySet}} with methods to do operations with sets.
