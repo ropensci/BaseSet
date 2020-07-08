@@ -19,13 +19,13 @@ Rename elements.
 }
 \examples{
 relations <- data.frame(
-    sets = c(rep("a", 5), "b"),
+    sets = c(rep("A", 5), "B"),
     elements = letters[seq_len(6)],
     fuzzy = runif(6)
 )
-a <- tidySet(relations)
-a
-name_elements(a) <- letters[1:6]
+TS <- tidySet(relations)
+TS
+name_elements(TS) <- letters[1:6]
 }
 \seealso{
 \code{\link{rename_elements}}

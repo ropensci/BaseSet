@@ -57,8 +57,8 @@ relations <- data.frame(
     elements = letters[seq_len(6)],
     fuzzy = runif(6)
 )
-a <- tidySet(relations)
-complement_set(a, "A")
+TS <- tidySet(relations)
+complement_set(TS, "A")
 }
 \seealso{
 \code{\link{filter}}

@@ -24,6 +24,10 @@ between elements is given by a probability (or uncertainty).
 \item \code{TidySet}: Check if it is fuzzy
 }}
 
+\examples{
+TS <- tidySet(list(A = letters[1:5], B = letters[2:10]))
+is.fuzzy(TS)
+}
 \seealso{
 Other methods: 
 \code{\link{TidySet-class}},

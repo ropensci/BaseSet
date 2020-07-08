@@ -85,7 +85,7 @@ length_set <- function(probability) {
 }
 
 # TODO Use matrix operations to simplify the process for large objects
-#' @describeIn set_size Calculates the size of a set either fuzzy or not
+#' @describeIn set_size Calculates the size of a set using [length_set()]
 #' @export
 #' @examples
 #' relations <- data.frame(
@@ -97,16 +97,16 @@ length_set <- function(probability) {
 #' set_size(a)
 setMethod("set_size",
     signature = signature(object = "TidySet"),
-    function(object, set = NULL) {
-        if (!all(set %in% name_sets(object)) && !is.null(set)) {
+    function(object, sets = NULL) {
+        if (!all(sets %in% name_sets(object)) && !is.null(sets)) {
             stop("Please introduce valid set names. See name_sets",
                 call. = FALSE
             )
         }
-        if (is.null(set)) {
+        if (is.null(sets)) {
             names_sets <- name_sets(object)
         } else {
-            names_sets <- set
+            names_sets <- sets
         }
 
         rel <- relations(object)
@@ -157,15 +157,16 @@ setMethod("set_size",
             stringsAsFactors = FALSE
         )
         out <- merge(out, sets(object), sort = FALSE)
-        if (is.null(set)) {
+        if (is.null(sets)) {
             out
         } else {
-            out[sets %in% set, ]
+            out[sets %in% sets, ]
         }
     }
 )
 
-#' @describeIn element_size Calculates the number of sets one element appears
+#' @describeIn element_size Calculates the number of sets an element appears
+#' with [length_set()]
 #' @export
 #' @examples
 #' relations <- data.frame(
@@ -177,8 +178,8 @@ setMethod("set_size",
 #' element_size(a)
 setMethod("element_size",
     signature = signature(object = "TidySet"),
-    function(object, element = NULL) {
-        if (!all(element %in% name_elements(object)) && !is.null(element)) {
+    function(object, elements = NULL) {
+        if (!all(elements %in% name_elements(object)) && !is.null(elements)) {
             msg <- paste0(
                 "Please introduce valid ",
                 "element names. See element_names"
@@ -188,10 +189,10 @@ setMethod("element_size",
 
         # object <- droplevels(object)
         rel <- relations(object)
-        if (is.null(element)) {
+        if (is.null(elements)) {
             names_elements <- name_elements(object)
         } else {
-            names_elements <- element
+            names_elements <- elements
         }
 
         rel <- rel[rel$elements %in% names_elements, ]
@@ -241,10 +242,10 @@ setMethod("element_size",
         )
         out <- merge(out, elements(object), sort = FALSE)
 
-        if (is.null(element)) {
+        if (is.null(elements)) {
             out
         } else {
-            out[elements %in% element, ]
+            out[elements %in% elements, ]
         }
     }
 )

@@ -33,8 +33,8 @@ relations <- data.frame(
     elements = letters[seq_len(6)],
     fuzzy = runif(6)
 )
-a <- tidySet(relations)
-add_column(a, "relations", data.frame(well = c(
+TS <- tidySet(relations)
+add_column(TS, "relations", data.frame(well = c(
     "GOOD", "BAD", "WORSE",
     "UGLY", "FOE", "HEY"
 )))

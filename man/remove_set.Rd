@@ -31,12 +31,12 @@ required also the elements
 
 \examples{
 relations <- data.frame(
-    sets = c("a", "a", "b", "b", "c", "c"),
+    sets = c("A", "A", "B", "B", "C", "C"),
     elements = letters[seq_len(6)],
     fuzzy = runif(6)
 )
-a <- tidySet(relations)
-remove_set(a, "b")
+TS <- tidySet(relations)
+remove_set(TS, "B")
 }
 \seealso{
 Other remove functions: 

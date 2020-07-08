@@ -32,12 +32,12 @@ Given a TidySet removes relations between elements and sets
 
 \examples{
 relations <- data.frame(
-    sets = c(rep("a", 5), "b"),
+    sets = c(rep("A", 5), "B"),
     elements = letters[seq_len(6)],
     fuzzy = runif(6)
 )
-a <- tidySet(relations)
-remove_relation(a, "a", "a")
+TS <- tidySet(relations)
+remove_relation(TS, "A", "a")
 }
 \seealso{
 Other remove functions: 

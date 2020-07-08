@@ -30,18 +30,18 @@ Given a TidySet adds new relations between elements and sets.
 
 \examples{
 relations <- data.frame(
-    sets = c(rep("a", 5), "b"),
+    sets = c(rep("A", 5), "B"),
     elements = letters[seq_len(6)],
     fuzzy = runif(6)
 )
-a <- tidySet(relations)
+TS <- tidySet(relations)
 relations <- data.frame(
-    sets = c(rep("a2", 5), "b2"),
+    sets = c(rep("A2", 5), "B2"),
     elements = letters[seq_len(6)],
     fuzzy = runif(6),
     new = runif(6)
 )
-add_relation(a, relations)
+add_relation(TS, relations)
 }
 \seealso{
 Other methods: 

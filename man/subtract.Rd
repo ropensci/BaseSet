@@ -52,13 +52,13 @@ Elements in a set not present in the other set. Equivalent to
 
 \examples{
 relations <- data.frame(
-    sets = c("a", "a", "b", "b", "c", "c"),
+    sets = c("A", "A", "B", "B", "C", "C"),
     elements = letters[seq_len(6)],
     fuzzy = runif(6)
 )
-a <- tidySet(relations)
-subtract(a, "a", "b")
-subtract(a, "a", "b", keep = FALSE)
+TS <- tidySet(relations)
+subtract(TS, "A", "B")
+subtract(TS, "A", "B", keep = FALSE)
 }
 \seealso{
 \code{\link{setdiff}}

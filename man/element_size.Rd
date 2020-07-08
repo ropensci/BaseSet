@@ -5,14 +5,14 @@
 \alias{element_size,TidySet-method}
 \title{Calculates the size of the elements}
 \usage{
-element_size(object, element = NULL)
+element_size(object, elements = NULL)
 
-\S4method{element_size}{TidySet}(object, element = NULL)
+\S4method{element_size}{TidySet}(object, elements = NULL)
 }
 \arguments{
 \item{object}{A TidySet object.}
 
-\item{element}{The element from which the length is calculated.}
+\item{elements}{The element from which the length is calculated.}
 }
 \value{
 A list with the size of the elements or the probability of having
@@ -23,7 +23,8 @@ Calculate the probability of being of different sizes for a given set.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{TidySet}: Calculates the number of sets one element appears
+\item \code{TidySet}: Calculates the number of sets an element appears
+with \code{\link[=length_set]{length_set()}}
 }}
 
 \examples{

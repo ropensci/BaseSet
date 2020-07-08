@@ -31,10 +31,12 @@ For instance from the sets to the relations.
 }}
 
 \examples{
-x <- list("a" = c("A" = 0.1, "B" = 0.5), "b" = c("A" = 0.2, "B" = 1))
-a <- tidySet(x)
-a <- mutate_element(a, b = runif(2))
-b <- move_to(a, from = "elements", to = "relations", "b")
+x <- list("A" = c("a" = 0.1, "b" = 0.5), "B" = c("a" = 0.2, "b" = 1))
+TS <- tidySet(x)
+TS <- mutate_element(TS, b = runif(2))
+TS2 <- move_to(TS, from = "elements", to = "relations", "b")
+# Note that apparently we haven't changed anything:
+TS2
 }
 \seealso{
 Other methods: 

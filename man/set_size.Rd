@@ -5,14 +5,14 @@
 \alias{set_size,TidySet-method}
 \title{Calculates the cardinality of a set}
 \usage{
-set_size(object, set = NULL)
+set_size(object, sets = NULL)
 
-\S4method{set_size}{TidySet}(object, set = NULL)
+\S4method{set_size}{TidySet}(object, sets = NULL)
 }
 \arguments{
 \item{object}{A TidySet object.}
 
-\item{set}{The sets from which the length is calculated.}
+\item{sets}{The sets from which the length is calculated.}
 }
 \value{
 A list with the size of the set or the probability of having that
@@ -23,7 +23,7 @@ Calculate the probability of being of different sizes for a given set.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{TidySet}: Calculates the size of a set either fuzzy or not
+\item \code{TidySet}: Calculates the size of a set using \code{\link[=length_set]{length_set()}}
 }}
 
 \examples{

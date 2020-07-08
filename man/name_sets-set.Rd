@@ -23,9 +23,9 @@ relations <- data.frame(
     elements = letters[seq_len(6)],
     fuzzy = runif(6)
 )
-a <- tidySet(relations)
-a
-name_sets(a) <- LETTERS[1:2]
+TS <- tidySet(relations)
+TS
+name_sets(TS) <- LETTERS[1:2]
 }
 \seealso{
 \code{\link{rename_set}}

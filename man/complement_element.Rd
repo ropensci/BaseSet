@@ -53,13 +53,13 @@ Return the objects without the elements listed
 
 \examples{
 relations <- data.frame(
-    sets = c("a", "a", "b", "b", "c", "c"),
+    sets = c("A", "A", "B", "B", "C", "C"),
     elements = letters[seq_len(6)],
     fuzzy = runif(6)
 )
-a <- tidySet(relations)
-complement_element(a, "a", "C_a")
-complement_element(a, "a", "C_a", keep = FALSE)
+TS <- tidySet(relations)
+complement_element(TS, "a", "C_a")
+complement_element(TS, "a", "C_a", keep = FALSE)
 }
 \seealso{
 Other complements: 
