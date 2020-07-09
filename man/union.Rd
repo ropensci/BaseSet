@@ -3,7 +3,7 @@
 \name{union}
 \alias{union}
 \alias{union.TidySet}
-\title{Merge two or more sets}
+\title{Join sets}
 \usage{
 union(object, ...)
 
@@ -49,7 +49,7 @@ defined on FUN.
 }
 \details{
 The default uses the \code{max} function following the \href{https://doi.org/10.1016/S0019-9958(65)90241-X}{standard fuzzy definition}, but it can be
-changed.
+changed. See examples below.
 }
 \examples{
 # Classical set
@@ -70,7 +70,8 @@ TS2 <- tidySet(rel)
 union(TS2, c("B", "A"), "C")
 # Probability logic
 probability_logic <- function(x){
-    sum(x)-prod(x)
+    y <- sum(x)-prod(x)
+    ifelse(length(x) == 1, x, y)
 }
 union(TS2, c("B", "A"), "C", FUN = probability_logic)
 }

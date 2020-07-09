@@ -78,7 +78,9 @@ fuzzy_set <- tidySet(relations)
 
 # Working with fuzzy sets
 
-We can work with fuzzy sets as we do with normal sets. But if you remember that at the end of the vignette we used an Important column now this is already included, which allows us to use this information for union and intersection methods:
+We can work with fuzzy sets as we do with normal sets. 
+But if you remember that at the end of the previous vignette we used an Important column, now it is already included as fuzzy. 
+This allows us to use this information for union and intersection methods and other operations:
 
 ## Union
 
@@ -91,6 +93,17 @@ BaseSet::union(fuzzy_set, sets = c("A", "B"), name = "D")
 
 We get a new set with all the elements on both sets.
 There isn't an element in both sets A and B, so the fuzzy values here do not change.
+
+If we wanted to use other logic we can with provide it with the FUN argument. 
+
+```{r union_logic}
+
+BaseSet::union(fuzzy_set, sets = c("A", "B"), FUN = function(x){sqrt(sum(x))})
+```
+
+There are several logic see for instance `?sets::fuzzy_logic`. 
+You should pick the operators that fit on the framework of your data. 
+Make sure that the defaults arguments of logic apply to your data obtaining process. 
 
 ## Intersection
 
@@ -151,11 +164,12 @@ present than the element "f" being present in one set.
 
 # Interpretation
 
-Let's dive a bit in the interpretation with an example.
+Sometimes it can be a bit hard to understand what do the fuzzy sets mean on your analysis.
+To better understand let's dive a bit in the interpretation with an example:
 
 Imagine you have your experiment where you collected data from a sample of cells for each cell (our elements). 
 Then you used some program to classify which type of cell it is (alpha, beta, delta, endothelial), this are our sets. 
-The software returns a probability for each type it has: the higher, the more confident it is of the assignment. These are our fuzzy value:
+The software returns a probability for each type it has: the higher, the more confident it is of the assignment:
 
 ```{r cells_0}
 sc_classification <- data.frame(

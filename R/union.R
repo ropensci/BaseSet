@@ -1,14 +1,14 @@
 #' @include AllClasses.R AllGenerics.R operations.R
 NULL
 
-#' Merge two or more sets
+#' Join sets
 #'
 #' Given a TidySet merges several sets into the new one using the logic
 #' defined on FUN.
 #'
 #' The default uses the `max` function following the [standard fuzzy
 #' definition](https://doi.org/10.1016/S0019-9958(65)90241-X), but it can be
-#' changed.
+#' changed. See examples below.
 #' @param object A TidySet object.
 #' @param sets The name of the sets to be used.
 #' @param name The name of the new set. By defaults joins the sets with an "∪".
@@ -43,7 +43,8 @@ NULL
 #' union(TS2, c("B", "A"), "C")
 #' # Probability logic
 #' probability_logic <- function(x){
-#'     sum(x)-prod(x)
+#'     y <- sum(x)-prod(x)
+#'     ifelse(length(x) == 1, x, y)
 #' }
 #' union(TS2, c("B", "A"), "C", FUN = probability_logic)
 union <- function(object, ...) {
