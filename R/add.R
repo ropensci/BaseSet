@@ -34,7 +34,7 @@ add_sets_internal <- function(object, set) {
     object
 }
 
-add_relations_interal <- function(object, elements, sets, fuzzy) {
+add_relations_internal <- function(object, elements, sets, fuzzy) {
     nElements <- length(elements)
 
     if (length(sets) != nElements && length(sets) == 1) {
@@ -177,7 +177,7 @@ add_relations <- function(object, elements, sets, fuzzy, ...) {
 add_relations.TidySet <- function(object, elements, sets, fuzzy = 1, ...) {
     object <- add_elements(object, elements)
     object <- add_sets(object, sets)
-    object <- add_relations_interal(object, elements, sets, 1)
+    object <- add_relations_internal(object, elements, sets, 1)
 
     if (length(fuzzy) != length(elements) && length(fuzzy) != 1) {
         stop("Fuzzy values do not match with the number of relations",
