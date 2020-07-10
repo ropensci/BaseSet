@@ -42,13 +42,8 @@ check_symbol <- function(symbol) {
 naming <- function(start = NULL, sets1, middle = NULL, sets2 = NULL,
     collapse_symbol = "union") {
     msg <- "Symbol should be of length 1"
-    if (length(collapse_symbol) > 1) {
-        stop(msg)
-    }
-    if (length(start) > 1) {
-        stop(msg)
-    }
-    if (length(middle) > 1) {
+    longer <- any(c(length(collapse_symbol), length(start), length(middle)) > 1)
+    if (longer) {
         stop(msg)
     }
 
