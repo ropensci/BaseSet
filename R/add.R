@@ -61,25 +61,22 @@ add_relations_internal <- function(object, elements, sets, fuzzy) {
         stop("Recyling fuzzy is not allowed", call. = FALSE)
     }
 
-    if (length(final_relations) != length(original_relations)) {
+    # Split the remaining elements and sets
+    elements_sets <- strsplit(new_relations, split = " ")
+    elements <- vapply(elements_sets, "[", i = 1, character(1L))
+    sets <- vapply(elements_sets, "[", i = 2, character(1L))
 
-        # Split the remaining elements and sets
-        elements_sets <- strsplit(new_relations, split = " ")
-        elements <- vapply(elements_sets, "[", i = 1, character(1L))
-        sets <- vapply(elements_sets, "[", i = 2, character(1L))
-
-        df_relations <- data.frame(
-            elements = elements,
-            sets = sets,
-            fuzzy = fuzzy
-        )
-        column_names <- setdiff(
-            colnames(object@relations),
-            c("sets", "elements", "fuzzy")
-        )
-        df_relations[, column_names] <- NA
-        object@relations <- rbind.data.frame(object@relations, df_relations)
-    }
+    df_relations <- data.frame(
+        elements = elements,
+        sets = sets,
+        fuzzy = fuzzy
+    )
+    column_names <- setdiff(
+        colnames(object@relations),
+        c("sets", "elements", "fuzzy")
+    )
+    df_relations[, column_names] <- NA
+    object@relations <- rbind.data.frame(object@relations, df_relations)
     rownames(object@relations) <- NULL
     object@relations <- droplevels(object@relations)
     object
