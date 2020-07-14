@@ -22,7 +22,7 @@ multiply_probabilities <- function(p, i) {
     prod(p[i], (1 - p)[-i])
 }
 
-#' @describeIn multiply_probabilities Product of the probabilities selected.
+#' @rdname multiply_probabilities
 #' @export
 #' @examples
 #' independent_probabilities(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), c(1, 3))
@@ -37,16 +37,20 @@ independent_probabilities <- function(p, i) {
     prod(p[i])
 }
 
-#' @describeIn length_probability Probability of independent values
+#' @rdname length_probability
 #' @export
 #' @examples
-#' union_probability(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23))
+#' union_probability(c(0.5, 0.1, 0.3))
 union_probability <- function(p) {
-    if (length(p) == 1) {
+    l <- length(p)
+    if (l == 1) {
         return(p)
     }
-    pos <- combn(seq_along(p), 2) # 2 For two variables independence
-    sum(p) -sum(apply(pos, 2, independent_probabilities, p = p))
+    n <- vapply(seq_len(l)[-1], function(x){
+        pos <- combn(seq_along(p), x)
+        sum(apply(pos, 2, independent_probabilities, p = p))
+    }, numeric(1L))
+    sum(p) + sum(rep(c(-1, 1), length.out = length(n))*n)
 }
 
 #' Calculates the probability of a single length
