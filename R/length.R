@@ -4,6 +4,7 @@ NULL
 #' Calculates the probabilities
 #'
 #' Calculates the probability that all happened simultaneously
+#' `independent_probabilities` just multiply the probabilities of the index passed.
 #' @param p Numeric vector of probabilities.
 #' @param i Numeric integer index of the complementary probability.
 #' @return A numeric value of the probability.
@@ -11,6 +12,7 @@ NULL
 #' @export
 #' @examples
 #' multiply_probabilities(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), c(1, 3))
+#' independent_probabilities(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), c(1, 3))
 multiply_probabilities <- function(p, i) {
     stopifnot(all(i > 0))
     stopifnot(all(p >= 0))
@@ -24,8 +26,6 @@ multiply_probabilities <- function(p, i) {
 
 #' @rdname multiply_probabilities
 #' @export
-#' @examples
-#' independent_probabilities(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), c(1, 3))
 independent_probabilities <- function(p, i) {
     stopifnot(all(i > 0))
     stopifnot(all(p >= 0))
@@ -39,8 +39,6 @@ independent_probabilities <- function(p, i) {
 
 #' @rdname length_probability
 #' @export
-#' @examples
-#' union_probability(c(0.5, 0.1, 0.3))
 union_probability <- function(p) {
     l <- length(p)
     if (l == 1) {
@@ -55,6 +53,8 @@ union_probability <- function(p) {
 #' Calculates the probability of a single length
 #'
 #' Creates all the possibilities and then add them up.
+#' `union_probability` Assumes independence between the probabilities to
+#' calculate the final size.
 #' @param p Numeric vector of probabilities.
 #' @param size Integer value of the size of the selected values.
 #' @return A numeric value of the probability of the given size.
@@ -64,6 +64,7 @@ union_probability <- function(p) {
 #' length_probability(c(0.5, 0.75), 2)
 #' length_probability(c(0.5, 0.75, 0.66), 1)
 #' length_probability(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), 2)
+#' union_probability(c(0.5, 0.1, 0.3))
 length_probability <- function(p, size) {
     sum(combn(seq_along(p), size, FUN = multiply_probabilities, p = p))
 }

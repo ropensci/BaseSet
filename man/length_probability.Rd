@@ -19,17 +19,14 @@ A numeric value of the probability of the given size.
 }
 \description{
 Creates all the possibilities and then add them up.
+\code{union_probability} Assumes independence between the probabilities to
+calculate the final size.
 }
-\section{Functions}{
-\itemize{
-\item \code{union_probability}: Probability of independent values
-}}
-
 \examples{
-union_probability(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23))
 length_probability(c(0.5, 0.75), 2)
 length_probability(c(0.5, 0.75, 0.66), 1)
 length_probability(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), 2)
+union_probability(c(0.5, 0.1, 0.3))
 }
 \seealso{
 \code{\link[=multiply_probabilities]{multiply_probabilities()}} and \code{\link[=length_set]{length_set()}}
