@@ -2,9 +2,12 @@
 % Please edit documentation in R/length.R
 \name{multiply_probabilities}
 \alias{multiply_probabilities}
+\alias{independent_probabilities}
 \title{Calculates the probabilities}
 \usage{
 multiply_probabilities(p, i)
+
+independent_probabilities(p, i)
 }
 \arguments{
 \item{p}{Numeric vector of probabilities.}
@@ -17,8 +20,14 @@ A numeric value of the probability.
 \description{
 Calculates the probability that all happened simultaneously
 }
+\section{Functions}{
+\itemize{
+\item \code{independent_probabilities}: Product of the probabilities selected.
+}}
+
 \examples{
 multiply_probabilities(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), c(1, 3))
+independent_probabilities(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), c(1, 3))
 }
 \seealso{
 \code{\link[=length_probability]{length_probability()}}

@@ -69,13 +69,11 @@ TS2 <- tidySet(rel)
 # Standard default logic
 union(TS2, c("B", "A"), "C")
 # Probability logic
-probability_logic <- function(x){
-    y <- sum(x)-prod(x)
-    ifelse(length(x) == 1, x, y)
-}
-union(TS2, c("B", "A"), "C", FUN = probability_logic)
+union(TS2, c("B", "A"), "C", FUN = union_probability)
 }
 \seealso{
+\code{\link[=union_probability]{union_probability()}}
+
 Other methods that create new sets: 
 \code{\link{complement_element}()},
 \code{\link{complement_set}()},

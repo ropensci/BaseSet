@@ -24,6 +24,7 @@ NULL
 #' @export
 #' @family methods that create new sets
 #' @family methods
+#' @seealso [union_probability()]
 #' @examples
 #' # Classical set
 #' rel <- data.frame(
@@ -42,11 +43,7 @@ NULL
 #' # Standard default logic
 #' union(TS2, c("B", "A"), "C")
 #' # Probability logic
-#' probability_logic <- function(x){
-#'     y <- sum(x)-prod(x)
-#'     ifelse(length(x) == 1, x, y)
-#' }
-#' union(TS2, c("B", "A"), "C", FUN = probability_logic)
+#' union(TS2, c("B", "A"), "C", FUN = union_probability)
 union <- function(object, ...) {
     UseMethod("union")
 }
