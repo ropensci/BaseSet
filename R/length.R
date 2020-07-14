@@ -47,8 +47,7 @@ union_probability <- function(p) {
         return(p)
     }
     n <- vapply(seq_len(l)[-1], function(x){
-        pos <- combn(seq_along(p), x)
-        sum(apply(pos, 2, independent_probabilities, p = p))
+        sum(combn(seq_along(p), x, FUN = independent_probabilities, p = p))
     }, numeric(1L))
     sum(p) + sum(rep(c(-1, 1), length.out = length(n))*n)
 }
@@ -66,8 +65,7 @@ union_probability <- function(p) {
 #' length_probability(c(0.5, 0.75, 0.66), 1)
 #' length_probability(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), 2)
 length_probability <- function(p, size) {
-    pos <- combn(seq_along(p), size)
-    sum(apply(pos, 2, multiply_probabilities, p = p))
+    sum(combn(seq_along(p), size, FUN = multiply_probabilities, p = p))
 }
 
 #' Calculates the probability
