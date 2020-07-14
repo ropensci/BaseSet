@@ -49,3 +49,20 @@ test_that("length_set works", {
     expect_equivalent(o2["2"], 0L)
     expect_true(all(o2[-c(1, 2)] == 0L))
 })
+
+test_that("union_probabilities works", {
+    # 3 probabilities
+    out <- union_probability(p[1:3])
+    manually <- sum(p[1:3]) - prod(p[c(1, 2)]) - prod(p[c(1, 3)]) -
+        prod(p[c(2, 3)]) + prod(p[1:3])
+    expect_equal(out, manually)
+
+    # 4 probabilities
+    out <- union_probability(p[1:4])
+    manually <- sum(p[1:4]) - prod(p[c(1, 2)]) - prod(p[c(1, 3)]) -
+        prod(p[c(1, 4)]) - prod(p[c(2, 3)]) - prod(p[c(2, 4)]) -
+        prod(p[c(3, 4)]) + prod(p[c(1, 2, 3)]) + prod(p[c(1, 2, 4)]) +
+        prod(p[c(1, 3, 4)]) + prod(p[c(2, 3, 4)]) - prod(p[1:4])
+    expect_equal(out, manually)
+
+})
