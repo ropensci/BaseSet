@@ -1,4 +1,13 @@
+url: https://docs.ropensci.org/BaseSet
+
+template:
+  package: rotemplate
+
 destination: docs
+
+toc:
+  depth: 3
+
 reference:
   - title: "Transfrom between classes"
     desc: >
