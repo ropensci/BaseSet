@@ -4,17 +4,17 @@
 <!-- badges: start -->
 
 [![Travis build
-status](https://travis-ci.org/llrs/BaseSet.svg?branch=master)](https://travis-ci.org/llrs/BaseSet)
+status](https://travis-ci.org/ropensci/BaseSet.svg?branch=master)](https://travis-ci.org/ropensci/BaseSet)
 [![Actions
-CI](https://github.com/llrs/BaseSet/workflows/R-CMD-check/badge.svg)](https://github.com/llrs/BaseSet/actions?query=workflow%3AR-CMD-check)
+CI](https://github.com/ropensci/BaseSet/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/BaseSet/actions?query=workflow%3AR-CMD-check)
 [![Coverage
-status](https://codecov.io/gh/llrs/BaseSet/branch/master/graph/badge.svg)](https://codecov.io/github/llrs/BaseSet?branch=master)
+status](https://codecov.io/gh/ropensci/BaseSet/branch/master/graph/badge.svg)](https://codecov.io/github/ropensci/BaseSet?branch=master)
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![](https://badges.ropensci.org/359_status.svg)](https://github.com/ropensci/software-review/issues/359)
+[![rOpenSci](https://badges.ropensci.org/359_status.svg)](https://github.com/ropensci/software-review/issues/359)
 <!-- badges: end -->
 
 # BaseSet
@@ -44,8 +44,8 @@ numeric data associated with sets…
 Watch BaseSet working on the [examples](#Examples) below and in the
 vignettes. You can also find [related packages](#Related-packages) and
 the differences with BaseSet. If you have some questions or bugs [open
-an issue](https://github.com/llrs/BaseSet/issues) (remember the [Code of
-Conduct](#Code-of-Conduct))
+an issue](https://github.com/ropensci/BaseSet/issues) (remember the
+[Code of Conduct](#Code-of-Conduct))
 
 # Installation
 
@@ -60,7 +60,7 @@ if (!require("BiocManager")) {
 ```
 
 You can install the latest version of BaseSet from
-[Github](https://github.com/llrs/BaseSet) with:
+[Github](https://github.com/ropensci/BaseSet) with:
 
 ``` r
 BiocManager::install("llrs/BaseSet", 
@@ -79,11 +79,11 @@ sets_analysis <- tidySet(sets)
 sets_analysis
 #>   elements sets fuzzy
 #> 1        a    A     1
-#> 2        a    B     1
-#> 3        b    A     1
-#> 4        c    A     1
-#> 5        d    A     1
-#> 6        e    A     1
+#> 2        b    A     1
+#> 3        c    A     1
+#> 4        d    A     1
+#> 5        e    A     1
+#> 6        a    B     1
 #> 7        f    B     1
 ```
 
@@ -116,13 +116,13 @@ intersection(sets_analysis, sets = c("A", "B"))
 intersection(sets_analysis, sets = c("A", "B"), name = "D", keep = TRUE) 
 #>   elements sets fuzzy
 #> 1        a    A     1
-#> 2        a    B     1
-#> 3        a    D     1
-#> 4        b    A     1
-#> 5        c    A     1
-#> 6        d    A     1
-#> 7        e    A     1
-#> 8        f    B     1
+#> 2        b    A     1
+#> 3        c    A     1
+#> 4        d    A     1
+#> 5        e    A     1
+#> 6        a    B     1
+#> 7        f    B     1
+#> 8        a    D     1
 ```
 
 And compute size of sets among other things:
@@ -166,10 +166,10 @@ sets_enriched <- sets_analysis %>%
 sets_enriched
 #>   elements sets fuzzy sets_origin
 #> 1        a    A     1    Reactome
-#> 2        a    B     1        KEGG
-#> 3        b    A     1    Reactome
-#> 4        c    A     1    Reactome
-#> 5        d    A     1    Reactome
+#> 2        b    A     1    Reactome
+#> 3        c    A     1    Reactome
+#> 4        d    A     1    Reactome
+#> 5        e    A     1    Reactome
 #> 6        f    B     1        KEGG
 
 # Activating sets makes the verb affect only them:
@@ -179,14 +179,15 @@ elements(sets_enriched)
 #> 2        b
 #> 3        c
 #> 4        d
-#> 5        f
+#> 5        e
+#> 6        f
 relations(sets_enriched)
 #>   elements sets fuzzy
 #> 1        a    A     1
-#> 2        a    B     1
-#> 3        b    A     1
-#> 4        c    A     1
-#> 5        d    A     1
+#> 2        b    A     1
+#> 3        c    A     1
+#> 4        d    A     1
+#> 5        e    A     1
 #> 6        f    B     1
 sets(sets_enriched)
 #>   sets sets_origin
@@ -208,11 +209,11 @@ fuzzy_set <- tidySet(relations)
 fuzzy_set
 #>   elements sets     fuzzy
 #> 1        a    A 0.1837246
-#> 2        a    B 0.9381182
-#> 3        b    A 0.4567009
-#> 4        c    A 0.8152075
-#> 5        d    A 0.5800610
-#> 6        e    A 0.5724973
+#> 2        b    A 0.4567009
+#> 3        c    A 0.8152075
+#> 4        d    A 0.5800610
+#> 5        e    A 0.5724973
+#> 6        a    B 0.9381182
 #> 7        f    B 0.9460158
 ```
 
@@ -245,13 +246,13 @@ intersection(fuzzy_set, sets = c("A", "B"))
 intersection(fuzzy_set, sets = c("A", "B"), name = "D", keep = TRUE) 
 #>   elements sets     fuzzy
 #> 1        a    A 0.1837246
-#> 2        a    B 0.9381182
-#> 3        a    D 0.1837246
-#> 4        b    A 0.4567009
-#> 5        c    A 0.8152075
-#> 6        d    A 0.5800610
-#> 7        e    A 0.5724973
-#> 8        f    B 0.9460158
+#> 2        b    A 0.4567009
+#> 3        c    A 0.8152075
+#> 4        d    A 0.5800610
+#> 5        e    A 0.5724973
+#> 6        a    B 0.9381182
+#> 7        f    B 0.9460158
+#> 8        a    D 0.1837246
 ```
 
 Assuming that the fuzzy value is a probability, we can calculate which
@@ -306,11 +307,11 @@ fuzzy_set %>%
   activate("sets") %>% 
   mutate(sets_origin = c("Reactome", "KEGG"))
 #>   elements sets     fuzzy sets_origin
-#> 1        a    B 0.9381182    Reactome
-#> 2        f    B 0.9460158    Reactome
-#> 3        c    A 0.8152075        KEGG
-#> 4        d    A 0.5800610        KEGG
-#> 5        e    A 0.5724973        KEGG
+#> 1        c    A 0.8152075    Reactome
+#> 2        d    A 0.5800610    Reactome
+#> 3        e    A 0.5724973    Reactome
+#> 4        a    B 0.9381182        KEGG
+#> 5        f    B 0.9460158        KEGG
 ```
 
 # Related packages
@@ -352,16 +353,23 @@ overlap with BaseSet functionality:
 On bioinformatics when looking for the impact of an experiment
 enrichment methods are applied. This involves obtaining several sets of
 genes from several resources and methods. Usually these curated sets of
-genes are taken at face value. However there are several resources of
+genes are taken at face value. However, there are several resources of
 sets and they [do not agree between
 them](https://doi.org/10.1186/1471-2105-14-112), regardless they are
-used without considering any uncertainty on the sets composition. Fuzzy
-theory has long studied sets whose elements have degrees of membership
-and/or uncertainty. Therefore one way to improve the methods involve
-using fuzzy methods and logic on this field. As I couldn’t find any
-package that provided methods for this I set on creating it (after
+used without considering any uncertainty on sets composition.
+
+Fuzzy theory has long studied sets whose elements have degrees of
+membership and/or uncertainty. Therefore one way to improve the methods
+involve using fuzzy methods and logic on this field. As I couldn’t find
+any package that provided methods for this I set on creating it (after
 trying to [expand](https://github.com/llrs/GSEAdv) the existing one I
 knew).
+
+This package is intended to be easy to use for someone who is working
+with collections of sets but flexible about the methods and logic it can
+use. To be consistent, the standard fuzzy logic is the default but it
+might not be the right one for your data. Consider changing the defaults
+to match with the framework the data was obtained with.
 
 # Code of Conduct
 
