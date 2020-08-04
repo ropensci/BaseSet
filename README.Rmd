@@ -16,9 +16,9 @@ knitr::opts_chunk$set(
 ```
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/llrs/BaseSet.svg?branch=master)](https://travis-ci.org/llrs/BaseSet)
-[![Actions CI](https://github.com/llrs/BaseSet/workflows/R-CMD-check/badge.svg)](https://github.com/llrs/BaseSet/actions?query=workflow%3AR-CMD-check)
-[![Coverage status](https://codecov.io/gh/llrs/BaseSet/branch/master/graph/badge.svg)](https://codecov.io/github/llrs/BaseSet?branch=master)
+[![Travis build status](https://travis-ci.org/ropensci/BaseSet.svg?branch=master)](https://travis-ci.org/ropensci/BaseSet)
+[![Actions CI](https://github.com/ropensci/BaseSet/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/BaseSet/actions?query=workflow%3AR-CMD-check)
+[![Coverage status](https://codecov.io/gh/ropensci/BaseSet/branch/master/graph/badge.svg)](https://codecov.io/github/ropensci/BaseSet?branch=master)
 [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![rOpenSci](https://badges.ropensci.org/359_status.svg)](https://github.com/ropensci/software-review/issues/359)
@@ -42,7 +42,7 @@ For instance origin of the set, categorical or numeric data associated with sets
 
 Watch BaseSet working on the [examples](#Examples) below and in the vignettes. 
 You can also find [related packages](#Related-packages) and the differences with BaseSet. 
-If you have some questions or bugs [open an issue](https://github.com/llrs/BaseSet/issues) (remember the [Code of Conduct](#Code-of-Conduct))
+If you have some questions or bugs [open an issue](https://github.com/ropensci/BaseSet/issues) (remember the [Code of Conduct](#Code-of-Conduct))
 
 # Installation
 
@@ -54,7 +54,7 @@ if (!require("BiocManager")) {
 }
 ```
 
-You can install the latest version of BaseSet from [Github](https://github.com/llrs/BaseSet) with:
+You can install the latest version of BaseSet from [Github](https://github.com/ropensci/BaseSet) with:
 
 ```{r eval=FALSE}
 BiocManager::install("llrs/BaseSet", 

@@ -18,8 +18,8 @@ Description: The package implements a class and methods to
     classical sets and fuzzy sets. It can import sets from GMT, GAF and
     the OBO formats. 
 License: MIT + file LICENSE
-URL: https://github.com/llrs/BaseSet
-BugReports: https://github.com/llrs/BaseSet/issues
+URL: https://github.com/ropensci/BaseSet, https://docs.ropensci.org/BaseSet (website)
+BugReports: https://github.com/ropensci/BaseSet/issues
 Depends: 
     R (>= 3.6.0)
 Imports: 
