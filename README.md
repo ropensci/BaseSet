@@ -63,7 +63,7 @@ You can install the latest version of BaseSet from
 [Github](https://github.com/ropensci/BaseSet) with:
 
 ``` r
-BiocManager::install("llrs/BaseSet", 
+BiocManager::install("ropensci/BaseSet", 
                      dependencies = TRUE, build_vignettes = TRUE, force = TRUE)
 ```
 
