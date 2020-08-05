@@ -9,10 +9,11 @@ toc:
   depth: 3
 
 reference:
-  - title: "Transfrom between classes"
+  - title: "General"
     desc: >
       Functions to create a TidySet from other formats
     contents:
+      - '`BaseSet-package`'
       - '`tidySet`'
       - '`tidy`'
       - '`as.data.frame.TidySet`'
@@ -23,6 +24,7 @@ reference:
     contents:
       - '`adjacency`'
       - '`cartesian`'
+      - '`cardinality`'
       - '`complement`'
       - '`complement_element`'
       - '`complement_set`'
@@ -41,7 +43,6 @@ reference:
       - '`activate`'
       - '`add_column`'
       - '`add_elements`'
-      - '`add_fuzzification`'
       - '`add_relation`'
       - '`add_relations`'
       - '`add_sets`'
@@ -49,7 +50,6 @@ reference:
       - '`droplevels.TidySet`'
       - '`element_size`'
       - '`elements`'
-      - '`fuzzification`'
       - '`group`'
       - '`is_nested`'
       - '`nElements`'
@@ -92,3 +92,5 @@ reference:
       - '`naming`'
       - '`set_symbols`'
       - '`length_set`'
+      - '`union_probability`'
+      - '`multiply_probabilities`'

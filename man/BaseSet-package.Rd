@@ -18,8 +18,9 @@ It provides a class \code{\link{TidySet}} with methods to do operations with set
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/llrs/BaseSet}
-  \item Report bugs at \url{https://github.com/llrs/BaseSet/issues}
+  \item \url{https://github.com/ropensci/BaseSet}
+  \item \url{https://docs.ropensci.org/BaseSet (website)}
+  \item Report bugs at \url{https://github.com/ropensci/BaseSet/issues}
 }
 
 }

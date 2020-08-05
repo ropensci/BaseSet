@@ -136,14 +136,16 @@ methods::setGeneric("elements<-", function(object, value)
 methods::setGeneric("sets<-", function(object, value)
   standardGeneric("sets<-"))
 
-#' Calculates the cardinality of a set
+#' Calculates the size of a set
 #'
-#' Calculate the probability of being of different sizes for a given set.
+#' Assuming that the fuzzy values are probabilities,
+#' calculates the probability of being of different sizes for a given set.
 #' @param object A TidySet object.
 #' @param sets The sets from which the length is calculated.
 #' @return A list with the size of the set or the probability of having that
 #' size.
 #' @export set_size
+#' @seealso cardinality
 #' @family sizes
 #' @family methods
 methods::setGeneric("set_size", function(object, sets = NULL)
@@ -151,12 +153,14 @@ methods::setGeneric("set_size", function(object, sets = NULL)
 
 #' Calculates the size of the elements
 #'
-#' Calculate the probability of being of different sizes for a given set.
+#' Assuming that the fuzzy values are probabilities, calculates the probability
+#' of being of different sizes for a given set.
 #' @param object A TidySet object.
 #' @param elements The element from which the length is calculated.
 #' @return A list with the size of the elements or the probability of having
 #' that size.
 #' @family sizes
+#' @seealso cardinality
 #' @export element_size
 #' @family methods
 methods::setGeneric("element_size", function(object, elements = NULL)

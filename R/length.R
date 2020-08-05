@@ -1,9 +1,9 @@
 #' @include AllClasses.R AllGenerics.R
 NULL
 
-#' Calculates the probabilities
+#' Probability of a vector of probabilities
 #'
-#' Calculates the probability that all happened simultaneously
+#' Calculates the probability that all probabilities happened simultaneously.
 #' `independent_probabilities` just multiply the probabilities of the index passed.
 #' @param p Numeric vector of probabilities.
 #' @param i Numeric integer index of the complementary probability.

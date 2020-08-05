@@ -3,7 +3,7 @@
 \name{multiply_probabilities}
 \alias{multiply_probabilities}
 \alias{independent_probabilities}
-\title{Calculates the probabilities}
+\title{Probability of a vector of probabilities}
 \usage{
 multiply_probabilities(p, i)
 
@@ -18,7 +18,7 @@ independent_probabilities(p, i)
 A numeric value of the probability.
 }
 \description{
-Calculates the probability that all happened simultaneously
+Calculates the probability that all probabilities happened simultaneously.
 \code{independent_probabilities} just multiply the probabilities of the index passed.
 }
 \examples{

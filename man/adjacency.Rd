@@ -25,7 +25,7 @@ A square matrix, 1 if two nodes are connected, 0 otherwise.
 Are two elements connected ?
 }
 \examples{
-x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
+x <- list("SET1" = letters[1:5], "SET2" = LETTERS[3:7])
 a <- tidySet(x)
 adjacency_element(a)
 adjacency_set(a)

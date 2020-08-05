@@ -19,7 +19,8 @@ A list with the size of the elements or the probability of having
 that size.
 }
 \description{
-Calculate the probability of being of different sizes for a given set.
+Assuming that the fuzzy values are probabilities, calculates the probability
+of being of different sizes for a given set.
 }
 \section{Methods (by class)}{
 \itemize{
@@ -37,6 +38,8 @@ a <- tidySet(relations)
 element_size(a)
 }
 \seealso{
+cardinality
+
 Other sizes: 
 \code{\link{set_size}()}
 

@@ -8,7 +8,7 @@
 #' @method adjacency TidySet
 #' @seealso \code{\link{incidence}}
 #' @examples
-#' x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
+#' x <- list("SET1" = letters[1:5], "SET2" = LETTERS[3:7])
 #' a <- tidySet(x)
 #' adjacency_element(a)
 #' adjacency_set(a)

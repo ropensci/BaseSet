@@ -3,7 +3,7 @@
 \name{set_size}
 \alias{set_size}
 \alias{set_size,TidySet-method}
-\title{Calculates the cardinality of a set}
+\title{Calculates the size of a set}
 \usage{
 set_size(object, sets = NULL)
 
@@ -19,7 +19,8 @@ A list with the size of the set or the probability of having that
 size.
 }
 \description{
-Calculate the probability of being of different sizes for a given set.
+Assuming that the fuzzy values are probabilities,
+calculates the probability of being of different sizes for a given set.
 }
 \section{Methods (by class)}{
 \itemize{
@@ -36,6 +37,8 @@ a <- tidySet(relations)
 set_size(a)
 }
 \seealso{
+cardinality
+
 Other sizes: 
 \code{\link{element_size}()}
 
