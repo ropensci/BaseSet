@@ -1,5 +1,5 @@
 Package: BaseSet
-Title: Working with sets the tidy way
+Title: Working with Sets the Tidy Way
 Version: 0.0.11
 Authors@R: 
     c(person(given = "Lluís",
@@ -12,13 +12,14 @@ Authors@R:
              role = "rev"),
       person(given = "Jennifer Chang",
              role = "rev"))
-Description: The package implements a class and methods to
-    work with sets, doing intersection, union, complementary, power sets,
-    cartesian product and other set operations in a "tidy" way. Both for
-    classical sets and fuzzy sets. It can import sets from GMT, GAF and
-    the OBO formats. 
+Description: Implements a class and methods to work with sets,
+    doing intersection, union, complementary, power sets, cartesian
+    product and other set operations in a "tidy" way. These set operations
+    are available for both classical sets and fuzzy sets. Load sets from
+    several data structures or import them from several formats.
 License: MIT + file LICENSE
-URL: https://github.com/ropensci/BaseSet, https://docs.ropensci.org/BaseSet (website)
+URL: https://github.com/ropensci/BaseSet,
+    https://docs.ropensci.org/BaseSet
 BugReports: https://github.com/ropensci/BaseSet/issues
 Depends: 
     R (>= 3.6.0)

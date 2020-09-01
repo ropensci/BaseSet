@@ -4,22 +4,28 @@
 \name{BaseSet-package}
 \alias{BaseSet}
 \alias{BaseSet-package}
-\title{BaseSet: Working with sets the tidy way}
+\title{BaseSet: Working with Sets the Tidy Way}
 \description{
-The package implements a class and methods to
-    work with sets, doing intersection, union, complementary, power sets,
-    cartesian product and other set operations in a "tidy" way. Both for
-    classical sets and fuzzy sets. It can import sets from GMT, GAF and
-    the OBO formats.
+Implements a class and methods to work with sets,
+    doing intersection, union, complementary, power sets, cartesian
+    product and other set operations in a "tidy" way. These set operations
+    are available for both classical sets and fuzzy sets. Load sets from
+    several data structures or import them from several formats.
 }
 \details{
 It provides a class \code{\link{TidySet}} with methods to do operations with sets.
+}
+\examples{
+set <- list("A" = letters[1:5], "B" = letters[4:7])
+TS <- tidySet(set)
+cardinality(TS)
+intersection(TS, c("A", "B"))
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://github.com/ropensci/BaseSet}
-  \item \url{https://docs.ropensci.org/BaseSet (website)}
+  \item \url{https://docs.ropensci.org/BaseSet}
   \item Report bugs at \url{https://github.com/ropensci/BaseSet/issues}
 }
 
