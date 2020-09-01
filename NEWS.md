@@ -1,4 +1,4 @@
-# BaseSet (development version)
+# BaseSet 0.0.12
 
 # BaseSet 0.0.0.9000
 
