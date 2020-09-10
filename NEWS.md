@@ -1,6 +1,8 @@
-# BaseSet 0.0.12
+# BaseSet (development version)
 
 * Remove unused dependency to BiocStyle
+
+# BaseSet 0.0.12
 
 # BaseSet 0.0.0.9000
 
