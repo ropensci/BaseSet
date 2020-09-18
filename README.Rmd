@@ -178,7 +178,7 @@ There are several other packages related to sets, which partially overlap with B
  - [`{GSEABase}`](https://bioconductor.org/packages/GSEABase)  
  Implements a class to store sets and related information, but it doesn't allow to store fuzzy sets and it is also quite slow as it creates several classes for annotating each set. 
   
- - [`{BiocSets}`](https://bioconductor.org/packages/BiocSets)  
+ - [`{BiocSet}`](https://bioconductor.org/packages/BiocSet)  
  Implements a tidy class for sets but does not handle fuzzy sets. It also has less functionality to operate with sets, like power sets and cartesian product. BiocSets was influenced by the development of this package. 
 
  - [`{hierarchicalSets}`](https://CRAN.R-project.org/package=hierarchicalSets)  
@@ -205,5 +205,5 @@ Consider changing the defaults to match with the framework the data was obtained
 
 # Code of Conduct {#CoC}
 
-Please note that the BaseSet project is released with a  [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
+Please note that the BaseSet project is released with a  [Contributor Code of Conduct](https://docs.ropensci.org/BaseSet/CODE_OF_CONDUCT.html).
 By contributing to this project, you agree to abide by its terms.

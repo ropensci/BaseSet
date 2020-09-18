@@ -1,6 +1,6 @@
 Package: BaseSet
 Title: Working with Sets the Tidy Way
-Version: 0.0.12
+Version: 0.0.12.9000
 Authors@R: 
     c(person(given = "Lluís",
              family = "Revilla Sancho",
@@ -19,7 +19,7 @@ Description: Implements a class and methods to work with sets,
     several data structures or import them from several formats.
 License: MIT + file LICENSE
 URL: https://github.com/ropensci/BaseSet,
-    https://docs.ropensci.org/BaseSet
+    https://docs.ropensci.org/BaseSet/
 BugReports: https://github.com/ropensci/BaseSet/issues
 Depends: 
     R (>= 3.6.0)
