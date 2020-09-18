@@ -3,8 +3,7 @@ title: "About BaseSet"
 abstract: >
   Describes the background of the package, important functions defined in the
   package and some of the applications and usages.
-date: "`r BiocStyle::doc_date()`"
-package: "`r BiocStyle::pkg_ver('BaseSet')`"
+date: "`r format(Sys.time(), '%Y %b %d')`"
 output:
   html_document:
     fig_caption: true
