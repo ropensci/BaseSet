@@ -11,7 +11,8 @@ NULL
 #' changed. See examples below.
 #' @param object A TidySet object.
 #' @param sets The name of the sets to be used.
-#' @param name The name of the new set. By defaults joins the sets with an "∪".
+#' @param name The name of the new set. By defaults joins the sets with an
+#' \\u222A .
 #' @param FUN A function to be applied when performing the union.
 #' The standard union is the "max" function, but you can provide any other
 #' function that given a numeric vector returns a single number.

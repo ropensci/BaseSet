@@ -1,6 +1,7 @@
 # BaseSet (development version)
 
 * Remove unused dependency to BiocStyle
+* Fix unicode characters for windows
 
 # BaseSet 0.0.12
 

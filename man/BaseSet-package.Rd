@@ -25,7 +25,7 @@ intersection(TS, c("A", "B"))
 Useful links:
 \itemize{
   \item \url{https://github.com/ropensci/BaseSet}
-  \item \url{https://docs.ropensci.org/BaseSet}
+  \item \url{https://docs.ropensci.org/BaseSet/}
   \item Report bugs at \url{https://github.com/ropensci/BaseSet/issues}
 }
 

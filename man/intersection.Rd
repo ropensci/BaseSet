@@ -27,7 +27,8 @@ intersection(object, sets, ...)
 
 \item{...}{Other named arguments passed to \code{FUN}.}
 
-\item{name}{The name of the new set. By defaults joins the sets with an "∩".}
+\item{name}{The name of the new set. By defaults joins the sets with an
+\\u2229 .}
 
 \item{FUN}{A function to be applied when performing the union.
 The standard intersection is the "min" function, but you can provide any
