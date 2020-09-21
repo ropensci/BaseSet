@@ -79,11 +79,11 @@ sets_analysis <- tidySet(sets)
 sets_analysis
 #>   elements sets fuzzy
 #> 1        a    A     1
-#> 2        b    A     1
-#> 3        c    A     1
-#> 4        d    A     1
-#> 5        e    A     1
-#> 6        a    B     1
+#> 2        a    B     1
+#> 3        b    A     1
+#> 4        c    A     1
+#> 5        d    A     1
+#> 6        e    A     1
 #> 7        f    B     1
 ```
 
@@ -116,13 +116,13 @@ intersection(sets_analysis, sets = c("A", "B"))
 intersection(sets_analysis, sets = c("A", "B"), name = "D", keep = TRUE) 
 #>   elements sets fuzzy
 #> 1        a    A     1
-#> 2        b    A     1
-#> 3        c    A     1
-#> 4        d    A     1
-#> 5        e    A     1
-#> 6        a    B     1
-#> 7        f    B     1
-#> 8        a    D     1
+#> 2        a    B     1
+#> 3        a    D     1
+#> 4        b    A     1
+#> 5        c    A     1
+#> 6        d    A     1
+#> 7        e    A     1
+#> 8        f    B     1
 ```
 
 And compute size of sets among other things:
@@ -166,10 +166,10 @@ sets_enriched <- sets_analysis %>%
 sets_enriched
 #>   elements sets fuzzy sets_origin
 #> 1        a    A     1    Reactome
-#> 2        b    A     1    Reactome
-#> 3        c    A     1    Reactome
-#> 4        d    A     1    Reactome
-#> 5        e    A     1    Reactome
+#> 2        a    B     1        KEGG
+#> 3        b    A     1    Reactome
+#> 4        c    A     1    Reactome
+#> 5        d    A     1    Reactome
 #> 6        f    B     1        KEGG
 
 # Activating sets makes the verb affect only them:
@@ -179,15 +179,14 @@ elements(sets_enriched)
 #> 2        b
 #> 3        c
 #> 4        d
-#> 5        e
-#> 6        f
+#> 5        f
 relations(sets_enriched)
 #>   elements sets fuzzy
 #> 1        a    A     1
-#> 2        b    A     1
-#> 3        c    A     1
-#> 4        d    A     1
-#> 5        e    A     1
+#> 2        a    B     1
+#> 3        b    A     1
+#> 4        c    A     1
+#> 5        d    A     1
 #> 6        f    B     1
 sets(sets_enriched)
 #>   sets sets_origin
@@ -209,11 +208,11 @@ fuzzy_set <- tidySet(relations)
 fuzzy_set
 #>   elements sets     fuzzy
 #> 1        a    A 0.1837246
-#> 2        b    A 0.4567009
-#> 3        c    A 0.8152075
-#> 4        d    A 0.5800610
-#> 5        e    A 0.5724973
-#> 6        a    B 0.9381182
+#> 2        a    B 0.9381182
+#> 3        b    A 0.4567009
+#> 4        c    A 0.8152075
+#> 5        d    A 0.5800610
+#> 6        e    A 0.5724973
 #> 7        f    B 0.9460158
 ```
 
@@ -246,13 +245,13 @@ intersection(fuzzy_set, sets = c("A", "B"))
 intersection(fuzzy_set, sets = c("A", "B"), name = "D", keep = TRUE) 
 #>   elements sets     fuzzy
 #> 1        a    A 0.1837246
-#> 2        b    A 0.4567009
-#> 3        c    A 0.8152075
-#> 4        d    A 0.5800610
-#> 5        e    A 0.5724973
-#> 6        a    B 0.9381182
-#> 7        f    B 0.9460158
-#> 8        a    D 0.1837246
+#> 2        a    B 0.9381182
+#> 3        a    D 0.1837246
+#> 4        b    A 0.4567009
+#> 5        c    A 0.8152075
+#> 6        d    A 0.5800610
+#> 7        e    A 0.5724973
+#> 8        f    B 0.9460158
 ```
 
 Assuming that the fuzzy value is a probability, we can calculate which
@@ -307,11 +306,11 @@ fuzzy_set %>%
   activate("sets") %>% 
   mutate(sets_origin = c("Reactome", "KEGG"))
 #>   elements sets     fuzzy sets_origin
-#> 1        c    A 0.8152075    Reactome
-#> 2        d    A 0.5800610    Reactome
-#> 3        e    A 0.5724973    Reactome
-#> 4        a    B 0.9381182        KEGG
-#> 5        f    B 0.9460158        KEGG
+#> 1        a    B 0.9381182    Reactome
+#> 2        f    B 0.9460158    Reactome
+#> 3        c    A 0.8152075        KEGG
+#> 4        d    A 0.5800610        KEGG
+#> 5        e    A 0.5724973        KEGG
 ```
 
 # Related packages
@@ -332,10 +331,10 @@ overlap with BaseSet functionality:
     doesn’t allow to store fuzzy sets and it is also quite slow as it
     creates several classes for annotating each set.
 
-  - [`{BiocSets}`](https://bioconductor.org/packages/BiocSets)  
+  - [`{BiocSet}`](https://bioconductor.org/packages/BiocSet)  
     Implements a tidy class for sets but does not handle fuzzy sets. It
     also has less functionality to operate with sets, like power sets
-    and cartesian product. BiocSets was influenced by the development of
+    and cartesian product. BiocSet was influenced by the development of
     this package.
 
   - [`{hierarchicalSets}`](https://CRAN.R-project.org/package=hierarchicalSets)  
@@ -374,5 +373,6 @@ to match with the framework the data was obtained with.
 # Code of Conduct
 
 Please note that the BaseSet project is released with a [Contributor
-Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,
-you agree to abide by its terms.
+Code of
+Conduct](https://docs.ropensci.org/BaseSet/CODE_OF_CONDUCT.html). By
+contributing to this project, you agree to abide by its terms.
