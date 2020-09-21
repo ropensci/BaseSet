@@ -8,7 +8,7 @@
 #' set_symbols
 set_symbols <- c(
     "intersection" = "\u2229",
-    "union" = "\U222A",
+    "union" = "\u222A",
     "complement" = "\u2201",
     "negation" = "\u00AC",
     "subsetOrEqual" = "\u2286",
