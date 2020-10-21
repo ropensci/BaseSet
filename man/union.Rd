@@ -26,7 +26,8 @@ union(object, ...)
 
 \item{sets}{The name of the sets to be used.}
 
-\item{name}{The name of the new set. By defaults joins the sets with an "∪".}
+\item{name}{The name of the new set. By defaults joins the sets with an
+\ifelse{latex}{\out{$\cap$}}{\ifelse{html}{\out{&cap;}}{}}.}
 
 \item{FUN}{A function to be applied when performing the union.
 The standard union is the "max" function, but you can provide any other

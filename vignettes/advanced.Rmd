@@ -20,6 +20,8 @@ vignette: >
   %\VignetteIndexEntry{3. Advanced examples}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
+  %\DeclareUnicodeCharacter{2229}{$\cap$}
+  %\DeclareUnicodeCharacter{222A}{$\cup$}
 editor_options: 
   chunk_output_type: console
 ---
@@ -29,6 +31,7 @@ knitr::opts_chunk$set(collapse = TRUE,
                       warning = TRUE,
                       comment = "#>")
 ```
+
 
 # Initial setup
 

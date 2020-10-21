@@ -21,6 +21,8 @@ vignette: >
   %\VignetteIndexEntry{1. About BaseSet}
   %\VignetteEncoding{UTF-8}  
   %\VignetteEngine{knitr::rmarkdown}
+  %\DeclareUnicodeCharacter{2229}{$\cap$}
+  %\DeclareUnicodeCharacter{222A}{$\cup$}
 editor_options: 
   chunk_output_type: console
 ---
@@ -30,7 +32,6 @@ knitr::opts_chunk$set(collapse = TRUE,
                       warning = TRUE,
                       comment = "#>")
 ```
-
 # Getting started
 
 This vignette explains how to use the methods available in this package.

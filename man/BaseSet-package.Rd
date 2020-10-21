@@ -7,10 +7,10 @@
 \title{BaseSet: Working with Sets the Tidy Way}
 \description{
 Implements a class and methods to work with sets,
-    doing intersection, union, complementary, power sets, cartesian
+    doing intersection, union, complementary sets, power sets, cartesian
     product and other set operations in a "tidy" way. These set operations
-    are available for both classical sets and fuzzy sets. Load sets from
-    several data structures or import them from several formats.
+    are available for both classical sets and fuzzy sets. Import sets from
+    several formats or from other several data structures.
 }
 \details{
 It provides a class \code{\link{TidySet}} with methods to do operations with sets.
@@ -25,7 +25,7 @@ intersection(TS, c("A", "B"))
 Useful links:
 \itemize{
   \item \url{https://github.com/ropensci/BaseSet}
-  \item \url{https://docs.ropensci.org/BaseSet}
+  \item \url{https://docs.ropensci.org/BaseSet/}
   \item Report bugs at \url{https://github.com/ropensci/BaseSet/issues}
 }
 

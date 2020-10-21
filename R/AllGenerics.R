@@ -357,7 +357,8 @@ methods::setGeneric("remove_column", function(object, slot, column_names)
 #' definition](https://doi.org/10.1016/S0019-9958(65)90241-X), but it can be
 #' changed.
 #' @param sets The character of sets to be intersect.
-#' @param name The name of the new set. By defaults joins the sets with an "∩".
+#' @param name The name of the new set. By defaults joins the sets with an
+#' \ifelse{latex}{\out{$\cup$}}{\ifelse{html}{\out{&cup;}}{}}.
 #' @inheritParams union
 #' @param FUN A function to be applied when performing the union.
 #' The standard intersection is the "min" function, but you can provide any
