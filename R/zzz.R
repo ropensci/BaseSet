@@ -1,6 +1,7 @@
 #' A subset of symbols related to sets
 #'
-#' Name and symbol of operations related to sets:
+#' Name and symbol of operations related to sets, including intersection
+#' and union among others:
 #' @references
 #' \url{https://www.fileformat.info/info/unicode/category/Sm/list.htm}
 #' @export
@@ -8,7 +9,7 @@
 #' set_symbols
 set_symbols <- c(
     "intersection" = "\u2229",
-    "union" = "\U222A",
+    "union" = "\u222A",
     "complement" = "\u2201",
     "negation" = "\u00AC",
     "subsetOrEqual" = "\u2286",

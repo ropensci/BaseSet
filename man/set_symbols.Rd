@@ -11,7 +11,8 @@ An object of class \code{character} of length 16.
 set_symbols
 }
 \description{
-Name and symbol of operations related to sets:
+Name and symbol of operations related to sets, including intersection
+and union among others:
 }
 \examples{
 set_symbols
