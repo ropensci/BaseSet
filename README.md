@@ -332,7 +332,7 @@ overlap with BaseSet functionality:
     doesn’t allow to store fuzzy sets and it is also quite slow as it
     creates several classes for annotating each set.
 
-  - [`{BiocSets}`](https://bioconductor.org/packages/BiocSets)  
+  - [`{BiocSet}`](https://bioconductor.org/packages/BiocSet)  
     Implements a tidy class for sets but does not handle fuzzy sets. It
     also has less functionality to operate with sets, like power sets
     and cartesian product. BiocSets was influenced by the development of
@@ -374,5 +374,6 @@ to match with the framework the data was obtained with.
 # Code of Conduct
 
 Please note that the BaseSet project is released with a [Contributor
-Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,
-you agree to abide by its terms.
+Code of
+Conduct](https://docs.ropensci.org/BaseSet/CODE_OF_CONDUCT.html). By
+contributing to this project, you agree to abide by its terms.
