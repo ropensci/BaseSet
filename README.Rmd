@@ -179,7 +179,7 @@ There are several other packages related to sets, which partially overlap with B
  Implements a class to store sets and related information, but it doesn't allow to store fuzzy sets and it is also quite slow as it creates several classes for annotating each set. 
   
  - [`{BiocSet}`](https://bioconductor.org/packages/BiocSet)  
- Implements a tidy class for sets but does not handle fuzzy sets. It also has less functionality to operate with sets, like power sets and cartesian product. BiocSets was influenced by the development of this package. 
+ Implements a tidy class for sets but does not handle fuzzy sets. It also has less functionality to operate with sets, like power sets and cartesian product. BiocSet was influenced by the development of this package. 
 
  - [`{hierarchicalSets}`](https://CRAN.R-project.org/package=hierarchicalSets)  
  This package is focused on clustering of sets that are inside other sets and visualizations. However, BaseSet is focused on storing and manipulate sets including hierarchical sets.

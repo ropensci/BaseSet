@@ -2,6 +2,7 @@
 title: "Fuzzy sets"
 abstract: >
   Describes the fuzzy sets, interpretation and how to work with them.
+date: "`r format(Sys.time(), '%Y %b %d')`"
 output:
   html_document:
     fig_caption: true

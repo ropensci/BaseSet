@@ -75,13 +75,13 @@ union(TS2, c("B", "A"), "C", FUN = union_probability)
 \seealso{
 \code{\link[=union_probability]{union_probability()}}
 
-Other methods that create new sets: 
+Other methods that create new sets:
 \code{\link{complement_element}()},
 \code{\link{complement_set}()},
 \code{\link{intersection}()},
 \code{\link{subtract}()}
 
-Other methods: 
+Other methods:
 \code{\link{TidySet-class}},
 \code{\link{activate}()},
 \code{\link{add_column}()},
