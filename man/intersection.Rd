@@ -77,13 +77,13 @@ intersection(TS2, c("A", "B"), "C")
 intersection(TS2, c("A", "B"), "C", FUN = function(x){max(sqrt(x))})
 }
 \seealso{
-Other methods that create new sets:
+Other methods that create new sets: 
 \code{\link{complement_element}()},
 \code{\link{complement_set}()},
 \code{\link{subtract}()},
 \code{\link{union}()}
 
-Other methods:
+Other methods: 
 \code{\link{TidySet-class}},
 \code{\link{activate}()},
 \code{\link{add_column}()},
