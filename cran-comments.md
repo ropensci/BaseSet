@@ -9,4 +9,7 @@
 0 errors | 0 warnings | 1 note
 
 * This is a new release.
-* The links have changed to https and ending with trailing slashes
+
+## Comments
+
+The links have changed to https and ending with trailing slashes
