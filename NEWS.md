@@ -1,4 +1,4 @@
-# BaseSet 0.0.13
+# BaseSet 0.0.14
 
 * Remove unused dependency to BiocStyle
 * Fix unicode characters for windows
