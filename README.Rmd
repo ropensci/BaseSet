@@ -175,10 +175,10 @@ There are several other packages related to sets, which partially overlap with B
  - [sets]( https://CRAN.R-project.org/package=sets)  
  Implements a more generalized approach, that can store functions or lists as an element of a set (while BaseSet only allows to store a character or factor), but it is harder to operate in a tidy/long way. Also the operations of intersection and union need to happen between two different objects, while a single TidySet object (the class implemented in BaseSet) can store one or thousands of sets.
 
- - [`{GSEABase}`](https://bioconductor.org/packages/GSEABase)  
+ - [`{GSEABase}`](https://bioconductor.org/packages/GSEABase/)  
  Implements a class to store sets and related information, but it doesn't allow to store fuzzy sets and it is also quite slow as it creates several classes for annotating each set. 
   
- - [`{BiocSet}`](https://bioconductor.org/packages/BiocSet)  
+ - [`{BiocSet}`](https://bioconductor.org/packages/BiocSet/)  
  Implements a tidy class for sets but does not handle fuzzy sets. It also has less functionality to operate with sets, like power sets and cartesian product. BiocSet was influenced by the development of this package. 
 
  - [`{hierarchicalSets}`](https://CRAN.R-project.org/package=hierarchicalSets)  
