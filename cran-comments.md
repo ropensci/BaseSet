@@ -12,4 +12,5 @@
 
 ## Comments
 
-The links have changed to https and ending with trailing slashes
+ * There are no references yet about the methods implemented here. 
+ * Have replaced \dontrun{} to \donttest{}
