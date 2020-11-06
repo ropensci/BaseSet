@@ -65,7 +65,7 @@ B <- runif(5)
 names(B) <- letters[3:7]
 relations <- list(A, B)
 tidySet(relations)
-\dontrun{
+\donttest{
 x <- list("A" = letters[1:5], "B" = LETTERS[3:7], "c" = runif(5))
 a <- tidySet(x) # Only characters or factors are allowed as elements.
 }
