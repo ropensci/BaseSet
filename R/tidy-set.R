@@ -79,10 +79,9 @@ tidySet.data.frame <- function(relations) {
 #' names(B) <- letters[3:7]
 #' relations <- list(A, B)
 #' tidySet(relations)
-#' \donttest{
-#' x <- list("A" = letters[1:5], "B" = LETTERS[3:7], "c" = runif(5))
-#' a <- tidySet(x) # Only characters or factors are allowed as elements.
-#' }
+#' # Will error
+#' # x <- list("A" = letters[1:5], "B" = LETTERS[3:7], "c" = runif(5))
+#' # a <- tidySet(x) # Only characters or factors are allowed as elements.
 tidySet.list <- function(relations) {
 
     char <- vapply(relations, is.character, logical(1L))
