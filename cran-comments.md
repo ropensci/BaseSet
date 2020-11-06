@@ -13,4 +13,4 @@
 ## Comments
 
  * There are no references yet about the methods implemented here. 
- * Have replaced \dontrun{} to \donttest{}
+ * Have replaced \dontrun{} to \donttest{}. Apologies for the previous false correction
