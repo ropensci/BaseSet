@@ -4,7 +4,8 @@ test_that("element_size works", {
     relations <- data.frame(
         sets = c(rep("a", 5), "b", "c"),
         elements = c(letters[seq_len(6)], letters[6]),
-        fuzzy = runif(7)
+        fuzzy = runif(7),
+        stringsAsFactors = FALSE
     )
     a <- tidySet(relations)
     df <- element_size(a)
@@ -26,7 +27,8 @@ test_that("element_size and filter work well together", {
     set.seed(4567)
     relations <- data.frame(sets = c(rep("A", 5), "B", "C"),
                             elements = c(letters[seq_len(6)], letters[6]),
-                            fuzzy = runif(7))
+                            fuzzy = runif(7),
+                            stringsAsFactors = FALSE)
     fuzzy_set <- tidySet(relations)
     easy <- element_size(fuzzy_set, "f")
     filtered <- fuzzy_set %>%

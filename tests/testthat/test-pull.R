@@ -4,7 +4,8 @@ test_that("pull works", {
     relations <- data.frame(
         sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
         elements = rep(letters[seq_len(6)], 2),
-        fuzzy = runif(12)
+        fuzzy = runif(12),
+        stringsAsFactors = FALSE
     )
     a <- tidySet(relations)
     a <- mutate_element(a, type = c(rep("Gene", 4), rep("lncRNA", 2)))
@@ -25,7 +26,6 @@ test_that("pull works", {
 
     # Pull sets
     out <- pull_set(a, sets)
-    # Not sure if it should return factors...
     expect_equal(out, c("a", "b", "a2", "b2"))
 })
 
@@ -33,7 +33,8 @@ test_that("pull uses active", {
     relations <- data.frame(
         sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
         elements = rep(letters[seq_len(6)], 2),
-        fuzzy = runif(12)
+        fuzzy = runif(12),
+        stringsAsFactors = FALSE
     )
     a <- tidySet(relations)
     a <- mutate_element(a, type = c(rep("Gene", 4), rep("lncRNA", 2)))
