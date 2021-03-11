@@ -1,6 +1,7 @@
 context("test-tidy")
 
 test_that("tidy works in GeneSet", {
+    skip_if_not_installed("GSEABase")
     gs1 <- GSEABase::GeneSet(
         setName = "set1", setIdentifier = "101",
         geneIds = c("a", "b")
@@ -21,6 +22,7 @@ test_that("tidy works in GeneSet", {
 })
 
 test_that("tidy works in GeneSetCollection", {
+    skip_if_not_installed("GSEABase")
     gs1 <- GSEABase::GeneSet(
         setName = "set1", setIdentifier = "101",
         geneIds = c("a", "b")
@@ -38,6 +40,7 @@ test_that("tidy works in GeneSetCollection", {
 })
 
 test_that("tidy works in GeneColorSet", {
+    skip_if_not_installed("GSEABase")
     library("GSEABase") # Needed otherwise experimentData is not imported
     data("sample.ExpressionSet", package = "Biobase")
     gcs1 <- GSEABase::GeneColorSet(sample.ExpressionSet[100:109],

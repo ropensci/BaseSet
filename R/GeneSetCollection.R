@@ -15,17 +15,15 @@ tidy <- function(object) {
 #' @examples
 #' if (require(GSEABase)) {
 #'     library("GSEABase")
-#' } else {
-#'     stop("For this example you need GSEABase package from Bioconductor.")
+#'     gs <- GeneSet()
+#'     gs
+#'     tidy(gs)
+#'     fl <- system.file("extdata", "Broad.xml", package="GSEABase")
+#'     gs2 <- getBroadSets(fl) # actually, a list of two gene sets
+#'     TS <- tidy(gs2)
+#'     dim(TS)
+#'     sets(TS)
 #' }
-#' gs <- GeneSet()
-#' gs
-#' tidy(gs)
-#' fl <- system.file("extdata", "Broad.xml", package="GSEABase")
-#' gs2 <- getBroadSets(fl) # actually, a list of two gene sets
-#' TS <- tidy(gs2)
-#' dim(TS)
-#' sets(TS)
 tidy.GeneSetCollection <- function(object) {
     data <- slot(object, ".Data")
     sets <- lapply(data, tidy)
