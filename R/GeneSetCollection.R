@@ -13,7 +13,7 @@ tidy <- function(object) {
 #' @export
 #' @method tidy GeneSetCollection
 #' @examples
-#' if (require(GSEABase)) {
+#' if (requireNamespace(GSEABase)) {
 #'     library("GSEABase")
 #'     gs <- GeneSet()
 #'     gs
