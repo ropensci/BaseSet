@@ -17,7 +17,7 @@ author:
     - August Pi i Sunyer Biomedical Research Institute (IDIBAPS); Liver Unit, Hospital Clinic
   email: lluis.revilla@gmail.com
 vignette: >
-  %\VignetteIndexEntry{2. Fuzzy sets}
+  %\VignetteIndexEntry{Fuzzy sets}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
   %\DeclareUnicodeCharacter{2229}{$\cap$}

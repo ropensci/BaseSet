@@ -17,9 +17,13 @@ author:
     - August Pi i Sunyer Biomedical Research Institute (IDIBAPS); Liver Unit, Hospital Clinic
   email: lluis.revilla@gmail.com
 vignette: >
-  %\VignetteIndexEntry{3. Advanced examples}
+  %\VignetteIndexEntry{Advanced examples}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteDepends{GO.db}
+  %\VignetteDepends{reactome.db}
+  %\VignetteDepends{GSEABase}
+  %\VignetteDepends{org.Hs.eg.db}
   %\DeclareUnicodeCharacter{2229}{$\cap$}
   %\DeclareUnicodeCharacter{222A}{$\cup$}
 editor_options: 
@@ -30,7 +34,7 @@ editor_options:
 knitr::opts_chunk$set(collapse = TRUE, 
                       warning = TRUE,
                       comment = "#>")
-run_vignette <- requireNamespace("GSEABase", quietly = TRUE) && requireNamespace("GO.db", quietly = TRUE) &&  requireNamespace("reactome.db", quietly = TRUE)
+run_vignette <- requireNamespace("GSEABase", quietly = TRUE) && requireNamespace("GO.db", quietly = TRUE) &&  requireNamespace("reactome.db", quietly = TRUE) &&  requireNamespace("org.Hs.eg.db", quietly = TRUE)
 ```
 
 
