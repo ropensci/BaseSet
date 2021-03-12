@@ -12,5 +12,4 @@
 
 ## Comments
 
- * There are no references yet about the methods implemented here. 
- * Have replaced \dontrun{} to \donttest{}. Apologies for the previous false correction
+ * Fixed errors due to not being able to load some Bioconductor packages

@@ -1,5 +1,8 @@
 # BaseSet (development version)
 
+* Fix some links
+* Make sure that vignettes do run when the Bioconductor packages are available
+
 # BaseSet 0.0.14
 
 * Remove unused dependency to BiocStyle

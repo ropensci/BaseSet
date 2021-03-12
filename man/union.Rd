@@ -49,7 +49,7 @@ Given a TidySet merges several sets into the new one using the logic
 defined on FUN.
 }
 \details{
-The default uses the \code{max} function following the \href{https://en.wikipedia.org/wiki/Fuzzy_set_operations/}{standard fuzzy definition}, but it can be
+The default uses the \code{max} function following the \href{https://en.wikipedia.org/wiki/Fuzzy_set_operations}{standard fuzzy definition}, but it can be
 changed. See examples below.
 }
 \examples{

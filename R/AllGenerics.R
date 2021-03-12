@@ -354,7 +354,7 @@ methods::setGeneric("remove_column", function(object, slot, column_names)
 #' following the logic defined on FUN.
 #'
 #' #' The default uses the `min` function following the [standard fuzzy
-#' definition](https://en.wikipedia.org/wiki/Fuzzy_set_operations/), but it can be
+#' definition](https://en.wikipedia.org/wiki/Fuzzy_set_operations), but it can be
 #' changed.
 #' @param sets The character of sets to be intersect.
 #' @param name The name of the new set. By defaults joins the sets with an

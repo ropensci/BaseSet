@@ -50,7 +50,7 @@ Given a TidySet creates a new set with the elements on the both of them
 following the logic defined on FUN.
 }
 \details{
-#' The default uses the \code{min} function following the \href{https://en.wikipedia.org/wiki/Fuzzy_set_operations/}{standard fuzzy definition}, but it can be
+#' The default uses the \code{min} function following the \href{https://en.wikipedia.org/wiki/Fuzzy_set_operations}{standard fuzzy definition}, but it can be
 changed.
 }
 \section{Methods (by class)}{

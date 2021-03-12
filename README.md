@@ -1,20 +1,20 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
 <!-- badges: start -->
 
 [![Travis build
 status](https://travis-ci.org/ropensci/BaseSet.svg?branch=master)](https://travis-ci.org/ropensci/BaseSet)
-[![Actions
-CI](https://github.com/ropensci/BaseSet/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/BaseSet/actions?query=workflow%3AR-CMD-check)
+[![R build
+status](https://github.com/ropensci/BaseSet/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/BaseSet/actions)
 [![Coverage
 status](https://codecov.io/gh/ropensci/BaseSet/branch/master/graph/badge.svg)](https://codecov.io/github/ropensci/BaseSet?branch=master)
 [![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#maturing)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![rOpenSci](https://badges.ropensci.org/359_status.svg)](https://github.com/ropensci/software-review/issues/359)
+
 <!-- badges: end -->
 
 # BaseSet
@@ -25,7 +25,7 @@ union, complementary, power sets, cartesian product and other set
 operations in a tidy way.
 
 The package supports
-[classical](https://en.wikipedia.org/wiki/Set_\(mathematics\)) and
+[classical](https://en.wikipedia.org/wiki/Set_(mathematics)) and
 [fuzzy](https://en.wikipedia.org/wiki/Fuzzy_set) sets. Fuzzy sets are
 similar to classical sets but there is some vagueness on the
 relationship between the element and the set.
@@ -192,7 +192,7 @@ relations(sets_enriched)
 sets(sets_enriched)
 #>   sets sets_origin
 #> 1    A    Reactome
-#> 2    B        KEGG
+#> 6    B        KEGG
 ```
 
 ## Fuzzy sets
@@ -319,7 +319,7 @@ fuzzy_set %>%
 There are several other packages related to sets, which partially
 overlap with BaseSet functionality:
 
-  - [sets](https://CRAN.R-project.org/package=sets)  
+-   [sets](https://CRAN.R-project.org/package=sets)  
     Implements a more generalized approach, that can store functions or
     lists as an element of a set (while BaseSet only allows to store a
     character or factor), but it is harder to operate in a tidy/long
@@ -327,23 +327,23 @@ overlap with BaseSet functionality:
     between two different objects, while a single TidySet object (the
     class implemented in BaseSet) can store one or thousands of sets.
 
-  - [`{GSEABase}`](https://bioconductor.org/packages/GSEABase/)  
+-   [`{GSEABase}`](https://bioconductor.org/packages/GSEABase/)  
     Implements a class to store sets and related information, but it
     doesn’t allow to store fuzzy sets and it is also quite slow as it
     creates several classes for annotating each set.
 
-  - [`{BiocSet}`](https://bioconductor.org/packages/BiocSet/)  
+-   [`{BiocSet}`](https://bioconductor.org/packages/BiocSet/)  
     Implements a tidy class for sets but does not handle fuzzy sets. It
     also has less functionality to operate with sets, like power sets
     and cartesian product. BiocSet was influenced by the development of
     this package.
 
-  - [`{hierarchicalSets}`](https://CRAN.R-project.org/package=hierarchicalSets)  
+-   [`{hierarchicalSets}`](https://CRAN.R-project.org/package=hierarchicalSets)  
     This package is focused on clustering of sets that are inside other
     sets and visualizations. However, BaseSet is focused on storing and
     manipulate sets including hierarchical sets.
 
-  - [`{set6}`](https://cran.r-project.org/package=set6) This package
+-   [`{set6}`](https://cran.r-project.org/package=set6) This package
     implements different classes for different type of sets including
     fuzzy sets, conditional sets. However, it doesn’t handle information
     associated to elements, sets or relationship.

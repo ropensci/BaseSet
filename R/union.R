@@ -7,7 +7,7 @@ NULL
 #' defined on FUN.
 #'
 #' The default uses the `max` function following the [standard fuzzy
-#' definition](https://en.wikipedia.org/wiki/Fuzzy_set_operations/), but it can be
+#' definition](https://en.wikipedia.org/wiki/Fuzzy_set_operations), but it can be
 #' changed. See examples below.
 #' @param object A TidySet object.
 #' @param sets The name of the sets to be used.

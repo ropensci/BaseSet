@@ -29,7 +29,7 @@ Convert GSEABase classes to a TidySet
 }}
 
 \examples{
-if (require(GSEABase)) {
+if (requireNamespace("GSEABase")) {
     library("GSEABase")
     gs <- GeneSet()
     gs

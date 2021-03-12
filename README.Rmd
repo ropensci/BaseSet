@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 [![Travis build status](https://travis-ci.org/ropensci/BaseSet.svg?branch=master)](https://travis-ci.org/ropensci/BaseSet)
 [![R build status](https://github.com/ropensci/BaseSet/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/BaseSet/actions)
 [![Coverage status](https://codecov.io/gh/ropensci/BaseSet/branch/master/graph/badge.svg)](https://codecov.io/github/ropensci/BaseSet?branch=master)
-[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#maturing)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![rOpenSci](https://badges.ropensci.org/359_status.svg)](https://github.com/ropensci/software-review/issues/359)
 
