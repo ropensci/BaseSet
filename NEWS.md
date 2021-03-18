@@ -1,7 +1,8 @@
 # BaseSet (development version)
 
+* Upgrade R version requirements
 * Fix some links
-* Make sure that vignettes do run when the Bioconductor packages are available
+* Make sure that vignettes run when the Bioconductor packages are available
 
 # BaseSet 0.0.14
 
