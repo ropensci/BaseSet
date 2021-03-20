@@ -1,4 +1,4 @@
-# BaseSet (development version)
+# BaseSet 0.0.15
 
 * Upgrade R version requirements
 * Fix some links
