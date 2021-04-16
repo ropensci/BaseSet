@@ -3,7 +3,8 @@ url: https://docs.ropensci.org/BaseSet
 template:
   package: rotemplate
 
-destination: docs
+development:
+  mode: auto
 
 toc:
   depth: 3
