@@ -1,5 +1,7 @@
 # BaseSet (development version)
 
+* Removed LazyData from DESCRUPTION
+
 # BaseSet 0.0.15
 
 * Upgrade R version requirements
