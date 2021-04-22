@@ -1,5 +1,8 @@
 # BaseSet (development version)
 
+* Update Code of Conduct to rOpenSci template
+* Fix NOTE about LazyData
+
 # BaseSet 0.0.15
 
 * Upgrade R version requirements

@@ -373,7 +373,6 @@ to match with the framework the data was obtained with.
 
 # Code of Conduct
 
-Please note that the BaseSet project is released with a [Contributor
-Code of
-Conduct](https://docs.ropensci.org/BaseSet/CODE_OF_CONDUCT.html). By
-contributing to this project, you agree to abide by its terms.
+Please note that this package is released with a [Contributor Code of
+Conduct](https://ropensci.org/code-of-conduct/). By contributing to this
+project, you agree to abide by its terms.
