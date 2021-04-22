@@ -17,3 +17,4 @@
 ^codemeta\.json$
 ^cran-comments\.md$
 ^CRAN-RELEASE$
+^revdep$
