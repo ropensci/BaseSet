@@ -14,7 +14,8 @@ maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lif
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![rOpenSci](https://badges.ropensci.org/359_status.svg)](https://github.com/ropensci/software-review/issues/359)
-
+[![CRAN
+status](https://www.r-pkg.org/badges/version/BaseSet)](https://CRAN.R-project.org/package=BaseSet)
 <!-- badges: end -->
 
 # BaseSet
