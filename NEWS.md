@@ -1,5 +1,7 @@
 # BaseSet (development version)
 
+* Fixing test when missing a package. 
+
 # BaseSet 0.0.16
 
 * Update Code of Conduct to rOpenSci template
