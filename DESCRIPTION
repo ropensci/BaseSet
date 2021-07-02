@@ -4,7 +4,7 @@ Version: 0.0.16.9000
 Authors@R: 
     c(person(given = "Lluís",
              family = "Revilla Sancho",
-             role = c("aut", "cre"),
+             role = c("aut", "cre", "cph"),
              email = "lluis.revilla@gmail.com",
              comment = c(ORCID = "0000-0001-9747-2570")),
       person(given = "Zebulun",
