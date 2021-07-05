@@ -1,4 +1,4 @@
-# BaseSet (development version)
+# BaseSet 0.0.17
 
 * Fixing test when missing a package. 
 * Adding copyright holder.
