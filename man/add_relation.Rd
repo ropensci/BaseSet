@@ -25,9 +25,9 @@ Given a TidySet adds new relations between elements and sets.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{object = TidySet,relations = data.frame}: Adds relations
-}}
+\item \code{add_relation(object = TidySet, relations = data.frame)}: Adds relations
 
+}}
 \examples{
 relations <- data.frame(
     sets = c(rep("A", 5), "B"),

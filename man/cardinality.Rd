@@ -24,9 +24,9 @@ Calculates the membership of sets according to the logic defined in FUN.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{TidySet}: Cardinality of sets
-}}
+\item \code{cardinality(TidySet)}: Cardinality of sets
 
+}}
 \examples{
 rel <- list(A = letters[1:3], B = letters[1:2])
 TS <- tidySet(rel)

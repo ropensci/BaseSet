@@ -34,15 +34,15 @@ Elements or sets without any relation are not shown when printed.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{data.frame}: Given the relations in a data.frame
+\item \code{tidySet(data.frame)}: Given the relations in a data.frame
 
-\item \code{list}: Convert to a TidySet from a list
+\item \code{tidySet(list)}: Convert to a TidySet from a list
 
-\item \code{matrix}: Convert an incidence matrix into a TidySet
+\item \code{tidySet(matrix)}: Convert an incidence matrix into a TidySet
 
-\item \code{Go3AnnDbBimap}: Convert Go3AnnDbBimap into a TidySet object.
+\item \code{tidySet(Go3AnnDbBimap)}: Convert Go3AnnDbBimap into a TidySet object.
+
 }}
-
 \examples{
 relations <- data.frame(
     sets = c(rep("a", 5), "b"),

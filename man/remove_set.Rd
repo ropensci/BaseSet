@@ -26,9 +26,9 @@ required also the elements
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{object = TidySet,sets = characterORfactor}: Removes everything related to a set
-}}
+\item \code{remove_set(object = TidySet, sets = characterORfactor)}: Removes everything related to a set
 
+}}
 \examples{
 relations <- data.frame(
     sets = c("A", "A", "B", "B", "C", "C"),

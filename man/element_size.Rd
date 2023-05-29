@@ -24,10 +24,10 @@ of being of different sizes for a given set.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{TidySet}: Calculates the number of sets an element appears
+\item \code{element_size(TidySet)}: Calculates the number of sets an element appears
 with \code{\link[=length_set]{length_set()}}
-}}
 
+}}
 \examples{
 relations <- data.frame(
     sets = c(rep("A", 5), "B", "C"),

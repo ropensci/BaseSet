@@ -2,12 +2,9 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.org/ropensci/BaseSet.svg?branch=master)](https://travis-ci.org/ropensci/BaseSet)
-[![R build
-status](https://github.com/ropensci/BaseSet/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/BaseSet/actions)
-[![Coverage
-status](https://codecov.io/gh/ropensci/BaseSet/branch/master/graph/badge.svg)](https://codecov.io/github/ropensci/BaseSet?branch=master)
+[![R-CMD-check](https://github.com/ropensci/BaseSet/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/BaseSet/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/ropensci/BaseSet/branch/master/graph/badge.svg)](https://app.codecov.io/gh/ropensci/BaseSet?branch=master)
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#maturing)
 [![Project Status: Active – The project has reached a stable, usable
@@ -199,8 +196,8 @@ sets(sets_enriched)
 ## Fuzzy sets
 
 In [fuzzy sets](https://en.wikipedia.org/wiki/Fuzzy_set) the elements
-are vaguely related to the set by a numeric value usually between 0 and
-1. This implies that the association is not guaranteed.
+are vaguely related to the set by a numeric value usually between 0
+and 1. This implies that the association is not guaranteed.
 
 ``` r
 relations <- data.frame(sets = c(rep("A", 5), "B", "B"), 
@@ -276,7 +273,7 @@ set_size(fuzzy_set)
 set_size(fuzzy_set) %>% 
   group_by(sets) %>% 
   filter(probability == max(probability))
-#> # A tibble: 2 x 3
+#> # A tibble: 2 × 3
 #> # Groups:   sets [2]
 #>   sets   size probability
 #>   <chr> <dbl>       <dbl>
@@ -320,34 +317,34 @@ fuzzy_set %>%
 There are several other packages related to sets, which partially
 overlap with BaseSet functionality:
 
--   [sets](https://CRAN.R-project.org/package=sets)  
-    Implements a more generalized approach, that can store functions or
-    lists as an element of a set (while BaseSet only allows to store a
-    character or factor), but it is harder to operate in a tidy/long
-    way. Also the operations of intersection and union need to happen
-    between two different objects, while a single TidySet object (the
-    class implemented in BaseSet) can store one or thousands of sets.
+- [sets](https://CRAN.R-project.org/package=sets)  
+  Implements a more generalized approach, that can store functions or
+  lists as an element of a set (while BaseSet only allows to store a
+  character or factor), but it is harder to operate in a tidy/long way.
+  Also the operations of intersection and union need to happen between
+  two different objects, while a single TidySet object (the class
+  implemented in BaseSet) can store one or thousands of sets.
 
--   [`{GSEABase}`](https://bioconductor.org/packages/GSEABase/)  
-    Implements a class to store sets and related information, but it
-    doesn’t allow to store fuzzy sets and it is also quite slow as it
-    creates several classes for annotating each set.
+- [`{GSEABase}`](https://bioconductor.org/packages/GSEABase/)  
+  Implements a class to store sets and related information, but it
+  doesn’t allow to store fuzzy sets and it is also quite slow as it
+  creates several classes for annotating each set.
 
--   [`{BiocSet}`](https://bioconductor.org/packages/BiocSet/)  
-    Implements a tidy class for sets but does not handle fuzzy sets. It
-    also has less functionality to operate with sets, like power sets
-    and cartesian product. BiocSet was influenced by the development of
-    this package.
+- [`{BiocSet}`](https://bioconductor.org/packages/BiocSet/)  
+  Implements a tidy class for sets but does not handle fuzzy sets. It
+  also has less functionality to operate with sets, like power sets and
+  cartesian product. BiocSet was influenced by the development of this
+  package.
 
--   [`{hierarchicalSets}`](https://CRAN.R-project.org/package=hierarchicalSets)  
-    This package is focused on clustering of sets that are inside other
-    sets and visualizations. However, BaseSet is focused on storing and
-    manipulate sets including hierarchical sets.
+- [`{hierarchicalSets}`](https://CRAN.R-project.org/package=hierarchicalSets)  
+  This package is focused on clustering of sets that are inside other
+  sets and visualizations. However, BaseSet is focused on storing and
+  manipulate sets including hierarchical sets.
 
--   [`{set6}`](https://cran.r-project.org/package=set6) This package
-    implements different classes for different type of sets including
-    fuzzy sets, conditional sets. However, it doesn’t handle information
-    associated to elements, sets or relationship.
+- [`{set6}`](https://cran.r-project.org/package=set6) This package
+  implements different classes for different type of sets including
+  fuzzy sets, conditional sets. However, it doesn’t handle information
+  associated to elements, sets or relationship.
 
 # Why this package?
 

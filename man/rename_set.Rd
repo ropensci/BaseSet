@@ -24,9 +24,9 @@ Change the default names of sets and elements.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{TidySet}: Rename sets
-}}
+\item \code{rename_set(TidySet)}: Rename sets
 
+}}
 \examples{
 x <- list("A" = letters[1:5], "B" = letters[3:7])
 TS <- tidySet(x)

@@ -21,9 +21,9 @@ Check which elements are in which sets.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{TidySet}: Incidence of the TidySet
-}}
+\item \code{incidence(TidySet)}: Incidence of the TidySet
 
+}}
 \examples{
 x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
 a <- tidySet(x)

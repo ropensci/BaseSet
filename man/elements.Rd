@@ -34,13 +34,13 @@ Given TidySet retrieve the elements or substitute them.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{TidySet}: Retrieve the elements
+\item \code{elements(TidySet)}: Retrieve the elements
 
-\item \code{TidySet}: Modify the elements
+\item \code{elements(TidySet) <- value}: Modify the elements
 
-\item \code{TidySet}: Return the number of elements
+\item \code{nElements(TidySet)}: Return the number of elements
+
 }}
-
 \examples{
 TS <- tidySet(list(A = letters[1:5], B = letters[2:10]))
 elements(TS)

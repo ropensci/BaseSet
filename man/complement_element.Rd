@@ -48,9 +48,9 @@ Return the objects without the elements listed
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{object = TidySet,elements = characterORfactor}: Complement of the elements.
-}}
+\item \code{complement_element(object = TidySet, elements = characterORfactor)}: Complement of the elements.
 
+}}
 \examples{
 relations <- data.frame(
     sets = c("A", "A", "B", "B", "C", "C"),

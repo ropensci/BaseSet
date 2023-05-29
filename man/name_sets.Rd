@@ -25,11 +25,11 @@ Retrieve the name of the sets.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{TidySet}: Name sets
+\item \code{name_sets(TidySet)}: Name sets
 
-\item \code{object = TidySet,value = characterORfactor}: Rename sets
+\item \code{name_sets(object = TidySet) <- value}: Rename sets
+
 }}
-
 \examples{
 relations <- data.frame(
     sets = c(rep("A", 5), "B"),

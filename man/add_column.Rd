@@ -24,9 +24,9 @@ Add column to a slot of the TidySet object.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{object = TidySet,slot = character}: Add a column to any slot
-}}
+\item \code{add_column(object = TidySet, slot = character)}: Add a column to any slot
 
+}}
 \examples{
 relations <- data.frame(
     sets = c(rep("a", 5), "b"),

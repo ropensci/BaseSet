@@ -55,9 +55,9 @@ changed.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{object = TidySet,sets = character}: Applies the standard intersection
-}}
+\item \code{intersection(object = TidySet, sets = character)}: Applies the standard intersection
 
+}}
 \examples{
 rel <- data.frame(
     sets = c(rep("A", 5), "B"),

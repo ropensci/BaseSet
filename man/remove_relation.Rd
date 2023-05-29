@@ -27,9 +27,13 @@ Given a TidySet removes relations between elements and sets
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{object = TidySet,elements = characterORfactor,sets = characterORfactor}: Removes a relation between elements and sets.
-}}
+\item \code{remove_relation(
+  object = TidySet,
+  elements = characterORfactor,
+  sets = characterORfactor
+)}: Removes a relation between elements and sets.
 
+}}
 \examples{
 relations <- data.frame(
     sets = c(rep("A", 5), "B"),

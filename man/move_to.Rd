@@ -27,9 +27,14 @@ For instance from the sets to the relations.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{object = TidySet,from = characterORfactor,to = characterORfactor,columns = character}: Move columns
-}}
+\item \code{move_to(
+  object = TidySet,
+  from = characterORfactor,
+  to = characterORfactor,
+  columns = character
+)}: Move columns
 
+}}
 \examples{
 x <- list("A" = c("a" = 0.1, "b" = 0.5), "B" = c("a" = 0.2, "b" = 1))
 TS <- tidySet(x)

@@ -24,9 +24,9 @@ calculates the probability of being of different sizes for a given set.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{TidySet}: Calculates the size of a set using \code{\link[=length_set]{length_set()}}
-}}
+\item \code{set_size(TidySet)}: Calculates the size of a set using \code{\link[=length_set]{length_set()}}
 
+}}
 \examples{
 relations <- data.frame(
     sets = c(rep("A", 5), "B", "C"),
