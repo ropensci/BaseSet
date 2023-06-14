@@ -51,6 +51,7 @@ RoxygenNote: 7.2.3
 Collate: 
     'AllClasses.R'
     'AllGenerics.R'
+    'BaseSet-package.R'
     'GMT.R'
     'GeneSetCollection.R'
     'activate.R'
@@ -59,7 +60,6 @@ Collate:
     'add_relation.R'
     'adjacency.R'
     'arrange.R'
-    'basesets-package.R'
     'cardinality.R'
     'cartesian.R'
     'complement.R'
