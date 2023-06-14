@@ -1,5 +1,7 @@
 # BaseSet (development version)
 
+* `tidy()` now defaults to `tidySet()`.
+
 # BaseSet 0.0.17
 
 * Fixing test when missing a package. 
