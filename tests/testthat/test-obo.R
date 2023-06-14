@@ -1,5 +1,5 @@
 test_that("getOBO works", {
-    skip_if_not_installed("GSEABase")
+    expect_warning(skip_if_not_installed("GSEABase"))
     fl <- system.file("extdata", "goslim_plant.obo", package = "GSEABase")
     y <- getOBO(fl)
     expect_true(is(y, "TidySet"))
