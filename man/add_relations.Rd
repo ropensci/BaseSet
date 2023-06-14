@@ -42,7 +42,7 @@ add_relations(a,
 )
 }
 \seealso{
-\code{\link{add_relation}} to add relations with new sets or/and
+\code{\link[=add_relation]{add_relation()}} to add relations with new sets or/and
 new elements.
 
 Other add_*: 

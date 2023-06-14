@@ -27,7 +27,7 @@ check_symbol <- function(symbol) {
 #' @param sets1,sets2 Character of sets
 #' @param collapse_symbol Name of the symbol that joins the sets on
 #' \code{sets1} and \code{sets2}.
-#' @seealso \code{\link{set_symbols}}
+#' @seealso [set_symbols()]
 #' @return A character vector combining the sets
 #' @export
 #' @examples

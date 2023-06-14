@@ -15,7 +15,7 @@ NULL
 #' @param value Modification of the elements.
 #' @return A \code{data.frame} with information about the elements
 #' @export elements
-#' @seealso \code{\link{nElements}}
+#' @seealso [nElements()]
 #' @family slots
 #' @family methods
 #' @aliases elements<-
@@ -32,7 +32,7 @@ methods::setGeneric("elements", function(object) setGeneric("elements"))
 #' @return A \code{data.frame} with information from the sets.
 #' @export sets
 #' @aliases sets<-
-#' @seealso \code{\link{nSets}}
+#' @seealso [nSets()]
 #' @family slots
 #' @family methods
 #' @examples
@@ -100,20 +100,20 @@ methods::setGeneric("nRelations", function(object)
 #' @param object Object to be coerced or tested.
 #' @export incidence
 #' @family methods
-#' @seealso \code{\link{adjacency}}
+#' @seealso [adjacency()], [tidySet()]
 methods::setGeneric("incidence", function(object) standardGeneric("incidence"))
 
 #' Relations of the TidySet
 #'
 #' Given TidySet retrieve the relations or substitute them.
-#' \code{\link{TidySet}} object
+#' [TidySet()] object
 #' @param object Object to be coerced or tested.
 #' @param value Modification of the relations.
 #' @return A \code{data.frame} with information about the relations between
 #' elements and sets.
 #' @family slots
 #' @family methods
-#' @seealso \code{\link{nRelations}}
+#' @seealso [nRelations()]
 #' @export
 #' @examples
 #' TS <- tidySet(list(A = letters[1:2], B = letters[5:7]))
@@ -176,7 +176,7 @@ methods::setGeneric("element_size", function(object, elements = NULL)
 #' @return A \code{TidySet} object.
 #' @family renames
 #' @family names
-#' @seealso \code{\link{name_sets}}
+#' @seealso [name_sets()]
 #' @export
 #' @family methods
 #' @examples
@@ -198,7 +198,7 @@ methods::setGeneric("rename_set", function(object, old, new)
 #' @return A \code{TidySet} object.
 #' @family renames
 #' @family names
-#' @seealso \code{\link{name_elements}}
+#' @seealso [name_elements()]
 #' @export
 #' @family methods
 #' @examples
@@ -260,7 +260,7 @@ methods::setGeneric("name_elements", function(object)
 #' @return A \code{TidySet} object.
 #' @family names
 #' @family methods
-#' @seealso \code{\link{rename_elements}}
+#' @seealso [rename_elements()]
 #' @export
 #' @aliases name_elements<-
 #' @examples
@@ -284,7 +284,7 @@ methods::setGeneric("name_elements<-", function(object, value)
 #' @return A \code{TidySet} object.
 #' @family names
 #' @family methods
-#' @seealso \code{\link{rename_set}}
+#' @seealso [rename_set()]
 #' @export
 #' @aliases name_sets<-
 #' @examples
@@ -309,7 +309,7 @@ methods::setGeneric("name_sets<-", function(object, value)
 #' @return A \code{TidySet} object.
 #' @family column
 #' @family methods
-#' @seealso \code{\link{rename_set}}
+#' @seealso [rename_set()]
 #' @export
 #' @examples
 #' relations <- data.frame(
@@ -335,7 +335,7 @@ methods::setGeneric("add_column", function(object, slot, columns)
 #' @return A \code{TidySet} object.
 #' @family column
 #' @family methods
-#' @seealso \code{\link{rename_set}}
+#' @seealso [rename_set()]
 #' @export
 #' @examples
 #' x <- data.frame(sets = c(rep("A", 5), rep("B", 5)),
@@ -506,7 +506,7 @@ methods::setGeneric("remove_set", function(object, sets, ...)
 #' @family complements
 #' @family methods that create new sets
 #' @family methods
-#' @seealso \code{\link{filter}}
+#' @seealso [filter()]
 #' @export
 #' @examples
 #' relations <- data.frame(
@@ -562,7 +562,7 @@ methods::setGeneric("complement_element", function(object, elements, ...)
 #' Subtract
 #'
 #' Elements in a set not present in the other set. Equivalent to
-#' \code{\link{setdiff}}.
+#' [setdiff()].
 #' @param object A TidySet object.
 #' @param set_in Name of the sets where the elements should be present.
 #' @param not_in Name of the sets where the elements should not be present.
@@ -571,7 +571,7 @@ methods::setGeneric("complement_element", function(object, elements, ...)
 #' @family complements
 #' @family methods that create new sets
 #' @family methods
-#' @seealso \code{\link{setdiff}}
+#' @seealso [setdiff()]
 #' @export
 #' @examples
 #' relations <- data.frame(

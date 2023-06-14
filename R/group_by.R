@@ -12,7 +12,7 @@ dplyr::group_by
 #' @return A grouped data.frame (See The dplyr help page)
 #' @export
 #' @family methods
-#' @seealso dplyr \code{\link[dplyr]{group_by}} and \code{\link{activate}}
+#' @seealso [dplyr::group_by()] and [activate()]
 #' @examples
 #' relations <- data.frame(
 #'     sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
@@ -25,6 +25,7 @@ dplyr::group_by
 #' )
 #' group_by(a, elements)
 #' @rdname group_by_
+#' @name group_by
 #' @export
 #' @method group_by TidySet
 group_by.TidySet <- function(.data, ...) {

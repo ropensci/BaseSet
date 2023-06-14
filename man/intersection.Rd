@@ -55,9 +55,9 @@ changed.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{object = TidySet,sets = character}: Applies the standard intersection
-}}
+\item \code{intersection(object = TidySet, sets = character)}: Applies the standard intersection
 
+}}
 \examples{
 rel <- data.frame(
     sets = c(rep("A", 5), "B"),
@@ -88,21 +88,21 @@ Other methods:
 \code{\link{activate}()},
 \code{\link{add_column}()},
 \code{\link{add_relation}()},
-\code{\link{arrange.TidySet}()},
+\code{\link{arrange}()},
 \code{\link{cartesian}()},
 \code{\link{complement_element}()},
 \code{\link{complement_set}()},
 \code{\link{complement}()},
 \code{\link{element_size}()},
 \code{\link{elements}()},
-\code{\link{filter.TidySet}()},
-\code{\link{group_by.TidySet}()},
+\code{\link{filter}()},
+\code{\link{group_by}()},
 \code{\link{group}()},
 \code{\link{incidence}()},
 \code{\link{is.fuzzy}()},
 \code{\link{is_nested}()},
 \code{\link{move_to}()},
-\code{\link{mutate.TidySet}()},
+\code{\link{mutate}()},
 \code{\link{nElements}()},
 \code{\link{nRelations}()},
 \code{\link{nSets}()},
@@ -110,7 +110,7 @@ Other methods:
 \code{\link{name_sets<-}()},
 \code{\link{name_sets}()},
 \code{\link{power_set}()},
-\code{\link{pull.TidySet}()},
+\code{\link{pull}()},
 \code{\link{relations}()},
 \code{\link{remove_column}()},
 \code{\link{remove_element}()},
@@ -118,7 +118,7 @@ Other methods:
 \code{\link{remove_set}()},
 \code{\link{rename_elements}()},
 \code{\link{rename_set}()},
-\code{\link{select.TidySet}()},
+\code{\link{select}()},
 \code{\link{set_size}()},
 \code{\link{sets}()},
 \code{\link{subtract}()},

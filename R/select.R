@@ -13,7 +13,7 @@ dplyr::select
 #' @param ... The name of the columns you want to keep, remove or rename.
 #' @return A TidySet object
 #' @export
-#' @seealso dplyr \code{\link[dplyr]{select}} and \code{\link{activate}}
+#' @seealso [dplyr::select()] and [activate()]
 #' @family methods
 #' @examples
 #' relations <- data.frame(
@@ -33,6 +33,7 @@ dplyr::select
 #' # Select sets
 #' select_set(a, sets)
 #' @rdname select_
+#' @name select
 #' @method select TidySet
 #' @export
 select.TidySet <- function(.data, ...) {

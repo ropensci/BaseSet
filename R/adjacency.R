@@ -6,7 +6,7 @@
 #' @return A square matrix, 1 if two nodes are connected, 0 otherwise.
 #' @export
 #' @method adjacency TidySet
-#' @seealso \code{\link{incidence}}
+#' @seealso [incidence()]
 #' @examples
 #' x <- list("SET1" = letters[1:5], "SET2" = LETTERS[3:7])
 #' a <- tidySet(x)

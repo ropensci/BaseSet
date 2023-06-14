@@ -32,23 +32,23 @@ elements and sets.
 }
 \description{
 Given TidySet retrieve the relations or substitute them.
-\code{\link{TidySet}} object
+\code{\link[=TidySet]{TidySet()}} object
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{TidySet}: Retrieve the relations
+\item \code{relations(TidySet)}: Retrieve the relations
 
-\item \code{TidySet}: Modify the relations
+\item \code{relations(TidySet) <- value}: Modify the relations
 
-\item \code{TidySet}: Return the number of unique relations
+\item \code{nRelations(TidySet)}: Return the number of unique relations
+
 }}
-
 \examples{
 TS <- tidySet(list(A = letters[1:2], B = letters[5:7]))
 relations(TS)
 }
 \seealso{
-\code{\link{nRelations}}
+\code{\link[=nRelations]{nRelations()}}
 
 Other slots: 
 \code{\link{elements}()},
@@ -59,22 +59,22 @@ Other methods:
 \code{\link{activate}()},
 \code{\link{add_column}()},
 \code{\link{add_relation}()},
-\code{\link{arrange.TidySet}()},
+\code{\link{arrange}()},
 \code{\link{cartesian}()},
 \code{\link{complement_element}()},
 \code{\link{complement_set}()},
 \code{\link{complement}()},
 \code{\link{element_size}()},
 \code{\link{elements}()},
-\code{\link{filter.TidySet}()},
-\code{\link{group_by.TidySet}()},
+\code{\link{filter}()},
+\code{\link{group_by}()},
 \code{\link{group}()},
 \code{\link{incidence}()},
 \code{\link{intersection}()},
 \code{\link{is.fuzzy}()},
 \code{\link{is_nested}()},
 \code{\link{move_to}()},
-\code{\link{mutate.TidySet}()},
+\code{\link{mutate}()},
 \code{\link{nElements}()},
 \code{\link{nRelations}()},
 \code{\link{nSets}()},
@@ -82,14 +82,14 @@ Other methods:
 \code{\link{name_sets<-}()},
 \code{\link{name_sets}()},
 \code{\link{power_set}()},
-\code{\link{pull.TidySet}()},
+\code{\link{pull}()},
 \code{\link{remove_column}()},
 \code{\link{remove_element}()},
 \code{\link{remove_relation}()},
 \code{\link{remove_set}()},
 \code{\link{rename_elements}()},
 \code{\link{rename_set}()},
-\code{\link{select.TidySet}()},
+\code{\link{select}()},
 \code{\link{set_size}()},
 \code{\link{sets}()},
 \code{\link{subtract}()},

@@ -31,5 +31,5 @@ adjacency_element(a)
 adjacency_set(a)
 }
 \seealso{
-\code{\link{incidence}}
+\code{\link[=incidence]{incidence()}}
 }

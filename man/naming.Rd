@@ -38,5 +38,5 @@ naming(
 )
 }
 \seealso{
-\code{\link{set_symbols}}
+\code{\link[=set_symbols]{set_symbols()}}
 }

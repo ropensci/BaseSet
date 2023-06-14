@@ -13,7 +13,7 @@ dplyr::filter
 #' @return A TidySet object.
 #' @export
 #' @family methods
-#' @seealso dplyr \code{\link[dplyr]{filter}} and \code{\link{activate}}
+#' @seealso [dplyr::filter()] and [activate()]
 #' @examples
 #' relations <- data.frame(
 #'     sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
@@ -34,6 +34,7 @@ dplyr::filter
 #' # Filter sets
 #' filter_set(TS, sets == "b")
 #' @rdname filter_
+#' @name filter
 #' @export
 #' @method filter TidySet
 filter.TidySet <- function(.data, ...) {

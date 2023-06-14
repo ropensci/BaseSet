@@ -95,13 +95,13 @@ setMethod("complement_element",
 #' activate with complement or use the specific function. You must specify if
 #' you want the complements of sets or elements.
 #' @param .data The TidySet object
-#' @param ... Other arguments passed to either \code{\link{complement_set}} or
-#' \code{\link{complement_element}}.
+#' @param ... Other arguments passed to either [complement_set()] or
+#' [complement_element()].
 #' @return A TidySet object
 #' @export
 #' @family complements
 #' @family methods
-#' @seealso \code{\link{activate}}
+#' @seealso [activate()]
 #' @examples
 #' rel <- data.frame(
 #'     sets = c("A", "A", "B", "B", "C", "C"),

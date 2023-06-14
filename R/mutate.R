@@ -12,7 +12,7 @@ dplyr::mutate
 #' @param ... The logical predicates in terms of the variables of the sets.
 #' @return A TidySet object
 #' @export
-#' @seealso \code{\link[dplyr]{mutate}} and \code{\link{activate}}
+#' @seealso [dplyr::mutate()] and [activate()]
 #' @family methods
 #' @examples
 #' relations <- data.frame(
@@ -27,6 +27,7 @@ dplyr::mutate
 #'     replace = TRUE
 #' ))
 #' @rdname mutate_
+#' @name mutate
 #' @export
 #' @method mutate TidySet
 mutate.TidySet <- function(.data, ...) {

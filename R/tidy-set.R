@@ -23,7 +23,7 @@ NULL
 #' )
 #' tidySet(relations2)
 #' @export
-#' @seealso \code{\link{TidySet-class}}
+#' @seealso [`TidySet`]
 tidySet <- function(relations) {
     UseMethod("tidySet")
 }
@@ -67,7 +67,7 @@ tidySet.data.frame <- function(relations) {
 }
 
 #' @export
-#' @describeIn tidySet Convert to a TidySet from a list
+#' @describeIn tidySet Convert to a TidySet from a list.
 #' @examples
 #' # A
 #' x <- list("A" = letters[1:5], "B" = LETTERS[3:7])

@@ -16,18 +16,18 @@ tidy(object)
 \item{object}{A GeneSetCollection or a GeneSet derived object}
 }
 \value{
-A TidySet object
+A TidySet object.
 }
 \description{
 Convert GSEABase classes to a TidySet
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{GeneSetCollection}: Converts to a tidySet given a GeneSetCollection
+\item \code{tidy(GeneSetCollection)}: Converts to a tidySet given a GeneSetCollection
 
-\item \code{GeneSet}: Converts to a tidySet given a GeneSet
+\item \code{tidy(GeneSet)}: Converts to a tidySet given a GeneSet
+
 }}
-
 \examples{
 # Needs GSEABase pacakge from Bioconductor
 if (requireNamespace("GSEABase", quietly = TRUE)) {

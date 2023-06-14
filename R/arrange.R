@@ -14,7 +14,7 @@ dplyr::arrange
 #' integer column position to be used to reorder the TidySet.
 #' @return A TidySet object
 #' @export
-#' @seealso dplyr \code{\link[dplyr]{arrange}} and \code{\link{activate}}
+#' @seealso [dplyr::arrange()] and [activate()]
 #' @family methods
 #' @examples
 #' relations <- data.frame(
@@ -34,6 +34,7 @@ dplyr::arrange
 #' # Arrange sets
 #' arrange_set(a, sets)
 #' @rdname arrange_
+#' @name arrange
 #' @export
 #' @method arrange TidySet
 arrange.TidySet <- function(.data, ...) {
