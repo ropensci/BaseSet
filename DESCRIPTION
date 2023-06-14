@@ -1,6 +1,6 @@
 Package: BaseSet
 Title: Working with Sets the Tidy Way
-Version: 0.0.17.9001
+Version: 0.0.17.9002
 Authors@R: 
     c(person(given = "Lluís",
              family = "Revilla Sancho",
@@ -96,5 +96,6 @@ Collate:
     'subtract.R'
     'tidy-set.R'
     'union.R'
+    'union_closed.R'
     'utils-pipe.R'
     'zzz.R'

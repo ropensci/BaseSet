@@ -1,6 +1,7 @@
 # BaseSet (development version)
 
 * `tidy()` now defaults to `tidySet()`.
+* New function `union_closed()`.
 
 # BaseSet 0.0.17
 
