@@ -3,10 +3,15 @@ NULL
 
 #' Convert GSEABase classes to a TidySet
 #' @param object A GeneSetCollection or a GeneSet derived object
-#' @return A TidySet object
+#' @return A TidySet object.
 #' @export
 tidy <- function(object) {
     UseMethod("tidy")
+}
+
+#' @export
+tidy.default <- function(object) {
+    tidySet(object)
 }
 
 #' @describeIn tidy Converts to a tidySet given a GeneSetCollection
