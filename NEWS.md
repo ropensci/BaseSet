@@ -2,6 +2,7 @@
 
 * `tidy()` now defaults to `tidySet()`.
 * New function `union_closed()`.
+* Do not reexport dplyr functions.
 
 # BaseSet 0.0.17
 

@@ -1,7 +1,6 @@
 #' @include AllClasses.R AllGenerics.R
 #' @importFrom dplyr filter
-#' @export
-dplyr::filter
+NULL
 
 #' Filter TidySet
 #'

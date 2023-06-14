@@ -1,7 +1,7 @@
 #' @include AllClasses.R AllGenerics.R
 #' @importFrom dplyr group_by
 #' @export
-dplyr::group_by
+NULL
 
 #' group_by TidySet
 #'

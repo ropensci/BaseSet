@@ -1,7 +1,6 @@
 #' @importFrom dplyr mutate
 #' @importFrom rlang exprs
-#' @export
-dplyr::mutate
+NULL
 
 #' Mutate
 #'
