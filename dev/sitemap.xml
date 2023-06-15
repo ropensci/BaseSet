@@ -178,9 +178,6 @@
     <loc>https://docs.ropensci.org/BaseSet/dev/reference/pull_.html</loc>
   </url>
   <url>
-    <loc>https://docs.ropensci.org/BaseSet/dev/reference/reexports.html</loc>
-  </url>
-  <url>
     <loc>https://docs.ropensci.org/BaseSet/dev/reference/relations.html</loc>
   </url>
   <url>
@@ -230,5 +227,8 @@
   </url>
   <url>
     <loc>https://docs.ropensci.org/BaseSet/dev/reference/union.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/BaseSet/dev/reference/union_closed.html</loc>
   </url>
 </urlset>
