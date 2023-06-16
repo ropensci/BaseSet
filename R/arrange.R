@@ -34,7 +34,6 @@ dplyr::arrange
 #' # Arrange sets
 #' arrange_set(a, sets)
 #' @rdname arrange_
-#' @name arrange
 #' @export
 #' @method arrange TidySet
 arrange.TidySet <- function(.data, ...) {

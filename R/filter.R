@@ -34,7 +34,6 @@ dplyr::filter
 #' # Filter sets
 #' filter_set(TS, sets == "b")
 #' @rdname filter_
-#' @name filter
 #' @export
 #' @method filter TidySet
 filter.TidySet <- function(.data, ...) {

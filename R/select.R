@@ -33,7 +33,6 @@ dplyr::select
 #' # Select sets
 #' select_set(a, sets)
 #' @rdname select_
-#' @name select
 #' @method select TidySet
 #' @export
 select.TidySet <- function(.data, ...) {

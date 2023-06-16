@@ -27,7 +27,6 @@ dplyr::mutate
 #'     replace = TRUE
 #' ))
 #' @rdname mutate_
-#' @name mutate
 #' @export
 #' @method mutate TidySet
 mutate.TidySet <- function(.data, ...) {

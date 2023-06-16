@@ -36,7 +36,6 @@ dplyr::pull
 #' # Filter sets
 #' pull_set(a, sets)
 #' @rdname pull_
-#' @name pull
 #' @export
 #' @method pull TidySet
 pull.TidySet <- function(.data, var = -1, name = NULL, ...) {

@@ -25,7 +25,6 @@ dplyr::group_by
 #' )
 #' group_by(a, elements)
 #' @rdname group_by_
-#' @name group_by
 #' @export
 #' @method group_by TidySet
 group_by.TidySet <- function(.data, ...) {
