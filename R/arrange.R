@@ -1,7 +1,8 @@
 #' @include AllClasses.R AllGenerics.R
 #' @importFrom dplyr arrange
 #' @importFrom rlang !!
-NULL
+#' @export
+dplyr::arrange
 
 #' Arrange the order of a TidySet
 #'

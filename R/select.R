@@ -1,7 +1,8 @@
 #' @include AllClasses.R AllGenerics.R
 #' @importFrom dplyr select
 #' @importFrom rlang !!
-NULL
+#' @export
+dplyr::select
 
 #' select from a TidySet
 #'
