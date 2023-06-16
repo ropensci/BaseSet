@@ -32,8 +32,8 @@ It also allows to import from several formats used in the life science
 world. Like the
 [GMT](https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29)
 and the
-[GAF](http://geneontology.org/docs/go-annotation-file-gaf-format-2.1/)
-or the [OBO format](http://www.obofoundry.org/) file for ontologies.
+[GAF](https://geneontology.org/docs/go-annotation-file-gaf-format-2.1/)
+or the [OBO format](https://obofoundry.org/) file for ontologies.
 
 You can save information about the elements, sets and their relationship
 on the object itself. For instance origin of the set, categorical or
@@ -317,7 +317,7 @@ fuzzy_set %>%
 There are several other packages related to sets, which partially
 overlap with BaseSet functionality:
 
-- [sets](https://CRAN.R-project.org/package=sets)  
+- [`{sets}`](https://CRAN.R-project.org/package=sets)  
   Implements a more generalized approach, that can store functions or
   lists as an element of a set (while BaseSet only allows to store a
   character or factor), but it is harder to operate in a tidy/long way.

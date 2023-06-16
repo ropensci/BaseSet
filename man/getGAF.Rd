@@ -24,7 +24,7 @@ gs <- getGAF(gafFile)
 head(gs)
 }
 \references{
-The format is defined \href{http://geneontology.org/docs/go-annotation-file-gaf-format-2.1/}{here}.
+The format is defined \href{https://geneontology.org/docs/go-annotation-file-gaf-format-2.1/}{here}.
 }
 \seealso{
 Other IO functions: 
