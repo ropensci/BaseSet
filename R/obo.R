@@ -75,15 +75,15 @@ getOBO <- function(x) {
 }
 
 # Using data downloaded from
-# http://geneontology.org/gene-associations/goa_human_rna.gaf.gz on 20190711
+# https://geneontology.org/gene-associations/goa_human_rna.gaf.gz on 20190711
 # About the format:
-# http://geneontology.org/docs/go-annotation-file-gaf-format-2.1/
+# https://geneontology.org/docs/go-annotation-file-gaf-format-2.1/
 #' Read a GAF file
 #'
 #' Read a GO Annotation File (GAF) formatted file
 #'
 #' @references The format is defined [here](
-#' http://geneontology.org/docs/go-annotation-file-gaf-format-2.1/).
+#' https://geneontology.org/docs/go-annotation-file-gaf-format-2.1/).
 #' @param x A file in GAF format
 #' @return A TidySet object
 #' @export

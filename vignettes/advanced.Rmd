@@ -52,7 +52,7 @@ library("dplyr")
 
 We will explore the genes with assigned gene ontology terms. 
 These terms describe what is the process and role of the genes.
-The links are annotated with different [evidence codes](http://geneontology.org/docs/guide-go-evidence-codes/) to indicate how such annotation is supported. 
+The links are annotated with different [evidence codes](https://geneontology.org/docs/guide-go-evidence-codes/) to indicate how such annotation is supported. 
 
 ```{r prepare_GO, message=FALSE, eval=run_vignette}
 # We load some libraries
@@ -69,21 +69,22 @@ We can now explore if there are differences in evidence usage for each ontology 
 ```{r evidence_ontology, eval=run_vignette}
 library("forcats")
 h2GO %>% 
-  group_by(Evidence, Ontology) %>% 
-  count(name = "Freq") %>% 
-  ungroup() %>% 
-  mutate(Evidence = fct_reorder2(Evidence, Ontology, -Freq),
-         Ontology = case_when(Ontology == "CC" ~ "Cellular Component",
-                              Ontology == "MF" ~ "Molecular Function",
-                              Ontology == "BP" ~ "Biological Process",
-                              TRUE ~ NA_character_)) %>% 
-  ggplot() +
-  geom_col(aes(Evidence, Freq)) +
-  facet_grid(~Ontology) + 
-  theme_minimal() +
-  coord_flip() +
-  labs(x = element_blank(), y = element_blank(),
-       title = "Evidence codes for each ontology")
+    group_by(Evidence, Ontology) %>% 
+    count(name = "Freq") %>% 
+    ungroup() %>% 
+    mutate(Evidence = fct_reorder2(Evidence, Ontology, -Freq),
+           Ontology = case_match(Ontology,
+                                 "CC" ~ "Cellular Component",
+                                 "MF" ~ "Molecular Function",
+                                 "BP" ~ "Biological Process",
+                                 .default = NA)) %>% 
+    ggplot() +
+    geom_col(aes(Evidence, Freq)) +
+    facet_grid(~Ontology) + 
+    theme_minimal() +
+    coord_flip() +
+    labs(x = element_blank(), y = element_blank(),
+         title = "Evidence codes for each ontology")
 ```
 
 We can see that biological process are more likely to be defined by IMP evidence code that means inferred from mutant phenotype. 
@@ -93,18 +94,18 @@ This graph doesn't consider that some relationships are better annotated than ot
 
 ```{r nEvidence_plot, eval=run_vignette}
 h2GO_TS %>% 
-  relations() %>% 
-  group_by(elements, sets) %>% 
-  count(sort = TRUE, name = "Annotations") %>% 
-  ungroup() %>% 
-  count(Annotations, sort = TRUE) %>% 
-  ggplot() +
-  geom_col(aes(Annotations, n)) +
-  theme_minimal() +
-  labs(x = "Evidence codes", y = "Annotations", 
-       title = "Evidence codes for each annotation",
-       subtitle = "in human") +
-  scale_x_continuous(breaks = 1:7)
+    relations() %>% 
+    group_by(elements, sets) %>% 
+    count(sort = TRUE, name = "Annotations") %>% 
+    ungroup() %>% 
+    count(Annotations, sort = TRUE) %>% 
+    ggplot() +
+    geom_col(aes(Annotations, n)) +
+    theme_minimal() +
+    labs(x = "Evidence codes", y = "Annotations", 
+         title = "Evidence codes for each annotation",
+         subtitle = "in human") +
+    scale_x_continuous(breaks = 1:7)
 ```
 
 We can see that mostly all the annotations are done with a single evidence code.
@@ -113,7 +114,7 @@ So far we have explored the code that it is related to a gene but how many genes
 ```{r numbers, eval=run_vignette}
 # Add all the genes and GO terms
 h2GO_TS <- add_elements(h2GO_TS, keys(org.Hs.eg.db)) %>% 
-  add_sets(grep("^GO:", keys(GO.db), value = TRUE))
+    add_sets(grep("^GO:", keys(GO.db), value = TRUE))
 
 sizes_element <- element_size(h2GO_TS) %>% 
     arrange(desc(size))
@@ -154,37 +155,37 @@ head(sizes_set, 10)
 ## Using fuzzy values
 
 This could radically change if we used fuzzy values. 
-We could assign a fuzzy value to each evidence code given the lowest fuzzy value for the [IEA (Inferred from Electronic Annotation)](http://wiki.geneontology.org/index.php/Inferred_from_Electronic_Annotation_(IEA)) evidence.
+We could assign a fuzzy value to each evidence code given the lowest fuzzy value for the [IEA (Inferred from Electronic Annotation)](https://wiki.geneontology.org/index.php/Inferred_from_Electronic_Annotation_(IEA)) evidence.
 The highest values would be for evidence codes coming from experiments or alike. 
 
 ```{r fuzzy_setup, eval=run_vignette}
 nr <- h2GO_TS %>% 
-  relations() %>% 
-  dplyr::select(sets, Evidence) %>% 
-  distinct() %>% 
-  mutate(fuzzy = case_when(
-    Evidence == "EXP" ~ 0.9,
-    Evidence == "IDA" ~ 0.8,
-    Evidence == "IPI" ~ 0.8,
-    Evidence == "IMP" ~ 0.75,
-    Evidence == "IGI" ~ 0.7,
-    Evidence == "IEP" ~ 0.65,
-    Evidence == "HEP" ~ 0.6,
-    Evidence == "HDA" ~ 0.6,
-    Evidence == "HMP" ~ 0.5,
-    Evidence == "IBA" ~ 0.45,
-    Evidence == "ISS" ~ 0.4,
-    Evidence == "ISO" ~ 0.32,
-    Evidence == "ISA" ~ 0.32,
-    Evidence == "ISM" ~ 0.3,
-    Evidence == "RCA" ~ 0.2,
-    Evidence == "TAS" ~ 0.15,
-    Evidence == "NAS" ~ 0.1,
-    Evidence == "IC" ~ 0.02,
-    Evidence == "ND" ~ 0.02,
-    Evidence == "IEA" ~ 0.01,
-    TRUE ~ 0.01)) %>% 
-  dplyr::select(sets = "sets", elements = "Evidence", fuzzy = fuzzy)
+    relations() %>% 
+    dplyr::select(sets, Evidence) %>% 
+    distinct() %>% 
+    mutate(fuzzy = case_match(Evidence,
+                              "EXP" ~ 0.9,
+                              "IDA" ~ 0.8,
+                              "IPI" ~ 0.8,
+                              "IMP" ~ 0.75,
+                              "IGI" ~ 0.7,
+                              "IEP" ~ 0.65,
+                              "HEP" ~ 0.6,
+                              "HDA" ~ 0.6,
+                              "HMP" ~ 0.5,
+                              "IBA" ~ 0.45,
+                              "ISS" ~ 0.4,
+                              "ISO" ~ 0.32,
+                              "ISA" ~ 0.32,
+                              "ISM" ~ 0.3,
+                              "RCA" ~ 0.2,
+                              "TAS" ~ 0.15,
+                              "NAS" ~ 0.1,
+                              "IC" ~ 0.02,
+                              "ND" ~ 0.02,
+                              "IEA" ~ 0.01,
+                              .default = 0.01)) %>% 
+    dplyr::select(sets = "sets", elements = "Evidence", fuzzy = fuzzy)
 ```
 
 We have several evidence codes for the same ontology, this would result on different fuzzy values for each relation. 
@@ -192,21 +193,21 @@ Instead, we extract this and add them as new sets and elements and add an extra 
 
 ```{r fuzzy_setup2, eval=run_vignette}
 ts <- h2GO_TS %>% 
-  relations() %>% 
-  dplyr::select(-Evidence) %>% 
-  rbind(nr) %>% 
-  tidySet() %>% 
-  mutate_element(Type = ifelse(grepl("^[0-9]+$", elements), "gene", "evidence"))
+    relations() %>% 
+    dplyr::select(-Evidence) %>% 
+    rbind(nr) %>% 
+    tidySet() %>% 
+    mutate_element(Type = ifelse(grepl("^[0-9]+$", elements), "gene", "evidence"))
 ```
 
 Now we can see which gene ontologies are more supported by the evidence:
 
 ```{r cardinality, eval=run_vignette}
 ts %>% 
-  dplyr::filter(Type != "Gene") %>% 
-  cardinality() %>% 
-  arrange(desc(cardinality)) %>% 
-  head()
+    dplyr::filter(Type != "Gene") %>% 
+    cardinality() %>% 
+    arrange(desc(cardinality)) %>% 
+    head()
 ```
 
 Surprisingly the most supported terms are protein binding, nucleus and cytosol. 
@@ -216,17 +217,17 @@ Calculating set sizes would be interesting but it requires computing a big numbe
 
 ```{r size_go, eval=run_vignette}
 ts %>% 
-  filter(sets %in% c("GO:0008152", "GO:0003674", "GO:0005575"),
-         Type != "gene") %>% 
-  set_size()
+    filter(sets %in% c("GO:0008152", "GO:0003674", "GO:0005575"),
+           Type != "gene") %>% 
+    set_size()
 ```
 
 Unexpectedly there is few evidence for the main terms:
 
 ```{r evidence_go, eval=run_vignette}
 ts %>% 
-  filter(sets %in% c("GO:0008152", "GO:0003674", "GO:0005575")) %>% 
-  filter(Type != "gene") 
+    filter(sets %in% c("GO:0008152", "GO:0003674", "GO:0005575")) %>% 
+    filter(Type != "gene") 
 ```
 
 In fact those terms are arbitrarily decided or inferred from electronic analysis. 
