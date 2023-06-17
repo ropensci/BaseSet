@@ -97,22 +97,22 @@ method. Currently not used.</p></dd>
 <code><a href="TidySet-class.html">TidySet-class</a></code>,
 <code><a href="activate.html">activate</a>()</code>,
 <code><a href="add_column.html">add_column</a>()</code>,
-<code><a href="arrange_.html">arrange</a>()</code>,
+<code><a href="arrange_.html">arrange.TidySet</a>()</code>,
 <code><a href="cartesian.html">cartesian</a>()</code>,
 <code><a href="complement_element.html">complement_element</a>()</code>,
 <code><a href="complement_set.html">complement_set</a>()</code>,
 <code><a href="complement.html">complement</a>()</code>,
 <code><a href="element_size.html">element_size</a>()</code>,
 <code><a href="elements.html">elements</a>()</code>,
-<code><a href="filter_.html">filter</a>()</code>,
-<code><a href="group_by_.html">group_by</a>()</code>,
+<code><a href="filter_.html">filter.TidySet</a>()</code>,
+<code><a href="group_by_.html">group_by.TidySet</a>()</code>,
 <code><a href="group.html">group</a>()</code>,
 <code><a href="incidence.html">incidence</a>()</code>,
 <code><a href="intersection.html">intersection</a>()</code>,
 <code><a href="is.fuzzy.html">is.fuzzy</a>()</code>,
 <code><a href="is_nested.html">is_nested</a>()</code>,
 <code><a href="move_to.html">move_to</a>()</code>,
-<code><a href="mutate_.html">mutate</a>()</code>,
+<code><a href="mutate_.html">mutate.TidySet</a>()</code>,
 <code><a href="nElements.html">nElements</a>()</code>,
 <code><a href="nRelations.html">nRelations</a>()</code>,
 <code><a href="nSets.html">nSets</a>()</code>,
@@ -120,7 +120,7 @@ method. Currently not used.</p></dd>
 <code>name_sets&lt;-()</code>,
 <code><a href="name_sets.html">name_sets</a>()</code>,
 <code><a href="power_set.html">power_set</a>()</code>,
-<code><a href="pull_.html">pull</a>()</code>,
+<code><a href="pull_.html">pull.TidySet</a>()</code>,
 <code><a href="relations.html">relations</a>()</code>,
 <code><a href="remove_column.html">remove_column</a>()</code>,
 <code><a href="remove_element.html">remove_element</a>()</code>,
@@ -128,7 +128,7 @@ method. Currently not used.</p></dd>
 <code><a href="remove_set.html">remove_set</a>()</code>,
 <code><a href="rename_elements.html">rename_elements</a>()</code>,
 <code><a href="rename_set.html">rename_set</a>()</code>,
-<code><a href="select_.html">select</a>()</code>,
+<code><a href="select_.html">select.TidySet</a>()</code>,
 <code><a href="set_size.html">set_size</a>()</code>,
 <code><a href="sets.html">sets</a>()</code>,
 <code><a href="subtract.html">subtract</a>()</code>,
@@ -151,18 +151,18 @@ method. Currently not used.</p></dd>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">add_relation</span><span class="op">(</span><span class="va">TS</span>, <span class="va">relations</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    elements sets      fuzzy        new</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1         a    A 0.51652580         NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2         b    A 0.33281361         NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3         c    A 0.22400837         NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4         d    A 0.26100739         NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5         e    A 0.28129082         NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6         f    B 0.49701191         NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7         a   A2 0.83088680 0.67768111</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8         b   A2 0.02924502 0.72309891</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9         c   A2 0.13474582 0.33252047</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10        d   A2 0.31802908 0.97191584</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11        e   A2 0.61909596 0.02379871</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12        f   B2 0.51983198 0.91842255</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         a    A 0.89162326         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         b    A 0.96610869         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         c    A 0.42368761         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         d    A 0.02377278         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         e    A 0.64720482         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         f    B 0.05052290         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7         a   A2 0.45855058 0.27331112</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8         b   A2 0.44467833 0.97980989</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9         c   A2 0.09008884 0.71979037</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10        d   A2 0.46636052 0.09594493</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11        e   A2 0.38309566 0.70177369</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12        f   B2 0.22571331 0.43125470</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

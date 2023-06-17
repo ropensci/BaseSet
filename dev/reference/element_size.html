@@ -101,21 +101,21 @@ with <code><a href="length_set.html">length_set()</a></code></p></li>
 <code><a href="activate.html">activate</a>()</code>,
 <code><a href="add_column.html">add_column</a>()</code>,
 <code><a href="add_relation.html">add_relation</a>()</code>,
-<code><a href="arrange_.html">arrange</a>()</code>,
+<code><a href="arrange_.html">arrange.TidySet</a>()</code>,
 <code><a href="cartesian.html">cartesian</a>()</code>,
 <code><a href="complement_element.html">complement_element</a>()</code>,
 <code><a href="complement_set.html">complement_set</a>()</code>,
 <code><a href="complement.html">complement</a>()</code>,
 <code><a href="elements.html">elements</a>()</code>,
-<code><a href="filter_.html">filter</a>()</code>,
-<code><a href="group_by_.html">group_by</a>()</code>,
+<code><a href="filter_.html">filter.TidySet</a>()</code>,
+<code><a href="group_by_.html">group_by.TidySet</a>()</code>,
 <code><a href="group.html">group</a>()</code>,
 <code><a href="incidence.html">incidence</a>()</code>,
 <code><a href="intersection.html">intersection</a>()</code>,
 <code><a href="is.fuzzy.html">is.fuzzy</a>()</code>,
 <code><a href="is_nested.html">is_nested</a>()</code>,
 <code><a href="move_to.html">move_to</a>()</code>,
-<code><a href="mutate_.html">mutate</a>()</code>,
+<code><a href="mutate_.html">mutate.TidySet</a>()</code>,
 <code><a href="nElements.html">nElements</a>()</code>,
 <code><a href="nRelations.html">nRelations</a>()</code>,
 <code><a href="nSets.html">nSets</a>()</code>,
@@ -123,7 +123,7 @@ with <code><a href="length_set.html">length_set()</a></code></p></li>
 <code>name_sets&lt;-()</code>,
 <code><a href="name_sets.html">name_sets</a>()</code>,
 <code><a href="power_set.html">power_set</a>()</code>,
-<code><a href="pull_.html">pull</a>()</code>,
+<code><a href="pull_.html">pull.TidySet</a>()</code>,
 <code><a href="relations.html">relations</a>()</code>,
 <code><a href="remove_column.html">remove_column</a>()</code>,
 <code><a href="remove_element.html">remove_element</a>()</code>,
@@ -131,7 +131,7 @@ with <code><a href="length_set.html">length_set()</a></code></p></li>
 <code><a href="remove_set.html">remove_set</a>()</code>,
 <code><a href="rename_elements.html">rename_elements</a>()</code>,
 <code><a href="rename_set.html">rename_set</a>()</code>,
-<code><a href="select_.html">select</a>()</code>,
+<code><a href="select_.html">select.TidySet</a>()</code>,
 <code><a href="set_size.html">set_size</a>()</code>,
 <code><a href="sets.html">sets</a>()</code>,
 <code><a href="subtract.html">subtract</a>()</code>,
@@ -148,19 +148,19 @@ with <code><a href="length_set.html">length_set()</a></code></p></li>
 <span class="r-in"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="tidySet.html">tidySet</a></span><span class="op">(</span><span class="va">relations</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">element_size</span><span class="op">(</span><span class="va">a</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    elements size probability</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1         a    0  0.02173565</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2         a    1  0.97826435</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3         b    0  0.32620487</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4         b    1  0.67379513</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5         c    0  0.35749848</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6         c    1  0.64250152</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7         d    0  0.30547134</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8         d    1  0.69452866</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9         e    0  0.43378254</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10        e    1  0.56621746</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11        f    0  0.47364872</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12        f    1  0.45888606</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13        f    2  0.06746522</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         a    0  0.78879752</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         a    1  0.21120248</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         b    0  0.90463867</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         b    1  0.09536133</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         c    0  0.41128003</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         c    1  0.58871997</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7         d    0  0.11074893</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8         d    1  0.88925107</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9         e    0  0.89685433</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10        e    1  0.10314567</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11        f    0  0.02051095</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12        f    1  0.56539874</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13        f    2  0.41409031</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
