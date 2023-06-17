@@ -3,6 +3,7 @@
 * `tidy()` now defaults to `tidySet()`.
 * New function `union_closed()`.
 * Make more robust the code to unwanted dimensions drops. 
+* `power_set()` returns also the sets of size 1 and have better names by default.
 
 # BaseSet 0.0.17
 

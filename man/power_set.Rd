@@ -9,17 +9,17 @@ power_set(object, set, name, ...)
 \arguments{
 \item{object}{A TidySet object.}
 
-\item{set}{The name of the set to be used for the power set}
+\item{set}{The name of the set to be used for the power set, if not provided all are used.}
 
-\item{name}{The root name of the new set.}
+\item{name}{The root name of the new set, if not provided the standard notation "P()" is used.}
 
-\item{...}{Other arguments passed down if possible. Currently ignored.}
+\item{...}{Other arguments passed down if possible.}
 }
 \value{
-A TidySet object with the new set
+A TidySet object with the new set.
 }
 \description{
-Create the power set
+Create the power set of the object: All the combinations of the elements of the sets.
 }
 \examples{
 relations <- data.frame(
