@@ -12,7 +12,7 @@ setMethod("cardinality",
           if (is.null(sets)) {
               sets <- name_sets(object)
           }
-          rel <- rel[rel$sets %in%  sets, ]
+          rel <- rel[rel$sets %in%  sets, , drop = FALSE]
           fuzzy <- split(rel$fuzzy, rel$sets)
           card <- vapply(fuzzy, FUN, FUN.VALUE = numeric(1L), ... = ...)
           df <- data.frame(sets = names(fuzzy), cardinality = card)

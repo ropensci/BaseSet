@@ -133,7 +133,7 @@ setMethod("set_size",
         }
 
         rel <- relations(object)
-        rel <- rel[rel$sets %in% names_sets, ]
+        rel <- rel[rel$sets %in% names_sets, , drop = FALSE]
         missing <- names_sets[!names_sets %in% rel$sets]
         rel <- rel[, c("fuzzy", "elements", "sets")]
 
@@ -183,7 +183,7 @@ setMethod("set_size",
         if (is.null(sets)) {
             out
         } else {
-            out[sets %in% sets, ]
+            out[sets %in% sets, , drop = FALSE]
         }
     }
 )
@@ -218,7 +218,7 @@ setMethod("element_size",
             names_elements <- elements
         }
 
-        rel <- rel[rel$elements %in% names_elements, ]
+        rel <- rel[rel$elements %in% names_elements, , drop = FALSE]
         rel <- rel[, c("fuzzy", "elements", "sets")]
         missing <- names_elements[!names_elements %in% rel$elements]
 
@@ -268,7 +268,7 @@ setMethod("element_size",
         if (is.null(elements)) {
             out
         } else {
-            out[elements %in% elements, ]
+            out[elements %in% elements, , drop = FALSE]
         }
     }
 )

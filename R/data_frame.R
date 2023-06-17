@@ -17,7 +17,7 @@ setAs("TidySet", "data.frame", function(from) {
     new_ord <- paste0(o$elements, o$sets)
     old_ord <- paste0(r$elements, r$sets)
 
-    o <- o[match(old_ord, new_ord), ]
+    o <- o[match(old_ord, new_ord), , drop = FALSE]
     rownames(o) <- seq_len(nrow(o))
     o
 })

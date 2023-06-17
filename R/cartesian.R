@@ -68,7 +68,7 @@ cartesian.TidySet <- function(object, set1, set2, name = NULL, keep = TRUE,
     )
     object <- add_relation(object, relation)
     relations <- relations(object)
-    cart <- relations[relations$sets %in% new_names, ]
+    cart <- relations[relations$sets %in% new_names, , drop = FALSE]
     cart$sets <- name
 
     if (keep_relations) {

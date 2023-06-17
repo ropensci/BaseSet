@@ -58,7 +58,7 @@ getOBO <- function(x) {
     }
     # Clean the data a bit
     if ("is_obsolete" %in% colnames(df)) {
-        df <- df[is.na(df[, "is_obsolete"]), ]
+        df <- df[is.na(df[, "is_obsolete"]), , drop = FALSE]
     }
     strs <- strsplit(df$is_a, " ! ")
     df$sets <- vapply(strs, "[", character(1L), i = 1)
@@ -68,7 +68,7 @@ getOBO <- function(x) {
     df$ref_code <- vapply(strs, "[", character(1L), i = 2)
     df$fuzzy <- 1
     colnames(df)[colnames(df) == "id"] <- "elements"
-    df <- df[!is.na(df$sets), ]
+    df <- df[!is.na(df$sets), , drop = FALSE]
     keep_columns <- setdiff(colnames(df), c("xref", "is_obsolete", "is_a"))
     df <- df[, keep_columns]
     tidySet.data.frame(df)

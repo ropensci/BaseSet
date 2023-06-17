@@ -69,7 +69,7 @@ union.TidySet <- function(object, sets, name = NULL, FUN = "max", keep = FALSE,
     }
     object <- add_sets(object, name)
     relations <- relations(object)
-    union <- relations[relations$sets %in% sets, ]
+    union <- relations[relations$sets %in% sets, , drop = FALSE]
     if (is.factor(union$sets)) {
         levels(union$sets)[levels(union$sets) %in% sets] <- name
     } else {

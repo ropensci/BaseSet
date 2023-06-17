@@ -2,6 +2,7 @@
 
 * `tidy()` now defaults to `tidySet()`.
 * New function `union_closed()`.
+* Make more robust the code to unwanted dimensions drops. 
 
 # BaseSet 0.0.17
 
