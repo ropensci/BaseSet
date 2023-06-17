@@ -156,8 +156,8 @@ setMethod("set_size",
             fuzzy_values <- split(rel$fuzzy, rel$sets)
             sizes <- lapply(fuzzy_values, length_set)
             sets <- rep(names(fuzzy_values), lengths(sizes))
-            lengths_set <- unlist(lapply(sizes, names), use.names = FALSE)
-            probability_length <- unlist(sizes, use.names = FALSE)
+            lengths_set <- unlist(lapply(sizes, names), FALSE, FALSE)
+            probability_length <- unlist(sizes, FALSE, FALSE)
         } else {
             sets <- names_sets
             lengths_set <- table(rel$sets)[names_sets]
@@ -239,8 +239,8 @@ setMethod("element_size",
             fuzzy_values <- split(rel$fuzzy, rel$elements)
             sizes <- lapply(fuzzy_values, length_set)
             elements <- rep(names(fuzzy_values), lengths(sizes))
-            lengths_set <- unlist(lapply(sizes, names), use.names = FALSE)
-            probability_length <- unlist(sizes, use.names = FALSE)
+            lengths_set <- unlist(lapply(sizes, names), FALSE, FALSE)
+            probability_length <- unlist(sizes, FALSE, FALSE)
         } else {
             elements <- names_elements
             lengths_set <- table(rel$elements)[names_elements]

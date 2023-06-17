@@ -63,7 +63,7 @@ cartesian.TidySet <- function(object, set1, set2, name = NULL, keep = TRUE,
     object <- add_sets(object, name)
     object <- add_sets(object, new_names)
     relation <- data.frame(
-        elements = unlist(new_sets),
+        elements = unlist(new_sets, FALSE, FALSE),
         sets = rep(new_names, lengths(new_sets))
     )
     object <- add_relation(object, relation)

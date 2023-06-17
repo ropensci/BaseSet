@@ -99,15 +99,15 @@ tidySet.list <- function(relations) {
     }
     if (all(char | fact)) {
         relations <- lapply(relations, unique)
-        elements <- unlist(relations, use.names = FALSE)
+        elements <- unlist(relations, FALSE, FALSE)
         fuzzy <- rep(1, length(elements))
     } else if (all(num)) {
-        elements <- unlist(lapply(relations, names), use.names = FALSE)
+        elements <- unlist(lapply(relations, names), FALSE, FALSE)
 
         if (is.null(elements)) {
             stop("The numeric vectors should be named", call. = FALSE)
         }
-        fuzzy <- unlist(relations, use.names = FALSE)
+        fuzzy <- unlist(relations, FALSE, FALSE)
     }
 
     sets_size <- lengths(relations)
