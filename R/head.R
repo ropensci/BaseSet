@@ -16,5 +16,5 @@ tail.TidySet <- function(x, n = 6L, ...) {
 #' @export
 #' @method dim TidySet
 dim.TidySet <- function(x) {
-    c(nElements(x), nRelations(x), nSets(x))
+    c(Elements = nElements(x), Relations = nRelations(x), Sets = nSets(x))
 }

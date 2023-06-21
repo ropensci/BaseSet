@@ -16,5 +16,8 @@ test_that("tail", {
 })
 
 test_that("dim", {
-    expect_equal(dim(a), c(nElements(a), nRelations(a), nSets(a)))
+    expect_equal(dim(a),
+                 c(Elements = nElements(a),
+                   Relations = nRelations(a),
+                   Sets = nSets(a)))
 })
