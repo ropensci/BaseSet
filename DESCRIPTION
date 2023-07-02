@@ -49,6 +49,7 @@ Language: en-US
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Collate: 
+    'validity.R'
     'AllClasses.R'
     'AllGenerics.R'
     'BaseSet-package.R'
@@ -60,6 +61,7 @@ Collate:
     'add_relation.R'
     'adjacency.R'
     'arrange.R'
+    'c.R'
     'cardinality.R'
     'cartesian.R'
     'complement.R'
@@ -93,9 +95,11 @@ Collate:
     'select.R'
     'set.R'
     'size.R'
+    'subset.R'
     'subtract.R'
     'tidy-set.R'
     'union.R'
     'union_closed.R'
     'utils-pipe.R'
+    'utils.R'
     'zzz.R'
