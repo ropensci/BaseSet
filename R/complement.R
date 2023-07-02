@@ -37,12 +37,7 @@ setMethod("complement_set",
 
         object <- replace_interactions(object, complement, keep_relations)
 
-        object <- droplevels(
-            object, !keep_elements, !keep_sets,
-            !keep_relations
-        )
-        validObject(object)
-        object
+        droplevels(object, !keep_elements, !keep_sets, !keep_relations)
     }
 )
 
@@ -80,12 +75,7 @@ setMethod("complement_element",
 
         object <- replace_interactions(object, complement, keep_relations)
         object <- add_sets(object, name)
-        object <- droplevels(
-            object, !keep_elements, !keep_sets,
-            !keep_relations
-        )
-        validObject(object)
-        object
+        droplevels(object, !keep_elements, !keep_sets, !keep_relations)
     }
 )
 

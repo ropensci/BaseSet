@@ -66,6 +66,4 @@ power_set.TidySet <- function(object, set, name = NULL, keep = TRUE,
     }
 
     droplevels(object)
-    validObject(object)
-    object
 }

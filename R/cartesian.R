@@ -76,7 +76,5 @@ cartesian.TidySet <- function(object, set1, set2, name = NULL, keep = TRUE,
     } else {
         relations(object) <- cart
     }
-    object <- droplevels(object)
-    validObject(object)
-    object
+    droplevels(object)
 }
