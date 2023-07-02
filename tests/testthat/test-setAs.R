@@ -33,4 +33,6 @@ test_that("as.list works", {
     expect_true(!is.null(names(b)))
     expect_true(is.character(names(b[[1]])))
     expect_true(is.numeric(b[[1]]))
+
+    expect_true(is.list(lapply(a, identity)))
 })
