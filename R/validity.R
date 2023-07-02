@@ -87,9 +87,10 @@ is_valid <- function(x) {
 
 valid_relations <- function(relations, sets, elements) {
   errors <- character()
-  if (nrow(relations) == 0) {
-    return("No relations found.")
-  }
+  # A TS with no relations is a valid set.
+  # if (nrow(relations) == 0) {
+  #   errors <- c(errors, "No relations found.")
+  # }
 
   if (!"fuzzy" %in% colnames(relations)) {
     errors <- c(errors, "A fuzzy column must be present.")
