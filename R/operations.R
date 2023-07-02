@@ -8,7 +8,7 @@ remove_elements <- function(object, elements) {
 
   keep_at_elements <- !object@elements$elements %in% elements
   new_elements <- object@elements[keep_at_elements, , drop = FALSE]
-  rownames(new_elements) <- NULL
+  rownames(object@elements) <- NULL
   object@elements <- droplevels(new_elements)
   object
 }
@@ -20,6 +20,7 @@ remove_sets <- function(object, sets) {
 
   keep_at_set <- !object@sets$sets %in% sets
   new_set <- object@sets[keep_at_set, , drop = FALSE]
+  rownames(object@sets) <- NULL
   object@sets <- droplevels(new_set)
   object
 }

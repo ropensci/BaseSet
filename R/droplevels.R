@@ -23,6 +23,7 @@ drop_relations <- function(object) {
 
         object@relations <- relations[keep_sets & keep_elements, , drop = FALSE]
     }
+    rownames(object@relations) <- NULL
     object
 }
 
