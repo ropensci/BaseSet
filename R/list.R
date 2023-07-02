@@ -6,10 +6,7 @@ setAs("TidySet", "list", function(from) {
     }
     r <- r[, c("elements", "sets", "fuzzy")]
     r <- unique(r)
-    out <- split(
-        seq_len(nrow(r)),
-        r$sets
-    )
+    out <- split(seq_len(nrow(r)), r$sets)
 
     lapply(out, function(x, relations) {
         out <- relations$fuzzy[x]
