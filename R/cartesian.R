@@ -37,7 +37,7 @@ cartesian.TidySet <- function(object, set1, set2, name = NULL, keep = TRUE,
     if (any(!c(set1, set2) %in% name_sets(object))) {
         stop("Sets must be on the object", call. = FALSE)
     }
-    if (length(set1) > 1 | length(set2) > 1) {
+    if (length(set1) > 1 || length(set2) > 1) {
         stop("Sets must be of length 1", call. = FALSE)
     }
 

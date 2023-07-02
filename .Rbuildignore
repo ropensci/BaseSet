@@ -19,3 +19,4 @@
 ^CRAN-RELEASE$
 ^revdep$
 ^CITATION\.cff$
+^\.lintr$

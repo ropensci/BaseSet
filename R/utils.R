@@ -1,7 +1,7 @@
 # for autocomplete: https://stackoverflow.com/a/52348809
 #' @importFrom utils .DollarNames
 #' @export
-.DollarNames.TidySet = function(x, pattern = "") {
+.DollarNames.TidySet <- function(x, pattern = "") {
   #x is the .CompletionEnv
   # Get the columns of each slot and provide it without merging everything
   r <- relations(x)[1:2, , drop = FALSE]

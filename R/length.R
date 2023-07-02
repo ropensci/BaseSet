@@ -4,7 +4,8 @@ NULL
 #' Probability of a vector of probabilities
 #'
 #' Calculates the probability that all probabilities happened simultaneously.
-#' `independent_probabilities` just multiply the probabilities of the index passed.
+#' `independent_probabilities()` just multiply the probabilities of the index
+#' passed.
 #' @param p Numeric vector of probabilities.
 #' @param i Numeric integer index of the complementary probability.
 #' @return A numeric value of the probability.

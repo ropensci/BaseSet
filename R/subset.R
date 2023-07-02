@@ -144,17 +144,27 @@ keep_columns <- function(j, k) {
   } else if (is.numeric(k)) {
     return(unique(c(1, k)))
   }
-  if (j == "relations") {
-    return(unique(c("elements", "sets", "fuzzy", k)))
-  } else if (j == "sets") {
-    return(unique(c("sets", k)))
-  } else if (j == "elements") {
-    return(unique(c("elements", k)))
+  cc <- character_columns(j, k)
+  if (!is.null(cc)) {
+    return(cc)
   }
 
   if (is.logical(k) && j == "relations") {
     return(c(TRUE, TRUE, TRUE, k))
   } else {
     return(c(TRUE, k))
+  }
+}
+
+character_columns <- function(j, k) {
+  if (!is.character(k)) {
+    return(NULL)
+  }
+  if (j == "relations") {
+    return(unique(c("elements", "sets", "fuzzy", k)))
+  } else if (j == "sets") {
+    return(unique(c("sets", k)))
+  } else if (j == "elements") {
+    return(unique(c("elements", k)))
   }
 }

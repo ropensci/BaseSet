@@ -48,7 +48,6 @@ add_relations_internal <- function(object, elements, sets, fuzzy) {
 
     original_relations <- elements_sets(object)
     relations <- paste(elements, sets)
-    final_relations <- unique(c(original_relations, relations))
     new_relations <- setdiff(relations, original_relations)
 
     if (length(fuzzy) > length(new_relations)) {

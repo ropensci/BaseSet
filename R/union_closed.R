@@ -40,7 +40,9 @@ union_closed.TidySet <- function(object, sets = NULL, ...) {
         for (s in seq_along(elements_sets)) {
             ess <- elements_sets[[s]]
             same_length <- length(set2) == length(ess)
-            if (same_length && length(setdiff(set2, ess)) == 0 && length(setdiff(ess, set2)) == 0) {
+            no_outside_left <- length(setdiff(set2, ess)) == 0
+            no_outside_right <- length(setdiff(ess, set2)) == 0
+            if (same_length && no_outside_left && no_outside_right) {
                 v[s] <- TRUE
                 # If one set already matches do not look further
                 break

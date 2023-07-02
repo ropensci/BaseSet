@@ -97,8 +97,8 @@ valid_relations <- function(relations, sets, elements) {
   } else if (length(relations$fuzzy) != 0) {
     fuzz <- relations$fuzzy
     if (!is.numeric(fuzz) || min(fuzz) < 0 || max(fuzz) > 1) {
-      errors <- c( errors,
-                   "fuzzy column is restricted to a number between 0 and 1."
+      errors <- c(errors,
+                  "fuzzy column is restricted to a number between 0 and 1."
       )
     }
   }

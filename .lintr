@@ -1,0 +1,4 @@
+linters: linters_with_defaults(
+    object_name_linter = object_name_linter(c("camleCase", "snake_case", "symbols",
+    "UPPERCASE"))
+  )

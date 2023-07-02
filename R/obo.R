@@ -25,7 +25,6 @@ getOBO <- function(x) {
     k <- vapply(kv, "[", character(1L), i = 1) # Keys
     v <- vapply(kv, "[", character(1L), i = 2) # Values
     d <- which(k == "id") # Which position indicate a beginning of description
-    tk <- vector("list", length(d))
 
     keys <- k[d[1]:length(k)]
     df <- data.frame(matrix(ncol = length(unique(keys)), nrow = 0),

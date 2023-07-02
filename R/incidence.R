@@ -13,7 +13,7 @@ NULL
 setMethod("incidence",
     signature = signature(object = "TidySet"),
     function(object) {
-        Incidence <- matrix(0,
+        incidence <- matrix(0,
             nrow = nElements(object),
             ncol = nSets(object),
             dimnames = list(
@@ -27,8 +27,8 @@ setMethod("incidence",
 
         fuzziness <- rel$fuzzy
         for (p in seq_along(rel$fuzzy)) {
-            Incidence[elements[p], sets[p]] <- fuzziness[p]
+            incidence[elements[p], sets[p]] <- fuzziness[p]
         }
-        Incidence
+        incidence
     }
 )

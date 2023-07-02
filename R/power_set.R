@@ -1,9 +1,12 @@
 #' Create the power set
 #'
-#' Create the power set of the object: All the combinations of the elements of the sets.
+#' Create the power set of the object: All the combinations of the elements of
+#' the sets.
 #' @param object A TidySet object.
-#' @param set The name of the set to be used for the power set, if not provided all are used.
-#' @param name The root name of the new set, if not provided the standard notation "P()" is used.
+#' @param set The name of the set to be used for the power set, if not provided
+#' all are used.
+#' @param name The root name of the new set, if not provided the standard
+#' notation "P()" is used.
 #' @param ... Other arguments passed down if possible.
 #' @return A TidySet object with the new set.
 #' @family methods
