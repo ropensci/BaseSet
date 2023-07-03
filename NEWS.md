@@ -4,7 +4,7 @@
 * New function `union_closed()`.
 * Make more robust the code to unwanted dimensions drops. 
 * `power_set()` returns also the sets of size 1 and have better names by default.
-* Extractors `[`, `$`, `[[` now work for TidySets: 
+* Extractors `[`, `$`, `[[` and setters `[<-`, `$<-` now work for TidySets: 
     - `i` indicates rows, 
     - `j` either "relations", "sets" or "elements"
     - `k` the columns of the slot.  

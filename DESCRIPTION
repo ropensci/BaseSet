@@ -1,6 +1,6 @@
 Package: BaseSet
 Title: Working with Sets the Tidy Way
-Version: 0.0.17.9002
+Version: 0.0.17.9003
 Authors@R: 
     c(person(given = "Lluís",
              family = "Revilla Sancho",
