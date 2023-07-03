@@ -8,7 +8,7 @@ message: 'To cite package "BaseSet" in publications use:'
 type: software
 license: MIT
 title: 'BaseSet: Working with Sets the Tidy Way'
-version: 0.0.17.9002
+version: 0.0.17.9003
 abstract: Implements a class and methods to work with sets, doing intersection, union,
   complementary sets, power sets, cartesian product and other set operations in a
   "tidy" way. These set operations are available for both classical sets and fuzzy
@@ -55,7 +55,7 @@ references:
   authors:
   - family-names: Wickham
     given-names: Hadley
-    email: hadley@rstudio.com
+    email: hadley@posit.co
     orcid: https://orcid.org/0000-0003-4757-117X
   - family-names: François
     given-names: Romain
@@ -67,6 +67,7 @@ references:
     orcid: https://orcid.org/0000-0002-1416-3412
   - family-names: Vaughan
     given-names: Davis
+    email: davis@posit.co
     orcid: https://orcid.org/0000-0003-4777-038X
   year: '2023'
   version: '>= 1.0.0'
@@ -314,6 +315,6 @@ references:
   authors:
   - family-names: Wickham
     given-names: Hadley
-    email: hadley@rstudio.com
+    email: hadley@posit.co
   year: '2023'
   version: '>= 2.1.0'
