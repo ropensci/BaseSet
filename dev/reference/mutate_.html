@@ -14,7 +14,7 @@ on the TidySet."><meta name="robots" content="noindex"><!--[if lt IE 9]>
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">BaseSet</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.0.17.9002</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.0.17.9003</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -146,19 +146,19 @@ on the TidySet.</p>
 <span class="r-in"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="tidySet.html">tidySet</a></span><span class="op">(</span><span class="va">relations</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu">mutate_element</span><span class="op">(</span><span class="va">a</span>, Type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"Gene"</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"lncRNA"</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">a</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    elements sets     fuzzy   Type</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1         a    a 0.9861435   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2         b    a 0.6454538   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3         c    a 0.8249108   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4         d    a 0.8969420   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5         e    a 0.2590584 lncRNA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6         f    b 0.1230488 lncRNA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7         a   a2 0.5642624   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8         b   a2 0.8303558   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9         c   a2 0.7801428   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10        d   a2 0.4886053   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11        e   a2 0.7942627 lncRNA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12        f   b2 0.9781244 lncRNA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    elements sets      fuzzy   Type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         a    a 0.01163882   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         b    a 0.32464617   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         c    a 0.80002968   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         d    a 0.42677563   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         e    a 0.59910300 lncRNA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         f    b 0.32740920 lncRNA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7         a   a2 0.31936862   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8         b   a2 0.59927686   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9         c   a2 0.65009637   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10        d   a2 0.82931884   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11        e   a2 0.08804480 lncRNA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12        f   b2 0.34167506 lncRNA</span>
 <span class="r-in"><span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fu">mutate_relation</span><span class="op">(</span><span class="va">a</span>, Type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"PPI"</span>, <span class="st">"PF"</span>, <span class="st">"MP"</span><span class="op">)</span>, <span class="fl">12</span>,</span></span>
 <span class="r-in"><span>    replace <span class="op">=</span> <span class="cn">TRUE</span></span></span>
 <span class="r-in"><span><span class="op">)</span><span class="op">)</span></span></span>

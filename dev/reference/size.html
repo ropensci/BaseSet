@@ -12,7 +12,7 @@ probabilities. First it must have active either sets or elements."><meta name="r
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">BaseSet</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.0.17.9002</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.0.17.9003</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -121,32 +121,32 @@ is the relations slot returns the TidySet object with a warning.</p>
 <span class="r-in"><span><span class="va">TS</span> <span class="op">&lt;-</span> <span class="fu"><a href="activate.html">activate</a></span><span class="op">(</span><span class="va">TS</span>, <span class="st">"elements"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">size</span><span class="op">(</span><span class="va">TS</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    elements size probability</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1         a    0  0.98550217</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2         a    1  0.01449783</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3         b    0  0.79006317</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4         b    1  0.20993683</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5         c    0  0.33297385</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6         c    1  0.66702615</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7         d    0  0.38944739</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8         d    1  0.61055261</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9         e    0  0.87449499</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10        e    1  0.12550501</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11        f    0  0.73206169</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12        f    1  0.25173103</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13        f    2  0.01620728</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         a    0  0.14339182</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         a    1  0.85660818</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         b    0  0.56646718</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         b    1  0.43353282</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         c    0  0.68381732</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         c    1  0.31618268</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7         d    0  0.08415951</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8         d    1  0.91584049</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9         e    0  0.15454692</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10        e    1  0.84545308</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11        f    0  0.13683285</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12        f    1  0.50661293</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13        f    2  0.35655422</span>
 <span class="r-in"><span><span class="va">TS</span> <span class="op">&lt;-</span> <span class="fu"><a href="activate.html">activate</a></span><span class="op">(</span><span class="va">TS</span>, <span class="st">"sets"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">size</span><span class="op">(</span><span class="va">TS</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    sets size  probability</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     A    0 0.0882949059</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2     A    1 0.3527319337</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3     A    2 0.4148652465</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4     A    3 0.1315312149</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5     A    4 0.0124211315</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6     A    5 0.0001555674</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7     B    0 0.9209938264</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8     B    1 0.0790061736</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9     C    0 0.7948605814</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10    C    1 0.2051394186</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     A    0 0.0007224416</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2     A    1 0.0170166289</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     A    2 0.1336410757</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     A    3 0.4020793070</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5     A    4 0.3556221785</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6     A    5 0.0909183683</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7     B    0 0.2661399748</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8     B    1 0.7338600252</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9     C    0 0.5141386497</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10    C    1 0.4858613503</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
