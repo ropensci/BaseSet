@@ -1,4 +1,3 @@
-
 #' @importFrom methods setClassUnion
 setClassUnion("characterORfactor", c("character", "factor"))
 
@@ -129,6 +128,3 @@ valid_relations <- function(relations, sets, elements) {
   }
 errors
 }
-
-valid_sets <- function(x) {}
-valid_elements <- function(x) {}
