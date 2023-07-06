@@ -12,9 +12,9 @@ test_that("$<- works in TidySet class", {
   expect_equal(TS$adafd, LETTERS[1:6])
   expect_equal(ncol(relations(TS)), 4)
 
-  TS$adafd <- LETTERS[1:2]
+  TS$adafd <- LETTERS[1:6]
   expect_equal(TS$adafd, LETTERS[1:6])
-  expect_equal(sets(TS)$adafd, LETTERS[1:2])
+  expect_equal(relations(TS)$adafd, LETTERS[1:6])
 
 })
 
@@ -25,8 +25,8 @@ test_that("[i, j, k] subset works in TidySet class", {
   expect_warning(TS$abcd <- sample(c("ha", "he"), size = 6, replace = TRUE))
 
   expect_error(TS[, c(TRUE, FALSE, TRUE)], "j only accepts:")
-
-  out <- TS[1,"elements", ]
+  expect_equal(ncol(relations(TS[1, ])), 4)
+  out <- TS[1, "elements", ]
   expect_s4_class(out, "TidySet")
   expect_equal(nElements(out), 1)
 
@@ -54,6 +54,7 @@ test_that("[i] subset works in TidySet class", {
 test_that("[[i]] subset works in TidySet class", {
   TS <- tidySet(list(A = letters[1:5], B = letters[6]))
   expect_equal(TS[[1]], TS[["A"]])
+  expect_equal(dim(TS[["C"]]), c(Elements = 0, Relations = 0, Sets = 0))
 })
 
 # test_that("[i, j]<- subset works in TidySet class", {
