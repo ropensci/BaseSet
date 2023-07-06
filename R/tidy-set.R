@@ -196,3 +196,9 @@ tidySet.Go3AnnDbBimap <- function(relations) {
     TS <- tidySet.data.frame(df)
     move_to(TS, "relations", "sets", "Ontology")
 }
+
+#' @describeIn tidySet Convert TidySet into a TidySet object.
+#' @export
+tidySet.TidySet <- function(relations) {
+    relations
+}
