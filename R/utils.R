@@ -10,3 +10,11 @@
   l <- lapply(list(r, s, e), colnames)
   unique(unlist(l, FALSE, FALSE))
 }
+
+
+in_slots <- function(x, fun, ...) {
+    l <- list(Elements = slot(x, "elements"),
+         Relations = slot(x, "relations"),
+         Sets = slot(x, "sets"))
+    sapply(l, fun, ...)
+}
