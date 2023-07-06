@@ -1,3 +1,6 @@
+#' @include validity.R
+NULL
+
 # S4 classes ###
 #' A tidy class to represent a set
 #'
