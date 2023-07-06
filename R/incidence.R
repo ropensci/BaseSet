@@ -17,8 +17,8 @@ setMethod("incidence",
             nrow = nElements(object),
             ncol = nSets(object),
             dimnames = list(
-                elements(object)$element,
-                sets(object)$set
+                elements(object)$elements,
+                sets(object)$sets
             )
         )
         rel <- unique(relations(object)[, c("sets", "elements", "fuzzy")])

@@ -30,7 +30,7 @@ NULL
 #' relations(TS)
 #' TS[, "elements", "description"] <- rev(c("What", "can", "I", "say", "now", "?"))
 #' elements(TS)
-#' Which will be deleted?
+#' # Which will be deleted?
 #' # TS$description <- NULL
 #' TS$type
 #' TS$origin <- c("BCN", "BDN")

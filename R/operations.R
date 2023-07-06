@@ -45,7 +45,7 @@ rm_relations_with_sets <- function(object, sets) {
   if (length(sets) == 0) {
     return(object)
   }
-  keep_at_relations <- !object@relations$set %in% sets
+  keep_at_relations <- !object@relations$sets %in% sets
   new_relations <- object@relations[keep_at_relations, , drop = FALSE]
   object@relations <- droplevels(new_relations)
   rownames(object@relations) <- NULL

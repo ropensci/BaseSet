@@ -60,7 +60,7 @@ setMethod("name_elements<-",
         }
 
         object@elements <- unique(elements)
-        if (anyDuplicated(object@elements$element) > 0) {
+        if (anyDuplicated(object@elements$elements) > 0) {
             stop("Duplicated elements but with different information",
                 call. = FALSE
             )
