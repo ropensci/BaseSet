@@ -19,7 +19,8 @@ A numeric value of the probability.
 }
 \description{
 Calculates the probability that all probabilities happened simultaneously.
-\code{independent_probabilities} just multiply the probabilities of the index passed.
+\code{independent_probabilities()} just multiply the probabilities of the index
+passed.
 }
 \examples{
 multiply_probabilities(c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23), c(1, 3))
