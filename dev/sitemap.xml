@@ -64,6 +64,9 @@
     <loc>https://docs.ropensci.org/BaseSet/dev/reference/as.list.TidySet.html</loc>
   </url>
   <url>
+    <loc>https://docs.ropensci.org/BaseSet/dev/reference/c-TidySet-method.html</loc>
+  </url>
+  <url>
     <loc>https://docs.ropensci.org/BaseSet/dev/reference/cardinality.html</loc>
   </url>
   <url>
@@ -89,6 +92,9 @@
   </url>
   <url>
     <loc>https://docs.ropensci.org/BaseSet/dev/reference/elements.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/BaseSet/dev/reference/extract-TidySet.html</loc>
   </url>
   <url>
     <loc>https://docs.ropensci.org/BaseSet/dev/reference/fapply.html</loc>
