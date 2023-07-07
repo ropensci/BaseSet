@@ -51,6 +51,8 @@ reference:
       - '`droplevels.TidySet`'
       - '`element_size`'
       - '`elements`'
+      - '`c,TidySet-method`'
+      - '`extract-TidySet`'
       - '`group`'
       - '`is_nested`'
       - '`nElements`'
