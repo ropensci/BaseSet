@@ -32,7 +32,7 @@
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">BaseSet</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.0.17.9003</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.0.17.9004</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -418,12 +418,12 @@ which three slots you want to affect with <code><a href="../reference/activate.h
 <span>  <span class="fu"><a href="../reference/activate.html">activate</a></span><span class="op">(</span><span class="st">"relations"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>Important <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fu"><a href="../reference/nRelations.html">nRelations</a></span><span class="op">(</span><span class="va">tidy_set</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">m_TS</span></span>
-<span><span class="co">#&gt;   elements     sets fuzzy  Important</span></span>
-<span><span class="co">#&gt; 1    Gene1 Geneset1     1 0.04429521</span></span>
-<span><span class="co">#&gt; 2    Gene2 Geneset2     1 0.08092763</span></span>
-<span><span class="co">#&gt; 3    Gene3 Geneset2     1 0.13979731</span></span>
-<span><span class="co">#&gt; 4    Gene1 Geneset2     1 0.53337550</span></span>
-<span><span class="co">#&gt; 5    Gene3 Geneset3     1 0.11289612</span></span></code></pre></div>
+<span><span class="co">#&gt;   elements     sets fuzzy Important</span></span>
+<span><span class="co">#&gt; 1    Gene1 Geneset1     1 0.7785106</span></span>
+<span><span class="co">#&gt; 2    Gene2 Geneset2     1 0.6967038</span></span>
+<span><span class="co">#&gt; 3    Gene3 Geneset2     1 0.5221833</span></span>
+<span><span class="co">#&gt; 4    Gene1 Geneset2     1 0.7322677</span></span>
+<span><span class="co">#&gt; 5    Gene3 Geneset3     1 0.3683122</span></span></code></pre></div>
 <p>You can use activate to select what are the verbs modifying:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">set_modified</span> <span class="op">&lt;-</span> <span class="va">m_TS</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
@@ -432,19 +432,19 @@ which three slots you want to affect with <code><a href="../reference/activate.h
 <span>                           <span class="st">"pathway1"</span>, </span>
 <span>                           <span class="st">"pathway2"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">set_modified</span></span>
-<span><span class="co">#&gt;   elements     sets fuzzy  Important  Pathway</span></span>
-<span><span class="co">#&gt; 1    Gene1 Geneset1     1 0.04429521 pathway1</span></span>
-<span><span class="co">#&gt; 2    Gene2 Geneset2     1 0.08092763 pathway1</span></span>
-<span><span class="co">#&gt; 3    Gene3 Geneset2     1 0.13979731 pathway2</span></span>
-<span><span class="co">#&gt; 4    Gene1 Geneset2     1 0.53337550 pathway1</span></span>
-<span><span class="co">#&gt; 5    Gene3 Geneset3     1 0.11289612 pathway2</span></span>
+<span><span class="co">#&gt;   elements     sets fuzzy Important  Pathway</span></span>
+<span><span class="co">#&gt; 1    Gene1 Geneset1     1 0.7785106 pathway1</span></span>
+<span><span class="co">#&gt; 2    Gene2 Geneset2     1 0.6967038 pathway1</span></span>
+<span><span class="co">#&gt; 3    Gene3 Geneset2     1 0.5221833 pathway2</span></span>
+<span><span class="co">#&gt; 4    Gene1 Geneset2     1 0.7322677 pathway1</span></span>
+<span><span class="co">#&gt; 5    Gene3 Geneset3     1 0.3683122 pathway2</span></span>
 <span><span class="va">set_modified</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/activate.html">deactivate</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="co"># To apply a filter independently of where it is</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Pathway</span> <span class="op">==</span> <span class="st">"pathway1"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   elements     sets fuzzy  Important  Pathway</span></span>
-<span><span class="co">#&gt; 1    Gene1 Geneset1     1 0.04429521 pathway1</span></span>
-<span><span class="co">#&gt; 2    Gene2 Geneset2     1 0.08092763 pathway1</span></span>
-<span><span class="co">#&gt; 3    Gene1 Geneset2     1 0.53337550 pathway1</span></span></code></pre></div>
+<span><span class="co">#&gt;   elements     sets fuzzy Important  Pathway</span></span>
+<span><span class="co">#&gt; 1    Gene1 Geneset1     1 0.7785106 pathway1</span></span>
+<span><span class="co">#&gt; 2    Gene2 Geneset2     1 0.6967038 pathway1</span></span>
+<span><span class="co">#&gt; 3    Gene1 Geneset2     1 0.7322677 pathway1</span></span></code></pre></div>
 <p>If you think you need <code>group_by</code> usually this could mean
 that you need a new set. You can create a new one with
 <code>group</code>.</p>
@@ -453,25 +453,25 @@ that you need a new set. You can create a new one with
 <span><span class="va">set_modified</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/activate.html">deactivate</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/group.html">group</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"new"</span>, <span class="va">Pathway</span> <span class="op">==</span> <span class="st">"pathway1"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   elements     sets fuzzy  Important  Pathway</span></span>
-<span><span class="co">#&gt; 1    Gene1 Geneset1     1 0.04429521 pathway1</span></span>
-<span><span class="co">#&gt; 2    Gene2 Geneset2     1 0.08092763 pathway1</span></span>
-<span><span class="co">#&gt; 3    Gene3 Geneset2     1 0.13979731 pathway2</span></span>
-<span><span class="co">#&gt; 4    Gene1 Geneset2     1 0.53337550 pathway1</span></span>
-<span><span class="co">#&gt; 5    Gene3 Geneset3     1 0.11289612 pathway2</span></span>
-<span><span class="co">#&gt; 6    Gene1      new     1         NA pathway1</span></span>
-<span><span class="co">#&gt; 7    Gene2      new     1         NA pathway1</span></span></code></pre></div>
+<span><span class="co">#&gt;   elements     sets fuzzy Important  Pathway</span></span>
+<span><span class="co">#&gt; 1    Gene1 Geneset1     1 0.7785106 pathway1</span></span>
+<span><span class="co">#&gt; 2    Gene2 Geneset2     1 0.6967038 pathway1</span></span>
+<span><span class="co">#&gt; 3    Gene3 Geneset2     1 0.5221833 pathway2</span></span>
+<span><span class="co">#&gt; 4    Gene1 Geneset2     1 0.7322677 pathway1</span></span>
+<span><span class="co">#&gt; 5    Gene3 Geneset3     1 0.3683122 pathway2</span></span>
+<span><span class="co">#&gt; 6    Gene1      new     1        NA pathway1</span></span>
+<span><span class="co">#&gt; 7    Gene2      new     1        NA pathway1</span></span></code></pre></div>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">set_modified</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="../reference/group.html">group</a></span><span class="op">(</span><span class="st">"pathway1"</span>, <span class="va">elements</span> <span class="op"><a href="https://rdrr.io/pkg/BiocGenerics/man/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Gene1"</span>, <span class="st">"Gene2"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   elements     sets fuzzy  Important  Pathway</span></span>
-<span><span class="co">#&gt; 1    Gene1 Geneset1     1 0.04429521 pathway1</span></span>
-<span><span class="co">#&gt; 2    Gene2 Geneset2     1 0.08092763 pathway1</span></span>
-<span><span class="co">#&gt; 3    Gene3 Geneset2     1 0.13979731 pathway2</span></span>
-<span><span class="co">#&gt; 4    Gene1 Geneset2     1 0.53337550 pathway1</span></span>
-<span><span class="co">#&gt; 5    Gene3 Geneset3     1 0.11289612 pathway2</span></span>
-<span><span class="co">#&gt; 6    Gene1 pathway1     1         NA pathway1</span></span>
-<span><span class="co">#&gt; 7    Gene2 pathway1     1         NA pathway1</span></span></code></pre></div>
+<span><span class="co">#&gt;   elements     sets fuzzy Important  Pathway</span></span>
+<span><span class="co">#&gt; 1    Gene1 Geneset1     1 0.7785106 pathway1</span></span>
+<span><span class="co">#&gt; 2    Gene2 Geneset2     1 0.6967038 pathway1</span></span>
+<span><span class="co">#&gt; 3    Gene3 Geneset2     1 0.5221833 pathway2</span></span>
+<span><span class="co">#&gt; 4    Gene1 Geneset2     1 0.7322677 pathway1</span></span>
+<span><span class="co">#&gt; 5    Gene3 Geneset3     1 0.3683122 pathway2</span></span>
+<span><span class="co">#&gt; 6    Gene1 pathway1     1        NA pathway1</span></span>
+<span><span class="co">#&gt; 7    Gene2 pathway1     1        NA pathway1</span></span></code></pre></div>
 <p>You can use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by()</a></code> but it won’t return a
 <code>TidySet</code>.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
@@ -498,12 +498,12 @@ with:</p>
 <span><span class="co">#&gt; 3    Gene3 pathway2</span></span>
 <span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/move_to.html">move_to</a></span><span class="op">(</span><span class="va">set_modified</span>, <span class="st">"elements"</span>, <span class="st">"relations"</span>, <span class="st">"Pathway"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/relations.html">relations</a></span><span class="op">(</span><span class="va">out</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   elements     sets fuzzy  Important  Pathway</span></span>
-<span><span class="co">#&gt; 1    Gene1 Geneset1     1 0.04429521 pathway1</span></span>
-<span><span class="co">#&gt; 2    Gene2 Geneset2     1 0.08092763 pathway1</span></span>
-<span><span class="co">#&gt; 3    Gene3 Geneset2     1 0.13979731 pathway2</span></span>
-<span><span class="co">#&gt; 4    Gene1 Geneset2     1 0.53337550 pathway1</span></span>
-<span><span class="co">#&gt; 5    Gene3 Geneset3     1 0.11289612 pathway2</span></span></code></pre></div>
+<span><span class="co">#&gt;   elements     sets fuzzy Important  Pathway</span></span>
+<span><span class="co">#&gt; 1    Gene1 Geneset1     1 0.7785106 pathway1</span></span>
+<span><span class="co">#&gt; 2    Gene2 Geneset2     1 0.6967038 pathway1</span></span>
+<span><span class="co">#&gt; 3    Gene3 Geneset2     1 0.5221833 pathway2</span></span>
+<span><span class="co">#&gt; 4    Gene1 Geneset2     1 0.7322677 pathway1</span></span>
+<span><span class="co">#&gt; 5    Gene3 Geneset3     1 0.3683122 pathway2</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 class="unnumbered" id="session-info">Session info<a class="anchor" aria-label="anchor" href="#session-info"></a>
@@ -529,7 +529,7 @@ with:</p>
 <span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt; [1] dplyr_1.1.2         BaseSet_0.0.17.9003</span></span>
+<span><span class="co">#&gt; [1] dplyr_1.1.2         BaseSet_0.0.17.9004</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
 <span><span class="co">#&gt;  [1] vctrs_0.6.3       cli_3.6.1         knitr_1.43        rlang_1.1.1      </span></span>

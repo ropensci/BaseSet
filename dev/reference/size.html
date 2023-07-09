@@ -12,7 +12,7 @@ probabilities. First it must have active either sets or elements."><meta name="r
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">BaseSet</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.0.17.9003</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.0.17.9004</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -121,32 +121,32 @@ is the relations slot returns the TidySet object with a warning.</p>
 <span class="r-in"><span><span class="va">TS</span> <span class="op">&lt;-</span> <span class="fu"><a href="activate.html">activate</a></span><span class="op">(</span><span class="va">TS</span>, <span class="st">"elements"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">size</span><span class="op">(</span><span class="va">TS</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    elements size probability</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1         a    0  0.61361250</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2         a    1  0.38638750</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3         b    0  0.64434274</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4         b    1  0.35565726</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5         c    0  0.55727471</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6         c    1  0.44272529</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7         d    0  0.75025059</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8         d    1  0.24974941</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9         e    0  0.75255821</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10        e    1  0.24744179</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11        f    0  0.04679979</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12        f    1  0.79554254</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13        f    2  0.15765767</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         a    0   0.5842504</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         a    1   0.4157496</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         b    0   0.4687961</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         b    1   0.5312039</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         c    0   0.8182515</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         c    1   0.1817485</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7         d    0   0.3159762</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8         d    1   0.6840238</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9         e    0   0.1061095</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10        e    1   0.8938905</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11        f    0   0.3357547</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12        f    1   0.4935967</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13        f    2   0.1706487</span>
 <span class="r-in"><span><span class="va">TS</span> <span class="op">&lt;-</span> <span class="fu"><a href="activate.html">activate</a></span><span class="op">(</span><span class="va">TS</span>, <span class="st">"sets"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">size</span><span class="op">(</span><span class="va">TS</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    sets size probability</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     A    0 0.124401871</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2     A    1 0.328147015</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3     A    2 0.336303341</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4     A    3 0.167143351</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5     A    4 0.040244606</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6     A    5 0.003759816</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7     B    0 0.056185125</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8     B    1 0.943814875</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9     C    0 0.832956999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10    C    1 0.167043001</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     A    0 0.007514126</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2     A    1 0.095097722</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     A    2 0.310623275</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     A    3 0.381330080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5     A    4 0.180892266</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6     A    5 0.024542532</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7     B    0 0.522442060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8     B    1 0.477557940</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9     C    0 0.642663954</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10    C    1 0.357336046</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
