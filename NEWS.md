@@ -4,13 +4,17 @@
 * New function `union_closed()`.
 * Make more robust the code to unwanted dimensions drops. 
 * `power_set()` returns also the sets of size 1 and have better names by default.
-* Extractors `[`, `$`, `[[` and setters `[<-`, `$<-` now work for TidySets: 
+* Extractors `[`, `$`, `[[` and setters `[<-`, `$<-`, `[[<-` now work for 
+TidySets: 
     - `i` indicates rows, 
     - `j` either "relations", "sets" or "elements"
     - `k` the columns of the slot.  
     
-  However `TS[["A"]]` extracts set "A".
+  However `TS[["A"]]` extracts set "A" and replacing it via `[[<-` will remove 
+  it.
 * Completion of `$` works. 
+* `length()` returns the number of sets (to complete `ncol` and `nrow`).
+* `lengths()` returns the number of relations for each set. 
 
 # BaseSet 0.0.17
 

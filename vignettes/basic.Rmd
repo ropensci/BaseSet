@@ -1,5 +1,5 @@
 ---
-title: "About BaseSet"
+title: "BaseSet"
 abstract: >
   Describes the background of the package, important functions defined in the
   package and some of the applications and usages.
@@ -14,8 +14,6 @@ output:
       toc_depth: 3
 author:
 - name: Lluís Revilla
-  affiliation: 
-    - August Pi i Sunyer Biomedical Research Institute (IDIBAPS); Liver Unit, Hospital Clinic
   email: lluis.revilla@gmail.com
 vignette: >
   %\VignetteIndexEntry{About BaseSet}
@@ -32,14 +30,17 @@ knitr::opts_chunk$set(collapse = TRUE,
                       warning = TRUE,
                       comment = "#>")
 ```
+
 # Getting started
 
-This vignette explains how to use the methods available in this package.
+This vignette explains how to work with sets using this package.
+The package provides a class  to store the information efficiently and functions to work with it. 
 
 
 # The TidySet class
 
-This is a basic example which shows you how to create a `TidySet` object, to store associations between genes and sets:
+To create a `TidySet` object, to store associations between elements and sets 
+image we have several genes associated with a characteristic.
 
 ```{r from_list, message=FALSE}
 library("BaseSet")
@@ -51,7 +52,7 @@ tidy_set <- tidySet(gene_lists)
 tidy_set
 ```
 
-This is then stored internally in three slots `relations`, `elements`, and `sets` slots.
+This is then stored internally in three slots `relations()`, `elements()`, and `sets()` slots.
 
 If you have more information for each element or set it can be added:
 
@@ -64,7 +65,7 @@ gene_data <- data.frame(
 tidy_set <- add_column(tidy_set, "elements", gene_data)
 set_data <- data.frame(
     Group     = c( 100 ,  200 ),
-    Colum     = c("abc", "def")
+    Column     = c("abc", "def")
 )
 tidy_set <- add_column(tidy_set, "sets", set_data)
 tidy_set
@@ -78,20 +79,49 @@ elements(tidy_set)
 sets(tidy_set)
 ```
 
-You can add as much information as you want, with the only restriction for a "fuzzy" column for the `relations`. See the Fuzzy sets vignette.
+You can add as much information as you want, with the only restriction for a "fuzzy" column for the `relations()`. See the Fuzzy sets vignette: `vignette("BaseSet: Fuzzy sets", "BaseSet")`.
+
+You can also use the standard R approach with `[`:
+
+```{r}
+gene_data <- data.frame(
+    stat2     = c( 4,   4,   3,   5 ),
+    info2     = c("a", "b", "c", "d")
+)
+
+tidy_set$info1 <- NULL
+tidy_set[, "elements", c("stat2", "info2")] <- gene_data
+tidy_set[, "sets", "Group"] <- c("low", "high")
+tidy_set
+```
+
+Observe that one can add, replace or delete
 
 # Creating a TidySet
 
-As you can see it is possible to create a TidySet from a list and a data.frame, but it is also possible from a matrix:
+As you can see it is possible to create a TidySet from a list.
+More commonly you can create it from a data.frame:
+
+```{r tidyset_data.frame}
+relations <- data.frame(elements = c("a", "b", "c", "d", "e", "f"), 
+                        sets = c("A", "A", "A", "A", "A", "B"), 
+                        fuzzy = c(1, 1, 1, 1, 1, 1))
+TS <- tidySet(relations)
+TS
+```
+
+It is also possible from a matrix:
 
 ```{r tidySet_matrix}
 m <- matrix(c(0, 0, 1, 1, 1, 1, 0, 1, 0), ncol = 3, nrow = 3,  
                dimnames = list(letters[1:3], LETTERS[1:3]))
 m
 tidy_set <- tidySet(m)
+tidy_set
 ```
 
-Or they can be created from a GeneSet and GeneSetCollection objects. Additionally it has several function to read files related to sets like the OBO files (`getOBO`) and GAF (`getGAF`)
+Or they can be created from a GeneSet and GeneSetCollection objects. 
+Additionally it has several function to read files related to sets like the OBO files (`getOBO`) and GAF (`getGAF`)
 
 # Converting to other formats
 
@@ -109,7 +139,7 @@ incidence(tidy_set)
 
 # Operations with sets
 
-To work with sets several methods are provided. In general you can provide a new name for the resulting set of the operation, but if you don't one will be automatically provided using `naming`. All methods work with fuzzy and non-fuzzy sets
+To work with sets several methods are provided. In general you can provide a new name for the resulting set of the operation, but if you don't one will be automatically provided using `naming()`. All methods work with fuzzy and non-fuzzy sets
 
 ## Union
 
@@ -162,7 +192,7 @@ In the second use case we focus just on the elements that are present on B but n
 
 # Additional information
 
-The number of unique elements and sets can be obtained using the `nElements` and `nSets` methods.
+The number of unique elements and sets can be obtained using the `nElements()` and `nSets()` methods.
 
 ```{r n}
 nElements(tidy_set)
@@ -170,14 +200,18 @@ nSets(tidy_set)
 nRelations(tidy_set)
 ```
 
-The size of each gene set can be obtained using the `set_size` method.
+If you wish to know all in a single call you can use `dim(tidy_set)`: `r dim(tidy_set)`.
+This summary doesn't provide the number of relations of each set.
+You can quickly obtain that with `lengths(tidy_set)`: `r lengths(tidy_set)`
+
+The size of each set can be obtained using the `set_size()` method.
 
 ```{r set_size}
-set_size(tidy_set, "A")
+set_size(tidy_set)
 ```
 
 Conversely, the number of sets associated with each gene is returned by the 
-`element_size` function.
+`element_size()` function.
 
 ```{r element_size}
 element_size(tidy_set)
@@ -197,7 +231,8 @@ name_sets(tidy_set)
 
 # Using `dplyr` verbs
 
-You can also use `mutate`, `filter` and other `dplyr` verbs with TidySets (with the only exception being `group_by`), but you usually need to activate which three slots you want to affect with `activate`:
+You can also use `mutate()`, `filter()`, `select()`, `group_by()` and other `dplyr` verbs with TidySets.
+You usually need to activate which three slots you want to affect with `activate()`:
 
 ```{r tidyverse}
 library("dplyr")
@@ -222,9 +257,9 @@ set_modified %>%
 ```
 
 
-If you think you need group_by usually this would mean that you need a new set. You can create a new one with `group`. 
-If you want to use `group_by` to group some elements then you need to create a 
-new set:
+If you think you need `group_by` usually this could mean that you need a new set.
+You can create a new one with `group`. 
+
 
 ```{r group}
 # A new group of those elements in pathway1 and with Important == 1
@@ -232,10 +267,21 @@ set_modified %>%
   deactivate() %>% 
   group(name = "new", Pathway == "pathway1")
 ```
+
 ```{r group2}
 set_modified %>% 
   group("pathway1", elements %in% c("Gene1", "Gene2"))
 ```
+
+You can use `group_by()` but it won't return a `TidySet`. 
+
+```{r group_by}
+set_modified %>% 
+    deactivate() %>% 
+    group_by(Pathway, sets) %>%  
+    count()
+```
+
 
 After grouping or mutating sometimes we might be interested in moving a column describing something to other places. We can do by this with:
 

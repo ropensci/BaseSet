@@ -1,5 +1,5 @@
 ---
-title: "Advanced examples"
+title: "BaseSet: Advanced examples"
 abstract: >
   This vignette assumes you are familiar with set operations from the basic vignette.
 date: "`r format(Sys.time(), '%Y %b %d')`"
@@ -13,11 +13,9 @@ output:
       toc_depth: 3
 author:
 - name: Lluís Revilla
-  affiliation: 
-    - August Pi i Sunyer Biomedical Research Institute (IDIBAPS); Liver Unit, Hospital Clinic
   email: lluis.revilla@gmail.com
 vignette: >
-  %\VignetteIndexEntry{Advanced examples}
+  %\VignetteIndexEntry{BaseSet: Advanced examples}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteDepends{GO.db}
@@ -34,7 +32,12 @@ editor_options:
 knitr::opts_chunk$set(collapse = TRUE, 
                       warning = TRUE,
                       comment = "#>")
-run_vignette <- requireNamespace("GSEABase", quietly = TRUE) && requireNamespace("GO.db", quietly = TRUE) &&  requireNamespace("reactome.db", quietly = TRUE) &&  requireNamespace("org.Hs.eg.db", quietly = TRUE)
+run_vignette <- requireNamespace("GSEABase", quietly = TRUE) &&
+    requireNamespace("GO.db", quietly = TRUE) &&  
+    requireNamespace("reactome.db", quietly = TRUE) && 
+    requireNamespace("org.Hs.eg.db", quietly = TRUE) &&  
+    requireNamespace("ggplot2", quietly = TRUE) &&
+    requireNamespace("forcats", quietly = TRUE)
 ```
 
 
@@ -44,8 +47,8 @@ To show compatibility with tidy workflows we will use magrittr pipe operator and
 dplyr verbs.
 
 ```{r setupr, message=FALSE}
-library("BaseSet")
-library("dplyr")
+library("BaseSet", quietly = TRUE)
+library("dplyr", quietly = TRUE)
 ```
 
 # Human gene ontology
@@ -56,9 +59,9 @@ The links are annotated with different [evidence codes](https://geneontology.org
 
 ```{r prepare_GO, message=FALSE, eval=run_vignette}
 # We load some libraries
-library("org.Hs.eg.db")
-library("GO.db")
-library("ggplot2")
+library("org.Hs.eg.db", quietly = TRUE)
+library("GO.db", quietly = TRUE)
+library("ggplot2", quietly = TRUE)
 # Prepare the data 
 h2GO_TS <- tidySet(org.Hs.egGO)
 h2GO <- as.data.frame(org.Hs.egGO)
@@ -67,7 +70,7 @@ h2GO <- as.data.frame(org.Hs.egGO)
 We can now explore if there are differences in evidence usage for each ontology in gene ontology:
 
 ```{r evidence_ontology, eval=run_vignette}
-library("forcats")
+library("forcats", include.only = "fct_reorder2", quietly = TRUE)
 h2GO %>% 
     group_by(Evidence, Ontology) %>% 
     count(name = "Freq") %>% 
@@ -225,9 +228,9 @@ ts %>%
 Unexpectedly there is few evidence for the main terms:
 
 ```{r evidence_go, eval=run_vignette}
+go_terms <- c("GO:0008152", "GO:0003674", "GO:0005575")
 ts %>% 
-    filter(sets %in% c("GO:0008152", "GO:0003674", "GO:0005575")) %>% 
-    filter(Type != "gene") 
+    filter(sets %in% go_terms & Type != "gene") 
 ```
 
 In fact those terms are arbitrarily decided or inferred from electronic analysis. 
@@ -249,7 +252,7 @@ h2p <- h2p[grepl("^R-HSA-", h2p$sets), ]
 # There are duplicate relations with different evidence codes!!: 
 summary(duplicated(h2p[, c("elements", "sets")]))
 h2p <- unique(h2p)
-# Create a tidySet and 
+# Create a TidySet and 
 h2p_TS <- tidySet(h2p) %>% 
     # Add all the genes 
     add_elements(keys(org.Hs.eg.db))
