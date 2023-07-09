@@ -46,6 +46,33 @@ test_that("[i, j, k] subset works", {
   expect_error(TS[c("A", "B", "B"), ])
 })
 
+test_that("add_column works as [<-", {
+    relations <- data.frame(
+        sets = c(rep("a", 5), "b"),
+        elements = letters[seq_len(6)],
+        fuzzy = runif(6)
+    )
+    a <- tidySet(relations)
+
+    df <- data.frame(well = c("GOOD", "BAD", "WORSE", "UGLY", "FOE", "HEY"))
+    b <- add_column(a, "relations", df)
+    a[, "relations", "well"] <- df$well
+    expect_equal(a, b)
+
+    set_data <- data.frame(
+        Group     = c( 100 ,  200 ),
+        Column     = c("abc", "def")
+    )
+    a[, "sets", c("Group", "Column")] <- set_data
+    b <- add_column(b, "sets", set_data)
+    expect_equal(a, b)
+    # Reset and test with automatic merging.
+    a$Group <- NULL
+    a$Column <- NULL
+    expect_error(a[, "sets", ] <- set_data,
+                 "Assigning multiple columns to a single position!")
+})
+
 test_that("[i] subset works", {
   TS <- tidySet(list(A = letters[1:5], B = letters[6]))
   out1 <- TS[c(1, 2, 2)]

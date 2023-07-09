@@ -1,5 +1,3 @@
-context("test-add_column")
-
 test_that("add_column works", {
     relations <- data.frame(
         sets = c(rep("a", 5), "b"),

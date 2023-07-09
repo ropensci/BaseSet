@@ -179,7 +179,14 @@ setMethod("[<-", "TidySet",
               if (missing(k)) {
                   k <- 1
               }
-
+              if (length(k) == 1 && NCOL(value) > 1) {
+                  if (missing(i)) {
+                      i <- ""
+                  }
+                  msg <- paste0("TS[", i, ", '", j, "', ", "c('column1', 'column2')] <- value")
+                  stop("Assigning multiple columns to a single position!\nUse one of:\n",
+                       "add_column(TS, '", j, "', value) or ",msg)
+              }
               s[i, k, ...] <- value
               slot(x, j) <- s
               validObject(x)
