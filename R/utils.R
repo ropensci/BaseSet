@@ -18,3 +18,8 @@ in_slots <- function(x, fun, ...) {
          Sets = slot(x, "sets"))
     sapply(l, fun, ...)
 }
+
+# For usethis::use_release helper when making a release
+release_bullets <- function() {
+    c("Run `pkgdown::check_pkgdown()`")
+}

@@ -26,6 +26,7 @@ reference:
       - '`c,TidySet-method`'
       - '`extract-TidySet`'
       - '`length.TidySet`'
+      - '`lengths,TidySet-method`'
       - '`show,TidySet-method`'
   - title: "Set operations"
     desc: Functions to perform set operations
