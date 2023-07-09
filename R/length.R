@@ -1,6 +1,51 @@
 #' @include AllClasses.R AllGenerics.R
 NULL
 
+#' Length of the TidySet
+#'
+#' Returns the number of sets in the object.
+#' @param x A TidySet object.
+#'
+#' No replacement function is available, either delete sets or add them.
+#' @return A numeric value.
+#' @seealso [dim()], [ncol()] and [nrow()].
+#' Also look at [lengths()] for the number of relations of sets.
+#' @export
+#' @examples
+#' TS <- tidySet(list(A = letters[1:5], B = letters[6]))
+#' length(TS)
+length.TidySet <- function(x) {
+    nSets(x)
+}
+
+#' Lengths of the TidySet
+#'
+#' Returns the number of relations of each set in the object.
+#' @param x A TidySet object.
+#' @param use.names A logical value whether to inherit names or not.
+#'
+#' @return A vector with the number of different relations for each set.
+#' @seealso [length()], Use [set_size()] if you are using fuzzy sets.
+#' @export
+#' @examples
+#' TS <- tidySet(list(A = letters[1:5], B = letters[6]))
+#' lengths(TS)
+setMethod("lengths", "TidySet",
+          function(x, use.names = TRUE) {
+              r <- relations(x)
+              sets_elements <- paste0(r$sets, r$elements)
+              names(sets_elements) <- r$sets
+              d <- duplicated(sets_elements)
+              td <- table(names(sets_elements)[!d])
+
+              if (!use.names) {
+                  names(td) <- NULL
+              }
+
+              # To convert the table to a named integer
+              c(td)
+          }
+)
 #' Probability of a vector of probabilities
 #'
 #' Calculates the probability that all probabilities happened simultaneously.

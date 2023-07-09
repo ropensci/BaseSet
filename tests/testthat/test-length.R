@@ -1,4 +1,14 @@
-context("test-length")
+
+test_that("test length", {
+    TS <- tidySet(list(a = letters[1:5], b = letters[6]))
+    expect_equal(length(TS), nSets(TS))
+})
+
+test_that("test lengths", {
+    TS <- tidySet(list(A = letters[1:5], B = letters[6]))
+    expect_equal(lengths(TS), c(A = 5, B = 1))
+})
+
 
 p <- c(0.5, 0.1, 0.3, 0.5, 0.25, 0.23)
 test_that("multiply_probabilities works", {
