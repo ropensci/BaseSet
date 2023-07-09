@@ -12,7 +12,7 @@ condition an empty set is created."><meta name="robots" content="noindex"><!--[i
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">BaseSet</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.0.17.9004</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.0.17.9005</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,15 +23,17 @@ condition an empty set is created."><meta name="robots" content="noindex"><!--[i
       <ul class="navbar-nav me-auto"></ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
-      <ul class="navbar-nav"><li class="active nav-item">
+      <ul class="navbar-nav"><li class="nav-item">
+  <a class="nav-link" href="../articles/BaseSet.html">Get started</a>
+</li>
+<li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/advanced.html">BaseSet: Advanced examples</a>
-    <a class="dropdown-item" href="../articles/basic.html">BaseSet</a>
-    <a class="dropdown-item" href="../articles/fuzzy.html">BasSet: Fuzzy sets</a>
+    <a class="dropdown-item" href="../articles/advanced.html">Advanced examples</a>
+    <a class="dropdown-item" href="../articles/fuzzy.html">Fuzzy sets</a>
   </div>
 </li>
 <li class="nav-item">
@@ -163,24 +165,24 @@ condition an empty set is created.</p>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">TS3</span> <span class="op">&lt;-</span> <span class="fu"><a href="tidySet.html">tidySet</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">group</span><span class="op">(</span><span class="va">TS3</span>, <span class="st">"D"</span>, <span class="va">sets</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"A2"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    elements sets       fuzzy    type</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1         a    A 0.007654524    Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2         b    A 0.306061791    Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3         c    A 0.487885786 Protein</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4         d    A 0.663216218 Protein</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5         e    A 0.720866390  lncRNA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6         f    B 0.538875809  lncRNA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7         a   A2 0.038073960    Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8         b   A2 0.698481942    Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9         c   A2 0.766474091 Protein</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10        d   A2 0.141024306 Protein</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11        e   A2 0.184852562  lncRNA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12        f   B2 0.531407791  lncRNA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13        a    D 1.000000000    &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14        b    D 1.000000000    &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15        c    D 1.000000000    &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16        d    D 1.000000000    &lt;NA&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17        e    D 1.000000000    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    elements sets      fuzzy    type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         a    A 0.31674898    Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         b    A 0.94881147    Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         c    A 0.40149467 Protein</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         d    A 0.26088870 Protein</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         e    A 0.49171649  lncRNA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         f    B 0.53479249  lncRNA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7         a   A2 0.99923506    Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8         b   A2 0.69484618    Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9         c   A2 0.97729837 Protein</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10        d   A2 0.07641105 Protein</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11        e   A2 0.30496647  lncRNA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12        f   B2 0.23894773  lncRNA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13        a    D 1.00000000    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14        b    D 1.00000000    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15        c    D 1.00000000    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16        d    D 1.00000000    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17        e    D 1.00000000    &lt;NA&gt;</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

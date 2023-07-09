@@ -10,7 +10,7 @@
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">BaseSet</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.0.17.9004</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.0.17.9005</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,15 +21,17 @@
       <ul class="navbar-nav me-auto"></ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
-      <ul class="navbar-nav"><li class="active nav-item">
+      <ul class="navbar-nav"><li class="nav-item">
+  <a class="nav-link" href="../articles/BaseSet.html">Get started</a>
+</li>
+<li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/advanced.html">BaseSet: Advanced examples</a>
-    <a class="dropdown-item" href="../articles/basic.html">BaseSet</a>
-    <a class="dropdown-item" href="../articles/fuzzy.html">BasSet: Fuzzy sets</a>
+    <a class="dropdown-item" href="../articles/advanced.html">Advanced examples</a>
+    <a class="dropdown-item" href="../articles/fuzzy.html">Fuzzy sets</a>
   </div>
 </li>
 <li class="nav-item">
@@ -145,14 +147,14 @@
 <span class="r-in"><span><span class="va">TS</span> <span class="op">&lt;-</span> <span class="fu"><a href="tidySet.html">tidySet</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">TS</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    elements sets extra fuzzy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1         a    A   YES     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         a    A    NO     1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2         b    A   YES     1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3         c    A    NO     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         c    A   YES     1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4         d    A   YES     1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5         e    A    NO     1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6         c    B    NO     1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7         d    B   YES     1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8         e    B   YES     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         e    A   YES     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         c    B   YES     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7         d    B    NO     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8         e    B    NO     1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 9         f    B    NO     1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 10        g    B    NO     1</span>
 <span class="r-in"><span><span class="fu">remove_column</span><span class="op">(</span><span class="va">TS</span>, <span class="st">"relations"</span>, <span class="st">"extra"</span><span class="op">)</span></span></span>
