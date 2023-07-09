@@ -83,7 +83,9 @@ is_valid <- function(x) {
   }
 }
 
-
+# relations should be a data.frame
+# sets should be a vector
+# elements should be a vector
 valid_relations <- function(relations, sets, elements) {
   errors <- character()
   # A TS with no relations is a valid set.
@@ -127,4 +129,21 @@ valid_relations <- function(relations, sets, elements) {
     errors <- c(errors, msg)
   }
 errors
+}
+
+# sets should be a data.frame
+valid_sets <- function(sets) {
+    errors <- character()
+    if (!is.data.frame(sets)) {
+        errors <- c(errors, "Should be a data.frame.")
+    }
+
+    if (!"sets" %in% names(sets)) {
+        errors <- c(errors, "There isn't a sets column.")
+    }
+
+    if (is.null(sets$sets)) {
+        errors <- c(errors, paste0("Missing column sets."))
+    }
+    errors
 }
