@@ -16,7 +16,7 @@ author:
 - name: Lluís Revilla
   email: lluis.revilla@gmail.com
 vignette: >
-  %\VignetteIndexEntry{About BaseSet}
+  %\VignetteIndexEntry{BaseSet}
   %\VignetteEncoding{UTF-8}  
   %\VignetteEngine{knitr::rmarkdown}
   %\DeclareUnicodeCharacter{2229}{$\cap$}
