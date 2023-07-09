@@ -27,9 +27,9 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/advanced.html">Advanced examples</a>
-    <a class="dropdown-item" href="../articles/basic.html">About BaseSet</a>
-    <a class="dropdown-item" href="../articles/fuzzy.html">Fuzzy sets</a>
+    <a class="dropdown-item" href="../articles/advanced.html">BaseSet: Advanced examples</a>
+    <a class="dropdown-item" href="../articles/basic.html">BaseSet</a>
+    <a class="dropdown-item" href="../articles/fuzzy.html">BasSet: Fuzzy sets</a>
   </div>
 </li>
 <li class="nav-item">
@@ -89,25 +89,25 @@ method. Currently not used.</p></dd>
 <span class="r-in"><span>             info <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"important"</span>, <span class="st">"very important"</span><span class="op">)</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">TS</span> <span class="op">&lt;-</span> <span class="fu"><a href="tidySet.html">tidySet</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">TS</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   elements sets        fuzzy           info</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a    A 8.578468e-01      important</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        b    A 8.363421e-01 very important</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3        c    A 4.352839e-01      important</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4        b    B 2.355734e-05 very important</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5        c    C 1.790358e-01      important</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   elements sets     fuzzy           info</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a    A 0.8021000      important</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        b    A 0.3068408 very important</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        c    A 0.4371677      important</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4        b    B 0.5039812 very important</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5        c    C 0.8156340      important</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">as.list</a></span><span class="op">(</span><span class="va">TS</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Dropping information on the coercion.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $A</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         a         b         c </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.8578468 0.8363421 0.4352839 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.8021000 0.3068408 0.4371677 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $B</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            b </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2.355734e-05 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         b </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.5039812 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $C</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         c </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.1790358 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        c </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.815634 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>

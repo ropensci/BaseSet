@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="BaseSet">
-<title>Fuzzy sets • BaseSet</title>
+<title>BasSet: Fuzzy sets • BaseSet</title>
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/apple-touch-icon.png">
@@ -14,7 +14,7 @@
 <link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Fuzzy sets">
+<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="BasSet: Fuzzy sets">
 <meta property="og:description" content="BaseSet">
 <meta name="robots" content="noindex">
 <!--[if lt IE 9]>
@@ -52,9 +52,9 @@
 <li class="active nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/advanced.html">Advanced examples</a>
-    <a class="dropdown-item" href="../articles/basic.html">About BaseSet</a>
-    <a class="dropdown-item" href="../articles/fuzzy.html">Fuzzy sets</a>
+    <a class="dropdown-item" href="../articles/advanced.html">BaseSet: Advanced examples</a>
+    <a class="dropdown-item" href="../articles/basic.html">BaseSet</a>
+    <a class="dropdown-item" href="../articles/fuzzy.html">BasSet: Fuzzy sets</a>
   </div>
 </li>
 <li class="nav-item">
@@ -78,16 +78,13 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="" class="logo" alt=""><h1>Fuzzy sets</h1>
+      <img src="" class="logo" alt=""><h1>BasSet: Fuzzy sets</h1>
                         <h4 data-toc-skip class="author">Lluís
 Revilla</h4>
-            <address class="author_afil">
-      August Pi i Sunyer Biomedical Research Institute (IDIBAPS); Liver
-Unit, Hospital
-Clinic<br><a class="author_email" href="mailto:#"></a><a href="mailto:lluis.revilla@gmail.com" class="email">lluis.revilla@gmail.com</a>
-      </address>
+                  <a class="author_email" href="mailto:#"></a><a href="mailto:lluis.revilla@gmail.com" class="email">lluis.revilla@gmail.com</a>
+      
                   
-            <h4 data-toc-skip class="date">2023 Jul 07</h4>
+            <h4 data-toc-skip class="date">2023 Jul 09</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ropensci/BaseSet/blob/HEAD/vignettes/fuzzy.Rmd" class="external-link"><code>vignettes/fuzzy.Rmd</code></a></small>
       <div class="d-none name"><code>fuzzy.Rmd</code></div>
@@ -151,8 +148,8 @@ element and the set.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">4567</span><span class="op">)</span> <span class="co"># To be able to have exact replicates</span></span>
 <span><span class="va">relations</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>sets <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="fl">5</span><span class="op">)</span>, <span class="st">"B"</span>, <span class="st">"C"</span><span class="op">)</span>,</span>
-<span>                          elements <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span><span class="op">]</span>, <span class="va">letters</span><span class="op">[</span><span class="fl">6</span><span class="op">]</span><span class="op">)</span>,</span>
-<span>                          fuzzy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span></span>
+<span>                        elements <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span><span class="op">]</span>, <span class="va">letters</span><span class="op">[</span><span class="fl">6</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>                        fuzzy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">fuzzy_set</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tidySet.html">tidySet</a></span><span class="op">(</span><span class="va">relations</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -322,24 +319,24 @@ this are our sets. The software returns a probability for each type it
 has: the higher, the more confident it is of the assignment:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sc_classification</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
-<span>  elements <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"D2ex_1"</span>, <span class="st">"D2ex_10"</span>, <span class="st">"D2ex_11"</span>, <span class="st">"D2ex_12"</span>, <span class="st">"D2ex_13"</span>, <span class="st">"D2ex_14"</span>, </span>
-<span>               <span class="st">"D2ex_15"</span>, <span class="st">"D2ex_16"</span>, <span class="st">"D2ex_17"</span>, <span class="st">"D2ex_18"</span>, <span class="st">"D2ex_1"</span>, <span class="st">"D2ex_10"</span>, </span>
-<span>               <span class="st">"D2ex_11"</span>, <span class="st">"D2ex_12"</span>, <span class="st">"D2ex_13"</span>, <span class="st">"D2ex_14"</span>, <span class="st">"D2ex_15"</span>, <span class="st">"D2ex_16"</span>,</span>
-<span>               <span class="st">"D2ex_17"</span>, <span class="st">"D2ex_18"</span>, <span class="st">"D2ex_1"</span>, <span class="st">"D2ex_10"</span>, <span class="st">"D2ex_11"</span>, <span class="st">"D2ex_12"</span>, </span>
-<span>               <span class="st">"D2ex_13"</span>, <span class="st">"D2ex_14"</span>, <span class="st">"D2ex_15"</span>, <span class="st">"D2ex_16"</span>, <span class="st">"D2ex_17"</span>, <span class="st">"D2ex_18"</span>, </span>
-<span>               <span class="st">"D2ex_1"</span>, <span class="st">"D2ex_10"</span>, <span class="st">"D2ex_11"</span>, <span class="st">"D2ex_12"</span>, <span class="st">"D2ex_13"</span>, <span class="st">"D2ex_14"</span>, </span>
-<span>               <span class="st">"D2ex_15"</span>, <span class="st">"D2ex_16"</span>, <span class="st">"D2ex_17"</span>, <span class="st">"D2ex_18"</span><span class="op">)</span>, </span>
-<span>  sets <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"alpha"</span>, <span class="st">"alpha"</span>, <span class="st">"alpha"</span>, <span class="st">"alpha"</span>, <span class="st">"alpha"</span>, <span class="st">"alpha"</span>, <span class="st">"alpha"</span>, </span>
-<span>           <span class="st">"alpha"</span>, <span class="st">"alpha"</span>, <span class="st">"alpha"</span>, <span class="st">"endothel"</span>, <span class="st">"endothel"</span>, <span class="st">"endothel"</span>, </span>
-<span>           <span class="st">"endothel"</span>, <span class="st">"endothel"</span>, <span class="st">"endothel"</span>, <span class="st">"endothel"</span>, <span class="st">"endothel"</span>, </span>
-<span>           <span class="st">"endothel"</span>, <span class="st">"endothel"</span>, <span class="st">"delta"</span>, <span class="st">"delta"</span>, <span class="st">"delta"</span>, <span class="st">"delta"</span>, <span class="st">"delta"</span>, </span>
-<span>           <span class="st">"delta"</span>, <span class="st">"delta"</span>, <span class="st">"delta"</span>, <span class="st">"delta"</span>, <span class="st">"delta"</span>, <span class="st">"beta"</span>, <span class="st">"beta"</span>, <span class="st">"beta"</span>, </span>
-<span>           <span class="st">"beta"</span>, <span class="st">"beta"</span>, <span class="st">"beta"</span>, <span class="st">"beta"</span>, <span class="st">"beta"</span>, <span class="st">"beta"</span>, <span class="st">"beta"</span><span class="op">)</span>, </span>
-<span>  fuzzy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.18</span>, <span class="fl">0.169</span>, <span class="fl">0.149</span>, <span class="fl">0.192</span>, <span class="fl">0.154</span>, <span class="fl">0.161</span>, <span class="fl">0.169</span>, <span class="fl">0.197</span>, <span class="fl">0.162</span>, <span class="fl">0.201</span>, </span>
-<span>            <span class="fl">0.215</span>, <span class="fl">0.202</span>, <span class="fl">0.17</span>, <span class="fl">0.227</span>, <span class="fl">0.196</span>, <span class="fl">0.215</span>, <span class="fl">0.161</span>, <span class="fl">0.195</span>, <span class="fl">0.178</span>, </span>
-<span>            <span class="fl">0.23</span>, <span class="fl">0.184</span>, <span class="fl">0.172</span>, <span class="fl">0.153</span>, <span class="fl">0.191</span>, <span class="fl">0.156</span>, <span class="fl">0.167</span>, <span class="fl">0.165</span>, <span class="fl">0.184</span>, </span>
-<span>            <span class="fl">0.162</span>, <span class="fl">0.194</span>, <span class="fl">0.197</span>, <span class="fl">0.183</span>, <span class="fl">0.151</span>, <span class="fl">0.208</span>, <span class="fl">0.16</span>, <span class="fl">0.169</span>, <span class="fl">0.169</span>, </span>
-<span>            <span class="fl">0.2</span>, <span class="fl">0.154</span>, <span class="fl">0.208</span><span class="op">)</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span>    elements <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"D2ex_1"</span>, <span class="st">"D2ex_10"</span>, <span class="st">"D2ex_11"</span>, <span class="st">"D2ex_12"</span>, <span class="st">"D2ex_13"</span>, <span class="st">"D2ex_14"</span>, </span>
+<span>                 <span class="st">"D2ex_15"</span>, <span class="st">"D2ex_16"</span>, <span class="st">"D2ex_17"</span>, <span class="st">"D2ex_18"</span>, <span class="st">"D2ex_1"</span>, <span class="st">"D2ex_10"</span>, </span>
+<span>                 <span class="st">"D2ex_11"</span>, <span class="st">"D2ex_12"</span>, <span class="st">"D2ex_13"</span>, <span class="st">"D2ex_14"</span>, <span class="st">"D2ex_15"</span>, <span class="st">"D2ex_16"</span>,</span>
+<span>                 <span class="st">"D2ex_17"</span>, <span class="st">"D2ex_18"</span>, <span class="st">"D2ex_1"</span>, <span class="st">"D2ex_10"</span>, <span class="st">"D2ex_11"</span>, <span class="st">"D2ex_12"</span>, </span>
+<span>                 <span class="st">"D2ex_13"</span>, <span class="st">"D2ex_14"</span>, <span class="st">"D2ex_15"</span>, <span class="st">"D2ex_16"</span>, <span class="st">"D2ex_17"</span>, <span class="st">"D2ex_18"</span>, </span>
+<span>                 <span class="st">"D2ex_1"</span>, <span class="st">"D2ex_10"</span>, <span class="st">"D2ex_11"</span>, <span class="st">"D2ex_12"</span>, <span class="st">"D2ex_13"</span>, <span class="st">"D2ex_14"</span>, </span>
+<span>                 <span class="st">"D2ex_15"</span>, <span class="st">"D2ex_16"</span>, <span class="st">"D2ex_17"</span>, <span class="st">"D2ex_18"</span><span class="op">)</span>, </span>
+<span>    sets <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"alpha"</span>, <span class="st">"alpha"</span>, <span class="st">"alpha"</span>, <span class="st">"alpha"</span>, <span class="st">"alpha"</span>, <span class="st">"alpha"</span>, <span class="st">"alpha"</span>, </span>
+<span>             <span class="st">"alpha"</span>, <span class="st">"alpha"</span>, <span class="st">"alpha"</span>, <span class="st">"endothel"</span>, <span class="st">"endothel"</span>, <span class="st">"endothel"</span>, </span>
+<span>             <span class="st">"endothel"</span>, <span class="st">"endothel"</span>, <span class="st">"endothel"</span>, <span class="st">"endothel"</span>, <span class="st">"endothel"</span>, </span>
+<span>             <span class="st">"endothel"</span>, <span class="st">"endothel"</span>, <span class="st">"delta"</span>, <span class="st">"delta"</span>, <span class="st">"delta"</span>, <span class="st">"delta"</span>, <span class="st">"delta"</span>, </span>
+<span>             <span class="st">"delta"</span>, <span class="st">"delta"</span>, <span class="st">"delta"</span>, <span class="st">"delta"</span>, <span class="st">"delta"</span>, <span class="st">"beta"</span>, <span class="st">"beta"</span>, <span class="st">"beta"</span>, </span>
+<span>             <span class="st">"beta"</span>, <span class="st">"beta"</span>, <span class="st">"beta"</span>, <span class="st">"beta"</span>, <span class="st">"beta"</span>, <span class="st">"beta"</span>, <span class="st">"beta"</span><span class="op">)</span>, </span>
+<span>    fuzzy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.18</span>, <span class="fl">0.169</span>, <span class="fl">0.149</span>, <span class="fl">0.192</span>, <span class="fl">0.154</span>, <span class="fl">0.161</span>, <span class="fl">0.169</span>, <span class="fl">0.197</span>, <span class="fl">0.162</span>, <span class="fl">0.201</span>, </span>
+<span>              <span class="fl">0.215</span>, <span class="fl">0.202</span>, <span class="fl">0.17</span>, <span class="fl">0.227</span>, <span class="fl">0.196</span>, <span class="fl">0.215</span>, <span class="fl">0.161</span>, <span class="fl">0.195</span>, <span class="fl">0.178</span>, </span>
+<span>              <span class="fl">0.23</span>, <span class="fl">0.184</span>, <span class="fl">0.172</span>, <span class="fl">0.153</span>, <span class="fl">0.191</span>, <span class="fl">0.156</span>, <span class="fl">0.167</span>, <span class="fl">0.165</span>, <span class="fl">0.184</span>, </span>
+<span>              <span class="fl">0.162</span>, <span class="fl">0.194</span>, <span class="fl">0.197</span>, <span class="fl">0.183</span>, <span class="fl">0.151</span>, <span class="fl">0.208</span>, <span class="fl">0.16</span>, <span class="fl">0.169</span>, <span class="fl">0.169</span>, </span>
+<span>              <span class="fl">0.2</span>, <span class="fl">0.154</span>, <span class="fl">0.208</span><span class="op">)</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">sc_classification</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   elements  sets fuzzy</span></span>
 <span><span class="co">#&gt; 1   D2ex_1 alpha 0.180</span></span>
@@ -354,10 +351,10 @@ original sample?</strong></p>
 higher confidence of the relationship for each cell.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sc_classification</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">elements</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">fuzzy</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">fuzzy</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">sets</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">elements</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">fuzzy</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">fuzzy</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">sets</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3 × 2</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># Groups:   sets [3]</span></span></span>
 <span><span class="co">#&gt;   sets         n</span></span>
@@ -371,9 +368,9 @@ a cell is placed to just a single set?</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">scTS</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tidySet.html">tidySet</a></span><span class="op">(</span><span class="va">sc_classification</span><span class="op">)</span> <span class="co"># Conversion of format</span></span>
 <span><span class="va">sample_cells</span> <span class="op">&lt;-</span> <span class="va">scTS</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/element_size.html">element_size</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">elements</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">probability</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">probability</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="../reference/element_size.html">element_size</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">elements</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">probability</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">probability</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">sample_cells</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 3</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># Groups:   elements [10]</span></span></span>
@@ -400,9 +397,9 @@ higher confidence about the type should match.</p>
 a cell type for each cell?</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">scTS</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/set_size.html">set_size</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">sets</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">probability</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">probability</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="../reference/set_size.html">set_size</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">sets</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">probability</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">probability</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 3</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># Groups:   sets [4]</span></span></span>
 <span><span class="co">#&gt;   sets      size probability</span></span>

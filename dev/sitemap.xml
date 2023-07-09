@@ -136,10 +136,16 @@
     <loc>https://docs.ropensci.org/BaseSet/dev/reference/is_nested.html</loc>
   </url>
   <url>
+    <loc>https://docs.ropensci.org/BaseSet/dev/reference/length.TidySet.html</loc>
+  </url>
+  <url>
     <loc>https://docs.ropensci.org/BaseSet/dev/reference/length_probability.html</loc>
   </url>
   <url>
     <loc>https://docs.ropensci.org/BaseSet/dev/reference/length_set.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/BaseSet/dev/reference/lengths-TidySet-method.html</loc>
   </url>
   <url>
     <loc>https://docs.ropensci.org/BaseSet/dev/reference/move_to.html</loc>

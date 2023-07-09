@@ -27,9 +27,9 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/advanced.html">Advanced examples</a>
-    <a class="dropdown-item" href="../articles/basic.html">About BaseSet</a>
-    <a class="dropdown-item" href="../articles/fuzzy.html">Fuzzy sets</a>
+    <a class="dropdown-item" href="../articles/advanced.html">BaseSet: Advanced examples</a>
+    <a class="dropdown-item" href="../articles/basic.html">BaseSet</a>
+    <a class="dropdown-item" href="../articles/fuzzy.html">BasSet: Fuzzy sets</a>
   </div>
 </li>
 <li class="active nav-item">
@@ -60,7 +60,7 @@
 <li>Make more robust the code to unwanted dimensions drops.</li>
 <li>
 <code><a href="../reference/power_set.html">power_set()</a></code> returns also the sets of size 1 and have better names by default.</li>
-<li>Extractors <code>[</code>, <code>$</code>, <code>[[</code> and setters <code>[&lt;-</code>, <code>$&lt;-</code> now work for TidySets:
+<li>Extractors <code>[</code>, <code>$</code>, <code>[[</code> and setters <code>[&lt;-</code>, <code>$&lt;-</code>, <code>[[&lt;-</code> now work for TidySets:
 <ul><li>
 <code>i</code> indicates rows,</li>
 <li>
@@ -68,8 +68,12 @@
 <li>
 <code>k</code> the columns of the slot.</li>
 </ul>
-However <code>TS[["A"]]</code> extracts set “A”.</li>
+However <code>TS[["A"]]</code> extracts set “A” and replacing it via <code>[[&lt;-</code> will remove it.</li>
 <li>Completion of <code>$</code> works.</li>
+<li>
+<code><a href="https://rdrr.io/r/base/length.html" class="external-link">length()</a></code> returns the number of sets (to complete <code>ncol</code> and <code>nrow</code>).</li>
+<li>
+<code><a href="https://rdrr.io/r/base/lengths.html" class="external-link">lengths()</a></code> returns the number of relations for each set.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.0.17" id="baseset-0017">BaseSet 0.0.17<a class="anchor" aria-label="anchor" href="#baseset-0017"></a></h2><p class="text-muted">CRAN release: 2021-07-05</p>
