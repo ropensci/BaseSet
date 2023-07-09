@@ -8,7 +8,7 @@ message: 'To cite package "BaseSet" in publications use:'
 type: software
 license: MIT
 title: 'BaseSet: Working with Sets the Tidy Way'
-version: 0.0.17.9003
+version: 0.0.17.9004
 abstract: Implements a class and methods to work with sets, doing intersection, union,
   complementary sets, power sets, cartesian product and other set operations in a
   "tidy" way. These set operations are available for both classical sets and fuzzy
