@@ -79,7 +79,7 @@ elements(tidy_set)
 sets(tidy_set)
 ```
 
-You can add as much information as you want, with the only restriction for a "fuzzy" column for the `relations()`. See the Fuzzy sets vignette: `vignette("BaseSet: Fuzzy sets", "BaseSet")`.
+You can add as much information as you want, with the only restriction for a "fuzzy" column for the `relations()`. See the Fuzzy sets vignette: `vignette("Fuzzy sets", "BaseSet")`.
 
 You can also use the standard R approach with `[`:
 

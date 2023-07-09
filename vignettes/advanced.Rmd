@@ -1,5 +1,5 @@
 ---
-title: "BaseSet: Advanced examples"
+title: "Advanced examples"
 abstract: >
   This vignette assumes you are familiar with set operations from the basic vignette.
 date: "`r format(Sys.time(), '%Y %b %d')`"
@@ -15,7 +15,7 @@ author:
 - name: Lluís Revilla
   email: lluis.revilla@gmail.com
 vignette: >
-  %\VignetteIndexEntry{BaseSet: Advanced examples}
+  %\VignetteIndexEntry{Advanced examples}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteDepends{GO.db}
