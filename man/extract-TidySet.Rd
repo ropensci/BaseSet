@@ -7,6 +7,7 @@
 \alias{[,TidySet-method}
 \alias{[<-,TidySet-method}
 \alias{[[,TidySet-method}
+\alias{[[<-,TidySet-method}
 \title{Extract}
 \usage{
 \S4method{$}{TidySet}(x, name)
@@ -18,6 +19,8 @@
 \S4method{[}{TidySet}(x, i, j, k, ...) <- value
 
 \S4method{[[}{TidySet}(x, i, j, ..., exact = TRUE)
+
+\S4method{[[}{TidySet}(x, i) <- value
 }
 \arguments{
 \item{x}{A TidySet object.}

@@ -77,10 +77,10 @@ setMethod("$<-", "TidySet",
               p_length <- which(length(value) == dim(x))
               # As per dim named output
               p_named <- switch(name,
-                     elements = 1,
-                     fuzzy = 2,
-                     sets = 3,
-                     NA)
+                                elements = 1,
+                                fuzzy = 2,
+                                sets = 3,
+                                NA)
 
               if (is.na(p_named)) {
                   p_named <- in_slots(x, function(x, y){
@@ -135,6 +135,7 @@ setMethod("[", "TidySet",
                   stop("TidySet does not accept characters as `i` index for `[`.",
                        "\nDid you meant to use [[ instead?", call. = FALSE)
               }
+              stopifnot(is.logical(drop))
               if (missing(j)) {
                   j <- "relations"
               }
@@ -155,7 +156,15 @@ setMethod("[", "TidySet",
                   rownames(s2) <- NULL
               }
               slot(x, j) <- s2
-              droplevels(x, elements = drop, sets = drop, relations = drop)
+              if (drop) {
+                  x <- switch(j,
+                              "sets" = drop_sets(x),
+                              "elements" = drop_elements(x),
+                              x)
+                  x <- drop_relations(x)
+              }
+              validObject(x)
+              x
           })
 
 #' @export
@@ -173,7 +182,8 @@ setMethod("[<-", "TidySet",
 
               s[i, k, ...] <- value
               slot(x, j) <- s
-              droplevels(x, elements = TRUE, sets = TRUE, relations = TRUE)
+              validObject(x)
+              x
           })
 
 # [[ ####
@@ -187,7 +197,7 @@ setMethod("[[", "TidySet",
               i <- unique(i)
               i <- i[!is.na(i)]
               if (length(i) > 1) {
-                  stop("Trying to extract more than one set.", call. = FALSE)
+                  stop("Trying to extract more than one set.")
               }
               stopifnot(isTRUE(exact) || isFALSE(exact))
               if (missing(j)) {
@@ -210,6 +220,53 @@ setMethod("[[", "TidySet",
               }
               namsi <- match(nsi, nams)
               x[namsi, "sets", j, drop = TRUE]
+          })
+
+#' @export
+#' @rdname extract-TidySet
+setMethod("[[<-", "TidySet",
+          function(x, i, value) {
+              if (missing(i)) {
+                  stop("missing subscript")
+              }
+              if (is.null(value)) {
+                  errors <- character()
+              } else {
+                  errors <- valid_sets(value)
+              }
+
+              if (length(errors) != 0) {
+                  stop(paste(errors, collapse = "\n"))
+              }
+              i <- unique(i)
+              i <- i[!is.na(i)]
+              if (length(i) > 1) {
+                  stop("Trying to extract more than one set.")
+              }
+
+              ns <- nSets(x)
+              logical_i <- is.logical(i) && length(i) > ns
+              numeric_i <- is.numeric(i) && max(i, na.rm = TRUE) > ns
+              if ( logical_i | numeric_i) {
+                  stop("Sets requested not available.")
+              }
+              nams <- name_sets(x)
+              if (is.character(i)) {
+                  nsi <- i
+              } else {
+                  nsi <- nams[i]
+              }
+              y <- remove_set(x, nsi)
+
+              if (is.null(value)) {
+                  return(y)
+              }
+
+              new_sets <- merge(sets(y), value, all = TRUE, sort = FALSE)
+              sets(y) <- new_sets
+              y <- drop_relations(y)
+              validObject(y)
+              y
           })
 
 keep_columns <- function(j, k) {

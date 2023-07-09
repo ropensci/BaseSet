@@ -1,11 +1,11 @@
 ## $ ####
-test_that("$ works in TidySet class", {
+test_that("$ works", {
   TS <- tidySet(list(A = letters[1:5], B = letters[6]))
   expect_length(TS$elements, 6)
   expect_null(TS$adafd)
 })
 
-test_that("$<- works in TidySet class", {
+test_that("$<- works", {
   TS <- tidySet(list(A = letters[1:5], B = letters[6]))
   expect_length(TS$elements, 6)
   expect_warning(TS$adafd <- LETTERS[1:6])
@@ -19,26 +19,34 @@ test_that("$<- works in TidySet class", {
 })
 
 ## [ ####
-test_that("[i, j, k] subset works in TidySet class", {
+test_that("[i, j, k] subset works", {
   TS <- tidySet(list(A = letters[1:5], B = letters[6]))
 
   expect_warning(TS$abcd <- sample(c("ha", "he"), size = 6, replace = TRUE))
 
   expect_error(TS[, c(TRUE, FALSE, TRUE)], "j only accepts:")
   expect_equal(ncol(relations(TS[1, ])), 4)
-  out <- TS[1, "elements", ]
-  expect_s4_class(out, "TidySet")
-  expect_equal(nElements(out), 1)
+
+  first_element <- TS[1, "elements", ]
+  expect_equal(nElements(first_element), 1)
+  expect_equal(nSets(first_element), 2)
+  expect_equal(nSets(first_element), nSets(TS))
+
+  first_set <- TS[1, "sets", ]
+  expect_equal(nElements(first_set), 6)
+  expect_equal(nSets(first_set), 1)
+  expect_equal(nRelations(first_set), 5)
 
   out_v <- TS[c(1, 2, 2), "relations"]
   # Six relations even if the rows are duplicated!
   expect_equal(nRelations(out_v), 2)
-  expect_equal(nElements(out_v), 2)
+  expect_equal(nElements(out_v), 6)
+  expect_equal(nSets(out_v), 2)
 
   expect_error(TS[c("A", "B", "B"), ])
 })
 
-test_that("[i] subset works in TidySet class", {
+test_that("[i] subset works", {
   TS <- tidySet(list(A = letters[1:5], B = letters[6]))
   out1 <- TS[c(1, 2, 2)]
   expect_equal(nRelations(out1), nRelations(TS[c(1, 2)]))
@@ -51,10 +59,23 @@ test_that("[i] subset works in TidySet class", {
 })
 
 ## [[ ####
-test_that("[[i]] subset works in TidySet class", {
+test_that("[[i]] subset works", {
   TS <- tidySet(list(A = letters[1:5], B = letters[6]))
   expect_equal(TS[[1]], TS[["A"]])
-  expect_equal(dim(TS[["C"]]), c(Elements = 0, Relations = 0, Sets = 0))
+  expect_equal(dim(TS[["C"]]), c(Elements = 6, Relations = 0, Sets = 0))
+})
+
+test_that("[[i]]<- subset works", {
+  TS <- tidySet(list(A = letters[1:5], B = letters[6]))
+  TS[["A"]] <- data.frame(sets = "C")
+  expect_equal(nSets(TS), 2)
+  expect_equal(name_sets(TS), c("B", "C"))
+  TS[["B"]] <- NULL
+  expect_equal(nSets(TS), 1)
+  expect_equal(name_sets(TS), c("C"))
+  expect_equal(nElements(TS), 0)
+
+
 })
 
 # test_that("[i, j]<- subset works in TidySet class", {

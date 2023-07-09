@@ -20,6 +20,13 @@ reference:
       - '`as.data.frame.TidySet`'
       - '`as.list.TidySet`'
       - '`incidence`'
+  - title: "R operations"
+    desc: Functions to use TidySets
+    contents:
+      - '`c,TidySet-method`'
+      - '`extract-TidySet`'
+      - '`length.TidySet`'
+      - '`show,TidySet-method`'
   - title: "Set operations"
     desc: Functions to perform set operations
     contents:
@@ -37,7 +44,7 @@ reference:
       - '`size`'
       - '`subtract`'
       - '`union`'
-  - title: Working with  TidySet
+  - title: Working with TidySet
     desc: ~
     contents:
       - '`TidySet-class`'
@@ -51,8 +58,6 @@ reference:
       - '`droplevels.TidySet`'
       - '`element_size`'
       - '`elements`'
-      - '`c,TidySet-method`'
-      - '`extract-TidySet`'
       - '`group`'
       - '`is_nested`'
       - '`nElements`'
@@ -88,7 +93,7 @@ reference:
       - '`mutate.TidySet`'
       - '`pull.TidySet`'
       - '`select.TidySet`'
-      - '`show,TidySet-method`'
+
   - title: "Utiles"
     desc: Functions or data to help or show how to work with sets
     contents:
