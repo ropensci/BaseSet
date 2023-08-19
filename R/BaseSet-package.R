@@ -1,3 +1,4 @@
+#' @docType package
 #' @keywords internal
 #' @details
 #' It provides a class [`TidySet`] with methods to do operations with sets.
