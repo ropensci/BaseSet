@@ -150,34 +150,34 @@ on the TidySet.</p>
 <span class="r-in"><span><span class="va">TS</span> <span class="op">&lt;-</span> <span class="fu"><a href="move_to.html">move_to</a></span><span class="op">(</span><span class="va">TS</span>, from <span class="op">=</span> <span class="st">"relations"</span>, to <span class="op">=</span> <span class="st">"elements"</span>, column <span class="op">=</span> <span class="st">"type"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">TS</span>, <span class="va">elements</span> <span class="op">==</span> <span class="st">"a"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   elements sets     fuzzy type</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a    a 0.8052315 Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        a   a2 0.6016830 Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a    a 0.8560743 Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        a   a2 0.4700057 Gene</span>
 <span class="r-in"><span><span class="co"># Equivalent to filter_relation</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">TS</span>, <span class="va">elements</span> <span class="op">==</span> <span class="st">"a"</span>, <span class="va">sets</span> <span class="op">==</span> <span class="st">"a"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   elements sets     fuzzy type</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a    a 0.8052315 Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a    a 0.8560743 Gene</span>
 <span class="r-in"><span><span class="fu">filter_relation</span><span class="op">(</span><span class="va">TS</span>, <span class="va">elements</span> <span class="op">==</span> <span class="st">"a"</span>, <span class="va">sets</span> <span class="op">==</span> <span class="st">"a"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   elements sets     fuzzy type</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a    a 0.8052315 Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a    a 0.8560743 Gene</span>
 <span class="r-in"><span><span class="co"># Filter element</span></span></span>
 <span class="r-in"><span><span class="fu">filter_element</span><span class="op">(</span><span class="va">TS</span>, <span class="va">type</span> <span class="op">==</span> <span class="st">"Gene"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   elements sets      fuzzy type</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a    a 0.80523154 Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        b    a 0.10400651 Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3        c    a 0.11705179 Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4        d    a 0.07221516 Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5        a   a2 0.60168302 Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6        b   a2 0.12468143 Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7        c   a2 0.69157851 Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8        d   a2 0.35827873 Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   elements sets     fuzzy type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a    a 0.8560743 Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        b    a 0.2857808 Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        c    a 0.7577552 Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4        d    a 0.8941960 Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5        a   a2 0.4700057 Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6        b   a2 0.9843924 Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7        c   a2 0.5027606 Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8        d   a2 0.5748633 Gene</span>
 <span class="r-in"><span><span class="co"># Filter sets and by property of elements simultaneously</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">TS</span>, <span class="va">sets</span> <span class="op">==</span> <span class="st">"b"</span>, <span class="va">type</span> <span class="op">==</span> <span class="st">"lncRNA"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   elements sets     fuzzy   type</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        f    b 0.4092757 lncRNA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   elements sets    fuzzy   type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        f    b 0.957353 lncRNA</span>
 <span class="r-in"><span><span class="co"># Filter sets</span></span></span>
 <span class="r-in"><span><span class="fu">filter_set</span><span class="op">(</span><span class="va">TS</span>, <span class="va">sets</span> <span class="op">==</span> <span class="st">"b"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   elements sets     fuzzy   type</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        f    b 0.4092757 lncRNA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   elements sets    fuzzy   type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        f    b 0.957353 lncRNA</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

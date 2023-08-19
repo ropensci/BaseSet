@@ -136,12 +136,12 @@ They can create both fuzzy and standard sets.</p>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">tidySet</span><span class="op">(</span><span class="va">relations2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   elements sets     fuzzy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a    A 0.5381375</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        b    A 0.6742320</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3        c    A 0.4627220</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4        d    A 0.7941565</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5        e    A 0.5116978</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6        f    B 0.2723703</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a    A 0.3564512</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        b    A 0.9339098</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        c    A 0.9133200</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4        d    A 0.3129591</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5        e    A 0.5537156</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6        f    B 0.7045034</span>
 <span class="r-in"><span><span class="co"># A</span></span></span>
 <span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"A"</span> <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="st">"B"</span> <span class="op">=</span> <span class="va">LETTERS</span><span class="op">[</span><span class="fl">3</span><span class="op">:</span><span class="fl">7</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">tidySet</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
@@ -164,16 +164,16 @@ They can create both fuzzy and standard sets.</p>
 <span class="r-in"><span><span class="va">relations</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">A</span>, <span class="va">B</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">tidySet</span><span class="op">(</span><span class="va">relations</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    elements sets      fuzzy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1         a Set2 0.14285245</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2         b Set2 0.54573173</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3         c Set2 0.74095673</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4         d Set2 0.99516415</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5         e Set2 0.45578246</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6         c &lt;NA&gt; 0.98587597</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7         d &lt;NA&gt; 0.03201835</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8         e &lt;NA&gt; 0.81814904</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9         f &lt;NA&gt; 0.68216570</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10        g &lt;NA&gt; 0.44053076</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         a Set2 0.86398405</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         b Set2 0.67199098</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         c Set2 0.64015792</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         d Set2 0.52244167</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         e Set2 0.42788657</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         c &lt;NA&gt; 0.03501075</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7         d &lt;NA&gt; 0.05226774</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8         e &lt;NA&gt; 0.90009039</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9         f &lt;NA&gt; 0.92952519</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10        g &lt;NA&gt; 0.27653604</span>
 <span class="r-in"><span><span class="co"># Will error</span></span></span>
 <span class="r-in"><span><span class="co"># x &lt;- list("A" = letters[1:5], "B" = LETTERS[3:7], "c" = runif(5))</span></span></span>
 <span class="r-in"><span><span class="co"># a &lt;- tidySet(x) # Only characters or factors are allowed as elements.</span></span></span>
