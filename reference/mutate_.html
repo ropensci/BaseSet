@@ -154,19 +154,19 @@ on the TidySet.</p>
 <span class="r-in"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu"><a href="tidySet.html">tidySet</a></span><span class="op">(</span><span class="va">relations</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu">mutate_element</span><span class="op">(</span><span class="va">a</span>, Type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"Gene"</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"lncRNA"</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">a</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    elements sets     fuzzy   Type</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1         a    a 0.1584853   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2         b    a 0.9944426   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3         c    a 0.3907339   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4         d    a 0.3454786   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5         e    a 0.9752881 lncRNA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6         f    b 0.7884296 lncRNA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7         a   a2 0.3668720   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8         b   a2 0.5843080   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9         c   a2 0.4174633   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10        d   a2 0.6753587   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11        e   a2 0.5162853 lncRNA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12        f   b2 0.7516082 lncRNA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    elements sets      fuzzy   Type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         a    a 0.43757206   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         b    a 0.47266369   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         c    a 0.41772979   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         d    a 0.57682127   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         e    a 0.72383797 lncRNA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         f    b 0.03841124 lncRNA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7         a   a2 0.72990679   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8         b   a2 0.95555111   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9         c   a2 0.46672720   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10        d   a2 0.17269405   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11        e   a2 0.32476133 lncRNA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12        f   b2 0.56891009 lncRNA</span>
 <span class="r-in"><span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fu">mutate_relation</span><span class="op">(</span><span class="va">a</span>, Type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"PPI"</span>, <span class="st">"PF"</span>, <span class="st">"MP"</span><span class="op">)</span>, <span class="fl">12</span>,</span></span>
 <span class="r-in"><span>    replace <span class="op">=</span> <span class="cn">TRUE</span></span></span>
 <span class="r-in"><span><span class="op">)</span><span class="op">)</span></span></span>
