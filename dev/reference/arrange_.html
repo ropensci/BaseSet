@@ -14,7 +14,7 @@ the information on the TidySet."><meta name="robots" content="noindex"><!--[if l
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">BaseSet</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.0.17.9005</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.9.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,8 +38,14 @@ the information on the TidySet."><meta name="robots" content="noindex"><!--[if l
     <a class="dropdown-item" href="../articles/fuzzy.html">Fuzzy sets</a>
   </div>
 </li>
-<li class="nav-item">
-  <a class="nav-link" href="../news/index.html">Changelog</a>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-news">News</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-news">
+    <h6 class="dropdown-header" data-toc-skip>Releases</h6>
+    <a class="external-link dropdown-item" href="https://llrs.dev/post/2023/08/23/baseset-0-9-0/">BaseSet 0.9.0</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="../news/index.html">Changelog</a>
+  </div>
 </li>
 <li class="nav-item">
   <a class="external-link nav-link" href="https://github.com/ropensci/BaseSet/" aria-label="github">
@@ -171,19 +177,19 @@ integer column position to be used to reorder the TidySet.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6        f lncRNA</span>
 <span class="r-in"><span><span class="co"># Arrange sets</span></span></span>
 <span class="r-in"><span><span class="fu">arrange_set</span><span class="op">(</span><span class="va">a</span>, <span class="va">sets</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    elements sets       fuzzy   type</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1         a    A 0.102033322   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2         b    A 0.899848143   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3         c    A 0.001234293   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4         d    A 0.741036155   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5         e    A 0.175686362 lncRNA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6         f    B 0.272835372 lncRNA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7         a   A2 0.078002284   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8         b   A2 0.988735420   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9         c   A2 0.416286014   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10        d   A2 0.471893403   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11        e   A2 0.197799257 lncRNA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12        f   B2 0.491439829 lncRNA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    elements sets     fuzzy   type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         a    A 0.9113968   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         b    A 0.6970461   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         c    A 0.1776052   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         d    A 0.1252202   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         e    A 0.1927054 lncRNA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         f    B 0.9290600 lncRNA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7         a   A2 0.8154940   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8         b   A2 0.8367004   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9         c   A2 0.6429479   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10        d   A2 0.2344137   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11        e   A2 0.9499810 lncRNA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12        f   B2 0.3438495 lncRNA</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -199,7 +205,7 @@ integer column position to be used to reorder the TidySet.</p></dd>
                     <div class="col-md-4 col-xs-6">
                         <a href="https://github.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-github"></div></a>
                         <a href="https://github.com/ropenscilabs" target="_blank" class="external-link"><div class="icon fa fa-flask"></div></a>
-                        <a href="https://twitter.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-twitter"></div></a>
+                        <a href="https://hachyderm.io/@ropensci" target="_blank" class="external-link"><div class="icon fab fa-mastodon"></div></a>
                         <a href="https://vimeo.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-vimeo"></div></a>
                     </div>
                 </div>

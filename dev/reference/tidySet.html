@@ -14,7 +14,7 @@ They can create both fuzzy and standard sets."><meta name="robots" content="noin
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">BaseSet</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.0.17.9005</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.9.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,8 +38,14 @@ They can create both fuzzy and standard sets."><meta name="robots" content="noin
     <a class="dropdown-item" href="../articles/fuzzy.html">Fuzzy sets</a>
   </div>
 </li>
-<li class="nav-item">
-  <a class="nav-link" href="../news/index.html">Changelog</a>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-news">News</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-news">
+    <h6 class="dropdown-header" data-toc-skip>Releases</h6>
+    <a class="external-link dropdown-item" href="https://llrs.dev/post/2023/08/23/baseset-0-9-0/">BaseSet 0.9.0</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="../news/index.html">Changelog</a>
+  </div>
 </li>
 <li class="nav-item">
   <a class="external-link nav-link" href="https://github.com/ropensci/BaseSet/" aria-label="github">
@@ -136,12 +142,12 @@ They can create both fuzzy and standard sets.</p>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">tidySet</span><span class="op">(</span><span class="va">relations2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   elements sets     fuzzy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a    A 0.3564512</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        b    A 0.9339098</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3        c    A 0.9133200</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4        d    A 0.3129591</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5        e    A 0.5537156</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6        f    B 0.7045034</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a    A 0.6343697</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        b    A 0.5537123</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        c    A 0.4712716</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4        d    A 0.2482839</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5        e    A 0.4116914</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6        f    B 0.9234858</span>
 <span class="r-in"><span><span class="co"># A</span></span></span>
 <span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"A"</span> <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="st">"B"</span> <span class="op">=</span> <span class="va">LETTERS</span><span class="op">[</span><span class="fl">3</span><span class="op">:</span><span class="fl">7</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">tidySet</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
@@ -164,16 +170,16 @@ They can create both fuzzy and standard sets.</p>
 <span class="r-in"><span><span class="va">relations</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">A</span>, <span class="va">B</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">tidySet</span><span class="op">(</span><span class="va">relations</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    elements sets      fuzzy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1         a Set2 0.86398405</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2         b Set2 0.67199098</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3         c Set2 0.64015792</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4         d Set2 0.52244167</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5         e Set2 0.42788657</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6         c &lt;NA&gt; 0.03501075</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7         d &lt;NA&gt; 0.05226774</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8         e &lt;NA&gt; 0.90009039</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9         f &lt;NA&gt; 0.92952519</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10        g &lt;NA&gt; 0.27653604</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         a Set2 0.82326365</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         b Set2 0.98607326</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         c Set2 0.61810167</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         d Set2 0.30074855</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         e Set2 0.23543462</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         c &lt;NA&gt; 0.47105883</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7         d &lt;NA&gt; 0.83741549</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8         e &lt;NA&gt; 0.08325461</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9         f &lt;NA&gt; 0.21869949</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10        g &lt;NA&gt; 0.68194819</span>
 <span class="r-in"><span><span class="co"># Will error</span></span></span>
 <span class="r-in"><span><span class="co"># x &lt;- list("A" = letters[1:5], "B" = LETTERS[3:7], "c" = runif(5))</span></span></span>
 <span class="r-in"><span><span class="co"># a &lt;- tidySet(x) # Only characters or factors are allowed as elements.</span></span></span>
@@ -199,7 +205,7 @@ They can create both fuzzy and standard sets.</p>
                     <div class="col-md-4 col-xs-6">
                         <a href="https://github.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-github"></div></a>
                         <a href="https://github.com/ropenscilabs" target="_blank" class="external-link"><div class="icon fa fa-flask"></div></a>
-                        <a href="https://twitter.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-twitter"></div></a>
+                        <a href="https://hachyderm.io/@ropensci" target="_blank" class="external-link"><div class="icon fab fa-mastodon"></div></a>
                         <a href="https://vimeo.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-vimeo"></div></a>
                     </div>
                 </div>

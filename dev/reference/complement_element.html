@@ -10,7 +10,7 @@
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">BaseSet</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.0.17.9005</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.9.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,8 +34,14 @@
     <a class="dropdown-item" href="../articles/fuzzy.html">Fuzzy sets</a>
   </div>
 </li>
-<li class="nav-item">
-  <a class="nav-link" href="../news/index.html">Changelog</a>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-news">News</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-news">
+    <h6 class="dropdown-header" data-toc-skip>Releases</h6>
+    <a class="external-link dropdown-item" href="https://llrs.dev/post/2023/08/23/baseset-0-9-0/">BaseSet 0.9.0</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="../news/index.html">Changelog</a>
+  </div>
 </li>
 <li class="nav-item">
   <a class="external-link nav-link" href="https://github.com/ropensci/BaseSet/" aria-label="github">
@@ -190,17 +196,17 @@ function that given a numeric vector returns a single number.</p></dd>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">TS</span> <span class="op">&lt;-</span> <span class="fu"><a href="tidySet.html">tidySet</a></span><span class="op">(</span><span class="va">relations</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">complement_element</span><span class="op">(</span><span class="va">TS</span>, <span class="st">"a"</span>, <span class="st">"C_a"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   elements sets      fuzzy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a    A 0.46142034</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        b    A 0.23969034</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3        c    B 0.42535946</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4        d    B 0.06253838</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5        e    C 0.50445229</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6        f    C 0.29433522</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7        a  C_a 0.53857966</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   elements sets     fuzzy</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a    A 0.8363396</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        b    A 0.7651763</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        c    B 0.2244372</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4        d    B 0.3056574</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5        e    C 0.9801980</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6        f    C 0.0376411</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7        a  C_a 0.1636604</span>
 <span class="r-in"><span><span class="fu">complement_element</span><span class="op">(</span><span class="va">TS</span>, <span class="st">"a"</span>, <span class="st">"C_a"</span>, keep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   elements sets     fuzzy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a  C_a 0.5385797</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a  C_a 0.1636604</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -216,7 +222,7 @@ function that given a numeric vector returns a single number.</p></dd>
                     <div class="col-md-4 col-xs-6">
                         <a href="https://github.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-github"></div></a>
                         <a href="https://github.com/ropenscilabs" target="_blank" class="external-link"><div class="icon fa fa-flask"></div></a>
-                        <a href="https://twitter.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-twitter"></div></a>
+                        <a href="https://hachyderm.io/@ropensci" target="_blank" class="external-link"><div class="icon fab fa-mastodon"></div></a>
                         <a href="https://vimeo.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-vimeo"></div></a>
                     </div>
                 </div>

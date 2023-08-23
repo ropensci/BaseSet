@@ -14,7 +14,7 @@ on the TidySet."><meta name="robots" content="noindex"><!--[if lt IE 9]>
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">BaseSet</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.0.17.9005</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.9.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,8 +38,14 @@ on the TidySet."><meta name="robots" content="noindex"><!--[if lt IE 9]>
     <a class="dropdown-item" href="../articles/fuzzy.html">Fuzzy sets</a>
   </div>
 </li>
-<li class="nav-item">
-  <a class="nav-link" href="../news/index.html">Changelog</a>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-news">News</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-news">
+    <h6 class="dropdown-header" data-toc-skip>Releases</h6>
+    <a class="external-link dropdown-item" href="https://llrs.dev/post/2023/08/23/baseset-0-9-0/">BaseSet 0.9.0</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="../news/index.html">Changelog</a>
+  </div>
 </li>
 <li class="nav-item">
   <a class="external-link nav-link" href="https://github.com/ropensci/BaseSet/" aria-label="github">
@@ -149,18 +155,18 @@ on the TidySet.</p>
 <span class="r-in"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fu">mutate_element</span><span class="op">(</span><span class="va">a</span>, Type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"Gene"</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"lncRNA"</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">a</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    elements sets      fuzzy   Type</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1         a    a 0.53954876   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2         b    a 0.31136679   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3         c    a 0.65491488   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4         d    a 0.74780083   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5         e    a 0.34082675 lncRNA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6         f    b 0.49522390 lncRNA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7         a   a2 0.08760916   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8         b   a2 0.59204241   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9         c   a2 0.26425796   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10        d   a2 0.35133580   Gene</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11        e   a2 0.98840060 lncRNA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12        f   b2 0.27045636 lncRNA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         a    a 0.51028353   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         b    a 0.13635965   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         c    a 0.99349587   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         d    a 0.02857612   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         e    a 0.31648871 lncRNA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         f    b 0.60167360 lncRNA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7         a   a2 0.24874798   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8         b   a2 0.27068456   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9         c   a2 0.82212181   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10        d   a2 0.06010896   Gene</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11        e   a2 0.74486688 lncRNA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12        f   b2 0.73682831 lncRNA</span>
 <span class="r-in"><span><span class="va">b</span> <span class="op">&lt;-</span> <span class="fu">mutate_relation</span><span class="op">(</span><span class="va">a</span>, Type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"PPI"</span>, <span class="st">"PF"</span>, <span class="st">"MP"</span><span class="op">)</span>, <span class="fl">12</span>,</span></span>
 <span class="r-in"><span>    replace <span class="op">=</span> <span class="cn">TRUE</span></span></span>
 <span class="r-in"><span><span class="op">)</span><span class="op">)</span></span></span>
@@ -179,7 +185,7 @@ on the TidySet.</p>
                     <div class="col-md-4 col-xs-6">
                         <a href="https://github.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-github"></div></a>
                         <a href="https://github.com/ropenscilabs" target="_blank" class="external-link"><div class="icon fa fa-flask"></div></a>
-                        <a href="https://twitter.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-twitter"></div></a>
+                        <a href="https://hachyderm.io/@ropensci" target="_blank" class="external-link"><div class="icon fab fa-mastodon"></div></a>
                         <a href="https://vimeo.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-vimeo"></div></a>
                     </div>
                 </div>

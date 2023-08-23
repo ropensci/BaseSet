@@ -14,7 +14,7 @@ you want the complements of sets or elements."><meta name="robots" content="noin
     <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
     <a class="navbar-brand me-2" href="../index.html">BaseSet</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.0.17.9005</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.9.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,8 +38,14 @@ you want the complements of sets or elements."><meta name="robots" content="noin
     <a class="dropdown-item" href="../articles/fuzzy.html">Fuzzy sets</a>
   </div>
 </li>
-<li class="nav-item">
-  <a class="nav-link" href="../news/index.html">Changelog</a>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-news">News</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-news">
+    <h6 class="dropdown-header" data-toc-skip>Releases</h6>
+    <a class="external-link dropdown-item" href="https://llrs.dev/post/2023/08/23/baseset-0-9-0/">BaseSet 0.9.0</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="../news/index.html">Changelog</a>
+  </div>
 </li>
 <li class="nav-item">
   <a class="external-link nav-link" href="https://github.com/ropensci/BaseSet/" aria-label="github">
@@ -148,42 +154,42 @@ you want the complements of sets or elements.</p>
 <span class="r-in"><span>    <span class="fu"><a href="activate.html">activate</a></span><span class="op">(</span><span class="st">"elements"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
 <span class="r-in"><span>    <span class="fu">complement</span><span class="op">(</span><span class="st">"a"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   elements sets      fuzzy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a    A 0.97216889</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        b    A 0.43350399</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3        c    B 0.80749889</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4        d    B 0.99681202</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5        e    C 0.76207613</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6        f    C 0.53577097</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7        a   ∁a 0.02783111</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a    A 0.14622560</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        b    A 0.84381095</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        c    B 0.59661182</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4        d    B 0.69479532</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5        e    C 0.08791671</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6        f    C 0.29645226</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7        a   ∁a 0.85377440</span>
 <span class="r-in"><span><span class="va">TS</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
 <span class="r-in"><span>    <span class="fu"><a href="activate.html">activate</a></span><span class="op">(</span><span class="st">"elements"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
 <span class="r-in"><span>    <span class="fu">complement</span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"C_a"</span>, keep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   elements sets      fuzzy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a  C_a 0.02783111</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   elements sets     fuzzy</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a  C_a 0.8537744</span>
 <span class="r-in"><span><span class="va">TS</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
 <span class="r-in"><span>    <span class="fu"><a href="activate.html">activate</a></span><span class="op">(</span><span class="st">"set"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
 <span class="r-in"><span>    <span class="fu">complement</span><span class="op">(</span><span class="st">"A"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   elements sets      fuzzy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a    A 0.97216889</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        b    A 0.43350399</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3        c    B 0.80749889</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4        d    B 0.99681202</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5        e    C 0.76207613</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6        f    C 0.53577097</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7        a   ∁A 0.02783111</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8        b   ∁A 0.56649601</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a    A 0.14622560</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        b    A 0.84381095</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        c    B 0.59661182</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4        d    B 0.69479532</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5        e    C 0.08791671</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6        f    C 0.29645226</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7        a   ∁A 0.85377440</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8        b   ∁A 0.15618905</span>
 <span class="r-in"><span><span class="va">TS</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
 <span class="r-in"><span>    <span class="fu"><a href="activate.html">activate</a></span><span class="op">(</span><span class="st">"set"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
 <span class="r-in"><span>    <span class="fu">complement</span><span class="op">(</span><span class="st">"A"</span>, keep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   elements sets      fuzzy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a   ∁A 0.02783111</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        b   ∁A 0.56649601</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   elements sets     fuzzy</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a   ∁A 0.8537744</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        b   ∁A 0.1561890</span>
 <span class="r-in"><span><span class="va">TS</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
 <span class="r-in"><span>    <span class="fu"><a href="activate.html">activate</a></span><span class="op">(</span><span class="st">"set"</span><span class="op">)</span> <span class="op"><a href="pipe.html">%&gt;%</a></span></span></span>
 <span class="r-in"><span>    <span class="fu">complement</span><span class="op">(</span><span class="st">"A"</span>, FUN <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">x</span> <span class="op">-</span> <span class="fl">0.2</span><span class="op">)</span><span class="op">}</span>, keep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   elements sets     fuzzy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a   ∁A 0.7721689</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        b   ∁A 0.2335040</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a   ∁A 0.0537744</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        b   ∁A 0.6438110</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -199,7 +205,7 @@ you want the complements of sets or elements.</p>
                     <div class="col-md-4 col-xs-6">
                         <a href="https://github.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-github"></div></a>
                         <a href="https://github.com/ropenscilabs" target="_blank" class="external-link"><div class="icon fa fa-flask"></div></a>
-                        <a href="https://twitter.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-twitter"></div></a>
+                        <a href="https://hachyderm.io/@ropensci" target="_blank" class="external-link"><div class="icon fab fa-mastodon"></div></a>
                         <a href="https://vimeo.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-vimeo"></div></a>
                     </div>
                 </div>
