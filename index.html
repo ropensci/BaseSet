@@ -4,406 +4,468 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Working with sets the tidy way • BaseSet</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
-<script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content='Implements a class and methods to work with sets,
+    doing intersection, union, complementary sets, power sets, cartesian
+    product and other set operations in a "tidy" way. These set operations
+    are available for both classical sets and fuzzy sets. Import sets from
+    several formats or from other several data structures.'>
+<title>Working with Sets the Tidy Way • BaseSet</title>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/apple-touch-icon.png">
+<script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Working with sets the tidy way">
-<meta property="og:description" content='The package implements a class and methods to work with sets, 
-    doing intersection, union, complementary, power sets, cartesian product and 
-    other set operations in a "tidy" way. Both for classical sets and fuzzy 
-    sets. It can import sets from GMT, GAF and the OBO formats. '>
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
+<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Working with Sets the Tidy Way">
+<meta property="og:description" content='Implements a class and methods to work with sets,
+    doing intersection, union, complementary sets, power sets, cartesian
+    product and other set operations in a "tidy" way. These set operations
+    are available for both classical sets and fuzzy sets. Import sets from
+    several formats or from other several data structures.'>
+<!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<![endif]--><!-- Matomo --><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script><script src="https://ropensci.org/scripts/matomo.js"></script><noscript><p><img src="https://ropensci.matomo.cloud/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt=""></p></noscript>
+<!-- End Matomo Code -->
 </head>
-<body data-spy="scroll" data-target="#toc">
-    <div class="container template-home">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">BaseSet</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.11</span>
-      </span>
-    </div>
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+    
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
+    <a href="https://ropensci.org" class="external-link"><img src="https://ropensci.org/img/icon_short_white.svg" id="hexlogo" alt="rOpenSci"></a>
+    <a class="navbar-brand me-2" href="index.html">BaseSet</a>
+
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.9.0</small>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-3">
+      <ul class="navbar-nav me-auto"></ul>
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="nav-link" href="articles/BaseSet.html">Get started</a>
 </li>
-<li>
-  <a href="reference/index.html">Reference</a>
+<li class="nav-item">
+  <a class="nav-link" href="reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="articles/advanced.html">Advanced examples</a>
-    </li>
-    <li>
-      <a href="articles/basic.html">About BaseSet</a>
-    </li>
-    <li>
-      <a href="articles/fuzzy.html">Fuzzy sets</a>
-    </li>
-  </ul>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="articles/advanced.html">Advanced examples</a>
+    <a class="dropdown-item" href="articles/fuzzy.html">Fuzzy sets</a>
+  </div>
 </li>
-<li>
-  <a href="news/index.html">Changelog</a>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-news">News</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-news">
+    <h6 class="dropdown-header" data-toc-skip>Releases</h6>
+    <a class="external-link dropdown-item" href="https://llrs.dev/post/2023/08/23/baseset-0-9-0/">BaseSet 0.9.0</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="news/index.html">Changelog</a>
+  </div>
 </li>
-      </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/llrs/BaseSet/">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/ropensci/BaseSet/" aria-label="github">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
       </ul>
 </div>
-<!--/.nav-collapse -->
+
+    
   </div>
-<!--/.container -->
-</div>
-<!--/.navbar -->
-
-      
-
-      </header><div class="row">
-  <div class="contents col-md-9">
-
-
-<div id="baseset" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#baseset" class="anchor"></a>BaseSet</h1></div>
-<p>The goal of BaseSet is to facilitate working with sets in an efficient way. The package implements methods to work on sets, doing intersection, union, complementary, power sets, cartesian product and other set operations in a tidy way. Both for classical and fuzzy sets. On fuzzy sets, elements have a probability to belong to a set.</p>
-<p>It also allows to import from several formats used in the life science world. Like the GMT and the GAF or the <a href="http://www.obofoundry.org/">OBO format</a> file for ontologies.</p>
+</nav><div class="container template-home">
+<div class="row">
+  <main id="main" class="col-md-9">
+<div class="section level1">
+<div class="page-header"><h1 id="baseset">BaseSet<a class="anchor" aria-label="anchor" href="#baseset"></a>
+</h1></div>
+<p>The goal of BaseSet is to facilitate working with sets in an efficient way. The package implements methods to work on sets, doing intersection, union, complementary, power sets, cartesian product and other set operations in a tidy way.</p>
+<p>The package supports <a href="https://en.wikipedia.org/wiki/Set_(mathematics)" class="external-link">classical</a> and <a href="https://en.wikipedia.org/wiki/Fuzzy_set" class="external-link">fuzzy</a> sets. Fuzzy sets are similar to classical sets but there is some vagueness on the relationship between the element and the set.</p>
+<p>It also allows to import from several formats used in the life science world. Like the <a href="https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29" class="external-link">GMT</a> and the <a href="https://geneontology.org/docs/go-annotation-file-gaf-format-2.1/" class="external-link">GAF</a> or the <a href="https://obofoundry.org/" class="external-link">OBO format</a> file for ontologies.</p>
 <p>You can save information about the elements, sets and their relationship on the object itself. For instance origin of the set, categorical or numeric data associated with sets…</p>
-<p>Watch BaseSet working on the <a href="#Examples">examples</a> below and in the vignettes. You can also find <a href="#Related-packages">related packages</a> and the differences with BaseSet. If you have some questions or bugs <a href="https://github.com/llrs/BaseSet/issues">open an issue</a> (remember the <a href="#Code-of-Conduct">Code of Conduct</a>)</p>
+<p>Watch BaseSet working on the <a href="#Examples">examples</a> below and in the vignettes. You can also find <a href="#Related-packages">related packages</a> and the differences with BaseSet. If you have some questions or bugs <a href="https://github.com/ropensci/BaseSet/issues" class="external-link">open an issue</a> (remember the <a href="#Code-of-Conduct">Code of Conduct</a>)</p>
 </div>
-<div id="installation" class="section level1">
-<h1 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h1>
-<p>The package depends on some packages from Bioconductor. In order to install some of its dependencies you’ll need first to install BiocManager:</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="kw">if</span> (!<span class="fu"><a href="https://rdrr.io/r/base/library.html">require</a></span>(<span class="st">"BiocManager"</span>)) {
-  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"BiocManager"</span>)
-}</pre></div>
-<p>You can install the latest version of BaseSet from <a href="https://github.com/llrs/BaseSet">Github</a> with:</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="kw pkg">BiocManager</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span>(<span class="st">"llrs/BaseSet"</span>,
-                     <span class="kw">dependencies</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">build_vignettes</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">force</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></div>
+<div class="section level1">
+<h1 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h1>
+<p>The package depends on some packages from Bioconductor. In order to install some of its dependencies you’ll need first to install <a href="https://bioconductor.github.io/BiocManager/" class="external-link">BiocManager</a>:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://bioconductor.github.io/BiocManager/" class="external-link">"BiocManager"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
+<p>You can install the latest version of BaseSet from <a href="https://github.com/ropensci/BaseSet" class="external-link">Github</a> with:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu">install</span><span class="op">(</span><span class="st">"ropensci/BaseSet"</span>, </span>
+<span>                     dependencies <span class="op">=</span> <span class="cn">TRUE</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span>, force <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="examples" class="section level1">
-<h1 class="hasAnchor">
-<a href="#examples" class="anchor"></a>Examples</h1>
-<div id="sets" class="section level2">
-<h2 class="hasAnchor">
-<a href="#sets" class="anchor"></a>Sets</h2>
+<div class="section level1">
+<h1 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
+</h1>
+<div class="section level2">
+<h2 id="sets">Sets<a class="anchor" aria-label="anchor" href="#sets"></a>
+</h2>
 <p>We can create a set like this:</p>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="no">sets</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">A</span> <span class="kw">=</span> <span class="no">letters</span>[<span class="fl">1</span>:<span class="fl">5</span>], <span class="kw">B</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"a"</span>, <span class="st">"f"</span>))
-<span class="no">sets_analysis</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/tidySet.html">tidySet</a></span>(<span class="no">sets</span>)
-<span class="no">sets_analysis</span>
-<span class="co">#&gt;   elements sets fuzzy</span>
-<span class="co">#&gt; 1        a    A     1</span>
-<span class="co">#&gt; 2        a    B     1</span>
-<span class="co">#&gt; 3        b    A     1</span>
-<span class="co">#&gt; 4        c    A     1</span>
-<span class="co">#&gt; 5        d    A     1</span>
-<span class="co">#&gt; 6        e    A     1</span>
-<span class="co">#&gt; 7        f    B     1</span></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sets</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>A <span class="op">=</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, B <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"f"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">sets_analysis</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/tidySet.html">tidySet</a></span><span class="op">(</span><span class="va">sets</span><span class="op">)</span></span>
+<span><span class="va">sets_analysis</span></span>
+<span><span class="co">#&gt;   elements sets fuzzy</span></span>
+<span><span class="co">#&gt; 1        a    A     1</span></span>
+<span><span class="co">#&gt; 2        b    A     1</span></span>
+<span><span class="co">#&gt; 3        c    A     1</span></span>
+<span><span class="co">#&gt; 4        d    A     1</span></span>
+<span><span class="co">#&gt; 5        e    A     1</span></span>
+<span><span class="co">#&gt; 6        a    B     1</span></span>
+<span><span class="co">#&gt; 7        f    B     1</span></span></code></pre></div>
 <p>Perform typical operations like union, intersection. You can name the resulting set or let the default name:</p>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="reference/union.html">union</a></span>(<span class="no">sets_analysis</span>, <span class="kw">sets</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>, <span class="st">"B"</span>))
-<span class="co">#&gt;   elements sets fuzzy</span>
-<span class="co">#&gt; 1        a  A∪B     1</span>
-<span class="co">#&gt; 2        b  A∪B     1</span>
-<span class="co">#&gt; 3        c  A∪B     1</span>
-<span class="co">#&gt; 4        d  A∪B     1</span>
-<span class="co">#&gt; 5        e  A∪B     1</span>
-<span class="co">#&gt; 6        f  A∪B     1</span>
-<span class="co"># Or we can give a name to the new set</span>
-<span class="fu"><a href="reference/union.html">union</a></span>(<span class="no">sets_analysis</span>, <span class="kw">sets</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="kw">name</span> <span class="kw">=</span> <span class="st">"D"</span>)
-<span class="co">#&gt;   elements sets fuzzy</span>
-<span class="co">#&gt; 1        a    D     1</span>
-<span class="co">#&gt; 2        b    D     1</span>
-<span class="co">#&gt; 3        c    D     1</span>
-<span class="co">#&gt; 4        d    D     1</span>
-<span class="co">#&gt; 5        e    D     1</span>
-<span class="co">#&gt; 6        f    D     1</span>
-<span class="co"># Or the intersection</span>
-<span class="fu"><a href="reference/intersection.html">intersection</a></span>(<span class="no">sets_analysis</span>, <span class="kw">sets</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>, <span class="st">"B"</span>))
-<span class="co">#&gt;   elements sets fuzzy</span>
-<span class="co">#&gt; 1        a  A∩B     1</span>
-<span class="co"># Keeping the other sets:</span>
-<span class="fu"><a href="reference/intersection.html">intersection</a></span>(<span class="no">sets_analysis</span>, <span class="kw">sets</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="kw">name</span> <span class="kw">=</span> <span class="st">"D"</span>, <span class="kw">keep</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
-<span class="co">#&gt;   elements sets fuzzy</span>
-<span class="co">#&gt; 1        a    A     1</span>
-<span class="co">#&gt; 2        a    B     1</span>
-<span class="co">#&gt; 3        a    D     1</span>
-<span class="co">#&gt; 4        b    A     1</span>
-<span class="co">#&gt; 5        c    A     1</span>
-<span class="co">#&gt; 6        d    A     1</span>
-<span class="co">#&gt; 7        e    A     1</span>
-<span class="co">#&gt; 8        f    B     1</span></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/union.html">union</a></span><span class="op">(</span><span class="va">sets_analysis</span>, sets <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span><span class="op">)</span> </span>
+<span><span class="co">#&gt;   elements sets fuzzy</span></span>
+<span><span class="co">#&gt; 1        a  A∪B     1</span></span>
+<span><span class="co">#&gt; 2        b  A∪B     1</span></span>
+<span><span class="co">#&gt; 3        c  A∪B     1</span></span>
+<span><span class="co">#&gt; 4        d  A∪B     1</span></span>
+<span><span class="co">#&gt; 5        e  A∪B     1</span></span>
+<span><span class="co">#&gt; 6        f  A∪B     1</span></span>
+<span><span class="co"># Or we can give a name to the new set</span></span>
+<span><span class="fu"><a href="reference/union.html">union</a></span><span class="op">(</span><span class="va">sets_analysis</span>, sets <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>, name <span class="op">=</span> <span class="st">"D"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   elements sets fuzzy</span></span>
+<span><span class="co">#&gt; 1        a    D     1</span></span>
+<span><span class="co">#&gt; 2        b    D     1</span></span>
+<span><span class="co">#&gt; 3        c    D     1</span></span>
+<span><span class="co">#&gt; 4        d    D     1</span></span>
+<span><span class="co">#&gt; 5        e    D     1</span></span>
+<span><span class="co">#&gt; 6        f    D     1</span></span>
+<span><span class="co"># Or the intersection</span></span>
+<span><span class="fu"><a href="reference/intersection.html">intersection</a></span><span class="op">(</span><span class="va">sets_analysis</span>, sets <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   elements sets fuzzy</span></span>
+<span><span class="co">#&gt; 1        a  A∩B     1</span></span>
+<span><span class="co"># Keeping the other sets:</span></span>
+<span><span class="fu"><a href="reference/intersection.html">intersection</a></span><span class="op">(</span><span class="va">sets_analysis</span>, sets <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>, name <span class="op">=</span> <span class="st">"D"</span>, keep <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </span>
+<span><span class="co">#&gt;   elements sets fuzzy</span></span>
+<span><span class="co">#&gt; 1        a    A     1</span></span>
+<span><span class="co">#&gt; 2        b    A     1</span></span>
+<span><span class="co">#&gt; 3        c    A     1</span></span>
+<span><span class="co">#&gt; 4        d    A     1</span></span>
+<span><span class="co">#&gt; 5        e    A     1</span></span>
+<span><span class="co">#&gt; 6        a    B     1</span></span>
+<span><span class="co">#&gt; 7        f    B     1</span></span>
+<span><span class="co">#&gt; 8        a    D     1</span></span></code></pre></div>
 <p>And compute size of sets among other things:</p>
-<div class="sourceCode" id="cb5"><pre class="r"><span class="fu"><a href="reference/set_size.html">set_size</a></span>(<span class="no">sets_analysis</span>)
-<span class="co">#&gt;   sets size probability</span>
-<span class="co">#&gt; 1    A    5           1</span>
-<span class="co">#&gt; 2    B    2           1</span></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/set_size.html">set_size</a></span><span class="op">(</span><span class="va">sets_analysis</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   sets size probability</span></span>
+<span><span class="co">#&gt; 1    A    5           1</span></span>
+<span><span class="co">#&gt; 2    B    2           1</span></span></code></pre></div>
 <p>The elements in one set not present in other:</p>
-<div class="sourceCode" id="cb6"><pre class="r"><span class="fu"><a href="reference/subtract.html">subtract</a></span>(<span class="no">sets_analysis</span>, <span class="kw">set_in</span> <span class="kw">=</span> <span class="st">"A"</span>, <span class="kw">not_in</span> <span class="kw">=</span> <span class="st">"B"</span>, <span class="kw">keep</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
-<span class="co">#&gt;   elements sets fuzzy</span>
-<span class="co">#&gt; 1        b  A∖B     1</span>
-<span class="co">#&gt; 2        c  A∖B     1</span>
-<span class="co">#&gt; 3        d  A∖B     1</span>
-<span class="co">#&gt; 4        e  A∖B     1</span></pre></div>
-<p>Or any other verb from <a href="https://cran.r-project.org/package=dplyr">dplyr</a>. We can add columns, filter, remove them and add information about the sets:</p>
-<div class="sourceCode" id="cb7"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="st">"magrittr"</span>)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'magrittr'</span>
-<span class="co">#&gt; The following object is masked from 'package:BaseSet':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     subtract</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span>(<span class="fl">4673</span>) <span class="co"># To make it reproducible in your machine</span>
-<span class="no">sets_enriched</span> <span class="kw">&lt;-</span> <span class="no">sets_analysis</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">Keep</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">TRUE</span>, <span class="fl">FALSE</span>), <span class="fl">7</span>, <span class="kw">replace</span> <span class="kw">=</span> <span class="fl">TRUE</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">Keep</span> <span class="kw">==</span> <span class="fl">TRUE</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(-<span class="no">Keep</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="reference/activate.html">activate</a></span>(<span class="st">"sets"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">sets_origin</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Reactome"</span>, <span class="st">"KEGG"</span>))
-<span class="no">sets_enriched</span>
-<span class="co">#&gt;   elements sets fuzzy sets_origin</span>
-<span class="co">#&gt; 1        a    A     1    Reactome</span>
-<span class="co">#&gt; 2        a    B     1        KEGG</span>
-<span class="co">#&gt; 3        b    A     1    Reactome</span>
-<span class="co">#&gt; 4        c    A     1    Reactome</span>
-<span class="co">#&gt; 5        d    A     1    Reactome</span>
-<span class="co">#&gt; 6        f    B     1        KEGG</span>
-
-<span class="co"># Activating sets makes the verb affect only them:</span>
-<span class="fu"><a href="reference/elements.html">elements</a></span>(<span class="no">sets_enriched</span>)
-<span class="co">#&gt;   elements</span>
-<span class="co">#&gt; 1        a</span>
-<span class="co">#&gt; 2        b</span>
-<span class="co">#&gt; 3        c</span>
-<span class="co">#&gt; 4        d</span>
-<span class="co">#&gt; 5        f</span>
-<span class="fu"><a href="reference/relations.html">relations</a></span>(<span class="no">sets_enriched</span>)
-<span class="co">#&gt;   elements sets fuzzy</span>
-<span class="co">#&gt; 1        a    A     1</span>
-<span class="co">#&gt; 2        a    B     1</span>
-<span class="co">#&gt; 3        b    A     1</span>
-<span class="co">#&gt; 4        c    A     1</span>
-<span class="co">#&gt; 5        d    A     1</span>
-<span class="co">#&gt; 6        f    B     1</span>
-<span class="fu"><a href="reference/sets.html">sets</a></span>(<span class="no">sets_enriched</span>)
-<span class="co">#&gt;   sets sets_origin</span>
-<span class="co">#&gt; 1    A    Reactome</span>
-<span class="co">#&gt; 2    B        KEGG</span></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/subtract.html">subtract</a></span><span class="op">(</span><span class="va">sets_analysis</span>, set_in <span class="op">=</span> <span class="st">"A"</span>, not_in <span class="op">=</span> <span class="st">"B"</span>, keep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   elements sets fuzzy</span></span>
+<span><span class="co">#&gt; 1        b  A∖B     1</span></span>
+<span><span class="co">#&gt; 2        c  A∖B     1</span></span>
+<span><span class="co">#&gt; 3        d  A∖B     1</span></span>
+<span><span class="co">#&gt; 4        e  A∖B     1</span></span></code></pre></div>
+<p>Or any other verb from <a href="https://cran.r-project.org/package=dplyr" class="external-link">dplyr</a>. We can add columns, filter, remove them and add information about the sets:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://magrittr.tidyverse.org" class="external-link">"magrittr"</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'magrittr'</span></span>
+<span><span class="co">#&gt; The following object is masked from 'package:BaseSet':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     subtract</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">4673</span><span class="op">)</span> <span class="co"># To make it reproducible in your machine</span></span>
+<span><span class="va">sets_enriched</span> <span class="op">&lt;-</span> <span class="va">sets_analysis</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>Keep <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="cn">FALSE</span><span class="op">)</span>, <span class="fl">7</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Keep</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">Keep</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="reference/activate.html">activate</a></span><span class="op">(</span><span class="st">"sets"</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>sets_origin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Reactome"</span>, <span class="st">"KEGG"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">sets_enriched</span></span>
+<span><span class="co">#&gt;   elements sets fuzzy sets_origin</span></span>
+<span><span class="co">#&gt; 1        a    A     1    Reactome</span></span>
+<span><span class="co">#&gt; 2        b    A     1    Reactome</span></span>
+<span><span class="co">#&gt; 3        c    A     1    Reactome</span></span>
+<span><span class="co">#&gt; 4        d    A     1    Reactome</span></span>
+<span><span class="co">#&gt; 5        e    A     1    Reactome</span></span>
+<span><span class="co">#&gt; 6        f    B     1        KEGG</span></span>
+<span></span>
+<span><span class="co"># Activating sets makes the verb affect only them:</span></span>
+<span><span class="fu"><a href="reference/elements.html">elements</a></span><span class="op">(</span><span class="va">sets_enriched</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   elements</span></span>
+<span><span class="co">#&gt; 1        a</span></span>
+<span><span class="co">#&gt; 2        b</span></span>
+<span><span class="co">#&gt; 3        c</span></span>
+<span><span class="co">#&gt; 4        d</span></span>
+<span><span class="co">#&gt; 5        e</span></span>
+<span><span class="co">#&gt; 6        f</span></span>
+<span><span class="fu"><a href="reference/relations.html">relations</a></span><span class="op">(</span><span class="va">sets_enriched</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   elements sets fuzzy</span></span>
+<span><span class="co">#&gt; 1        a    A     1</span></span>
+<span><span class="co">#&gt; 2        b    A     1</span></span>
+<span><span class="co">#&gt; 3        c    A     1</span></span>
+<span><span class="co">#&gt; 4        d    A     1</span></span>
+<span><span class="co">#&gt; 5        e    A     1</span></span>
+<span><span class="co">#&gt; 6        f    B     1</span></span>
+<span><span class="fu"><a href="reference/sets.html">sets</a></span><span class="op">(</span><span class="va">sets_enriched</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   sets sets_origin</span></span>
+<span><span class="co">#&gt; 1    A    Reactome</span></span>
+<span><span class="co">#&gt; 6    B        KEGG</span></span></code></pre></div>
 </div>
-<div id="fuzzy-sets" class="section level2">
-<h2 class="hasAnchor">
-<a href="#fuzzy-sets" class="anchor"></a>Fuzzy sets</h2>
-<p>In fuzzy sets the elements are related to a set by a probability (the association is not guaranteed).</p>
-<div class="sourceCode" id="cb8"><pre class="r"><span class="no">relations</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="kw">sets</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span>(<span class="st">"A"</span>, <span class="fl">5</span>), <span class="st">"B"</span>, <span class="st">"B"</span>),
-                        <span class="kw">elements</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>, <span class="st">"e"</span>, <span class="st">"a"</span>, <span class="st">"f"</span>),
-                        <span class="kw">fuzzy</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span>(<span class="fl">7</span>))
-<span class="no">fuzzy_set</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/tidySet.html">tidySet</a></span>(<span class="no">relations</span>)
-<span class="no">fuzzy_set</span>
-<span class="co">#&gt;   elements sets     fuzzy</span>
-<span class="co">#&gt; 1        a    A 0.1837246</span>
-<span class="co">#&gt; 2        a    B 0.9381182</span>
-<span class="co">#&gt; 3        b    A 0.4567009</span>
-<span class="co">#&gt; 4        c    A 0.8152075</span>
-<span class="co">#&gt; 5        d    A 0.5800610</span>
-<span class="co">#&gt; 6        e    A 0.5724973</span>
-<span class="co">#&gt; 7        f    B 0.9460158</span></pre></div>
-<p>The equivalent operations are possible with the sets</p>
-<div class="sourceCode" id="cb9"><pre class="r"><span class="fu"><a href="reference/union.html">union</a></span>(<span class="no">fuzzy_set</span>, <span class="kw">sets</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>, <span class="st">"B"</span>))
-<span class="co">#&gt;   elements sets     fuzzy</span>
-<span class="co">#&gt; 1        a  A∪B 0.9381182</span>
-<span class="co">#&gt; 2        b  A∪B 0.4567009</span>
-<span class="co">#&gt; 3        c  A∪B 0.8152075</span>
-<span class="co">#&gt; 4        d  A∪B 0.5800610</span>
-<span class="co">#&gt; 5        e  A∪B 0.5724973</span>
-<span class="co">#&gt; 6        f  A∪B 0.9460158</span>
-<span class="co"># Or we can give a name to the new set</span>
-<span class="fu"><a href="reference/union.html">union</a></span>(<span class="no">fuzzy_set</span>, <span class="kw">sets</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="kw">name</span> <span class="kw">=</span> <span class="st">"D"</span>)
-<span class="co">#&gt;   elements sets     fuzzy</span>
-<span class="co">#&gt; 1        a    D 0.9381182</span>
-<span class="co">#&gt; 2        b    D 0.4567009</span>
-<span class="co">#&gt; 3        c    D 0.8152075</span>
-<span class="co">#&gt; 4        d    D 0.5800610</span>
-<span class="co">#&gt; 5        e    D 0.5724973</span>
-<span class="co">#&gt; 6        f    D 0.9460158</span>
-<span class="co"># Or the intersection</span>
-<span class="fu"><a href="reference/intersection.html">intersection</a></span>(<span class="no">fuzzy_set</span>, <span class="kw">sets</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>, <span class="st">"B"</span>))
-<span class="co">#&gt;   elements sets     fuzzy</span>
-<span class="co">#&gt; 1        a  A∩B 0.1837246</span>
-<span class="co"># Keeping the other sets:</span>
-<span class="fu"><a href="reference/intersection.html">intersection</a></span>(<span class="no">fuzzy_set</span>, <span class="kw">sets</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="kw">name</span> <span class="kw">=</span> <span class="st">"D"</span>, <span class="kw">keep</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
-<span class="co">#&gt;   elements sets     fuzzy</span>
-<span class="co">#&gt; 1        a    A 0.1837246</span>
-<span class="co">#&gt; 2        a    B 0.9381182</span>
-<span class="co">#&gt; 3        a    D 0.1837246</span>
-<span class="co">#&gt; 4        b    A 0.4567009</span>
-<span class="co">#&gt; 5        c    A 0.8152075</span>
-<span class="co">#&gt; 6        d    A 0.5800610</span>
-<span class="co">#&gt; 7        e    A 0.5724973</span>
-<span class="co">#&gt; 8        f    B 0.9460158</span></pre></div>
-<p>With fuzzy sets, the number of elements or cardinality is a probability:</p>
-<div class="sourceCode" id="cb10"><pre class="r"><span class="co"># A set could be empty</span>
-<span class="fu"><a href="reference/set_size.html">set_size</a></span>(<span class="no">fuzzy_set</span>)
-<span class="co">#&gt;   sets size probability</span>
-<span class="co">#&gt; 1    A    0 0.014712455</span>
-<span class="co">#&gt; 2    A    1 0.120607154</span>
-<span class="co">#&gt; 3    A    2 0.318386944</span>
-<span class="co">#&gt; 4    A    3 0.357078627</span>
-<span class="co">#&gt; 5    A    4 0.166499731</span>
-<span class="co">#&gt; 6    A    5 0.022715089</span>
-<span class="co">#&gt; 7    B    0 0.003340637</span>
-<span class="co">#&gt; 8    B    1 0.109184679</span>
-<span class="co">#&gt; 9    B    2 0.887474684</span>
-<span class="co"># The more probable size of the sets:</span>
-<span class="fu"><a href="reference/set_size.html">set_size</a></span>(<span class="no">fuzzy_set</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">sets</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">probability</span> <span class="kw">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span>(<span class="no">probability</span>))
-<span class="co">#&gt; # A tibble: 2 x 3</span>
-<span class="co">#&gt; # Groups:   sets [2]</span>
-<span class="co">#&gt;   sets   size probability</span>
-<span class="co">#&gt;   &lt;chr&gt; &lt;dbl&gt;       &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 A         3       0.357</span>
-<span class="co">#&gt; 2 B         2       0.887</span>
-<span class="co"># Probability of belonging to several sets:</span>
-<span class="fu"><a href="reference/element_size.html">element_size</a></span>(<span class="no">fuzzy_set</span>)
-<span class="co">#&gt;    elements size probability</span>
-<span class="co">#&gt; 1         a    0  0.05051256</span>
-<span class="co">#&gt; 2         a    1  0.77713204</span>
-<span class="co">#&gt; 3         a    2  0.17235540</span>
-<span class="co">#&gt; 4         b    0  0.54329910</span>
-<span class="co">#&gt; 5         b    1  0.45670090</span>
-<span class="co">#&gt; 6         c    0  0.18479253</span>
-<span class="co">#&gt; 7         c    1  0.81520747</span>
-<span class="co">#&gt; 8         d    0  0.41993900</span>
-<span class="co">#&gt; 9         d    1  0.58006100</span>
-<span class="co">#&gt; 10        e    0  0.42750268</span>
-<span class="co">#&gt; 11        e    1  0.57249732</span>
-<span class="co">#&gt; 12        f    0  0.05398419</span>
-<span class="co">#&gt; 13        f    1  0.94601581</span></pre></div>
-<p>With fuzzy sets we can filter at certain probability (called alpha cut):</p>
-<div class="sourceCode" id="cb11"><pre class="r"><span class="no">fuzzy_set</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">Keep</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span>(<span class="no">fuzzy</span> <span class="kw">&gt;</span> <span class="fl">0.5</span>, <span class="fl">TRUE</span>, <span class="fl">FALSE</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">Keep</span> <span class="kw">==</span> <span class="fl">TRUE</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(-<span class="no">Keep</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="reference/activate.html">activate</a></span>(<span class="st">"sets"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">sets_origin</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Reactome"</span>, <span class="st">"KEGG"</span>))
-<span class="co">#&gt;   elements sets     fuzzy sets_origin</span>
-<span class="co">#&gt; 1        a    B 0.9381182    Reactome</span>
-<span class="co">#&gt; 2        f    B 0.9460158    Reactome</span>
-<span class="co">#&gt; 3        c    A 0.8152075        KEGG</span>
-<span class="co">#&gt; 4        d    A 0.5800610        KEGG</span>
-<span class="co">#&gt; 5        e    A 0.5724973        KEGG</span></pre></div>
+<div class="section level2">
+<h2 id="fuzzy-sets">Fuzzy sets<a class="anchor" aria-label="anchor" href="#fuzzy-sets"></a>
+</h2>
+<p>In <a href="https://en.wikipedia.org/wiki/Fuzzy_set" class="external-link">fuzzy sets</a> the elements are vaguely related to the set by a numeric value usually between 0 and 1. This implies that the association is not guaranteed.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">relations</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>sets <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="fl">5</span><span class="op">)</span>, <span class="st">"B"</span>, <span class="st">"B"</span><span class="op">)</span>, </span>
+<span>                        elements <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>, <span class="st">"e"</span>, <span class="st">"a"</span>, <span class="st">"f"</span><span class="op">)</span>,</span>
+<span>                        fuzzy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">fuzzy_set</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/tidySet.html">tidySet</a></span><span class="op">(</span><span class="va">relations</span><span class="op">)</span></span>
+<span><span class="va">fuzzy_set</span></span>
+<span><span class="co">#&gt;   elements sets     fuzzy</span></span>
+<span><span class="co">#&gt; 1        a    A 0.1837246</span></span>
+<span><span class="co">#&gt; 2        b    A 0.4567009</span></span>
+<span><span class="co">#&gt; 3        c    A 0.8152075</span></span>
+<span><span class="co">#&gt; 4        d    A 0.5800610</span></span>
+<span><span class="co">#&gt; 5        e    A 0.5724973</span></span>
+<span><span class="co">#&gt; 6        a    B 0.9381182</span></span>
+<span><span class="co">#&gt; 7        f    B 0.9460158</span></span></code></pre></div>
+<p>The equivalent operations performed on classical sets are possible with fuzzy sets:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/union.html">union</a></span><span class="op">(</span><span class="va">fuzzy_set</span>, sets <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span><span class="op">)</span> </span>
+<span><span class="co">#&gt;   elements sets     fuzzy</span></span>
+<span><span class="co">#&gt; 1        a  A∪B 0.9381182</span></span>
+<span><span class="co">#&gt; 2        b  A∪B 0.4567009</span></span>
+<span><span class="co">#&gt; 3        c  A∪B 0.8152075</span></span>
+<span><span class="co">#&gt; 4        d  A∪B 0.5800610</span></span>
+<span><span class="co">#&gt; 5        e  A∪B 0.5724973</span></span>
+<span><span class="co">#&gt; 6        f  A∪B 0.9460158</span></span>
+<span><span class="co"># Or we can give a name to the new set</span></span>
+<span><span class="fu"><a href="reference/union.html">union</a></span><span class="op">(</span><span class="va">fuzzy_set</span>, sets <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>, name <span class="op">=</span> <span class="st">"D"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   elements sets     fuzzy</span></span>
+<span><span class="co">#&gt; 1        a    D 0.9381182</span></span>
+<span><span class="co">#&gt; 2        b    D 0.4567009</span></span>
+<span><span class="co">#&gt; 3        c    D 0.8152075</span></span>
+<span><span class="co">#&gt; 4        d    D 0.5800610</span></span>
+<span><span class="co">#&gt; 5        e    D 0.5724973</span></span>
+<span><span class="co">#&gt; 6        f    D 0.9460158</span></span>
+<span><span class="co"># Or the intersection</span></span>
+<span><span class="fu"><a href="reference/intersection.html">intersection</a></span><span class="op">(</span><span class="va">fuzzy_set</span>, sets <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   elements sets     fuzzy</span></span>
+<span><span class="co">#&gt; 1        a  A∩B 0.1837246</span></span>
+<span><span class="co"># Keeping the other sets:</span></span>
+<span><span class="fu"><a href="reference/intersection.html">intersection</a></span><span class="op">(</span><span class="va">fuzzy_set</span>, sets <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>, name <span class="op">=</span> <span class="st">"D"</span>, keep <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </span>
+<span><span class="co">#&gt;   elements sets     fuzzy</span></span>
+<span><span class="co">#&gt; 1        a    A 0.1837246</span></span>
+<span><span class="co">#&gt; 2        b    A 0.4567009</span></span>
+<span><span class="co">#&gt; 3        c    A 0.8152075</span></span>
+<span><span class="co">#&gt; 4        d    A 0.5800610</span></span>
+<span><span class="co">#&gt; 5        e    A 0.5724973</span></span>
+<span><span class="co">#&gt; 6        a    B 0.9381182</span></span>
+<span><span class="co">#&gt; 7        f    B 0.9460158</span></span>
+<span><span class="co">#&gt; 8        a    D 0.1837246</span></span></code></pre></div>
+<p>Assuming that the fuzzy value is a probability, we can calculate which is the probability of having several elements:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># A set could be empty</span></span>
+<span><span class="fu"><a href="reference/set_size.html">set_size</a></span><span class="op">(</span><span class="va">fuzzy_set</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   sets size probability</span></span>
+<span><span class="co">#&gt; 1    A    0 0.014712455</span></span>
+<span><span class="co">#&gt; 2    A    1 0.120607154</span></span>
+<span><span class="co">#&gt; 3    A    2 0.318386944</span></span>
+<span><span class="co">#&gt; 4    A    3 0.357078627</span></span>
+<span><span class="co">#&gt; 5    A    4 0.166499731</span></span>
+<span><span class="co">#&gt; 6    A    5 0.022715089</span></span>
+<span><span class="co">#&gt; 7    B    0 0.003340637</span></span>
+<span><span class="co">#&gt; 8    B    1 0.109184679</span></span>
+<span><span class="co">#&gt; 9    B    2 0.887474684</span></span>
+<span><span class="co"># The more probable size of the sets:</span></span>
+<span><span class="fu"><a href="reference/set_size.html">set_size</a></span><span class="op">(</span><span class="va">fuzzy_set</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">sets</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">probability</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">probability</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 2 × 3</span></span>
+<span><span class="co">#&gt; # Groups:   sets [2]</span></span>
+<span><span class="co">#&gt;   sets   size probability</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;dbl&gt;       &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 A         3       0.357</span></span>
+<span><span class="co">#&gt; 2 B         2       0.887</span></span>
+<span><span class="co"># Probability of belonging to several sets:</span></span>
+<span><span class="fu"><a href="reference/element_size.html">element_size</a></span><span class="op">(</span><span class="va">fuzzy_set</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    elements size probability</span></span>
+<span><span class="co">#&gt; 1         a    0  0.05051256</span></span>
+<span><span class="co">#&gt; 2         a    1  0.77713204</span></span>
+<span><span class="co">#&gt; 3         a    2  0.17235540</span></span>
+<span><span class="co">#&gt; 4         b    0  0.54329910</span></span>
+<span><span class="co">#&gt; 5         b    1  0.45670090</span></span>
+<span><span class="co">#&gt; 6         c    0  0.18479253</span></span>
+<span><span class="co">#&gt; 7         c    1  0.81520747</span></span>
+<span><span class="co">#&gt; 8         d    0  0.41993900</span></span>
+<span><span class="co">#&gt; 9         d    1  0.58006100</span></span>
+<span><span class="co">#&gt; 10        e    0  0.42750268</span></span>
+<span><span class="co">#&gt; 11        e    1  0.57249732</span></span>
+<span><span class="co">#&gt; 12        f    0  0.05398419</span></span>
+<span><span class="co">#&gt; 13        f    1  0.94601581</span></span></code></pre></div>
+<p>With fuzzy sets we can filter at certain levels (called alpha cut):</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">fuzzy_set</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">fuzzy</span> <span class="op">&gt;</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="reference/activate.html">activate</a></span><span class="op">(</span><span class="st">"sets"</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>sets_origin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Reactome"</span>, <span class="st">"KEGG"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   elements sets     fuzzy sets_origin</span></span>
+<span><span class="co">#&gt; 1        c    A 0.8152075    Reactome</span></span>
+<span><span class="co">#&gt; 2        d    A 0.5800610    Reactome</span></span>
+<span><span class="co">#&gt; 3        e    A 0.5724973    Reactome</span></span>
+<span><span class="co">#&gt; 4        a    B 0.9381182        KEGG</span></span>
+<span><span class="co">#&gt; 5        f    B 0.9460158        KEGG</span></span></code></pre></div>
 </div>
 </div>
-<div id="related-packages" class="section level1">
-<h1 class="hasAnchor">
-<a href="#related-packages" class="anchor"></a>Related packages</h1>
+<div class="section level1">
+<h1 id="related-packages">Related packages<a class="anchor" aria-label="anchor" href="#related-packages"></a>
+</h1>
 <p>There are several other packages related to sets, which partially overlap with BaseSet functionality:</p>
 <ul>
-<li><p><a href="https://CRAN.R-project.org/package=sets">sets</a><br>
+<li><p><a href="https://CRAN.R-project.org/package=sets" class="external-link"><code>{sets}</code></a><br>
 Implements a more generalized approach, that can store functions or lists as an element of a set (while BaseSet only allows to store a character or factor), but it is harder to operate in a tidy/long way. Also the operations of intersection and union need to happen between two different objects, while a single TidySet object (the class implemented in BaseSet) can store one or thousands of sets.</p></li>
-<li><p><a href="https://bioconductor.org/packages/GSEABase">GSEABase</a><br>
+<li><p><a href="https://bioconductor.org/packages/GSEABase/" class="external-link"><code>{GSEABase}</code></a><br>
 Implements a class to store sets and related information, but it doesn’t allow to store fuzzy sets and it is also quite slow as it creates several classes for annotating each set.</p></li>
-<li><p><a href="https://bioconductor.org/packages/BiocSets">BiocSets</a><br>
-Implements a tidy class for sets but does not handle fuzzy sets. It also has less functionality to operate with sets, like power sets and cartesian product. BiocSets was influenced by the development of this package.</p></li>
-<li><p><a href="https://CRAN.R-project.org/package=hierarchicalSets">hierarchicalSets</a><br>
+<li><p><a href="https://bioconductor.org/packages/BiocSet/" class="external-link"><code>{BiocSet}</code></a><br>
+Implements a tidy class for sets but does not handle fuzzy sets. It also has less functionality to operate with sets, like power sets and cartesian product. BiocSet was influenced by the development of this package.</p></li>
+<li><p><a href="https://CRAN.R-project.org/package=hierarchicalSets" class="external-link"><code>{hierarchicalSets}</code></a><br>
 This package is focused on clustering of sets that are inside other sets and visualizations. However, BaseSet is focused on storing and manipulate sets including hierarchical sets.</p></li>
-<li><p><a href="https://cran.r-project.org/package=set6">set6</a> This package implements different classes for different type of sets including fuzzy sets, conditional sets. However, it doesn’t handle information associated to elements, sets or relationship.</p></li>
+<li><p><a href="https://cran.r-project.org/package=set6" class="external-link"><code>{set6}</code></a> This package implements different classes for different type of sets including fuzzy sets, conditional sets. However, it doesn’t handle information associated to elements, sets or relationship.</p></li>
 </ul>
 </div>
-<div id="code-of-conduct" class="section level1">
-<h1 class="hasAnchor">
-<a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h1>
-<p>Please note that the BaseSet project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<div class="section level1">
+<h1 id="why-this-package">Why this package?<a class="anchor" aria-label="anchor" href="#why-this-package"></a>
+</h1>
+<p>On bioinformatics when looking for the impact of an experiment enrichment methods are applied. This involves obtaining several sets of genes from several resources and methods. Usually these curated sets of genes are taken at face value. However, there are several resources of sets and they <a href="https://doi.org/10.1186/1471-2105-14-112" class="external-link">do not agree between them</a>, regardless they are used without considering any uncertainty on sets composition.</p>
+<p>Fuzzy theory has long studied sets whose elements have degrees of membership and/or uncertainty. Therefore one way to improve the methods involve using fuzzy methods and logic on this field. As I couldn’t find any package that provided methods for this I set on creating it (after trying to <a href="https://github.com/llrs/GSEAdv" class="external-link">expand</a> the existing one I knew).</p>
+<p>This package is intended to be easy to use for someone who is working with collections of sets but flexible about the methods and logic it can use. To be consistent, the standard fuzzy logic is the default but it might not be the right one for your data. Consider changing the defaults to match with the framework the data was obtained with.</p>
+</div>
+<div class="section level1">
+<h1 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
+</h1>
+<p>Please note that this package is released with a <a href="https://ropensci.org/code-of-conduct/" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <div class="links">
-<h2>Links</h2>
+  </main><aside class="col-md-3"><div class="links">
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/llrs/BaseSet/">https://​github.com/​llrs/​BaseSet/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/llrs/BaseSet/issues">https://​github.com/​llrs/​BaseSet/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=BaseSet" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/ropensci/BaseSet/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/ropensci/BaseSet/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
-<div class="community">
-<h2>Community</h2>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
+<li><a href="authors.html#citation">Citing BaseSet</a></li>
 </ul>
 </div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Lluís  Revilla Sancho <br><small class="roles"> Author, maintainer </small>  </li>
+<li>
+<a href="https://llrs.dev" class="external-link">Lluís Revilla Sancho</a> <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0001-9747-2570" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://travis-ci.org/llrs/BaseSet"><img src="https://travis-ci.org/llrs/BaseSet.svg?branch=master" alt="Travis build status"></a></li>
-<li><a href="https://github.com/llrs/BaseSet/actions?query=workflow%3AR-CMD-check"><img src="https://github.com/llrs/BaseSet/workflows/R-CMD-check/badge.svg" alt="Actions CI"></a></li>
-<li><a href="https://codecov.io/github/llrs/BaseSet?branch=master"><img src="https://codecov.io/gh/llrs/BaseSet/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
-<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
-<li><a href="https://www.repostatus.org/#active"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project has reached a stable, usable state and is being actively developed."></a></li>
-<li><a href="https://github.com/ropensci/software-review/issues/359"><img src="https://badges.ropensci.org/359_status.svg"></a></li>
-</ul>
-</div>
-</div>
+
+
+  </aside>
 </div>
 
 
-      <footer><div class="copyright">
-  <p>Developed by Lluís  Revilla Sancho.</p>
+    <footer><!-- begin footer --><div class="footer">
+    <div class="container">
+        <div class="row start top-4 bottom-8">
+            <div class="col-2"> <img id="footerlogo" src="https://ropensci.org/img/icon_short_white.svg">
 </div>
-
-<div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+            <div class="col-10">
+                <div class="row">
+                    <div class="col-md-4 col-xs-6">
+                        <a href="https://github.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-github"></div></a>
+                        <a href="https://github.com/ropenscilabs" target="_blank" class="external-link"><div class="icon fa fa-flask"></div></a>
+                        <a href="https://hachyderm.io/@ropensci" target="_blank" class="external-link"><div class="icon fab fa-mastodon"></div></a>
+                        <a href="https://vimeo.com/ropensci" target="_blank" class="external-link"><div class="icon fab fa-vimeo"></div></a>
+                    </div>
+                </div>
+                <div class="row top-4">
+                    <div class="col-md-2 col-sm-4">
+                        <ul>
+<h5 class="bottom-2">About</h5>
+                            <li><a href="https://ropensci.org/about" class="external-link">About rOpenSci</a></li>
+                            <li><a href="https://ropensci.org/software-review" class="external-link">Software Review</a></li>
+                            <li><a href="https://ropensci.org/about#team" class="external-link">Our Team</a></li>
+                            <li><a href="https://ropensci.org/careers" class="external-link">Jobs</a></li>
+                            <li><a href="https://ropensci.org/donate" class="external-link">Donate</a></li>
+                            <li><a href="https://ropensci.org/contact" class="external-link">Contact Us</a></li>
+                        </ul>
 </div>
+                    <div class="col-md-3 col-sm-4">
+                        <ul>
+<h5 class="bottom-2">Community</h5>
+                            <li><a href="https://ropensci.org/community/" class="external-link">Our Community</a></li>
+                            <li><a href="https://ropensci.org/commcalls/" class="external-link">Community calls</a></li>
+                            <li><a href="https://ropensci.org/events/" class="external-link">Events</a></li>
+                            <li><a href="https://discuss.ropensci.org/" class="external-link">Join the Discussion</a></li>
+                            <li><a href="https://ropensci.org/code-of-conduct" class="external-link">Code of conduct</a></li>
+                        </ul>
+</div>
+                    <div class="col-md-2 col-sm-4">
+                        <ul>
+<h5 class="bottom-2">Resources</h5>
+                            <li><a href="https://ropensci.org/packages/" class="external-link">Packages</a></li>
+                            <li><a href="https://ropensci.org/usecases/" class="external-link">Use Cases</a></li>
+                            <li><a href="https://ropensci.org/talks-papers/" class="external-link">Talks &amp; Publications</a></li>
+                            <li><a href="https://docs.ropensci.org/" class="external-link">Documentation</a></li>
+                            <li><a href="https://ropensci.org/news/" class="external-link">Newsletter</a></li>
+                            <li><a href="https://ropensci.org/how-to-cite-ropensci/" class="external-link">Cite rOpenSci</a></li>
+                        </ul>
+</div>
+                    <div class="col-md-4 col-xs-12">
+                        <h5 class="bottom-2"></h5>
 
-      </footer>
+                        <p>rOpenSci is a fiscally sponsored project of <a href="http://numfocus.org" class="external-link">NumFOCUS</a>.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- / end footer -->
+
+
+    </footer>
 </div>
 
   
 
+  
 
   </body>
 </html>

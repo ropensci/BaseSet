@@ -1,9 +1,12 @@
-pandoc: '2.2'
-pkgdown: 1.5.1
+pandoc: 2.19.2
+pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
+  BaseSet: BaseSet.html
   advanced: advanced.html
-  basic: basic.html
   fuzzy: fuzzy.html
-last_built: 2020-06-30T08:03Z
+last_built: 2023-08-23T17:53Z
+urls:
+  reference: https://docs.ropensci.org/BaseSet/reference
+  article: https://docs.ropensci.org/BaseSet/articles
 
