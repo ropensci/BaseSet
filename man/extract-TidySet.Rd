@@ -25,7 +25,7 @@
 \arguments{
 \item{x}{A TidySet object.}
 
-\item{name}{The data about the TidysSet object to extract.}
+\item{name}{The data about the TidySet object to extract.}
 
 \item{value}{The value to overwrite}
 
@@ -56,6 +56,7 @@ TS <- tidySet(list(A = letters[1:5], B = letters[6]))
 TS[, "sets", "origin"] <- sample(c("random", "non-random"), 2, replace = TRUE)
 TS[, "sets", "type"] <- c("Fantastic", "Wonderful")
 # This produces a warning
+# TS$description <- c("What", "can", "I", "say", "now", "?")
 # Better to be explicit:
 TS[, "relations", "description"] <- c("What", "can", "I", "say", "now", "?")
 relations(TS)

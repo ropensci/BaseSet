@@ -6,7 +6,7 @@ NULL
 #' Operators acting on TidySet to extract or replace parts.
 #' They are designed to resemble the basic operators.
 #' @param x A TidySet object.
-#' @param name The data about the TidysSet object to extract.
+#' @param name The data about the TidySet object to extract.
 #' @param value The value to overwrite
 #' @param i Which rows do you want to keep? By default all.
 #' @param j Which slot do you want to extract? One of "sets", "elements" or
@@ -24,7 +24,7 @@ NULL
 #' TS[, "sets", "origin"] <- sample(c("random", "non-random"), 2, replace = TRUE)
 #' TS[, "sets", "type"] <- c("Fantastic", "Wonderful")
 #' # This produces a warning
-#  TS$description <- c("What", "can", "I", "say", "now", "?")
+#' # TS$description <- c("What", "can", "I", "say", "now", "?")
 #' # Better to be explicit:
 #' TS[, "relations", "description"] <- c("What", "can", "I", "say", "now", "?")
 #' relations(TS)
@@ -116,6 +116,10 @@ setMethod("$<-", "TidySet",
                   pos <- p_length
               }
               if (length(p_length) != 1 && length(p_named) == 1)  {
+                  pos <- p_named
+              }
+
+              if ( length(p_named) == 1 && length(p_length) == 1) {
                   pos <- p_named
               }
 

@@ -26,6 +26,12 @@ test_that("$<- works", {
   expect_no_error(TS$comp <- runif(10))
 })
 
+test_that("$<- works well", {
+    TS <- tidySet(list(A = letters[1:5], B = letters[6]))
+    TS[, "sets", "origin"] <- sample(c("random", "non-random"), 2, replace = TRUE)
+    expect_no_error(TS$origin <- c("BCN", "BDN"))
+})
+
 ## [ ####
 test_that("[i, j, k] subset works", {
     TS <- tidySet(list(A = letters[1:5], B = letters[6]))
