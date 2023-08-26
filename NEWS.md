@@ -1,5 +1,7 @@
 # BaseSet (development version)
 
+* Fix a problem with `$<-` when the length did match a slot but the name didn't.
+
 # BaseSet 0.9.0
 
 * `tidy()` now defaults to `tidySet()`.

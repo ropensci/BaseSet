@@ -16,16 +16,24 @@ test_that("$<- works", {
   expect_equal(TS$adafd, LETTERS[1:6])
   expect_equal(relations(TS)$adafd, LETTERS[1:6])
 
+
+  l <- list(A = "1",
+            B = c("1", "2"),
+            C = c("2", "3", "4"),
+            D = c("1", "2", "3", "4")
+  )
+  TS <- tidySet(l)
+  expect_no_error(TS$comp <- runif(10))
 })
 
 ## [ ####
 test_that("[i, j, k] subset works", {
-  TS <- tidySet(list(A = letters[1:5], B = letters[6]))
+    TS <- tidySet(list(A = letters[1:5], B = letters[6]))
 
-  expect_warning(TS$abcd <- sample(c("ha", "he"), size = 6, replace = TRUE))
+    expect_warning(TS$abcd <- sample(c("ha", "he"), size = 6, replace = TRUE))
 
-  expect_error(TS[, c(TRUE, FALSE, TRUE)], "j only accepts:")
-  expect_equal(ncol(relations(TS[1, ])), 4)
+    expect_error(TS[, c(TRUE, FALSE, TRUE)], "j only accepts:")
+    expect_equal(ncol(relations(TS[1, ])), 4)
 
   first_element <- TS[1, "elements", ]
   expect_equal(nElements(first_element), 1)

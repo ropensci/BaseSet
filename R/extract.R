@@ -81,7 +81,6 @@ setMethod("$<-", "TidySet",
                                 fuzzy = 2,
                                 sets = 3,
                                 NA)
-
               if (is.na(p_named)) {
                   p_named <- in_slots(x, function(x, y){
                       y %in% colnames(x)},
@@ -93,6 +92,7 @@ setMethod("$<-", "TidySet",
                   pos <- 2
                   value <- rep(value, nRelations(x))
               }
+
               #  Not tested with a relation documented multiple times!
               if (length(p_named) > 1 && length(p_length) > 1) {
                   p_named <- intersect(p_named, p_length)
@@ -110,7 +110,12 @@ setMethod("$<-", "TidySet",
                               call. = FALSE)
                       pos <- sample(p_named, 1)
                   }
-              } else {
+              }
+
+              if (length(p_named) != 1 && length(p_length) == 1)  {
+                  pos <- p_length
+              }
+              if (length(p_length) != 1 && length(p_named) == 1)  {
                   pos <- p_named
               }
 
