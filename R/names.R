@@ -129,3 +129,54 @@ setMethod("name_sets<-",
         object
     }
 )
+
+#' Dimnames of a TidySet
+#'
+#' Retrieve the column names of the slots of a TidySet.
+#' @param x A TidySet object.
+#' @returns A list with the names of the columns of the sets, elements and
+#' relations.
+#' @seealso [names()]
+#' @export
+#' @examples
+#' relations <- data.frame(
+#'     sets = c(rep("a", 5), "b"),
+#'     elements = letters[seq_len(6)],
+#'     fuzzy = runif(6)
+#' )
+#' TS <- tidySet(relations)
+#' dimnames(TS)
+dimnames.TidySet <- function(x) {
+    list(sets = colnames(x@sets),
+    elements = colnames(x@elements),
+    relations = colnames(x@relations))
+}
+
+
+#' Names of a TidySet
+#'
+#' Retrieve the column names of a slots of a TidySet.
+#' @param x A TidySet object.
+#' @returns A list with the names of the columns of the sets, elements and
+#' relations.
+#' @seealso [dimnames()]
+#' @export
+#' @examples
+#' relations <- data.frame(
+#'     sets = c(rep("a", 5), "b"),
+#'     elements = letters[seq_len(6)],
+#'     fuzzy = runif(6)
+#' )
+#' TS <- tidySet(relations)
+#' names(TS)
+#' names(activate(TS, "sets"))
+names.TidySet <- function(x) {
+    if (is.null(active(x))) {
+        dimnames(x)
+    } else {
+        switch(active(x),
+               sets = colnames(x@sets),
+               elements = colnames(x@elements),
+               relations = colnames(x@relations))
+    }
+}
