@@ -140,10 +140,7 @@ setMethod("$<-", "TidySet",
 #' @export
 setMethod("[", "TidySet",
           function(x, i, j, k, ..., drop = TRUE) {
-              if (!missing(i) && is.character(i)) {
-                  stop("TidySet does not accept characters as `i` index for `[`.",
-                       "\nDid you meant to use [[ instead?", call. = FALSE)
-              }
+
               stopifnot(is.logical(drop))
               if (missing(j)) {
                   j <- "relations"
@@ -151,10 +148,27 @@ setMethod("[", "TidySet",
               if (length(j) > 1 || is.na(j)) {
                   stop("j only accepts: 'elements', 'sets' and ' relations'")
               }
+
+              # TODO allow characters that match with the j component!
+              if (!missing(i) && is.character(i) && j == "relations") {
+                  stop("TidySet does not accept characters as `i` index for relations.",
+                       "\nUse row positions instead.", call. = FALSE)
+              }
               j <- match.arg(j, c("elements", "sets", "relations"))
+
+              if (!missing(i) && is.character(i)) {
+                  method <- switch(j,
+                                   "elements" = name_elements,
+                                   "sets" = name_sets)
+                  i <- match(i, method(x))
+              }
+
               s <-  slot(x, j)
+              # browser()
               if (missing(k)) {
-                  k <- seq_len(ncol(s))
+                  k <- colnames(s)
+              } else if (!any(k %in% colnames(s))) {
+                  stop("Some column are not present in ", sQuote(j), ".")
               }
 
               k <- keep_columns(j, k)
@@ -184,10 +198,26 @@ setMethod("[<-", "TidySet",
                   j <- "relations"
               }
               j <- match.arg(j, c("elements", "sets", "relations"))
+
+              if (!missing(i) && is.character(i) && j == "relations") {
+                  stop("TidySet does not accept characters as `i` index for relations.",
+                       "\nUse row positions instead.", call. = FALSE)
+              }
+
+              j <- match.arg(j, c("elements", "sets", "relations"))
               s <-  slot(x, j)
+
+              if (!missing(i) && is.character(i)) {
+                  method <- switch(j,
+                                   "elements" = name_elements,
+                                   "sets" = name_sets)
+                  i <- match(i, method(x))
+              }
+
               if (missing(k)) {
                   k <- 1
               }
+
               if (length(k) == 1 && NCOL(value) > 1) {
                   if (missing(i)) {
                       i <- ""
@@ -196,7 +226,8 @@ setMethod("[<-", "TidySet",
                   stop("Assigning multiple columns to a single position!\nUse one of:\n",
                        "add_column(TS, '", j, "', value) or ",msg)
               }
-              s[i, k, ...] <- value
+
+              s[i, k] <- value
               slot(x, j) <- s
               validObject(x)
               x
@@ -217,7 +248,7 @@ setMethod("[[", "TidySet",
               }
               stopifnot(isTRUE(exact) || isFALSE(exact))
               if (missing(j)) {
-                  j <- seq_len(ncol(sets(x)))
+                  j <- colnames(sets(x))
               }
               j <- keep_columns("sets", j)
               ns <- nSets(x)

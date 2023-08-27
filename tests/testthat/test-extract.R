@@ -60,6 +60,24 @@ test_that("[i, j, k] subset works", {
   expect_error(TS[c("A", "B", "B"), ])
 })
 
+test_that("[<- works with names", {
+    TS <- tidySet(list(A = letters[1:5], B = letters[6]))
+    TS[, "sets", "origin"] <- sample(c("random", "non-random"), 2, replace = TRUE)
+    TS[, "sets", "type"] <- c("Fantastic", "Wonderful")
+    expect_no_error(TS[1, "relations", "origin"] <- "ha")
+    expect_no_error(TS[, "relations", "origin"] <- NULL)
+    expect_length(TS$origin, 2)
+})
+
+test_that("[ works with names", {
+    TS <- tidySet(list(A = letters[1:5], B = letters[6]))
+    TS[, "sets", "origin"] <- sample(c("random", "non-random"), 2, replace = TRUE)
+    TS[, "sets", "type"] <- c("Fantastic", "Wonderful")
+    expect_no_error(TS[, "sets", c("type", "origin")] )
+    expect_no_error(TS[1, "sets", "origin"])
+    expect_error(TS[1, "relations", "origin"])
+})
+
 test_that("add_column works as [<-", {
     relations <- data.frame(
         sets = c(rep("a", 5), "b"),
