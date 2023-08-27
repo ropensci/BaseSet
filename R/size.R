@@ -46,10 +46,9 @@ size.TidySet <- function(object, ...) {
         )
         warning(msg)
         return(object)
-    } else {
-        switch(a,
-            elements = element_size(object, ...),
-            sets = set_size(object, ...)
-        )
     }
+
+    switch(a,
+           elements = element_size(object, ...),
+           sets = set_size(object, ...))
 }
