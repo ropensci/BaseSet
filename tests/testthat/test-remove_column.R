@@ -1,5 +1,3 @@
-context("test-remove_column")
-
 test_that("remove_column works", {
     relations <- data.frame(
         sets = c(rep("a", 5), "b"),

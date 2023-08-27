@@ -10,8 +10,9 @@
 \item{x}{A TidySet object.}
 }
 \value{
-A list with the names of the columns of the sets, elements and
+A vector with the names of the present columns of the sets, elements and
 relations.
+If a slot is active it only returns the names of that slot.
 }
 \description{
 Retrieve the column names of a slots of a TidySet.

@@ -1,8 +1,10 @@
 # BaseSet (development version)
 
 * Fix a problem with `$<-` when the length did match a slot but the name didn't.
-* Now it is possible to use sets and elements to subset a TidySet (but not for relations).
-* New `dimnames()` and `names()` functions to discover the names of the slots.
+* Now it is possible to use sets and elements to subset a TidySet (but not for 
+ relations).
+* New `dimnames()` and `names()` functions to discover the names of the data in 
+ the slots.
 
 # BaseSet 0.9.0
 
