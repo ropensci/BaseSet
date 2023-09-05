@@ -7,7 +7,7 @@
 size(object, ...)
 }
 \arguments{
-\item{object}{A TidySet object}
+\item{object}{A TidySet object.}
 
 \item{...}{Character vector with the name of elements or sets you want to
 calculate the size of.}
