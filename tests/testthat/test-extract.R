@@ -86,6 +86,7 @@ test_that("[ with names work when they are factors", {
     TS[c("b", "c"), "elements", "NEW"] <- TRUE
     # A new element c with no relation but property NEW should appear.
     expect_equal(nElements(TS), 5)
+
 })
 
 test_that("add_column works as [<-", {
