@@ -118,17 +118,18 @@ getGAF <- function(x) {
 
     # Modify if they are GeneOntolgoy
     GO <- grepl("^GO:", df$O_ID)
-    df$Aspect[GO] <- gsub("P", "BP", df$Aspect[GO])
-    df$Aspect[GO] <- gsub("C", "CC", df$Aspect[GO])
-    df$Aspect[GO] <- gsub("F", "MF", df$Aspect[GO])
+    df$Aspect[GO] <- gsub("P", "BP", df$Aspect[GO], fixed = TRUE)
+    df$Aspect[GO] <- gsub("C", "CC", df$Aspect[GO], fixed = TRUE)
+    df$Aspect[GO] <- gsub("F", "MF", df$Aspect[GO], fixed = TRUE)
 
     # Classification of the columns according to where do they belong
     elements <- c(1, 2, 3, 10, 11, 12, 13, 17)
     sets <- c(5, 6, 9, 16)
 
     # Change the name of the columns to be ready to use tidySet.data.frame
-    colnames(df) <- gsub("O_ID", "sets", colnames(df))
-    colnames(df) <- gsub("DB_Object_Symbol", "elements", colnames(df))
+    colnames(df) <- gsub("O_ID", "sets", colnames(df), fixed = TRUE)
+    colnames(df) <- gsub("DB_Object_Symbol", "elements", colnames(df),
+                         fixed = TRUE)
 
     TS <- tidySet(df)
 

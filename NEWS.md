@@ -5,6 +5,7 @@
  relations).
 * New `dimnames()` and `names()` functions to discover the names of the data in 
  the slots.
+* Minor changes to `getGAF()` to improve speed.
 
 # BaseSet 0.9.0
 
