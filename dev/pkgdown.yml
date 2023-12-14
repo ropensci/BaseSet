@@ -5,7 +5,7 @@ articles:
   BaseSet: BaseSet.html
   advanced: advanced.html
   fuzzy: fuzzy.html
-last_built: 2023-09-05T18:49Z
+last_built: 2023-12-14T00:14Z
 urls:
   reference: https://docs.ropensci.org/BaseSet/reference
   article: https://docs.ropensci.org/BaseSet/articles
