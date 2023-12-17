@@ -1,5 +1,6 @@
 # BaseSet (development version)
 
+* Now it is possible to list sets and elements that are not present in the relations but might be on the object via its factors: `name_sets()`, `name_elements()`, `nElements()` and `nSets()` gain a `all` argument.
 * Fix a problem with `$<-` when the length did match a slot but the name didn't.
 * Now it is possible to use sets and elements to subset a TidySet (but not for 
  relations).
