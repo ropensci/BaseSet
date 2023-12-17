@@ -12,6 +12,7 @@ NULL
 #'
 #' Given TidySet retrieve the elements or substitute them.
 #' @param object A TidySet object.
+#' @param all A logical value to count all elements or just those present.
 #' @param value Modification of the elements.
 #' @return A \code{data.frame} with information about the elements
 #' @export elements
@@ -27,7 +28,8 @@ methods::setGeneric("elements", function(object) setGeneric("elements"))
 #' Sets of the TidySet
 #'
 #' Given TidySet retrieve the sets or substitute them.
-#' @param object A \code{SetCollection} object.
+#' @param object A \code{TidySet} object.
+#' @param all A logical value whether it should return all sets or only those present.
 #' @param value Modification of the sets.
 #' @return A \code{data.frame} with information from the sets.
 #' @export sets
@@ -57,6 +59,7 @@ methods::setGeneric("is.fuzzy", function(object) standardGeneric("is.fuzzy"))
 #'
 #' Check the number of sets of the TidySet
 #' @param object Object to be coerced or tested.
+#' @param all Logical value to count all sets.
 #' @export nSets
 #' @family count functions
 #' @family methods
@@ -64,12 +67,13 @@ methods::setGeneric("is.fuzzy", function(object) standardGeneric("is.fuzzy"))
 #' @examples
 #' TS <- tidySet(list(A = letters[1:2], B = letters[5:7]))
 #' nSets(TS)
-methods::setGeneric("nSets", function(object) standardGeneric("nSets"))
+methods::setGeneric("nSets", function(object, all) standardGeneric("nSets"))
 
 #' Number of elements
 #'
 #' Check the number of elements of the TidySet.
 #' @param object Object to be coerced or tested.
+#' @param all Logical value to count all elements.
 #' @return A numeric value with the number of elements.
 #' @export nElements
 #' @family count functions
@@ -77,7 +81,7 @@ methods::setGeneric("nSets", function(object) standardGeneric("nSets"))
 #' @examples
 #' TS <- tidySet(list(A = letters[1:2], B = letters[5:7]))
 #' nElements(TS)
-methods::setGeneric("nElements", function(object) standardGeneric("nElements"))
+methods::setGeneric("nElements", function(object, all) standardGeneric("nElements"))
 
 #' Number of relations
 #'
@@ -215,6 +219,8 @@ methods::setGeneric("rename_elements", function(object, old, new)
 #'
 #' Retrieve the name of the sets.
 #' @param object A TidySet object.
+#' @param all A logical value if all sets should be reported or only those present.
+#' @param ... Other arguments passed to methods.
 #' @param value A character with the new names for the sets.
 #' @return A \code{TidySet} object.
 #' @family names
@@ -228,7 +234,7 @@ methods::setGeneric("rename_elements", function(object, old, new)
 #' )
 #' TS <- tidySet(relations)
 #' name_sets(TS)
-methods::setGeneric("name_sets", function(object)
+methods::setGeneric("name_sets", function(object, all, ...)
       standardGeneric("name_sets")
 )
 
@@ -236,6 +242,8 @@ methods::setGeneric("name_sets", function(object)
 #'
 #' Retrieve the name of the elements.
 #' @param object A TidySet object.
+#' @param all A logical value if all elements should be reported or only those present.
+#' @param ... Other arguments passed to methods.
 #' @param value A character with the new names for the elements.
 #' @return A \code{TidySet} object.
 #' @family names
@@ -248,7 +256,7 @@ methods::setGeneric("name_sets", function(object)
 #' )
 #' TS <- tidySet(relations)
 #' name_elements(TS)
-methods::setGeneric("name_elements", function(object)
+methods::setGeneric("name_elements", function(object, all, ...)
       standardGeneric("name_elements")
 )
 
@@ -256,6 +264,8 @@ methods::setGeneric("name_elements", function(object)
 #'
 #' Rename elements.
 #' @param object A TidySet object.
+#' @param all A logical value whether to return all elements or just those present.
+#' @param ... Other arguments passed to methods.
 #' @param value A character with the new names for the elements.
 #' @return A \code{TidySet} object.
 #' @family names
@@ -272,7 +282,7 @@ methods::setGeneric("name_elements", function(object)
 #' TS <- tidySet(relations)
 #' TS
 #' name_elements(TS) <- letters[1:6]
-methods::setGeneric("name_elements<-", function(object, value)
+methods::setGeneric("name_elements<-", function(object, all, ..., value)
       standardGeneric("name_elements<-")
 )
 
@@ -280,6 +290,8 @@ methods::setGeneric("name_elements<-", function(object, value)
 #'
 #' Rename sets.
 #' @param object A TidySet object.
+#' @param all A logical value whether it should return all sets present.
+#' @param ... Other arguments passed to methods.
 #' @param value A character with the new names for the sets.
 #' @return A \code{TidySet} object.
 #' @family names
@@ -296,7 +308,7 @@ methods::setGeneric("name_elements<-", function(object, value)
 #' TS <- tidySet(relations)
 #' TS
 #' name_sets(TS) <- LETTERS[1:2]
-methods::setGeneric("name_sets<-", function(object, value)
+methods::setGeneric("name_sets<-", function(object, all, ..., value)
       standardGeneric("name_sets<-")
 )
 

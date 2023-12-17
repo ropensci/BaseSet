@@ -6,7 +6,8 @@
 \alias{sets,TidySet-method}
 \alias{sets<-,TidySet-method}
 \alias{replace_sets}
-\alias{nSets,TidySet-method}
+\alias{nSets,TidySet,missing-method}
+\alias{nSets,TidySet,logical-method}
 \title{Sets of the TidySet}
 \usage{
 sets(object)
@@ -19,12 +20,16 @@ sets(object) <- value
 
 replace_sets(object, value)
 
-\S4method{nSets}{TidySet}(object)
+\S4method{nSets}{TidySet,missing}(object)
+
+\S4method{nSets}{TidySet,logical}(object, all)
 }
 \arguments{
-\item{object}{A \code{SetCollection} object.}
+\item{object}{A \code{TidySet} object.}
 
 \item{value}{Modification of the sets.}
+
+\item{all}{A logical value whether it should return all sets or only those present.}
 }
 \value{
 A \code{data.frame} with information from the sets.
@@ -38,7 +43,9 @@ Given TidySet retrieve the sets or substitute them.
 
 \item \code{sets(TidySet) <- value}: Modify the sets information
 
-\item \code{nSets(TidySet)}: Return the number of sets
+\item \code{nSets(object = TidySet, all = missing)}: Return the number of sets
+
+\item \code{nSets(object = TidySet, all = logical)}: Return the number of sets
 
 }}
 \examples{

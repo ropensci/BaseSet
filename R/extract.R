@@ -140,7 +140,6 @@ setMethod("$<-", "TidySet",
 #' @export
 setMethod("[", "TidySet",
           function(x, i, j, k, ..., drop = TRUE) {
-
               stopifnot(is.logical(drop))
               if (missing(j)) {
                   j <- "relations"
@@ -162,9 +161,7 @@ setMethod("[", "TidySet",
                                    "sets" = name_sets)
                   i <- match(i, method(x))
               }
-
               s <-  slot(x, j)
-              # browser()
               if (missing(k)) {
                   k <- colnames(s)
               } else if (!any(k %in% colnames(s))) {
@@ -211,9 +208,13 @@ setMethod("[<-", "TidySet",
                   method <- switch(j,
                                    "elements" = name_elements,
                                    "sets" = name_sets)
-                  i <- match(i, method(x))
+                  iy <- match(i, method(x, FALSE))
+                  if (anyNA(iy)) {
+                      iy[is.na(iy)] <- nElements(x, FALSE) + seq_len(sum(is.na(iy)))
+                      s[iy, j] <- i
+                      i <- iy
+                  }
               }
-
               if (missing(k)) {
                   k <- 1
               }

@@ -4,10 +4,14 @@
 \alias{name_elements<-}
 \title{Rename elements}
 \usage{
-name_elements(object) <- value
+name_elements(object, all, ...) <- value
 }
 \arguments{
 \item{object}{A TidySet object.}
+
+\item{all}{A logical value whether to return all elements or just those present.}
+
+\item{...}{Other arguments passed to methods.}
 
 \item{value}{A character with the new names for the elements.}
 }

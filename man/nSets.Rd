@@ -4,10 +4,12 @@
 \alias{nSets}
 \title{Number of sets}
 \usage{
-nSets(object)
+nSets(object, all)
 }
 \arguments{
 \item{object}{Object to be coerced or tested.}
+
+\item{all}{Logical value to count all sets.}
 }
 \value{
 The number of sets present.

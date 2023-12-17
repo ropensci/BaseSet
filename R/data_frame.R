@@ -2,7 +2,6 @@
 NULL
 
 setAs("TidySet", "data.frame", function(from) {
-    # browser()
     r <- from@relations
     s <- merge(r, from@sets,
         by.x = "sets", by.y = "sets", sort = FALSE,

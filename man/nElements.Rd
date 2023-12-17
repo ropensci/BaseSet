@@ -4,10 +4,12 @@
 \alias{nElements}
 \title{Number of elements}
 \usage{
-nElements(object)
+nElements(object, all)
 }
 \arguments{
 \item{object}{Object to be coerced or tested.}
+
+\item{all}{Logical value to count all elements.}
 }
 \value{
 A numeric value with the number of elements.

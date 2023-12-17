@@ -17,7 +17,6 @@ setMethod("c", "TidySet",
               dc <- lapply(l[!null], function(x){
                   as.data.frame(tidySet(x))
               })
-              # browser()
               m <- function(x, y) {
                   merge(x, y, all = TRUE, sort = FALSE)
               }

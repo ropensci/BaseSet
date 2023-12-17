@@ -45,8 +45,19 @@ replace_sets.TidySet <- function(object, value) {
 #' nSets(TS)
 #' nSets(TS2)
 setMethod("nSets",
-    signature = signature(object = "TidySet"),
+    signature = signature(object = "TidySet", all = "missing"),
     function(object) {
-        nrow(slot(object, "sets"))
+        # Count all sets even if the levels are not present
+        length(name_sets(object, TRUE))
+    }
+)
+
+#' @describeIn sets Return the number of sets
+#' @export
+setMethod("nSets",
+    signature = signature(object = "TidySet", all = "logical"),
+    function(object, all) {
+        # Count all sets even if the levels are not present
+        length(name_sets(object, all))
     }
 )

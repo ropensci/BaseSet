@@ -6,7 +6,8 @@
 \alias{elements,TidySet-method}
 \alias{elements<-,TidySet-method}
 \alias{replace_elements}
-\alias{nElements,TidySet-method}
+\alias{nElements,TidySet,missing-method}
+\alias{nElements,TidySet,logical-method}
 \title{Elements of the TidySet}
 \usage{
 elements(object)
@@ -19,12 +20,16 @@ elements(object) <- value
 
 replace_elements(object, value)
 
-\S4method{nElements}{TidySet}(object)
+\S4method{nElements}{TidySet,missing}(object)
+
+\S4method{nElements}{TidySet,logical}(object, all)
 }
 \arguments{
 \item{object}{A TidySet object.}
 
 \item{value}{Modification of the elements.}
+
+\item{all}{A logical value to count all elements or just those present.}
 }
 \value{
 A \code{data.frame} with information about the elements
@@ -38,7 +43,9 @@ Given TidySet retrieve the elements or substitute them.
 
 \item \code{elements(TidySet) <- value}: Modify the elements
 
-\item \code{nElements(TidySet)}: Return the number of elements
+\item \code{nElements(object = TidySet, all = missing)}: Return the number of elements
+
+\item \code{nElements(object = TidySet, all = logical)}: Return the number of elements
 
 }}
 \examples{

@@ -4,10 +4,14 @@
 \alias{name_sets<-}
 \title{Rename sets}
 \usage{
-name_sets(object) <- value
+name_sets(object, all, ...) <- value
 }
 \arguments{
 \item{object}{A TidySet object.}
+
+\item{all}{A logical value whether it should return all sets present.}
+
+\item{...}{Other arguments passed to methods.}
 
 \item{value}{A character with the new names for the sets.}
 }

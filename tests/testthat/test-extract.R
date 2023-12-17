@@ -85,8 +85,10 @@ test_that("[ with names work when they are factors", {
     TS <- tidySet(relations)
     TS[c("b", "c"), "elements", "NEW"] <- TRUE
     # A new element c with no relation but property NEW should appear.
-    expect_equal(nElements(TS), 5)
-
+    expect_equal(nElements(TS), 10)
+    expect_equal(nElements(TS, FALSE), 5)
+    TS2 <- add_relations(TS, elements = "c", sets = "C")
+    TS["c", "relations", "sets"] <- "C"
 })
 
 test_that("add_column works as [<-", {

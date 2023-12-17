@@ -4,8 +4,8 @@
 \alias{extract-TidySet}
 \alias{$,TidySet-method}
 \alias{$<-,TidySet-method}
-\alias{[,TidySet,ANY,ANY,ANY-method}
-\alias{[<-,TidySet,ANY,ANY,ANY-method}
+\alias{[,TidySet-method}
+\alias{[<-,TidySet-method}
 \alias{[[,TidySet-method}
 \alias{[[<-,TidySet-method}
 \title{Extract}
@@ -14,9 +14,9 @@
 
 \S4method{$}{TidySet}(x, name) <- value
 
-\S4method{[}{TidySet,ANY,ANY,ANY}(x, i, j, k, ..., drop = TRUE)
+\S4method{[}{TidySet}(x, i, j, k, ..., drop = TRUE)
 
-\S4method{[}{TidySet,ANY,ANY,ANY}(x, i, j, k, ...) <- value
+\S4method{[}{TidySet}(x, i, j, k, ...) <- value
 
 \S4method{[[}{TidySet}(x, i, j, ..., exact = TRUE)
 

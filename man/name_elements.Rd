@@ -2,18 +2,28 @@
 % Please edit documentation in R/AllGenerics.R, R/names.R
 \name{name_elements}
 \alias{name_elements}
-\alias{name_elements,TidySet-method}
-\alias{name_elements<-,TidySet,characterORfactor-method}
+\alias{name_elements,TidySet,logical-method}
+\alias{name_elements,TidySet,missing-method}
+\alias{name_elements<-,TidySet,logical,characterORfactor-method}
+\alias{name_elements<-,TidySet,missing,characterORfactor-method}
 \title{Name elements}
 \usage{
-name_elements(object)
+name_elements(object, all, ...)
 
-\S4method{name_elements}{TidySet}(object)
+\S4method{name_elements}{TidySet,logical}(object, all = TRUE)
 
-\S4method{name_elements}{TidySet,characterORfactor}(object) <- value
+\S4method{name_elements}{TidySet,missing}(object, all)
+
+\S4method{name_elements}{TidySet,logical,characterORfactor}(object, all) <- value
+
+\S4method{name_elements}{TidySet,missing,characterORfactor}(object) <- value
 }
 \arguments{
 \item{object}{A TidySet object.}
+
+\item{all}{A logical value if all elements should be reported or only those present.}
+
+\item{...}{Other arguments passed to methods.}
 
 \item{value}{A character with the new names for the elements.}
 }
@@ -25,9 +35,13 @@ Retrieve the name of the elements.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{name_elements(TidySet)}: Name elements
+\item \code{name_elements(object = TidySet, all = logical)}: Name elements
 
-\item \code{name_elements(object = TidySet) <- value}: Rename elements
+\item \code{name_elements(object = TidySet, all = missing)}: Name elements
+
+\item \code{name_elements(object = TidySet, all = logical) <- value}: Rename elements
+
+\item \code{name_elements(object = TidySet, all = missing) <- value}: Rename elements
 
 }}
 \examples{

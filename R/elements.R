@@ -44,8 +44,19 @@ replace_elements.TidySet <- function(object, value) {
 #' nElements(TS)
 #' nElements(TS2)
 setMethod("nElements",
-    signature = signature(object = "TidySet"),
+    signature = signature(object = "TidySet", all = "missing"),
     function(object) {
-        nrow(slot(object, "elements"))
+        # Use all the elements even if factors that are not present
+        length(name_elements(object, TRUE))
+    }
+)
+
+#' @describeIn elements Return the number of elements
+#' @export
+setMethod("nElements",
+    signature = signature(object = "TidySet", all = "logical"),
+    function(object, all) {
+        # Use all the elements even if factors that are not present
+        length(name_elements(object, all))
     }
 )
