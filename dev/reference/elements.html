@@ -79,8 +79,11 @@
 <span></span>
 <span><span class="fu">replace_elements</span><span class="op">(</span><span class="va">object</span>, <span class="va">value</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># S4 method for TidySet</span></span>
-<span><span class="fu"><a href="nElements.html">nElements</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co"># S4 method for TidySet,missing</span></span>
+<span><span class="fu"><a href="nElements.html">nElements</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for TidySet,logical</span></span>
+<span><span class="fu"><a href="nElements.html">nElements</a></span><span class="op">(</span><span class="va">object</span>, <span class="va">all</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -91,6 +94,10 @@
 
 <dt>value</dt>
 <dd><p>Modification of the elements.</p></dd>
+
+
+<dt>all</dt>
+<dd><p>A logical value to count all elements or just those present.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -104,7 +111,8 @@
     
 <ul><li><p><code>elements(TidySet)</code>: Retrieve the elements</p></li>
 <li><p><code>elements(TidySet) &lt;- value</code>: Modify the elements</p></li>
-<li><p><code>nElements(TidySet)</code>: Return the number of elements</p></li>
+<li><p><code>nElements(object = TidySet, all = missing)</code>: Return the number of elements</p></li>
+<li><p><code>nElements(object = TidySet, all = logical)</code>: Return the number of elements</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

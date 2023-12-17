@@ -79,18 +79,25 @@
 <span></span>
 <span><span class="fu">replace_sets</span><span class="op">(</span><span class="va">object</span>, <span class="va">value</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># S4 method for TidySet</span></span>
-<span><span class="fu"><a href="nSets.html">nSets</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co"># S4 method for TidySet,missing</span></span>
+<span><span class="fu"><a href="nSets.html">nSets</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for TidySet,logical</span></span>
+<span><span class="fu"><a href="nSets.html">nSets</a></span><span class="op">(</span><span class="va">object</span>, <span class="va">all</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>object</dt>
-<dd><p>A <code>SetCollection</code> object.</p></dd>
+<dd><p>A <code>TidySet</code> object.</p></dd>
 
 
 <dt>value</dt>
 <dd><p>Modification of the sets.</p></dd>
+
+
+<dt>all</dt>
+<dd><p>A logical value whether it should return all sets or only those present.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -104,7 +111,8 @@
     
 <ul><li><p><code>sets(TidySet)</code>: Retrieve the sets information</p></li>
 <li><p><code>sets(TidySet) &lt;- value</code>: Modify the sets information</p></li>
-<li><p><code>nSets(TidySet)</code>: Return the number of sets</p></li>
+<li><p><code>nSets(object = TidySet, all = missing)</code>: Return the number of sets</p></li>
+<li><p><code>nSets(object = TidySet, all = logical)</code>: Return the number of sets</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

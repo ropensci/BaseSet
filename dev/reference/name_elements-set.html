@@ -67,13 +67,21 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu"><a href="name_elements.html">name_elements</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu"><a href="name_elements.html">name_elements</a></span><span class="op">(</span><span class="va">object</span>, <span class="va">all</span>, <span class="va">...</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>object</dt>
 <dd><p>A TidySet object.</p></dd>
+
+
+<dt>all</dt>
+<dd><p>A logical value whether to return all elements or just those present.</p></dd>
+
+
+<dt>...</dt>
+<dd><p>Other arguments passed to methods.</p></dd>
 
 
 <dt>value</dt>
@@ -147,12 +155,12 @@
 <span class="r-in"><span><span class="va">TS</span> <span class="op">&lt;-</span> <span class="fu"><a href="tidySet.html">tidySet</a></span><span class="op">(</span><span class="va">relations</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">TS</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   elements sets      fuzzy</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a    A 0.09129924</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        b    A 0.52410656</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3        c    A 0.97774384</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4        d    A 0.01115949</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5        e    A 0.44098076</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6        f    B 0.45549127</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        a    A 0.03371667</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        b    A 0.10491467</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        c    A 0.26719023</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4        d    A 0.94352500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5        e    A 0.53948552</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6        f    B 0.33987931</span>
 <span class="r-in"><span><span class="fu"><a href="name_elements.html">name_elements</a></span><span class="op">(</span><span class="va">TS</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span></span></span>
 </code></pre></div>
     </div>

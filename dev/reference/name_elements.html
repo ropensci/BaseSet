@@ -67,12 +67,18 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">name_elements</span><span class="op">(</span><span class="va">object</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">name_elements</span><span class="op">(</span><span class="va">object</span>, <span class="va">all</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># S4 method for TidySet</span></span>
-<span><span class="fu">name_elements</span><span class="op">(</span><span class="va">object</span><span class="op">)</span></span>
+<span><span class="co"># S4 method for TidySet,logical</span></span>
+<span><span class="fu">name_elements</span><span class="op">(</span><span class="va">object</span>, all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># S4 method for TidySet,characterORfactor</span></span>
+<span><span class="co"># S4 method for TidySet,missing</span></span>
+<span><span class="fu">name_elements</span><span class="op">(</span><span class="va">object</span>, <span class="va">all</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S4 method for TidySet,logical,characterORfactor</span></span>
+<span><span class="fu">name_elements</span><span class="op">(</span><span class="va">object</span>, <span class="va">all</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span>
+<span></span>
+<span><span class="co"># S4 method for TidySet,missing,characterORfactor</span></span>
 <span><span class="fu">name_elements</span><span class="op">(</span><span class="va">object</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">value</span></span></code></pre></div>
     </div>
 
@@ -80,6 +86,14 @@
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>object</dt>
 <dd><p>A TidySet object.</p></dd>
+
+
+<dt>all</dt>
+<dd><p>A logical value if all elements should be reported or only those present.</p></dd>
+
+
+<dt>...</dt>
+<dd><p>Other arguments passed to methods.</p></dd>
 
 
 <dt>value</dt>
@@ -95,8 +109,10 @@
     <div class="section level2">
     <h2 id="methods-by-class-">Methods (by class)<a class="anchor" aria-label="anchor" href="#methods-by-class-"></a></h2>
     
-<ul><li><p><code>name_elements(TidySet)</code>: Name elements</p></li>
-<li><p><code>name_elements(object = TidySet) &lt;- value</code>: Rename elements</p></li>
+<ul><li><p><code>name_elements(object = TidySet, all = logical)</code>: Name elements</p></li>
+<li><p><code>name_elements(object = TidySet, all = missing)</code>: Name elements</p></li>
+<li><p><code>name_elements(object = TidySet, all = logical) &lt;- value</code>: Rename elements</p></li>
+<li><p><code>name_elements(object = TidySet, all = missing) &lt;- value</code>: Rename elements</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

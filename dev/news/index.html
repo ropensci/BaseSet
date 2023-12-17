@@ -62,7 +62,8 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="baseset-development-version">BaseSet (development version)<a class="anchor" aria-label="anchor" href="#baseset-development-version"></a></h2>
-<ul><li>Fix a problem with <code>$&lt;-</code> when the length did match a slot but the name didn’t.</li>
+<ul><li>Now it is possible to list sets and elements that are not present in the relations but might be on the object via its factors: <code><a href="../reference/name_sets.html">name_sets()</a></code>, <code><a href="../reference/name_elements.html">name_elements()</a></code>, <code><a href="../reference/nElements.html">nElements()</a></code> and <code><a href="../reference/nSets.html">nSets()</a></code> gain a <code>all</code> argument.</li>
+<li>Fix a problem with <code>$&lt;-</code> when the length did match a slot but the name didn’t.</li>
 <li>Now it is possible to use sets and elements to subset a TidySet (but not for relations).</li>
 <li>New <code><a href="https://rdrr.io/r/base/dimnames.html" class="external-link">dimnames()</a></code> and <code><a href="https://rdrr.io/r/base/names.html" class="external-link">names()</a></code> functions to discover the names of the data in the slots.</li>
 <li>Minor changes to <code><a href="../reference/getGAF.html">getGAF()</a></code> to improve speed.</li>
