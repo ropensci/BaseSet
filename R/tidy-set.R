@@ -1,4 +1,8 @@
 #' @include AllClasses.R
+#' @rawNamespace if (requireNamespace("AnnotationDbi", quietly = TRUE)) {
+#' importClassesFrom(AnnotationDbi, Go3AnnDbBimap)
+#' S3method("tidySet", Go3AnnDbBimap)
+#' }
 NULL
 
 #' Create a TidySet object

@@ -176,13 +176,17 @@ exportMethods(set_size)
 exportMethods(sets)
 exportMethods(show)
 exportMethods(subtract)
+if (requireNamespace("AnnotationDbi", quietly = TRUE)) {
+importClassesFrom(AnnotationDbi, Go3AnnDbBimap)
+S3method("tidySet", Go3AnnDbBimap)
+}
 if (requireNamespace("GSEABase", quietly = TRUE)) {
-importClassesFrom(GSEABase, GeneSetCollection)
-S3method(tidy, GeneSetCollection)
-importClassesFrom(GSEABase, GeneSet)
-S3method(tidy, GeneSet)
-importClassesFrom(GSEABase, CollectionType)
-S3method(tidy, CollectionType)
+importClassesFrom("GSEABase", GeneSetCollection)
+S3method("tidy", GeneSetCollection)
+importClassesFrom("GSEABase", GeneSet)
+S3method("tidy", GeneSet)
+importClassesFrom("GSEABase", CollectionType)
+S3method("tidy", CollectionType)
 }
 importFrom(dplyr,arrange)
 importFrom(dplyr,filter)

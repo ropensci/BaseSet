@@ -1,11 +1,11 @@
 #' @include AllClasses.R AllGenerics.R
 #' @rawNamespace if (requireNamespace("GSEABase", quietly = TRUE)) {
-#' importClassesFrom(GSEABase, GeneSetCollection)
-#' S3method(tidy, GeneSetCollection)
-#' importClassesFrom(GSEABase, GeneSet)
-#' S3method(tidy, GeneSet)
-#' importClassesFrom(GSEABase, CollectionType)
-#' S3method(tidy, CollectionType)
+#' importClassesFrom("GSEABase", GeneSetCollection)
+#' S3method("tidy", GeneSetCollection)
+#' importClassesFrom("GSEABase", GeneSet)
+#' S3method("tidy", GeneSet)
+#' importClassesFrom("GSEABase", CollectionType)
+#' S3method("tidy", CollectionType)
 #' }
 NULL
 
@@ -46,6 +46,7 @@ tidy.GeneSetCollection <- function(object) {
 
 #' @describeIn tidy Converts to a tidySet given a GeneSet
 tidy.GeneSet <- function(object) {
+
     if (length(object@geneIds) == 0) {
         elements <- character(length = 1)
     } else {
