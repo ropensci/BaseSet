@@ -4,7 +4,7 @@
 
 [![R-CMD-check](https://github.com/ropensci/BaseSet/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/BaseSet/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/ropensci/BaseSet/branch/master/graph/badge.svg)](https://app.codecov.io/gh/ropensci/BaseSet?branch=master)
+coverage](https://codecov.io/gh/ropensci/BaseSet/graph/badge.svg)](https://app.codecov.io/gh/ropensci/BaseSet)
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#maturing)
 [![Project Status: Active – The project has reached a stable, usable
