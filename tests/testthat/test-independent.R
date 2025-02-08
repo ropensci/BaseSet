@@ -1,5 +1,3 @@
-context("independent")
-
 test_that("independent works", {
     x <- list("A" = letters[1:5], "B" = letters[3:7], "C" = letters[6:10])
     TS <- tidySet(x)

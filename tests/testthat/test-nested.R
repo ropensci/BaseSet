@@ -1,5 +1,3 @@
-context("nested")
-
 test_that("nested works", {
     relations <- list(A = letters[1:3], B = c(letters[4:5], "A"))
     TS <- tidySet(relations)

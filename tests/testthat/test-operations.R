@@ -1,5 +1,3 @@
-context("operations")
-
 relations <- data.frame(
     sets = c(rep("a", 5), "b", "c"),
     elements = c(letters[seq_len(6)], letters[6]),

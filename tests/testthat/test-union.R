@@ -1,5 +1,3 @@
-context("test-union")
-
 test_that("union works", {
     relations <- data.frame(
         sets = c(rep("a", 5), "b", "c"),

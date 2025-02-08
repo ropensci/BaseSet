@@ -1,5 +1,3 @@
-context("test-group")
-
 test_that("group works", {
     r <- data.frame(
         sets = c(rep("A", 5), "B"),

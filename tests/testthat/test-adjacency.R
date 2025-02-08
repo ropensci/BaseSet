@@ -1,5 +1,3 @@
-context("test-adjacency")
-
 test_that("adjacency_element works", {
     x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
     a <- tidySet(x)

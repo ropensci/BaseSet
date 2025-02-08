@@ -1,5 +1,3 @@
-context("test-tidyset")
-
 test_that("tidySet data.frame", {
     relations <- data.frame(
         sets = c(rep("a", 5), "b"),

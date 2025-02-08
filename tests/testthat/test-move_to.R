@@ -1,5 +1,3 @@
-context("test-move_to")
-
 test_that("move_to works", {
     x <- list("a" = c("A" = 0.1, "B" = 0.5), "b" = c("A" = 0.2, "B" = 1))
     a <- tidySet(x)

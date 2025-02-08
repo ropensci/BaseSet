@@ -1,5 +1,3 @@
-context("test-data_frame")
-
 test_that("as.data.frame works", {
     relations <- data.frame(
         sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),

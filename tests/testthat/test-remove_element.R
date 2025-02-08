@@ -1,5 +1,3 @@
-context("test-remove_element")
-
 test_that("remove_element works", {
     relations <- data.frame(
         sets = c(rep("a", 5), "b"),

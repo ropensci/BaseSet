@@ -1,5 +1,3 @@
-context("nameing.R")
-
 test_that("collapse_sets works", {
     expect_true(is.character(collapse_sets(c("a", "b"))))
 })

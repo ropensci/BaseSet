@@ -1,5 +1,3 @@
-context("test-element_size")
-
 test_that("element_size works", {
     relations <- data.frame(
         sets = c(rep("a", 5), "b", "c"),

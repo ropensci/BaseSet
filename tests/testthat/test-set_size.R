@@ -1,5 +1,3 @@
-context("test-set_size")
-
 test_that("set_size works", {
     x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
     a <- tidySet(x)

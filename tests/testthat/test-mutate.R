@@ -1,5 +1,3 @@
-context("test-mutate")
-
 relations <- data.frame(
     sets = c(rep("a", 5), "b"),
     elements = letters[seq_len(6)],

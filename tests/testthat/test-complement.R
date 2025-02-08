@@ -1,5 +1,3 @@
-context("test-complement")
-
 test_that("complement set works", {
     relations <- data.frame(
         sets = c(rep("a", 5), "b"),

@@ -1,5 +1,3 @@
-context("test-add_relation")
-
 test_that("multiplication works", {
     relations <- data.frame(
         sets = c(rep("a", 5), "b"),

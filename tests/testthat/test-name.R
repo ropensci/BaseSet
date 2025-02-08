@@ -1,5 +1,3 @@
-context("test-name")
-
 test_that("name_sets works", {
     relations <- data.frame(
         sets = c(rep("a", 5), "b"),

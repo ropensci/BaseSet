@@ -1,5 +1,3 @@
-context("test-gmt")
-
 test_that("multiplication works", {
     gmtFile <- system.file(
         package = "BaseSet", "extdata",

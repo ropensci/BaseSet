@@ -1,5 +1,3 @@
-context("test-power_set")
-
 test_that("works without keep", {
     relations <- data.frame(
         sets = c(rep("a", 5), "b"),

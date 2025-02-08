@@ -1,5 +1,3 @@
-context("test-incidence")
-
 test_that("incidence works", {
     x <- list("a" = letters[1:5], "b" = LETTERS[3:7])
     a <- tidySet(x)

@@ -1,5 +1,3 @@
-context("test-select")
-
 test_that("select works", {
     relations <- data.frame(
         sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),

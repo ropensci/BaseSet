@@ -1,5 +1,3 @@
-context("test-cartesian")
-
 test_that("cartesian works", {
     relations <- data.frame(
         sets = c(rep("a", 5), "b"),

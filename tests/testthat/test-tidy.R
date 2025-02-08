@@ -1,5 +1,3 @@
-context("test-tidy")
-
 test_that("tidy works in GeneSet", {
     skip_if_not_installed("GSEABase")
     gs1 <- GSEABase::GeneSet(

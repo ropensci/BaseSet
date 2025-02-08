@@ -1,5 +1,3 @@
-context("test-activate")
-
 test_that("activate works", {
     relations <- data.frame(
         sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
