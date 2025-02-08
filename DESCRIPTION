@@ -41,7 +41,7 @@ Suggests:
     reactome.db,
     rmarkdown,
     spelling,
-    testthat (>= 2.1.0)
+    testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
 Encoding: UTF-8
@@ -103,3 +103,4 @@ Collate:
     'utils-pipe.R'
     'utils.R'
     'zzz.R'
+Config/testthat/edition: 3
