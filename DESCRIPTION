@@ -1,21 +1,16 @@
 Package: BaseSet
 Title: Working with Sets the Tidy Way
 Version: 0.9.0.9002
-Authors@R: 
-    c(person(given = "Lluís",
-             family = "Revilla Sancho",
-             role = c("aut", "cre", "cph"),
-             email = "lluis.revilla@gmail.com",
-             comment = c(ORCID = "0000-0001-9747-2570")),
-      person(given = "Zebulun",
-             family = "Arendsee",
-             role = "rev"),
-      person(given = "Jennifer Chang",
-             role = "rev"))
-Description: Implements a class and methods to work with sets,
-    doing intersection, union, complementary sets, power sets, cartesian
-    product and other set operations in a "tidy" way. These set operations
-    are available for both classical sets and fuzzy sets. Import sets from
+Authors@R: c(
+    person("Lluís", "Revilla Sancho", , "lluis.revilla@gmail.com", role = c("aut", "cre", "cph"),
+           comment = c(ORCID = "0000-0001-9747-2570")),
+    person("Zebulun", "Arendsee", role = "rev"),
+    person("Jennifer Chang", role = "rev")
+  )
+Description: Implements a class and methods to work with sets, doing
+    intersection, union, complementary sets, power sets, cartesian product
+    and other set operations in a "tidy" way. These set operations are
+    available for both classical sets and fuzzy sets. Import sets from
     several formats or from other several data structures.
 License: MIT + file LICENSE
 URL: https://github.com/ropensci/BaseSet,
@@ -44,6 +39,7 @@ Suggests:
     testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
+Config/testthat/edition: 3
 Encoding: UTF-8
 Language: en-US
 Roxygen: list(markdown = TRUE)
@@ -103,4 +99,3 @@ Collate:
     'utils-pipe.R'
     'utils.R'
     'zzz.R'
-Config/testthat/edition: 3
