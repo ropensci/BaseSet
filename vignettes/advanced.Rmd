@@ -69,7 +69,7 @@ h2GO <- as.data.frame(org.Hs.egGO)
 
 We can now explore if there are differences in evidence usage for each ontology in gene ontology:
 
-```{r evidence_ontology, eval=run_vignette}
+```{r evidence_ontology, eval=run_vignette, fig.alt="Horizontal bar plot with the number of evidence code per ontology."}
 library("forcats", include.only = "fct_reorder2", quietly = TRUE)
 h2GO %>% 
     group_by(Evidence, Ontology) %>% 
@@ -95,7 +95,7 @@ While inferred from physical interaction (IPI) is almost exclusively used to ass
 
 This graph doesn't consider that some relationships are better annotated than other:
 
-```{r nEvidence_plot, eval=run_vignette}
+```{r nEvidence_plot, eval=run_vignette, fig.alt="Bar plot with the number of relationships that with a given number of evidences: most only have 1 evidence code but some have up to 7"}
 h2GO_TS %>% 
     relations() %>% 
     group_by(elements, sets) %>% 
@@ -132,7 +132,7 @@ sum(sizes_set$size != 0)
 
 So we can see that both there are more genes without annotation and more gene ontology terms without a (direct) gene annotated.
 
-```{r plots_GO, eval=run_vignette}
+```{r plots_GO, eval=run_vignette, fig.alt=c("Histogram of number of sets per element: there are many genes on many ontologies.", "Histogram of number of elements per set: There is one set that is huge but then there many than have few elements.")}
 sizes_element %>% 
     filter(size != 0) %>% 
     ggplot() +
@@ -272,7 +272,7 @@ sizes_set <- set_size(h2p_TS) %>%
 
 We can see there are more genes without pathways than genes with pathways.
 
-```{r pathways_plots, eval=run_vignette}
+```{r pathways_plots, eval=run_vignette, fig.alt=c("Genes per pathway.", "Pathway per gene.")}
 sizes_element %>% 
     filter(size != 0) %>% 
     ggplot() +
