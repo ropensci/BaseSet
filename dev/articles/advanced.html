@@ -135,7 +135,7 @@ each ontology in gene ontology:</p>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html" class="external-link">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>         title <span class="op">=</span> <span class="st">"Evidence codes for each ontology"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="advanced_files/figure-html/evidence_ontology-1.png" width="700"></p>
+<p><img src="advanced_files/figure-html/evidence_ontology-1.png" alt="Horizontal bar plot with the number of evidence code per ontology." width="700"></p>
 <p>We can see that biological process are more likely to be defined by
 IMP evidence code that means inferred from mutant phenotype. While
 inferred from physical interaction (IPI) is almost exclusively used to
@@ -156,7 +156,7 @@ annotated than other:</p>
 <span>         title <span class="op">=</span> <span class="st">"Evidence codes for each annotation"</span>,</span>
 <span>         subtitle <span class="op">=</span> <span class="st">"in human"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>breaks <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">7</span><span class="op">)</span></span></code></pre></div>
-<p><img src="advanced_files/figure-html/nEvidence_plot-1.png" width="700"></p>
+<p><img src="advanced_files/figure-html/nEvidence_plot-1.png" alt="Bar plot with the number of relationships that with a given number of evidences: most only have 1 evidence code but some have up to 7" width="700"></p>
 <p>We can see that mostly all the annotations are done with a single
 evidence code. So far we have explored the code that it is related to a
 gene but how many genes don’t have any annotation?</p>
@@ -187,7 +187,7 @@ more gene ontology terms without a (direct) gene annotated.</p>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">size</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"# sets per element"</span>, y <span class="op">=</span> <span class="st">"Count"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="advanced_files/figure-html/plots_GO-1.png" width="700"></p>
+<p><img src="advanced_files/figure-html/plots_GO-1.png" alt="Histogram of number of sets per element: there are many genes on many ontologies." width="700"></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">sizes_set</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
@@ -196,7 +196,7 @@ more gene ontology terms without a (direct) gene annotated.</p>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">size</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"# elements per set"</span>, y <span class="op">=</span> <span class="st">"Count"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="advanced_files/figure-html/plots_GO-2.png" width="700"></p>
+<p><img src="advanced_files/figure-html/plots_GO-2.png" alt="Histogram of number of elements per set: There is one set that is huge but then there many than have few elements." width="700"></p>
 <p>As you can see on the second plot we have very large values but that
 are on associated on many genes:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
@@ -351,7 +351,7 @@ pathways.</p>
 <span><span class="co">#&gt; infinite values.</span></span>
 <span><span class="co">#&gt; Warning: Removed 284 rows containing missing values or values outside the scale range</span></span>
 <span><span class="co">#&gt; (`geom_bar()`).</span></span></code></pre></div>
-<p><img src="advanced_files/figure-html/pathways_plots-1.png" width="700"></p>
+<p><img src="advanced_files/figure-html/pathways_plots-1.png" alt="Genes per pathway." width="700"></p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">sizes_set</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
@@ -364,7 +364,7 @@ pathways.</p>
 <span><span class="co">#&gt; infinite values.</span></span>
 <span><span class="co">#&gt; Warning: Removed 2358 rows containing missing values or values outside the scale range</span></span>
 <span><span class="co">#&gt; (`geom_bar()`).</span></span></code></pre></div>
-<p><img src="advanced_files/figure-html/pathways_plots-2.png" width="700"></p>
+<p><img src="advanced_files/figure-html/pathways_plots-2.png" alt="Pathway per gene." width="700"></p>
 <p>As you can see on the second plot we have very large values but that
 are on associated on many genes:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
