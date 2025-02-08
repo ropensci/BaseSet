@@ -68,9 +68,9 @@ subtract(TS, "A", "B", keep = FALSE)
 \code{\link[=setdiff]{setdiff()}}
 
 Other complements: 
+\code{\link{complement}()},
 \code{\link{complement_element}()},
-\code{\link{complement_set}()},
-\code{\link{complement}()}
+\code{\link{complement_set}()}
 
 Other methods that create new sets: 
 \code{\link{complement_element}()},
@@ -85,14 +85,14 @@ Other methods:
 \code{\link{add_relation}()},
 \code{\link{arrange.TidySet}()},
 \code{\link{cartesian}()},
+\code{\link{complement}()},
 \code{\link{complement_element}()},
 \code{\link{complement_set}()},
-\code{\link{complement}()},
 \code{\link{element_size}()},
 \code{\link{elements}()},
 \code{\link{filter.TidySet}()},
-\code{\link{group_by.TidySet}()},
 \code{\link{group}()},
+\code{\link{group_by.TidySet}()},
 \code{\link{incidence}()},
 \code{\link{intersection}()},
 \code{\link{is.fuzzy}()},
@@ -103,8 +103,8 @@ Other methods:
 \code{\link{nRelations}()},
 \code{\link{nSets}()},
 \code{\link{name_elements<-}()},
-\code{\link{name_sets<-}()},
 \code{\link{name_sets}()},
+\code{\link{name_sets<-}()},
 \code{\link{power_set}()},
 \code{\link{pull.TidySet}()},
 \code{\link{relations}()},

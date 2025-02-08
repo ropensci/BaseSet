@@ -63,8 +63,8 @@ complement_element(TS, "a", "C_a", keep = FALSE)
 }
 \seealso{
 Other complements: 
-\code{\link{complement_set}()},
 \code{\link{complement}()},
+\code{\link{complement_set}()},
 \code{\link{subtract}()}
 
 Other methods that create new sets: 
@@ -80,13 +80,13 @@ Other methods:
 \code{\link{add_relation}()},
 \code{\link{arrange.TidySet}()},
 \code{\link{cartesian}()},
-\code{\link{complement_set}()},
 \code{\link{complement}()},
+\code{\link{complement_set}()},
 \code{\link{element_size}()},
 \code{\link{elements}()},
 \code{\link{filter.TidySet}()},
-\code{\link{group_by.TidySet}()},
 \code{\link{group}()},
+\code{\link{group_by.TidySet}()},
 \code{\link{incidence}()},
 \code{\link{intersection}()},
 \code{\link{is.fuzzy}()},
@@ -97,8 +97,8 @@ Other methods:
 \code{\link{nRelations}()},
 \code{\link{nSets}()},
 \code{\link{name_elements<-}()},
-\code{\link{name_sets<-}()},
 \code{\link{name_sets}()},
+\code{\link{name_sets<-}()},
 \code{\link{power_set}()},
 \code{\link{pull.TidySet}()},
 \code{\link{relations}()},
