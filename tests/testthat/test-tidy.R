@@ -8,15 +8,15 @@ test_that("tidy works in GeneSet", {
         setName = "set2", setIdentifier = "102",
         geneIds = c("b", "c")
     )
-    expect_error(TS <- tidy(gs1), NA)
-    expect_equal(ncol(sets(TS)), 5)
-    expect_equal(nElements(TS), 2)
-    expect_error(TS2 <- tidy(gs2), NA)
-    expect_equal(ncol(sets(TS2)), 5)
-    expect_equal(nElements(TS2), 2)
+    expect_error(TS <- tidySet(gs1), NA)
+    expect_equal(ncol(sets(TS)), 5L)
+    expect_equal(nElements(TS), 2L)
+    expect_error(TS2 <- tidySet(gs2), NA)
+    expect_equal(ncol(sets(TS2)), 5L)
+    expect_equal(nElements(TS2), 2L)
     TST <- merge_tidySets(TS, TS2)
-    expect_equal(nSets(TST), 2)
-    expect_equal(nElements(TST), 3)
+    expect_equal(nSets(TST), 2L)
+    expect_equal(nElements(TST), 3L)
 })
 
 test_that("tidy works in GeneSetCollection", {
@@ -31,10 +31,10 @@ test_that("tidy works in GeneSetCollection", {
     )
     gsc <- GSEABase::GeneSetCollection(gs1, gs2)
 
-    expect_error(TS <- tidy(gsc), NA)
-    expect_equal(nSets(TS), 2)
-    expect_equal(nElements(TS), 3)
-    expect_equal(ncol(sets(TS)), 5)
+    expect_error(TS <- tidySet(gsc), NA)
+    expect_equal(nSets(TS), 2L)
+    expect_equal(nElements(TS), 3L)
+    expect_equal(ncol(sets(TS)), 5L)
 })
 
 test_that("tidy works in GeneColorSet", {
@@ -46,8 +46,8 @@ test_that("tidy works in GeneColorSet", {
         phenotype = "imaginary"
     )
 
-    expect_error(TS <- tidy(gcs1), NA)
-    expect_equal(nSets(TS), 1)
-    expect_equal(nElements(TS), 10)
-    expect_equal(ncol(sets(TS)), 9)
+    expect_error(TS <- tidySet(gcs1), NA)
+    expect_equal(nSets(TS), 1L)
+    expect_equal(nElements(TS), 10L)
+    expect_equal(ncol(sets(TS)), 1L)
 })

@@ -6,7 +6,7 @@ test_that("size works", {
         fuzzy = runif(7)
     )
     a <- tidySet(r)
-    expect_s4_class(expect_warning(size(a)), "TidySet")
+    expect_warning(size(expect_s4_class(a, "TidySet")))
     a <- activate(a, "elements")
     size_e <- size(a)
     expect_length(size_e, 3)
