@@ -44,19 +44,19 @@ test_that("length_probability works", {
         a = 0, b = 0, c = 0, d = 0,
         e = 0, f = 0.0486625612247735
     ), 1)
-    expect_equivalent(out, 0.04866256)
+    expect_equal(out, 0.04866256, ignore_attr = TRUE, tolerance = 0.00001)
 })
 
 test_that("length_set works", {
     out <- length_set(p)
     expect_length(out, 7L)
-    expect_equal(sum(out), 1L, tolerance = 0.0005)
+    expect_equal(sum(out), 1L, tolerance = 0.00000001)
 
     # Just one with P > 0
     p2 <- c(a = 0, b = 0, c = 0, d = 0, e = 0, f = 0.0486625612247735)
     o2 <- length_set(p2)
-    expect_equivalent(o2["5"], 0L)
-    expect_equivalent(o2["2"], 0L)
+    expect_equal(o2["5"], 0L, ignore_attr = TRUE)
+    expect_equal(o2["2"], 0L, ignore_attr = TRUE)
     expect_true(all(o2[-c(1, 2)] == 0L))
 })
 

@@ -11,8 +11,8 @@ test_that("df2TS works", {
     a <- mutate_set(a, Group = c("UFM", "UAB", "UPF", "MIT"))
     b <- select(a, -type)
     expect_equal(colnames(sets(a)), colnames(sets(b)))
-    expect_equivalent(sort(colnames(relations(a))),
-                      sort(colnames(relations(b))))
+    expect_equal(sort(colnames(relations(a))),
+                      sort(colnames(relations(b))), ignore_attr = TRUE)
     df_a <- as.data.frame(a)
     d <- df2TS(a, df_a)
     expect_equal(as.data.frame(d), as.data.frame(a))
