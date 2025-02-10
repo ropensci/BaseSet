@@ -2,10 +2,9 @@ AnnDbBimap
 BiocSet
 BiocStyle
 CMD
-Cardinality
 Codecov
 GAF
-GSEABase
+GeneColorSet
 GeneSet
 GeneSetCollection
 Github
@@ -20,7 +19,6 @@ Revilla
 TidySet
 TidySets
 bioinformatics
-cardinality
 cytosol
 dplyr
 fuzzification

@@ -4,23 +4,23 @@
 \alias{extract-TidySet}
 \alias{$,TidySet-method}
 \alias{$<-,TidySet-method}
-\alias{[,TidySet,ANY,ANY-method}
-\alias{[<-,TidySet,ANY,ANY,ANY-method}
-\alias{[[,TidySet,ANY-method}
-\alias{[[<-,TidySet,ANY,ANY,ANY-method}
+\alias{[,TidySet-method}
+\alias{[<-,TidySet-method}
+\alias{[[,TidySet-method}
+\alias{[[<-,TidySet-method}
 \title{Extract}
 \usage{
 \S4method{$}{TidySet}(x, name)
 
 \S4method{$}{TidySet}(x, name) <- value
 
-\S4method{[}{TidySet,ANY,ANY}(x, i, j, k, ..., drop = TRUE)
+\S4method{[}{TidySet}(x, i, j, k, ..., drop = TRUE)
 
-\S4method{[}{TidySet,ANY,ANY,ANY}(x, i, j, k, ...) <- value
+\S4method{[}{TidySet}(x, i, j, k, ...) <- value
 
-\S4method{[[}{TidySet,ANY}(x, i, j, ..., exact = TRUE)
+\S4method{[[}{TidySet}(x, i, j, ..., exact = TRUE)
 
-\S4method{[[}{TidySet,ANY,ANY,ANY}(x, i) <- value
+\S4method{[[}{TidySet}(x, i) <- value
 }
 \arguments{
 \item{x}{A TidySet object.}
