@@ -270,8 +270,8 @@ setMethod("[[", "TidySet",
               x[namsi, "sets", j, drop = TRUE]
           })
 
-#' @export
 #' @rdname extract-TidySet
+#' @export
 setMethod("[[<-", "TidySet",
           function(x, i, value) {
               if (missing(i)) {
