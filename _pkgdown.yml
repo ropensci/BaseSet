@@ -26,7 +26,6 @@ reference:
     contents:
       - '`BaseSet-package`'
       - '`tidySet`'
-      - '`tidy`'
       - '`as.data.frame.TidySet`'
       - '`as.list.TidySet`'
       - '`incidence`'
