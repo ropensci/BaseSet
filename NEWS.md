@@ -1,4 +1,4 @@
-# BaseSet (development version)
+# BaseSet 1.0.0
 
 * Now it is possible to list sets and elements that are not present in the relations but might be on the object via its factors: `name_sets()`, `name_elements()`, `nElements()` and `nSets()` gain a `all` argument.
 * Fix a problem with `$<-` when the length did match a slot but the name didn't.
@@ -7,6 +7,7 @@
 * New `dimnames()` and `names()` functions to discover the names of the data in 
  the slots.
 * Minor changes to `getGAF()` to improve speed.
+* Increase R version dependency to 4.1 to remove magrittr dependency. 
 
 # BaseSet 0.9.0
 

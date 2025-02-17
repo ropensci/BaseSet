@@ -17,10 +17,9 @@ URL: https://github.com/ropensci/BaseSet,
     https://docs.ropensci.org/BaseSet/
 BugReports: https://github.com/ropensci/BaseSet/issues
 Depends: 
-    R (>= 4.0.0)
+    R (>= 4.1.0)
 Imports: 
     dplyr (>= 1.0.0),
-    magrittr,
     methods,
     rlang,
     utils
@@ -96,6 +95,5 @@ Collate:
     'tidy-set.R'
     'union.R'
     'union_closed.R'
-    'utils-pipe.R'
     'utils.R'
     'zzz.R'

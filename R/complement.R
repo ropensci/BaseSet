@@ -99,20 +99,20 @@ setMethod("complement_element",
 #'     fuzzy = runif(6)
 #' )
 #' TS <- tidySet(rel)
-#' TS %>%
-#'     activate("elements") %>%
+#' TS |>
+#'     activate("elements") |>
 #'     complement("a")
-#' TS %>%
-#'     activate("elements") %>%
+#' TS |>
+#'     activate("elements") |>
 #'     complement("a", "C_a", keep = FALSE)
-#' TS %>%
-#'     activate("set") %>%
+#' TS |>
+#'     activate("set") |>
 #'     complement("A")
-#' TS %>%
-#'     activate("set") %>%
+#' TS |>
+#'     activate("set") |>
 #'     complement("A", keep = FALSE)
-#' TS %>%
-#'     activate("set") %>%
+#' TS |>
+#'     activate("set") |>
 #'     complement("A", FUN = function(x){abs(x - 0.2)}, keep = FALSE)
 #' @export
 complement <- function(.data, ...) {
