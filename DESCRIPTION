@@ -1,6 +1,6 @@
 Package: BaseSet
 Title: Working with Sets the Tidy Way
-Version: 1.0.0
+Version: 1.0.0.9000
 Authors@R: c(
     person("Lluís", "Revilla Sancho", , "lluis.revilla@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-9747-2570")),

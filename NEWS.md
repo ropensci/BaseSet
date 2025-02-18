@@ -1,3 +1,5 @@
+# BaseSet (development version)
+
 # BaseSet 1.0.0
 
 * Now it is possible to list sets and elements that are not present in the relations but might be on the object via its factors: `name_sets()`, `name_elements()`, `nElements()` and `nSets()` gain a `all` argument.
