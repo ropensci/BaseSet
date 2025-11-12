@@ -130,7 +130,7 @@ getGAF <- function(x) {
     colnames(df) <- gsub("O_ID", "sets", colnames(df), fixed = TRUE)
     colnames(df) <- gsub("DB_Object_Symbol", "elements", colnames(df),
                          fixed = TRUE)
-
+    browser()
     TS <- tidySet(df)
 
     # Check that the columns really have information that allows them to be
