@@ -7,10 +7,10 @@
 getGAF(x)
 }
 \arguments{
-\item{x}{A file in GAF format}
+\item{x}{A file in GAF format.}
 }
 \value{
-A TidySet object
+A TidySet object.
 }
 \description{
 Read a GO Annotation File (GAF) formatted file

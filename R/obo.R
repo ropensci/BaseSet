@@ -83,8 +83,8 @@ getOBO <- function(x) {
 #'
 #' @references The format is defined [here](
 #' https://geneontology.org/docs/go-annotation-file-gaf-format-2.1/).
-#' @param x A file in GAF format
-#' @return A TidySet object
+#' @param x A file in GAF format.
+#' @return A TidySet object.
 #' @export
 #' @family IO functions
 #' @importFrom utils read.delim
@@ -114,7 +114,10 @@ getGAF <- function(x) {
     remove <- apply(df[, optional_columns], 2, function(x) {
         all(is.na(x))
     })
-    df <- df[, -optional_columns[remove]]
+
+    if (any(remove)) {
+        df <- df[, -optional_columns[remove]]
+    }
 
     # Modify if they are GeneOntolgoy
     GO <- grepl("^GO:", df$O_ID)
@@ -130,7 +133,6 @@ getGAF <- function(x) {
     colnames(df) <- gsub("O_ID", "sets", colnames(df), fixed = TRUE)
     colnames(df) <- gsub("DB_Object_Symbol", "elements", colnames(df),
                          fixed = TRUE)
-    browser()
     TS <- tidySet(df)
 
     # Check that the columns really have information that allows them to be
