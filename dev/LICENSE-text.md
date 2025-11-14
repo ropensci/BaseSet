@@ -1,0 +1,4 @@
+# License
+
+    YEAR: 2018-2023
+    COPYRIGHT HOLDER: Lluís Revilla Sancho

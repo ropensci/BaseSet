@@ -1,11 +1,11 @@
 pandoc: 3.1.11
-pkgdown: 2.1.1
+pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   advanced: advanced.html
   BaseSet: BaseSet.html
   fuzzy: fuzzy.html
-last_built: 2025-02-18T22:59Z
+last_built: 2025-11-14T16:32Z
 urls:
   reference: https://docs.ropensci.org/BaseSet/reference
   article: https://docs.ropensci.org/BaseSet/articles
