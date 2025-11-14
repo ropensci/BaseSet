@@ -43,7 +43,7 @@ A \code{TidySet} object.
 }
 \description{
 Elements in a set not present in the other set. Equivalent to
-\code{\link[=setdiff]{setdiff()}}.
+\code{\link[generics:setops]{generics::setdiff()}}.
 }
 \section{Methods (by class)}{
 \itemize{
@@ -65,7 +65,7 @@ subtract(TS, "A", "B")
 subtract(TS, "A", "B", keep = FALSE)
 }
 \seealso{
-\code{\link[=setdiff]{setdiff()}}
+\code{\link[generics:setops]{generics::setdiff()}}
 
 Other complements: 
 \code{\link{complement}()},
