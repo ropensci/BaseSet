@@ -2,6 +2,7 @@ url: https://docs.ropensci.org/BaseSet
 
 template:
   package: rotemplate
+  bootstrap: 5
 
 development:
   mode: auto
