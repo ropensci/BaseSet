@@ -1,8 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/ropensci/BaseSet/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci/BaseSet/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/ropensci/BaseSet/actions/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/BaseSet/actions/workflows/R-CMD-check)
 [![Codecov test
 coverage](https://codecov.io/gh/ropensci/BaseSet/graph/badge.svg)](https://app.codecov.io/gh/ropensci/BaseSet)
 [![Lifecycle:
