@@ -3,6 +3,8 @@
 on:
   issue_comment:
     types: [created]
+  workflow_dispatch:
+
 
 name: pr-commands.yaml
 
