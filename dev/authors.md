@@ -15,12 +15,12 @@ Source:
 [`DESCRIPTION`](https://github.com/ropensci/BaseSet/blob/main/DESCRIPTION)
 
 Revilla Sancho L (2025). *BaseSet: Working with Sets the Tidy Way*. R
-package version 1.0.0.9000, <https://github.com/ropensci/BaseSet>.
+package version 1.0.0.9001, <https://github.com/ropensci/BaseSet>.
 
     @Manual{,
       title = {BaseSet: Working with Sets the Tidy Way},
       author = {Lluís {Revilla Sancho}},
       year = {2025},
-      note = {R package version 1.0.0.9000},
+      note = {R package version 1.0.0.9001},
       url = {https://github.com/ropensci/BaseSet},
     }

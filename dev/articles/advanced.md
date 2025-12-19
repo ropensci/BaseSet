@@ -377,21 +377,21 @@ head(sizes_set, 10)
     #> [8] base     
     #> 
     #> other attached packages:
-    #>  [1] reactome.db_1.94.0   forcats_1.0.1        ggplot2_4.0.0       
+    #>  [1] reactome.db_1.94.0   forcats_1.0.1        ggplot2_4.0.1       
     #>  [4] GO.db_3.22.0         org.Hs.eg.db_3.22.0  AnnotationDbi_1.72.0
     #>  [7] IRanges_2.44.0       S4Vectors_0.48.0     Biobase_2.70.0      
     #> [10] BiocGenerics_0.56.0  generics_0.1.4       dplyr_1.1.4         
-    #> [13] BaseSet_1.0.0.9000  
+    #> [13] BaseSet_1.0.0.9001  
     #> 
     #> loaded via a namespace (and not attached):
-    #>  [1] KEGGREST_1.50.0    gtable_0.3.6       xfun_0.54          bslib_0.9.0       
-    #>  [5] vctrs_0.6.5        tools_4.5.2        tibble_3.3.0       RSQLite_2.4.4     
-    #>  [9] blob_1.2.4         pkgconfig_2.0.3    RColorBrewer_1.1-3 S7_0.2.0          
-    #> [13] desc_1.4.3         graph_1.88.0       lifecycle_1.0.4    compiler_4.5.2    
+    #>  [1] KEGGREST_1.50.0    gtable_0.3.6       xfun_0.55          bslib_0.9.0       
+    #>  [5] vctrs_0.6.5        tools_4.5.2        tibble_3.3.0       RSQLite_2.4.5     
+    #>  [9] blob_1.2.4         pkgconfig_2.0.3    RColorBrewer_1.1-3 S7_0.2.1          
+    #> [13] desc_1.4.3         graph_1.88.1       lifecycle_1.0.4    compiler_4.5.2    
     #> [17] farver_2.1.2       textshaping_1.0.4  Biostrings_2.78.0  Seqinfo_1.0.0     
-    #> [21] htmltools_0.5.8.1  sass_0.4.10        yaml_2.3.10        pkgdown_2.2.0     
+    #> [21] htmltools_0.5.9    sass_0.4.10        yaml_2.3.12        pkgdown_2.2.0     
     #> [25] pillar_1.11.1      crayon_1.5.3       jquerylib_0.1.4    cachem_1.1.0      
-    #> [29] tidyselect_1.2.1   digest_0.6.38      labeling_0.4.3     fastmap_1.2.0     
+    #> [29] tidyselect_1.2.1   digest_0.6.39      labeling_0.4.3     fastmap_1.2.0     
     #> [33] grid_4.5.2         cli_3.6.5          magrittr_2.0.4     XML_3.99-0.20     
     #> [37] GSEABase_1.72.0    withr_3.0.2        scales_1.4.0       bit64_4.6.0-1     
     #> [41] rmarkdown_2.30     XVector_0.50.0     httr_1.4.7         bit_4.6.0         
