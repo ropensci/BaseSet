@@ -26,9 +26,11 @@ editor_options:
 ---
 ```{r setup, message=FALSE, warning=FALSE, include=FALSE}
 knitr::opts_knit$set(root.dir = ".")
-knitr::opts_chunk$set(collapse = TRUE, 
-                      warning = TRUE,
-                      comment = "#>")
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  warning = TRUE,
+  comment = "#>"
+)
 ```
 
 # Getting started
@@ -45,8 +47,8 @@ image we have several genes associated with a characteristic.
 ```{r from_list, message=FALSE}
 library("BaseSet")
 gene_lists <- list(
-    geneset1 = c("A", "B"),
-    geneset2 = c("B", "C", "D")
+  geneset1 = c("A", "B"),
+  geneset2 = c("B", "C", "D")
 )
 tidy_set <- tidySet(gene_lists)
 tidy_set
@@ -58,14 +60,14 @@ If you have more information for each element or set it can be added:
 
 ```{r metadata, message=FALSE}
 gene_data <- data.frame(
-    stat1     = c( 1,   2,   3,   4 ),
-    info1     = c("a", "b", "c", "d")
+  stat1     = c(1, 2, 3, 4),
+  info1     = c("a", "b", "c", "d")
 )
 
 tidy_set <- add_column(tidy_set, "elements", gene_data)
 set_data <- data.frame(
-    Group     = c( 100 ,  200 ),
-    Column     = c("abc", "def")
+  Group = c(100, 200),
+  Column = c("abc", "def")
 )
 tidy_set <- add_column(tidy_set, "sets", set_data)
 tidy_set
@@ -85,8 +87,8 @@ You can also use the standard R approach with `[`:
 
 ```{r}
 gene_data <- data.frame(
-    stat2     = c( 4,   4,   3,   5 ),
-    info2     = c("a", "b", "c", "d")
+  stat2     = c(4, 4, 3, 5),
+  info2     = c("a", "b", "c", "d")
 )
 
 tidy_set$info1 <- NULL
@@ -103,9 +105,11 @@ As you can see it is possible to create a TidySet from a list.
 More commonly you can create it from a data.frame:
 
 ```{r tidyset_data.frame}
-relations <- data.frame(elements = c("a", "b", "c", "d", "e", "f"), 
-                        sets = c("A", "A", "A", "A", "A", "B"), 
-                        fuzzy = c(1, 1, 1, 1, 1, 1))
+relations <- data.frame(
+  elements = c("a", "b", "c", "d", "e", "f"),
+  sets = c("A", "A", "A", "A", "A", "B"),
+  fuzzy = c(1, 1, 1, 1, 1, 1)
+)
 TS <- tidySet(relations)
 TS
 ```
@@ -113,8 +117,10 @@ TS
 It is also possible from a matrix:
 
 ```{r tidySet_matrix}
-m <- matrix(c(0, 0, 1, 1, 1, 1, 0, 1, 0), ncol = 3, nrow = 3,  
-               dimnames = list(letters[1:3], LETTERS[1:3]))
+m <- matrix(c(0, 0, 1, 1, 1, 1, 0, 1, 0),
+  ncol = 3, nrow = 3,
+  dimnames = list(letters[1:3], LETTERS[1:3])
+)
 m
 tidy_set <- tidySet(m)
 tidy_set
@@ -236,8 +242,8 @@ You usually need to activate which three slots you want to affect with `activate
 
 ```{r tidyverse}
 library("dplyr")
-m_TS <- tidy_set |> 
-  activate("relations") |> 
+m_TS <- tidy_set |>
+  activate("relations") |>
   mutate(Important = runif(nRelations(tidy_set)))
 m_TS
 ```
@@ -245,13 +251,14 @@ m_TS
 You can use activate to select what are the verbs modifying:
 
 ```{r deactivate}
-set_modified <- m_TS |> 
-  activate("elements") |> 
-  mutate(Pathway = if_else(elements %in% c("Gene1", "Gene2"), 
-                           "pathway1", 
-                           "pathway2"))
+set_modified <- m_TS |>
+  activate("elements") |>
+  mutate(Pathway = if_else(elements %in% c("Gene1", "Gene2"),
+    "pathway1",
+    "pathway2"
+  ))
 set_modified
-set_modified |> 
+set_modified |>
   deactivate() |> # To apply a filter independently of where it is
   filter(Pathway == "pathway1")
 ```
@@ -263,27 +270,26 @@ You can create a new one with `group`.
 
 ```{r group}
 # A new group of those elements in pathway1 and with Important == 1
-set_modified |> 
-  deactivate() |> 
-  group(name = "new", Pathway == "pathway1")
+set_modified |>
+  deactivate() |>
+  BaseSet::group(name = "new", Pathway == "pathway1")
 ```
 
 ```{r group2}
-set_modified |> 
-  group("pathway1", elements %in% c("Gene1", "Gene2"))
+BaseSet::group(set_modified, "pathway1", elements %in% c("Gene1", "Gene2"))
 ```
 
 You can use `group_by()` but it won't return a `TidySet`. 
 
 ```{r group_by}
-set_modified |> 
-    deactivate() |> 
-    group_by(Pathway, sets) |>  
-    count()
+set_modified |>
+  deactivate() |>
+  group_by(Pathway, sets) |>
+  count()
 ```
 
 
-After grouping or mutating sometimes we might be interested in moving a column describing something to other places. We can do by this with:
+After grouping or mutating sometimes we might be interested in moving a column describing something to other places. We can do by this with `move_to()`:
 
 ```{r moving}
 elements(set_modified)

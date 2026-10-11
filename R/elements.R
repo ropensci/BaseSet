@@ -4,10 +4,10 @@ NULL
 #' @describeIn elements Retrieve the elements
 #' @export
 setMethod("elements",
-    signature = signature(object = "TidySet"),
-    function(object) {
-        slot(object, "elements")
-    }
+  signature = signature(object = "TidySet"),
+  function(object) {
+    slot(object, "elements")
+  }
 )
 
 #' @describeIn elements Modify the elements
@@ -15,12 +15,12 @@ setMethod("elements",
 #' @examples
 #' elements(TS) <- data.frame(elements = letters[10:1])
 setMethod("elements<-",
-    signature = signature(object = "TidySet"),
-    function(object, value) {
-        slot(object, "elements") <- value
-        validObject(object)
-        object
-    }
+  signature = signature(object = "TidySet"),
+  function(object, value) {
+    slot(object, "elements") <- value
+    validObject(object)
+    object
+  }
 )
 
 #' @rdname elements
@@ -28,14 +28,14 @@ setMethod("elements<-",
 #' @examples
 #' TS2 <- replace_elements(TS, data.frame(elements = letters[1:11]))
 replace_elements <- function(object, value) {
-    UseMethod("replace_elements")
+  UseMethod("replace_elements")
 }
 
 #' @export
 #' @method replace_elements TidySet
 replace_elements.TidySet <- function(object, value) {
-    elements(object) <- value
-    object
+  elements(object) <- value
+  object
 }
 
 #' @describeIn elements Return the number of elements
@@ -44,19 +44,19 @@ replace_elements.TidySet <- function(object, value) {
 #' nElements(TS)
 #' nElements(TS2)
 setMethod("nElements",
-    signature = signature(object = "TidySet", all = "missing"),
-    function(object) {
-        # Use all the elements even if factors that are not present
-        length(name_elements(object, TRUE))
-    }
+  signature = signature(object = "TidySet", all = "missing"),
+  function(object) {
+    # Use all the elements even if factors that are not present
+    length(name_elements(object, TRUE))
+  }
 )
 
 #' @describeIn elements Return the number of elements
 #' @export
 setMethod("nElements",
-    signature = signature(object = "TidySet", all = "logical"),
-    function(object, all) {
-        # Use all the elements even if factors that are not present
-        length(name_elements(object, all))
-    }
+  signature = signature(object = "TidySet", all = "logical"),
+  function(object, all) {
+    # Use all the elements even if factors that are not present
+    length(name_elements(object, all))
+  }
 )

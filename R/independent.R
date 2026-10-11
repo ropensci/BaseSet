@@ -1,4 +1,3 @@
-
 #' Independence of the sets
 #'
 #' Checks if the elements of the sets are present in more than one set.
@@ -14,19 +13,19 @@
 #' independent(TS, c("A", "C"))
 #' independent(TS, c("B", "C"))
 independent <- function(object, sets) {
-    UseMethod("independent")
+  UseMethod("independent")
 }
 
 #' @export
 #' @method independent TidySet
 independent.TidySet <- function(object, sets = NULL) {
-    if (is.null(sets)) {
-        sets <- name_sets(object)
-    } else if (any(!sets %in% name_sets(object))) {
-        warning("Some sets provided are not present")
-    }
+  if (is.null(sets)) {
+    sets <- name_sets(object)
+  } else if (any(!sets %in% name_sets(object))) {
+    warning("Some sets provided are not present")
+  }
 
-    relations <- relations(object)
-    flag <- anyDuplicated(relations$elements[relations$sets %in% sets])
-    flag == 0
+  relations <- relations(object)
+  flag <- anyDuplicated(relations$elements[relations$sets %in% sets])
+  flag == 0
 }

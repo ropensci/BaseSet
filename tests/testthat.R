@@ -1,6 +1,6 @@
 if (requireNamespace("testthat", quietly = TRUE)) {
-    library(testthat)
-    library(BaseSet)
+  library(testthat)
+  library(BaseSet)
 
-    test_check("BaseSet")
+  test_check("BaseSet")
 }

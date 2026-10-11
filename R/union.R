@@ -29,16 +29,16 @@ NULL
 #' @examples
 #' # Classical set
 #' rel <- data.frame(
-#'     sets = c(rep("A", 5), "B", "B"),
-#'     elements = c(letters[seq_len(6)], "a")
+#'   sets = c(rep("A", 5), "B", "B"),
+#'   elements = c(letters[seq_len(6)], "a")
 #' )
 #' TS <- tidySet(rel)
 #' union(TS, c("B", "A"))
 #' # Fuzzy set
 #' rel <- data.frame(
-#'     sets = c(rep("A", 5), "B", "B"),
-#'     elements = c(letters[seq_len(6)], "a"),
-#'     fuzzy = runif(7)
+#'   sets = c(rep("A", 5), "B", "B"),
+#'   elements = c(letters[seq_len(6)], "a"),
+#'   fuzzy = runif(7)
 #' )
 #' TS2 <- tidySet(rel)
 #' # Standard default logic
@@ -46,7 +46,7 @@ NULL
 #' # Probability logic
 #' union(TS2, c("B", "A"), "C", FUN = union_probability)
 union <- function(object, ...) {
-    UseMethod("union")
+  UseMethod("union")
 }
 
 # #' @export
@@ -58,25 +58,27 @@ union <- function(object, ...) {
 #' @rdname union
 #' @export
 #' @method union TidySet
-union.TidySet <- function(object, sets, name = NULL, FUN = "max", keep = FALSE,
-    keep_relations = keep,
-    keep_elements = keep,
-    keep_sets = keep, ...) {
-    if (is.null(name)) {
-        name <- naming(sets1 = sets)
-    } else if (length(name) != 1) {
-        stop("The new union can only have one name", call. = FALSE)
-    }
-    object <- add_sets(object, name)
-    relations <- relations(object)
-    union <- relations[relations$sets %in% sets, , drop = FALSE]
-    if (is.factor(union$sets)) {
-        levels(union$sets)[levels(union$sets) %in% sets] <- name
-    } else {
-        union$sets[union$sets %in% sets] <- name
-    }
+union.TidySet <- function(
+  object, sets, name = NULL, FUN = "max", keep = FALSE,
+  keep_relations = keep,
+  keep_elements = keep,
+  keep_sets = keep, ...
+) {
+  if (is.null(name)) {
+    name <- naming(sets1 = sets)
+  } else if (length(name) != 1) {
+    stop("The new union can only have one name", call. = FALSE)
+  }
+  object <- add_sets(object, name)
+  relations <- relations(object)
+  union <- relations[relations$sets %in% sets, , drop = FALSE]
+  if (is.factor(union$sets)) {
+    levels(union$sets)[levels(union$sets) %in% sets] <- name
+  } else {
+    union$sets[union$sets %in% sets] <- name
+  }
 
-    union <- fapply(union, FUN, ... = ...)
-    object <- replace_interactions(object, union, keep_relations)
-    droplevels(object, !keep_elements, !keep_sets, !keep_relations)
+  union <- fapply(union, FUN, ... = ...)
+  object <- replace_interactions(object, union, keep_relations)
+  droplevels(object, !keep_elements, !keep_sets, !keep_relations)
 }

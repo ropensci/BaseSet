@@ -17,11 +17,11 @@
 #' TS2
 #' is_nested(TS2)
 is_nested <- function(object) {
-    UseMethod("is_nested")
+  UseMethod("is_nested")
 }
 
 #' @rdname is_nested
 #' @export
 is_nested.TidySet <- function(object) {
-    any(name_elements(object) %in% name_sets(object))
+  any(name_elements(object) %in% name_sets(object))
 }
