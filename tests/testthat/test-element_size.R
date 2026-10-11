@@ -29,8 +29,8 @@ test_that("element_size and filter work well together", {
                             stringsAsFactors = FALSE)
     fuzzy_set <- tidySet(relations)
     easy <- element_size(fuzzy_set, "f")
-    filtered <- fuzzy_set %>%
-        filter(sets %in% c("B", "C")) %>%
+    filtered <- fuzzy_set |>
+        filter(sets %in% c("B", "C")) |>
         element_size(element = "f")
     expect_equal(dim(easy), dim(filtered))
 })

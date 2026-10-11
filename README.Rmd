@@ -107,11 +107,11 @@ Or any other verb from [dplyr](https://cran.r-project.org/package=dplyr). We can
 ```{r dplyr}
 library("magrittr")
 set.seed(4673) # To make it reproducible in your machine
-sets_enriched <- sets_analysis %>% 
-  mutate(Keep = sample(c(TRUE, FALSE), 7, replace = TRUE)) %>% 
-  filter(Keep == TRUE) %>% 
-  select(-Keep) %>% 
-  activate("sets") %>% 
+sets_enriched <- sets_analysis |> 
+  mutate(Keep = sample(c(TRUE, FALSE), 7, replace = TRUE)) |> 
+  filter(Keep == TRUE) |> 
+  select(-Keep) |> 
+  activate("sets") |> 
   mutate(sets_origin = c("Reactome", "KEGG"))
 sets_enriched
 
@@ -152,8 +152,8 @@ Assuming that the fuzzy value is a probability, we can calculate which is the pr
 # A set could be empty
 set_size(fuzzy_set)
 # The more probable size of the sets:
-set_size(fuzzy_set) %>% 
-  group_by(sets) %>% 
+set_size(fuzzy_set) |> 
+  group_by(sets) |> 
   filter(probability == max(probability))
 # Probability of belonging to several sets:
 element_size(fuzzy_set)
@@ -162,9 +162,9 @@ element_size(fuzzy_set)
 With fuzzy sets we can filter at certain levels (called alpha cut):
 
 ```{r alphaCut}
-fuzzy_set %>% 
-  filter(fuzzy > 0.5) %>% 
-  activate("sets") %>% 
+fuzzy_set |> 
+  filter(fuzzy > 0.5) |> 
+  activate("sets") |> 
   mutate(sets_origin = c("Reactome", "KEGG"))
 ```
 

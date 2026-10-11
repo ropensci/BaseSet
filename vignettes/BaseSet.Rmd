@@ -236,8 +236,8 @@ You usually need to activate which three slots you want to affect with `activate
 
 ```{r tidyverse}
 library("dplyr")
-m_TS <- tidy_set %>% 
-  activate("relations") %>% 
+m_TS <- tidy_set |> 
+  activate("relations") |> 
   mutate(Important = runif(nRelations(tidy_set)))
 m_TS
 ```
@@ -245,14 +245,14 @@ m_TS
 You can use activate to select what are the verbs modifying:
 
 ```{r deactivate}
-set_modified <- m_TS %>% 
-  activate("elements") %>% 
+set_modified <- m_TS |> 
+  activate("elements") |> 
   mutate(Pathway = if_else(elements %in% c("Gene1", "Gene2"), 
                            "pathway1", 
                            "pathway2"))
 set_modified
-set_modified %>% 
-  deactivate() %>% # To apply a filter independently of where it is
+set_modified |> 
+  deactivate() |> # To apply a filter independently of where it is
   filter(Pathway == "pathway1")
 ```
 
@@ -263,22 +263,22 @@ You can create a new one with `group`.
 
 ```{r group}
 # A new group of those elements in pathway1 and with Important == 1
-set_modified %>% 
-  deactivate() %>% 
+set_modified |> 
+  deactivate() |> 
   group(name = "new", Pathway == "pathway1")
 ```
 
 ```{r group2}
-set_modified %>% 
+set_modified |> 
   group("pathway1", elements %in% c("Gene1", "Gene2"))
 ```
 
 You can use `group_by()` but it won't return a `TidySet`. 
 
 ```{r group_by}
-set_modified %>% 
-    deactivate() %>% 
-    group_by(Pathway, sets) %>%  
+set_modified |> 
+    deactivate() |> 
+    group_by(Pathway, sets) |>  
     count()
 ```
 

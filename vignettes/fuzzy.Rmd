@@ -200,10 +200,10 @@ Our question is **which type of cells did we have on the original sample?**
 We can easily answer this by looking at the relations that have higher confidence of the relationship for each cell.
 
 ```{r cells_classification}
-sc_classification %>% 
-    group_by(elements) %>% 
-    filter(fuzzy == max(fuzzy)) %>% 
-    group_by(sets) %>% 
+sc_classification |> 
+    group_by(elements) |> 
+    filter(fuzzy == max(fuzzy)) |> 
+    group_by(sets) |> 
     count()
 ```
 
@@ -212,9 +212,9 @@ However, how likely is that a cell is placed to just a single set?
 
 ```{r cells_subset}
 scTS <- tidySet(sc_classification) # Conversion of format
-sample_cells <- scTS %>% 
-    element_size() %>% 
-    group_by(elements) %>% 
+sample_cells <- scTS |> 
+    element_size() |> 
+    group_by(elements) |> 
     filter(probability == max(probability))
 sample_cells
 ```
@@ -228,9 +228,9 @@ Ideally the predicted number of cells per type and the cells with higher confide
 We can also look the other way around: How good is the prediction of a cell type for each cell? 
 
 ```{r celltypes}
-scTS %>% 
-    set_size() %>% 
-    group_by(sets) %>% 
+scTS |> 
+    set_size() |> 
+    group_by(sets) |> 
     filter(probability == max(probability))
 ```
 
