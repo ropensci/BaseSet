@@ -84,35 +84,15 @@ test_that("check coherence", {
 
 test_that("fapply works in order", {
     fuzzy_set <- new("TidySet",
-        elements = structure(
-            list(elements = structure(1:6,
-                levels = c("a", "b", "c", "d", "e", "f"),
-                class = "factor"
-            )),
-            class = "data.frame", row.names = c(NA, -6L)
-        ),
-        sets = structure(list(sets = structure(1:2,
-            levels = c("A", "B"),
-            class = "factor"
-        )),
-        class = "data.frame",
-        row.names = c(NA, -2L)
-        ),
-        relations = structure(list(
-            sets = structure(c(1L, 1L, 1L, 1L, 1L, 2L, 2L),
-                levels = c("A", "B"), class = "factor"
-            ),
-            elements = structure(c(1L, 2L, 3L, 4L, 5L, 1L, 6L),
-                levels = c("a", "b", "c", "d", "e", "f"),
-                class = "factor"
-            ),
+        elements = data.frame(elements = factor(c("a", "b", "c", "d", "e", "f"))),
+        sets = data.frame(sets = factor(c("A", "B"))),
+        relations = data.frame(
+            sets = factor(rep(c("A", "B"), c(5L, 2L))),
+            elements = factor(c("a", "b", "c", "d", "e", "a", "f")),
             fuzzy = c(
-                0.183724598027766, 0.45670090126805, 0.815207473235205,
-                0.580061004729941, 0.572497315471992, 0.938118239864707,
-                0.946015807567164
+                0.183724598027766, 0.45670090126805, 0.815207473235205, 0.580061004729941,
+                0.572497315471992, 0.938118239864707, 0.946015807567164
             )
-        ),
-        class = "data.frame", row.names = c(NA, -7L)
         )
     )
     df <- as.data.frame(union(fuzzy_set, c("A", "B"), "D", keep = TRUE))
