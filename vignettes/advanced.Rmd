@@ -15,15 +15,15 @@ author:
 - name: Lluís Revilla
   email: lluis.revilla@gmail.com
 vignette: >
-%\VignetteIndexEntry{Advanced examples}
-%\VignetteEncoding{UTF-8}
-%\VignetteDepends{GO.db}
-%\VignetteDepends{reactome.db}
-%\VignetteDepends{GSEABase}
-%\VignetteDepends{org.Hs.eg.db}
-%\DeclareUnicodeCharacter{2229}{$\cap$}
-%\DeclareUnicodeCharacter{222A}{$\cup$}
-%\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{Advanced examples}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteDepends{GO.db}
+  %\VignetteDepends{reactome.db}
+  %\VignetteDepends{GSEABase}
+  %\VignetteDepends{org.Hs.eg.db}
+  %\DeclareUnicodeCharacter{2229}{$\cap$}
+  %\DeclareUnicodeCharacter{222A}{$\cup$}
+  %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
   chunk_output_type: console
 ---

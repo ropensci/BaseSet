@@ -17,9 +17,9 @@ author:
 vignette: >
   %\VignetteIndexEntry{Fuzzy sets}
   %\VignetteEncoding{UTF-8}
-  %\VignetteEngine{knitr::rmarkdown}
   %\DeclareUnicodeCharacter{2229}{$\cap$}
   %\DeclareUnicodeCharacter{222A}{$\cup$}
+  %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
   chunk_output_type: console
 ---
