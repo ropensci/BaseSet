@@ -86,13 +86,13 @@ test_that("fapply works in order", {
     fuzzy_set <- new("TidySet",
         elements = structure(
             list(elements = structure(1:6,
-                .Label = c("a", "b", "c", "d", "e", "f"),
+                levels = c("a", "b", "c", "d", "e", "f"),
                 class = "factor"
             )),
             class = "data.frame", row.names = c(NA, -6L)
         ),
         sets = structure(list(sets = structure(1:2,
-            .Label = c("A", "B"),
+            levels = c("A", "B"),
             class = "factor"
         )),
         class = "data.frame",
@@ -100,10 +100,10 @@ test_that("fapply works in order", {
         ),
         relations = structure(list(
             sets = structure(c(1L, 1L, 1L, 1L, 1L, 2L, 2L),
-                .Label = c("A", "B"), class = "factor"
+                levels = c("A", "B"), class = "factor"
             ),
             elements = structure(c(1L, 2L, 3L, 4L, 5L, 1L, 6L),
-                .Label = c("a", "b", "c", "d", "e", "f"),
+                levels = c("a", "b", "c", "d", "e", "f"),
                 class = "factor"
             ),
             fuzzy = c(
