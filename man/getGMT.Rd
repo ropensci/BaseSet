@@ -35,8 +35,8 @@ nSets(gs)
 The file format is defined by the Broad Institute \href{https://software.broadinstitute.org/cancer/software/gsea/wiki/index.php/Data_formats#GMT:_Gene_Matrix_Transposed_file_format_.28.2A.gmt.29}{here}
 }
 \seealso{
-Other IO functions: 
-\code{\link{getGAF}()},
-\code{\link{getOBO}()}
+Other IO functions:
+\code{\link[=getGAF]{getGAF()}},
+\code{\link[=getOBO]{getOBO()}}
 }
 \concept{IO functions}

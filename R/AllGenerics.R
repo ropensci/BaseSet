@@ -574,7 +574,7 @@ methods::setGeneric("complement_element", function(object, elements, ...)
 #' Subtract
 #'
 #' Elements in a set not present in the other set. Equivalent to
-#' [setdiff()].
+#' [base::setdiff()].
 #' @param object A TidySet object.
 #' @param set_in Name of the sets where the elements should be present.
 #' @param not_in Name of the sets where the elements should not be present.
@@ -583,7 +583,7 @@ methods::setGeneric("complement_element", function(object, elements, ...)
 #' @family complements
 #' @family methods that create new sets
 #' @family methods
-#' @seealso [setdiff()]
+#' @seealso [base::setdiff()]
 #' @export
 #' @examples
 #' relations <- data.frame(

@@ -29,6 +29,11 @@ Useful links:
 \author{
 \strong{Maintainer}: Lluís Revilla Sancho \email{lluis.revilla@gmail.com} (\href{https://orcid.org/0000-0001-9747-2570}{ORCID}) [copyright holder]
 
+Authors:
+\itemize{
+  \item Lluís Revilla Sancho \email{lluis.revilla@gmail.com} (\href{https://orcid.org/0000-0001-9747-2570}{ORCID}) [copyright holder]
+}
+
 Other contributors:
 \itemize{
   \item Zebulun Arendsee [reviewer]

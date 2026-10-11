@@ -54,11 +54,11 @@ TS <- tidySet(relations)
 name_elements(TS)
 }
 \seealso{
-Other names: 
-\code{\link{name_elements<-}()},
-\code{\link{name_sets}()},
-\code{\link{name_sets<-}()},
-\code{\link{rename_elements}()},
-\code{\link{rename_set}()}
+Other names:
+\code{\link[=name_elements<-]{name_elements<-()}},
+\code{\link[=name_sets]{name_sets()}},
+\code{\link[=name_sets<-]{name_sets<-()}},
+\code{\link[=rename_elements]{rename_elements()}},
+\code{\link[=rename_set]{rename_set()}}
 }
 \concept{names}
