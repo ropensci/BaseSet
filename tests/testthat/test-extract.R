@@ -17,29 +17,30 @@ test_that("$<- works", {
   expect_equal(relations(TS)$adafd, LETTERS[1:6])
 
 
-  l <- list(A = "1",
-            B = c("1", "2"),
-            C = c("2", "3", "4"),
-            D = c("1", "2", "3", "4")
+  l <- list(
+    A = "1",
+    B = c("1", "2"),
+    C = c("2", "3", "4"),
+    D = c("1", "2", "3", "4")
   )
   TS <- tidySet(l)
   expect_no_error(TS$comp <- runif(10))
 })
 
 test_that("$<- works well", {
-    TS <- tidySet(list(A = letters[1:5], B = letters[6]))
-    TS[, "sets", "origin"] <- sample(c("random", "non-random"), 2, replace = TRUE)
-    expect_no_error(TS$origin <- c("BCN", "BDN"))
+  TS <- tidySet(list(A = letters[1:5], B = letters[6]))
+  TS[, "sets", "origin"] <- sample(c("random", "non-random"), 2, replace = TRUE)
+  expect_no_error(TS$origin <- c("BCN", "BDN"))
 })
 
 ## [ ####
 test_that("[i, j, k] subset works", {
-    TS <- tidySet(list(A = letters[1:5], B = letters[6]))
+  TS <- tidySet(list(A = letters[1:5], B = letters[6]))
 
-    expect_warning(TS$abcd <- sample(c("ha", "he"), size = 6, replace = TRUE))
+  expect_warning(TS$abcd <- sample(c("ha", "he"), size = 6, replace = TRUE))
 
-    expect_error(TS[, c(TRUE, FALSE, TRUE)], "j only accepts:")
-    expect_equal(ncol(relations(TS[1, ])), 4)
+  expect_error(TS[, c(TRUE, FALSE, TRUE)], "j only accepts:")
+  expect_equal(ncol(relations(TS[1, ])), 4)
 
   first_element <- TS[1, "elements", ]
   expect_equal(nElements(first_element), 1)
@@ -61,59 +62,64 @@ test_that("[i, j, k] subset works", {
 })
 
 test_that("[<- works with names", {
-    TS <- tidySet(list(A = letters[1:5], B = letters[6]))
-    TS[, "sets", "origin"] <- sample(c("random", "non-random"), 2, replace = TRUE)
-    TS[, "sets", "type"] <- c("Fantastic", "Wonderful")
-    expect_no_error(TS[1, "relations", "origin"] <- "ha")
-    expect_no_error(TS[, "relations", "origin"] <- NULL)
-    expect_length(TS$origin, 2)
+  TS <- tidySet(list(A = letters[1:5], B = letters[6]))
+  TS[, "sets", "origin"] <- sample(c("random", "non-random"), 2, replace = TRUE)
+  TS[, "sets", "type"] <- c("Fantastic", "Wonderful")
+  expect_no_error(TS[1, "relations", "origin"] <- "ha")
+  expect_no_error(TS[, "relations", "origin"] <- NULL)
+  expect_length(TS$origin, 2)
 })
 
 test_that("[ works with names", {
-    TS <- tidySet(list(A = letters[1:5], B = letters[6]))
-    TS[, "sets", "origin"] <- sample(c("random", "non-random"), 2, replace = TRUE)
-    TS[, "sets", "type"] <- c("Fantastic", "Wonderful")
-    expect_no_error(TS[, "sets", c("type", "origin")] )
-    expect_no_error(TS[1, "sets", "origin"])
-    expect_error(TS[1, "relations", "origin"])
+  TS <- tidySet(list(A = letters[1:5], B = letters[6]))
+  TS[, "sets", "origin"] <- sample(c("random", "non-random"), 2, replace = TRUE)
+  TS[, "sets", "type"] <- c("Fantastic", "Wonderful")
+  expect_no_error(TS[, "sets", c("type", "origin")])
+  expect_no_error(TS[1, "sets", "origin"])
+  expect_error(TS[1, "relations", "origin"])
 })
 
 test_that("[ with names work when they are factors", {
-    relations <- data.frame(elements = factor(c("b", "a", "d", "g"),
-                                              levels = letters[1:10]),
-                            sets = c("A", "A", "B", "B"))
-    TS <- tidySet(relations)
-    TS[c("b", "c"), "elements", "NEW"] <- TRUE
-    # A new element c with no relation but property NEW should appear.
-    expect_equal(nElements(TS), 10)
-    expect_equal(nElements(TS, FALSE), 5)
+  relations <- data.frame(
+    elements = factor(c("b", "a", "d", "g"),
+      levels = letters[1:10]
+    ),
+    sets = c("A", "A", "B", "B")
+  )
+  TS <- tidySet(relations)
+  TS[c("b", "c"), "elements", "NEW"] <- TRUE
+  # A new element c with no relation but property NEW should appear.
+  expect_equal(nElements(TS), 10)
+  expect_equal(nElements(TS, FALSE), 5)
 })
 
 test_that("add_column works as [<-", {
-    relations <- data.frame(
-        sets = c(rep("a", 5), "b"),
-        elements = letters[seq_len(6)],
-        fuzzy = runif(6)
-    )
-    a <- tidySet(relations)
+  relations <- data.frame(
+    sets = c(rep("a", 5), "b"),
+    elements = letters[seq_len(6)],
+    fuzzy = runif(6)
+  )
+  a <- tidySet(relations)
 
-    df <- data.frame(well = c("GOOD", "BAD", "WORSE", "UGLY", "FOE", "HEY"))
-    b <- add_column(a, "relations", df)
-    a[, "relations", "well"] <- df$well
-    expect_equal(a, b)
+  df <- data.frame(well = c("GOOD", "BAD", "WORSE", "UGLY", "FOE", "HEY"))
+  b <- add_column(a, "relations", df)
+  a[, "relations", "well"] <- df$well
+  expect_equal(a, b)
 
-    set_data <- data.frame(
-        Group     = c( 100 ,  200 ),
-        Column     = c("abc", "def")
-    )
-    a[, "sets", c("Group", "Column")] <- set_data
-    b <- add_column(b, "sets", set_data)
-    expect_equal(a, b)
-    # Reset and test with automatic merging.
-    a$Group <- NULL
-    a$Column <- NULL
-    expect_error(a[, "sets", ] <- set_data,
-                 "Assigning multiple columns to a single position!")
+  set_data <- data.frame(
+    Group = c(100, 200),
+    Column = c("abc", "def")
+  )
+  a[, "sets", c("Group", "Column")] <- set_data
+  b <- add_column(b, "sets", set_data)
+  expect_equal(a, b)
+  # Reset and test with automatic merging.
+  a$Group <- NULL
+  a$Column <- NULL
+  expect_error(
+    a[, "sets", ] <- set_data,
+    "Assigning multiple columns to a single position!"
+  )
 })
 
 test_that("[i] subset works", {
@@ -144,8 +150,6 @@ test_that("[[i]]<- subset works", {
   expect_equal(nSets(TS), 1)
   expect_equal(name_sets(TS), c("C"))
   expect_equal(nElements(TS), 0)
-
-
 })
 
 # test_that("[i, j]<- subset works in TidySet class", {

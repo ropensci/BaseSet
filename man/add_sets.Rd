@@ -32,8 +32,8 @@ b <- add_sets(a, "fg")
 sets(b)
 }
 \seealso{
-Other add_*: 
-\code{\link{add_elements}()},
-\code{\link{add_relations}()}
+Other add_*:
+\code{\link[=add_elements]{add_elements()}},
+\code{\link[=add_relations]{add_relations()}}
 }
 \concept{add_*}

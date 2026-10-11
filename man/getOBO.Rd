@@ -27,8 +27,8 @@ head(gs)
 The format is described \href{https://owlcollab.github.io/oboformat/doc/GO.format.obo-1_4.html}{here}
 }
 \seealso{
-Other IO functions: 
-\code{\link{getGAF}()},
-\code{\link{getGMT}()}
+Other IO functions:
+\code{\link[=getGAF]{getGAF()}},
+\code{\link[=getGMT]{getGMT()}}
 }
 \concept{IO functions}

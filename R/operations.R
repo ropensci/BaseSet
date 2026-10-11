@@ -116,11 +116,14 @@ fapply <- function(relations, FUN, ...) {
 
 merge_tidySets <- function(object1, object2) {
   new_relations <- merge(object1@relations, object2@relations,
-                         all = TRUE, sort = FALSE)
+    all = TRUE, sort = FALSE
+  )
   new_sets <- merge(object1@sets, object2@sets,
-                    all = TRUE, sort = FALSE)
+    all = TRUE, sort = FALSE
+  )
   new_elements <- merge(object1@elements, object2@elements,
-                        all = TRUE, sort = FALSE)
+    all = TRUE, sort = FALSE
+  )
 
   object2@relations <- unique(new_relations)
   object2@sets <- unique(new_sets)

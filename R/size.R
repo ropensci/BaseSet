@@ -12,8 +12,8 @@
 #' is the relations slot returns the TidySet object with a warning.
 #' @examples
 #' rel <- data.frame(
-#'     sets = c(rep("A", 5), "B", "C"),
-#'     elements = c(letters[seq_len(6)], letters[6])
+#'   sets = c(rep("A", 5), "B", "C"),
+#'   elements = c(letters[seq_len(6)], letters[6])
 #' )
 #' TS <- tidySet(rel)
 #' TS <- activate(TS, "elements")
@@ -22,9 +22,9 @@
 #' size(TS)
 #' # With fuzzy sets
 #' relations <- data.frame(
-#'     sets = c(rep("A", 5), "B", "C"),
-#'     elements = c(letters[seq_len(6)], letters[6]),
-#'     fuzzy = runif(7)
+#'   sets = c(rep("A", 5), "B", "C"),
+#'   elements = c(letters[seq_len(6)], letters[6]),
+#'   fuzzy = runif(7)
 #' )
 #' TS <- tidySet(relations)
 #' TS <- activate(TS, "elements")
@@ -32,23 +32,24 @@
 #' TS <- activate(TS, "sets")
 #' size(TS)
 size <- function(object, ...) {
-    UseMethod("size")
+  UseMethod("size")
 }
 
 #' @export
 #' @method size TidySet
 size.TidySet <- function(object, ...) {
-    a <- active(object)
-    if (is.null(a) || a == "relations") {
-        msg <- paste(
-            "Unable to calculate the size,",
-            "activate either elements or sets."
-        )
-        warning(msg)
-        return(object)
-    }
+  a <- active(object)
+  if (is.null(a) || a == "relations") {
+    msg <- paste(
+      "Unable to calculate the size,",
+      "activate either elements or sets."
+    )
+    warning(msg)
+    return(object)
+  }
 
-    switch(a,
-           elements = element_size(object, ...),
-           sets = set_size(object, ...))
+  switch(a,
+    elements = element_size(object, ...),
+    sets = set_size(object, ...)
+  )
 }

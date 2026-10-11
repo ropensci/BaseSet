@@ -20,9 +20,9 @@ dplyr::pull
 #' @family methods
 #' @examples
 #' relations <- data.frame(
-#'     sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
-#'     elements = rep(letters[seq_len(6)], 2),
-#'     fuzzy = runif(12)
+#'   sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
+#'   elements = rep(letters[seq_len(6)], 2),
+#'   fuzzy = runif(12)
 #' )
 #' a <- tidySet(relations)
 #' a <- mutate_element(a, type = c(rep("Gene", 4), rep("lncRNA", 2)))
@@ -39,53 +39,53 @@ dplyr::pull
 #' @export
 #' @method pull TidySet
 pull.TidySet <- function(.data, var = -1, name = NULL, ...) {
-    a <- active(.data)
-    if (is.null(a)) {
-        return(dplyr::pull(as.data.frame(.data), !!enquo(var), ...))
-    }
+  a <- active(.data)
+  if (is.null(a)) {
+    return(dplyr::pull(as.data.frame(.data), !!enquo(var), ...))
+  }
 
-    switch(a,
-           elements = pull_element(.data, !!enquo(var), !!enquo(name), ...),
-           sets = pull_set(.data, !!enquo(var), !!enquo(name), ...),
-           relations = pull_relation(.data, !!enquo(var), !!enquo(name), ...))
-
+  switch(a,
+    elements = pull_element(.data, !!enquo(var), !!enquo(name), ...),
+    sets = pull_set(.data, !!enquo(var), !!enquo(name), ...),
+    relations = pull_relation(.data, !!enquo(var), !!enquo(name), ...)
+  )
 }
 
 #' @rdname pull_
 #' @export
 pull_set <- function(.data, var = -1, name = NULL, ...) {
-    UseMethod("pull_set")
+  UseMethod("pull_set")
 }
 
 #' @rdname pull_
 #' @export
 pull_element <- function(.data, var = -1, name = NULL, ...) {
-    UseMethod("pull_element")
+  UseMethod("pull_element")
 }
 
 #' @rdname pull_
 #' @export
 pull_relation <- function(.data, var = -1, name = NULL, ...) {
-    UseMethod("pull_relation")
+  UseMethod("pull_relation")
 }
 
 #' @export
 #' @method pull_set TidySet
 pull_set.TidySet <- function(.data, var = -1, name = NULL, ...) {
-    sets <- sets(.data)
-    dplyr::pull(sets, !!enquo(var), !!enquo(name), ...)
+  sets <- sets(.data)
+  dplyr::pull(sets, !!enquo(var), !!enquo(name), ...)
 }
 
 #' @export
 #' @method pull_element TidySet
 pull_element.TidySet <- function(.data, var = -1, name = NULL, ...) {
-    elements <- elements(.data)
-    dplyr::pull(elements, !!enquo(var), !!enquo(name), ...)
+  elements <- elements(.data)
+  dplyr::pull(elements, !!enquo(var), !!enquo(name), ...)
 }
 
 #' @export
 #' @method pull_relation TidySet
 pull_relation.TidySet <- function(.data, var = -1, name = NULL, ...) {
-    relations <- relations(.data)
-    dplyr::pull(relations, !!enquo(var), !!enquo(name), ...)
+  relations <- relations(.data)
+  dplyr::pull(relations, !!enquo(var), !!enquo(name), ...)
 }

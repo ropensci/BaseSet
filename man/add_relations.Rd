@@ -45,8 +45,8 @@ add_relations(a,
 \code{\link[=add_relation]{add_relation()}} to add relations with new sets or/and
 new elements.
 
-Other add_*: 
-\code{\link{add_elements}()},
-\code{\link{add_sets}()}
+Other add_*:
+\code{\link[=add_elements]{add_elements()}},
+\code{\link[=add_sets]{add_sets()}}
 }
 \concept{add_*}

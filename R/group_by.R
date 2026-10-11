@@ -15,22 +15,22 @@ dplyr::group_by
 #' @seealso [dplyr::group_by()] and [activate()]
 #' @examples
 #' relations <- data.frame(
-#'     sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
-#'     elements = rep(letters[seq_len(6)], 2),
-#'     fuzzy = runif(12)
+#'   sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
+#'   elements = rep(letters[seq_len(6)], 2),
+#'   fuzzy = runif(12)
 #' )
 #' a <- tidySet(relations)
 #' elements(a) <- cbind(elements(a),
-#'     type = c(rep("Gene", 4), rep("lncRNA", 2))
+#'   type = c(rep("Gene", 4), rep("lncRNA", 2))
 #' )
 #' group_by(a, elements)
 #' @rdname group_by_
 #' @export
 #' @method group_by TidySet
 group_by.TidySet <- function(.data, ...) {
-    if (is.null(active(.data))) {
-        dplyr::group_by(as.data.frame(.data), ...)
-    } else {
-        dplyr::group_by(slot(.data, active(.data)), ...)
-    }
+  if (is.null(active(.data))) {
+    dplyr::group_by(as.data.frame(.data), ...)
+  } else {
+    dplyr::group_by(slot(.data, active(.data)), ...)
+  }
 }
