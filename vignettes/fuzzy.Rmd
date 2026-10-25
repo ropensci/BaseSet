@@ -12,8 +12,8 @@ output:
       collapsed: true
       toc_depth: 3
 author:
-- name: Lluís Revilla
-  email: lluis.revilla@gmail.com
+  - name: Lluís Revilla
+    email: lluis.revilla@gmail.com
 vignette: >
   %\VignetteIndexEntry{Fuzzy sets}
   %\VignetteEncoding{UTF-8}

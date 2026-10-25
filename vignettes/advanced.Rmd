@@ -1,7 +1,7 @@
 ---
 title: "Advanced examples"
 abstract: >
-This vignette assumes you are familiar with set operations from the basic vignette.
+  This vignette assumes you are familiar with set operations from the basic vignette.
 date: "`r format(Sys.time(), '%Y %b %d')`"
 output:
   html_document:
@@ -12,8 +12,8 @@ output:
       collapsed: true
       toc_depth: 3
 author:
-- name: Lluís Revilla
-  email: lluis.revilla@gmail.com
+  - name: Lluís Revilla
+    email: lluis.revilla@gmail.com
 vignette: >
   %\VignetteIndexEntry{Advanced examples}
   %\VignetteEncoding{UTF-8}
