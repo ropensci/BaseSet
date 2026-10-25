@@ -17,6 +17,6 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{dplyr}{\code{\link[dplyr]{arrange}}, \code{\link[dplyr]{filter}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{mutate}}, \code{\link[dplyr]{pull}}, \code{\link[dplyr]{select}}}
+  \item{dplyr}{\code{\link[dplyr:arrange]{arrange()}}, \code{\link[dplyr:filter]{filter()}}, \code{\link[dplyr:group_by]{group_by()}}, \code{\link[dplyr:mutate]{mutate()}}, \code{\link[dplyr:pull]{pull()}}, \code{\link[dplyr:select]{select()}}}
 }}
 

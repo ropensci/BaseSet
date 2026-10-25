@@ -156,11 +156,11 @@ library("magrittr")
 #> 
 #>     subtract
 set.seed(4673) # To make it reproducible in your machine
-sets_enriched <- sets_analysis %>% 
-  mutate(Keep = sample(c(TRUE, FALSE), 7, replace = TRUE)) %>% 
-  filter(Keep == TRUE) %>% 
-  select(-Keep) %>% 
-  activate("sets") %>% 
+sets_enriched <- sets_analysis |> 
+  mutate(Keep = sample(c(TRUE, FALSE), 7, replace = TRUE)) |> 
+  filter(Keep == TRUE) |> 
+  select(-Keep) |> 
+  activate("sets") |> 
   mutate(sets_origin = c("Reactome", "KEGG"))
 sets_enriched
 #>   elements sets fuzzy sets_origin
@@ -271,8 +271,8 @@ set_size(fuzzy_set)
 #> 8    B    1 0.109184679
 #> 9    B    2 0.887474684
 # The more probable size of the sets:
-set_size(fuzzy_set) %>% 
-  group_by(sets) %>% 
+set_size(fuzzy_set) |> 
+  group_by(sets) |> 
   filter(probability == max(probability))
 #> # A tibble: 2 × 3
 #> # Groups:   sets [2]
@@ -301,9 +301,9 @@ element_size(fuzzy_set)
 With fuzzy sets we can filter at certain levels (called alpha cut):
 
 ``` r
-fuzzy_set %>% 
-  filter(fuzzy > 0.5) %>% 
-  activate("sets") %>% 
+fuzzy_set |> 
+  filter(fuzzy > 0.5) |> 
+  activate("sets") |> 
   mutate(sets_origin = c("Reactome", "KEGG"))
 #>   elements sets     fuzzy sets_origin
 #> 1        c    A 0.8152075    Reactome
@@ -318,7 +318,7 @@ fuzzy_set %>%
 There are several other packages related to sets, which partially
 overlap with BaseSet functionality:
 
-- [`{sets}`](https://CRAN.R-project.org/package=sets)  
+- [`{sets}`](https://CRAN.R-project.org/package=sets)\
   Implements a more generalized approach, that can store functions or
   lists as an element of a set (while BaseSet only allows to store a
   character or factor), but it is harder to operate in a tidy/long way.
@@ -326,18 +326,18 @@ overlap with BaseSet functionality:
   two different objects, while a single TidySet object (the class
   implemented in BaseSet) can store one or thousands of sets.
 
-- [`{GSEABase}`](https://bioconductor.org/packages/GSEABase/)  
+- [`{GSEABase}`](https://bioconductor.org/packages/GSEABase/)\
   Implements a class to store sets and related information, but it
   doesn’t allow to store fuzzy sets and it is also quite slow as it
   creates several classes for annotating each set.
 
-- [`{BiocSet}`](https://bioconductor.org/packages/BiocSet/)  
+- [`{BiocSet}`](https://bioconductor.org/packages/BiocSet/)\
   Implements a tidy class for sets but does not handle fuzzy sets. It
   also has less functionality to operate with sets, like power sets and
   cartesian product. BiocSet was influenced by the development of this
   package.
 
-- [`{hierarchicalSets}`](https://CRAN.R-project.org/package=hierarchicalSets)  
+- [`{hierarchicalSets}`](https://CRAN.R-project.org/package=hierarchicalSets)\
   This package is focused on clustering of sets that are inside other
   sets and visualizations. However, BaseSet is focused on storing and
   manipulate sets including hierarchical sets.

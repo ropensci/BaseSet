@@ -176,27 +176,35 @@ exportMethods(set_size)
 exportMethods(sets)
 exportMethods(show)
 exportMethods(subtract)
-importFrom(dplyr,arrange)
-importFrom(dplyr,filter)
-importFrom(dplyr,group_by)
-importFrom(dplyr,mutate)
-importFrom(dplyr,n_distinct)
-importFrom(dplyr,pull)
-importFrom(dplyr,select)
-importFrom(methods,"slot<-")
-importFrom(methods,as)
-importFrom(methods,new)
-importFrom(methods,setClassUnion)
-importFrom(methods,setGeneric)
-importFrom(methods,show)
-importFrom(methods,slot)
-importFrom(methods,validObject)
-importFrom(rlang,"!!")
-importFrom(rlang,enquo)
-importFrom(rlang,exprs)
-importFrom(rlang,quo_text)
-importFrom(utils,.DollarNames)
-importFrom(utils,combn)
-importFrom(utils,head)
-importFrom(utils,read.delim)
-importFrom(utils,tail)
+importFrom(dplyr,
+  arrange,
+  filter,
+  group_by,
+  mutate,
+  n_distinct,
+  pull,
+  select
+)
+importFrom(methods,
+  "slot<-",
+  as,
+  new,
+  setClassUnion,
+  setGeneric,
+  show,
+  slot,
+  validObject
+)
+importFrom(rlang,
+  "!!",
+  enquo,
+  exprs,
+  quo_text
+)
+importFrom(utils,
+  .DollarNames,
+  combn,
+  head,
+  read.delim,
+  tail
+)

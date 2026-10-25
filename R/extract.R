@@ -56,294 +56,320 @@ NULL
 
 #' @rdname extract-TidySet
 #' @export
-setMethod("$", "TidySet",
-          function(x, name) {
-              if (name %in% colnames(relations(x))) {
-                  return(slot(x, "relations")[[name]])
-              }
-              if (name %in% colnames(sets(x))) {
-                  return(slot(x, "sets")[[name]])
-              }
-              if (name %in% colnames(elements(x))) {
-                  return(slot(x, "elements")[[name]])
-              }
-              NULL
-          })
+setMethod(
+  "$", "TidySet",
+  function(x, name) {
+    if (name %in% colnames(relations(x))) {
+      return(slot(x, "relations")[[name]])
+    }
+    if (name %in% colnames(sets(x))) {
+      return(slot(x, "sets")[[name]])
+    }
+    if (name %in% colnames(elements(x))) {
+      return(slot(x, "elements")[[name]])
+    }
+    NULL
+  }
+)
 
 #' @rdname extract-TidySet
 #' @export
-setMethod("$<-", "TidySet",
-          function(x, name, value) {
-              p_length <- which(length(value) == dim(x))
-              # As per dim named output
-              p_named <- switch(name,
-                                elements = 1,
-                                fuzzy = 2,
-                                sets = 3,
-                                NA)
-              if (is.na(p_named)) {
-                  p_named <- in_slots(x, function(x, y){
-                      y %in% colnames(x)},
-                      y = name)
-                  p_named <- which(p_named)
-              }
-              # unknown new column to relations
-              if (length(p_named) == 0 && length(p_length) == 0) {
-                  pos <- 2
-                  value <- rep(value, nRelations(x))
-              }
+setMethod(
+  "$<-", "TidySet",
+  function(x, name, value) {
+    p_length <- which(length(value) == dim(x))
+    # As per dim named output
+    p_named <- switch(name,
+      elements = 1,
+      fuzzy = 2,
+      sets = 3,
+      NA
+    )
+    if (is.na(p_named)) {
+      p_named <- in_slots(x, function(x, y) {
+        y %in% colnames(x)
+      },
+      y = name
+      )
+      p_named <- which(p_named)
+    }
+    # unknown new column to relations
+    if (length(p_named) == 0 && length(p_length) == 0) {
+      pos <- 2
+      value <- rep(value, nRelations(x))
+    }
 
-              #  Not tested with a relation documented multiple times!
-              if (length(p_named) > 1 && length(p_length) > 1) {
-                  p_named <- intersect(p_named, p_length)
-              } else if (length(p_named) == 0 && length(p_length) > 1) {
-                  p_named <- p_length
-              }
+    #  Not tested with a relation documented multiple times!
+    if (length(p_named) > 1 && length(p_length) > 1) {
+      p_named <- intersect(p_named, p_length)
+    } else if (length(p_named) == 0 && length(p_length) > 1) {
+      p_named <- p_length
+    }
 
-              if (length(p_named) > 1) {
-                  if (2 %in% p_named) {
-                      warning("Matching multiple slots. Assigning value to relations.",
-                              call. = FALSE)
-                      pos <- 2
-                  } else {
-                      warning("Matching multiple slots. Randomly assigning the value.",
-                              call. = FALSE)
-                      pos <- sample(p_named, 1)
-                  }
-              }
+    if (length(p_named) > 1) {
+      if (2 %in% p_named) {
+        warning("Matching multiple slots. Assigning value to relations.",
+          call. = FALSE
+        )
+        pos <- 2
+      } else {
+        warning("Matching multiple slots. Randomly assigning the value.",
+          call. = FALSE
+        )
+        pos <- sample(p_named, 1)
+      }
+    }
 
-              if (length(p_named) != 1 && length(p_length) == 1)  {
-                  pos <- p_length
-              }
-              if (length(p_length) != 1 && length(p_named) == 1)  {
-                  pos <- p_named
-              }
+    if (length(p_named) != 1 && length(p_length) == 1) {
+      pos <- p_length
+    }
+    if (length(p_length) != 1 && length(p_named) == 1) {
+      pos <- p_named
+    }
 
-              if ( length(p_named) == 1 && length(p_length) == 1) {
-                  pos <- p_named
-              }
+    if (length(p_named) == 1 && length(p_length) == 1) {
+      pos <- p_named
+    }
 
-              if (pos == 1) {
-                  elements(x)[[name]] <- value
-              } else if (pos == 2) {
-                  relations(x)[[name]] <- value
-              } else if (pos == 3) {
-                  sets(x)[[name]] <- value
-              }
-              droplevels(x)
-          })
+    if (pos == 1) {
+      elements(x)[[name]] <- value
+    } else if (pos == 2) {
+      relations(x)[[name]] <- value
+    } else if (pos == 3) {
+      sets(x)[[name]] <- value
+    }
+    droplevels(x)
+  }
+)
 
 
 # [ ####
 
 #' @rdname extract-TidySet
 #' @export
-setMethod("[", "TidySet",
-          function(x, i, j, k, ..., drop = TRUE) {
-              stopifnot(is.logical(drop))
-              if (missing(j)) {
-                  j <- "relations"
-              }
-              if (length(j) > 1 || is.na(j)) {
-                  stop("j only accepts: 'elements', 'sets' and ' relations'")
-              }
+setMethod(
+  "[", "TidySet",
+  function(x, i, j, k, ..., drop = TRUE) {
+    stopifnot(is.logical(drop))
+    if (missing(j)) {
+      j <- "relations"
+    }
+    if (length(j) > 1 || is.na(j)) {
+      stop("j only accepts: 'elements', 'sets' and ' relations'")
+    }
 
-              # TODO allow characters that match with the j component!
-              if (!missing(i) && is.character(i) && j == "relations") {
-                  stop("TidySet does not accept characters as `i` index for relations.",
-                       "\nUse row positions instead.", call. = FALSE)
-              }
-              j <- match.arg(j, c("elements", "sets", "relations"))
+    # TODO allow characters that match with the j component!
+    if (!missing(i) && is.character(i) && j == "relations") {
+      stop("TidySet does not accept characters as `i` index for relations.",
+        "\nUse row positions instead.",
+        call. = FALSE
+      )
+    }
+    j <- match.arg(j, c("elements", "sets", "relations"))
 
-              if (!missing(i) && is.character(i)) {
-                  method <- switch(j,
-                                   "elements" = name_elements,
-                                   "sets" = name_sets)
-                  i <- match(i, method(x))
-              }
-              s <-  slot(x, j)
-              if (missing(k)) {
-                  k <- colnames(s)
-              } else if (!any(k %in% colnames(s))) {
-                  stop("Some column are not present in ", sQuote(j), ".")
-              }
+    if (!missing(i) && is.character(i)) {
+      method <- switch(j,
+        "elements" = name_elements,
+        "sets" = name_sets
+      )
+      i <- match(i, method(x))
+    }
+    s <- slot(x, j)
+    if (missing(k)) {
+      k <- colnames(s)
+    } else if (!any(k %in% colnames(s))) {
+      stop("Some column are not present in ", sQuote(j), ".")
+    }
 
-              k <- keep_columns(j, k)
-              if (missing(i)) {
-                  s2 <- s[, k, ..., drop = FALSE]
-              } else {
-                  s2 <- s[i, k, ..., drop = FALSE]
-                  rownames(s2) <- NULL
-              }
-              slot(x, j) <- s2
-              if (drop) {
-                  x <- switch(j,
-                              "sets" = drop_sets(x),
-                              "elements" = drop_elements(x),
-                              x)
-                  x <- drop_relations(x)
-              }
-              validObject(x)
-              x
-          })
+    k <- keep_columns(j, k)
+    if (missing(i)) {
+      s2 <- s[, k, ..., drop = FALSE]
+    } else {
+      s2 <- s[i, k, ..., drop = FALSE]
+      rownames(s2) <- NULL
+    }
+    slot(x, j) <- s2
+    if (drop) {
+      x <- switch(j,
+        "sets" = drop_sets(x),
+        "elements" = drop_elements(x),
+        x
+      )
+      x <- drop_relations(x)
+    }
+    validObject(x)
+    x
+  }
+)
 
 #' @export
 #' @rdname extract-TidySet
-setMethod("[<-", "TidySet",
-          function(x, i, j, k, ..., value) {
-              if (missing(j)) {
-                  j <- "relations"
-              }
-              j <- match.arg(j, c("elements", "sets", "relations"))
+setMethod(
+  "[<-", "TidySet",
+  function(x, i, j, k, ..., value) {
+    if (missing(j)) {
+      j <- "relations"
+    }
+    j <- match.arg(j, c("elements", "sets", "relations"))
 
-              if (!missing(i) && is.character(i) && j == "relations") {
-                  stop("TidySet does not accept characters as `i` index for relations.",
-                       "\nUse row positions instead.", call. = FALSE)
-              }
+    if (!missing(i) && is.character(i) && j == "relations") {
+      stop("TidySet does not accept characters as `i` index for relations.",
+        "\nUse row positions instead.",
+        call. = FALSE
+      )
+    }
 
-              j <- match.arg(j, c("elements", "sets", "relations"))
-              s <-  slot(x, j)
+    j <- match.arg(j, c("elements", "sets", "relations"))
+    s <- slot(x, j)
 
-              if (!missing(i) && is.character(i)) {
-                  method <- switch(j,
-                                   "elements" = name_elements,
-                                   "sets" = name_sets)
-                  iy <- match(i, method(x, FALSE))
-                  if (anyNA(iy)) {
-                      iy[is.na(iy)] <- nElements(x, FALSE) + seq_len(sum(is.na(iy)))
-                      s[iy, j] <- i
-                      i <- iy
-                  }
-              }
-              if (missing(k)) {
-                  k <- 1
-              }
+    if (!missing(i) && is.character(i)) {
+      method <- switch(j,
+        "elements" = name_elements,
+        "sets" = name_sets
+      )
+      iy <- match(i, method(x, FALSE))
+      if (anyNA(iy)) {
+        iy[is.na(iy)] <- nElements(x, FALSE) + seq_len(sum(is.na(iy)))
+        s[iy, j] <- i
+        i <- iy
+      }
+    }
+    if (missing(k)) {
+      k <- 1
+    }
 
-              if (length(k) == 1 && NCOL(value) > 1) {
-                  if (missing(i)) {
-                      i <- ""
-                  }
-                  msg <- paste0("TS[", i, ", '", j, "', ", "c('column1', 'column2')] <- value")
-                  stop("Assigning multiple columns to a single position!\nUse one of:\n",
-                       "add_column(TS, '", j, "', value) or ",msg)
-              }
+    if (length(k) == 1 && NCOL(value) > 1) {
+      if (missing(i)) {
+        i <- ""
+      }
+      msg <- paste0("TS[", i, ", '", j, "', ", "c('column1', 'column2')] <- value")
+      stop(
+        "Assigning multiple columns to a single position!\nUse one of:\n",
+        "add_column(TS, '", j, "', value) or ", msg
+      )
+    }
 
-              s[i, k] <- value
-              slot(x, j) <- s
-              validObject(x)
-              x
-          })
+    s[i, k] <- value
+    slot(x, j) <- s
+    validObject(x)
+    x
+  }
+)
 
 # [[ ####
 #' @export
 #' @rdname extract-TidySet
-setMethod("[[", "TidySet",
-          function(x, i, j, ..., exact =TRUE) {
-              if (missing(i)) {
-                  stop("missing subscript")
-              }
-              i <- unique(i)
-              i <- i[!is.na(i)]
-              if (length(i) > 1) {
-                  stop("Trying to extract more than one set.")
-              }
-              stopifnot(isTRUE(exact) || isFALSE(exact))
-              if (missing(j)) {
-                  j <- colnames(sets(x))
-              }
-              j <- keep_columns("sets", j)
-              ns <- nSets(x)
-              logical_i <- is.logical(i) && length(i) > ns
-              numeric_i <- is.numeric(i) && max(i, na.rm = TRUE) > ns
-              if ( logical_i | numeric_i) {
-                  stop("Sets requested not available.")
-              }
-              nams <- name_sets(x)
-              if (is.character(i)) {
-                  nsi <- i
-              } else if (is.character(i) && !exact) {
-                  nsi <- pmatch(i, table = nams)
-              } else {
-                  nsi <- nams[i]
-              }
-              namsi <- match(nsi, nams)
-              x[namsi, "sets", j, drop = TRUE]
-          })
+setMethod(
+  "[[", "TidySet",
+  function(x, i, j, ..., exact = TRUE) {
+    if (missing(i)) {
+      stop("missing subscript")
+    }
+    i <- unique(i)
+    i <- i[!is.na(i)]
+    if (length(i) > 1) {
+      stop("Trying to extract more than one set.")
+    }
+    stopifnot(isTRUE(exact) || isFALSE(exact))
+    if (missing(j)) {
+      j <- colnames(sets(x))
+    }
+    j <- keep_columns("sets", j)
+    ns <- nSets(x)
+    logical_i <- is.logical(i) && length(i) > ns
+    numeric_i <- is.numeric(i) && max(i, na.rm = TRUE) > ns
+    if (logical_i | numeric_i) {
+      stop("Sets requested not available.")
+    }
+    nams <- name_sets(x)
+    if (is.character(i)) {
+      nsi <- i
+    } else if (is.character(i) && !exact) {
+      nsi <- pmatch(i, table = nams)
+    } else {
+      nsi <- nams[i]
+    }
+    namsi <- match(nsi, nams)
+    x[namsi, "sets", j, drop = TRUE]
+  }
+)
 
 #' @rdname extract-TidySet
 #' @export
-setMethod("[[<-", "TidySet",
-          function(x, i, value) {
-              if (missing(i)) {
-                  stop("missing subscript")
-              }
-              if (is.null(value)) {
-                  errors <- character()
-              } else {
-                  errors <- valid_sets(value)
-              }
+setMethod(
+  "[[<-", "TidySet",
+  function(x, i, value) {
+    if (missing(i)) {
+      stop("missing subscript")
+    }
+    if (is.null(value)) {
+      errors <- character()
+    } else {
+      errors <- valid_sets(value)
+    }
 
-              if (length(errors) != 0) {
-                  stop(paste(errors, collapse = "\n"))
-              }
-              i <- unique(i)
-              i <- i[!is.na(i)]
-              if (length(i) > 1) {
-                  stop("Trying to extract more than one set.")
-              }
+    if (length(errors) != 0) {
+      stop(paste(errors, collapse = "\n"))
+    }
+    i <- unique(i)
+    i <- i[!is.na(i)]
+    if (length(i) > 1) {
+      stop("Trying to extract more than one set.")
+    }
 
-              ns <- nSets(x)
-              logical_i <- is.logical(i) && length(i) > ns
-              numeric_i <- is.numeric(i) && max(i, na.rm = TRUE) > ns
-              if ( logical_i | numeric_i) {
-                  stop("Sets requested not available.")
-              }
-              nams <- name_sets(x)
-              if (is.character(i)) {
-                  nsi <- i
-              } else {
-                  nsi <- nams[i]
-              }
-              y <- remove_set(x, nsi)
+    ns <- nSets(x)
+    logical_i <- is.logical(i) && length(i) > ns
+    numeric_i <- is.numeric(i) && max(i, na.rm = TRUE) > ns
+    if (logical_i | numeric_i) {
+      stop("Sets requested not available.")
+    }
+    nams <- name_sets(x)
+    if (is.character(i)) {
+      nsi <- i
+    } else {
+      nsi <- nams[i]
+    }
+    y <- remove_set(x, nsi)
 
-              if (is.null(value)) {
-                  return(y)
-              }
+    if (is.null(value)) {
+      return(y)
+    }
 
-              new_sets <- merge(sets(y), value, all = TRUE, sort = FALSE)
-              sets(y) <- new_sets
-              y <- drop_relations(y)
-              validObject(y)
-              y
-          })
+    new_sets <- merge(sets(y), value, all = TRUE, sort = FALSE)
+    sets(y) <- new_sets
+    y <- drop_relations(y)
+    validObject(y)
+    y
+  }
+)
 
 keep_columns <- function(j, k) {
-    if (is.numeric(k) && j == "relations") {
-        return(unique(c(1:3, k)))
-    } else if (is.numeric(k)) {
-        return(unique(c(1, k)))
-    }
-    cc <- character_columns(j, k)
-    if (!is.null(cc)) {
-        return(cc)
-    }
+  if (is.numeric(k) && j == "relations") {
+    return(unique(c(1:3, k)))
+  } else if (is.numeric(k)) {
+    return(unique(c(1, k)))
+  }
+  cc <- character_columns(j, k)
+  if (!is.null(cc)) {
+    return(cc)
+  }
 
-    if (is.logical(k) && j == "relations") {
-        return(c(TRUE, TRUE, TRUE, k))
-    } else {
-        return(c(TRUE, k))
-    }
+  if (is.logical(k) && j == "relations") {
+    return(c(TRUE, TRUE, TRUE, k))
+  } else {
+    return(c(TRUE, k))
+  }
 }
 
 character_columns <- function(j, k) {
-    if (!is.character(k)) {
-        return(NULL)
-    }
-    if (j == "relations") {
-        return(unique(c("elements", "sets", "fuzzy", k)))
-    } else if (j == "sets") {
-        return(unique(c("sets", k)))
-    } else if (j == "elements") {
-        return(unique(c("elements", k)))
-    }
+  if (!is.character(k)) {
+    return(NULL)
+  }
+  if (j == "relations") {
+    return(unique(c("elements", "sets", "fuzzy", k)))
+  } else if (j == "sets") {
+    return(unique(c("sets", k)))
+  } else if (j == "elements") {
+    return(unique(c("elements", k)))
+  }
 }

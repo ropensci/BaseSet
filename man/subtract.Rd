@@ -43,7 +43,7 @@ A \code{TidySet} object.
 }
 \description{
 Elements in a set not present in the other set. Equivalent to
-\code{\link[generics:setops]{generics::setdiff()}}.
+\code{\link[base:setdiff]{base::setdiff()}}.
 }
 \section{Methods (by class)}{
 \itemize{
@@ -65,59 +65,59 @@ subtract(TS, "A", "B")
 subtract(TS, "A", "B", keep = FALSE)
 }
 \seealso{
-\code{\link[generics:setops]{generics::setdiff()}}
+\code{\link[base:setdiff]{base::setdiff()}}
 
-Other complements: 
-\code{\link{complement}()},
-\code{\link{complement_element}()},
-\code{\link{complement_set}()}
+Other complements:
+\code{\link[=complement]{complement()}},
+\code{\link[=complement_element]{complement_element()}},
+\code{\link[=complement_set]{complement_set()}}
 
-Other methods that create new sets: 
-\code{\link{complement_element}()},
-\code{\link{complement_set}()},
-\code{\link{intersection}()},
-\code{\link{union}()}
+Other methods that create new sets:
+\code{\link[=complement_element]{complement_element()}},
+\code{\link[=complement_set]{complement_set()}},
+\code{\link[=intersection]{intersection()}},
+\code{\link[=union]{union()}}
 
-Other methods: 
+Other methods:
 \code{\link{TidySet-class}},
-\code{\link{activate}()},
-\code{\link{add_column}()},
-\code{\link{add_relation}()},
-\code{\link{arrange.TidySet}()},
-\code{\link{cartesian}()},
-\code{\link{complement}()},
-\code{\link{complement_element}()},
-\code{\link{complement_set}()},
-\code{\link{element_size}()},
-\code{\link{elements}()},
-\code{\link{filter.TidySet}()},
-\code{\link{group}()},
-\code{\link{group_by.TidySet}()},
-\code{\link{incidence}()},
-\code{\link{intersection}()},
-\code{\link{is.fuzzy}()},
-\code{\link{is_nested}()},
-\code{\link{move_to}()},
-\code{\link{mutate.TidySet}()},
-\code{\link{nElements}()},
-\code{\link{nRelations}()},
-\code{\link{nSets}()},
-\code{\link{name_elements<-}()},
-\code{\link{name_sets}()},
-\code{\link{name_sets<-}()},
-\code{\link{power_set}()},
-\code{\link{pull.TidySet}()},
-\code{\link{relations}()},
-\code{\link{remove_column}()},
-\code{\link{remove_element}()},
-\code{\link{remove_relation}()},
-\code{\link{remove_set}()},
-\code{\link{rename_elements}()},
-\code{\link{rename_set}()},
-\code{\link{select.TidySet}()},
-\code{\link{set_size}()},
-\code{\link{sets}()},
-\code{\link{union}()}
+\code{\link[=activate]{activate()}},
+\code{\link[=add_column]{add_column()}},
+\code{\link[=add_relation]{add_relation()}},
+\code{\link[=arrange.TidySet]{arrange.TidySet()}},
+\code{\link[=cartesian]{cartesian()}},
+\code{\link[=complement]{complement()}},
+\code{\link[=complement_element]{complement_element()}},
+\code{\link[=complement_set]{complement_set()}},
+\code{\link[=element_size]{element_size()}},
+\code{\link[=elements]{elements()}},
+\code{\link[=filter.TidySet]{filter.TidySet()}},
+\code{\link[=group]{group()}},
+\code{\link[=group_by.TidySet]{group_by.TidySet()}},
+\code{\link[=incidence]{incidence()}},
+\code{\link[=intersection]{intersection()}},
+\code{\link[=is.fuzzy]{is.fuzzy()}},
+\code{\link[=is_nested]{is_nested()}},
+\code{\link[=move_to]{move_to()}},
+\code{\link[=mutate.TidySet]{mutate.TidySet()}},
+\code{\link[=nElements]{nElements()}},
+\code{\link[=nRelations]{nRelations()}},
+\code{\link[=nSets]{nSets()}},
+\code{\link[=name_elements<-]{name_elements<-()}},
+\code{\link[=name_sets]{name_sets()}},
+\code{\link[=name_sets<-]{name_sets<-()}},
+\code{\link[=power_set]{power_set()}},
+\code{\link[=pull.TidySet]{pull.TidySet()}},
+\code{\link[=relations]{relations()}},
+\code{\link[=remove_column]{remove_column()}},
+\code{\link[=remove_element]{remove_element()}},
+\code{\link[=remove_relation]{remove_relation()}},
+\code{\link[=remove_set]{remove_set()}},
+\code{\link[=rename_elements]{rename_elements()}},
+\code{\link[=rename_set]{rename_set()}},
+\code{\link[=select.TidySet]{select.TidySet()}},
+\code{\link[=set_size]{set_size()}},
+\code{\link[=sets]{sets()}},
+\code{\link[=union]{union()}}
 }
 \concept{complements}
 \concept{methods}

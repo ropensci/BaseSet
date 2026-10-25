@@ -4,79 +4,83 @@ NULL
 #' @describeIn complement_set Complement of the sets.
 #' @export
 setMethod("complement_set",
-    signature = signature(
-        object = "TidySet",
-        sets = "characterORfactor"
-    ),
-    function(object, sets, name = NULL, FUN = NULL, keep = TRUE,
+  signature = signature(
+    object = "TidySet",
+    sets = "characterORfactor"
+  ),
+  function(
+    object, sets, name = NULL, FUN = NULL, keep = TRUE,
     keep_relations = keep,
     keep_elements = keep,
-    keep_sets = keep) {
-        if (!is.logical(keep)) {
-            stop("keep must be a logical value.", call. = FALSE)
-        }
-
-        old_relations <- relations(object)
-        involved_relations <- old_relations$sets %in% sets
-        # Elements present on sets
-        complement <- old_relations[involved_relations, , drop = FALSE]
-
-        if (is.null(FUN)) {
-            complement$fuzzy <- 1 - complement$fuzzy
-        } else {
-            fun <- match.fun(FUN)
-            complement$fuzzy <- fun(complement$fuzzy)
-        }
-
-        if (is.null(name)) {
-            name <- naming("complement", sets)
-        }
-
-        object <- add_sets(object, name)
-        complement$sets <- name
-
-        object <- replace_interactions(object, complement, keep_relations)
-
-        droplevels(object, !keep_elements, !keep_sets, !keep_relations)
+    keep_sets = keep
+  ) {
+    if (!is.logical(keep)) {
+      stop("keep must be a logical value.", call. = FALSE)
     }
+
+    old_relations <- relations(object)
+    involved_relations <- old_relations$sets %in% sets
+    # Elements present on sets
+    complement <- old_relations[involved_relations, , drop = FALSE]
+
+    if (is.null(FUN)) {
+      complement$fuzzy <- 1 - complement$fuzzy
+    } else {
+      fun <- match.fun(FUN)
+      complement$fuzzy <- fun(complement$fuzzy)
+    }
+
+    if (is.null(name)) {
+      name <- naming("complement", sets)
+    }
+
+    object <- add_sets(object, name)
+    complement$sets <- name
+
+    object <- replace_interactions(object, complement, keep_relations)
+
+    droplevels(object, !keep_elements, !keep_sets, !keep_relations)
+  }
 )
 
 #' @describeIn complement_element Complement of the elements.
 #' @export
 setMethod("complement_element",
-    signature = signature(
-        object = "TidySet",
-        elements = "characterORfactor"
-    ),
-    function(object, elements, name = NULL, FUN = NULL, keep = TRUE,
+  signature = signature(
+    object = "TidySet",
+    elements = "characterORfactor"
+  ),
+  function(
+    object, elements, name = NULL, FUN = NULL, keep = TRUE,
     keep_relations = keep,
     keep_elements = keep,
-    keep_sets = keep) {
-        if (!is.logical(keep)) {
-            stop("keep must be a logical value.", call. = FALSE)
-        }
-        old_relations <- relations(object)
-        complement <- old_relations[old_relations$elements %in% elements, ,
-            drop = FALSE
-        ]
-        if (is.null(FUN)) {
-            complement$fuzzy <- 1 - complement$fuzzy
-        } else {
-            fun <- match.fun(FUN)
-            complement$fuzzy <- fun(complement$fuzzy)
-        }
-
-        if (is.null(name)) {
-            name <- naming("complement", elements)
-        }
-
-        complement$sets <- name
-        complement <- complement[complement$fuzzy != 0, , drop = FALSE]
-
-        object <- replace_interactions(object, complement, keep_relations)
-        object <- add_sets(object, name)
-        droplevels(object, !keep_elements, !keep_sets, !keep_relations)
+    keep_sets = keep
+  ) {
+    if (!is.logical(keep)) {
+      stop("keep must be a logical value.", call. = FALSE)
     }
+    old_relations <- relations(object)
+    complement <- old_relations[old_relations$elements %in% elements, ,
+      drop = FALSE
+    ]
+    if (is.null(FUN)) {
+      complement$fuzzy <- 1 - complement$fuzzy
+    } else {
+      fun <- match.fun(FUN)
+      complement$fuzzy <- fun(complement$fuzzy)
+    }
+
+    if (is.null(name)) {
+      name <- naming("complement", elements)
+    }
+
+    complement$sets <- name
+    complement <- complement[complement$fuzzy != 0, , drop = FALSE]
+
+    object <- replace_interactions(object, complement, keep_relations)
+    object <- add_sets(object, name)
+    droplevels(object, !keep_elements, !keep_sets, !keep_relations)
+  }
 )
 
 #' Complement TidySet
@@ -94,43 +98,44 @@ setMethod("complement_element",
 #' @seealso [activate()]
 #' @examples
 #' rel <- data.frame(
-#'     sets = c("A", "A", "B", "B", "C", "C"),
-#'     elements = letters[seq_len(6)],
-#'     fuzzy = runif(6)
+#'   sets = c("A", "A", "B", "B", "C", "C"),
+#'   elements = letters[seq_len(6)],
+#'   fuzzy = runif(6)
 #' )
 #' TS <- tidySet(rel)
 #' TS |>
-#'     activate("elements") |>
-#'     complement("a")
+#'   activate("elements") |>
+#'   complement("a")
 #' TS |>
-#'     activate("elements") |>
-#'     complement("a", "C_a", keep = FALSE)
+#'   activate("elements") |>
+#'   complement("a", "C_a", keep = FALSE)
 #' TS |>
-#'     activate("set") |>
-#'     complement("A")
+#'   activate("set") |>
+#'   complement("A")
 #' TS |>
-#'     activate("set") |>
-#'     complement("A", keep = FALSE)
+#'   activate("set") |>
+#'   complement("A", keep = FALSE)
 #' TS |>
-#'     activate("set") |>
-#'     complement("A", FUN = function(x){abs(x - 0.2)}, keep = FALSE)
+#'   activate("set") |>
+#'   complement("A", FUN = function(x) {
+#'     abs(x - 0.2)
+#'   }, keep = FALSE)
 #' @export
 complement <- function(.data, ...) {
-    UseMethod("complement")
+  UseMethod("complement")
 }
 
 #' @export
 #' @method complement TidySet
 complement.TidySet <- function(.data, ...) {
-    if (is.null(active(.data))) {
-        stop("Specify about what do you want the complement.
+  if (is.null(active(.data))) {
+    stop("Specify about what do you want the complement.
              Activate sets or elements")
-    } else {
-        switch(
-            active(.data),
-            elements = complement_element(.data, ...),
-            sets = complement_set(.data, ...),
-            relations = stop("Select either elements or sets")
-        )
-    }
+  } else {
+    switch(active(.data),
+      elements = complement_element(.data, ...),
+      sets = complement_set(.data, ...),
+      relations = stop("Select either elements or sets")
+    )
+  }
 }

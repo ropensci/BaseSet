@@ -1,84 +1,84 @@
 add_elements_internal <- function(object, elements) {
-    original_elements <- name_elements(object)
-    final_elements <- unique(c(original_elements, elements))
-    new_elements <- setdiff(final_elements, original_elements)
+  original_elements <- name_elements(object)
+  final_elements <- unique(c(original_elements, elements))
+  new_elements <- setdiff(final_elements, original_elements)
 
-    if (length(new_elements) == 0) {
-        return(object)
-    }
-    df_elements <- data.frame(elements = new_elements)
-    column_names <- setdiff(colnames(object@elements), "elements")
-    df_elements[, column_names] <- NA
-    object@elements <- rbind(object@elements, df_elements)
+  if (length(new_elements) == 0) {
+    return(object)
+  }
+  df_elements <- data.frame(elements = new_elements)
+  column_names <- setdiff(colnames(object@elements), "elements")
+  df_elements[, column_names] <- NA
+  object@elements <- rbind(object@elements, df_elements)
 
-    rownames(object@elements) <- NULL
-    object@elements <- droplevels(object@elements)
-    object
+  rownames(object@elements) <- NULL
+  object@elements <- droplevels(object@elements)
+  object
 }
 
 add_sets_internal <- function(object, set) {
-    original_sets <- name_sets(object)
-    final_sets <- unique(c(original_sets, set))
-    new_sets <- setdiff(final_sets, original_sets)
+  original_sets <- name_sets(object)
+  final_sets <- unique(c(original_sets, set))
+  new_sets <- setdiff(final_sets, original_sets)
 
-    if (length(new_sets) == 0) {
-        return(object)
-    }
-    df_sets <- data.frame(sets = new_sets)
-    column_names <- setdiff(colnames(object@sets), "sets")
-    df_sets[, column_names] <- NA
-    object@sets <- rbind(object@sets, df_sets)
+  if (length(new_sets) == 0) {
+    return(object)
+  }
+  df_sets <- data.frame(sets = new_sets)
+  column_names <- setdiff(colnames(object@sets), "sets")
+  df_sets[, column_names] <- NA
+  object@sets <- rbind(object@sets, df_sets)
 
-    rownames(object@sets) <- NULL
-    object@sets <- droplevels(object@sets)
-    object
+  rownames(object@sets) <- NULL
+  object@sets <- droplevels(object@sets)
+  object
 }
 
 add_relations_internal <- function(object, elements, sets, fuzzy) {
-    nElements <- length(elements)
+  nElements <- length(elements)
 
-    if (length(sets) != nElements && length(sets) == 1) {
-        sets <- rep(sets, nElements)
-    } else if (length(sets) != nElements && length(sets) > 1) {
-        stop("The number of elements is greater than the number of sets.",
-            "It can be either equal to the number of sets or just one set",
-            call. = FALSE
-        )
-    }
-
-    original_relations <- elements_sets(object)
-    relations <- paste(elements, sets)
-    new_relations <- setdiff(relations, original_relations)
-
-    if (length(fuzzy) > length(new_relations)) {
-        stop("Redefining the same relations with a different fuzzy number",
-            call. = FALSE
-        )
-    } else if (length(fuzzy) <= length(new_relations) && length(fuzzy) == 1) {
-        fuzzy <- rep(fuzzy, length(new_relations))
-    } else if (length(fuzzy) != length(elements)) {
-        stop("Recyling fuzzy is not allowed", call. = FALSE)
-    }
-
-    # Split the remaining elements and sets
-    elements_sets <- strsplit(new_relations, split = " ")
-    elements <- vapply(elements_sets, "[", i = 1, character(1L))
-    sets <- vapply(elements_sets, "[", i = 2, character(1L))
-
-    df_relations <- data.frame(
-        elements = elements,
-        sets = sets,
-        fuzzy = fuzzy
+  if (length(sets) != nElements && length(sets) == 1) {
+    sets <- rep(sets, nElements)
+  } else if (length(sets) != nElements && length(sets) > 1) {
+    stop("The number of elements is greater than the number of sets.",
+      "It can be either equal to the number of sets or just one set",
+      call. = FALSE
     )
-    column_names <- setdiff(
-        colnames(object@relations),
-        c("sets", "elements", "fuzzy")
+  }
+
+  original_relations <- elements_sets(object)
+  relations <- paste(elements, sets)
+  new_relations <- setdiff(relations, original_relations)
+
+  if (length(fuzzy) > length(new_relations)) {
+    stop("Redefining the same relations with a different fuzzy number",
+      call. = FALSE
     )
-    df_relations[, column_names] <- NA
-    object@relations <- rbind.data.frame(object@relations, df_relations)
-    rownames(object@relations) <- NULL
-    object@relations <- droplevels(object@relations)
-    object
+  } else if (length(fuzzy) <= length(new_relations) && length(fuzzy) == 1) {
+    fuzzy <- rep(fuzzy, length(new_relations))
+  } else if (length(fuzzy) != length(elements)) {
+    stop("Recyling fuzzy is not allowed", call. = FALSE)
+  }
+
+  # Split the remaining elements and sets
+  elements_sets <- strsplit(new_relations, split = " ")
+  elements <- vapply(elements_sets, "[", i = 1, character(1L))
+  sets <- vapply(elements_sets, "[", i = 2, character(1L))
+
+  df_relations <- data.frame(
+    elements = elements,
+    sets = sets,
+    fuzzy = fuzzy
+  )
+  column_names <- setdiff(
+    colnames(object@relations),
+    c("sets", "elements", "fuzzy")
+  )
+  df_relations[, column_names] <- NA
+  object@relations <- rbind.data.frame(object@relations, df_relations)
+  rownames(object@relations) <- NULL
+  object@relations <- droplevels(object@relations)
+  object
 }
 
 #' Add elements to a TidySet
@@ -100,15 +100,15 @@ add_relations_internal <- function(object, elements, sets, fuzzy) {
 #' elements(b)
 #' @export
 add_elements <- function(object, elements, ...) {
-    UseMethod("add_elements")
+  UseMethod("add_elements")
 }
 
 #' @export
 #' @method add_elements TidySet
 add_elements.TidySet <- function(object, elements, ...) {
-    object <- add_elements_internal(object, elements)
-    validObject(object)
-    object
+  object <- add_elements_internal(object, elements)
+  validObject(object)
+  object
 }
 
 #' Add sets to a TidySet
@@ -128,15 +128,15 @@ add_elements.TidySet <- function(object, elements, ...) {
 #' sets(b)
 #' @export
 add_sets <- function(object, sets, ...) {
-    UseMethod("add_sets")
+  UseMethod("add_sets")
 }
 
 #' @export
 #' @method add_sets TidySet
 add_sets.TidySet <- function(object, sets, ...) {
-    object <- add_sets_internal(object, sets)
-    validObject(object)
-    object
+  object <- add_sets_internal(object, sets)
+  validObject(object)
+  object
 }
 
 #' Add relations to a TidySet
@@ -160,40 +160,40 @@ add_sets.TidySet <- function(object, sets, ...) {
 #' add_relations(a, elements = c("a", "b"), sets = c("d", "g"))
 #' add_relations(a, elements = c("a", "b"), sets = c("d", "g"), fuzzy = 0.5)
 #' add_relations(a,
-#'     elements = c("a", "b"), sets = c("d", "g"),
-#'     fuzzy = c(0.5, 0.7)
+#'   elements = c("a", "b"), sets = c("d", "g"),
+#'   fuzzy = c(0.5, 0.7)
 #' )
 #' @export
 add_relations <- function(object, elements, sets, fuzzy, ...) {
-    UseMethod("add_relations")
+  UseMethod("add_relations")
 }
 
 #' @export
 #' @method add_relations TidySet
 add_relations.TidySet <- function(object, elements, sets, fuzzy = 1, ...) {
-    object <- add_elements(object, elements)
-    object <- add_sets(object, sets)
-    object <- add_relations_internal(object, elements, sets, 1)
+  object <- add_elements(object, elements)
+  object <- add_sets(object, sets)
+  object <- add_relations_internal(object, elements, sets, 1)
 
-    if (length(fuzzy) != length(elements) && length(fuzzy) != 1) {
-        stop("Fuzzy values do not match with the number of relations",
-            call. = FALSE
-        )
-    }
+  if (length(fuzzy) != length(elements) && length(fuzzy) != 1) {
+    stop("Fuzzy values do not match with the number of relations",
+      call. = FALSE
+    )
+  }
 
-    relations <- relations(object)
-    e_s <- paste(relations$elements, relations$sets)
-    eo_so <- paste(elements, sets)
-    m <- match(e_s, eo_so)
-    m <- m[!is.na(m)]
-    if (length(fuzzy) != length(elements)) {
-        fuzzy <- rep(fuzzy, length(elements))
-    } else {
-        fuzzy <- fuzzy[m]
-    }
-    relations$fuzzy[relations$elements %in% elements &
-        relations$sets %in% sets] <- fuzzy
-    relations(object) <- relations
-    validObject(object)
-    object
+  relations <- relations(object)
+  e_s <- paste(relations$elements, relations$sets)
+  eo_so <- paste(elements, sets)
+  m <- match(e_s, eo_so)
+  m <- m[!is.na(m)]
+  if (length(fuzzy) != length(elements)) {
+    fuzzy <- rep(fuzzy, length(elements))
+  } else {
+    fuzzy <- fuzzy[m]
+  }
+  relations$fuzzy[relations$elements %in% elements &
+    relations$sets %in% sets] <- fuzzy
+  relations(object) <- relations
+  validObject(object)
+  object
 }

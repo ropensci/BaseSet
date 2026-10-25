@@ -27,11 +27,11 @@ NULL
 #' b
 #' name_sets(b)
 setClass(
-    "TidySet",
-    representation(
-        elements = "data.frame",
-        sets = "data.frame",
-        relations = "data.frame"
-    ),
-    validity = is.valid
+  "TidySet",
+  representation(
+    elements = "data.frame",
+    sets = "data.frame",
+    relations = "data.frame"
+  ),
+  validity = is.valid
 )

@@ -53,7 +53,6 @@ is.valid <- function(object) {
   }
 
 
-
   # Check that the slots don't have duplicated information
   colnames_elements <- colnames(object@elements)
   colnames_sets <- colnames(object@sets)
@@ -98,8 +97,9 @@ valid_relations <- function(relations, sets, elements) {
   } else if (length(relations$fuzzy) != 0) {
     fuzz <- relations$fuzzy
     if (!is.numeric(fuzz) || min(fuzz) < 0 || max(fuzz) > 1) {
-      errors <- c(errors,
-                  "fuzzy column is restricted to a number between 0 and 1."
+      errors <- c(
+        errors,
+        "fuzzy column is restricted to a number between 0 and 1."
       )
     }
   }
@@ -113,37 +113,42 @@ valid_relations <- function(relations, sets, elements) {
     if (!all(fuzziness == 1)) {
       msg <- paste0(
         "A relationship between an element",
-        " and a set must have a single fuzzy value"
-        , collapse = " ")
+        " and a set must have a single fuzzy value",
+        collapse = " "
+      )
       errors <- c(errors, msg)
     }
   }
   if (!all(relations$sets %in% sets)) {
     msg <- paste0("The TidySet has elements with a",
-                  " relationship with a missing set.", collapse = " ")
+      " relationship with a missing set.",
+      collapse = " "
+    )
     errors <- c(errors, msg)
   }
   if (!all(relations$elements %in% elements)) {
     msg <- paste0("The TidySet has elements with a",
-                  " relationship with a missing element.", collapse = " ")
+      " relationship with a missing element.",
+      collapse = " "
+    )
     errors <- c(errors, msg)
   }
-errors
+  errors
 }
 
 # sets should be a data.frame
 valid_sets <- function(sets) {
-    errors <- character()
-    if (!is.data.frame(sets)) {
-        errors <- c(errors, "Should be a data.frame.")
-    }
+  errors <- character()
+  if (!is.data.frame(sets)) {
+    errors <- c(errors, "Should be a data.frame.")
+  }
 
-    if (!"sets" %in% names(sets)) {
-        errors <- c(errors, "There isn't a sets column.")
-    }
+  if (!"sets" %in% names(sets)) {
+    errors <- c(errors, "There isn't a sets column.")
+  }
 
-    if (is.null(sets$sets)) {
-        errors <- c(errors, paste0("Missing column sets."))
-    }
-    errors
+  if (is.null(sets$sets)) {
+    errors <- c(errors, paste0("Missing column sets."))
+  }
+  errors
 }
