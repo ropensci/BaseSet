@@ -37,7 +37,7 @@ A `TidySet` object.
 Other names:
 [`name_elements()`](https://docs.ropensci.org/BaseSet/dev/reference/name_elements.md),
 [`name_sets()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets.md),
-`name_sets<-()`,
+[`name_sets<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets-set.md),
 [`rename_elements()`](https://docs.ropensci.org/BaseSet/dev/reference/rename_elements.md),
 [`rename_set()`](https://docs.ropensci.org/BaseSet/dev/reference/rename_set.md)
 
@@ -66,7 +66,7 @@ Other methods:
 [`nRelations()`](https://docs.ropensci.org/BaseSet/dev/reference/nRelations.md),
 [`nSets()`](https://docs.ropensci.org/BaseSet/dev/reference/nSets.md),
 [`name_sets()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets.md),
-`name_sets<-()`,
+[`name_sets<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets-set.md),
 [`power_set()`](https://docs.ropensci.org/BaseSet/dev/reference/power_set.md),
 [`pull.TidySet()`](https://docs.ropensci.org/BaseSet/dev/reference/pull_.md),
 [`relations()`](https://docs.ropensci.org/BaseSet/dev/reference/relations.md),
@@ -93,11 +93,11 @@ relations <- data.frame(
 TS <- tidySet(relations)
 TS
 #>   elements sets     fuzzy
-#> 1        a    A 0.3712699
-#> 2        b    A 0.9180106
-#> 3        c    A 0.6779781
-#> 4        d    A 0.6651525
-#> 5        e    A 0.7560411
-#> 6        f    B 0.5428372
+#> 1        a    A 0.4640136
+#> 2        b    A 0.9176605
+#> 3        c    A 0.9728442
+#> 4        d    A 0.8190824
+#> 5        e    A 0.9029238
+#> 6        f    B 0.5813660
 name_elements(TS) <- letters[1:6]
 ```

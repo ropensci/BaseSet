@@ -60,9 +60,9 @@ Other methods:
 [`nElements()`](https://docs.ropensci.org/BaseSet/dev/reference/nElements.md),
 [`nRelations()`](https://docs.ropensci.org/BaseSet/dev/reference/nRelations.md),
 [`nSets()`](https://docs.ropensci.org/BaseSet/dev/reference/nSets.md),
-`name_elements<-()`,
+[`name_elements<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_elements-set.md),
 [`name_sets()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets.md),
-`name_sets<-()`,
+[`name_sets<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets-set.md),
 [`power_set()`](https://docs.ropensci.org/BaseSet/dev/reference/power_set.md),
 [`pull.TidySet()`](https://docs.ropensci.org/BaseSet/dev/reference/pull_.md),
 [`relations()`](https://docs.ropensci.org/BaseSet/dev/reference/relations.md),
@@ -89,19 +89,19 @@ relations <- data.frame(
 a <- tidySet(relations)
 a <- mutate_element(a, Type = c(rep("Gene", 4), rep("lncRNA", 2)))
 a
-#>    elements sets     fuzzy   Type
-#> 1         a    a 0.2449280   Gene
-#> 2         b    a 0.7811226   Gene
-#> 3         c    a 0.2882372   Gene
-#> 4         d    a 0.8753579   Gene
-#> 5         e    a 0.2957501 lncRNA
-#> 6         f    b 0.9835254 lncRNA
-#> 7         a   a2 0.5898376   Gene
-#> 8         b   a2 0.7591584   Gene
-#> 9         c   a2 0.8360753   Gene
-#> 10        d   a2 0.7628195   Gene
-#> 11        e   a2 0.4172699 lncRNA
-#> 12        f   b2 0.1380748 lncRNA
+#>    elements sets      fuzzy   Type
+#> 1         a    a 0.16456925   Gene
+#> 2         b    a 0.66320658   Gene
+#> 3         c    a 0.85657500   Gene
+#> 4         d    a 0.92654645   Gene
+#> 5         e    a 0.55237759 lncRNA
+#> 6         f    b 0.57706569 lncRNA
+#> 7         a   a2 0.68744775   Gene
+#> 8         b   a2 0.24471823   Gene
+#> 9         c   a2 0.04461716   Gene
+#> 10        d   a2 0.90985456   Gene
+#> 11        e   a2 0.07068122 lncRNA
+#> 12        f   b2 0.99689147 lncRNA
 b <- mutate_relation(a, Type = sample(c("PPI", "PF", "MP"), 12,
     replace = TRUE
 ))

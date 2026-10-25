@@ -56,7 +56,8 @@ A `TidySet` object.
 
 Other names:
 [`name_elements()`](https://docs.ropensci.org/BaseSet/dev/reference/name_elements.md),
-`name_elements<-()`, `name_sets<-()`,
+[`name_elements<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_elements-set.md),
+[`name_sets<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets-set.md),
 [`rename_elements()`](https://docs.ropensci.org/BaseSet/dev/reference/rename_elements.md),
 [`rename_set()`](https://docs.ropensci.org/BaseSet/dev/reference/rename_set.md)
 
@@ -84,7 +85,8 @@ Other methods:
 [`nElements()`](https://docs.ropensci.org/BaseSet/dev/reference/nElements.md),
 [`nRelations()`](https://docs.ropensci.org/BaseSet/dev/reference/nRelations.md),
 [`nSets()`](https://docs.ropensci.org/BaseSet/dev/reference/nSets.md),
-`name_elements<-()`, `name_sets<-()`,
+[`name_elements<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_elements-set.md),
+[`name_sets<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets-set.md),
 [`power_set()`](https://docs.ropensci.org/BaseSet/dev/reference/power_set.md),
 [`pull.TidySet()`](https://docs.ropensci.org/BaseSet/dev/reference/pull_.md),
 [`relations()`](https://docs.ropensci.org/BaseSet/dev/reference/relations.md),

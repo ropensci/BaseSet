@@ -9,10 +9,6 @@ and union among others:
 set_symbols
 ```
 
-## Format
-
-An object of class `character` of length 16.
-
 ## References
 
 <https://www.fileformat.info/info/unicode/category/Sm/list.htm>

@@ -64,9 +64,9 @@ Other methods:
 [`nElements()`](https://docs.ropensci.org/BaseSet/dev/reference/nElements.md),
 [`nRelations()`](https://docs.ropensci.org/BaseSet/dev/reference/nRelations.md),
 [`nSets()`](https://docs.ropensci.org/BaseSet/dev/reference/nSets.md),
-`name_elements<-()`,
+[`name_elements<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_elements-set.md),
 [`name_sets()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets.md),
-`name_sets<-()`,
+[`name_sets<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets-set.md),
 [`power_set()`](https://docs.ropensci.org/BaseSet/dev/reference/power_set.md),
 [`pull.TidySet()`](https://docs.ropensci.org/BaseSet/dev/reference/pull_.md),
 [`relations()`](https://docs.ropensci.org/BaseSet/dev/reference/relations.md),
@@ -95,11 +95,11 @@ add_column(TS, "relations", data.frame(well = c(
     "GOOD", "BAD", "WORSE",
     "UGLY", "FOE", "HEY"
 )))
-#>   elements sets     fuzzy  well
-#> 1        a    a 0.2898923  GOOD
-#> 2        b    a 0.6783804   BAD
-#> 3        c    a 0.7353196 WORSE
-#> 4        d    a 0.1959567  UGLY
-#> 5        e    a 0.9805397   FOE
-#> 6        f    b 0.7415215   HEY
+#>   elements sets      fuzzy  well
+#> 1        a    a 0.03424133  GOOD
+#> 2        b    a 0.32038573   BAD
+#> 3        c    a 0.40232824 WORSE
+#> 4        d    a 0.19566983  UGLY
+#> 5        e    a 0.40353812   FOE
+#> 6        f    b 0.06366146   HEY
 ```

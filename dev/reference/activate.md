@@ -55,9 +55,9 @@ Other methods:
 [`nElements()`](https://docs.ropensci.org/BaseSet/dev/reference/nElements.md),
 [`nRelations()`](https://docs.ropensci.org/BaseSet/dev/reference/nRelations.md),
 [`nSets()`](https://docs.ropensci.org/BaseSet/dev/reference/nSets.md),
-`name_elements<-()`,
+[`name_elements<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_elements-set.md),
 [`name_sets()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets.md),
-`name_sets<-()`,
+[`name_sets<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets-set.md),
 [`power_set()`](https://docs.ropensci.org/BaseSet/dev/reference/power_set.md),
 [`pull.TidySet()`](https://docs.ropensci.org/BaseSet/dev/reference/pull_.md),
 [`relations()`](https://docs.ropensci.org/BaseSet/dev/reference/relations.md),
@@ -88,47 +88,47 @@ elements(a) <- cbind(elements(a),
 # Filter in the whole TidySet
 filter(a, elements == "a")
 #>   elements sets      fuzzy type
-#> 1        a    a 0.49777739 Gene
-#> 2        a   a2 0.03424133 Gene
+#> 1        a    a 0.08075014 Gene
+#> 2        a   a2 0.49777739 Gene
 filter(a, elements == "a", type == "Gene")
 #>   elements sets      fuzzy type
-#> 1        a    a 0.49777739 Gene
-#> 2        a   a2 0.03424133 Gene
+#> 1        a    a 0.08075014 Gene
+#> 2        a   a2 0.49777739 Gene
 # Equivalent to filter_elements
 filter_element(a, type == "Gene")
 #>   elements sets      fuzzy type
-#> 1        a    a 0.49777739 Gene
-#> 2        b    a 0.28976724 Gene
-#> 3        c    a 0.73288199 Gene
-#> 4        d    a 0.77252151 Gene
-#> 5        a   a2 0.03424133 Gene
-#> 6        b   a2 0.32038573 Gene
-#> 7        c   a2 0.40232824 Gene
-#> 8        d   a2 0.19566983 Gene
+#> 1        a    a 0.08075014 Gene
+#> 2        b    a 0.83433304 Gene
+#> 3        c    a 0.60076089 Gene
+#> 4        d    a 0.15720844 Gene
+#> 5        a   a2 0.49777739 Gene
+#> 6        b   a2 0.28976724 Gene
+#> 7        c   a2 0.73288199 Gene
+#> 8        d   a2 0.77252151 Gene
 a <- activate(a, "elements")
 active(a)
 #> [1] "elements"
 filter(a, type == "Gene")
 #>   elements sets      fuzzy type
-#> 1        a    a 0.49777739 Gene
-#> 2        b    a 0.28976724 Gene
-#> 3        c    a 0.73288199 Gene
-#> 4        d    a 0.77252151 Gene
-#> 5        a   a2 0.03424133 Gene
-#> 6        b   a2 0.32038573 Gene
-#> 7        c   a2 0.40232824 Gene
-#> 8        d   a2 0.19566983 Gene
+#> 1        a    a 0.08075014 Gene
+#> 2        b    a 0.83433304 Gene
+#> 3        c    a 0.60076089 Gene
+#> 4        d    a 0.15720844 Gene
+#> 5        a   a2 0.49777739 Gene
+#> 6        b   a2 0.28976724 Gene
+#> 7        c   a2 0.73288199 Gene
+#> 8        d   a2 0.77252151 Gene
 a <- deactivate(a)
 active(a)
 #> NULL
 filter(a, type == "Gene")
 #>   elements sets      fuzzy type
-#> 1        a    a 0.49777739 Gene
-#> 2        b    a 0.28976724 Gene
-#> 3        c    a 0.73288199 Gene
-#> 4        d    a 0.77252151 Gene
-#> 5        a   a2 0.03424133 Gene
-#> 6        b   a2 0.32038573 Gene
-#> 7        c   a2 0.40232824 Gene
-#> 8        d   a2 0.19566983 Gene
+#> 1        a    a 0.08075014 Gene
+#> 2        b    a 0.83433304 Gene
+#> 3        c    a 0.60076089 Gene
+#> 4        d    a 0.15720844 Gene
+#> 5        a   a2 0.49777739 Gene
+#> 6        b   a2 0.28976724 Gene
+#> 7        c   a2 0.73288199 Gene
+#> 8        d   a2 0.77252151 Gene
 ```

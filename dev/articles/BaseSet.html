@@ -10,8 +10,8 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/apple-touch-icon.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="BaseSet">
 <meta name="robots" content="noindex">
@@ -77,7 +77,7 @@ Revilla</h4>
                   <a class="author_email" href="mailto:#"></a><a href="mailto:lluis.revilla@gmail.com" class="email">lluis.revilla@gmail.com</a>
       
                   
-            <h4 data-toc-skip class="date">2025 Dec 19</h4>
+            <h4 data-toc-skip class="date">2026 Oct 25</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ropensci/BaseSet/blob/main/vignettes/BaseSet.Rmd" class="external-link"><code>vignettes/BaseSet.Rmd</code></a></small>
       <div class="d-none name"><code>BaseSet.Rmd</code></div>
@@ -107,8 +107,8 @@ characteristic.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://docs.ropensci.org/BaseSet">"BaseSet"</a></span><span class="op">)</span></span>
 <span><span class="va">gene_lists</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>    geneset1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>,</span>
-<span>    geneset2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span><span class="op">)</span></span>
+<span>  geneset1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>,</span>
+<span>  geneset2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">tidy_set</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tidySet.html">tidySet</a></span><span class="op">(</span><span class="va">gene_lists</span><span class="op">)</span></span>
 <span><span class="va">tidy_set</span></span>
@@ -125,14 +125,14 @@ characteristic.</p>
 added:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gene_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
-<span>    stat1     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span> <span class="fl">1</span>,   <span class="fl">2</span>,   <span class="fl">3</span>,   <span class="fl">4</span> <span class="op">)</span>,</span>
-<span>    info1     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span><span class="op">)</span></span>
+<span>  stat1     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span>,</span>
+<span>  info1     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">tidy_set</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/add_column.html">add_column</a></span><span class="op">(</span><span class="va">tidy_set</span>, <span class="st">"elements"</span>, <span class="va">gene_data</span><span class="op">)</span></span>
 <span><span class="va">set_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
-<span>    Group     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span> <span class="fl">100</span> ,  <span class="fl">200</span> <span class="op">)</span>,</span>
-<span>    Column     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"abc"</span>, <span class="st">"def"</span><span class="op">)</span></span>
+<span>  Group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">200</span><span class="op">)</span>,</span>
+<span>  Column <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"abc"</span>, <span class="st">"def"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">tidy_set</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/add_column.html">add_column</a></span><span class="op">(</span><span class="va">tidy_set</span>, <span class="st">"sets"</span>, <span class="va">set_data</span><span class="op">)</span></span>
 <span><span class="va">tidy_set</span></span>
@@ -169,8 +169,8 @@ the Fuzzy sets vignette:
 <p>You can also use the standard R approach with <code>[</code>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gene_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
-<span>    stat2     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span> <span class="fl">4</span>,   <span class="fl">4</span>,   <span class="fl">3</span>,   <span class="fl">5</span> <span class="op">)</span>,</span>
-<span>    info2     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span><span class="op">)</span></span>
+<span>  stat2     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">4</span>, <span class="fl">3</span>, <span class="fl">5</span><span class="op">)</span>,</span>
+<span>  info2     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">tidy_set</span><span class="op">$</span><span class="va">info1</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
@@ -191,9 +191,11 @@ the Fuzzy sets vignette:
 <p>As you can see it is possible to create a TidySet from a list. More
 commonly you can create it from a data.frame:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">relations</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>elements <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>, <span class="st">"e"</span>, <span class="st">"f"</span><span class="op">)</span>, </span>
-<span>                        sets <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>, </span>
-<span>                        fuzzy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">relations</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>  elements <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>, <span class="st">"e"</span>, <span class="st">"f"</span><span class="op">)</span>,</span>
+<span>  sets <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>,</span>
+<span>  fuzzy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
 <span><span class="va">TS</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/tidySet.html">tidySet</a></span><span class="op">(</span><span class="va">relations</span><span class="op">)</span></span>
 <span><span class="va">TS</span></span>
 <span><span class="co">#&gt;   elements sets fuzzy</span></span>
@@ -205,8 +207,10 @@ commonly you can create it from a data.frame:</p>
 <span><span class="co">#&gt; 6        f    B     1</span></span></code></pre></div>
 <p>It is also possible from a matrix:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">3</span>, nrow <span class="op">=</span> <span class="fl">3</span>,  </span>
-<span>               dimnames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>, <span class="va">LETTERS</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span>,</span>
+<span>  ncol <span class="op">=</span> <span class="fl">3</span>, nrow <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  dimnames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span>, <span class="va">LETTERS</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
 <span><span class="va">m</span></span>
 <span><span class="co">#&gt;   A B C</span></span>
 <span><span class="co">#&gt; a 0 1 0</span></span>
@@ -407,8 +411,8 @@ which three slots you want to affect with <code><a href="../reference/activate.h
 <span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
-<span><span class="va">m_TS</span> <span class="op">&lt;-</span> <span class="va">tidy_set</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/activate.html">activate</a></span><span class="op">(</span><span class="st">"relations"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span><span class="va">m_TS</span> <span class="op">&lt;-</span> <span class="va">tidy_set</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/activate.html">activate</a></span><span class="op">(</span><span class="st">"relations"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>Important <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fu"><a href="../reference/nRelations.html">nRelations</a></span><span class="op">(</span><span class="va">tidy_set</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">m_TS</span></span>
 <span><span class="co">#&gt;   elements     sets fuzzy   Important</span></span>
@@ -419,11 +423,12 @@ which three slots you want to affect with <code><a href="../reference/activate.h
 <span><span class="co">#&gt; 5    Gene3 Geneset3     1 0.007399441</span></span></code></pre></div>
 <p>You can use activate to select what are the verbs modifying:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">set_modified</span> <span class="op">&lt;-</span> <span class="va">m_TS</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/activate.html">activate</a></span><span class="op">(</span><span class="st">"elements"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>Pathway <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html" class="external-link">if_else</a></span><span class="op">(</span><span class="va">elements</span> <span class="op"><a href="https://rdrr.io/pkg/BiocGenerics/man/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Gene1"</span>, <span class="st">"Gene2"</span><span class="op">)</span>, </span>
-<span>                           <span class="st">"pathway1"</span>, </span>
-<span>                           <span class="st">"pathway2"</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">set_modified</span> <span class="op">&lt;-</span> <span class="va">m_TS</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/activate.html">activate</a></span><span class="op">(</span><span class="st">"elements"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>Pathway <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html" class="external-link">if_else</a></span><span class="op">(</span><span class="va">elements</span> <span class="op"><a href="https://rdrr.io/pkg/BiocGenerics/man/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Gene1"</span>, <span class="st">"Gene2"</span><span class="op">)</span>,</span>
+<span>    <span class="st">"pathway1"</span>,</span>
+<span>    <span class="st">"pathway2"</span></span>
+<span>  <span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">set_modified</span></span>
 <span><span class="co">#&gt;   elements     sets fuzzy   Important  Pathway</span></span>
 <span><span class="co">#&gt; 1    Gene1 Geneset1     1 0.080750138 pathway1</span></span>
@@ -431,8 +436,8 @@ which three slots you want to affect with <code><a href="../reference/activate.h
 <span><span class="co">#&gt; 3    Gene3 Geneset2     1 0.600760886 pathway2</span></span>
 <span><span class="co">#&gt; 4    Gene1 Geneset2     1 0.157208442 pathway1</span></span>
 <span><span class="co">#&gt; 5    Gene3 Geneset3     1 0.007399441 pathway2</span></span>
-<span><span class="va">set_modified</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/activate.html">deactivate</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="co"># To apply a filter independently of where it is</span></span>
+<span><span class="va">set_modified</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/activate.html">deactivate</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="co"># To apply a filter independently of where it is</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Pathway</span> <span class="op">==</span> <span class="st">"pathway1"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   elements     sets fuzzy  Important  Pathway</span></span>
 <span><span class="co">#&gt; 1    Gene1 Geneset1     1 0.08075014 pathway1</span></span>
@@ -443,9 +448,9 @@ that you need a new set. You can create a new one with
 <code>group</code>.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># A new group of those elements in pathway1 and with Important == 1</span></span>
-<span><span class="va">set_modified</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/activate.html">deactivate</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/group.html">group</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"new"</span>, <span class="va">Pathway</span> <span class="op">==</span> <span class="st">"pathway1"</span><span class="op">)</span></span>
+<span><span class="va">set_modified</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/activate.html">deactivate</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">BaseSet</span><span class="fu">::</span><span class="fu"><a href="../reference/group.html">group</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"new"</span>, <span class="va">Pathway</span> <span class="op">==</span> <span class="st">"pathway1"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   elements     sets fuzzy   Important  Pathway</span></span>
 <span><span class="co">#&gt; 1    Gene1 Geneset1     1 0.080750138 pathway1</span></span>
 <span><span class="co">#&gt; 2    Gene2 Geneset2     1 0.834333037 pathway1</span></span>
@@ -455,8 +460,7 @@ that you need a new set. You can create a new one with
 <span><span class="co">#&gt; 6    Gene1      new     1          NA pathway1</span></span>
 <span><span class="co">#&gt; 7    Gene2      new     1          NA pathway1</span></span></code></pre></div>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">set_modified</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="../reference/group.html">group</a></span><span class="op">(</span><span class="st">"pathway1"</span>, <span class="va">elements</span> <span class="op"><a href="https://rdrr.io/pkg/BiocGenerics/man/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Gene1"</span>, <span class="st">"Gene2"</span><span class="op">)</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu">BaseSet</span><span class="fu">::</span><span class="fu"><a href="../reference/group.html">group</a></span><span class="op">(</span><span class="va">set_modified</span>, <span class="st">"pathway1"</span>, <span class="va">elements</span> <span class="op"><a href="https://rdrr.io/pkg/BiocGenerics/man/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Gene1"</span>, <span class="st">"Gene2"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   elements     sets fuzzy   Important  Pathway</span></span>
 <span><span class="co">#&gt; 1    Gene1 Geneset1     1 0.080750138 pathway1</span></span>
 <span><span class="co">#&gt; 2    Gene2 Geneset2     1 0.834333037 pathway1</span></span>
@@ -468,10 +472,10 @@ that you need a new set. You can create a new one with
 <p>You can use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by()</a></code> but it won’t return a
 <code>TidySet</code>.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">set_modified</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>    <span class="fu"><a href="../reference/activate.html">deactivate</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">Pathway</span>, <span class="va">sets</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>  </span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">set_modified</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/activate.html">deactivate</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">Pathway</span>, <span class="va">sets</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4 × 3</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># Groups:   Pathway, sets [4]</span></span></span>
 <span><span class="co">#&gt;   Pathway  sets         n</span></span>
@@ -481,8 +485,8 @@ that you need a new set. You can create a new one with
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> pathway2 Geneset2     1</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> pathway2 Geneset3     1</span></span></code></pre></div>
 <p>After grouping or mutating sometimes we might be interested in moving
-a column describing something to other places. We can do by this
-with:</p>
+a column describing something to other places. We can do by this with
+<code><a href="../reference/move_to.html">move_to()</a></code>:</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/elements.html">elements</a></span><span class="op">(</span><span class="va">set_modified</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   elements  Pathway</span></span>
@@ -501,9 +505,9 @@ with:</p>
 <div class="section level2">
 <h2 class="unnumbered" id="session-info">Session info<a class="anchor" aria-label="anchor" href="#session-info"></a>
 </h2>
-<pre><code><span><span class="co">#&gt; R version 4.5.2 (2025-10-31)</span></span>
+<pre><code><span><span class="co">#&gt; R version 4.6.1 (2026-06-24)</span></span>
 <span><span class="co">#&gt; Platform: x86_64-pc-linux-gnu</span></span>
-<span><span class="co">#&gt; Running under: Ubuntu 24.04.3 LTS</span></span>
+<span><span class="co">#&gt; Running under: Ubuntu 24.04.5 LTS</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Matrix products: default</span></span>
 <span><span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 </span></span>
@@ -522,18 +526,18 @@ with:</p>
 <span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt; [1] dplyr_1.1.4        BaseSet_1.0.0.9001</span></span>
+<span><span class="co">#&gt; [1] dplyr_1.2.1        BaseSet_1.0.0.9001</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
-<span><span class="co">#&gt;  [1] vctrs_0.6.5       cli_3.6.5         knitr_1.50        rlang_1.1.6      </span></span>
-<span><span class="co">#&gt;  [5] xfun_0.55         generics_0.1.4    textshaping_1.0.4 jsonlite_2.0.0   </span></span>
-<span><span class="co">#&gt;  [9] glue_1.8.0        htmltools_0.5.9   ragg_1.5.0        sass_0.4.10      </span></span>
-<span><span class="co">#&gt; [13] rmarkdown_2.30    tibble_3.3.0      evaluate_1.0.5    jquerylib_0.1.4  </span></span>
-<span><span class="co">#&gt; [17] fastmap_1.2.0     yaml_2.3.12       lifecycle_1.0.4   compiler_4.5.2   </span></span>
-<span><span class="co">#&gt; [21] fs_1.6.6          pkgconfig_2.0.3   systemfonts_1.3.1 digest_0.6.39    </span></span>
-<span><span class="co">#&gt; [25] R6_2.6.1          utf8_1.2.6        tidyselect_1.2.1  pillar_1.11.1    </span></span>
-<span><span class="co">#&gt; [29] magrittr_2.0.4    bslib_0.9.0       tools_4.5.2       pkgdown_2.2.0    </span></span>
-<span><span class="co">#&gt; [33] cachem_1.1.0      desc_1.4.3</span></span></code></pre>
+<span><span class="co">#&gt;  [1] vctrs_0.7.3       cli_3.6.6         knitr_1.52        rlang_1.3.0      </span></span>
+<span><span class="co">#&gt;  [5] xfun_0.62         otel_0.2.0        generics_0.1.4    textshaping_1.0.5</span></span>
+<span><span class="co">#&gt;  [9] jsonlite_2.0.0    glue_1.8.1        htmltools_0.5.9   ragg_1.5.2       </span></span>
+<span><span class="co">#&gt; [13] sass_0.4.10       rmarkdown_2.32    tibble_3.3.1      evaluate_1.0.5   </span></span>
+<span><span class="co">#&gt; [17] jquerylib_0.1.4   fastmap_1.2.0     yaml_2.3.12       lifecycle_1.0.5  </span></span>
+<span><span class="co">#&gt; [21] compiler_4.6.1    fs_2.1.0          pkgconfig_2.0.3   systemfonts_1.3.2</span></span>
+<span><span class="co">#&gt; [25] digest_0.6.39     R6_2.6.1          utf8_1.2.6        tidyselect_1.2.1 </span></span>
+<span><span class="co">#&gt; [29] pillar_1.11.1     magrittr_2.0.5    bslib_0.12.0      tools_4.6.1      </span></span>
+<span><span class="co">#&gt; [33] pkgdown_2.2.1     cachem_1.1.0      desc_1.4.3</span></span></code></pre>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

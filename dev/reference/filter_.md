@@ -60,9 +60,9 @@ Other methods:
 [`nElements()`](https://docs.ropensci.org/BaseSet/dev/reference/nElements.md),
 [`nRelations()`](https://docs.ropensci.org/BaseSet/dev/reference/nRelations.md),
 [`nSets()`](https://docs.ropensci.org/BaseSet/dev/reference/nSets.md),
-`name_elements<-()`,
+[`name_elements<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_elements-set.md),
 [`name_sets()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets.md),
-`name_sets<-()`,
+[`name_sets<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets-set.md),
 [`power_set()`](https://docs.ropensci.org/BaseSet/dev/reference/power_set.md),
 [`pull.TidySet()`](https://docs.ropensci.org/BaseSet/dev/reference/pull_.md),
 [`relations()`](https://docs.ropensci.org/BaseSet/dev/reference/relations.md),
@@ -90,33 +90,33 @@ relations <- data.frame(
 TS <- tidySet(relations)
 TS <- move_to(TS, from = "relations", to = "elements", column = "type")
 filter(TS, elements == "a")
-#>   elements sets      fuzzy type
-#> 1        a    a 0.85657500 Gene
-#> 2        a   a2 0.04461716 Gene
+#>   elements sets     fuzzy type
+#> 1        a    a 0.4007202 Gene
+#> 2        a   a2 0.5185566 Gene
 # Equivalent to filter_relation
 filter(TS, elements == "a", sets == "a")
-#>   elements sets    fuzzy type
-#> 1        a    a 0.856575 Gene
+#>   elements sets     fuzzy type
+#> 1        a    a 0.4007202 Gene
 filter_relation(TS, elements == "a", sets == "a")
-#>   elements sets    fuzzy type
-#> 1        a    a 0.856575 Gene
+#>   elements sets     fuzzy type
+#> 1        a    a 0.4007202 Gene
 # Filter element
 filter_element(TS, type == "Gene")
 #>   elements sets      fuzzy type
-#> 1        a    a 0.85657500 Gene
-#> 2        b    a 0.92654645 Gene
-#> 3        c    a 0.55237759 Gene
-#> 4        d    a 0.57706569 Gene
-#> 5        a   a2 0.04461716 Gene
-#> 6        b   a2 0.90985456 Gene
-#> 7        c   a2 0.07068122 Gene
-#> 8        d   a2 0.99689147 Gene
+#> 1        a    a 0.40072018 Gene
+#> 2        b    a 0.21317271 Gene
+#> 3        c    a 0.67176682 Gene
+#> 4        d    a 0.05861411 Gene
+#> 5        a   a2 0.51855664 Gene
+#> 6        b   a2 0.84612005 Gene
+#> 7        c   a2 0.71826972 Gene
+#> 8        d   a2 0.24131402 Gene
 # Filter sets and by property of elements simultaneously
 filter(TS, sets == "b", type == "lncRNA")
 #>   elements sets     fuzzy   type
-#> 1        f    b 0.2447182 lncRNA
+#> 1        f    b 0.1490355 lncRNA
 # Filter sets
 filter_set(TS, sets == "b")
 #>   elements sets     fuzzy   type
-#> 1        f    b 0.2447182 lncRNA
+#> 1        f    b 0.1490355 lncRNA
 ```

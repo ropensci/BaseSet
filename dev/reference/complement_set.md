@@ -108,9 +108,9 @@ Other methods:
 [`nElements()`](https://docs.ropensci.org/BaseSet/dev/reference/nElements.md),
 [`nRelations()`](https://docs.ropensci.org/BaseSet/dev/reference/nRelations.md),
 [`nSets()`](https://docs.ropensci.org/BaseSet/dev/reference/nSets.md),
-`name_elements<-()`,
+[`name_elements<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_elements-set.md),
 [`name_sets()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets.md),
-`name_sets<-()`,
+[`name_sets<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets-set.md),
 [`power_set()`](https://docs.ropensci.org/BaseSet/dev/reference/power_set.md),
 [`pull.TidySet()`](https://docs.ropensci.org/BaseSet/dev/reference/pull_.md),
 [`relations()`](https://docs.ropensci.org/BaseSet/dev/reference/relations.md),
@@ -136,13 +136,13 @@ relations <- data.frame(
 )
 TS <- tidySet(relations)
 complement_set(TS, "A")
-#>   elements sets     fuzzy
-#> 1        a    A 0.4693843
-#> 2        b    A 0.8056800
-#> 3        c    B 0.8140513
-#> 4        d    B 0.4039110
-#> 5        e    C 0.2184310
-#> 6        f    C 0.4183614
-#> 7        a   ∁A 0.5306157
-#> 8        b   ∁A 0.1943200
+#>   elements sets      fuzzy
+#> 1        a    A 0.19151803
+#> 2        b    A 0.94776394
+#> 3        c    B 0.54248041
+#> 4        d    B 0.54460339
+#> 5        e    C 0.27859715
+#> 6        f    C 0.44670247
+#> 7        a   ∁A 0.80848197
+#> 8        b   ∁A 0.05223606
 ```

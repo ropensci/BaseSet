@@ -69,9 +69,9 @@ Other methods:
 [`nElements()`](https://docs.ropensci.org/BaseSet/dev/reference/nElements.md),
 [`nRelations()`](https://docs.ropensci.org/BaseSet/dev/reference/nRelations.md),
 [`nSets()`](https://docs.ropensci.org/BaseSet/dev/reference/nSets.md),
-`name_elements<-()`,
+[`name_elements<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_elements-set.md),
 [`name_sets()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets.md),
-`name_sets<-()`,
+[`name_sets<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets-set.md),
 [`power_set()`](https://docs.ropensci.org/BaseSet/dev/reference/power_set.md),
 [`pull.TidySet()`](https://docs.ropensci.org/BaseSet/dev/reference/pull_.md),
 [`relations()`](https://docs.ropensci.org/BaseSet/dev/reference/relations.md),
@@ -96,11 +96,11 @@ relations <- data.frame(
 )
 TS <- tidySet(relations)
 remove_relation(TS, "A", "a")
-#>   elements sets      fuzzy
-#> 1        a    A 0.96524042
-#> 2        b    A 0.37864118
-#> 3        c    A 0.17438633
-#> 4        d    A 0.60375040
-#> 5        e    A 0.80546373
-#> 6        f    B 0.03667941
+#>   elements sets     fuzzy
+#> 1        a    A 0.5898376
+#> 2        b    A 0.7591584
+#> 3        c    A 0.8360753
+#> 4        d    A 0.7628195
+#> 5        e    A 0.4172699
+#> 6        f    B 0.1380748
 ```

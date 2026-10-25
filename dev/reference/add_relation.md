@@ -60,9 +60,9 @@ Other methods:
 [`nElements()`](https://docs.ropensci.org/BaseSet/dev/reference/nElements.md),
 [`nRelations()`](https://docs.ropensci.org/BaseSet/dev/reference/nRelations.md),
 [`nSets()`](https://docs.ropensci.org/BaseSet/dev/reference/nSets.md),
-`name_elements<-()`,
+[`name_elements<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_elements-set.md),
 [`name_sets()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets.md),
-`name_sets<-()`,
+[`name_sets<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets-set.md),
 [`power_set()`](https://docs.ropensci.org/BaseSet/dev/reference/power_set.md),
 [`pull.TidySet()`](https://docs.ropensci.org/BaseSet/dev/reference/pull_.md),
 [`relations()`](https://docs.ropensci.org/BaseSet/dev/reference/relations.md),
@@ -95,16 +95,16 @@ relations <- data.frame(
 )
 add_relation(TS, relations)
 #>    elements sets      fuzzy        new
-#> 1         a    A 0.03123033         NA
-#> 2         b    A 0.22556253         NA
-#> 3         c    A 0.30083081         NA
-#> 4         d    A 0.63646561         NA
-#> 5         e    A 0.47902455         NA
-#> 6         f    B 0.43217126         NA
-#> 7         a   A2 0.70643384 0.64167935
-#> 8         b   A2 0.94857658 0.66028435
-#> 9         c   A2 0.18033877 0.09602416
-#> 10        d   A2 0.21689988 0.76560016
-#> 11        e   A2 0.68016292 0.76967480
-#> 12        f   B2 0.49884561 0.99071231
+#> 1         a    A 0.38870131         NA
+#> 2         b    A 0.97554784         NA
+#> 3         c    A 0.28989230         NA
+#> 4         d    A 0.67838043         NA
+#> 5         e    A 0.73531960         NA
+#> 6         f    B 0.19595673         NA
+#> 7         a   A2 0.98053967 0.03123033
+#> 8         b   A2 0.74152153 0.22556253
+#> 9         c   A2 0.05144628 0.30083081
+#> 10        d   A2 0.53021246 0.63646561
+#> 11        e   A2 0.69582388 0.47902455
+#> 12        f   B2 0.68855600 0.43217126
 ```

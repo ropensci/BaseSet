@@ -185,13 +185,13 @@ relations2 <- data.frame(
     fuzzy = runif(6)
 )
 tidySet(relations2)
-#>   elements sets       fuzzy
-#> 1        a    A 0.880934217
-#> 2        b    A 0.961116277
-#> 3        c    A 0.004018454
-#> 4        d    A 0.552900206
-#> 5        e    A 0.219235973
-#> 6        f    B 0.646727143
+#>   elements sets     fuzzy
+#> 1        a    A 0.1258563
+#> 2        b    A 0.9381527
+#> 3        c    A 0.8012751
+#> 4        d    A 0.7580536
+#> 5        e    A 0.5325652
+#> 6        f    B 0.5468048
 # A
 x <- list("A" = letters[1:5], "B" = LETTERS[3:7])
 tidySet(x)
@@ -213,17 +213,17 @@ B <- runif(5)
 names(B) <- letters[3:7]
 relations <- list(A, B)
 tidySet(relations)
-#>    elements sets      fuzzy
-#> 1         a Set2 0.72770205
-#> 2         b Set2 0.87258744
-#> 3         c Set2 0.38198155
-#> 4         d Set2 0.89274570
-#> 5         e Set2 0.84387029
-#> 6         c <NA> 0.72976121
-#> 7         d <NA> 0.03841498
-#> 8         e <NA> 0.33382332
-#> 9         f <NA> 0.74927265
-#> 10        g <NA> 0.91315801
+#>    elements sets     fuzzy
+#> 1         a Set2 0.0959265
+#> 2         b Set2 0.3883498
+#> 3         c Set2 0.1723519
+#> 4         d Set2 0.6907258
+#> 5         e Set2 0.6752085
+#> 6         c <NA> 0.9462948
+#> 7         d <NA> 0.1962195
+#> 8         e <NA> 0.9686375
+#> 9         f <NA> 0.3870963
+#> 10        g <NA> 0.6503439
 # Will error
 # x <- list("A" = letters[1:5], "B" = LETTERS[3:7], "c" = runif(5))
 # a <- tidySet(x) # Only characters or factors are allowed as elements.

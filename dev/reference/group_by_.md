@@ -53,9 +53,9 @@ Other methods:
 [`nElements()`](https://docs.ropensci.org/BaseSet/dev/reference/nElements.md),
 [`nRelations()`](https://docs.ropensci.org/BaseSet/dev/reference/nRelations.md),
 [`nSets()`](https://docs.ropensci.org/BaseSet/dev/reference/nSets.md),
-`name_elements<-()`,
+[`name_elements<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_elements-set.md),
 [`name_sets()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets.md),
-`name_sets<-()`,
+[`name_sets<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets-set.md),
 [`power_set()`](https://docs.ropensci.org/BaseSet/dev/reference/power_set.md),
 [`pull.TidySet()`](https://docs.ropensci.org/BaseSet/dev/reference/pull_.md),
 [`relations()`](https://docs.ropensci.org/BaseSet/dev/reference/relations.md),
@@ -86,18 +86,18 @@ elements(a) <- cbind(elements(a),
 group_by(a, elements)
 #> # A tibble: 12 × 4
 #> # Groups:   elements [6]
-#>    elements sets    fuzzy type  
-#>    <chr>    <chr>   <dbl> <chr> 
-#>  1 a        a     0.711   Gene  
-#>  2 b        a     0.215   Gene  
-#>  3 c        a     0.292   Gene  
-#>  4 d        a     0.722   Gene  
-#>  5 e        a     0.867   lncRNA
-#>  6 f        b     0.238   lncRNA
-#>  7 a        a2    0.00450 Gene  
-#>  8 b        a2    0.944   Gene  
-#>  9 c        a2    0.438   Gene  
-#> 10 d        a2    0.751   Gene  
-#> 11 e        a2    0.668   lncRNA
-#> 12 f        b2    0.408   lncRNA
+#>    elements sets   fuzzy type  
+#>    <chr>    <chr>  <dbl> <chr> 
+#>  1 a        a     0.709  Gene  
+#>  2 b        a     0.874  Gene  
+#>  3 c        a     0.0115 Gene  
+#>  4 d        a     0.888  Gene  
+#>  5 e        a     0.996  lncRNA
+#>  6 f        b     0.500  lncRNA
+#>  7 a        a2    0.359  Gene  
+#>  8 b        a2    0.775  Gene  
+#>  9 c        a2    0.584  Gene  
+#> 10 d        a2    0.634  Gene  
+#> 11 e        a2    0.859  lncRNA
+#> 12 f        b2    0.567  lncRNA
 ```

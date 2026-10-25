@@ -61,9 +61,9 @@ Other methods:
 [`nElements()`](https://docs.ropensci.org/BaseSet/dev/reference/nElements.md),
 [`nRelations()`](https://docs.ropensci.org/BaseSet/dev/reference/nRelations.md),
 [`nSets()`](https://docs.ropensci.org/BaseSet/dev/reference/nSets.md),
-`name_elements<-()`,
+[`name_elements<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_elements-set.md),
 [`name_sets()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets.md),
-`name_sets<-()`,
+[`name_sets<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets-set.md),
 [`power_set()`](https://docs.ropensci.org/BaseSet/dev/reference/power_set.md),
 [`pull.TidySet()`](https://docs.ropensci.org/BaseSet/dev/reference/pull_.md),
 [`relations()`](https://docs.ropensci.org/BaseSet/dev/reference/relations.md),
@@ -113,16 +113,16 @@ elements(b)
 # Arrange sets
 arrange_set(a, sets)
 #>    elements sets      fuzzy   type
-#> 1         a    A 0.20417834   Gene
-#> 2         b    A 0.71339728   Gene
-#> 3         c    A 0.06521611   Gene
-#> 4         d    A 0.35420680   Gene
-#> 5         e    A 0.82519942 lncRNA
-#> 6         f    B 0.27381825 lncRNA
-#> 7         a   A2 0.57004495   Gene
-#> 8         b   A2 0.33571908   Gene
-#> 9         c   A2 0.59626279   Gene
-#> 10        d   A2 0.19151803   Gene
-#> 11        e   A2 0.94776394 lncRNA
-#> 12        f   B2 0.54248041 lncRNA
+#> 1         a    A 0.70643384   Gene
+#> 2         b    A 0.94857658   Gene
+#> 3         c    A 0.18033877   Gene
+#> 4         d    A 0.21689988   Gene
+#> 5         e    A 0.68016292 lncRNA
+#> 6         f    B 0.49884561 lncRNA
+#> 7         a   A2 0.64167935   Gene
+#> 8         b   A2 0.66028435   Gene
+#> 9         c   A2 0.09602416   Gene
+#> 10        d   A2 0.76560016   Gene
+#> 11        e   A2 0.76967480 lncRNA
+#> 12        f   B2 0.99071231 lncRNA
 ```

@@ -65,9 +65,9 @@ Other methods:
 [`nElements()`](https://docs.ropensci.org/BaseSet/dev/reference/nElements.md),
 [`nRelations()`](https://docs.ropensci.org/BaseSet/dev/reference/nRelations.md),
 [`nSets()`](https://docs.ropensci.org/BaseSet/dev/reference/nSets.md),
-`name_elements<-()`,
+[`name_elements<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_elements-set.md),
 [`name_sets()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets.md),
-`name_sets<-()`,
+[`name_sets<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets-set.md),
 [`power_set()`](https://docs.ropensci.org/BaseSet/dev/reference/power_set.md),
 [`pull.TidySet()`](https://docs.ropensci.org/BaseSet/dev/reference/pull_.md),
 [`relations()`](https://docs.ropensci.org/BaseSet/dev/reference/relations.md),
@@ -93,13 +93,13 @@ TS
 #>    elements sets extra fuzzy
 #> 1         a    A    NO     1
 #> 2         b    A    NO     1
-#> 3         c    A    NO     1
+#> 3         c    A   YES     1
 #> 4         d    A    NO     1
 #> 5         e    A    NO     1
-#> 6         c    B    NO     1
-#> 7         d    B    NO     1
+#> 6         c    B   YES     1
+#> 7         d    B   YES     1
 #> 8         e    B   YES     1
-#> 9         f    B    NO     1
+#> 9         f    B   YES     1
 #> 10        g    B   YES     1
 remove_column(TS, "relations", "extra")
 #>    elements sets fuzzy

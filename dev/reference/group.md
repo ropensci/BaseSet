@@ -55,9 +55,9 @@ Other methods:
 [`nElements()`](https://docs.ropensci.org/BaseSet/dev/reference/nElements.md),
 [`nRelations()`](https://docs.ropensci.org/BaseSet/dev/reference/nRelations.md),
 [`nSets()`](https://docs.ropensci.org/BaseSet/dev/reference/nSets.md),
-`name_elements<-()`,
+[`name_elements<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_elements-set.md),
 [`name_sets()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets.md),
-`name_sets<-()`,
+[`name_sets<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets-set.md),
 [`power_set()`](https://docs.ropensci.org/BaseSet/dev/reference/power_set.md),
 [`pull.TidySet()`](https://docs.ropensci.org/BaseSet/dev/reference/pull_.md),
 [`relations()`](https://docs.ropensci.org/BaseSet/dev/reference/relations.md),
@@ -105,22 +105,22 @@ r <- data.frame(
 )
 TS3 <- tidySet(r)
 group(TS3, "D", sets %in% c("A", "A2"))
-#>    elements sets     fuzzy    type
-#> 1         a    A 0.7279909    Gene
-#> 2         b    A 0.2170845    Gene
-#> 3         c    A 0.4562302 Protein
-#> 4         d    A 0.3327998 Protein
-#> 5         e    A 0.5683527  lncRNA
-#> 6         f    B 0.2522057  lncRNA
-#> 7         a   A2 0.4640136    Gene
-#> 8         b   A2 0.9176605    Gene
-#> 9         c   A2 0.9728442 Protein
-#> 10        d   A2 0.8190824 Protein
-#> 11        e   A2 0.9029238  lncRNA
-#> 12        f   B2 0.5813660  lncRNA
-#> 13        a    D 1.0000000    <NA>
-#> 14        b    D 1.0000000    <NA>
-#> 15        c    D 1.0000000    <NA>
-#> 16        d    D 1.0000000    <NA>
-#> 17        e    D 1.0000000    <NA>
+#>    elements sets      fuzzy    type
+#> 1         a    A 0.02795603    Gene
+#> 2         b    A 0.46938430    Gene
+#> 3         c    A 0.80568003 Protein
+#> 4         d    A 0.81405131 Protein
+#> 5         e    A 0.40391100  lncRNA
+#> 6         f    B 0.21843101  lncRNA
+#> 7         a   A2 0.41836140    Gene
+#> 8         b   A2 0.66887075    Gene
+#> 9         c   A2 0.50765028 Protein
+#> 10        d   A2 0.66035931 Protein
+#> 11        e   A2 0.51179131  lncRNA
+#> 12        f   B2 0.83555244  lncRNA
+#> 13        a    D 1.00000000    <NA>
+#> 14        b    D 1.00000000    <NA>
+#> 15        c    D 1.00000000    <NA>
+#> 16        d    D 1.00000000    <NA>
+#> 17        e    D 1.00000000    <NA>
 ```

@@ -63,9 +63,9 @@ Other methods:
 [`nElements()`](https://docs.ropensci.org/BaseSet/dev/reference/nElements.md),
 [`nRelations()`](https://docs.ropensci.org/BaseSet/dev/reference/nRelations.md),
 [`nSets()`](https://docs.ropensci.org/BaseSet/dev/reference/nSets.md),
-`name_elements<-()`,
+[`name_elements<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_elements-set.md),
 [`name_sets()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets.md),
-`name_sets<-()`,
+[`name_sets<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets-set.md),
 [`power_set()`](https://docs.ropensci.org/BaseSet/dev/reference/power_set.md),
 [`pull.TidySet()`](https://docs.ropensci.org/BaseSet/dev/reference/pull_.md),
 [`relations()`](https://docs.ropensci.org/BaseSet/dev/reference/relations.md),
@@ -92,17 +92,17 @@ relations <- data.frame(
 a <- tidySet(relations)
 element_size(a)
 #>    elements size probability
-#> 1         a    0  0.22508698
-#> 2         a    1  0.77491302
-#> 3         b    0  0.41552475
-#> 4         b    1  0.58447525
-#> 5         c    0  0.36602363
-#> 6         c    1  0.63397637
-#> 7         d    0  0.14133385
-#> 8         d    1  0.85866615
-#> 9         e    0  0.43310566
-#> 10        e    1  0.56689434
-#> 11        f    0  0.06065424
-#> 12        f    1  0.70689128
-#> 13        f    2  0.23245447
+#> 1         a    0   0.4400872
+#> 2         a    1   0.5599128
+#> 3         b    0   0.1429164
+#> 4         b    1   0.8570836
+#> 5         c    0   0.6151903
+#> 6         c    1   0.3848097
+#> 7         d    0   0.4720830
+#> 8         d    1   0.5279170
+#> 9         e    0   0.3993625
+#> 10        e    1   0.6006375
+#> 11        f    0   0.5243893
+#> 12        f    1   0.3997999
+#> 13        f    2   0.0758108
 ```

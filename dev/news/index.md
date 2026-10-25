@@ -5,6 +5,10 @@
 - Fixed issue with
   [`getGAF()`](https://docs.ropensci.org/BaseSet/dev/reference/getGAF.md)
   when all optional columns are present.
+- Update documentation to use the latest `roxygen2` with anchored links.
+- Use styler.
+- Replaced `%>%` for the base `pipe` `|>`.
+- Tweaked vignettes to prevent warnings from dplyr and ggplot2.
 
 ## BaseSet 1.0.0
 

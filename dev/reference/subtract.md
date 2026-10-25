@@ -1,7 +1,7 @@
 # Subtract
 
 Elements in a set not present in the other set. Equivalent to
-[`generics::setdiff()`](https://generics.r-lib.org/reference/setops.html).
+[`base::setdiff()`](https://rdrr.io/r/base/sets.html).
 
 ## Usage
 
@@ -71,7 +71,7 @@ A `TidySet` object.
 
 ## See also
 
-[`generics::setdiff()`](https://generics.r-lib.org/reference/setops.html)
+[`base::setdiff()`](https://rdrr.io/r/base/sets.html)
 
 Other complements:
 [`complement()`](https://docs.ropensci.org/BaseSet/dev/reference/complement.md),
@@ -108,9 +108,9 @@ Other methods:
 [`nElements()`](https://docs.ropensci.org/BaseSet/dev/reference/nElements.md),
 [`nRelations()`](https://docs.ropensci.org/BaseSet/dev/reference/nRelations.md),
 [`nSets()`](https://docs.ropensci.org/BaseSet/dev/reference/nSets.md),
-`name_elements<-()`,
+[`name_elements<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_elements-set.md),
 [`name_sets()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets.md),
-`name_sets<-()`,
+[`name_sets<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets-set.md),
 [`power_set()`](https://docs.ropensci.org/BaseSet/dev/reference/power_set.md),
 [`pull.TidySet()`](https://docs.ropensci.org/BaseSet/dev/reference/pull_.md),
 [`relations()`](https://docs.ropensci.org/BaseSet/dev/reference/relations.md),
@@ -135,17 +135,17 @@ relations <- data.frame(
 )
 TS <- tidySet(relations)
 subtract(TS, "A", "B")
-#>   elements sets        fuzzy
-#> 1        a    A 0.5155856195
-#> 2        b    A 0.8694592980
-#> 3        c    B 0.8565225946
-#> 4        d    B 0.3456831840
-#> 5        e    C 0.0001036914
-#> 6        f    C 0.2051797453
-#> 7        a  A∖B 0.5155856195
-#> 8        b  A∖B 0.8694592980
+#>   elements sets      fuzzy
+#> 1        a    A 0.39640996
+#> 2        b    A 0.95948261
+#> 3        c    B 0.29865803
+#> 4        d    B 0.05020117
+#> 5        e    C 0.57618742
+#> 6        f    C 0.21790581
+#> 7        a  A∖B 0.39640996
+#> 8        b  A∖B 0.95948261
 subtract(TS, "A", "B", keep = FALSE)
 #>   elements sets     fuzzy
-#> 1        a  A∖B 0.5155856
-#> 2        b  A∖B 0.8694593
+#> 1        a  A∖B 0.3964100
+#> 2        b  A∖B 0.9594826
 ```

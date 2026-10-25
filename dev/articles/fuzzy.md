@@ -58,10 +58,13 @@ value (or probability) of the relationship between the element and the
 set.
 
 ``` r
+
 set.seed(4567) # To be able to have exact replicates
-relations <- data.frame(sets = c(rep("A", 5), "B", "C"),
-                        elements = c(letters[seq_len(6)], letters[6]),
-                        fuzzy = runif(7))
+relations <- data.frame(
+  sets = c(rep("A", 5), "B", "C"),
+  elements = c(letters[seq_len(6)], letters[6]),
+  fuzzy = runif(7)
+)
 fuzzy_set <- tidySet(relations)
 ```
 
@@ -77,6 +80,7 @@ information for union and intersection methods and other operations:
 You can make a union of two sets present on the same object.
 
 ``` r
+
 BaseSet::union(fuzzy_set, sets = c("A", "B"))
 #>   elements sets     fuzzy
 #> 1        a  A∪B 0.2309186
@@ -103,7 +107,9 @@ argument.
 
 ``` r
 
-BaseSet::union(fuzzy_set, sets = c("A", "B"), FUN = function(x){sqrt(sum(x))})
+BaseSet::union(fuzzy_set, sets = c("A", "B"), FUN = function(x) {
+  sqrt(sum(x))
+})
 #>   elements sets     fuzzy
 #> 1        a  A∪B 0.4805399
 #> 2        b  A∪B 0.8609619
@@ -124,6 +130,7 @@ However if we do the intersection between B and C we can see some
 changes on the fuzzy value:
 
 ``` r
+
 intersection(fuzzy_set, sets = c("B", "C"), keep = FALSE)
 #>   elements sets     fuzzy
 #> 1        f  B∩C 0.2773313
@@ -146,6 +153,7 @@ and the intended goal we might apply one or other rules.
 We can look for the complement of one or several sets:
 
 ``` r
+
 complement_set(fuzzy_set, sets = "A", keep = FALSE)
 #>   elements sets     fuzzy
 #> 1        a   ∁A 0.7690814
@@ -158,6 +166,7 @@ complement_set(fuzzy_set, sets = "A", keep = FALSE)
 Note that the values of the complement are `1-fuzzy` but can be changed:
 
 ``` r
+
 filter(fuzzy_set, sets == "A")
 #>   elements sets     fuzzy
 #> 1        a    A 0.2309186
@@ -165,7 +174,9 @@ filter(fuzzy_set, sets == "A")
 #> 3        c    A 0.1833834
 #> 4        d    A 0.4221682
 #> 5        e    A 0.5996399
-complement_set(fuzzy_set, sets = "A", keep = FALSE, FUN = function(x){1-x^2})
+complement_set(fuzzy_set, sets = "A", keep = FALSE, FUN = function(x) {
+  1 - x^2
+})
 #>   elements sets     fuzzy
 #> 1        a   ∁A 0.9466766
 #> 2        b   ∁A 0.4505405
@@ -179,6 +190,7 @@ complement_set(fuzzy_set, sets = "A", keep = FALSE, FUN = function(x){1-x^2})
 This is the equivalent of `setdiff`, but clearer:
 
 ``` r
+
 subtract(fuzzy_set, set_in = "A", not_in = "B", keep = FALSE, name = "A-B")
 #>   elements sets     fuzzy
 #> 1        a  A-B 0.2309186
@@ -201,6 +213,7 @@ is not fixed. To calculate the size of a given set we have
 [`set_size()`](https://docs.ropensci.org/BaseSet/dev/reference/set_size.md):
 
 ``` r
+
 set_size(fuzzy_set)
 #>    sets size probability
 #> 1     A    0 0.037593610
@@ -218,6 +231,7 @@ set_size(fuzzy_set)
 Or an element can be in 0 sets:
 
 ``` r
+
 element_size(fuzzy_set)
 #>    elements size probability
 #> 1         a    0   0.7690814
@@ -251,25 +265,33 @@ this are our sets. The software returns a probability for each type it
 has: the higher, the more confident it is of the assignment:
 
 ``` r
+
 sc_classification <- data.frame(
-    elements = c("D2ex_1", "D2ex_10", "D2ex_11", "D2ex_12", "D2ex_13", "D2ex_14", 
-                 "D2ex_15", "D2ex_16", "D2ex_17", "D2ex_18", "D2ex_1", "D2ex_10", 
-                 "D2ex_11", "D2ex_12", "D2ex_13", "D2ex_14", "D2ex_15", "D2ex_16",
-                 "D2ex_17", "D2ex_18", "D2ex_1", "D2ex_10", "D2ex_11", "D2ex_12", 
-                 "D2ex_13", "D2ex_14", "D2ex_15", "D2ex_16", "D2ex_17", "D2ex_18", 
-                 "D2ex_1", "D2ex_10", "D2ex_11", "D2ex_12", "D2ex_13", "D2ex_14", 
-                 "D2ex_15", "D2ex_16", "D2ex_17", "D2ex_18"), 
-    sets = c("alpha", "alpha", "alpha", "alpha", "alpha", "alpha", "alpha", 
-             "alpha", "alpha", "alpha", "endothel", "endothel", "endothel", 
-             "endothel", "endothel", "endothel", "endothel", "endothel", 
-             "endothel", "endothel", "delta", "delta", "delta", "delta", "delta", 
-             "delta", "delta", "delta", "delta", "delta", "beta", "beta", "beta", 
-             "beta", "beta", "beta", "beta", "beta", "beta", "beta"), 
-    fuzzy = c(0.18, 0.169, 0.149, 0.192, 0.154, 0.161, 0.169, 0.197, 0.162, 0.201, 
-              0.215, 0.202, 0.17, 0.227, 0.196, 0.215, 0.161, 0.195, 0.178, 
-              0.23, 0.184, 0.172, 0.153, 0.191, 0.156, 0.167, 0.165, 0.184, 
-              0.162, 0.194, 0.197, 0.183, 0.151, 0.208, 0.16, 0.169, 0.169, 
-              0.2, 0.154, 0.208), stringsAsFactors = FALSE)
+  elements = c(
+    "D2ex_1", "D2ex_10", "D2ex_11", "D2ex_12", "D2ex_13", "D2ex_14",
+    "D2ex_15", "D2ex_16", "D2ex_17", "D2ex_18", "D2ex_1", "D2ex_10",
+    "D2ex_11", "D2ex_12", "D2ex_13", "D2ex_14", "D2ex_15", "D2ex_16",
+    "D2ex_17", "D2ex_18", "D2ex_1", "D2ex_10", "D2ex_11", "D2ex_12",
+    "D2ex_13", "D2ex_14", "D2ex_15", "D2ex_16", "D2ex_17", "D2ex_18",
+    "D2ex_1", "D2ex_10", "D2ex_11", "D2ex_12", "D2ex_13", "D2ex_14",
+    "D2ex_15", "D2ex_16", "D2ex_17", "D2ex_18"
+  ),
+  sets = c(
+    "alpha", "alpha", "alpha", "alpha", "alpha", "alpha", "alpha",
+    "alpha", "alpha", "alpha", "endothel", "endothel", "endothel",
+    "endothel", "endothel", "endothel", "endothel", "endothel",
+    "endothel", "endothel", "delta", "delta", "delta", "delta", "delta",
+    "delta", "delta", "delta", "delta", "delta", "beta", "beta", "beta",
+    "beta", "beta", "beta", "beta", "beta", "beta", "beta"
+  ),
+  fuzzy = c(
+    0.18, 0.169, 0.149, 0.192, 0.154, 0.161, 0.169, 0.197, 0.162, 0.201,
+    0.215, 0.202, 0.17, 0.227, 0.196, 0.215, 0.161, 0.195, 0.178,
+    0.23, 0.184, 0.172, 0.153, 0.191, 0.156, 0.167, 0.165, 0.184,
+    0.162, 0.194, 0.197, 0.183, 0.151, 0.208, 0.16, 0.169, 0.169,
+    0.2, 0.154, 0.208
+  ), stringsAsFactors = FALSE
+)
 head(sc_classification)
 #>   elements  sets fuzzy
 #> 1   D2ex_1 alpha 0.180
@@ -287,11 +309,12 @@ We can easily answer this by looking at the relations that have higher
 confidence of the relationship for each cell.
 
 ``` r
-sc_classification %>% 
-    group_by(elements) %>% 
-    filter(fuzzy == max(fuzzy)) %>% 
-    group_by(sets) %>% 
-    count()
+
+sc_classification |>
+  group_by(elements) |>
+  filter(fuzzy == max(fuzzy)) |>
+  group_by(sets) |>
+  count()
 #> # A tibble: 3 × 2
 #> # Groups:   sets [3]
 #>   sets         n
@@ -306,11 +329,12 @@ There is a cell that can be in two cell types, because we started with
 cell is placed to just a single set?
 
 ``` r
+
 scTS <- tidySet(sc_classification) # Conversion of format
-sample_cells <- scTS %>% 
-    element_size() %>% 
-    group_by(elements) %>% 
-    filter(probability == max(probability))
+sample_cells <- scTS |>
+  element_size() |>
+  group_by(elements) |>
+  filter(probability == max(probability))
 sample_cells
 #> # A tibble: 10 × 3
 #> # Groups:   elements [10]
@@ -341,10 +365,11 @@ We can also look the other way around: How good is the prediction of a
 cell type for each cell?
 
 ``` r
-scTS %>% 
-    set_size() %>% 
-    group_by(sets) %>% 
-    filter(probability == max(probability))
+
+scTS |>
+  set_size() |>
+  group_by(sets) |>
+  filter(probability == max(probability))
 #> # A tibble: 4 × 3
 #> # Groups:   sets [4]
 #>   sets      size probability
@@ -367,9 +392,9 @@ types except in two cells were it might be.
 
 ## Session info
 
-    #> R version 4.5.2 (2025-10-31)
+    #> R version 4.6.1 (2026-06-24)
     #> Platform: x86_64-pc-linux-gnu
-    #> Running under: Ubuntu 24.04.3 LTS
+    #> Running under: Ubuntu 24.04.5 LTS
     #> 
     #> Matrix products: default
     #> BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 
@@ -388,15 +413,15 @@ types except in two cells were it might be.
     #> [1] stats     graphics  grDevices utils     datasets  methods   base     
     #> 
     #> other attached packages:
-    #> [1] dplyr_1.1.4        BaseSet_1.0.0.9001
+    #> [1] dplyr_1.2.1        BaseSet_1.0.0.9001
     #> 
     #> loaded via a namespace (and not attached):
-    #>  [1] vctrs_0.6.5       cli_3.6.5         knitr_1.50        rlang_1.1.6      
-    #>  [5] xfun_0.55         generics_0.1.4    textshaping_1.0.4 jsonlite_2.0.0   
-    #>  [9] glue_1.8.0        htmltools_0.5.9   ragg_1.5.0        sass_0.4.10      
-    #> [13] rmarkdown_2.30    tibble_3.3.0      evaluate_1.0.5    jquerylib_0.1.4  
-    #> [17] fastmap_1.2.0     yaml_2.3.12       lifecycle_1.0.4   compiler_4.5.2   
-    #> [21] fs_1.6.6          pkgconfig_2.0.3   systemfonts_1.3.1 digest_0.6.39    
-    #> [25] R6_2.6.1          utf8_1.2.6        tidyselect_1.2.1  pillar_1.11.1    
-    #> [29] magrittr_2.0.4    bslib_0.9.0       tools_4.5.2       pkgdown_2.2.0    
-    #> [33] cachem_1.1.0      desc_1.4.3
+    #>  [1] vctrs_0.7.3       cli_3.6.6         knitr_1.52        rlang_1.3.0      
+    #>  [5] xfun_0.62         otel_0.2.0        generics_0.1.4    textshaping_1.0.5
+    #>  [9] jsonlite_2.0.0    glue_1.8.1        htmltools_0.5.9   ragg_1.5.2       
+    #> [13] sass_0.4.10       rmarkdown_2.32    tibble_3.3.1      evaluate_1.0.5   
+    #> [17] jquerylib_0.1.4   fastmap_1.2.0     yaml_2.3.12       lifecycle_1.0.5  
+    #> [21] compiler_4.6.1    fs_2.1.0          pkgconfig_2.0.3   systemfonts_1.3.2
+    #> [25] digest_0.6.39     R6_2.6.1          utf8_1.2.6        tidyselect_1.2.1 
+    #> [29] pillar_1.11.1     magrittr_2.0.5    bslib_0.12.0      tools_4.6.1      
+    #> [33] pkgdown_2.2.1     cachem_1.1.0      desc_1.4.3

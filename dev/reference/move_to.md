@@ -64,9 +64,9 @@ Other methods:
 [`nElements()`](https://docs.ropensci.org/BaseSet/dev/reference/nElements.md),
 [`nRelations()`](https://docs.ropensci.org/BaseSet/dev/reference/nRelations.md),
 [`nSets()`](https://docs.ropensci.org/BaseSet/dev/reference/nSets.md),
-`name_elements<-()`,
+[`name_elements<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_elements-set.md),
 [`name_sets()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets.md),
-`name_sets<-()`,
+[`name_sets<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets-set.md),
 [`power_set()`](https://docs.ropensci.org/BaseSet/dev/reference/power_set.md),
 [`pull.TidySet()`](https://docs.ropensci.org/BaseSet/dev/reference/pull_.md),
 [`relations()`](https://docs.ropensci.org/BaseSet/dev/reference/relations.md),
@@ -92,8 +92,8 @@ TS2 <- move_to(TS, from = "elements", to = "relations", "b")
 # Note that apparently we haven't changed anything:
 TS2
 #>   elements sets fuzzy         b
-#> 1        a    A   0.1 0.1453158
-#> 2        b    A   0.5 0.8543839
-#> 3        a    B   0.2 0.1453158
-#> 4        b    B   1.0 0.8543839
+#> 1        a    A   0.1 0.1194854
+#> 2        b    A   0.5 0.1946950
+#> 3        a    B   0.2 0.1194854
+#> 4        b    B   1.0 0.1946950
 ```

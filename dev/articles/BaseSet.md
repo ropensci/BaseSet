@@ -17,10 +17,11 @@ To create a `TidySet` object, to store associations between elements and
 sets image we have several genes associated with a characteristic.
 
 ``` r
+
 library("BaseSet")
 gene_lists <- list(
-    geneset1 = c("A", "B"),
-    geneset2 = c("B", "C", "D")
+  geneset1 = c("A", "B"),
+  geneset2 = c("B", "C", "D")
 )
 tidy_set <- tidySet(gene_lists)
 tidy_set
@@ -41,15 +42,16 @@ slots.
 If you have more information for each element or set it can be added:
 
 ``` r
+
 gene_data <- data.frame(
-    stat1     = c( 1,   2,   3,   4 ),
-    info1     = c("a", "b", "c", "d")
+  stat1     = c(1, 2, 3, 4),
+  info1     = c("a", "b", "c", "d")
 )
 
 tidy_set <- add_column(tidy_set, "elements", gene_data)
 set_data <- data.frame(
-    Group     = c( 100 ,  200 ),
-    Column     = c("abc", "def")
+  Group = c(100, 200),
+  Column = c("abc", "def")
 )
 tidy_set <- add_column(tidy_set, "sets", set_data)
 tidy_set
@@ -65,6 +67,7 @@ This data is stored in one of the three slots, which can be directly
 accessed using their getter methods:
 
 ``` r
+
 relations(tidy_set)
 #>   elements     sets fuzzy
 #> 1        A geneset1     1
@@ -92,9 +95,10 @@ See the Fuzzy sets vignette: `vignette("Fuzzy sets", "BaseSet")`.
 You can also use the standard R approach with `[`:
 
 ``` r
+
 gene_data <- data.frame(
-    stat2     = c( 4,   4,   3,   5 ),
-    info2     = c("a", "b", "c", "d")
+  stat2     = c(4, 4, 3, 5),
+  info2     = c("a", "b", "c", "d")
 )
 
 tidy_set$info1 <- NULL
@@ -117,9 +121,12 @@ As you can see it is possible to create a TidySet from a list. More
 commonly you can create it from a data.frame:
 
 ``` r
-relations <- data.frame(elements = c("a", "b", "c", "d", "e", "f"), 
-                        sets = c("A", "A", "A", "A", "A", "B"), 
-                        fuzzy = c(1, 1, 1, 1, 1, 1))
+
+relations <- data.frame(
+  elements = c("a", "b", "c", "d", "e", "f"),
+  sets = c("A", "A", "A", "A", "A", "B"),
+  fuzzy = c(1, 1, 1, 1, 1, 1)
+)
 TS <- tidySet(relations)
 TS
 #>   elements sets fuzzy
@@ -134,8 +141,11 @@ TS
 It is also possible from a matrix:
 
 ``` r
-m <- matrix(c(0, 0, 1, 1, 1, 1, 0, 1, 0), ncol = 3, nrow = 3,  
-               dimnames = list(letters[1:3], LETTERS[1:3]))
+
+m <- matrix(c(0, 0, 1, 1, 1, 1, 0, 1, 0),
+  ncol = 3, nrow = 3,
+  dimnames = list(letters[1:3], LETTERS[1:3])
+)
 m
 #>   A B C
 #> a 0 1 0
@@ -161,6 +171,7 @@ It is possible to extract the gene sets as a `list`, for use with
 functions such as `lapply`.
 
 ``` r
+
 as.list(tidy_set)
 #> $A
 #> c 
@@ -179,6 +190,7 @@ Or if you need to apply some network methods and you need a matrix, you
 can create it with `incidence`:
 
 ``` r
+
 incidence(tidy_set)
 #>   A B C
 #> c 1 1 0
@@ -199,6 +211,7 @@ All methods work with fuzzy and non-fuzzy sets
 You can make a union of two sets present on the same object.
 
 ``` r
+
 BaseSet::union(tidy_set, sets = c("C", "B"), name = "D")
 #>   elements sets fuzzy
 #> 1        a    D     1
@@ -209,6 +222,7 @@ BaseSet::union(tidy_set, sets = c("C", "B"), name = "D")
 ### Intersection
 
 ``` r
+
 intersection(tidy_set, sets = c("A", "B"), name = "D", keep = TRUE)
 #>   elements sets fuzzy
 #> 1        c    A     1
@@ -223,6 +237,7 @@ The keep argument used here is if you want to keep all the other
 previous sets:
 
 ``` r
+
 intersection(tidy_set, sets = c("A", "B"), name = "D", keep = FALSE)
 #>   elements sets fuzzy
 #> 1        c    D     1
@@ -233,6 +248,7 @@ intersection(tidy_set, sets = c("A", "B"), name = "D", keep = FALSE)
 We can look for the complement of one or several sets:
 
 ``` r
+
 complement_set(tidy_set, sets = c("A", "B"))
 #>   elements sets fuzzy
 #> 1        c    A     1
@@ -249,6 +265,7 @@ Observe that we haven’t provided a name for the resulting set but we can
 provide one if we prefer to
 
 ``` r
+
 complement_set(tidy_set, sets = c("A", "B"), name = "F")
 #>   elements sets fuzzy
 #> 1        c    A     1
@@ -266,6 +283,7 @@ complement_set(tidy_set, sets = c("A", "B"), name = "F")
 This is the equivalent of `setdiff`, but clearer:
 
 ``` r
+
 out <- subtract(tidy_set, set_in = "A", not_in = "B", name = "A-B")
 out
 #>   elements sets fuzzy
@@ -295,6 +313,7 @@ and
 methods.
 
 ``` r
+
 nElements(tidy_set)
 #> [1] 3
 nSets(tidy_set)
@@ -312,6 +331,7 @@ The size of each set can be obtained using the
 method.
 
 ``` r
+
 set_size(tidy_set)
 #>   sets size probability
 #> 1    A    1           1
@@ -325,6 +345,7 @@ the
 function.
 
 ``` r
+
 element_size(tidy_set)
 #>   elements size probability
 #> 1        c    2           1
@@ -336,6 +357,7 @@ The identifiers of elements and sets can be inspected and renamed using
 `name_elements` and
 
 ``` r
+
 name_elements(tidy_set)
 #> [1] "c" "a" "b"
 name_elements(tidy_set) <- paste0("Gene", seq_len(nElements(tidy_set)))
@@ -360,6 +382,7 @@ three slots you want to affect with
 [`activate()`](https://docs.ropensci.org/BaseSet/dev/reference/activate.md):
 
 ``` r
+
 library("dplyr")
 #> 
 #> Attaching package: 'dplyr'
@@ -372,8 +395,8 @@ library("dplyr")
 #> The following objects are masked from 'package:base':
 #> 
 #>     intersect, setdiff, setequal, union
-m_TS <- tidy_set %>% 
-  activate("relations") %>% 
+m_TS <- tidy_set |>
+  activate("relations") |>
   mutate(Important = runif(nRelations(tidy_set)))
 m_TS
 #>   elements     sets fuzzy   Important
@@ -387,11 +410,13 @@ m_TS
 You can use activate to select what are the verbs modifying:
 
 ``` r
-set_modified <- m_TS %>% 
-  activate("elements") %>% 
-  mutate(Pathway = if_else(elements %in% c("Gene1", "Gene2"), 
-                           "pathway1", 
-                           "pathway2"))
+
+set_modified <- m_TS |>
+  activate("elements") |>
+  mutate(Pathway = if_else(elements %in% c("Gene1", "Gene2"),
+    "pathway1",
+    "pathway2"
+  ))
 set_modified
 #>   elements     sets fuzzy   Important  Pathway
 #> 1    Gene1 Geneset1     1 0.080750138 pathway1
@@ -399,8 +424,8 @@ set_modified
 #> 3    Gene3 Geneset2     1 0.600760886 pathway2
 #> 4    Gene1 Geneset2     1 0.157208442 pathway1
 #> 5    Gene3 Geneset3     1 0.007399441 pathway2
-set_modified %>% 
-  deactivate() %>% # To apply a filter independently of where it is
+set_modified |>
+  deactivate() |> # To apply a filter independently of where it is
   filter(Pathway == "pathway1")
 #>   elements     sets fuzzy  Important  Pathway
 #> 1    Gene1 Geneset1     1 0.08075014 pathway1
@@ -412,10 +437,11 @@ If you think you need `group_by` usually this could mean that you need a
 new set. You can create a new one with `group`.
 
 ``` r
+
 # A new group of those elements in pathway1 and with Important == 1
-set_modified %>% 
-  deactivate() %>% 
-  group(name = "new", Pathway == "pathway1")
+set_modified |>
+  deactivate() |>
+  BaseSet::group(name = "new", Pathway == "pathway1")
 #>   elements     sets fuzzy   Important  Pathway
 #> 1    Gene1 Geneset1     1 0.080750138 pathway1
 #> 2    Gene2 Geneset2     1 0.834333037 pathway1
@@ -427,8 +453,8 @@ set_modified %>%
 ```
 
 ``` r
-set_modified %>% 
-  group("pathway1", elements %in% c("Gene1", "Gene2"))
+
+BaseSet::group(set_modified, "pathway1", elements %in% c("Gene1", "Gene2"))
 #>   elements     sets fuzzy   Important  Pathway
 #> 1    Gene1 Geneset1     1 0.080750138 pathway1
 #> 2    Gene2 Geneset2     1 0.834333037 pathway1
@@ -444,10 +470,11 @@ You can use
 it won’t return a `TidySet`.
 
 ``` r
-set_modified %>% 
-    deactivate() %>% 
-    group_by(Pathway, sets) %>%  
-    count()
+
+set_modified |>
+  deactivate() |>
+  group_by(Pathway, sets) |>
+  count()
 #> # A tibble: 4 × 3
 #> # Groups:   Pathway, sets [4]
 #>   Pathway  sets         n
@@ -459,9 +486,11 @@ set_modified %>%
 ```
 
 After grouping or mutating sometimes we might be interested in moving a
-column describing something to other places. We can do by this with:
+column describing something to other places. We can do by this with
+[`move_to()`](https://docs.ropensci.org/BaseSet/dev/reference/move_to.md):
 
 ``` r
+
 elements(set_modified)
 #>   elements  Pathway
 #> 1    Gene1 pathway1
@@ -479,9 +508,9 @@ relations(out)
 
 ## Session info
 
-    #> R version 4.5.2 (2025-10-31)
+    #> R version 4.6.1 (2026-06-24)
     #> Platform: x86_64-pc-linux-gnu
-    #> Running under: Ubuntu 24.04.3 LTS
+    #> Running under: Ubuntu 24.04.5 LTS
     #> 
     #> Matrix products: default
     #> BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 
@@ -500,15 +529,15 @@ relations(out)
     #> [1] stats     graphics  grDevices utils     datasets  methods   base     
     #> 
     #> other attached packages:
-    #> [1] dplyr_1.1.4        BaseSet_1.0.0.9001
+    #> [1] dplyr_1.2.1        BaseSet_1.0.0.9001
     #> 
     #> loaded via a namespace (and not attached):
-    #>  [1] vctrs_0.6.5       cli_3.6.5         knitr_1.50        rlang_1.1.6      
-    #>  [5] xfun_0.55         generics_0.1.4    textshaping_1.0.4 jsonlite_2.0.0   
-    #>  [9] glue_1.8.0        htmltools_0.5.9   ragg_1.5.0        sass_0.4.10      
-    #> [13] rmarkdown_2.30    tibble_3.3.0      evaluate_1.0.5    jquerylib_0.1.4  
-    #> [17] fastmap_1.2.0     yaml_2.3.12       lifecycle_1.0.4   compiler_4.5.2   
-    #> [21] fs_1.6.6          pkgconfig_2.0.3   systemfonts_1.3.1 digest_0.6.39    
-    #> [25] R6_2.6.1          utf8_1.2.6        tidyselect_1.2.1  pillar_1.11.1    
-    #> [29] magrittr_2.0.4    bslib_0.9.0       tools_4.5.2       pkgdown_2.2.0    
-    #> [33] cachem_1.1.0      desc_1.4.3
+    #>  [1] vctrs_0.7.3       cli_3.6.6         knitr_1.52        rlang_1.3.0      
+    #>  [5] xfun_0.62         otel_0.2.0        generics_0.1.4    textshaping_1.0.5
+    #>  [9] jsonlite_2.0.0    glue_1.8.1        htmltools_0.5.9   ragg_1.5.2       
+    #> [13] sass_0.4.10       rmarkdown_2.32    tibble_3.3.1      evaluate_1.0.5   
+    #> [17] jquerylib_0.1.4   fastmap_1.2.0     yaml_2.3.12       lifecycle_1.0.5  
+    #> [21] compiler_4.6.1    fs_2.1.0          pkgconfig_2.0.3   systemfonts_1.3.2
+    #> [25] digest_0.6.39     R6_2.6.1          utf8_1.2.6        tidyselect_1.2.1 
+    #> [29] pillar_1.11.1     magrittr_2.0.5    bslib_0.12.0      tools_4.6.1      
+    #> [33] pkgdown_2.2.1     cachem_1.1.0      desc_1.4.3

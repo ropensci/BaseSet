@@ -57,9 +57,10 @@ A `TidySet` object.
 
 ## See also
 
-Other names: `name_elements<-()`,
+Other names:
+[`name_elements<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_elements-set.md),
 [`name_sets()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets.md),
-`name_sets<-()`,
+[`name_sets<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets-set.md),
 [`rename_elements()`](https://docs.ropensci.org/BaseSet/dev/reference/rename_elements.md),
 [`rename_set()`](https://docs.ropensci.org/BaseSet/dev/reference/rename_set.md)
 

@@ -59,9 +59,9 @@ Other methods:
 [`nElements()`](https://docs.ropensci.org/BaseSet/dev/reference/nElements.md),
 [`nRelations()`](https://docs.ropensci.org/BaseSet/dev/reference/nRelations.md),
 [`nSets()`](https://docs.ropensci.org/BaseSet/dev/reference/nSets.md),
-`name_elements<-()`,
+[`name_elements<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_elements-set.md),
 [`name_sets()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets.md),
-`name_sets<-()`,
+[`name_sets<-()`](https://docs.ropensci.org/BaseSet/dev/reference/name_sets-set.md),
 [`power_set()`](https://docs.ropensci.org/BaseSet/dev/reference/power_set.md),
 [`pull.TidySet()`](https://docs.ropensci.org/BaseSet/dev/reference/pull_.md),
 [`relations()`](https://docs.ropensci.org/BaseSet/dev/reference/relations.md),
@@ -89,41 +89,41 @@ TS <- tidySet(rel)
 TS |>
     activate("elements") |>
     complement("a")
-#>   elements sets     fuzzy
-#> 1        a    A 0.2900502
-#> 2        b    A 0.4800752
-#> 3        c    B 0.9200055
-#> 4        d    B 0.4007202
-#> 5        e    C 0.2131727
-#> 6        f    C 0.6717668
-#> 7        a   ∁a 0.7099498
+#>   elements sets      fuzzy
+#> 1        a    A 0.53157354
+#> 2        b    A 0.49363702
+#> 3        c    B 0.77930863
+#> 4        d    B 0.20417834
+#> 5        e    C 0.71339728
+#> 6        f    C 0.06521611
+#> 7        a   ∁a 0.46842646
 TS |>
     activate("elements") |>
     complement("a", "C_a", keep = FALSE)
 #>   elements sets     fuzzy
-#> 1        a  C_a 0.7099498
+#> 1        a  C_a 0.4684265
 TS |>
     activate("set") |>
     complement("A")
-#>   elements sets     fuzzy
-#> 1        a    A 0.2900502
-#> 2        b    A 0.4800752
-#> 3        c    B 0.9200055
-#> 4        d    B 0.4007202
-#> 5        e    C 0.2131727
-#> 6        f    C 0.6717668
-#> 7        a   ∁A 0.7099498
-#> 8        b   ∁A 0.5199248
+#>   elements sets      fuzzy
+#> 1        a    A 0.53157354
+#> 2        b    A 0.49363702
+#> 3        c    B 0.77930863
+#> 4        d    B 0.20417834
+#> 5        e    C 0.71339728
+#> 6        f    C 0.06521611
+#> 7        a   ∁A 0.46842646
+#> 8        b   ∁A 0.50636298
 TS |>
     activate("set") |>
     complement("A", keep = FALSE)
 #>   elements sets     fuzzy
-#> 1        a   ∁A 0.7099498
-#> 2        b   ∁A 0.5199248
+#> 1        a   ∁A 0.4684265
+#> 2        b   ∁A 0.5063630
 TS |>
     activate("set") |>
     complement("A", FUN = function(x){abs(x - 0.2)}, keep = FALSE)
-#>   elements sets      fuzzy
-#> 1        a   ∁A 0.09005016
-#> 2        b   ∁A 0.28007517
+#>   elements sets     fuzzy
+#> 1        a   ∁A 0.3315735
+#> 2        b   ∁A 0.2936370
 ```
