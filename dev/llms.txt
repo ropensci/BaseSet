@@ -46,8 +46,9 @@ You can install the latest version of BaseSet from
 
 ``` r
 
-BiocManager::install("ropensci/BaseSet", 
-                     dependencies = TRUE, build_vignettes = TRUE, force = TRUE)
+BiocManager::install("ropensci/BaseSet",
+  dependencies = TRUE, build_vignettes = TRUE, force = TRUE
+)
 ```
 
 # Examples
@@ -76,7 +77,7 @@ resulting set or let the default name:
 
 ``` r
 
-union(sets_analysis, sets = c("A", "B")) 
+union(sets_analysis, sets = c("A", "B"))
 #>   elements sets fuzzy
 #> 1        a  A∪B     1
 #> 2        b  A∪B     1
@@ -98,7 +99,7 @@ intersection(sets_analysis, sets = c("A", "B"))
 #>   elements sets fuzzy
 #> 1        a  A∩B     1
 # Keeping the other sets:
-intersection(sets_analysis, sets = c("A", "B"), name = "D", keep = TRUE) 
+intersection(sets_analysis, sets = c("A", "B"), name = "D", keep = TRUE)
 #>   elements sets fuzzy
 #> 1        a    A     1
 #> 2        b    A     1
@@ -145,11 +146,11 @@ library("magrittr")
 #> 
 #>     subtract
 set.seed(4673) # To make it reproducible in your machine
-sets_enriched <- sets_analysis |> 
-  mutate(Keep = sample(c(TRUE, FALSE), 7, replace = TRUE)) |> 
-  filter(Keep == TRUE) |> 
-  select(-Keep) |> 
-  activate("sets") |> 
+sets_enriched <- sets_analysis |>
+  mutate(Keep = sample(c(TRUE, FALSE), 7, replace = TRUE)) |>
+  filter(Keep == TRUE) |>
+  select(-Keep) |>
+  activate("sets") |>
   mutate(sets_origin = c("Reactome", "KEGG"))
 sets_enriched
 #>   elements sets fuzzy sets_origin
@@ -191,9 +192,11 @@ and 1. This implies that the association is not guaranteed.
 
 ``` r
 
-relations <- data.frame(sets = c(rep("A", 5), "B", "B"), 
-                        elements = c("a", "b", "c", "d", "e", "a", "f"),
-                        fuzzy = runif(7))
+relations <- data.frame(
+  sets = c(rep("A", 5), "B", "B"),
+  elements = c("a", "b", "c", "d", "e", "a", "f"),
+  fuzzy = runif(7)
+)
 fuzzy_set <- tidySet(relations)
 fuzzy_set
 #>   elements sets     fuzzy
@@ -211,7 +214,7 @@ fuzzy sets:
 
 ``` r
 
-union(fuzzy_set, sets = c("A", "B")) 
+union(fuzzy_set, sets = c("A", "B"))
 #>   elements sets     fuzzy
 #> 1        a  A∪B 0.9381182
 #> 2        b  A∪B 0.4567009
@@ -233,7 +236,7 @@ intersection(fuzzy_set, sets = c("A", "B"))
 #>   elements sets     fuzzy
 #> 1        a  A∩B 0.1837246
 # Keeping the other sets:
-intersection(fuzzy_set, sets = c("A", "B"), name = "D", keep = TRUE) 
+intersection(fuzzy_set, sets = c("A", "B"), name = "D", keep = TRUE)
 #>   elements sets     fuzzy
 #> 1        a    A 0.1837246
 #> 2        b    A 0.4567009
@@ -263,8 +266,8 @@ set_size(fuzzy_set)
 #> 8    B    1 0.109184679
 #> 9    B    2 0.887474684
 # The more probable size of the sets:
-set_size(fuzzy_set) |> 
-  group_by(sets) |> 
+set_size(fuzzy_set) |>
+  group_by(sets) |>
   filter(probability == max(probability))
 #> # A tibble: 2 × 3
 #> # Groups:   sets [2]
@@ -294,9 +297,9 @@ With fuzzy sets we can filter at certain levels (called alpha cut):
 
 ``` r
 
-fuzzy_set |> 
-  filter(fuzzy > 0.5) |> 
-  activate("sets") |> 
+fuzzy_set |>
+  filter(fuzzy > 0.5) |>
+  activate("sets") |>
   mutate(sets_origin = c("Reactome", "KEGG"))
 #>   elements sets     fuzzy sets_origin
 #> 1        c    A 0.8152075    Reactome
