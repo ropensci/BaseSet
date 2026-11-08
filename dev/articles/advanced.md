@@ -380,7 +380,7 @@ head(sizes_set, 10)
 
 ## Session info
 
-    #> R version 4.6.1 (2026-06-24)
+    #> R version 4.6.2 (2026-10-29)
     #> Platform: x86_64-pc-linux-gnu
     #> Running under: Ubuntu 24.04.5 LTS
     #> 
@@ -410,17 +410,17 @@ head(sizes_set, 10)
     #> 
     #> loaded via a namespace (and not attached):
     #>  [1] KEGGREST_1.52.2    gtable_0.3.6       xfun_0.62          bslib_0.12.0      
-    #>  [5] vctrs_0.7.3        tools_4.6.1        tibble_3.3.1       RSQLite_3.53.3    
+    #>  [5] vctrs_0.7.3        tools_4.6.2        tibble_3.3.1       RSQLite_3.53.3    
     #>  [9] blob_1.3.0         pkgconfig_2.0.3    RColorBrewer_1.1-3 S7_0.2.2          
-    #> [13] desc_1.4.3         graph_1.90.0       lifecycle_1.0.5    compiler_4.6.1    
+    #> [13] desc_1.4.3         graph_1.90.0       lifecycle_1.0.5    compiler_4.6.2    
     #> [17] farver_2.1.2       textshaping_1.0.5  Biostrings_2.80.2  Seqinfo_1.2.0     
     #> [21] htmltools_0.5.9    sass_0.4.10        yaml_2.3.12        pkgdown_2.2.1     
     #> [25] pillar_1.11.1      crayon_1.5.3       jquerylib_0.1.4    cachem_1.1.0      
     #> [29] tidyselect_1.2.1   digest_0.6.39      labeling_0.4.3     fastmap_1.2.0     
-    #> [33] grid_4.6.1         cli_3.6.6          magrittr_2.0.5     XML_3.99-0.25     
+    #> [33] grid_4.6.2         cli_3.6.6          magrittr_2.0.5     XML_3.99-0.25     
     #> [37] GSEABase_1.74.0    withr_3.0.3        scales_1.4.0       bit64_4.8.6       
     #> [41] rmarkdown_2.32     XVector_0.52.0     httr_1.4.9         bit_4.6.0         
-    #> [45] otel_0.2.0         ragg_1.5.2         png_0.1-9          memoise_2.0.1     
+    #> [45] otel_0.3.0         ragg_1.5.2         png_0.1-9          memoise_2.0.1     
     #> [49] evaluate_1.0.5     knitr_1.52         rlang_1.3.0        xtable_1.8-8      
     #> [53] glue_1.8.1         DBI_1.3.0          annotate_1.90.0    jsonlite_2.0.0    
     #> [57] R6_2.6.1           systemfonts_1.3.2  fs_2.1.0
