@@ -1,10 +1,11 @@
 # BaseSet (development version)
 
-* Fixed issue with `getGAF()` when all optional columns are present. 
+* Fixed issue with `getGAF()` when all optional columns are present (#73). 
 * Update documentation to use the latest `roxygen2` with anchored links.
 * Use styler.
 * Replaced `%>%` for the base `pipe` `|>`.
 * Tweaked vignettes to prevent warnings from dplyr and ggplot2.
+* Tweaked tests to avoid Note from CRAN.
 
 # BaseSet 1.0.0
 

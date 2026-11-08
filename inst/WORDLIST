@@ -23,9 +23,11 @@ cytosol
 dplyr
 fuzzification
 getter
+ggplot
 magrittr
 ontologies
 rOpenSci
+styler
 tidySet
 unicode
 ºC
