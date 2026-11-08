@@ -1,4 +1,4 @@
-# BaseSet (development version)
+# BaseSet 1.0.1
 
 * Fixed issue with `getGAF()` when all optional columns are present (#73). 
 * Update documentation to use the latest `roxygen2` with anchored links.
