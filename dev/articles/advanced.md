@@ -382,11 +382,11 @@ head(sizes_set, 10)
 
     #> R version 4.6.2 (2026-10-29)
     #> Platform: x86_64-pc-linux-gnu
-    #> Running under: Ubuntu 24.04.5 LTS
+    #> Running under: Ubuntu 26.04.1 LTS
     #> 
     #> Matrix products: default
     #> BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 
-    #> LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.26.so;  LAPACK version 3.12.0
+    #> LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.32.so;  LAPACK version 3.12.0
     #> 
     #> locale:
     #>  [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       
@@ -406,7 +406,7 @@ head(sizes_set, 10)
     #>  [4] GO.db_3.23.1         org.Hs.eg.db_3.23.1  AnnotationDbi_1.74.0
     #>  [7] IRanges_2.46.0       S4Vectors_0.50.3     Biobase_2.72.0      
     #> [10] BiocGenerics_0.58.1  generics_0.1.4       dplyr_1.2.1         
-    #> [13] BaseSet_1.0.0.9001  
+    #> [13] BaseSet_1.0.1.9000  
     #> 
     #> loaded via a namespace (and not attached):
     #>  [1] KEGGREST_1.52.2    gtable_0.3.6       xfun_0.62          bslib_0.12.0      

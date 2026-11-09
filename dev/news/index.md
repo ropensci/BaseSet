@@ -2,6 +2,8 @@
 
 ## BaseSet (development version)
 
+## BaseSet 1.0.1
+
 - Fixed issue with
   [`getGAF()`](https://docs.ropensci.org/BaseSet/dev/reference/getGAF.md)
   when all optional columns are present
