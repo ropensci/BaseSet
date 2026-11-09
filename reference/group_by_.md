@@ -1,0 +1,103 @@
+# group_by TidySet
+
+Use group_by to group the TidySet object. You can use activate with
+group_by or with the whole data.
+
+## Usage
+
+``` r
+# S3 method for class 'TidySet'
+group_by(.data, ...)
+```
+
+## Arguments
+
+- .data:
+
+  The TidySet object
+
+- ...:
+
+  The logical predicates in terms of the variables of the sets
+
+## Value
+
+A grouped data.frame (See The dplyr help page)
+
+## See also
+
+[`dplyr::group_by()`](https://dplyr.tidyverse.org/reference/group_by.html)
+and
+[`activate()`](https://docs.ropensci.org/BaseSet/reference/activate.md)
+
+Other methods:
+[`TidySet-class`](https://docs.ropensci.org/BaseSet/reference/TidySet-class.md),
+[`activate()`](https://docs.ropensci.org/BaseSet/reference/activate.md),
+[`add_column()`](https://docs.ropensci.org/BaseSet/reference/add_column.md),
+[`add_relation()`](https://docs.ropensci.org/BaseSet/reference/add_relation.md),
+[`arrange.TidySet()`](https://docs.ropensci.org/BaseSet/reference/arrange_.md),
+[`cartesian()`](https://docs.ropensci.org/BaseSet/reference/cartesian.md),
+[`complement()`](https://docs.ropensci.org/BaseSet/reference/complement.md),
+[`complement_element()`](https://docs.ropensci.org/BaseSet/reference/complement_element.md),
+[`complement_set()`](https://docs.ropensci.org/BaseSet/reference/complement_set.md),
+[`element_size()`](https://docs.ropensci.org/BaseSet/reference/element_size.md),
+[`elements()`](https://docs.ropensci.org/BaseSet/reference/elements.md),
+[`filter.TidySet()`](https://docs.ropensci.org/BaseSet/reference/filter_.md),
+[`group()`](https://docs.ropensci.org/BaseSet/reference/group.md),
+[`incidence()`](https://docs.ropensci.org/BaseSet/reference/incidence.md),
+[`intersection()`](https://docs.ropensci.org/BaseSet/reference/intersection.md),
+[`is.fuzzy()`](https://docs.ropensci.org/BaseSet/reference/is.fuzzy.md),
+[`is_nested()`](https://docs.ropensci.org/BaseSet/reference/is_nested.md),
+[`move_to()`](https://docs.ropensci.org/BaseSet/reference/move_to.md),
+[`mutate.TidySet()`](https://docs.ropensci.org/BaseSet/reference/mutate_.md),
+[`nElements()`](https://docs.ropensci.org/BaseSet/reference/nElements.md),
+[`nRelations()`](https://docs.ropensci.org/BaseSet/reference/nRelations.md),
+[`nSets()`](https://docs.ropensci.org/BaseSet/reference/nSets.md),
+[`name_elements<-()`](https://docs.ropensci.org/BaseSet/reference/name_elements-set.md),
+[`name_sets()`](https://docs.ropensci.org/BaseSet/reference/name_sets.md),
+[`name_sets<-()`](https://docs.ropensci.org/BaseSet/reference/name_sets-set.md),
+[`power_set()`](https://docs.ropensci.org/BaseSet/reference/power_set.md),
+[`pull.TidySet()`](https://docs.ropensci.org/BaseSet/reference/pull_.md),
+[`relations()`](https://docs.ropensci.org/BaseSet/reference/relations.md),
+[`remove_column()`](https://docs.ropensci.org/BaseSet/reference/remove_column.md),
+[`remove_element()`](https://docs.ropensci.org/BaseSet/reference/remove_element.md),
+[`remove_relation()`](https://docs.ropensci.org/BaseSet/reference/remove_relation.md),
+[`remove_set()`](https://docs.ropensci.org/BaseSet/reference/remove_set.md),
+[`rename_elements()`](https://docs.ropensci.org/BaseSet/reference/rename_elements.md),
+[`rename_set()`](https://docs.ropensci.org/BaseSet/reference/rename_set.md),
+[`select.TidySet()`](https://docs.ropensci.org/BaseSet/reference/select_.md),
+[`set_size()`](https://docs.ropensci.org/BaseSet/reference/set_size.md),
+[`sets()`](https://docs.ropensci.org/BaseSet/reference/sets.md),
+[`subtract()`](https://docs.ropensci.org/BaseSet/reference/subtract.md),
+[`union()`](https://docs.ropensci.org/BaseSet/reference/union.md)
+
+## Examples
+
+``` r
+relations <- data.frame(
+    sets = c(rep("a", 5), "b", rep("a2", 5), "b2"),
+    elements = rep(letters[seq_len(6)], 2),
+    fuzzy = runif(12)
+)
+a <- tidySet(relations)
+elements(a) <- cbind(elements(a),
+    type = c(rep("Gene", 4), rep("lncRNA", 2))
+)
+group_by(a, elements)
+#> # A tibble: 12 × 4
+#> # Groups:   elements [6]
+#>    elements sets   fuzzy type  
+#>    <chr>    <chr>  <dbl> <chr> 
+#>  1 a        a     0.709  Gene  
+#>  2 b        a     0.874  Gene  
+#>  3 c        a     0.0115 Gene  
+#>  4 d        a     0.888  Gene  
+#>  5 e        a     0.996  lncRNA
+#>  6 f        b     0.500  lncRNA
+#>  7 a        a2    0.359  Gene  
+#>  8 b        a2    0.775  Gene  
+#>  9 c        a2    0.584  Gene  
+#> 10 d        a2    0.634  Gene  
+#> 11 e        a2    0.859  lncRNA
+#> 12 f        b2    0.567  lncRNA
+```
